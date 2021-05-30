@@ -1,0 +1,36 @@
+![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/IMG_0922.PNG)
+
+Former Colégio Militar students who are/were @PSP Officers connected to the security staff of the President of the Portuguese Republic responsible for the cybertorture wave since 2016 (others are connected to INSTITUTO SUPERIOR TÉCNICO)
+
+![](img/0535BA2D-8A78-4C1E-B12A-C91A92B89F0D.jpeg)
+
+0. **Luis Nazareth Carvalho Figueira** (17 at Colégio Militar)
+0. [**José Ricardo Nazareth Carvalho Figueira**](https://dre.pt/home/-/dre/73841274/details/maximized)
+0. [**Tito Eurico Miranda Fernandes**](https://dre.pt/home/-/dre/115800591/details/maximized) (15 at Colégio Militar)
+
+These guys act as 3 stooges by collaborating in Faith Trials and behaving like [The HumancentiPad who cannot read](https://www.southparkstudios.nu/episodes/j6a6zs/south-park-humancentipad-season-15-ep-1). Maybe they can read the following 
+
+**The catholic church does not condone Faith Trials** and police officers don't act like fascist criminals acting in criminal association to exact extrajudicial sentences of cybersodomy, vibrotactile genital torture, intercourse sabotage and treating citizens like dogs by incessantly delivering noxious payloads to neck, cerebellum, occipital part of the skull and soft tissues in the head to draw synthetic psychosis and feelings of self-harm, hiding under the cover of prominent members of society whilst providing content for morbid spectacles hidden under a veil of medical malpractice via psychiatric fraud and false therapy.
+
+These individuals act like cowards, collaborating with morbid individuals with dark fantasies of exacting extrajudicial sentences of genital self-mutilation upon others like those at [Rua do Almada (near Jardim do Adamastor), Lisboa](https://goo.gl/maps/S5dwABC3DVC2Zsjv9) and their criminal associates!
+
+Other former Colégio Militar students who are/were @PSP Officers:
+
+0. [**Pedro Miguel Grilo**](https://pt.linkedin.com/in/pedro-grilo-8760013b) (427 at Colégio Militar) and João Pinheiro (277 at Colégio Militar) and respective families and social groups!
+
+My former neighbor and some former acquaintances:
+
+0. [**Nuno Correia**](https://pt.linkedin.com/in/nuno-correia-383a86154) and Carla Maria Marinho Rodrigues, 
+0. [**Gonçalo Bandeira Duarte**](https://pt.linkedin.com/in/gon%C3%A7alo-duarte-b71078107?trk=people-guest_people_search-card) and his criminal associates [**Tiago Jorge Roque**](https://www.facebook.com/tiago.j.roque), João Leiria and several other current and former employees at [Tapada Crew](https://www.tapadacrew.com/), infecting society with their morbid comedy and poisonous psychotic behavior, promoting a criminal sub-culture, destroying families and degrading others in an attempt to rise up the social ladder! These individuals are also criminal associates of RUI CALADO and DIOGO CALADO @WorldCrewEvents (Rua Aquilino Ribeiro, nº 37, 3º Dto, 2795 - 471 Carnaxide)
+
+Gonçalo Bandeira Duarte is a cybertorture collaborationist who acts in a provocative way with his criminal associates (some of which Colégio Militar alumni) to draw mimetic responses of homophobia, misogyny and xenophobia, to exact extrajudicial trials and sentences upon! 
+
+As such he is a collaborationist in destroying families, households and lives to generate content for high society human degradation, self-mutilation shows hidden under a veil of psychiatric fraud and false therapy!
+
+![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/cybertorture_collaborationists/PT/Tapada_do_mocho/goncalo%20duarte.png)
+
+Gonçalo Bandeira Duarte resides in:
+Rua Joaquim Quirino, n 16, 9 E
+Paço d'Arcos, Portugal
+
+![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/IMG_0918.JPG)
