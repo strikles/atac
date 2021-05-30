@@ -110,15 +110,15 @@ class UnderTheMangoTree:
                                     quotechar='"',
                                     quoting=csv.QUOTE_MINIMAL)
                                     
-            unique_contacts = None
-            if type == "email":
-                unique_contacts = list(filter(lambda e: e not in self.emails, new_contacts))
-            elif type == "phone":
-                unique_contacts = list(filter(lambda e: e not in self.phones, new_contacts))
-                
-            print("\x1b[6;37;41m new {0}:{1} | {2} \x1b[0m".format(type, len(unique_contacts), unique_contacts))
-            for contact in unique_contacts:
-                writer.writerow(contact)
+                unique_contacts = None
+                if type == "email":
+                    unique_contacts = list(filter(lambda e: e not in self.emails, new_contacts))
+                elif type == "phone":
+                    unique_contacts = list(filter(lambda e: e not in self.phones, new_contacts))
+                    
+                print("\x1b[6;37;41m new {0}:{1} | {2} \x1b[0m".format(type, len(unique_contacts), unique_contacts))
+                for contact in unique_contacts:
+                    writer.writerow(contact)
                 
 
     def process_page(self, data_key, starting_url):
