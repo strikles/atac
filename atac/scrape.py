@@ -36,7 +36,7 @@ class UnderTheMangoTree:
                 return True
         for j in self.config["scrape"]["invalid_paths"]:
             if j in url:
-                print(">>> invalid domain...\n")
+                print(">>> invalid path...\n")
                 return True
         # reject invalid file types 
         for k in self.config["scrape"]["invalid_files"]:
@@ -188,16 +188,27 @@ class UnderTheMangoTree:
                 self.save_contacts(new_phones, data_key, "phone")
                 self.phones.update(new_phones)
 
+            soup = None
             # create a beautiful soup for the html document
-            soup = BeautifulSoup(response.text, 'lxml')
+            try:
+                soup = BeautifulSoup(response.text, 'lxml')
+            except Exception as bs_err:
+                print(f'html bs parsing error occurred: {bs_err}')
+                continue
+            else:
+                pass
+                
             # extract base url to resolve relative links
             parts = urlsplit(url)
             base_url = "{0.scheme}://{0.netloc}".format(parts)
             path = url[:url.rfind('/') + 1] if '/' in parts.path else url
-            # find and process all the anchors
+            
+            # find all the anchors
             anchors = soup.find_all("a")
             num_anchors = len(anchors)
             print("> {0} new anchors {1}".format(currentThread().getName(), num_anchors))
+            
+            # process all the anchors
             count = 0
             for anchor in anchors:
                 # extract link url from the anchor
