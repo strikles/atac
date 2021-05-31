@@ -107,8 +107,7 @@ class UnderTheMangoTree:
         elif type == "phone":
             csv_path = os.getcwd() + "/contacts/phones/" + data_key + "_phones.csv"
         else:
-            print(">>> error: invalid type...\n")
-            return
+            raise Exception('unknown type: {}'.format(type))
             
         with open(csv_path, mode='a') as f:
             writer = csv.writer(f,
