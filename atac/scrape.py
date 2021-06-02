@@ -24,6 +24,7 @@ class UnderTheMangoTree:
         # a set of fetched emails
         self.emails = set()
         self.phones = set()
+        #
         self.config = {}
         with open('auth.json') as json_file:
             self.config = json.load(json_file)
@@ -100,7 +101,7 @@ class UnderTheMangoTree:
         return set(rx_phones.findall(content))
 
     def save_contacts(self, new_contacts, data_key, type):
-        csv_path = None
+
         # save to file
         if type == "email":
             csv_path = os.getcwd() + "/contacts/emails/" + data_key + "_emails.csv"
@@ -115,15 +116,13 @@ class UnderTheMangoTree:
                                 quotechar='"',
                                 quoting=csv.QUOTE_MINIMAL)
                                 
-            unique_contacts = None
             if type == "email":
-                unique_contacts = list(filter(lambda e: e not in self.emails, new_contacts))
+                unique_contacts = [filter(lambda e: e not in self.emails, new_contacts)]
             elif type == "phone":
-                unique_contacts = list(filter(lambda e: e not in self.phones, new_contacts))
+                unique_contacts = [filter(lambda e: e not in self.phones, new_contacts)]
                 
-            print("\x1b[6;37;41m new {0}:{1} | {2} \x1b[0m".format(type, len(unique_contacts), unique_contacts))
-            for contact in unique_contacts:
-                writer.writerow([contact])
+            print("\x1b[6;37;41m new {0}:{1} | {2} \x1b[0m".format(type, len(unique_contacts), unique_contacts))L
+            map(lambda x: writer.writerow([x]), unique_contacts)
                 
 
     def process_page(self, data_key, starting_url):
@@ -145,7 +144,7 @@ class UnderTheMangoTree:
         self.truncate_files(data_key)
 
         # process urls 1 by 1 from queue until empty
-        while len(self.primary_unprocessed_urls) > 0:
+        while self.primary_unprocessed_urls:
             # move next url from queue to set of processed urls
             url = self.primary_unprocessed_urls.popleft()
             print("\x1b[6;37;42m {0} urls:{1} {2} | emails:{3} phones:{4} - {5} \x1b[0m".format(
@@ -178,17 +177,16 @@ class UnderTheMangoTree:
 
             # extract email addresses into the resulting set
             new_emails = self.extract_emails(response.text)
-            if len(new_emails) > 0:
+            if new_emails:
                 self.save_contacts(new_emails, data_key, "email")
                 self.emails.update(new_emails)
 
             # extract phone numbers into resulting set
             new_phones = self.extract_phones(response.text)
-            if len(new_phones) > 0:
+            if new_phones:
                 self.save_contacts(new_phones, data_key, "phone")
                 self.phones.update(new_phones)
 
-            soup = None
             # create a beautiful soup for the html document
             try:
                 soup = BeautifulSoup(response.text, 'lxml')
@@ -229,7 +227,7 @@ class UnderTheMangoTree:
                     elif link not in self.primary_unprocessed_urls:
                         self.primary_unprocessed_urls.append(link)
 
-            if len(self.primary_unprocessed_urls) == 0:
+            if not self.primary_unprocessed_urls:
                 print(">>> primary queue empty...\n")
                 self.primary_unprocessed_urls.extend(self.secondary_unprocessed_urls)
                 self.secondary_unprocessed_urls.clear()
