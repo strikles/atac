@@ -121,7 +121,7 @@ class UnderTheMangoTree:
             elif type == "phone":
                 unique_contacts = [filter(lambda e: e not in self.phones, new_contacts)]
                 
-            print("\x1b[6;37;41m new {0}:{1} | {2} \x1b[0m".format(type, len(unique_contacts), unique_contacts))L
+            print("\x1b[6;37;41m new {0}:{1} | {2} \x1b[0m".format(type, len(unique_contacts), unique_contacts))
             map(lambda x: writer.writerow([x]), unique_contacts)
                 
 
