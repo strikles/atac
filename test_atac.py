@@ -67,7 +67,7 @@ def test_save_phones():
 
 def test_process_page():
     mango = atac.UnderTheMangoTree()
-    status = mango.process_page("test", "https://raw.githubusercontent.com/strikles/atac/main/SCRAPEME.md")
+    status = mango.process_page("test", "https://raw.githubusercontent.com/strikles/atac/main/assets/SCRAPEME.md")
     assert(status) == 0
 
 
