@@ -176,13 +176,13 @@ class UnderTheMangoTree:
 
             # extract email addresses into the resulting set
             new_emails = self.extract_emails(response.text)
-            if len(new_emails) > 0:
+            if new_emails:
                 self.save_contacts(new_emails, data_key, "email")
                 self.emails.update(new_emails)
 
             # extract phone numbers into resulting set
             new_phones = self.extract_phones(response.text)
-            if len(new_phones) > 0:
+            if new_phones:
                 self.save_contacts(new_phones, data_key, "phone")
                 self.phones.update(new_phones)
 
