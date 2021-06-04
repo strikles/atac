@@ -162,7 +162,11 @@ class UnderTheMangoTree:
                 continue
             # get page with timeout of 10s
             try:
-                response = requests.get(url, headers=self.set_useragent(), timeout=10)
+                proxies = dict()
+                if self.config["scrape"]["active_proxies"]:
+                    proxies = self.config["scrape"]["proxies"]
+
+                response = requests.get(url, headers=self.set_useragent(), proxies=proxies, timeout=10, stream=False)
                 # If the response was successful, no Exception will be raised
                 response.raise_for_status()
             except HTTPError as http_err:
