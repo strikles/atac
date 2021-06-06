@@ -31,16 +31,16 @@ class UnderTheMangoTree:
     def invalid_url(self, url):
         # reject invalid domains
         for i in self.config["scrape"]["invalid_domains"]:
-            if i in url:
+            if i in url.lower():
                 print(">>> invalid domain...\n")
                 return True
         for j in self.config["scrape"]["invalid_paths"]:
-            if j in url:
+            if j in url.lower():
                 print(">>> invalid path...\n")
                 return True
         # reject invalid file types 
         for k in self.config["scrape"]["invalid_files"]:
-            if url.endswith(k):
+            if url.lower().endswith(k):
                 print(">>> invalid file..\n")
                 return True
         return False
