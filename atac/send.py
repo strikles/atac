@@ -48,7 +48,7 @@ class FromRuXiaWithLove:
         content_ndx = self.config['send']['email']['active_content']
         content = self.config['send']['email']['content'][content_ndx]
         # set sctive to next and save config
-        self.config['email']['active_content'] = (1 + content_ndx) % len(self.config['email']['content'])
+        self.config['send']['email']['active_content'] = (1 + content_ndx) % len(self.config['send']['email']['content'])
         # get active auth
         auth_ndx = self.config['send']['email']['active_auth']
         auth = self.config['send']['email']['auth'][auth_ndx]
