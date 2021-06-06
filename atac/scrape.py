@@ -74,7 +74,7 @@ class UnderTheMangoTree:
                                        quotechar='"',
                                        quoting=csv.QUOTE_MINIMAL)
 
-            emails_writer.writerow(['email'])
+            emails_writer.writerow([',email'])
 
         csv_path = os.getcwd() + "/contacts/phones/" + data_key + "_phones.csv"
         with open(csv_path, mode='a') as phones_file:
@@ -84,7 +84,7 @@ class UnderTheMangoTree:
                                        quotechar='"',
                                        quoting=csv.QUOTE_MINIMAL)
 
-            phones_writer.writerow(['phone'])
+            phones_writer.writerow([',phone'])
 
     @staticmethod
     def extract_emails(content):
