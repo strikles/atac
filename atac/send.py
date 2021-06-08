@@ -37,7 +37,7 @@ class FromRuXiaWithLove:
                 reader = csv.reader(file)
                 next(reader)  # Skip header row
                 print(mailing_list)
-                for receiver_email in reader:
+                for ndx, receiver_email in reader:
                     print(receiver_email)
                     mailing_list += receiver_email[0] + ", "
 
