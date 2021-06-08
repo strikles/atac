@@ -39,7 +39,7 @@ class FromRuXiaWithLove:
                 print(mailing_list)
                 for ndx, receiver_email in reader:
                     print(receiver_email)
-                    mailing_list += receiver_email[0] + ", "
+                    mailing_list += receiver_email + ", "
 
         # reload config
         with open('auth.json') as json_file:
