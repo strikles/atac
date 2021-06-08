@@ -24,6 +24,8 @@ class UnderTheMangoTree:
         # a set of fetched emails
         self.emails = set()
         self.phones = set()
+        self.num_phones = 0
+        self.num_emails = 0
         self.config = {}
         with open('auth.json') as json_file:
             self.config = json.load(json_file)
@@ -121,8 +123,12 @@ class UnderTheMangoTree:
                 
             print("\x1b[6;37;41m new {0}:{1} | {2} \x1b[0m".format(type, len(unique_contacts), unique_contacts))
             for c in unique_contacts:
-                writer.writerow([c])
-                
+                if type == "email":
+                    self.num_emails +=1
+                    writer.writerow([self.num_emails, c])
+                elif type == "phone":
+                    self.num_phones +=1
+                    writer.writerow([self.num_phones, c])
 
     def process_page(self, data_key, starting_url):
 
@@ -167,6 +173,7 @@ class UnderTheMangoTree:
                     proxies = self.config["scrape"]["proxies"]
 
                 response = requests.get(url, headers=self.set_useragent(), proxies=proxies, timeout=10, stream=False)
+                response.encoding = "utf-8"
                 # If the response was successful, no Exception will be raised
                 response.raise_for_status()
             except HTTPError as http_err:
