@@ -1,8 +1,10 @@
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/IMG_0922.PNG)
 
-Former Colégio Militar students who are/were @PSP Officers connected to the security staff of the President of the Portuguese Republic responsible for the cybertorture wave since 2016 (others are connected to INSTITUTO SUPERIOR TÉCNICO)
+Pedro Silva (bar [A Capela](https://www.facebook.com/acapelabar/) Bairro Alto, Lisbon, Portugal) is a cybertorture collaborationist who with his criminal associates (some of which Colégio Militar alumni) destroy families, households and lives with synthetic psychosis and directed violence via Cybertorture, creating homeless drug addicts with synthetic tics and facial spasms talking to themselves to generate content for high society human degradation, self-mutilation shows hidden under a veil of psychiatric fraud and false therapy!
 
-![](img/0535BA2D-8A78-4C1E-B12A-C91A92B89F0D.jpeg)
+![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/cybertorture_collaborationists/PT/CM/19921A0F-B127-4A0B-B527-EA8B9F60E1E5.png)
+
+Former Colégio Militar students who are/were @PSP Officers connected to the security staff of the President of the Portuguese Republic responsible for the cybertorture wave since 2016
 
 0. **Luis Nazareth Carvalho Figueira** (17 at Colégio Militar)
 0. [**José Ricardo Nazareth Carvalho Figueira**](https://dre.pt/home/-/dre/73841274/details/maximized)
@@ -22,15 +24,5 @@ My former neighbor and some former acquaintances:
 
 0. [**Nuno Correia**](https://pt.linkedin.com/in/nuno-correia-383a86154) and Carla Maria Marinho Rodrigues, 
 0. [**Gonçalo Bandeira Duarte**](https://pt.linkedin.com/in/gon%C3%A7alo-duarte-b71078107?trk=people-guest_people_search-card) and his criminal associates [**Tiago Jorge Roque**](https://www.facebook.com/tiago.j.roque), João Leiria and several other current and former employees at [Tapada Crew](https://www.tapadacrew.com/), infecting society with their morbid comedy and poisonous psychotic behavior, promoting a criminal sub-culture, destroying families and degrading others in an attempt to rise up the social ladder! These individuals are also criminal associates of RUI CALADO and DIOGO CALADO @WorldCrewEvents (Rua Aquilino Ribeiro, nº 37, 3º Dto, 2795 - 471 Carnaxide)
-
-Gonçalo Bandeira Duarte is a cybertorture collaborationist who acts in a provocative way with his criminal associates (some of which Colégio Militar alumni) to draw mimetic responses of homophobia, misogyny and xenophobia, to exact extrajudicial trials and sentences upon! 
-
-As such he is a collaborationist in destroying families, households and lives to generate content for high society human degradation, self-mutilation shows hidden under a veil of psychiatric fraud and false therapy!
-
-![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/cybertorture_collaborationists/PT/Tapada_do_mocho/goncalo%20duarte.png)
-
-Gonçalo Bandeira Duarte resides in:
-Rua Joaquim Quirino, n 16, 9 E
-Paço d'Arcos, Portugal
 
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/IMG_0918.JPG)
