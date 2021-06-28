@@ -1,10 +1,12 @@
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/IMG_0922.PNG)
 
-Pedro Silva (bar [A Capela](https://www.facebook.com/acapelabar/) Bairro Alto, Lisbon, Portugal) is a cybertorture collaborationist who with his criminal associates (some of which Colégio Militar alumni) destroy families, households and lives with synthetic psychosis and directed violence via Cybertorture, creating homeless drug addicts with synthetic tics and facial spasms talking to themselves to generate content for high society human degradation, self-mutilation shows hidden under a veil of psychiatric fraud and false therapy!
+Whilst I am no tech wiz, I would like to denounce cowards like the following with their heavy handed tactics and criminal association with law enforcement and government elected officials leading to the suicide or death of multiple individuals like [Aaron Swartz](https://en.m.wikipedia.org/wiki/Aaron_Swartz), destroying families, households and lives with synthetic psychosis and directed violence via Cybertorture, creating homeless drug addicts with synthetic tics and facial spasms talking to themselves, whilst making teeth fall remotely as an extrajudicial sentence to generate content for high society human degradation, self-mutilation shows hidden under a veil of psychiatric fraud and false therapy!
+
+Pedro Silva (bar [A Capela](https://www.facebook.com/acapelabar/) Bairro Alto, Lisbon, Portugal) is a cybertorture collaborationist who with his criminal associates (some of which Colégio Militar alumni) 
 
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/cybertorture_collaborationists/PT/CM/19921A0F-B127-4A0B-B527-EA8B9F60E1E5.png)
 
-Former Colégio Militar students who are/were @PSP Officers connected to the security staff of the President of the Portuguese Republic responsible for the cybertorture wave since 2016
+Other Colégio Militar students who are/were @PSP Officers connected to the security staff of the President of the Portuguese Republic responsible for the cybertorture wave since 2016
 
 0. **Luis Nazareth Carvalho Figueira** (17 at Colégio Militar)
 0. [**José Ricardo Nazareth Carvalho Figueira**](https://dre.pt/home/-/dre/73841274/details/maximized)
