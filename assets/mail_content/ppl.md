@@ -2,6 +2,8 @@
 
 I would like to denounce cowards like the following with their heavy handed tactics and criminal association with law enforcement and government elected officials leading to the suicide or death of multiple individuals like [Aaron Swartz](https://en.m.wikipedia.org/wiki/Aaron_Swartz), destroying families, households and lives with synthetic psychosis and directed violence via Cybertorture, creating homeless drug addicts with synthetic tics and facial spasms talking to themselves, whilst making teeth fall remotely as an extrajudicial sentence to generate content for high society human degradation, self-mutilation shows hidden under a veil of psychiatric fraud and false therapy!
 
+![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/IMG_2499.JPG)
+
 Pedro Silva (bar [A Capela](https://www.facebook.com/acapelabar/) Bairro Alto, Lisbon, Portugal) is a cybertorture collaborationist who with his criminal associates (some of which Colégio Militar alumni) 
 
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/cybertorture_collaborationists/PT/CM/19921A0F-B127-4A0B-B527-EA8B9F60E1E5.png)
