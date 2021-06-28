@@ -4,7 +4,7 @@ I would like to denounce cowards like the following with their heavy handed tact
 
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/IMG_2499.JPG)
 
-Pedro Silva (bar [A Capela](https://www.facebook.com/acapelabar/) Bairro Alto, Lisbon, Portugal) is a cybertorture collaborationist who with his criminal associates (some of which Colégio Militar alumni) 
+Pedro Silva (bar [A Capela](https://www.facebook.com/acapelabar/) Bairro Alto, Lisbon, Portugal) is a cybertorture collaborationist who acts with his criminal associates (some of which Colégio Militar alumni) 
 
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/cybertorture_collaborationists/PT/CM/19921A0F-B127-4A0B-B527-EA8B9F60E1E5.png)
 
