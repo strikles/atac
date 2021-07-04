@@ -48,14 +48,21 @@ class FromRuXiaWithLove:
                 content_ndx = self.config['send']['email']['active_content']
                 content = self.config['send']['email']['content'][content_ndx]
                 # set sctive to next and save config
-                self.config['send']['email']['active_content'] = (1 + content_ndx) % len(self.config['send']['email']['content'])
+                
+                if self.config['send']['email']['rotate_content']:
+                    self.config['send']['email']['active_content'] = (1 + content_ndx) % len(self.config['send']['email']['content'])
+                    with open('auth.json', 'w') as fp:
+                        json.dump(self.config, fp, indent=4)
+                        
                 # get active auth
                 auth_ndx = self.config['send']['email']['active_auth']
                 auth = self.config['send']['email']['auth'][auth_ndx]
                 # set active auth to next and save config
-                self.config['send']['email']['active_auth'] = (1 + auth_ndx) % len(self.config['send']['email']['auth'])
-                with open('auth.json', 'w') as fp:
-                    json.dump(self.config, fp, indent=4)
+                
+                if self.config['send']['email']['rotate_auth']:
+                    self.config['send']['email']['active_auth'] = (1 + auth_ndx) % len(self.config['send']['email']['auth'])
+                    with open('auth.json', 'w') as fp:
+                        json.dump(self.config, fp, indent=4)
         
                 # Send email here
                 print(f"Sending email to {mailing_list}")
