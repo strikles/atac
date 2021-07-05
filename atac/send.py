@@ -41,7 +41,7 @@ class FromRuXiaWithLove:
                 
                 lines = file.readlines()
                 #lines = [line for line in file]
-                for ndx, receiver_email in tqdm(reader, total=len(lines)):
+                for ndx, receiver_email in tqdm(reader):
                     mailing_list += receiver_email + ", "
 
                 # reload config
