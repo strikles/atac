@@ -98,8 +98,9 @@ class FromRuXiaWithLove:
                     with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
                         server.login(auth['user'], auth['password'])
                         server.sendmail(auth['sender'], mailing_list, message.as_string())
+                    print("\x1b[6;37;42m Sent \x1b[0m")
                 except Exception as err:
-                    print(f'Other error occurred: {err}')
+                    print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
                     
                 time.sleep(5)
                     
