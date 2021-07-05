@@ -38,9 +38,10 @@ class FromRuXiaWithLove:
             with open(cf) as file:
                 reader = csv.reader(file)
                 next(reader)  # Skip header row
-                #print(mailing_list)
-                for ndx, receiver_email in tqdm(reader):
-                    #print(receiver_email)
+                
+                lines = file.readlines()
+                #lines = [line for line in file]
+                for ndx, receiver_email in tqdm(reader, total=len(lines)):
                     mailing_list += receiver_email + ", "
 
                 # reload config
@@ -67,7 +68,6 @@ class FromRuXiaWithLove:
                         json.dump(self.config, fp, indent=4)
         
                 # Send email here
-                #print(f"Sending email to {mailing_list}")
                 message = MIMEMultipart("alternative")
                 message["Subject"] = content['subject']
                 message["From"] = auth['sender']
@@ -80,7 +80,7 @@ class FromRuXiaWithLove:
                 with open(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md)), 'r') as f:
                     ptext = f.read()
                     html = markdown.markdown(ptext)
-                    #print(html)
+
                 # Turn these into plain/html MIMEText objects
                 part1 = MIMEText(text, "plain")
                 part2 = MIMEText(html, "html")
