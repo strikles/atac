@@ -92,6 +92,8 @@ class FromRuXiaWithLove:
                     server.login(auth['user'], auth['password'])
                     server.sendmail(auth['sender'], mailing_list, message.as_string())
                     
+                time.sleep(5)
+                    
         return status
 
     def send_whatsapp(self, path):
