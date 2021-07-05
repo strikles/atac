@@ -36,18 +36,18 @@ class FromRuXiaWithLove:
             cf = path + ml
             print(cf)
             with open(cf) as file:
-                reader = csv.reader(file)
-                next(reader)  # Skip header row
-                lines = file.readlines()
+
+                next(csv.reader(file))  # Skip header row
                 
                 '''
+                lines = file.readlines()
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in reader:
                         mailing_list += receiver_email + ", "
                         progress.update(1)
                 '''
                 
-                for ndx, receiver_email in reader:
+                for ndx, receiver_email in csv.reader(file):
                     mailing_list += receiver_email + ", "
                     
                 print(mailing_list)
