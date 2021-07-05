@@ -7,6 +7,8 @@ import json
 import markdown
 import time
 from bs4 import BeautifulSoup
+from validator_collection import checkers
+
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
@@ -39,13 +41,10 @@ class FromRuXiaWithLove:
                 
                 lines = [line for line in file]
                 with tqdm(total=len(lines)) as progress:
-                    #next(reader) # Skip header row
-                    #progress.update(1)
                     for ndx, receiver_email in csv.reader(lines):
-                        mailing_list += receiver_email + ", "
+                        if checkers.is_email(receiver_email):
+                            mailing_list += receiver_email + ", "
                         progress.update(1)
-
-                #print(mailing_list)
                 
                 # reload config
                 with open('auth.json') as json_file:
