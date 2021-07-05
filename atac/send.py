@@ -40,13 +40,16 @@ class FromRuXiaWithLove:
                 next(reader)  # Skip header row
                 
                 lines = file.readlines()
-                #lines = [line for line in file]
-                for ndx, receiver_email in tqdm(reader):
-                    mailing_list += receiver_email + ", "
-
+    
+                with tqdm(total=len(lines)) as progress:
+                    for ndx, receiver_email in reader:
+                        mailing_list += receiver_email + ", "
+                        progress.update(1)
+        
                 # reload config
                 with open('auth.json') as json_file:
                     self.config = json.load(json_file)
+                    
                 # get active content
                 content_ndx = self.config['send']['email']['active_content']
                 content = self.config['send']['email']['content'][content_ndx]
