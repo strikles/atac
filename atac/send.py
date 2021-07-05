@@ -45,7 +45,7 @@ class FromRuXiaWithLove:
                         mailing_list += receiver_email + ", "
                         progress.update(1)
 
-                print(mailing_list)
+                #print(mailing_list)
                 
                 # reload config
                 with open('auth.json') as json_file:
