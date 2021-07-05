@@ -40,8 +40,8 @@ class FromRuXiaWithLove:
                 lines = file.readlines()
                 with tqdm(total=len(lines)) as progress:
                     reader = csv.reader(file)
-                    next(reader) # Skip header row
-                    progress.update(1)
+                    #next(reader) # Skip header row
+                    #progress.update(1)
                     for ndx, receiver_email in reader:
                         mailing_list += receiver_email + ", "
                         progress.update(1)
