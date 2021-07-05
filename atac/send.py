@@ -44,6 +44,7 @@ class FromRuXiaWithLove:
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in reader:
                         mailing_list += receiver_email + ", "
+                        time.sleep(0.01)
                         progress.update(1)
         
                 # reload config
