@@ -37,16 +37,15 @@ class FromRuXiaWithLove:
             print(cf)
             with open(cf) as file:
                 
-                lines = file.readlines()
+                lines = [line for line in file]
                 with tqdm(total=len(lines)) as progress:
-                    reader = csv.reader(file)
                     #next(reader) # Skip header row
                     #progress.update(1)
-                    for ndx, receiver_email in reader:
+                    for ndx, receiver_email in csv.reader(lines):
                         mailing_list += receiver_email + ", "
                         progress.update(1)
 
-                #print(mailing_list)
+                print(mailing_list)
                 
                 # reload config
                 with open('auth.json') as json_file:
