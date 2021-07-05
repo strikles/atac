@@ -87,10 +87,14 @@ class FromRuXiaWithLove:
                 message.attach(part1)
                 message.attach(part2)
                 # Create secure connection with server and send email
-                context = ssl.create_default_context()
-                with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
-                    server.login(auth['user'], auth['password'])
-                    server.sendmail(auth['sender'], mailing_list, message.as_string())
+                
+                try:
+                    context = ssl.create_default_context()
+                    with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
+                        server.login(auth['user'], auth['password'])
+                        server.sendmail(auth['sender'], mailing_list, message.as_string())
+                except Exception as err:
+                    print(f'Other error occurred: {err}')
                     
                 time.sleep(5)
                     
