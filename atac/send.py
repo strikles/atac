@@ -44,9 +44,10 @@ class FromRuXiaWithLove:
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in reader:
                         mailing_list += receiver_email + ", "
-                        time.sleep(0.01)
                         progress.update(1)
         
+                print(mailing_list)
+                
                 # reload config
                 with open('auth.json') as json_file:
                     self.config = json.load(json_file)
