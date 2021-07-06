@@ -41,7 +41,7 @@ class FromRuXiaWithLove:
             with open(cf) as file:
                 
                 lines = [line for line in file]
-                ml_emails = [[] for i in range((len(lines) // 2000)) + 1]
+                ml_emails = [[] for i in range((len(lines) // 2000) + 1)]
                 ml_counter = 0
 
                 with tqdm(total=len(lines)) as progress:
