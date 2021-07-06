@@ -39,15 +39,16 @@ class FromRuXiaWithLove:
             cf = path + ml
             print(cf)
             with open(cf) as file:
-
-                ml_emails = [[]]
-                ml_counter = 0
+                
                 lines = [line for line in file]
+                ml_emails = [[] for i in range(len(lines // 2000) + 1)]
+                ml_counter = 0
+
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
                         if checkers.is_email(receiver_email):
-                            ml_counter += 1
                             ml_emails[ml_counter // 2000][ml_counter % 2000] = receiver_email
+                            ml_counter += 1
                         progress.update(1)
                         
                 with tqdm(total=len(ml_emails)) as progress2:
