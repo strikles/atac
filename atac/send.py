@@ -47,7 +47,7 @@ class FromRuXiaWithLove:
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
                         if checkers.is_email(receiver_email):
-                            ml_emails[ml_counter // 2000][ml_counter % 2000] = receiver_email
+                            ml_emails[ml_counter // 2000].append(receiver_email)
                             ml_counter += 1
                         progress.update(1)
                         
