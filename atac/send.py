@@ -50,7 +50,7 @@ class FromRuXiaWithLove:
                             ml_emails[ml_counter // 2000][ml_counter % 2000] = receiver_email
                         progress.update(1)
                         
-                with tqdm(total=len(ml_batch)) as progress2:
+                with tqdm(total=len(ml_emails)) as progress2:
                     for ml_batch in ml_emails:
                         mailing_list = ', '.join(ml_batch)
                         
