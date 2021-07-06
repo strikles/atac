@@ -28,81 +28,81 @@ class FromRuXiaWithLove:
             self.config = json.load(json_file)
 
     def send_email(self, path):
+        
         print(path)
         status = 0
         # get mailing list csv files
         ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
         # create - to - string
-        mailing_list = ""
+
         for ml in ml_files:
             cf = path + ml
             print(cf)
             with open(cf) as file:
-                
+
+                ml_emails = [[]]
+                ml_counter = 0
                 lines = [line for line in file]
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
                         if checkers.is_email(receiver_email):
-                            mailing_list += receiver_email + ", "
+                            ml_counter += 1
+                            ml_emails[ml_counter // 2000][ml_counter % 2000] = receiver_email
                         progress.update(1)
-                
-                # reload config
-                with open('auth.json') as json_file:
-                    self.config = json.load(json_file)
-                    
-                # get active content
-                content_ndx = self.config['send']['email']['active_content']
-                content = self.config['send']['email']['content'][content_ndx]
-                # set sctive to next and save config
-                
-                if self.config['send']['email']['rotate_content']:
-                    self.config['send']['email']['active_content'] = (1 + content_ndx) % len(self.config['send']['email']['content'])
-                    with open('auth.json', 'w') as fp:
-                        json.dump(self.config, fp, indent=4)
                         
-                # get active auth
-                auth_ndx = self.config['send']['email']['active_auth']
-                auth = self.config['send']['email']['auth'][auth_ndx]
-                # set active auth to next and save config
-                
-                if self.config['send']['email']['rotate_auth']:
-                    self.config['send']['email']['active_auth'] = (1 + auth_ndx) % len(self.config['send']['email']['auth'])
+                for ml_batch in ml_emails:
+                    mailing_list = ', '.join(ml_batch)
+                    
+                    # reload config
+                    with open('auth.json') as json_file:
+                        self.config = json.load(json_file)
+                   # get active auth
+                    auth_ndx = self.config['send']['email']['active_auth']
+                    auth = self.config['send']['email']['auth'][auth_ndx]
+                    # get active content
+                    content_ndx = self.config['send']['email']['active_content']
+                    content = self.config['send']['email']['content'][content_ndx]
+                    # set sctive to next and save config
+                    if self.config['send']['email']['rotate_content']:
+                        self.config['send']['email']['active_content'] = (1 + content_ndx) % len(self.config['send']['email']['content'])
+                    # set active auth to next and save config
+                    if self.config['send']['email']['rotate_auth']:
+                        self.config['send']['email']['active_auth'] = (1 + auth_ndx) % len(self.config['send']['email']['auth'])
                     with open('auth.json', 'w') as fp:
                         json.dump(self.config, fp, indent=4)
-        
-                # Send email here
-                message = MIMEMultipart("alternative")
-                message["Subject"] = content['subject']
-                message["From"] = auth['sender']
-                message["To"] = mailing_list
-                # Create the plain-text and HTML version of your message
-                text = ""
-                html = ""
-                # convert markdown to html
-                md = 'assets/mail_content/' + content['markdown']
-                with open(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md)), 'r') as f:
-                    ptext = f.read()
-                    html = markdown.markdown(ptext)
-
-                # Turn these into plain/html MIMEText objects
-                part1 = MIMEText(text, "plain")
-                part2 = MIMEText(html, "html")
-                # Add HTML/plain-text parts to MIMEMultipart message
-                # The email client will try to render the last part first
-                message.attach(part1)
-                message.attach(part2)
-                # Create secure connection with server and send email
-                
-                try:
-                    context = ssl.create_default_context()
-                    with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
-                        server.login(auth['user'], auth['password'])
-                        server.sendmail(auth['sender'], mailing_list, message.as_string())
-                    print("\x1b[6;37;42m Sent \x1b[0m")
-                except Exception as err:
-                    print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
+            
+                    # Send email here
+                    message = MIMEMultipart("alternative")
+                    message["Subject"] = content['subject']
+                    message["From"] = auth['sender']
+                    message["To"] = mailing_list
+                    # Create the plain-text and HTML version of your message
+                    text = ""
+                    html = ""
+                    # convert markdown to html
+                    md = 'assets/mail_content/' + content['markdown']
+                    with open(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md)), 'r') as f:
+                        ptext = f.read()
+                        html = markdown.markdown(ptext)
+                    # Turn these into plain/html MIMEText objects
+                    part1 = MIMEText(text, "plain")
+                    part2 = MIMEText(html, "html")
+                    # Add HTML/plain-text parts to MIMEMultipart message
+                    # The email client will try to render the last part first
+                    message.attach(part1)
+                    message.attach(part2)
+                    # Create secure connection with server and send email
                     
-                time.sleep(5)
+                    try:
+                        context = ssl.create_default_context()
+                        with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
+                            server.login(auth['user'], auth['password'])
+                            server.sendmail(auth['sender'], mailing_list, message.as_string())
+                        print("\x1b[6;37;42m Sent \x1b[0m")
+                    except Exception as err:
+                        print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
+                        
+                    time.sleep(5)
                     
         return status
 
