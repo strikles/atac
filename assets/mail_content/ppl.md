@@ -40,7 +40,9 @@ My former neighbor and some former acquaintances:
 
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/cybertorture_collaborationists/PT/Tapada_do_mocho/goncalo%20duarte.png)
 
-0. [**Gonçalo Bandeira Duarte**](https://pt.linkedin.com/in/gon%C3%A7alo-duarte-b71078107?trk=people-guest_people_search-card) and his criminal associates [**Tiago Jorge Roque**](https://www.facebook.com/tiago.j.roque), João Leiria and several other current and former employees at [Tapada Crew](https://www.tapadacrew.com/), infecting society with their morbid comedy and poisonous psychotic behavior, promoting a criminal sub-culture, destroying families and degrading others in an attempt to rise up the social ladder! These individuals are also criminal associates of RUI CALADO and DIOGO CALADO @WorldCrewEvents (Rua Aquilino Ribeiro, nº 37, 3º Dto, 2795 - 471 Carnaxide)
+0. [**Gonçalo Bandeira Duarte**](https://pt.linkedin.com/in/gon%C3%A7alo-duarte-b71078107?trk=people-guest_people_search-card) and his criminal associates [**Tiago Jorge Roque**](https://www.facebook.com/tiago.j.roque), João Leiria and several other current and former employees at [Tapada Crew](https://www.tapadacrew.com/), infecting society with their morbid comedy and poisonous psychotic behavior, promoting a criminal sub-culture, destroying families and degrading others in an attempt to rise up the social ladder! 
+Barbara Leite (formerly Barbara Santos, and former #playboy Portugal employee) resident in Parede Portugal is a fascist collaborationist who in criminal association with Gonçalo Bandeira Duarte laughs at #cybertorture victims in high society self mutilation shows
+These individuals are also criminal associates of RUI CALADO and DIOGO CALADO @WorldCrewEvents (Rua Aquilino Ribeiro, nº 37, 3º Dto, 2795 - 471 Carnaxide)
 
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/cybertorture_collaborationists/NL/Jasper%20Kums.jpg)
 
