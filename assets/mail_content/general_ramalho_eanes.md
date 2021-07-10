@@ -4,11 +4,11 @@ I would like to denounce fascists like the following cowards, with their heavy h
 
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/IMG_2499.JPG)
 
-They destroy families, households and lives with synthetic psychosis and directed violence via Cybertorture, creating homeless drug addicts with synthetic tics and facial spasms talking to themselves, whilst making teeth fall remotely as an extrajudicial sentence to generate content for high society (including the presidency of Portugal under Marcelo Rebelo de Sousa and General Ramalho Eanes.
+They destroy families, households and lives with synthetic psychosis and directed violence via Cybertorture, creating homeless drug addicts with synthetic tics and facial spasms talking to themselves, whilst making teeth fall remotely as an extrajudicial sentence to generate content for high society human degradation, self-mutilation shows hidden under a veil of psychiatric fraud and false therapy for their amusement! (including the presidency of Portugal under Marcelo Rebelo de Sousa and General Ramalho Eanes.
 
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/cybertorture_collaborationists/PT/CM/IMG_2566.PNG)
 
-THE ROYAL HOUSE OF THE NETHERLANDS and individuals linked to the CANNABIS business in the Netherlands - Mila Jensen and social circle), generating human degradation, self-mutilation shows hidden under a veil of psychiatric fraud and false therapy for their amusement!
+THE ROYAL HOUSE OF THE NETHERLANDS and individuals linked to the CANNABIS business in the Netherlands - Mila Jensen and social circle)
 
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/IMG_0513.PNG)
 
