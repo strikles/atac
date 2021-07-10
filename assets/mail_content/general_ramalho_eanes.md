@@ -1,6 +1,6 @@
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/IMG_0922.PNG)
 
-I would like to denounce cowards like the following cowards, with their heavy handed tactics and criminal association with law enforcement and government elected officials leading to the suicide or death of multiple individuals like [Aaron Swartz](https://en.m.wikipedia.org/wiki/Aaron_Swartz).
+I would like to denounce fascists like the following cowards, with their heavy handed tactics and criminal association with law enforcement and government elected officials leading to the suicide or death of multiple individuals like [Aaron Swartz](https://en.m.wikipedia.org/wiki/Aaron_Swartz).
 
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/IMG_2499.JPG)
 
