@@ -1,10 +1,14 @@
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/IMG_0922.PNG)
 
-I would like to denounce cowards like the following, with their heavy handed tactics and criminal association with law enforcement and government elected officials leading to the suicide or death of multiple individuals like [Aaron Swartz](https://en.m.wikipedia.org/wiki/Aaron_Swartz).
+I would like to denounce cowards like the following cowards, with their heavy handed tactics and criminal association with law enforcement and government elected officials leading to the suicide or death of multiple individuals like [Aaron Swartz](https://en.m.wikipedia.org/wiki/Aaron_Swartz).
 
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/IMG_2499.JPG)
 
-They destroy families, households and lives with synthetic psychosis and directed violence via Cybertorture, creating homeless drug addicts with synthetic tics and facial spasms talking to themselves, whilst making teeth fall remotely as an extrajudicial sentence to generate content for high society (including the presidency of Portugal under Marcelo Rebelo de Sousa, the royal house of the Netherlands and individuals linked to the cannabis business in the Netherlands - Mila Jensen and social circle), generating human degradation, self-mutilation shows hidden under a veil of psychiatric fraud and false therapy for their amusement!
+They destroy families, households and lives with synthetic psychosis and directed violence via Cybertorture, creating homeless drug addicts with synthetic tics and facial spasms talking to themselves, whilst making teeth fall remotely as an extrajudicial sentence to generate content for high society (including the presidency of Portugal under Marcelo Rebelo de Sousa and General Ramalho Eanes.
+
+![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/cybertorture_collaborationists/PT/CM/IMG_2566.PNG)
+
+THE ROYAL HOUSE OF THE NETHERLANDS and individuals linked to the CANNABIS business in the Netherlands - Mila Jensen and social circle), generating human degradation, self-mutilation shows hidden under a veil of psychiatric fraud and false therapy for their amusement!
 
 ![](https://raw.githubusercontent.com/strikles/atac/main/assets/img/IMG_0513.PNG)
 
