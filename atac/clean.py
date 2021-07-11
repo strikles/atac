@@ -53,6 +53,6 @@ class Leon:
                                         quotechar='"',
                                         quoting=csv.QUOTE_MINIMAL)
                     writer.writerow(['', 'email'])
-                    for item in ml-emails:
+                    for item in ml_emails:
                         writer.writerow([item['index'], item['email']])
                         progress2.update(1)
