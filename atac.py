@@ -99,7 +99,7 @@ parser_compose.set_defaults(func=compose)
 
 # create the parser for the "compose" command
 parser_clean = subparsers.add_parser('clean')
-parser_compose.set_defaults(func=clean)
+parser_clean.set_defaults(func=clean)
 
 # parse the args and call whatever function was selected
 args = parser.parse_args()
