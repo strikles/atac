@@ -29,7 +29,7 @@ class Leon:
                                   
         return is_valid
                                   
-    def clean_files(self, path):
+    def cleanup(self, path):
         
         print(path)
         status = 0
