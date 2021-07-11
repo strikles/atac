@@ -32,7 +32,7 @@ class Leon:
         for ml in ml_files:
             cf = path + ml
             print(cf)
-            with open(cf, mode='a') as file:
+            with open(cf) as file:
 
                 lines = [line for line in file]
                 ml_emails = []
@@ -45,9 +45,10 @@ class Leon:
                                 print('{0} INVALID'.format(receiver_email))
                         progress.update(1)
                         
-                file.truncate(0)
+            with open(cf, mode='a') as file2:
+                file2.truncate(0)
                 with tqdm(total=len(ml_emails)) as progress2:
-                    reader = csv.reader(file)
+                    reader = csv.reader(file2)
                     reader.writerow(['', 'email'])
                     for item in ml-emails:
                         reader.writerow([item['index'], item['email']])
