@@ -11,6 +11,11 @@ from validate_email import validate_email
 
 
 class Leon:
+    
+    def __init__(self):
+        self.config = {}
+        with open('auth.json') as json_file:
+            self.config = json.load(json_file)
 
     def valid_email(self, email):
         auth_ndx = self.config['send']['email']['active_auth']
