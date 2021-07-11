@@ -11,7 +11,7 @@ from urllib.parse import urlsplit
 from collections import deque
 from bs4 import BeautifulSoup
 from functools import reduce
-from validate_email import validate_email
+from email_validator import validate_email, EmailNotValidError
 
 class UnderTheMangoTree:
 
@@ -124,8 +124,13 @@ class UnderTheMangoTree:
             print("\x1b[6;37;41m new {0}:{1} | {2} \x1b[0m".format(type, len(unique_contacts), unique_contacts))
             for c in unique_contacts:
                 if type == "email":
-                    self.num_emails +=1
-                    writer.writerow([self.num_emails, c])
+                    try:
+                        if validate_email(c):
+                            self.num_emails +=1
+                            writer.writerow([self.num_emails, c])
+                    except EmailNotValidError as e:
+                        # email is not valid, exception message is human-readable
+                        print(str(e))
                 elif type == "phone":
                     self.num_phones +=1
                     writer.writerow([self.num_phones, c])
