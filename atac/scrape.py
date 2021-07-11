@@ -11,7 +11,7 @@ from urllib.parse import urlsplit
 from collections import deque
 from bs4 import BeautifulSoup
 from functools import reduce
-
+from validate_email import validate_email
 
 class UnderTheMangoTree:
 
@@ -87,6 +87,23 @@ class UnderTheMangoTree:
                                        quoting=csv.QUOTE_MINIMAL)
 
             phones_writer.writerow(['', 'phone'])
+    
+    @staticmethod
+    def valid_email(email_addr):
+        auth_ndx = self.config['send']['email']['active_auth']
+        auth = self.config['send']['email']['auth'][auth_ndx]
+        is_valid = validate_email(email_address=email_addr, 
+                                  check_format=True, 
+                                  check_blacklist=True, 
+                                  check_dns=True, 
+                                  dns_timeout=10, 
+                                  check_smtp=True, 
+                                  smtp_timeout=10, 
+                                  smtp_helo_host=auth['server'], 
+                                  smtp_from_address=auth['sender'], 
+                                  smtp_debug=False)
+                                  
+        return is_valid
 
     @staticmethod
     def extract_emails(content):
