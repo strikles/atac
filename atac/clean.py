@@ -21,17 +21,7 @@ class Leon:
         auth_ndx = self.config['send']['email']['active_auth']
         auth = self.config['send']['email']['auth'][auth_ndx]
         print(email)
-        is_valid = validate_email(email, 
-                                  check_format=True, 
-                                  check_blacklist=True, 
-                                  check_dns=True, 
-                                  dns_timeout=10, 
-                                  check_smtp=True, 
-                                  smtp_timeout=10, 
-                                  smtp_helo_host=auth['server'], 
-                                  smtp_from_address=auth['sender'], 
-                                  smtp_debug=False)
-                                  
+        is_valid = validate_email(email)
         return is_valid
                                   
     def cleanup(self, path):
