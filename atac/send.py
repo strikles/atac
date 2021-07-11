@@ -27,10 +27,10 @@ class FromRuXiaWithLove:
         with open('auth.json') as json_file:
             self.config = json.load(json_file)
 
-    def valid_email(self, email_addr):
+    def valid_email(self, email):
         auth_ndx = self.config['send']['email']['active_auth']
         auth = self.config['send']['email']['auth'][auth_ndx]
-        is_valid = validate_email(email_address=email_addr, 
+        is_valid = validate_email(email_address=email, 
                                   check_format=True, 
                                   check_blacklist=True, 
                                   check_dns=True, 
