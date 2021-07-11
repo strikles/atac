@@ -89,7 +89,7 @@ class UnderTheMangoTree:
             phones_writer.writerow(['', 'phone'])
     
     @staticmethod
-    def valid_email(email_addr):
+    def valid_email(self, email_addr):
         auth_ndx = self.config['send']['email']['active_auth']
         auth = self.config['send']['email']['auth'][auth_ndx]
         is_valid = validate_email(email_address=email_addr, 
