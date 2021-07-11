@@ -21,15 +21,14 @@ class Leon:
         auth_ndx = self.config['send']['email']['active_auth']
         auth = self.config['send']['email']['auth'][auth_ndx]
         is_valid = validate_email(email_address=email, 
-                                  check_format=True, 
-                                  check_blacklist=True, 
-                                  check_dns=True, 
-                                  dns_timeout=10, 
-                                  check_smtp=True, 
+                                  check_regex=True, 
+                                  check_mx=True, 
+                                  from_address=auth['sender'], 
+                                  helo_host=auth['server'], 
                                   smtp_timeout=10, 
-                                  smtp_helo_host=auth['server'], 
-                                  smtp_from_address=auth['sender'], 
-                                  smtp_debug=False)
+                                  dns_timeout=10, 
+                                  use_blacklist=True, 
+                                  debug=False)
                                   
         return is_valid
                                   
