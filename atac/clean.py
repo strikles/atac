@@ -16,7 +16,7 @@ class Leon:
         auth_ndx = self.config['send']['email']['active_auth']
         auth = self.config['send']['email']['auth'][auth_ndx]
         print(email)
-        is_valid = validate_email(email_address=email, 
+        is_valid = validate_email(email, 
                                   check_format=True, 
                                   check_blacklist=True, 
                                   check_dns=True, 
@@ -47,6 +47,7 @@ class Leon:
 
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
+                        print(receiver_email)
                         if checkers.is_email(receiver_email):
                             if self.valid_email(receiver_email):    
                                 ml_emails[ml_counter // 2000].append(receiver_email)

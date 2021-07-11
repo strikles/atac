@@ -68,7 +68,11 @@ def compose(arguments):
     #
     two_bach = atac.AllTimeHigh()
     two_bach.gen_content(corpus)
-
+    
+def clean(arguments):
+    #
+    leon = atac.Leon()
+    leon.cleanup()
 
 # create the top-level parser
 parser = argparse.ArgumentParser()
@@ -92,6 +96,10 @@ parser_scrape.set_defaults(func=scrape)
 parser_compose = subparsers.add_parser('compose')
 parser_compose.add_argument('-c', dest='corpus', type=str, help='path to corpus')
 parser_compose.set_defaults(func=compose)
+
+# create the parser for the "compose" command
+parser_clean = subparsers.add_parser('clean')
+parser_compose.set_defaults(func=clean)
 
 # parse the args and call whatever function was selected
 args = parser.parse_args()
