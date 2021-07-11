@@ -22,11 +22,7 @@ class Leon:
         auth = self.config['send']['email']['auth'][auth_ndx]
         is_valid = validate_email(email_address=email, 
                                   check_regex=True, 
-                                  check_mx=True, 
-                                  from_address=auth['sender'], 
-                                  smtp_timeout=10, 
-                                  dns_timeout=10, 
-                                  use_blacklist=True, 
+                                  check_mx=False, 
                                   debug=False)
                                   
         return is_valid
