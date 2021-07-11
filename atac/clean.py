@@ -18,11 +18,12 @@ class Leon:
             self.config = json.load(json_file)
 
     def valid_email(self, email):
+        is_valid = False
         try:
             # Validate.
             is_valid = validate_email(email)
             # Update with the normalized form.
-            email = valid.email
+            email = is_valid.email
         except EmailNotValidError as e:
             # email is not valid, exception message is human-readable
             print(str(e))
