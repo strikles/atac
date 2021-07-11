@@ -39,10 +39,10 @@ class Leon:
         for ml in ml_files:
             cf = path + ml
             print(cf)
+            ml_emails = []
             #read
             with open(cf) as file:
                 lines = [line for line in file]
-                ml_emails = []
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
                         if checkers.is_email(receiver_email):
