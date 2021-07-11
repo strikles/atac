@@ -27,7 +27,7 @@ class Leon:
                                   smtp_from_address=auth['sender'], 
                                   smtp_debug=False)
                                   
-                                  return is_valid
+        return is_valid
                                   
     def clean_files(self, path):
         
