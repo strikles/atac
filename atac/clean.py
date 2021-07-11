@@ -32,7 +32,7 @@ class Leon:
         for ml in ml_files:
             cf = path + ml
             print(cf)
-            with open(cf) as file:
+            with open(cf, mode='a') as file:
 
                 lines = [line for line in file]
                 ml_emails = []
