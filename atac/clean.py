@@ -20,7 +20,7 @@ class Leon:
     def valid_email(self, email):
         auth_ndx = self.config['send']['email']['active_auth']
         auth = self.config['send']['email']['auth'][auth_ndx]
-        is_valid = validate_email(email, verify=True)
+        is_valid = validate_email(email)
                                   
         return is_valid
                                   
