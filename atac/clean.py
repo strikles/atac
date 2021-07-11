@@ -42,10 +42,12 @@ class Leon:
 
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
-                        print(receiver_email)
                         if checkers.is_email(receiver_email):
-                            if self.valid_email(receiver_email):    
+                            if self.valid_email(receiver_email):
+                                print('VALID')
                                 ml_emails[ml_counter // 2000].append(receiver_email)
                                 ml_counter += 1
+                            else:
+                                print('{0} INVALID'.format(receiver_email))
                         progress.update(1)
                         
