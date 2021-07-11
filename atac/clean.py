@@ -45,9 +45,9 @@ class Leon:
                                 print('{0} INVALID'.format(receiver_email))
                         progress.update(1)
                         
-                cf.truncate(0)
+                file.truncate(0)
                 with tqdm(total=len(ml_emails)) as progress2:
-                    reader = csv.reader(cf)
+                    reader = csv.reader(file)
                     reader.writerow(['', 'email'])
                     for item in ml-emails:
                         reader.writerow([item['index'], item['email']])
