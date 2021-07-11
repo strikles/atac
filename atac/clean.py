@@ -7,7 +7,7 @@ import time
 from validator_collection import checkers
 
 from tqdm import tqdm
-from validate_email import validate_email
+from email_validator import validate_email, EmailNotValidError
 
 
 class Leon:
@@ -18,11 +18,17 @@ class Leon:
             self.config = json.load(json_file)
 
     def valid_email(self, email):
-        auth_ndx = self.config['send']['email']['active_auth']
-        auth = self.config['send']['email']['auth'][auth_ndx]
-        is_valid = validate_email(email, verify=True)               
+        try:
+            # Validate.
+            is_valid = validate_email(email)
+            # Update with the normalized form.
+            email = valid.email
+        except EmailNotValidError as e:
+            # email is not valid, exception message is human-readable
+            print(str(e))
+  
         return is_valid
-                                  
+
     def cleanup(self, path):
         print(path)
         status = 0
