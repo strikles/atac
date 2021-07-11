@@ -70,6 +70,7 @@ class FromRuXiaWithLove:
                         if email_cfg['rotate_auth']:
                             email_cfg['active_auth'] = (1 + auth_ndx) % len(email_cfg['auth'])
                         with open('auth.json', 'w') as fp:
+                            self.config['send']['email'] = email_cfg
                             json.dump(self.config, fp, indent=4)
                 
                         # Send email here
