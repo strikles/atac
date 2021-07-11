@@ -20,12 +20,10 @@ class Leon:
     def valid_email(self, email):
         auth_ndx = self.config['send']['email']['active_auth']
         auth = self.config['send']['email']['auth'][auth_ndx]
-        print(email)
         is_valid = validate_email(email)
         return is_valid
                                   
     def cleanup(self, path):
-        
         print(path)
         status = 0
         # get mailing list csv files
@@ -37,17 +35,23 @@ class Leon:
             with open(cf) as file:
                 
                 lines = [line for line in file]
-                ml_emails = [[] for i in range((len(lines) // 2000) + 1)]
-                ml_counter = 0
+                ml_emails = []
 
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
                         if checkers.is_email(receiver_email):
                             if self.valid_email(receiver_email):
-                                print('VALID')
-                                ml_emails[ml_counter // 2000].append(receiver_email)
+                                ml_emails.append({'index': ndx, 'mail': receiver_email})
                                 ml_counter += 1
                             else:
                                 print('{0} INVALID'.format(receiver_email))
                         progress.update(1)
                         
+                cf.truncate(0)
+
+                with tqdm(total=len(ml_emails)) as progress2:
+                    reader = csv.reader(cf)
+                    reader.writerow(['', 'email'])
+                    for item in ml-emails:
+                        reader.writerow([item['index'], item['email']])
+                        progress2.update(1)
