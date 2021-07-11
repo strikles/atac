@@ -56,18 +56,19 @@ class FromRuXiaWithLove:
                         # reload config
                         with open('auth.json') as json_file:
                             self.config = json.load(json_file)
-                       # get active auth
-                        auth_ndx = self.config['send']['email']['active_auth']
-                        auth = self.config['send']['email']['auth'][auth_ndx]
+                        # get active auth
+                        email_cfg = self.config['send']['email']
+                        auth_ndx = email_cfg['active_auth']
+                        auth = email_cfg['auth'][auth_ndx]
                         # get active content
-                        content_ndx = self.config['send']['email']['active_content']
-                        content = self.config['send']['email']['content'][content_ndx]
+                        content_ndx = email_cfg['active_content']
+                        content = email_cfg['content'][content_ndx]
                         # set sctive to next and save config
-                        if self.config['send']['email']['rotate_content']:
-                            self.config['send']['email']['active_content'] = (1 + content_ndx) % len(self.config['send']['email']['content'])
+                        if email_cfg['rotate_content']:
+                            email_cfg['active_content'] = (1 + content_ndx) % len(email_cfg['content'])
                         # set active auth to next and save config
-                        if self.config['send']['email']['rotate_auth']:
-                            self.config['send']['email']['active_auth'] = (1 + auth_ndx) % len(self.config['send']['email']['auth'])
+                        if email_cfg['rotate_auth']:
+                            email_cfg['active_auth'] = (1 + auth_ndx) % len(email_cfg['auth'])
                         with open('auth.json', 'w') as fp:
                             json.dump(self.config, fp, indent=4)
                 
