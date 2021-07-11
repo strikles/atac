@@ -33,22 +33,19 @@ class Leon:
             cf = path + ml
             print(cf)
             with open(cf) as file:
-                
+
                 lines = [line for line in file]
                 ml_emails = []
-
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
                         if checkers.is_email(receiver_email):
                             if self.valid_email(receiver_email):
                                 ml_emails.append({'index': ndx, 'mail': receiver_email})
-                                ml_counter += 1
                             else:
                                 print('{0} INVALID'.format(receiver_email))
                         progress.update(1)
                         
                 cf.truncate(0)
-
                 with tqdm(total=len(ml_emails)) as progress2:
                     reader = csv.reader(cf)
                     reader.writerow(['', 'email'])
