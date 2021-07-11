@@ -45,11 +45,10 @@ class Leon:
                 lines = [line for line in file]
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
-                        if checkers.is_email(receiver_email):
-                            if self.valid_email(receiver_email):
-                                ml_emails.append({'index': ndx, 'email': receiver_email})
-                            else:
-                                print('{0} INVALID'.format(receiver_email))
+                        if self.valid_email(receiver_email):
+                            ml_emails.append({'index': ndx, 'email': receiver_email})
+                        else:
+                            print('{0} INVALID'.format(receiver_email))
                         progress.update(1)
             # write
             with open(cf, mode='a') as file2:
