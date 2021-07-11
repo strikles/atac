@@ -24,7 +24,6 @@ class Leon:
                                   check_regex=True, 
                                   check_mx=True, 
                                   from_address=auth['sender'], 
-                                  helo_host=auth['server'], 
                                   smtp_timeout=10, 
                                   dns_timeout=10, 
                                   use_blacklist=True, 
