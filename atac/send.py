@@ -48,16 +48,13 @@ class FromRuXiaWithLove:
 
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
+                        print(auth)
                         is_valid = validate_email(email_address=receiver_email, 
                                                 check_format=True, 
                                                 check_blacklist=True, 
                                                 check_dns=True, 
                                                 dns_timeout=10, 
-                                                check_smtp=True, 
-                                                smtp_timeout=10, 
-                                                smtp_helo_host=auth['server'], 
-                                                smtp_from_address=auth['sender'], 
-                                                smtp_debug=False)
+                                                check_smtp=False)
                                                 
                         if is_valid:
                             ml_emails[ml_counter // 2000].append(receiver_email)
