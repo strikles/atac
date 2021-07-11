@@ -71,8 +71,9 @@ def compose(arguments):
     
 def clean(arguments):
     #
+    path_emails = os.path.dirname(os.path.abspath(__file__)) + "/contacts/emails/"
     leon = atac.Leon()
-    leon.cleanup()
+    leon.cleanup(path_emails)
 
 # create the top-level parser
 parser = argparse.ArgumentParser()
