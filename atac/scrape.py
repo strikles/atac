@@ -87,24 +87,6 @@ class UnderTheMangoTree:
                                        quoting=csv.QUOTE_MINIMAL)
 
             phones_writer.writerow(['', 'phone'])
-    
-            
-    def valid_email(self, email_addr):
-        auth_ndx = self.config['send']['email']['active_auth']
-        auth = self.config['send']['email']['auth'][auth_ndx]
-        is_valid = validate_email(email_address=email_addr, 
-                                  check_format=True, 
-                                  check_blacklist=True, 
-                                  check_dns=True, 
-                                  dns_timeout=10, 
-                                  check_smtp=True, 
-                                  smtp_timeout=10, 
-                                  smtp_helo_host=auth['server'], 
-                                  smtp_from_address=auth['sender'], 
-                                  smtp_debug=False)
-                                  
-        return is_valid
-
         
     @staticmethod
     def extract_emails(content):
@@ -135,7 +117,7 @@ class UnderTheMangoTree:
                                 quoting=csv.QUOTE_MINIMAL)
                                 
             if type == "email":
-                unique_contacts = list(filter(lambda e: e not in self.emails and self.valid_email(e), new_contacts))
+                unique_contacts = list(filter(lambda e: e not in self.emails, new_contacts))
             elif type == "phone":
                 unique_contacts = list(filter(lambda e: e not in self.phones, new_contacts))
                 
