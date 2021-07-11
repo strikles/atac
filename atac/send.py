@@ -27,15 +27,29 @@ class FromRuXiaWithLove:
         with open('auth.json') as json_file:
             self.config = json.load(json_file)
 
+    def valid_email(self, email_addr):
+        auth_ndx = self.config['send']['email']['active_auth']
+        auth = self.config['send']['email']['auth'][auth_ndx]
+        is_valid = validate_email(email_address=email_addr, 
+                                  check_format=True, 
+                                  check_blacklist=True, 
+                                  check_dns=True, 
+                                  dns_timeout=10, 
+                                  check_smtp=True, 
+                                  smtp_timeout=10, 
+                                  smtp_helo_host=auth['server'], 
+                                  smtp_from_address=auth['sender'], 
+                                  smtp_debug=False)
+                                  
+        return is_valid
+        
+        
     def send_email(self, path):
         
         print(path)
         status = 0
         # get mailing list csv files
         ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
-
-        auth_ndx = self.config['send']['email']['active_auth']
-        auth = self.config['send']['email']['auth'][auth_ndx]
         
         for ml in ml_files:
             cf = path + ml
@@ -48,17 +62,10 @@ class FromRuXiaWithLove:
 
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
-                        print(auth)
-                        is_valid = validate_email(email_address=receiver_email, 
-                                                check_format=True, 
-                                                check_blacklist=True, 
-                                                check_dns=True, 
-                                                dns_timeout=10, 
-                                                check_smtp=False)
-                                                
-                        if is_valid:
-                            ml_emails[ml_counter // 2000].append(receiver_email)
-                            ml_counter += 1
+                        if checkers.is_email(receiver_email):           
+                            if self.valid_email(receiver_email):
+                                ml_emails[ml_counter // 2000].append(receiver_email)
+                                ml_counter += 1
                         progress.update(1)
                         
                 with tqdm(total=len(ml_emails)) as progress2:
