@@ -20,7 +20,17 @@ class Leon:
     def valid_email(self, email):
         auth_ndx = self.config['send']['email']['active_auth']
         auth = self.config['send']['email']['auth'][auth_ndx]
-        is_valid = validate_email(email)
+        is_valid = validate_email(email,
+                                  True,
+                                  True,
+                                  True,
+                                  10,
+                                  True,
+                                  10,
+                                  auth['server'],
+                                  auth['sender'],
+                                  False)
+                                  
         return is_valid
                                   
     def cleanup(self, path):
