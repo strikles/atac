@@ -121,11 +121,11 @@ class UnderTheMangoTree:
             elif type == "phone":
                 unique_contacts = list(filter(lambda e: e not in self.phones, new_contacts))
                 
-            print("\x1b[6;37;41m new {0}:{1} | {2} \x1b[0m".format(type, len(unique_contacts), unique_contacts))
             for c in unique_contacts:
                 if type == "email":
                     try:
                         if validate_email(c):
+                            print("\x1b[6;37;41m new {0}:{1} \x1b[0m".format(type, c))
                             self.num_emails +=1
                             writer.writerow([self.num_emails, c])
                     except EmailNotValidError as e:
