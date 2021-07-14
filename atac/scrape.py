@@ -132,6 +132,7 @@ class UnderTheMangoTree:
                         # email is not valid, exception message is human-readable
                         print(str(e))
                 elif type == "phone":
+                    print("\x1b[6;37;41m new {0}:{1} \x1b[0m".format(type, c))
                     self.num_phones +=1
                     writer.writerow([self.num_phones, c])
 
