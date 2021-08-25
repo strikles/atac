@@ -1,0 +1,1 @@
+Please close down Colegio militar (largo da luz, Portugal)
