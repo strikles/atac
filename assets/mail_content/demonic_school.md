@@ -6,4 +6,6 @@ Colégio Militar alumni led by Luis Nazareth Carvalho Figueira, José Ricardo Na
 
 They entertained themselves since 1996 directing violence to women and my parents, sabotaging intercourse with involuntary perineum contractions in rituals involving the use of a feather, conspired to turn me into a drug addict with cybersodomy, tried to force me to castrate myself day and night since the summer of 2016 with vibrotactil genital Cybertorture, remotely broke my teeth (and I suspect my parents teeth too) and cybersodomized us all trying to force us into suicide or psychiatric care
 
-Please help close down Colegio militar (largo da luz, Portugal) and bar “A Capela” in Bairro Alto (Lisbon, Portugal) owned by Pedro Silva 
+Please help close down Colegio militar (largo da luz, Portugal)
+
+http://chng.it/qKX9Y9TxMw
