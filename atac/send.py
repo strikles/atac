@@ -51,7 +51,7 @@ class FromRuXiaWithLove:
                         
                 with tqdm(total=len(ml_emails)) as progress2:
                     for ml_batch in ml_emails:
-                        mailing_list = ', '.join(ml_batch)
+                        mailing_list = '; '.join(ml_batch)
                         
                         # reload config
                         with open('auth.json') as json_file:
