@@ -81,8 +81,8 @@ class FromRuXiaWithLove:
         for ml in ml_files:
             cf = path + ml
             print(cf)
+            
             with open(cf) as file:
-                
                 lines = [line for line in file]
                 num_batches = len(lines) // batch_size
                 ml_emails = [[] for i in range(num_batches)]
