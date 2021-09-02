@@ -73,7 +73,6 @@ class FromRuXiaWithLove:
                     # Create secure connection with server and send email
                     context = ssl.create_default_context()
                     with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
-                        server.login(auth['user'], auth['password'])
                         
                         with tqdm(total=len(ml_emails)) as progress2:
                             for ml_batch in ml_emails:
@@ -101,12 +100,16 @@ class FromRuXiaWithLove:
                                 message.attach(part2)
                                 
                                 try:
+                                    server.login(auth['user'], auth['password'])
                                     server.sendmail(auth['sender'], mailing_list, message.as_string())
                                     print("\x1b[6;37;42m Sent \x1b[0m")
-                                    time.sleep(1)
-                                    progress2.update(1)
+                                    server.quit()
+                                    
                                 except Exception as err:
                                     print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
+                                    
+                                time.sleep(1)
+                                progress2.update(1)
                 
         return status
 
