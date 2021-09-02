@@ -71,6 +71,9 @@ class FromRuXiaWithLove:
                             ml_counter += 1
                         progress.update(1)
                         
+                        print(ml_emails)
+                        continue
+                        
                         # Create secure connection with server and send email
                         context = ssl.create_default_context()
                         with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
