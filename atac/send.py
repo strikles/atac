@@ -25,6 +25,29 @@ class FromRuXiaWithLove:
         self.config = {}
         with open('auth.json') as json_file:
             self.config = json.load(json_file)
+            
+    def compose_email(content, auth, mailing_list)
+       # compose email
+        message = MIMEMultipart("alternative")
+        message["Subject"] = content['subject']
+        message["From"] = auth['sender']
+        message["To"] = mailing_list
+        # Create the plain-text and HTML version of your message
+        text = ""
+        html = ""
+        # convert markdown to html
+        md = 'assets/mail_content/' + content['markdown']
+        with open(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md)), 'r') as f:
+            ptext = f.read()
+            html = markdown.markdown(ptext)
+        # Turn these into plain/html MIMEText objects
+        part1 = MIMEText(text, "plain")
+        part2 = MIMEText(html, "html")
+        # Add HTML/plain-text parts to MIMEMultipart message
+        # The email client will try to render the last part first
+        message.attach(part1)
+        message.attach(part2)
+        return message
         
     def send_email(self, path):
         
@@ -44,6 +67,7 @@ class FromRuXiaWithLove:
         # get active content
         content_ndx = email_cfg['active_content']
         content = email_cfg['content'][content_ndx]
+        
         # set sctive to next and save config
         if email_cfg['rotate_content']:
             email_cfg['active_content'] = (1 + content_ndx) % len(email_cfg['content'])
@@ -75,26 +99,8 @@ class FromRuXiaWithLove:
                     for ml_batch in ml_emails:
                         mailing_list = '; '.join(ml_batch)
                         #print(mailing_list)
-                        # compose email
-                        message = MIMEMultipart("alternative")
-                        message["Subject"] = content['subject']
-                        message["From"] = auth['sender']
-                        message["To"] = mailing_list
-                        # Create the plain-text and HTML version of your message
-                        text = ""
-                        html = ""
-                        # convert markdown to html
-                        md = 'assets/mail_content/' + content['markdown']
-                        with open(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md)), 'r') as f:
-                            ptext = f.read()
-                            html = markdown.markdown(ptext)
-                        # Turn these into plain/html MIMEText objects
-                        part1 = MIMEText(text, "plain")
-                        part2 = MIMEText(html, "html")
-                        # Add HTML/plain-text parts to MIMEMultipart message
-                        # The email client will try to render the last part first
-                        message.attach(part1)
-                        message.attach(part2)
+                        
+                        message = compose_email(content, auth, mailing_list)
                         
                         # Create secure connection with server and send email
                         try:
