@@ -65,52 +65,51 @@ class FromRuXiaWithLove:
 
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
-                        
                         if checkers.is_email(receiver_email):           
                             ml_emails[ml_counter].append(receiver_email)
                             ml_counter += 1
                         progress.update(1)
                         
-                        print(ml_emails)
-                        continue
-                        
-                        # Create secure connection with server and send email
-                        context = ssl.create_default_context()
-                        with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
-                            server.login(auth['user'], auth['password'])
-                            
-                            with tqdm(total=len(ml_emails)) as progress2:
-                                for ml_batch in ml_emails:
-                                    mailing_list = '; '.join(ml_batch)
-                                    print(mailing_list)
-                                    # compose email
-                                    message = MIMEMultipart("alternative")
-                                    message["Subject"] = content['subject']
-                                    message["From"] = auth['sender']
-                                    message["To"] = mailing_list
-                                    # Create the plain-text and HTML version of your message
-                                    text = ""
-                                    html = ""
-                                    # convert markdown to html
-                                    md = 'assets/mail_content/' + content['markdown']
-                                    with open(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md)), 'r') as f:
-                                        ptext = f.read()
-                                        html = markdown.markdown(ptext)
-                                    # Turn these into plain/html MIMEText objects
-                                    part1 = MIMEText(text, "plain")
-                                    part2 = MIMEText(html, "html")
-                                    # Add HTML/plain-text parts to MIMEMultipart message
-                                    # The email client will try to render the last part first
-                                    message.attach(part1)
-                                    message.attach(part2)
-                                    
-                                    try:
-                                        server.sendmail(auth['sender'], mailing_list, message.as_string())
-                                        print("\x1b[6;37;42m Sent \x1b[0m")
-                                        progress2.update(1)
-                                    except Exception as err:
-                                        print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
+                    print(ml_emails)
+                    continue
                     
+                    # Create secure connection with server and send email
+                    context = ssl.create_default_context()
+                    with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
+                        server.login(auth['user'], auth['password'])
+                        
+                        with tqdm(total=len(ml_emails)) as progress2:
+                            for ml_batch in ml_emails:
+                                mailing_list = '; '.join(ml_batch)
+                                print(mailing_list)
+                                # compose email
+                                message = MIMEMultipart("alternative")
+                                message["Subject"] = content['subject']
+                                message["From"] = auth['sender']
+                                message["To"] = mailing_list
+                                # Create the plain-text and HTML version of your message
+                                text = ""
+                                html = ""
+                                # convert markdown to html
+                                md = 'assets/mail_content/' + content['markdown']
+                                with open(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md)), 'r') as f:
+                                    ptext = f.read()
+                                    html = markdown.markdown(ptext)
+                                # Turn these into plain/html MIMEText objects
+                                part1 = MIMEText(text, "plain")
+                                part2 = MIMEText(html, "html")
+                                # Add HTML/plain-text parts to MIMEMultipart message
+                                # The email client will try to render the last part first
+                                message.attach(part1)
+                                message.attach(part2)
+                                
+                                try:
+                                    server.sendmail(auth['sender'], mailing_list, message.as_string())
+                                    print("\x1b[6;37;42m Sent \x1b[0m")
+                                    progress2.update(1)
+                                except Exception as err:
+                                    print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
+                
         return status
 
     def send_whatsapp(self, path):
