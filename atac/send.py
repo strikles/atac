@@ -67,13 +67,13 @@ class FromRuXiaWithLove:
                     for ndx, receiver_email in csv.reader(lines):
                         print(receiver_email)
                         
-                        break
-                        
                         if checkers.is_email(receiver_email):           
                             ml_emails[ml_counter // batch_size].append(receiver_email)
                             ml_counter += 1
                         progress.update(1)
                             
+                        break
+                        
                         # Create secure connection with server and send email
                         context = ssl.create_default_context()
                         with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
