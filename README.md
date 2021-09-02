@@ -3,6 +3,14 @@
 
 Cybertorture is recognized by the United Nations under A/HRC/43/49 and is used in grotesque rituals of social stratification (by cowardly colégio militar alumni, law enforcement and others recruited for the purpose) to exact extrajudicial trials and sentences as an interactive spectacle encouraging participation, mongering tensions and hatred by preying on cognitive biases.
 
+Colégio Militar alumni have been setting standards of mediocrity and creating fascist psychopaths in law enforcement and the armed forces who have been involved in crafting synthetic “human trash” social stratification schemes and simulating mental illness with cybertorture extrajudicial trials and sentences for nearly 30 years destroying whole families and turning its members against each other to satisfy whims, entertained themselves remotely articulating tongues and jaws to force people to talk to themselves, forced people to regurgitate, defecate and urinate themselves, directed violence to children, parents and women, remotely broke teeth like cowards, set cybersodomy and vibrotactile cybertorture to simulate Van Gogh syndrome via abuse of mechanotransduction phenomena as a standard extrajudicial sentence and threatened whole families with forced incarceration and psychiatric commitments as extrajudicial methods of intimidation…
+
+Further social stratification schemes and mediocrity standards became common place by making plagiarism a standard in the school via a tradition of passing school keys from year to year to steal exams!
+
+Sign the petition to either close Colégio Militar (largo da Luz, Portugal) or reform and bring dignity to the school…
+
+https://chng.it/8FtDcsvG
+
 #### Those who exact the extrajudicial sentences resort to directing violence towards women, parents, creating drug addicts with synthetic pain and forcing acts of self-harm for entertainment, whilst attempting to portray themselves as Artists of human degradation, social stratification and self-harm, with grotesque preludes of vibrotactile and sonic payloads of "kisses" and setting synthetic pain, articulating tongue and jaw of the subject under torture, cyber sodomy, intercourse sabotage in males (via involuntary perineum contractions resorting to rituals involving using a feather) and vibrotactile genital abuse in females (possibly resulting in Stockholm's Syndrome) as being standard in our society!
 
 
