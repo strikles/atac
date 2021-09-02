@@ -53,27 +53,6 @@ class FromRuXiaWithLove:
         with open('auth.json', 'w') as fp:
             self.config['send']['email'] = email_cfg
             json.dump(self.config, fp, indent=4)
-
-        # compose email
-        message = MIMEMultipart("alternative")
-        message["Subject"] = content['subject']
-        message["From"] = auth['sender']
-        message["To"] = mailing_list
-        # Create the plain-text and HTML version of your message
-        text = ""
-        html = ""
-        # convert markdown to html
-        md = 'assets/mail_content/' + content['markdown']
-        with open(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md)), 'r') as f:
-            ptext = f.read()
-            html = markdown.markdown(ptext)
-        # Turn these into plain/html MIMEText objects
-        part1 = MIMEText(text, "plain")
-        part2 = MIMEText(html, "html")
-        # Add HTML/plain-text parts to MIMEMultipart message
-        # The email client will try to render the last part first
-        message.attach(part1)
-        message.attach(part2)
         
         for ml in ml_files:
             cf = path + ml
@@ -99,6 +78,27 @@ class FromRuXiaWithLove:
                             with tqdm(total=len(ml_emails)) as progress2:
                                 for ml_batch in ml_emails:
                                     mailing_list = '; '.join(ml_batch)
+                                    
+                                    # compose email
+                                    message = MIMEMultipart("alternative")
+                                    message["Subject"] = content['subject']
+                                    message["From"] = auth['sender']
+                                    message["To"] = mailing_list
+                                    # Create the plain-text and HTML version of your message
+                                    text = ""
+                                    html = ""
+                                    # convert markdown to html
+                                    md = 'assets/mail_content/' + content['markdown']
+                                    with open(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md)), 'r') as f:
+                                        ptext = f.read()
+                                        html = markdown.markdown(ptext)
+                                    # Turn these into plain/html MIMEText objects
+                                    part1 = MIMEText(text, "plain")
+                                    part2 = MIMEText(html, "html")
+                                    # Add HTML/plain-text parts to MIMEMultipart message
+                                    # The email client will try to render the last part first
+                                    message.attach(part1)
+                                    message.attach(part2)
                                     
                                     try:
                                         server.sendmail(auth['sender'], mailing_list, message.as_string())
