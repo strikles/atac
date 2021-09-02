@@ -105,7 +105,6 @@ class FromRuXiaWithLove:
                             except Exception as err:
                                 print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
                             finally:
-                                server.quit()
                                 time.sleep(1)
                                 progress2.update(1)
                 
