@@ -98,8 +98,6 @@ class FromRuXiaWithLove:
                 with tqdm(total=len(ml_emails)) as progress2:
                     for ml_batch in ml_emails:
                         mailing_list = '; '.join(ml_batch)
-                        #print(mailing_list)
-                        
                         message = compose_email(content, auth, mailing_list)
                         
                         # Create secure connection with server and send email
