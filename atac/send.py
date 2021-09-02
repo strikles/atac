@@ -60,13 +60,14 @@ class FromRuXiaWithLove:
             with open(cf) as file:
                 
                 lines = [line for line in file]
-                ml_emails = [[] for i in range(len(lines))]
+                num_batches = len(lines) // batch_size
+                ml_emails = [[] for i in range(num_batches)]
                 ml_counter = 0
 
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
                         if checkers.is_email(receiver_email):           
-                            ml_emails[ml_counter].append(receiver_email)
+                            ml_emails[ml_counter // num_batches].append(receiver_email)
                             ml_counter += 1
                         progress.update(1)
 
@@ -96,18 +97,19 @@ class FromRuXiaWithLove:
                         message.attach(part2)
                         
                         # Create secure connection with server and send email
-                        context = ssl.create_default_context()
-                        with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
-                            try:
+                        try:
+                            context = ssl.create_default_context()
+                            with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
                                 server.login(auth['user'], auth['password'])
                                 server.sendmail(auth['sender'], mailing_list, message.as_string())
-                                print("\x1b[6;37;42m Sent \x1b[0m")
-                            except Exception as err:
-                                print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
-                            finally:
-                                server.quit()
-                                time.sleep(5)
-                                progress2.update(1)
+                        except Exception as err:
+                            print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
+                        else:
+                            print("\x1b[6;37;42m Sent \x1b[0m")
+                        finally:
+                            server.quit()
+                            time.sleep(5)
+                            progress2.update(1)
                 
         return status
 
