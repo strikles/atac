@@ -54,8 +54,6 @@ class FromRuXiaWithLove:
                     for ml_batch in ml_emails:
                         mailing_list = '; '.join(ml_batch)
                         
-                        break
-                        
                         # reload config
                         with open('auth.json') as json_file:
                             self.config = json.load(json_file)
