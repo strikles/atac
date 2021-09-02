@@ -72,7 +72,7 @@ class FromRuXiaWithLove:
                             ml_counter += 1
                         progress.update(1)
                             
-                        break
+                        continue
                         
                         # Create secure connection with server and send email
                         context = ssl.create_default_context()
