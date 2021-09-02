@@ -103,7 +103,7 @@ class FromRuXiaWithLove:
                                 try:
                                     server.sendmail(auth['sender'], mailing_list, message.as_string())
                                     print("\x1b[6;37;42m Sent \x1b[0m")
-                                    sleep(1)
+                                    time.sleep(1)
                                     progress2.update(1)
                                 except Exception as err:
                                     print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
