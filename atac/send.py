@@ -32,6 +32,7 @@ class FromRuXiaWithLove:
         status = 0
         # get mailing list csv files
         ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
+        batch_size = min(1, 2000)
         
         for ml in ml_files:
             cf = path + ml
@@ -39,19 +40,21 @@ class FromRuXiaWithLove:
             with open(cf) as file:
                 
                 lines = [line for line in file]
-                ml_emails = [[] for i in range((len(lines) // 1) + 1)]
+                ml_emails = [[] for i in range((len(lines) // batch_size) + 1)]
                 ml_counter = 0
 
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
                         if checkers.is_email(receiver_email):           
-                            ml_emails[ml_counter // 1].append(receiver_email)
+                            ml_emails[ml_counter // batch_size].append(receiver_email)
                             ml_counter += 1
                         progress.update(1)
                         
                 with tqdm(total=len(ml_emails)) as progress2:
                     for ml_batch in ml_emails:
                         mailing_list = '; '.join(ml_batch)
+                        
+                        break
                         
                         # reload config
                         with open('auth.json') as json_file:
@@ -73,7 +76,7 @@ class FromRuXiaWithLove:
                             self.config['send']['email'] = email_cfg
                             json.dump(self.config, fp, indent=4)
                 
-                        # Send email here
+                        # compose email
                         message = MIMEMultipart("alternative")
                         message["Subject"] = content['subject']
                         message["From"] = auth['sender']
@@ -95,6 +98,7 @@ class FromRuXiaWithLove:
                         message.attach(part2)
                         # Create secure connection with server and send email
                         
+                        # Send email here
                         try:
                             context = ssl.create_default_context()
                             with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
