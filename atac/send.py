@@ -69,9 +69,6 @@ class FromRuXiaWithLove:
                             ml_emails[ml_counter].append(receiver_email)
                             ml_counter += 1
                         progress.update(1)
-                        
-                    print(ml_emails)
-                    continue
                     
                     # Create secure connection with server and send email
                     context = ssl.create_default_context()
