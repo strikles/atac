@@ -17,9 +17,11 @@ class Leon:
         with open('auth.json') as json_file:
             self.config = json.load(json_file)
             
-    def get_phone_type(content):
-        
             
+    def get_phone_type(content):
+
+
+
     def valid_mobile():
         print(path)
         status = 0
@@ -49,6 +51,7 @@ class Leon:
                         else:
                             pass
                         phone_type = self.get_phone_type(response.text)
+                        
 
     def valid_email(self, email):
         is_valid = False
@@ -60,7 +63,6 @@ class Leon:
         except EmailNotValidError as e:
             # email is not valid, exception message is human-readable
             print(str(e))
-  
         return is_valid
 
     def cleanup(self, path):
