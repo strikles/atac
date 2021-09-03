@@ -104,9 +104,9 @@ class FromRuXiaWithLove:
                             print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
                         finally:
                             print("\x1b[6;37;42m Sent \x1b[0m")
-                            server.quit()
-                            time.sleep(5)
-                            progress2.update(1)
+
+                        time.sleep(5)
+                        progress2.update(1)
                 
         return status
 
