@@ -16,6 +16,39 @@ class Leon:
         self.config = {}
         with open('auth.json') as json_file:
             self.config = json.load(json_file)
+            
+    def get_phone_type(content):
+        
+            
+    def valid_mobile():
+        print(path)
+        status = 0
+        # get mailing list csv files
+        ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
+        for ml in ml_files:
+            cf = path + ml
+            print(cf)
+            #read
+            with open(cf) as file:
+                lines = [line for line in file]
+                with tqdm(total=len(lines)) as progress:
+                    for ndx, phone in csv.reader(lines):
+                        #build url
+                        url = "https://libphonenumber.appspot.com/phonenumberparser?number=%2B"
+                        try:
+                            response = requests.get(url, timeout=10, stream=False)
+                            response.encoding = "utf-8"
+                            # If the response was successful, no Exception will be raised
+                            response.raise_for_status()
+                        except HTTPError as http_err:
+                            print(f'HTTP error occurred: {http_err}')
+                            continue
+                        except Exception as err:
+                            print(f'Other error occurred: {err}')
+                            continue
+                        else:
+                            pass
+                        phone_type = self.get_phone_type(response.text)
 
     def valid_email(self, email):
         is_valid = False
@@ -35,7 +68,6 @@ class Leon:
         status = 0
         # get mailing list csv files
         ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
-        
         for ml in ml_files:
             cf = path + ml
             print(cf)
