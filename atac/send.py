@@ -20,7 +20,7 @@ class FromRuXiaWithLove:
         with open('auth.json') as json_file:
             self.config = json.load(json_file)
             
-    def compose_email(content, auth, mailing_list)
+    def compose_email(content, auth, mailing_list):
        # compose email
         message = MIMEMultipart("alternative")
         message["Subject"] = content['subject']
