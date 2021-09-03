@@ -92,6 +92,7 @@ class FromRuXiaWithLove:
                 with tqdm(total=len(ml_emails)) as progress2:
                     for ml_batch in ml_emails:
                         mailing_list = '; '.join(ml_batch)
+                        print(mailing_list)
 
                         # compose email
                         message = MIMEMultipart("alternative")
