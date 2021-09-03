@@ -32,49 +32,47 @@ class FromRuXiaWithLove:
         status = 0
         # get mailing list csv files
         ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
-
-        # reload config
-        with open('auth.json') as json_file:
-            self.config = json.load(json_file)
-        # get active auth
-        email_cfg = self.config['send']['email']
-        auth_ndx = email_cfg['active_auth']
-        auth = email_cfg['auth'][auth_ndx]
-        # get active content
-        content_ndx = email_cfg['active_content']
-        content = email_cfg['content'][content_ndx]
-
-        # set sctive to next and save config
-        if email_cfg['rotate_content']:
-            email_cfg['active_content'] = (1 + content_ndx) % len(email_cfg['content'])
-        # set active auth to next and save config
-        if email_cfg['rotate_auth']:
-            email_cfg['active_auth'] = (1 + auth_ndx) % len(email_cfg['auth'])
-        with open('auth.json', 'w') as fp:
-            self.config['send']['email'] = email_cfg
-            json.dump(self.config, fp, indent=4)
-
+        
         for ml in ml_files:
             cf = path + ml
             print(cf)
             with open(cf) as file:
+                
                 lines = [line for line in file]
-                num_batches = len(lines)
-                ml_emails = [[] for i in range(num_batches)]
+                ml_emails = [[] for i in range((len(lines) // 2000) + 1)]
                 ml_counter = 0
 
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
                         if checkers.is_email(receiver_email):           
-                            ml_emails[ml_counter].append(receiver_email)
+                            ml_emails[ml_counter // 2000].append(receiver_email)
                             ml_counter += 1
                         progress.update(1)
                         
                 with tqdm(total=len(ml_emails)) as progress2:
                     for ml_batch in ml_emails:
                         mailing_list = '; '.join(ml_batch)
-                        print(mailing_list)
                         
+                        # reload config
+                        with open('auth.json') as json_file:
+                            self.config = json.load(json_file)
+                        # get active auth
+                        email_cfg = self.config['send']['email']
+                        auth_ndx = email_cfg['active_auth']
+                        auth = email_cfg['auth'][auth_ndx]
+                        # get active content
+                        content_ndx = email_cfg['active_content']
+                        content = email_cfg['content'][content_ndx]
+                        # set sctive to next and save config
+                        if email_cfg['rotate_content']:
+                            email_cfg['active_content'] = (1 + content_ndx) % len(email_cfg['content'])
+                        # set active auth to next and save config
+                        if email_cfg['rotate_auth']:
+                            email_cfg['active_auth'] = (1 + auth_ndx) % len(email_cfg['auth'])
+                        with open('auth.json', 'w') as fp:
+                            self.config['send']['email'] = email_cfg
+                            json.dump(self.config, fp, indent=4)
+                
                         # Send email here
                         message = MIMEMultipart("alternative")
                         message["Subject"] = content['subject']
@@ -102,10 +100,9 @@ class FromRuXiaWithLove:
                             with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
                                 server.login(auth['user'], auth['password'])
                                 server.sendmail(auth['sender'], mailing_list, message.as_string())
+                            print("\x1b[6;37;42m Sent \x1b[0m")
                         except Exception as err:
                             print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
-                        finally:
-                            print("\x1b[6;37;42m Sent \x1b[0m")
                             
                         time.sleep(5)
                         progress2.update(1)
