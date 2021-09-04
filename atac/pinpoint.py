@@ -270,8 +270,6 @@ def send_email_smtp():
         print ("Error: ", e)
     else:
         print ("Email sent!")
-        
-def 
-    
+
     
         
