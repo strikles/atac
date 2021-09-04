@@ -8,7 +8,7 @@ from validator_collection import checkers
 
 from tqdm import tqdm
 from email_validator import validate_email, EmailNotValidError
-
+import phonenumbers
 
 class Leon:
     
@@ -16,13 +16,9 @@ class Leon:
         self.config = {}
         with open('auth.json') as json_file:
             self.config = json.load(json_file)
-            
-            
-    def get_phone_type(content):
 
 
-
-    def valid_mobile():
+    def clean_phones():
         print(path)
         status = 0
         # get mailing list csv files
@@ -35,23 +31,10 @@ class Leon:
                 lines = [line for line in file]
                 with tqdm(total=len(lines)) as progress:
                     for ndx, phone in csv.reader(lines):
-                        #build url
-                        url = "https://libphonenumber.appspot.com/phonenumberparser?number=%2B"
-                        try:
-                            response = requests.get(url, timeout=10, stream=False)
-                            response.encoding = "utf-8"
-                            # If the response was successful, no Exception will be raised
-                            response.raise_for_status()
-                        except HTTPError as http_err:
-                            print(f'HTTP error occurred: {http_err}')
-                            continue
-                        except Exception as err:
-                            print(f'Other error occurred: {err}')
-                            continue
-                        else:
-                            pass
-                        phone_type = self.get_phone_type(response.text)
-                        
+                        z = phonenumbers.parse(phone)
+                        response = phonenumbers.is_valid_number(z):
+                        print(response)
+
 
     def valid_email(self, email):
         is_valid = False
