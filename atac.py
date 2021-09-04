@@ -68,12 +68,25 @@ def compose(arguments):
     #
     two_bach = atac.AllTimeHigh()
     two_bach.gen_content(corpus)
+
     
 def clean(arguments):
     #
     path_emails = os.path.dirname(os.path.abspath(__file__)) + "/contacts/emails/"
+    path_phones = os.path.dirname(os.path.abspath(__file__)) + "/contacts/phones/"
     leon = atac.Leon()
-    leon.cleanup(path_emails)
+    
+    if getattr(arguments, "target"):
+        target = getattr(arguments, "target")
+        
+    if "email" in target:
+        Leon.clean_emails(path_emails)
+    if "phone" in target:
+        Leon.clean_phones(path_phones)
+    else:
+        Leon.clean_emails(path_emails)
+        Leon.clean_phones(path_phones)
+        
 
 # create the top-level parser
 parser = argparse.ArgumentParser()
@@ -100,6 +113,7 @@ parser_compose.set_defaults(func=compose)
 
 # create the parser for the "compose" command
 parser_clean = subparsers.add_parser('clean')
+parser_clean.add_argument('-t', dest='target', choices=['email', 'phone', 'all'])
 parser_clean.set_defaults(func=clean)
 
 # parse the args and call whatever function was selected

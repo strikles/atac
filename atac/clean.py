@@ -48,7 +48,7 @@ class Leon:
             print(str(e))
         return is_valid
 
-    def cleanup(self, path):
+    def clean_emails(self, path):
         print(path)
         status = 0
         # get mailing list csv files
