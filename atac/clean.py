@@ -32,10 +32,13 @@ class Leon:
                 with tqdm(total=len(lines)) as progress:
                     for ndx, phone in csv.reader(lines):
                         print(phone)
-                        z = phonenumbers.parse(phone)
-                        response = phonenumbers.is_valid_number(z)
-                        print(response)
-
+                        try:
+                            z = phonenumbers.parse(phone)
+                            response = phonenumbers.is_valid_number(z)
+                            print(response)
+                        except NumberParseException as e:
+                            print(str(e))
+                            
 
     def valid_email(self, email):
         is_valid = False
