@@ -39,7 +39,7 @@ class Leon:
                             z = phonenumbers.parse(phone)
                             valid_number = phonenumbers.is_valid_number(z)
                             if valid_number:
-                                line_type = phonenumberutil.number_type(phone)
+                                line_type = phonenumberutil.number_type(z)
                                 print(line_type)
                         except NumberParseException as e:
                             print(str(e))
