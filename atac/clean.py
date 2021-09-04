@@ -32,7 +32,7 @@ class Leon:
                 with tqdm(total=len(lines)) as progress:
                     for ndx, phone in csv.reader(lines):
                         z = phonenumbers.parse(phone)
-                        response = phonenumbers.is_valid_number(my_number)
+                        response = phonenumbers.is_valid_number(z)
                         print(response)
 
 
