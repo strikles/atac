@@ -80,12 +80,12 @@ def clean(arguments):
         target = getattr(arguments, "target")
         
     if "email" in target:
-        Leon.clean_emails(path_emails)
+        leon.clean_emails(path_emails)
     if "phone" in target:
-        Leon.clean_phones(path_phones)
+        leon.clean_phones(path_phones)
     else:
-        Leon.clean_emails(path_emails)
-        Leon.clean_phones(path_phones)
+        leon.clean_emails(path_emails)
+        leon.clean_phones(path_phones)
         
 
 # create the top-level parser
