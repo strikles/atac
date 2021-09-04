@@ -31,6 +31,7 @@ class Leon:
                 lines = [line for line in file]
                 with tqdm(total=len(lines)) as progress:
                     for ndx, phone in csv.reader(lines):
+                        print(phone)
                         z = phonenumbers.parse(phone)
                         response = phonenumbers.is_valid_number(z)
                         print(response)
