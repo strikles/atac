@@ -9,8 +9,9 @@ from validator_collection import checkers
 from tqdm import tqdm
 from email_validator import validate_email, EmailNotValidError
 import phonenumbers
-from phonenumbers import NumberParseException
+from phonenumbers import NumberParseException, phonenumberutil
 
+#"https://libphonenumber.appspot.com/phonenumberparser?number=%2B"
 
 class Leon:
     
@@ -36,11 +37,13 @@ class Leon:
                         print(phone)
                         try:
                             z = phonenumbers.parse(phone)
-                            response = phonenumbers.is_valid_number(z)
-                            print(response)
+                            valid_number = phonenumbers.is_valid_number(z)
+                            if valid_number:
+                                line_type = phonenumberutil.number_type(phone)
+                                print(line_type)
                         except NumberParseException as e:
                             print(str(e))
-                            
+
 
     def valid_email(self, email):
         is_valid = False
