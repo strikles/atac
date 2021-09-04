@@ -18,7 +18,7 @@ class Leon:
             self.config = json.load(json_file)
 
 
-    def clean_phones():
+    def clean_phones(self, path):
         print(path)
         status = 0
         # get mailing list csv files
