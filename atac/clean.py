@@ -44,7 +44,8 @@ from phonenumbers import NumberParseException, phonenumberutil
 """
 
 class Leon:
-    
+
+
     def __init__(self):
         self.config = {}
         with open('auth.json') as json_file:
@@ -86,6 +87,7 @@ class Leon:
             # email is not valid, exception message is human-readable
             print(str(e))
         return is_valid
+
 
     def clean_emails(self, path):
         print(path)

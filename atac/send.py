@@ -21,10 +21,12 @@ from tqdm import tqdm
 
 class FromRuXiaWithLove:
 
+
     def __init__(self):
         self.config = {}
         with open('auth.json') as json_file:
             self.config = json.load(json_file)
+
 
     def compose_message(self, content, auth, mailing_list):
         message = MIMEMultipart("alternative")
@@ -47,7 +49,8 @@ class FromRuXiaWithLove:
         message.attach(part1)
         message.attach(part2)
         return message
-            
+
+
     def send_email(self, path):
         print(path)
         status = 0
@@ -113,6 +116,7 @@ class FromRuXiaWithLove:
                     
         return status
 
+
     def send_whatsapp(self, path):
         status = 0
         # Your Account Sid and Auth Token from twilio.com/console
@@ -152,6 +156,7 @@ class FromRuXiaWithLove:
                         print(message.sid)
         return status
 
+
     def send_facebook(self):
         status = 0
         msg = "Hello, world!"
@@ -162,6 +167,7 @@ class FromRuXiaWithLove:
             graph.put_object(group, 'feed', message=msg, link=link)
             print(graph.get_connections(group, 'feed'))
         return status
+
 
     def send_twitter(self):
         status = 0

@@ -15,6 +15,7 @@ from email_validator import validate_email, EmailNotValidError
 
 class UnderTheMangoTree:
 
+
     def __init__(self):
         # primary queue (urls to be crawled)
         self.primary_unprocessed_urls = deque()
@@ -29,6 +30,7 @@ class UnderTheMangoTree:
         self.config = {}
         with open('auth.json') as json_file:
             self.config = json.load(json_file)
+
 
     def invalid_url(self, url):
         # reject invalid domains
@@ -47,6 +49,7 @@ class UnderTheMangoTree:
                 return True
         return False
 
+
     @staticmethod
     def set_useragent():
         ua = UserAgent()
@@ -54,6 +57,7 @@ class UnderTheMangoTree:
                    "Accept-Language": "en-US,en;q=0.5", "Referer": "https://www.google.com/", "DNT": "1",
                    "Connection": "keep-alive", "Upgrade-Insecure-Requests": "1", 'User-Agent': ua.random}
         return headers
+
 
     @staticmethod
     def make_dirs():
@@ -64,6 +68,7 @@ class UnderTheMangoTree:
             os.makedirs(os.getcwd() + "/contacts/emails")
         if not os.path.isdir(os.getcwd() + "/contacts/phones"):
             os.makedirs(os.getcwd() + "/contacts/phones")
+
 
     @staticmethod
     def truncate_files(data_key):
@@ -87,7 +92,8 @@ class UnderTheMangoTree:
                                        quoting=csv.QUOTE_MINIMAL)
 
             phones_writer.writerow(['', 'phone'])
-        
+
+
     @staticmethod
     def extract_emails(content):
         #
@@ -95,11 +101,13 @@ class UnderTheMangoTree:
                                r"(?!jpg|jpeg|png|svg|gif|webp|yji|pdf|htm|title|content|formats)[a-zA-Z]{2,7}")
         return set(filter(lambda x: (checkers.is_email(x)), rx_emails.findall(content)))
 
+
     @staticmethod
     def extract_phones(content):
         #
         rx_phones = re.compile(r'\+(?:[0-9] ?){6,14}[0-9]')
         return set(rx_phones.findall(content))
+
 
     def save_contacts(self, new_contacts, data_key, type):
         # save to file
@@ -135,6 +143,7 @@ class UnderTheMangoTree:
                     print("\x1b[6;37;41m new {0}:{1} \x1b[0m".format(type, c))
                     self.num_phones +=1
                     writer.writerow([self.num_phones, c])
+
 
     def process_page(self, data_key, starting_url):
 
