@@ -102,7 +102,7 @@ parser_send.set_defaults(func=send)
 
 # create the parser for the "scrape" command
 parser_scrape = subparsers.add_parser('scrape')
-parser_scrape.add_argument('-t', dest='target', choices=['museums', 'embassies', 'activism', 'education', 'religion', 'rescue', 'addiction', 'music', 'journalists', 'defense', 'ukraine', 'all'])
+parser_scrape.add_argument('-t', dest='target', choices=['museums', 'embassies', 'activism', 'education', 'religion', 'rescue', 'addiction', 'music', 'journalists', 'defense', 'ukraine', 'islam', 'all'])
 parser_scrape.add_argument('-u', dest='url', help="The URL to scrape.")
 parser_scrape.set_defaults(func=scrape)
 
