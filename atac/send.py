@@ -17,6 +17,9 @@ import facebook
 import tweepy
 from random import randint
 
+import phonenumbers
+from phonenumbers import NumberParseException, phonenumberutil
+
 from tqdm import tqdm
 
 class FromRuXiaWithLove:
