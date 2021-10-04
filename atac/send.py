@@ -116,9 +116,8 @@ class FromRuXiaWithLove:
                     
         return status
     
-    def send_sms(self, path):
-        MESSAGE_FILE = 'carla_colete.txt'     # File containing text message
-        #CSV_FILE = 'participants.csv'    # File containing participant numbers
+    def send_sms(self, path, message_file):
+
         SMS_LENGTH = 160                 # Max length of one SMS message
         MSG_COST = 0.04                  # Cost per message
         
@@ -128,7 +127,7 @@ class FromRuXiaWithLove:
         from_num = "3197010252578”    # 'From' number in Twilio
         
         # Now put your SMS in a file called message.txt, and it will be read from there.
-        with open(MESSAGE_FILE, 'r') as content_file:
+        with open(message_file, 'r') as content_file:
             sms = content_file.read()
         
         # Check we read a message OK
