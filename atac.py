@@ -14,6 +14,8 @@ def send(arguments):
     path_emails = os.path.dirname(os.path.abspath(__file__)) + "/contacts/emails/"
     path_phones = os.path.dirname(os.path.abspath(__file__)) + "/contacts/phones/"
     #
+    if getattr(arguments, "message"):
+        path_message = getattr(arguments, "message")
     if getattr(arguments, "target"):
         target = getattr(arguments, "target")
     if getattr(arguments, "path_emails"):
@@ -22,11 +24,11 @@ def send(arguments):
         path_phones = getattr(arguments, "path_phones")
     #
     if "email" in target:
-        katie.send_email(path_emails)
+        katie.send_email(path_emails, path_message)
     if "whatsapp" in target:
-        katie.send_sms(path_phones)
+        katie.send_sms(path_phones, path_message)
     if "sms" in target:
-        katie.send_sms(path_phones)
+        katie.send_sms(path_phones, path_message)
     if "facebook" in target:
         katie.send_facebook()
     if "twitter" in target:

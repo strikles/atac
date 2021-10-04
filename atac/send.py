@@ -51,7 +51,7 @@ class FromRuXiaWithLove:
         return message
 
 
-    def send_email(self, path):
+    def send_email(self, path, message_file):
         print(path)
         status = 0
         # get mailing list csv files
