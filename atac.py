@@ -96,7 +96,7 @@ subparsers = parser.add_subparsers()
 
 # create the parser for the "send" command
 parser_send = subparsers.add_parser('send')
-parser_send.add_argument('-m', dest='markdown', type=str, help='path to md file')
+parser_send.add_argument('-m', dest='message', type=str, help='path to message file')
 parser_send.add_argument('-e', dest='path_emails', type=str, help='path to csv dir')
 parser_send.add_argument('-p', dest='path_phones', type=str, help='path to csv dir')
 parser_send.add_argument('-t', dest='target', choices=['email', 'facebook', 'twitter', 'whatsapp', 'sms', 'all'])
