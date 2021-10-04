@@ -25,6 +25,8 @@ def send(arguments):
         katie.send_email(path_emails)
     if "whatsapp" in target:
         katie.send_whatsapp(path_phones)
+    if "sms" in target:
+        katie.send_sms(path_phones)
     if "facebook" in target:
         katie.send_facebook()
     if "twitter" in target:
@@ -97,7 +99,7 @@ parser_send = subparsers.add_parser('send')
 parser_send.add_argument('-m', dest='markdown', type=str, help='path to md file')
 parser_send.add_argument('-e', dest='path_emails', type=str, help='path to csv dir')
 parser_send.add_argument('-p', dest='path_phones', type=str, help='path to csv dir')
-parser_send.add_argument('-t', dest='target', choices=['email', 'facebook', 'twitter', 'whatsapp', 'all'])
+parser_send.add_argument('-t', dest='target', choices=['email', 'facebook', 'twitter', 'whatsapp', 'sms', 'all'])
 parser_send.set_defaults(func=send)
 
 # create the parser for the "scrape" command
