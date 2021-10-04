@@ -122,9 +122,9 @@ class FromRuXiaWithLove:
         MSG_COST = 0.04                  # Cost per message
         
         # Twilio: Find these values at https://twilio.com/user/account
-        account_sid = self.config['twilio']['SID']
-        auth_token = self.config['twilio']['TOKEN']
-        from_num = self.config['twilio']['PHONE'] # 'From' number in Twilio
+        account_sid = self.config['send']['twilio']['SID']
+        auth_token = self.config['send']['twilio']['TOKEN']
+        from_num = self.config['send']['twilio']['PHONE'] # 'From' number in Twilio
         
         # Now put your SMS in a file called message.txt, and it will be read from there.
         with open(message_file, 'r') as content_file:
