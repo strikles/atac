@@ -24,7 +24,7 @@ def send(arguments):
     if "email" in target:
         katie.send_email(path_emails)
     if "whatsapp" in target:
-        katie.send_whatsapp(path_phones)
+        katie.send_sms(path_phones)
     if "sms" in target:
         katie.send_sms(path_phones)
     if "facebook" in target:

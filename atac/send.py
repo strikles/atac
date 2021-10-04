@@ -115,50 +115,10 @@ class FromRuXiaWithLove:
                         progress2.update(1)
                     
         return status
-
-
-    def send_whatsapp(self, path):
-        status = 0
-        # Your Account Sid and Auth Token from twilio.com/console
-        # and set the environment variables. See http://twil.io/secure
-        account_sid = self.config['twilio']['ACCOUNT_SID']
-        auth_token = self.config['twilio']['AUTH_TOKEN']
-        # get mailing list csv files
-        phone_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
-        # send mesg
-        for phone in phone_files:
-            cp = path + phone
-            print(cp)
-            with open(cp) as file:
-                reader = csv.reader(file)
-                next(reader)  # Skip header row
-                for num, phone_number in reader:
-                    # client credentials are read from TWILIO_ACCOUNT_SID and AUTH_TOKEN
-                    client = Client(account_sid, auth_token)
-                    # this is the Twilio sandbox testing number
-                    from_whatsapp_number = 'whatsapp:+14155238886'
-                    # replace this number with your own WhatsApp Messaging number
-                    to_whatsapp_number = 'whatsapp:' + phone_number
-                    ndx = 0
-                    content = self.config['email']['content'][ndx]
-                    # convert markdown to html
-                    md = '/assets/mail_content/' + content['markdown']
-                    with open(os.path.dirname(os.path.abspath(__file__)) + md, 'r') as f:
-                        ptext = f.read()
-                        html = markdown.markdown(ptext)
-                        soup = BeautifulSoup(html, features='html.parser')
-                        message = client.messages \
-                            .create(
-                            body=soup.get_text(),
-                            from_=from_whatsapp_number,
-                            to=to_whatsapp_number
-                        )
-                        print(message.sid)
-        return status
     
     def send_sms(self, path):
         MESSAGE_FILE = 'carla_colete.txt'     # File containing text message
-        CSV_FILE = 'participants.csv'    # File containing participant numbers
+        #CSV_FILE = 'participants.csv'    # File containing participant numbers
         SMS_LENGTH = 160                 # Max length of one SMS message
         MSG_COST = 0.04                  # Cost per message
         
@@ -221,8 +181,8 @@ class FromRuXiaWithLove:
                 message = client.messages.create(to=num, from_=from_num, body=sms)
         
         print("Exiting!")
-        
-    
+
+
     def send_facebook(self):
         status = 0
         msg = "Hello, world!"
