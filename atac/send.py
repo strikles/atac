@@ -156,7 +156,7 @@ class FromRuXiaWithLove:
                         print(message.sid)
         return status
     
-    def send_sms(self.path):
+    def send_sms(self, path):
         MESSAGE_FILE = 'carla_colete.txt'     # File containing text message
         CSV_FILE = 'participants.csv'    # File containing participant numbers
         SMS_LENGTH = 160                 # Max length of one SMS message
