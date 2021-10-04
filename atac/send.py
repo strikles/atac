@@ -146,20 +146,21 @@ class FromRuXiaWithLove:
         
         for ml in ml_files:
             cf = path + ml
-            lines = [line for line in file]
-            with tqdm(total=len(lines)) as progress:
-                for ndx, phone in csv.reader(lines):
-                    print(phone)
-                    try:
-                        z = phonenumbers.parse(phone)
-                        valid_number = phonenumbers.is_valid_number(z)
-                        if valid_number:
-                            line_type = phonenumberutil.number_type(z)
-                            if line_type == 0:
-                                numbers.append(phone)
-                            print(line_type)
-                    except NumberParseException as e:
-                        print(str(e))
+            with open(cf) as file:
+                lines = [line for line in file]
+                with tqdm(total=len(lines)) as progress:
+                    for ndx, phone in csv.reader(lines):
+                        print(phone)
+                        try:
+                            z = phonenumbers.parse(phone)
+                            valid_number = phonenumbers.is_valid_number(z)
+                            if valid_number:
+                                line_type = phonenumberutil.number_type(z)
+                                if line_type == 0:
+                                    numbers.append(phone)
+                                print(line_type)
+                        except NumberParseException as e:
+                            print(str(e))
     
         # Calculate how much it's going to cost:
         messages = len(numbers)
