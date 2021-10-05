@@ -119,10 +119,10 @@ class FromRuXiaWithLove:
                     
         return status
     
-    def send_sms(self, path, message_file):
+    def send_twilio(self, path, message_file):
 
         SMS_LENGTH = 160                 # Max length of one SMS message
-        MSG_COST = 0.04                  # Cost per message
+        MSG_COST = 0.005                  # Cost per message
         
         # Twilio: Find these values at https://twilio.com/user/account
         account_sid = self.config['send']['twilio']['SID']
@@ -167,7 +167,7 @@ class FromRuXiaWithLove:
     
         # Calculate how much it's going to cost:
         messages = len(numbers)
-        cost = MSG_COST * segments * messages
+        cost = MSG_COST * messages
         
         print("> {} messages of {} segments each will be sent, at a cost of ${} ".format(messages, segments, cost))
         
@@ -181,7 +181,7 @@ class FromRuXiaWithLove:
             for num in numbers:
                 # Send the sms text to the number from the CSV file:
                 print("Sending to " + num)
-                message = client.messages.create(to=num, from_=from_num, body=sms)
+                message = client.messages.create(to='whatsapp:'+mum, from_='whatsapp:'+from_num, body=sms)
         
         print("Exiting!")
 
