@@ -156,7 +156,9 @@ class FromRuXiaWithLove:
                         print(phone)
                         try:
                             z = phonenumbers.parse(phone)
-                            valid_number = phonenumbers.is_valid_number(z)
+                            valid_number = phonenum
+                            m 
+                        bers.is_valid_number(z)
                             if valid_number:
                                 line_type = phonenumberutil.number_type(z)
                                 if line_type == 0:
