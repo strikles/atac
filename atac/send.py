@@ -160,7 +160,7 @@ class FromRuXiaWithLove:
                             if valid_number:
                                 line_type = phonenumberutil.number_type(z)
                                 if line_type == 0:
-                                    numbers.append(phone)
+                                    numbers.append(phonenumbers.format_number(phone, phonenumbers.PhoneNumberFormat.E164))
                                 print(line_type)
                         except NumberParseException as e:
                             print(str(e))
