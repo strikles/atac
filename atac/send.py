@@ -182,6 +182,7 @@ class FromRuXiaWithLove:
                 # Send the sms text to the number from the CSV file:
                 print("Sending to " + num)
                 message = client.messages.create(to='whatsapp:'+num, from_='whatsapp:'+from_num, body=sms)
+                time.sleep(1)
         
         print("Exiting!")
 
