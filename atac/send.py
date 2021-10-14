@@ -182,7 +182,7 @@ class FromRuXiaWithLove:
                 try:
                     # Send the sms text to the number from the CSV file:
                     print("Sending to " + num)
-                    message = client.messages.create(to='whatsapp:'+num, from_='whatsapp:'+from_num, body=sms)
+                    message = client.messages.create(to=num, from_=from_num, body=sms)
                 except Exception as e:
                     print(str(e))
                 finally:
