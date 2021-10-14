@@ -176,7 +176,6 @@ class FromRuXiaWithLove:
         if confirm[0].lower() == 'y':
             # Set up Twilio client
             client = Client(account_sid, auth_token)
-        
             # Send the messages
             for num in numbers:
                 try:
