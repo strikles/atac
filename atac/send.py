@@ -159,7 +159,7 @@ class FromRuXiaWithLove:
                             valid_number = phonenumbers.is_valid_number(z)
                             if valid_number:
                                 line_type = phonenumberutil.number_type(z)
-                                if line_type == 0:
+                                if line_type == 1:
                                     numbers.append(phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164))
                                 print(line_type)
                         except NumberParseException as e:
