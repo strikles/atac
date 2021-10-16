@@ -57,9 +57,10 @@ class FromRuXiaWithLove:
     def send_email(self, path, message_file):
         print(path)
         status = 0
-        # get mailing list csv files
-        ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
-        
+        if os.path.isdir(path):
+            ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
+        elif os.path.isfile(path):
+            ml_files = list(path)
         # reload config
         with open('auth.json') as json_file:
             self.config = json.load(json_file)
@@ -70,7 +71,6 @@ class FromRuXiaWithLove:
         # get active content
         content_ndx = email_cfg['active_content']
         content = email_cfg['content'][content_ndx]
-        
         # set sctive to next and save config
         if email_cfg['rotate_content']:
             email_cfg['active_content'] = (1 + content_ndx) % len(email_cfg['content'])
@@ -90,7 +90,7 @@ class FromRuXiaWithLove:
                 num_buckets = len(lines) // num_emails_per_bucket
                 ml_emails = [[] for i in range(num_buckets)]
                 ml_counter = 0
-
+                #
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
                         if checkers.is_email(receiver_email):
@@ -98,7 +98,7 @@ class FromRuXiaWithLove:
                             ml_emails[current_bucket].append(receiver_email)
                             ml_counter += 1
                         progress.update(1)
-                        
+                #
                 with tqdm(total=len(ml_emails)) as progress2:
                     for ml_batch in ml_emails:
                         mailing_list = '; '.join(ml_batch)
@@ -116,7 +116,7 @@ class FromRuXiaWithLove:
                             
                         time.sleep(5)
                         progress2.update(1)
-                    
+        #
         return status
     
     def send_twilio(self, path, message_file, msg_type):
