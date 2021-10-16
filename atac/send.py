@@ -119,7 +119,7 @@ class FromRuXiaWithLove:
                     
         return status
     
-    def send_twilio(self, path, message_file, type):
+    def send_twilio(self, path, message_file, msg_type):
 
         SMS_LENGTH = 160                 # Max length of one SMS message
         MSG_COST = 0.005                  # Cost per message
@@ -184,7 +184,7 @@ class FromRuXiaWithLove:
                 try:
                     # Send the sms text to the number from the CSV file:
                     print("Sending to " + num)
-                    if type == "whatsapp":
+                    if msg_type == "whatsapp":
                         num = "whatsapp:"+num
                         from_num = "whatsapp:"+from_num
                     message = client.messages.create(to=num, from_=from_num, body=sms)
