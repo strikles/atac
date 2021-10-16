@@ -119,7 +119,7 @@ class FromRuXiaWithLove:
                     
         return status
     
-    def send_twilio(self, path, message_file):
+    def send_twilio(self, path, message_file, type):
 
         SMS_LENGTH = 160                 # Max length of one SMS message
         MSG_COST = 0.005                  # Cost per message
@@ -144,8 +144,11 @@ class FromRuXiaWithLove:
         segments = int(len(sms.encode('utf-8')) / SMS_LENGTH) +1
         
         # Open the people CSV and get all the numbers out of it
-        ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
         numbers = []
+        if os.path.isdir(path):
+            ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
+        elif os.path.isfile(path):
+            ml_files = list(path)
         
         for ml in ml_files:
             cf = path + ml
@@ -161,7 +164,7 @@ class FromRuXiaWithLove:
                                 line_type = phonenumberutil.number_type(z)
                                 if line_type == 1:
                                     numbers.append(phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164))
-                                print(line_type)
+                               p print(line_type)
                         except NumberParseException as e:
                             print(str(e))
     
@@ -181,6 +184,9 @@ class FromRuXiaWithLove:
                 try:
                     # Send the sms text to the number from the CSV file:
                     print("Sending to " + num)
+                    if type == "whatsapp":
+                        num = "whatsapp:"+num
+                        from_num = "whatsapp:"+from_num
                     message = client.messages.create(to=num, from_=from_num, body=sms)
                 except Exception as e:
                     print(str(e))

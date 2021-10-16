@@ -26,9 +26,9 @@ def send(arguments):
     if "email" in target:
         katie.send_email(path_emails, path_message)
     if "whatsapp" in target:
-        katie.send_twilio(path_phones, path_message)
+        katie.send_twilio(path_phones, path_message, 'whatsapp')
     if "sms" in target:
-        katie.send_twilio(path_phones, path_message)
+        katie.send_twilio(path_phones, path_message, 'sms')
     if "facebook" in target:
         katie.send_facebook()
     if "twitter" in target:
