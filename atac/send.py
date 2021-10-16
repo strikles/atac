@@ -57,6 +57,7 @@ class FromRuXiaWithLove:
     def send_email(self, path, message_file):
         print(path)
         status = 0
+        ml_files = None
         if os.path.isdir(path):
             ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
         elif os.path.isfile(path):
@@ -121,7 +122,8 @@ class FromRuXiaWithLove:
     
     def send_twilio(self, path, message_file, msg_type):
         SMS_LENGTH = 160                 # Max length of one SMS message
-        MSG_COST = 0.005                  # Cost per message
+        WHATSAPP_MSG_COST = 0.005        # Cost per message
+        SMS_MSG_COST = 0.005        # Cost per message
         # Twilio: Find these values at https://twilio.com/user/account
         account_sid = self.config['send']['twilio']['SID']
         auth_token = self.config['send']['twilio']['TOKEN']
@@ -136,9 +138,14 @@ class FromRuXiaWithLove:
         else:
             print("> SMS message to send: \n\n{}".format(sms))
         # How many segments is this message going to use?
-        segments = int(len(sms.encode('utf-8')) / SMS_LENGTH) +1
+        segments = 0
+        if msg_type == "whatsapp":
+            segments = 1
+        else:
+            segments = int(len(sms.encode('utf-8')) / SMS_LENGTH) +1
         # Open the people CSV and get all the numbers out of it
         numbers = []
+        ml_files = None
         if os.path.isdir(path):
             ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
         elif os.path.isfile(path):
@@ -162,7 +169,11 @@ class FromRuXiaWithLove:
                             print(str(e))
         # Calculate how much it's going to cost:
         messages = len(numbers)
-        cost = MSG_COST * messages
+        cost = 0
+        if msg_type == "whatsapp":
+            cost = WHATSAPP_MSG_COST * messages
+        else:
+            cost = SMS_MSG_COST * segments * messages
         print("> {} messages of {} segments each will be sent, at a cost of ${} ".format(messages, segments, cost))
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
