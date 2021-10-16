@@ -61,7 +61,7 @@ class FromRuXiaWithLove:
         if os.path.isdir(path):
             ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
         elif os.path.isfile(path):
-            ml_files = list(path)
+            ml_files = [path]
         # reload config
         with open('auth.json') as json_file:
             self.config = json.load(json_file)
@@ -149,7 +149,7 @@ class FromRuXiaWithLove:
         if os.path.isdir(path):
             ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
         elif os.path.isfile(path):
-            ml_files = list(path)
+            ml_files = [path]
         #
         for ml in ml_files:
             if os.path.isdir(path):
