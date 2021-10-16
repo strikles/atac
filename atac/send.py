@@ -120,36 +120,30 @@ class FromRuXiaWithLove:
         return status
     
     def send_twilio(self, path, message_file, msg_type):
-
         SMS_LENGTH = 160                 # Max length of one SMS message
         MSG_COST = 0.005                  # Cost per message
-        
         # Twilio: Find these values at https://twilio.com/user/account
         account_sid = self.config['send']['twilio']['SID']
         auth_token = self.config['send']['twilio']['TOKEN']
         from_num = self.config['send']['twilio']['PHONE'] # 'From' number in Twilio
-        
         # Now put your SMS in a file called message.txt, and it will be read from there.
         with open(message_file, 'r') as content_file:
             sms = content_file.read()
-        
         # Check we read a message OK
         if len(sms.strip()) == 0:
             print("SMS message not specified- please make a {}' file containing it. \r\nExiting!".format(MESSAGE_FILE))
             sys.exit(1)
         else:
             print("> SMS message to send: \n\n{}".format(sms))
-        
         # How many segments is this message going to use?
         segments = int(len(sms.encode('utf-8')) / SMS_LENGTH) +1
-        
         # Open the people CSV and get all the numbers out of it
         numbers = []
         if os.path.isdir(path):
             ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
         elif os.path.isfile(path):
             ml_files = list(path)
-        
+        #
         for ml in ml_files:
             cf = path + ml
             with open(cf) as file:
@@ -167,13 +161,10 @@ class FromRuXiaWithLove:
                                p print(line_type)
                         except NumberParseException as e:
                             print(str(e))
-    
         # Calculate how much it's going to cost:
         messages = len(numbers)
         cost = MSG_COST * messages
-        
         print("> {} messages of {} segments each will be sent, at a cost of ${} ".format(messages, segments, cost))
-        
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
         if confirm[0].lower() == 'y':
@@ -192,7 +183,7 @@ class FromRuXiaWithLove:
                     print(str(e))
                 finally:
                     time.sleep(1)
-        
+        #
         print("Exiting!")
 
 
