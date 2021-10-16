@@ -152,7 +152,11 @@ class FromRuXiaWithLove:
             ml_files = list(path)
         #
         for ml in ml_files:
-            cf = path + ml
+            if os.path.isdir(path):
+                cf = path + ml
+            elif os.path.isfile(path):
+                cf = ml
+            print(cf)
             with open(cf) as file:
                 lines = [line for line in file]
                 with tqdm(total=len(lines)) as progress:
