@@ -80,7 +80,7 @@ class FromRuXiaWithLove:
         with open('auth.json', 'w') as fp:
             self.config['send']['email'] = email_cfg
             json.dump(self.config, fp, indent=4)
-
+        #
         for ml in ml_files:
             cf = path + ml
             print(cf)
