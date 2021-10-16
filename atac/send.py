@@ -158,7 +158,6 @@ class FromRuXiaWithLove:
                                 line_type = phonenumberutil.number_type(z)
                                 if line_type == 1:
                                     numbers.append(phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164))
-                               p print(line_type)
                         except NumberParseException as e:
                             print(str(e))
         # Calculate how much it's going to cost:
