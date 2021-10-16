@@ -131,7 +131,7 @@ class FromRuXiaWithLove:
             sms = content_file.read()
         # Check we read a message OK
         if len(sms.strip()) == 0:
-            print("SMS message not specified- please make a {}' file containing it. \r\nExiting!".format(MESSAGE_FILE))
+            print("SMS message not specified- please make a {}' file containing it. \r\nExiting!".format(message_file))
             sys.exit(1)
         else:
             print("> SMS message to send: \n\n{}".format(sms))
