@@ -250,7 +250,7 @@ class FromRuXiaWithLove:
             for num in numbers:
                 try:
                     print("Sending to " + num)
-                    message = pywhatkit.sendwhatmsg_instantly(phone_no=num, message=sms)
+                    message = pywhatkit.sendwhatmsg_instantly(num, sms, 15, True, 4)
                 except Exception as e:
                     print(str(e))
                 finally:
