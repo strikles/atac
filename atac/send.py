@@ -13,7 +13,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 from twilio.rest import Client
-from .layer import *
+from .whatsapp import Client
 
 import facebook
 import tweepy
@@ -244,24 +244,13 @@ class FromRuXiaWithLove:
         messages = len(numbers)
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
-        
-        stackBuilder = YowStackBuilder()
-        self._stack = stackBuilder\
-            .pushDefaultLayers()\
-            .push(YowsupCliLayer)\
-            .build()
-
-        self._stack.setProfile(profile)
-        self._stack.setProp(PROP_IDENTITY_AUTOTRUST, True)
-        self._stack.broadcastEvent(YowLayerEvent(YowsupCliLayer.EVENT_START))
-        self._stack.loop()
-        
         if confirm[0].lower() == 'y':
+            client = Client(login='3161516888', password='secretpasswordbase64')
             # Send the messages
             for num in numbers:
                 try:
                     print("Sending to " + num)
-                    message = pywhatkit.sendwhatmsg_instantly(num, sms, 15, True, 4)
+                    client.send_message(num, sms)
                 except Exception as e:
                     print(str(e))
                 finally:
