@@ -246,7 +246,9 @@ class FromRuXiaWithLove:
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
         if confirm[0].lower() == 'y':
-            client = Client(login='3161516888', password='secretpasswordbase64')
+            user = self.config['send']['yowsup']['user']
+            password = self.config['send']['yowsup']['password']
+            client = Client(login=user, password=password)
             # Send the messages
             for num in numbers:
                 try:
