@@ -59,6 +59,7 @@ class Cli(object):
     
 
     def queueCmd(self, cmd):
+        print(cmd)
         self._queuedCmds.append(cmd)
 
     def startInput(self):

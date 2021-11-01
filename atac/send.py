@@ -13,7 +13,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 from twilio.rest import Client
-from .stack import *
+from .layer import *
 
 import facebook
 import tweepy
@@ -89,7 +89,7 @@ class FromRuXiaWithLove:
             print(cf)
             with open(cf) as file:
                 lines = [line for line in file]
-                num_emails_per_bucket = 10
+                num_emails_per_bucket = 1
                 num_buckets = len(lines) // num_emails_per_bucket
                 ml_emails = [[] for i in range(num_buckets)]
                 ml_counter = 0
@@ -203,8 +203,7 @@ class FromRuXiaWithLove:
         print("Exiting!")
 
 
-    '''
-    def send_pywhatkit(self, path, message_file):
+    def send_yowsup(self, path, message_file):
         # Now put your SMS in a file called message.txt, and it will be read from there.
         with open(message_file, 'r') as content_file:
             sms = content_file.read()
@@ -242,10 +241,21 @@ class FromRuXiaWithLove:
                                     numbers.append(phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164))
                         except NumberParseException as e:
                             print(str(e))
-        # Calculate how much it's going to cost:
         messages = len(numbers)
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
+        
+        stackBuilder = YowStackBuilder()
+        self._stack = stackBuilder\
+            .pushDefaultLayers()\
+            .push(YowsupCliLayer)\
+            .build()
+
+        self._stack.setProfile(profile)
+        self._stack.setProp(PROP_IDENTITY_AUTOTRUST, True)
+        self._stack.broadcastEvent(YowLayerEvent(YowsupCliLayer.EVENT_START))
+        self._stack.loop()
+        
         if confirm[0].lower() == 'y':
             # Send the messages
             for num in numbers:
@@ -258,7 +268,6 @@ class FromRuXiaWithLove:
                     time.sleep(1)
         #
         print("Exiting!")
-    '''
 
 
     def send_facebook(self):
