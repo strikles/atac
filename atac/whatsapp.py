@@ -97,7 +97,7 @@ class SendLayer(YowInterfaceLayer):
                 self.on_upload_success,
                 self.on_upload_error,
                 self.on_upload_progress,
-                async=False
+                asynchronous=False
             )
             uploader.start()
 
