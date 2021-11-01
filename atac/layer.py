@@ -439,7 +439,7 @@ class YowsupCliLayer(Cli, YowInterfaceLayer):
             status="online"     
         ##raw fix for iphone lastseen deny output
         lastseen = entity.getLast()
-        if status is "offline" and lastseen is "deny":
+        if status == "offline" and lastseen == "deny":
             lastseen = time.time()
         ##
         self.output("%s %s %s lastseen at: %s" % (entity.getFrom(), entity.getTag(), status, lastseen))
