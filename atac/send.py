@@ -13,7 +13,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 from twilio.rest import Client
-from .whatsapp import Client
+#from .whatsapp import Client
 
 import facebook
 import tweepy
@@ -245,12 +245,12 @@ class FromRuXiaWithLove:
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
         if confirm[0].lower() == 'y':
-            client = Client(login='3161516888', password='secretpasswordbase64')
+            #client = Client(login='3161516888', password='secretpasswordbase64')
             # Send the messages
             for num in numbers:
                 try:
                     print("Sending to " + num)
-                    client.send_message(num, sms)
+                    #client.send_message(num, sms)
                 except Exception as e:
                     print(str(e))
                 finally:
