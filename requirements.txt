@@ -23,7 +23,7 @@ regex==2021.4.4
 requests==2.25.1
 requests-oauthlib==1.3.0
 shadow-useragent==0.0.17
-six==1.16.0
+six
 soupsieve==2.2.1
 tqdm==4.61.2
 tweepy==3.10.0
