@@ -67,6 +67,7 @@ class SendLayer(YowInterfaceLayer):
                 message_entity = TextMessageProtocolEntity(message, to=jid)
                 self.ackQueue.append(message_entity.getId())
                 self.toLower(message_entity)
+        #message_entity = BroadcastTextMessage(jids, message)
         self.lock.release()
 
     @ProtocolEntityCallback("ack")
