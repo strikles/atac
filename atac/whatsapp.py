@@ -3,20 +3,21 @@ import threading
 import logging
 
 from yowsup import env
-from yowsup.stacks import YowStack, YOWSUP_CORE_LAYERS, YOWSUP_PROTOCOL_LAYERS_FULL
+from yowsup.common import YowConstants
+from yowsup.layers.interface import YowInterfaceLayer, ProtocolEntityCallback
+from yowsup.layers import YowLayerEvent, EventCallback
 from yowsup.layers import YowLayerEvent
 from yowsup.layers.auth import YowAuthenticationProtocolLayer
 from yowsup.layers.coder import YowCoderLayer
 from yowsup.layers.network import YowNetworkLayer
-from yowsup.layers.interface import YowInterfaceLayer, ProtocolEntityCallback
 from yowsup.layers.protocol_media.mediauploader import MediaUploader
-from yowsup.common import YowConstants
 from yowsup.layers.protocol_messages.protocolentities import TextMessageProtocolEntity
 from yowsup.layers.protocol_media.protocolentities import (
     ImageDownloadableMediaMessageProtocolEntity,
     DownloadableMediaMessageProtocolEntity,
     RequestUploadIqProtocolEntity
 )
+from yowsup.stacks import YowStack, YOWSUP_CORE_LAYERS, YOWSUP_PROTOCOL_LAYERS_FULL
 
 logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger(__name__)
