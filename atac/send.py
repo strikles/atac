@@ -163,6 +163,7 @@ class FromRuXiaWithLove:
 
 
     def send_emails_in_buckets(self, ml_emails):
+        email_cfg = self.config['send']['email']
         content = email_cfg['content'][content_ndx]
         auth = email_cfg['auth'][auth_ndx]
         with tqdm(total=len(ml_emails)) as progress:
