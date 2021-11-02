@@ -35,7 +35,7 @@ class FromRuXiaWithLove:
 
 
     def compose_email(self, auth_ndx, content_ndx, mailing_list, path_message, subject):
-        email_cfg = self.config['send']['email']
+        email_cfg = self.config['email']
         content_index = content_ndx if content_ndx is not None else email_cfg['active_content']
         auth_index = auth_ndx if auth_ndx is not None else email_cfg['active_auth']
         content = email_cfg['content'][content_index]
@@ -78,7 +78,7 @@ class FromRuXiaWithLove:
         with open('auth.json') as json_file:
             self.config = json.load(json_file)
         # get active auth
-        email_cfg = self.config['send']['email']
+        email_cfg = self.config['email']
         content_ndx = email_cfg['active_content']
         auth_ndx = email_cfg['active_auth']
         auth = email_cfg['auth'][auth_ndx]
@@ -89,7 +89,7 @@ class FromRuXiaWithLove:
         if email_cfg['rotate_auth']:
             email_cfg['active_auth'] = (1 + auth_ndx) % len(email_cfg['auth'])
         with open('auth.json', 'w') as fp:
-            self.config['send']['email'] = email_cfg
+            self.config['email'] = email_cfg
             json.dump(self.config, fp, indent=4)
 
 
@@ -144,7 +144,7 @@ class FromRuXiaWithLove:
 
 
     def send_email(self, auth_ndx, content_ndx, mailing_list, message):
-        email_cfg = self.config['send']['email']
+        email_cfg = self.config['email']
         content_index = content_ndx if content_ndx is not None else email_cfg['active_content']
         auth_index = auth_ndx if auth_ndx is not None else email_cfg['active_auth']
         content = email_cfg['content'][content_index]
@@ -230,9 +230,9 @@ class FromRuXiaWithLove:
         confirm = input("Send these messages? [Y/n] ")
         if confirm[0].lower() == 'y':
             # Set up Twilio client
-            account_sid = self.config['send']['twilio']['SID']
-            auth_token = self.config['send']['twilio']['TOKEN']
-            from_num = self.config['send']['twilio']['PHONE'] # 'From' number in Twilio
+            account_sid = self.config['phone']['twilio']['SID']
+            auth_token = self.config['phone']['twilio']['TOKEN']
+            from_num = self.config['phone']['twilio']['PHONE'] # 'From' number in Twilio
             client = Client(account_sid, auth_token)
             # Send the messages
             for num in phone_numbers:
@@ -257,8 +257,8 @@ class FromRuXiaWithLove:
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
         if confirm[0].lower() == 'y':
-            user = self.config['send']['yowsup']['user']
-            password = self.config['send']['yowsup']['password']
+            user = self.config['phone']['yowsup']['user']
+            password = self.config['phone']['yowsup']['password']
             client = Client(login=user, password=password)
             # Send the messages
             for num in phone_numbers:
@@ -296,7 +296,7 @@ class FromRuXiaWithLove:
     def send_facebook(self):
         status = 0
         msg = "Hello, world!"
-        graph = facebook.GraphAPI(self.config['facebook']['access_token'])
+        graph = facebook.GraphAPI(self.config['social']['facebook']['access_token'])
         link = 'https://www.jcchouinard.com/'
         groups = ['744128789503859']
         for group in groups:
@@ -307,10 +307,10 @@ class FromRuXiaWithLove:
 
     def send_twitter(self):
         status = 0
-        CONSUMER_KEY = self.config['twitter']['consumer_key']
-        CONSUMER_SECRET = self.config['twitter']['consumer_secret']
-        ACCESS_TOKEN = self.config['twitter']['access_token']
-        ACCESS_TOKEN_SECRET = self.config['twitter']['access_token_secret']
+        CONSUMER_KEY = self.config['social']['twitter']['consumer_key']
+        CONSUMER_SECRET = self.config['social']['twitter']['consumer_secret']
+        ACCESS_TOKEN = self.config['social']['twitter']['access_token']
+        ACCESS_TOKEN_SECRET = self.config['social']['twitter']['access_token_secret']
         auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
         auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
         api = tweepy.API(auth)
