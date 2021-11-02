@@ -34,7 +34,7 @@ class FromRuXiaWithLove:
             self.config = json.load(json_file)
 
 
-    def compose_message(self, mailing_list):
+    def compose_message(self, mailing_list, path_message):
         # get active auth
         email_cfg = self.config['send']['email']
         auth_ndx = email_cfg['active_auth']
@@ -51,8 +51,13 @@ class FromRuXiaWithLove:
         text = ""
         html = ""
         # convert markdown to html
-        md = 'assets/mail_content/' + content['markdown']
-        with open(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md)), 'r') as f:
+        if path_message:
+            message_file = path_message
+        else:
+            md = 'assets/mail_content/' + content['markdown']
+            mesage_file = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md))
+        #
+        with open(message_file, 'r') as f:
             ptext = f.read()
             html = markdown.markdown(ptext)
         # Turn these into plain/html MIMEText objects
@@ -166,7 +171,7 @@ class FromRuXiaWithLove:
                     progress.update(1)
 
 
-    def send_emails_in_buckets(self, ml_emails):
+    def send_emails_in_buckets(self, ml_emails, path_message):
         email_cfg = self.config['send']['email']
         content_ndx = email_cfg['active_content']
         auth_ndx = email_cfg['active_auth']
@@ -175,18 +180,18 @@ class FromRuXiaWithLove:
         with tqdm(total=len(ml_emails)) as progress:
             for ml_batch in ml_emails:
                 mailing_list = '; '.join(ml_batch)
-                message = self.compose_message(mailing_list)
+                message = self.compose_message(mailing_list, path_message)
                 self.send_email(mailing_list, message)
                 time.sleep(5)
                 progress.update(1)
 
 
-    def send_emails(self, path, message_file):
-        print(path)
+    def send_emails(self, path_emails, path_message):
+        print(path_emails)
         status = 0
-        ml_files = self.get_ml_files(path)
+        ml_files = self.get_ml_files(path_emails)
         for ml in ml_files:
-            cf = path + ml
+            cf = path_emails + ml
             print(cf)
             with open(cf) as file:
                 lines = [line for line in file]
@@ -194,7 +199,7 @@ class FromRuXiaWithLove:
                 num_buckets = len(lines) // num_emails_per_bucket
                 ml_emails = [[] for i in range(num_buckets)]
                 self.store_emails_in_buckets(lines, ml_emails)
-                self.send_emails_in_buckets(ml_emails)
+                self.send_emails_in_buckets(ml_emails, path_message)
         self.update_config()
         return status
 
