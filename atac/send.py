@@ -14,7 +14,9 @@ from email.mime.multipart import MIMEMultipart
 
 from twilio.rest import Client
 from .whatsapp import Client
-from pywhatkit import *
+
+if os.environ.has_key('DISPLAY'):
+    from pywhatkit import *
 
 import facebook
 import tweepy
@@ -241,32 +243,32 @@ class FromRuXiaWithLove:
         #
         print("Exiting!")
 
-
-    def send_pywhatkit(self, path, message_file):
-        # Now put your SMS in a file called message.txt, and it will be read from there.
-        with open(message_file, encoding="utf8") as content_file:
-            msg = content_file.read()
-        # Check we read a message OK
-        if len(msg.strip()) == 0:
-            print("SMS message not specified- please make a {}' file containing it. \r\nExiting!".format(message_file))
-            sys.exit(1)
-        else:
-            print("> SMS message to send: \n\n{}".format(msg))
-        numbers = self.get_numbers(path)
-        # Check you really want to send them
-        confirm = input("Send these messages? [Y/n] ")
-        if confirm[0].lower() == 'y':
-            # Send the messages
-            for num in numbers:
-                try:
-                    print("Sending to " + num)
-                    pywhatkit.sendwhatmsg_instantly(num, msg, 15, True, 5)
-                except Exception as e:
-                    print(str(e))
-                finally:
-                    time.sleep(1)
-        #
-        print("Exiting!")
+    if os.environ.has_key('DISPLAY'):
+        def send_pywhatkit(self, path, message_file):
+            # Now put your SMS in a file called message.txt, and it will be read from there.
+            with open(message_file, encoding="utf8") as content_file:
+                msg = content_file.read()
+            # Check we read a message OK
+            if len(msg.strip()) == 0:
+                print("SMS message not specified- please make a {}' file containing it. \r\nExiting!".format(message_file))
+                sys.exit(1)
+            else:
+                print("> SMS message to send: \n\n{}".format(msg))
+            numbers = self.get_numbers(path)
+            # Check you really want to send them
+            confirm = input("Send these messages? [Y/n] ")
+            if confirm[0].lower() == 'y':
+                # Send the messages
+                for num in numbers:
+                    try:
+                        print("Sending to " + num)
+                        pywhatkit.sendwhatmsg_instantly(num, msg, 15, True, 5)
+                    except Exception as e:
+                        print(str(e))
+                    finally:
+                        time.sleep(1)
+            #
+            print("Exiting!")
 
 
     def send_facebook(self):

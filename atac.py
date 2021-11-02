@@ -25,7 +25,7 @@ def send(arguments):
     #
     if "email" in target:
         katie.send_email(path_emails, path_message)
-    if "whatsapp" in target:
+    if "whatsapp" in target and if os.environ.has_key('DISPLAY'):
         katie.send_pywhatkit(path_phones, path_message)
     if "sms" in target:
         katie.send_twilio(path_phones, path_message, 'sms')
