@@ -122,30 +122,9 @@ class FromRuXiaWithLove:
                         progress2.update(1)
         #
         return status
-    
-    def send_twilio(self, path, message_file, msg_type):
-        SMS_LENGTH = 160                 # Max length of one SMS message
-        WHATSAPP_MSG_COST = 0.005        # Cost per message
-        SMS_MSG_COST = 0.005        # Cost per message
-        # Twilio: Find these values at https://twilio.com/user/account
-        account_sid = self.config['send']['twilio']['SID']
-        auth_token = self.config['send']['twilio']['TOKEN']
-        from_num = self.config['send']['twilio']['PHONE'] # 'From' number in Twilio
-        # Now put your SMS in a file called message.txt, and it will be read from there.
-        with open(message_file, 'r') as content_file:
-            sms = content_file.read()
-        # Check we read a message OK
-        if len(sms.strip()) == 0:
-            print("SMS message not specified- please make a {}' file containing it. \r\nExiting!".format(message_file))
-            sys.exit(1)
-        else:
-            print("> SMS message to send: \n\n{}".format(sms))
-        # How many segments is this message going to use?
-        segments = 0
-        if msg_type == "whatsapp":
-            segments = 1
-        else:
-            segments = int(len(sms.encode('utf-8')) / SMS_LENGTH) +1
+
+
+    def get_numbers(self,path):
         # Open the people CSV and get all the numbers out of it
         numbers = []
         ml_files = None
@@ -174,6 +153,34 @@ class FromRuXiaWithLove:
                                     numbers.append(phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164))
                         except NumberParseException as e:
                             print(str(e))
+        return numbers
+
+    
+    def send_twilio(self, path, message_file, msg_type):
+        SMS_LENGTH = 160                 # Max length of one SMS message
+        WHATSAPP_MSG_COST = 0.005        # Cost per message
+        SMS_MSG_COST = 0.005        # Cost per message
+        # Twilio: Find these values at https://twilio.com/user/account
+        account_sid = self.config['send']['twilio']['SID']
+        auth_token = self.config['send']['twilio']['TOKEN']
+        from_num = self.config['send']['twilio']['PHONE'] # 'From' number in Twilio
+        # Now put your SMS in a file called message.txt, and it will be read from there.
+        with open(message_file, 'r') as content_file:
+            sms = content_file.read()
+        # Check we read a message OK
+        if len(sms.strip()) == 0:
+            print("SMS message not specified- please make a {}' file containing it. \r\nExiting!".format(message_file))
+            sys.exit(1)
+        else:
+            print("> SMS message to send: \n\n{}".format(sms))
+        # How many segments is this message going to use?
+        segments = 0
+        if msg_type == "whatsapp":
+            segments = 1
+        else:
+            segments = int(len(sms.encode('utf-8')) / SMS_LENGTH) +1
+        
+        numbers = self.get_numbers(path)
         # Calculate how much it's going to cost:
         messages = len(numbers)
         cost = 0
@@ -214,34 +221,7 @@ class FromRuXiaWithLove:
             sys.exit(1)
         else:
             print("> SMS message to send: \n\n{}".format(sms))
-        # Open the people CSV and get all the numbers out of it
-        numbers = []
-        ml_files = None
-        if os.path.isdir(path):
-            ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
-        elif os.path.isfile(path):
-            ml_files = [path]
-        #
-        for ml in ml_files:
-            if os.path.isdir(path):
-                cf = path + ml
-            elif os.path.isfile(path):
-                cf = ml
-            print(cf)
-            with open(cf) as file:
-                lines = [line for line in file]
-                with tqdm(total=len(lines)) as progress:
-                    for ndx, phone in csv.reader(lines):
-                        print(phone)
-                        try:
-                            z = phonenumbers.parse(phone)
-                            valid_number = phonenumbers.is_valid_number(z)
-                            if valid_number:
-                                line_type = phonenumberutil.number_type(z)
-                                if line_type == 1:
-                                    numbers.append(phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164))
-                        except NumberParseException as e:
-                            print(str(e))
+        numbers = self.get_numbers(path)
         messages = len(numbers)
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
@@ -272,34 +252,7 @@ class FromRuXiaWithLove:
             sys.exit(1)
         else:
             print("> SMS message to send: \n\n{}".format(sms))
-        # Open the people CSV and get all the numbers out of it
-        numbers = []
-        ml_files = None
-        if os.path.isdir(path):
-            ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
-        elif os.path.isfile(path):
-            ml_files = [path]
-        #
-        for ml in ml_files:
-            if os.path.isdir(path):
-                cf = path + ml
-            elif os.path.isfile(path):
-                cf = ml
-            print(cf)
-            with open(cf) as file:
-                lines = [line for line in file]
-                with tqdm(total=len(lines)) as progress:
-                    for ndx, phone in csv.reader(lines):
-                        print(phone)
-                        try:
-                            z = phonenumbers.parse(phone)
-                            valid_number = phonenumbers.is_valid_number(z)
-                            if valid_number:
-                                line_type = phonenumberutil.number_type(z)
-                                if line_type == 1:
-                                    numbers.append(phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164))
-                        except NumberParseException as e:
-                            print(str(e))
+        numbers = self.get_numbers(path)
         messages = len(numbers)
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
