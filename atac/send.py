@@ -14,7 +14,7 @@ from email.mime.multipart import MIMEMultipart
 
 from twilio.rest import Client
 from .whatsapp import Client
-#from .layer import *
+from pywhatkit import *
 
 import facebook
 import tweepy
@@ -254,6 +254,61 @@ class FromRuXiaWithLove:
                 try:
                     print("Sending to " + num)
                     client.send_message(num, sms)
+                except Exception as e:
+                    print(str(e))
+                finally:
+                    time.sleep(1)
+        #
+        print("Exiting!")
+
+
+    def send_pywhatkit(self, path, message_file):
+        # Now put your SMS in a file called message.txt, and it will be read from there.
+        with open(message_file, 'r') as content_file:
+            sms = content_file.read()
+        # Check we read a message OK
+        if len(sms.strip()) == 0:
+            print("SMS message not specified- please make a {}' file containing it. \r\nExiting!".format(message_file))
+            sys.exit(1)
+        else:
+            print("> SMS message to send: \n\n{}".format(sms))
+        # Open the people CSV and get all the numbers out of it
+        numbers = []
+        ml_files = None
+        if os.path.isdir(path):
+            ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
+        elif os.path.isfile(path):
+            ml_files = [path]
+        #
+        for ml in ml_files:
+            if os.path.isdir(path):
+                cf = path + ml
+            elif os.path.isfile(path):
+                cf = ml
+            print(cf)
+            with open(cf) as file:
+                lines = [line for line in file]
+                with tqdm(total=len(lines)) as progress:
+                    for ndx, phone in csv.reader(lines):
+                        print(phone)
+                        try:
+                            z = phonenumbers.parse(phone)
+                            valid_number = phonenumbers.is_valid_number(z)
+                            if valid_number:
+                                line_type = phonenumberutil.number_type(z)
+                                if line_type == 1:
+                                    numbers.append(phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164))
+                        except NumberParseException as e:
+                            print(str(e))
+        messages = len(numbers)
+        # Check you really want to send them
+        confirm = input("Send these messages? [Y/n] ")
+        if confirm[0].lower() == 'y':
+            # Send the messages
+            for num in numbers:
+                try:
+                    print("Sending to " + num)
+                    pywhatkit.sendwhatmsg_instantly(num, sms, 15, True, 5)
                 except Exception as e:
                     print(str(e))
                 finally:
