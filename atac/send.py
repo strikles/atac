@@ -36,7 +36,14 @@ class FromRuXiaWithLove:
             self.config = json.load(json_file)
 
 
-    def compose_message(self, content, auth, mailing_list):
+    def compose_message(self, mailing_list):
+        # get active auth
+        email_cfg = self.config['send']['email']
+        auth_ndx = email_cfg['active_auth']
+        auth = email_cfg['auth'][auth_ndx]
+        # get active content
+        content_ndx = email_cfg['active_content']
+        #
         message = MIMEMultipart("alternative")
         message["Subject"] = content['subject']
         message["From"] = auth['sender']
@@ -77,7 +84,8 @@ class FromRuXiaWithLove:
             json.dump(self.config, fp, indent=4)
 
 
-    def send_email(self, auth, mailing_list, message):
+    def send_email(self, mailing_list, message):
+        auth = email_cfg['auth'][auth_ndx]
         # Create secure connection with server and send email
         try:
             context = ssl.create_default_context()
@@ -109,7 +117,7 @@ class FromRuXiaWithLove:
             for ml_batch in ml_emails:
                 mailing_list = '; '.join(ml_batch)
                 message = self.compose_message(content, auth, mailing_list)
-                self.send_email(auth, mailing_list, message)
+                self.send_email(mailing_list, message)
                 time.sleep(5)
                 progress.update(1)
                         
