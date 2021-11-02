@@ -34,14 +34,12 @@ class FromRuXiaWithLove:
             self.config = json.load(json_file)
 
 
-    def compose_message(self, mailing_list, path_message, subject):
-        # get active auth
+    def compose_message(self, auth_ndx, content_ndx, mailing_list, path_message, subject):
         email_cfg = self.config['send']['email']
-        auth_ndx = email_cfg['active_auth']
-        auth = email_cfg['auth'][auth_ndx]
-        # get active content
-        content_ndx = email_cfg['active_content']
-        content = email_cfg['content'][content_ndx]
+        content_index = content_ndx ? content_ndx : email_cfg['active_content']
+        auth_index = auth_ndx ? auth_ndx : email_cfg['active_auth']
+        content = email_cfg['content'][content_index]
+        auth = email_cfg['auth'][auth_index]
         #
         message = MIMEMultipart("alternative")
         if subject:
@@ -176,12 +174,7 @@ class FromRuXiaWithLove:
                     progress.update(1)
 
 
-    def send_emails_in_buckets(self, ml_emails, path_message, subject):
-        email_cfg = self.config['send']['email']
-        content_ndx = email_cfg['active_content']
-        auth_ndx = email_cfg['active_auth']
-        content = email_cfg['content'][content_ndx]
-        auth = email_cfg['auth'][auth_ndx]
+    def send_emails_in_buckets(self, auth_ndx, content_ndx, ml_emails, path_message, subject):
         with tqdm(total=len(ml_emails)) as progress:
             for ml_batch in ml_emails:
                 mailing_list = '; '.join(ml_batch)
@@ -191,7 +184,7 @@ class FromRuXiaWithLove:
                 progress.update(1)
 
 
-    def send_emails(self, path_emails, path_message, subject):
+    def send_emails(self, auth_ndx, content_ndx, path_emails, path_message, subject):
         print(path_emails)
         status = 0
         ml_files = self.get_ml_files(path_emails)

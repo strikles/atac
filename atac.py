@@ -15,6 +15,10 @@ def send(arguments):
     path_phones = os.path.dirname(os.path.abspath(__file__)) + "/contacts/phones/"
     subject = None
     #
+    if getattr(arguments, "auth"):
+        auth_ndx = getattr(arguments, "auth")
+    if getattr(arguments, "content"):
+        content_ndx = getattr(arguments, "content")
     if getattr(arguments, "subject"):
         subject = getattr(arguments, "subject")
     if getattr(arguments, "message"):
@@ -27,7 +31,7 @@ def send(arguments):
         path_phones = getattr(arguments, "path_phones")
     #
     if "email" in target:
-        katie.send_emails(path_emails, path_message, subject)
+        katie.send_emails(path_emails, auth_ndx, content_ndx, path_message, subject)
     if "whatsapp" in target and os.environ.get('DISPLAY'):
         katie.send_pywhatkit(path_phones, path_message)
     if "sms" in target:
@@ -94,13 +98,18 @@ def clean(arguments):
         leon.clean_emails(path_emails)
         leon.clean_phones(path_phones)
         
-
+config = {}
+with open('auth.json') as json_file:
+    config = json.load(json_file)
+            
 # create the top-level parser
 parser = argparse.ArgumentParser()
 subparsers = parser.add_subparsers()
 
 # create the parser for the "send" command
 parser_send = subparsers.add_parser('send')
+parser_send.add_argument('-a', dest='auth', choices=[i for i in range(len(config['send']['email']['auth']))])
+parser_send.add_argument('-c', dest='content', choices=[i for i in range(len(config['send']['email']['content']))])
 parser_send.add_argument('-m', dest='message', type=str, help='path to message file')
 parser_send.add_argument('-e', dest='path_emails', type=str, help='path to csv dir')
 parser_send.add_argument('-p', dest='path_phones', type=str, help='path to csv dir')
