@@ -43,6 +43,7 @@ class FromRuXiaWithLove:
         auth = email_cfg['auth'][auth_ndx]
         # get active content
         content_ndx = email_cfg['active_content']
+        content = email_cfg['content'][content_ndx]
         #
         message = MIMEMultipart("alternative")
         message["Subject"] = content['subject']
