@@ -122,6 +122,18 @@ class FromRuXiaWithLove:
                             print(str(e))
         return numbers
 
+    def get_msg(message_file):
+        # Now put your SMS in a file called message.txt, and it will be read from there.
+        with open(message_file, encoding="utf8") as content_file:
+            msg = content_file.read()
+        # Check we read a message OK
+        if len(msg.strip()) == 0:
+            print("SMS message not specified- please make a {}' file containing it. \r\nExiting!".format(message_file))
+            sys.exit(1)
+        else:
+            print("> SMS message to send: \n\n{}".format(msg))
+        return msg
+
 
     def send_email(self, mailing_list, message):
         auth = email_cfg['auth'][auth_ndx]
@@ -200,15 +212,7 @@ class FromRuXiaWithLove:
 
 
     def send_twilio(self, path, message_file, msg_type):
-        # Now put your SMS in a file called message.txt, and it will be read from there.
-        with open(message_file, 'r') as content_file:
-            msg = content_file.read()
-        # Check we read a message OK
-        if len(sms.strip()) == 0:
-            print("SMS message not specified- please make a {}' file containing it. \r\nExiting!".format(message_file))
-            sys.exit(1)
-        else:
-            print("> SMS message to send: \n\n{}".format(msg))
+        msg = self.get_msg(message_file)
         phone_numbers = self.get_numbers(path)
         # Check you really want to send them
         self.calculate_twilio_cost(msg, phone_numbers, msg_type)
@@ -237,15 +241,7 @@ class FromRuXiaWithLove:
 
 
     def send_yowsup(self, path, message_file):
-        # Now put your SMS in a file called message.txt, and it will be read from there.
-        with open(message_file, 'r') as content_file:
-            msg = content_file.read()
-        # Check we read a message OK
-        if len(msg.strip()) == 0:
-            print("SMS message not specified- please make a {}' file containing it. \r\nExiting!".format(message_file))
-            sys.exit(1)
-        else:
-            print("> SMS message to send: \n\n{}".format(msg))
+        msg = self.get_msg(message_file)
         phone_numbers = self.get_numbers(path)
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
@@ -268,15 +264,7 @@ class FromRuXiaWithLove:
 
     if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, path, message_file):
-            # Now put your SMS in a file called message.txt, and it will be read from there.
-            with open(message_file, encoding="utf8") as content_file:
-                msg = content_file.read()
-            # Check we read a message OK
-            if len(msg.strip()) == 0:
-                print("SMS message not specified- please make a {}' file containing it. \r\nExiting!".format(message_file))
-                sys.exit(1)
-            else:
-                print("> SMS message to send: \n\n{}".format(msg))
+            msg = self.get_msg(message_file)
             phone_numbers = self.get_numbers(path)
             # Check you really want to send them
             confirm = input("Send these messages? [Y/n] ")
