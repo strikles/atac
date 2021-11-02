@@ -155,7 +155,7 @@ class FromRuXiaWithLove:
             
     def store_emails_in_buckets(self, lines, ml_emails):
         ml_counter = 0
-        num_buckets = len(lines)
+        num_buckets = len(ml_emails)
         with tqdm(total=len(lines)) as progress:
             for ndx, receiver_email in csv.reader(lines):
                 if checkers.is_email(receiver_email):
