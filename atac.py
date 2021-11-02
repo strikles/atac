@@ -13,7 +13,10 @@ def send(arguments):
     target = "email"
     path_emails = os.path.dirname(os.path.abspath(__file__)) + "/contacts/emails/"
     path_phones = os.path.dirname(os.path.abspath(__file__)) + "/contacts/phones/"
+    subject = None
     #
+    if getattr(arguments, "subject"):
+        subject = getattr(arguments, "subject")
     if getattr(arguments, "message"):
         path_message = getattr(arguments, "message")
     if getattr(arguments, "target"):
@@ -24,7 +27,7 @@ def send(arguments):
         path_phones = getattr(arguments, "path_phones")
     #
     if "email" in target:
-        katie.send_emails(path_emails, path_message)
+        katie.send_emails(path_emails, path_message, subject)
     if "whatsapp" in target and os.environ.get('DISPLAY'):
         katie.send_pywhatkit(path_phones, path_message)
     if "sms" in target:
@@ -101,6 +104,7 @@ parser_send = subparsers.add_parser('send')
 parser_send.add_argument('-m', dest='message', type=str, help='path to message file')
 parser_send.add_argument('-e', dest='path_emails', type=str, help='path to csv dir')
 parser_send.add_argument('-p', dest='path_phones', type=str, help='path to csv dir')
+parser_send.add_argument('-s', dest='subject', type=str, help='email subject')
 parser_send.add_argument('-t', dest='target', choices=['email', 'facebook', 'twitter', 'whatsapp', 'sms', 'all'])
 parser_send.set_defaults(func=send)
 

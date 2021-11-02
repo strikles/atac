@@ -34,7 +34,7 @@ class FromRuXiaWithLove:
             self.config = json.load(json_file)
 
 
-    def compose_message(self, mailing_list, path_message):
+    def compose_message(self, mailing_list, path_message, subject):
         # get active auth
         email_cfg = self.config['send']['email']
         auth_ndx = email_cfg['active_auth']
@@ -44,7 +44,12 @@ class FromRuXiaWithLove:
         content = email_cfg['content'][content_ndx]
         #
         message = MIMEMultipart("alternative")
-        message["Subject"] = content['subject']
+        if subject:
+            message["Subject"] = subject
+        else if path_message:
+            message["Subject"] = ""
+        else:
+            message["Subject"] = content['subject']
         message["From"] = auth['sender']
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
@@ -171,7 +176,7 @@ class FromRuXiaWithLove:
                     progress.update(1)
 
 
-    def send_emails_in_buckets(self, ml_emails, path_message):
+    def send_emails_in_buckets(self, ml_emails, path_message, subject):
         email_cfg = self.config['send']['email']
         content_ndx = email_cfg['active_content']
         auth_ndx = email_cfg['active_auth']
@@ -180,13 +185,13 @@ class FromRuXiaWithLove:
         with tqdm(total=len(ml_emails)) as progress:
             for ml_batch in ml_emails:
                 mailing_list = '; '.join(ml_batch)
-                message = self.compose_message(mailing_list, path_message)
+                message = self.compose_message(mailing_list, path_message, subject)
                 self.send_email(mailing_list, message)
                 time.sleep(5)
                 progress.update(1)
 
 
-    def send_emails(self, path_emails, path_message):
+    def send_emails(self, path_emails, path_message, subject):
         print(path_emails)
         status = 0
         ml_files = self.get_ml_files(path_emails)
@@ -199,7 +204,7 @@ class FromRuXiaWithLove:
                 num_buckets = len(lines) // num_emails_per_bucket
                 ml_emails = [[] for i in range(num_buckets)]
                 self.store_emails_in_buckets(lines, ml_emails)
-                self.send_emails_in_buckets(ml_emails, path_message)
+                self.send_emails_in_buckets(ml_emails, path_message, subject)
         self.update_config()
         return status
 
