@@ -34,16 +34,16 @@ class UnderTheMangoTree:
 
     def invalid_url(self, url):
         # reject invalid domains
-        for i in self.config["scrape"]["invalid_domains"]:
+        for i in self.config.data["scrape"]["invalid_domains"]:
             if i in url.lower():
                 print(">>> invalid domain...\n")
                 return True
-        for j in self.config["scrape"]["invalid_paths"]:
+        for j in self.config.data["scrape"]["invalid_paths"]:
             if j in url.lower():
                 print(">>> invalid path...\n")
                 return True
         # reject invalid file types 
-        for k in self.config["scrape"]["invalid_files"]:
+        for k in self.config.data["scrape"]["invalid_files"]:
             if url.lower().endswith(k):
                 print(">>> invalid file..\n")
                 return True
@@ -184,8 +184,8 @@ class UnderTheMangoTree:
             # get page with timeout of 10s
             try:
                 proxies = dict()
-                if self.config["scrape"]["active_proxies"]:
-                    proxies = self.config["scrape"]["proxies"]
+                if self.config.data["scrape"]["active_proxies"]:
+                    proxies = self.config.data["scrape"]["proxies"]
 
                 response = requests.get(url, headers=self.set_useragent(), proxies=proxies, timeout=10, stream=False)
                 response.encoding = "utf-8"

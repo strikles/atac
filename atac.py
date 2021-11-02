@@ -81,10 +81,7 @@ def scrape(arguments):
     #
     url = ""
     target = ""
-    config = ""
     #
-    with open('auth.json') as json_file:
-        config = json.load(json_file)
     if getattr(arguments, "url"):
         mango = atac.UnderTheMangoTree()
         url = getattr(arguments, "url")
@@ -92,11 +89,11 @@ def scrape(arguments):
     elif getattr(arguments, "target"):
         mango = atac.UnderTheMangoTree()
         target = getattr(arguments, "target")
-        mango.process_page(target, config['scrape']['targets'][target])
+        mango.process_page(target, mango.data['scrape']['targets'][target])
     else:
         # create threads
         mangos = dict()
-        for data_key, starting_url in config['scrape']['targets'].items():
+        for data_key, starting_url in mango.data['scrape']['targets'].items():
             print("{0} - {1}".format(data_key, starting_url))
             mangos[data_key] = atac.UnderTheMangoTree()
             catcher_thread = Thread(
@@ -133,9 +130,7 @@ def clean(arguments):
         leon.clean_emails(path_emails)
         leon.clean_phones(path_phones)
         
-config = {}
-with open('auth.json') as json_file:
-    config = json.load(json_file)
+config = atac.Config()
             
 # create the top-level parser
 parser = argparse.ArgumentParser()
