@@ -89,11 +89,11 @@ def scrape(arguments):
     elif getattr(arguments, "target"):
         mango = atac.UnderTheMangoTree()
         target = getattr(arguments, "target")
-        mango.process_page(target, mango.data['scrape']['targets'][target])
+        mango.process_page(target, mango.config.data['scrape']['targets'][target])
     else:
         # create threads
         mangos = dict()
-        for data_key, starting_url in mango.data['scrape']['targets'].items():
+        for data_key, starting_url in mango.config.data['scrape']['targets'].items():
             print("{0} - {1}".format(data_key, starting_url))
             mangos[data_key] = atac.UnderTheMangoTree()
             catcher_thread = Thread(
@@ -138,8 +138,8 @@ subparsers = parser.add_subparsers()
 
 # create the parser for the "send" command
 parser_email = subparsers.add_parser('email')
-parser_email.add_argument('-a', dest='auth', choices=[str(i) for i in range(len(config['send']['email']['auth']))])
-parser_email.add_argument('-c', dest='content', choices=[str(i) for i in range(len(config['send']['email']['content']))])
+parser_email.add_argument('-a', dest='auth', choices=[str(i) for i in range(len(config.data['send']['email']['auth']))])
+parser_email.add_argument('-c', dest='content', choices=[str(i) for i in range(len(config.data['send']['email']['content']))])
 parser_email.add_argument('-m', dest='message_file', type=str, help='path to message file')
 parser_email.add_argument('-e', dest='emails_file', type=str, help='path to csv dir')
 parser_email.add_argument('-s', dest='subject', type=str, help='email subject')

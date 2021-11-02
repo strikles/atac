@@ -32,14 +32,16 @@ class FromRuXiaWithLove:
 
     def __init__(self):
         self.config = Config()
+        self.email = self.config.data['email']
+        self.phone = self.config.data['phone']
+        self.social = self.config.data['social']
 
 
     def compose_email(self, auth_ndx, content_ndx, mailing_list, path_message, subject):
-        email_cfg = self.config.data['email']
-        content_index = content_ndx if content_ndx is not None else email_cfg['active_content']
-        auth_index = auth_ndx if auth_ndx is not None else email_cfg['active_auth']
-        content = email_cfg['content'][content_index]
-        auth = email_cfg['auth'][auth_index]
+        content_index = content_ndx if content_ndx is not None else self.email['active_content']
+        auth_index = auth_ndx if auth_ndx is not None else self.email['active_auth']
+        content = self.email['content'][content_index]
+        auth = self.email['auth'][auth_index]
         #
         message = MIMEMultipart("alternative")
         if subject:
@@ -77,16 +79,15 @@ class FromRuXiaWithLove:
         # reload config
         self.config.load_config()
         # get active auth
-        email_cfg = self.config.data['email']
-        content_ndx = email_cfg['active_content']
-        auth_ndx = email_cfg['active_auth']
-        auth = email_cfg['auth'][auth_ndx]
+        content_ndx = self.email['active_content']
+        auth_ndx = self.email['active_auth']
+        auth = self.email['auth'][auth_ndx]
         # set sctive to next and save config
-        if email_cfg['rotate_content']:
-            email_cfg['active_content'] = (1 + content_ndx) % len(email_cfg['content'])
+        if self.email['rotate_content']:
+            self.email['active_content'] = (1 + content_ndx) % len(self.email['content'])
         # set active auth to next and save config
-        if email_cfg['rotate_auth']:
-            email_cfg['active_auth'] = (1 + auth_ndx) % len(email_cfg['auth'])
+        if self.email['rotate_auth']:
+            self.email['active_auth'] = (1 + auth_ndx) % len(self.email['auth'])
         self.config.save_config()
 
 
@@ -141,11 +142,10 @@ class FromRuXiaWithLove:
 
 
     def send_email(self, auth_ndx, content_ndx, mailing_list, message):
-        email_cfg = self.config.data['email']
-        content_index = content_ndx if content_ndx is not None else email_cfg['active_content']
-        auth_index = auth_ndx if auth_ndx is not None else email_cfg['active_auth']
-        content = email_cfg['content'][content_index]
-        auth = email_cfg['auth'][auth_index]
+        content_index = content_ndx if content_ndx is not None else self.email['active_content']
+        auth_index = auth_ndx if auth_ndx is not None else self.email['active_auth']
+        content = self.email['content'][content_index]
+        auth = self.email['auth'][auth_index]
         # Create secure connection with server and send email
         try:
             context = ssl.create_default_context()
@@ -227,9 +227,9 @@ class FromRuXiaWithLove:
         confirm = input("Send these messages? [Y/n] ")
         if confirm[0].lower() == 'y':
             # Set up Twilio client
-            account_sid = self.config.data['phone']['twilio']['SID']
-            auth_token = self.config.data['phone']['twilio']['TOKEN']
-            from_num = self.config.data['phone']['twilio']['PHONE'] # 'From' number in Twilio
+            account_sid = self.phone['twilio']['SID']
+            auth_token = self.phone['twilio']['TOKEN']
+            from_num = self.phone['twilio']['PHONE'] # 'From' number in Twilio
             client = Client(account_sid, auth_token)
             # Send the messages
             for num in phone_numbers:
@@ -254,8 +254,8 @@ class FromRuXiaWithLove:
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
         if confirm[0].lower() == 'y':
-            user = self.config.data['phone']['yowsup']['user']
-            password = self.config.data['phone']['yowsup']['password']
+            user = self.phone['yowsup']['user']
+            password = self.phone['yowsup']['password']
             client = Client(login=user, password=password)
             # Send the messages
             for num in phone_numbers:
@@ -293,7 +293,7 @@ class FromRuXiaWithLove:
     def send_facebook(self):
         status = 0
         msg = "Hello, world!"
-        graph = facebook.GraphAPI(self.config.data['social']['facebook']['access_token'])
+        graph = facebook.GraphAPI(self.social['facebook']['access_token'])
         link = 'https://www.jcchouinard.com/'
         groups = ['744128789503859']
         for group in groups:
@@ -304,10 +304,10 @@ class FromRuXiaWithLove:
 
     def send_twitter(self):
         status = 0
-        CONSUMER_KEY = self.config.data['social']['twitter']['consumer_key']
-        CONSUMER_SECRET = self.config.data['social']['twitter']['consumer_secret']
-        ACCESS_TOKEN = self.config.data['social']['twitter']['access_token']
-        ACCESS_TOKEN_SECRET = self.config.data['social']['twitter']['access_token_secret']
+        CONSUMER_KEY = self.social['twitter']['consumer_key']
+        CONSUMER_SECRET = self.social['twitter']['consumer_secret']
+        ACCESS_TOKEN = self.social['twitter']['access_token']
+        ACCESS_TOKEN_SECRET = self.social['twitter']['access_token_secret']
         auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
         auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
         api = tweepy.API(auth)
