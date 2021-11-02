@@ -131,6 +131,9 @@ def clean(arguments):
         leon.clean_phones(path_phones)
         
 config = atac.Config()
+config.load_decrypted()
+config.save_config()
+config.load_config()
             
 # create the top-level parser
 parser = argparse.ArgumentParser()
