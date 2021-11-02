@@ -59,7 +59,32 @@ class FromRuXiaWithLove:
         return message
 
 
-    def send_email(self, path, message_file):
+    def update_config(self, email_cfg, auth_ndx, content_ndx):
+        # set sctive to next and save config
+        if email_cfg['rotate_content']:
+            email_cfg['active_content'] = (1 + content_ndx) % len(email_cfg['content'])
+        # set active auth to next and save config
+        if email_cfg['rotate_auth']:
+            email_cfg['active_auth'] = (1 + auth_ndx) % len(email_cfg['auth'])
+        with open('auth.json', 'w') as fp:
+            self.config['send']['email'] = email_cfg
+            json.dump(self.config, fp, indent=4)
+
+
+    def send_email(self, auth, mailing_list, message):
+        # Create secure connection with server and send email
+        try:
+            context = ssl.create_default_context()
+            with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
+                server.login(auth['user'], auth['password'])
+                server.sendmail(auth['sender'], mailing_list, message.as_string())
+        except Exception as err:
+            print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
+        finally:
+            print("\x1b[6;37;42m Sent \x1b[0m")
+                            
+            
+    def send_emails(self, path, message_file):
         print(path)
         status = 0
         ml_files = None
@@ -77,15 +102,7 @@ class FromRuXiaWithLove:
         # get active content
         content_ndx = email_cfg['active_content']
         content = email_cfg['content'][content_ndx]
-        # set sctive to next and save config
-        if email_cfg['rotate_content']:
-            email_cfg['active_content'] = (1 + content_ndx) % len(email_cfg['content'])
-        # set active auth to next and save config
-        if email_cfg['rotate_auth']:
-            email_cfg['active_auth'] = (1 + auth_ndx) % len(email_cfg['auth'])
-        with open('auth.json', 'w') as fp:
-            self.config['send']['email'] = email_cfg
-            json.dump(self.config, fp, indent=4)
+        self.update_config(email_cfg, auth_ndx, content_ndx)
         #
         for ml in ml_files:
             cf = path + ml
@@ -109,17 +126,7 @@ class FromRuXiaWithLove:
                     for ml_batch in ml_emails:
                         mailing_list = '; '.join(ml_batch)
                         message = self.compose_message(content, auth, mailing_list)
-                        # Create secure connection with server and send email
-                        try:
-                            context = ssl.create_default_context()
-                            with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
-                                server.login(auth['user'], auth['password'])
-                                server.sendmail(auth['sender'], mailing_list, message.as_string())
-                        except Exception as err:
-                            print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
-                        finally:
-                            print("\x1b[6;37;42m Sent \x1b[0m")
-                            
+                        self.send_email(auth, mailing_list, message)
                         time.sleep(5)
                         progress2.update(1)
         #
@@ -158,7 +165,7 @@ class FromRuXiaWithLove:
         return numbers
 
 
-    def calculate_twilio_cost(self, msg, numbers, msg_type):
+    def calculate_twilio_cost(self, msg, phone_numbers, msg_type):
         SMS_LENGTH = 160                 # Max length of one SMS message
         WHATSAPP_MSG_COST = 0.005        # Cost per message
         SMS_MSG_COST = 0.005        # Cost per message
@@ -169,13 +176,13 @@ class FromRuXiaWithLove:
         else:
             num_segments = int(len(sms.encode('utf-8')) / SMS_LENGTH) +1
         # Calculate how much it's going to cost:
-        num_messages = len(numbers)
+        num_messages = len(phone_numbers)
         cost = 0
         if msg_type == "whatsapp":
             cost = WHATSAPP_MSG_COST * num_messages
         else:
             cost = SMS_MSG_COST * num_segments * num_messages
-            print("> {} messages of {} segments each will be sent, at a cost of ${} ".format(messages, segments, cost))
+            print("> {} messages of {} segments each will be sent, at a cost of ${} ".format(num_messages, num_segments, cost))
 
 
     def send_twilio(self, path, message_file, msg_type):
@@ -190,6 +197,7 @@ class FromRuXiaWithLove:
             print("> SMS message to send: \n\n{}".format(msg))
         phone_numbers = self.get_numbers(path)
         # Check you really want to send them
+        self.calculate_twilio_cost(msg, phone_numbers, msg_type)
         confirm = input("Send these messages? [Y/n] ")
         if confirm[0].lower() == 'y':
             # Set up Twilio client

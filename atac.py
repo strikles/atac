@@ -24,7 +24,7 @@ def send(arguments):
         path_phones = getattr(arguments, "path_phones")
     #
     if "email" in target:
-        katie.send_email(path_emails, path_message)
+        katie.send_emails(path_emails, path_message)
     if "whatsapp" in target and os.environ.get('DISPLAY'):
         katie.send_pywhatkit(path_phones, path_message)
     if "sms" in target:
