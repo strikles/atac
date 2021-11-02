@@ -20,12 +20,12 @@ def email(arguments):
         content_ndx = int(getattr(arguments, "content"))
     if getattr(arguments, "subject"):
         subject = getattr(arguments, "subject")
-    if getattr(arguments, "message"):
-        path_message = getattr(arguments, "message")
+    if getattr(arguments, "message_file"):
+        path_message = getattr(arguments, "message_file")
+    if getattr(arguments, "emails_file"):
+        path_emails = getattr(arguments, "emails_file")
     if getattr(arguments, "target"):
         target = getattr(arguments, "target")
-    if getattr(arguments, "path_emails"):
-        path_emails = getattr(arguments, "path_emails")
     #
     if "smtp" in target:
         katie.send_emails(path_emails, auth_ndx, content_ndx, path_message, subject)
@@ -43,12 +43,12 @@ def phone(arguments):
         auth_ndx = int(getattr(arguments, "auth"))
     if getattr(arguments, "content"):
         content_ndx = int(getattr(arguments, "content"))
-    if getattr(arguments, "message"):
-        path_message = getattr(arguments, "message")
+    if getattr(arguments, "message_file"):
+        path_message = getattr(arguments, "message_file")
+    if getattr(arguments, "phones_file"):
+        path_phones = getattr(arguments, "phones_file")
     if getattr(arguments, "target"):
-        target = getattr(arguments, "target")
-    if getattr(arguments, "path_phones"):
-        path_phones = getattr(arguments, "path_phones")
+        type = getattr(arguments, "target")
     #
     if "whatsapp" in target and os.environ.get('DISPLAY'):
         katie.send_pywhatkit(path_phones, path_message)
@@ -66,8 +66,8 @@ def social(arguments):
         auth_ndx = int(getattr(arguments, "auth"))
     if getattr(arguments, "content"):
         content_ndx = int(getattr(arguments, "content"))
-    if getattr(arguments, "message"):
-        path_message = getattr(arguments, "message")
+    if getattr(arguments, "message_file"):
+        path_message = getattr(arguments, "message_file")
     if getattr(arguments, "target"):
         target = getattr(arguments, "target")
     #
@@ -145,19 +145,21 @@ subparsers = parser.add_subparsers()
 parser_email = subparsers.add_parser('email')
 parser_email.add_argument('-a', dest='auth', choices=[str(i) for i in range(len(config['send']['email']['auth']))])
 parser_email.add_argument('-c', dest='content', choices=[str(i) for i in range(len(config['send']['email']['content']))])
-parser_email.add_argument('-m', dest='message', type=str, help='path to message file')
-parser_email.add_argument('-e', dest='path_emails', type=str, help='path to csv dir')
+parser_email.add_argument('-m', dest='message_file', type=str, help='path to message file')
+parser_email.add_argument('-e', dest='emails_file', type=str, help='path to csv dir')
 parser_email.add_argument('-s', dest='subject', type=str, help='email subject')
-parser_email.add_argument('-t', dest='target', choices=['smtp', 'pinpoint'])
+parser_email.add_argument('-t', dest='target', choices=['smtp', 'aws'])
 parser_email.set_defaults(func=email)
 
 # create the parser for the "send" command
 parser_phone = subparsers.add_parser('phone')
 parser_phone.add_argument('-a', dest='auth', choices=[str(i) for i in range(len(config['send']['email']['auth']))])
 parser_phone.add_argument('-c', dest='content', choices=[str(i) for i in range(len(config['send']['email']['content']))])
-parser_phone.add_argument('-m', dest='message', type=str, help='path to message file')
-parser_phone.add_argument('-p', dest='path_phones', type=str, help='path to csv dir')
+parser_phone.add_argument('-m', dest='message_file', type=str, help='path to message file')
+parser_phone.add_argument('-p', dest='phones_file', type=str, help='path to csv dir')
 parser_phone.add_argument('-t', dest='target', choices=['whatsapp', 'sms'])
+parser_email.add_argument('-w', dest='whatsapp', choices=['pywhatkit', 'twilio', 'yowsup'])
+parser_email.add_argument('-s', dest='sms', choices=['aws', 'twilio'])
 parser_phone.set_defaults(func=phone)
 
 # create the parser for the "send" command
