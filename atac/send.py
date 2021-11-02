@@ -189,7 +189,7 @@ class FromRuXiaWithLove:
             print(cf)
             with open(cf) as file:
                 lines = [line for line in file]
-                num_emails_per_bucket = 1
+                num_emails_per_bucket = 10
                 num_buckets = len(lines) // num_emails_per_bucket
                 ml_emails = [[] for i in range(num_buckets)]
                 self.store_emails_in_buckets(lines, ml_emails)
