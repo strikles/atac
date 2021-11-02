@@ -34,7 +34,7 @@ class FromRuXiaWithLove:
             self.config = json.load(json_file)
 
 
-    def compose_message(self, auth_ndx, content_ndx, mailing_list, path_message, subject):
+    def compose_email(self, auth_ndx, content_ndx, mailing_list, path_message, subject):
         email_cfg = self.config['send']['email']
         content_index = content_ndx if content_ndx is not None else email_cfg['active_content']
         auth_index = auth_ndx if auth_ndx is not None else email_cfg['active_auth']
@@ -178,7 +178,7 @@ class FromRuXiaWithLove:
         with tqdm(total=len(ml_emails)) as progress:
             for ml_batch in ml_emails:
                 mailing_list = '; '.join(ml_batch)
-                message = self.compose_message(mailing_list, path_message, subject)
+                message = self.compose_email(mailing_list, path_message, subject)
                 self.send_email(mailing_list, message)
                 time.sleep(5)
                 progress.update(1)
