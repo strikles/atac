@@ -59,7 +59,13 @@ class FromRuXiaWithLove:
         return message
 
 
-    def update_config(self, email_cfg, auth_ndx, content_ndx):
+    def update_config(self):
+        # get active auth
+        email_cfg = self.config['send']['email']
+        auth_ndx = email_cfg['active_auth']
+        auth = email_cfg['auth'][auth_ndx]
+        # get active content
+        content_ndx = email_cfg['active_content']
         # set sctive to next and save config
         if email_cfg['rotate_content']:
             email_cfg['active_content'] = (1 + content_ndx) % len(email_cfg['content'])
@@ -82,8 +88,31 @@ class FromRuXiaWithLove:
             print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
         finally:
             print("\x1b[6;37;42m Sent \x1b[0m")
-                            
             
+            
+    def store_emails_in_buckets(self, lines, ml_emails):
+        ml_counter = 0
+        num_buckets = len(lines)
+        with tqdm(total=len(lines)) as progress:
+            for ndx, receiver_email in csv.reader(lines):
+                if checkers.is_email(receiver_email):
+                    current_bucket = ml_counter % num_buckets      
+                    ml_emails[current_bucket].append(receiver_email)
+                    ml_counter += 1
+                    progress.update(1)
+
+
+    def send_emails_in_buckets(self, ml_emails):
+        content = email_cfg['content'][content_ndx]
+        auth = email_cfg['auth'][auth_ndx]
+        with tqdm(total=len(ml_emails)) as progress:
+            for ml_batch in ml_emails:
+                mailing_list = '; '.join(ml_batch)
+                message = self.compose_message(content, auth, mailing_list)
+                self.send_email(auth, mailing_list, message)
+                time.sleep(5)
+                progress.update(1)
+                        
     def send_emails(self, path, message_file):
         print(path)
         status = 0
@@ -95,14 +124,8 @@ class FromRuXiaWithLove:
         # reload config
         with open('auth.json') as json_file:
             self.config = json.load(json_file)
-        # get active auth
-        email_cfg = self.config['send']['email']
-        auth_ndx = email_cfg['active_auth']
-        auth = email_cfg['auth'][auth_ndx]
-        # get active content
-        content_ndx = email_cfg['active_content']
-        content = email_cfg['content'][content_ndx]
-        self.update_config(email_cfg, auth_ndx, content_ndx)
+        #
+        self.update_config()
         #
         for ml in ml_files:
             cf = path + ml
@@ -112,23 +135,8 @@ class FromRuXiaWithLove:
                 num_emails_per_bucket = 1
                 num_buckets = len(lines) // num_emails_per_bucket
                 ml_emails = [[] for i in range(num_buckets)]
-                ml_counter = 0
-                #
-                with tqdm(total=len(lines)) as progress:
-                    for ndx, receiver_email in csv.reader(lines):
-                        if checkers.is_email(receiver_email):
-                            current_bucket = ml_counter % num_buckets      
-                            ml_emails[current_bucket].append(receiver_email)
-                            ml_counter += 1
-                        progress.update(1)
-                #
-                with tqdm(total=len(ml_emails)) as progress2:
-                    for ml_batch in ml_emails:
-                        mailing_list = '; '.join(ml_batch)
-                        message = self.compose_message(content, auth, mailing_list)
-                        self.send_email(auth, mailing_list, message)
-                        time.sleep(5)
-                        progress2.update(1)
+                self.store_emails_in_buckets(lines, ml_emails)
+                self.send_emails_in_buckets(ml_emails)
         #
         return status
 
