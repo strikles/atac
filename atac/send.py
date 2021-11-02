@@ -36,8 +36,8 @@ class FromRuXiaWithLove:
 
     def compose_message(self, auth_ndx, content_ndx, mailing_list, path_message, subject):
         email_cfg = self.config['send']['email']
-        content_index = content_ndx ? content_ndx : email_cfg['active_content']
-        auth_index = auth_ndx ? auth_ndx : email_cfg['active_auth']
+        content_index = content_ndx if content_ndx is not None else email_cfg['active_content']
+        auth_index = auth_ndx if auth_ndx is not None else email_cfg['active_auth']
         content = email_cfg['content'][content_index]
         auth = email_cfg['auth'][auth_index]
         #
