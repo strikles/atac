@@ -1,0 +1,210 @@
+{
+    "scrape": {
+        "active_proxies": false,
+        "targets": {
+            "museums": "https://curlie.org/en/Reference/Museums/Arts_and_Entertainment/Art_Museums",
+            "embassies": "https://curlie.org/en/Society/Government/Embassies_and_Consulates/By_Country_of_Origin",
+            "activism": "https://curlie.org/en/Society/Activism",
+            "education": "https://curlie.org/en/Reference/Education",
+            "religion": "https://curlie.org/en/Society/Religion_and_Spirituality/",
+            "rescue": "https://curlie.org/Society/Religion_and_Spirituality/Christianity/Organizations/Rescue/",
+            "addiction": "https://curlie.org/en/Health/Addictions/",
+            "music": "https://curlie.org/en/Arts/Music/Bands_and_Artists/",
+            "journalists": "https://curlie.org/en/News/Journalism/",
+            "defense": "https://curlie.org/en/Business/Aerospace_and_Defense/Defense/",
+            "ukraine": "https://curlie.org/en/Regional/Europe/Ukraine/",
+            "islam": "https://curlie.org/en/Society/Religion_and_Spirituality/Islam/"
+        },
+        "proxies": {
+            "http": "http://10.10.1.10:3128",
+            "https": "http://10.10.1.10:1080"
+        },
+        "invalid_domains": [
+            "adobe.",
+            "aerialtelly.",
+            "allmovie",
+            "altavista.",
+            "amazon.",
+            "aol.",
+            "apache.",
+            "apple.",
+            "ask.",
+            "bing.",
+            "creativecommons.",
+            "debian.",
+            "dmoz.",
+            "domaintools.",
+            "duckduckgo.",
+            "ecosia.",
+            "facebook.",
+            "github.",
+            "google.",
+            "imdb.",
+            "justgiving.",
+            "movieinsider.",
+            "mozilla.",
+            "musicmoz.",
+            "oracle.",
+            "patreon.",
+            "phpbb.",
+            "reddit.",
+            "rottentomatoes.",
+            "startpage.",
+            "symfony.",
+            "w3.",
+            "wikipedia.",
+            "wikimedia.",
+            "wordpress.",
+            "xmlmind.",
+            "yahoo.",
+            "yandex.",
+            "yelp.",
+            "youtube."
+        ],
+        "invalid_paths": [
+            "forum",
+            "admin",
+            "auth"
+        ],
+        "invalid_files": [
+            ".pdf",
+            ".iso",
+            ".gz",
+            ".bz2",
+            ".tar",
+            ".zip",
+            ".jpg",
+            ".jpeg",
+            ".mp3",
+            ".mp4",
+            ".png",
+            ".svg",
+            ".gif",
+            ".webp",
+            ".yji",
+            ".css",
+            ".js"
+        ]
+    },
+    "email": {
+        "rotate_content": false,
+        "rotate_auth": false,
+        "active_content": 2,
+        "active_auth": 4,
+        "auth": [
+            {
+                "sender": "opvs.minor@gmail.com",
+                "server": "smtp.gmail.com",
+                "port": 465,
+                "user": "opvs.minor@gmail.com",
+                "password": "zadyikogigkirvhl"
+            },
+            {
+                "sender": "jmitrola@gmail.com",
+                "server": "smtp.gmail.com",
+                "port": 465,
+                "user": "jmitrola@gmail.com",
+                "password": "fgmebagraxjtcmcw"
+            },
+            {
+                "sender": "anticybertorture@gmail.com",
+                "server": "smtp.gmail.com",
+                "port": 465,
+                "user": "anticybertorture@gmail.com",
+                "password": "jzuqbyzanrhgemyn"
+            },
+            {
+                "sender": "claudio.andre.neto@gmail.com",
+                "server": "smtp.gmail.com",
+                "port": 465,
+                "user": "claudio.andre.neto@gmail.com",
+                "password": "jfkriuoxgbuntvoi"
+            },
+            {
+                "sender": "nicholas_willis@revolute.awsapps.com",
+                "server": "smtp.mail.eu-west-1.awsapps.com",
+                "port": 465,
+                "user": "nicholas_willis@revolute.awsapps.com",
+                "password": "4_WWLt@_ufvSC9r"
+            },
+            {
+                "sender": "anticybertorture@anticybertorture.awsapps.com",
+                "server": "smtp.mail.eu-west-1.awsapps.com",
+                "port": 465,
+                "user": "anticybertorture@anticybertorture.awsapps.com",
+                "password": "oEBrbQcMEpFrUWF0NRQcanXbrIVe1kHuypHGplzqtSc"
+            }
+        ],
+        "content": [
+            {
+                "subject": "Political asylum - Cl\u00e1udio Andr\u00e9 Silva Nunes Marques Neto (ID 11229457)",
+                "markdown": "political_asylum.md"
+            },
+            {
+                "subject": "General Ramalho Eanes and Cybertorture Worldwide",
+                "markdown": "general_ramalho_eanes.md"
+            },
+            {
+                "subject": "Sign the petition to either close Colégio Militar (largo da Luz, Portugal) or reform and bring dignity to the school",
+                "markdown": "demonic_school.md"
+            },
+            {
+                "subject": "cybertorture worldwide since 2016, tapada crew and eenvoudagency criminal associates and Col\u00e9gio Militar alumni (largo da luz. Portugal)",
+                "markdown": "cybertorture.md"
+            },
+            {
+                "subject": "cybertorture, cybersodomy extrajudicial sentences, forced drug addiction and simulated Van Gogh syndrome in Portugal and amongst Col\u00e9gio Militar alumni",
+                "markdown": "ppl.md"
+            },
+            {
+                "subject": "Neuromodulation of brainstates versus extrajudicial cybertorture, cybersodomy, cyberguiche enslavement, faith trials and psychiatric fraud",
+                "markdown": "neuromodulation.md"
+            },
+            {
+                "subject": "Demonic Cybertorture extrajudicial rituals of forced self-mutilation of ears and genitalia by colegio militar alumni",
+                "markdown": "synthetic_van_gogh.md"
+            },
+            {
+                "subject": "colegio militar alumni, jasper kums and synthetic premature ejaculation to force suicide",
+                "markdown": "synthetic_premacum_shows.md"
+            }
+        ]
+    },
+    "social": {
+        "twitter": {
+            "consumer_key": "",
+            "consumer_secret": "",
+            "access_token": "",
+            "access_token_secret": "",
+            "handles": [
+                "@UNPOL @UNODC @WHO @Cyber_Torture @theintercept",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ]
+        },
+        "facebook": {
+            "page_id": "",
+            "access_token": ""
+        }
+    },
+    "phone": {
+        "twilio": {
+            "PHONE": "+3197010252578",
+            "SID": "AC7673de4db6607faff5ca555001b4c2bc",
+            "TOKEN": "a49e04df966bfb6604ed6d3a0fa5769b"
+        },
+        "yowsup": {
+            "user": "3197010252578",
+            "password": "yourpassword"
+        }
+    },
+    "compose": {}
+    }

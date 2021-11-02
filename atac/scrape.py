@@ -12,6 +12,8 @@ from collections import deque
 from bs4 import BeautifulSoup
 from functools import reduce
 from email_validator import validate_email, EmailNotValidError
+from .config import Config
+
 
 class UnderTheMangoTree:
 
@@ -27,9 +29,7 @@ class UnderTheMangoTree:
         self.phones = set()
         self.num_phones = 0
         self.num_emails = 0
-        self.config = {}
-        with open('auth.json') as json_file:
-            self.config = json.load(json_file)
+        self.config = Config()
 
 
     def invalid_url(self, url):

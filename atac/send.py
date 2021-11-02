@@ -24,18 +24,18 @@ if os.environ.get('DISPLAY'):
 import facebook
 import tweepy
 
+from .config import Config
+
 
 class FromRuXiaWithLove:
 
 
     def __init__(self):
-        self.config = {}
-        with open('auth.json') as json_file:
-            self.config = json.load(json_file)
+        self.config = Config()
 
 
     def compose_email(self, auth_ndx, content_ndx, mailing_list, path_message, subject):
-        email_cfg = self.config['email']
+        email_cfg = self.config.data['email']
         content_index = content_ndx if content_ndx is not None else email_cfg['active_content']
         auth_index = auth_ndx if auth_ndx is not None else email_cfg['active_auth']
         content = email_cfg['content'][content_index]
@@ -75,10 +75,9 @@ class FromRuXiaWithLove:
 
     def update_config(self):
         # reload config
-        with open('auth.json') as json_file:
-            self.config = json.load(json_file)
+        self.config.load_config()
         # get active auth
-        email_cfg = self.config['email']
+        email_cfg = self.config.data['email']
         content_ndx = email_cfg['active_content']
         auth_ndx = email_cfg['active_auth']
         auth = email_cfg['auth'][auth_ndx]
@@ -88,9 +87,7 @@ class FromRuXiaWithLove:
         # set active auth to next and save config
         if email_cfg['rotate_auth']:
             email_cfg['active_auth'] = (1 + auth_ndx) % len(email_cfg['auth'])
-        with open('auth.json', 'w') as fp:
-            self.config['email'] = email_cfg
-            json.dump(self.config, fp, indent=4)
+        self.config.save_config()
 
 
     def get_ml_files(self, path):
@@ -144,7 +141,7 @@ class FromRuXiaWithLove:
 
 
     def send_email(self, auth_ndx, content_ndx, mailing_list, message):
-        email_cfg = self.config['email']
+        email_cfg = self.config.data['email']
         content_index = content_ndx if content_ndx is not None else email_cfg['active_content']
         auth_index = auth_ndx if auth_ndx is not None else email_cfg['active_auth']
         content = email_cfg['content'][content_index]
@@ -230,9 +227,9 @@ class FromRuXiaWithLove:
         confirm = input("Send these messages? [Y/n] ")
         if confirm[0].lower() == 'y':
             # Set up Twilio client
-            account_sid = self.config['phone']['twilio']['SID']
-            auth_token = self.config['phone']['twilio']['TOKEN']
-            from_num = self.config['phone']['twilio']['PHONE'] # 'From' number in Twilio
+            account_sid = self.config.data['phone']['twilio']['SID']
+            auth_token = self.config.data['phone']['twilio']['TOKEN']
+            from_num = self.config.data['phone']['twilio']['PHONE'] # 'From' number in Twilio
             client = Client(account_sid, auth_token)
             # Send the messages
             for num in phone_numbers:
@@ -257,8 +254,8 @@ class FromRuXiaWithLove:
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
         if confirm[0].lower() == 'y':
-            user = self.config['phone']['yowsup']['user']
-            password = self.config['phone']['yowsup']['password']
+            user = self.config.data['phone']['yowsup']['user']
+            password = self.config.data['phone']['yowsup']['password']
             client = Client(login=user, password=password)
             # Send the messages
             for num in phone_numbers:
@@ -296,7 +293,7 @@ class FromRuXiaWithLove:
     def send_facebook(self):
         status = 0
         msg = "Hello, world!"
-        graph = facebook.GraphAPI(self.config['social']['facebook']['access_token'])
+        graph = facebook.GraphAPI(self.config.data['social']['facebook']['access_token'])
         link = 'https://www.jcchouinard.com/'
         groups = ['744128789503859']
         for group in groups:
@@ -307,10 +304,10 @@ class FromRuXiaWithLove:
 
     def send_twitter(self):
         status = 0
-        CONSUMER_KEY = self.config['social']['twitter']['consumer_key']
-        CONSUMER_SECRET = self.config['social']['twitter']['consumer_secret']
-        ACCESS_TOKEN = self.config['social']['twitter']['access_token']
-        ACCESS_TOKEN_SECRET = self.config['social']['twitter']['access_token_secret']
+        CONSUMER_KEY = self.config.data['social']['twitter']['consumer_key']
+        CONSUMER_SECRET = self.config.data['social']['twitter']['consumer_secret']
+        ACCESS_TOKEN = self.config.data['social']['twitter']['access_token']
+        ACCESS_TOKEN_SECRET = self.config.data['social']['twitter']['access_token_secret']
         auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
         auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
         api = tweepy.API(auth)

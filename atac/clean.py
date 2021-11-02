@@ -11,6 +11,8 @@ from email_validator import validate_email, EmailNotValidError
 import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
 
+from .config import Config
+
 """
     Type of phone numbers.
     FIXED_LINE = 0
@@ -47,9 +49,7 @@ class Leon:
 
 
     def __init__(self):
-        self.config = {}
-        with open('auth.json') as json_file:
-            self.config = json.load(json_file)
+        self.config = Config()
 
 
     def clean_phones(self, path):
