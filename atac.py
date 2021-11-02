@@ -16,9 +16,9 @@ def send(arguments):
     subject = None
     #
     if getattr(arguments, "auth"):
-        auth_ndx = getattr(arguments, "auth")
+        auth_ndx = int(getattr(arguments, "auth"))
     if getattr(arguments, "content"):
-        content_ndx = getattr(arguments, "content")
+        content_ndx = int(getattr(arguments, "content"))
     if getattr(arguments, "subject"):
         subject = getattr(arguments, "subject")
     if getattr(arguments, "message"):
@@ -108,8 +108,8 @@ subparsers = parser.add_subparsers()
 
 # create the parser for the "send" command
 parser_send = subparsers.add_parser('send')
-parser_send.add_argument('-a', dest='auth', choices=[i for i in range(len(config['send']['email']['auth']))])
-parser_send.add_argument('-c', dest='content', choices=[i for i in range(len(config['send']['email']['content']))])
+parser_send.add_argument('-a', dest='auth', choices=[str(i) for i in range(len(config['send']['email']['auth']))])
+parser_send.add_argument('-c', dest='content', choices=[str(i) for i in range(len(config['send']['email']['content']))])
 parser_send.add_argument('-m', dest='message', type=str, help='path to message file')
 parser_send.add_argument('-e', dest='path_emails', type=str, help='path to csv dir')
 parser_send.add_argument('-p', dest='path_phones', type=str, help='path to csv dir')
