@@ -15,7 +15,7 @@ from email.mime.multipart import MIMEMultipart
 from twilio.rest import Client
 from .whatsapp import Client
 
-if os.environ.has_key('DISPLAY'):
+if os.environ.get('DISPLAY'):
     from pywhatkit import *
 
 import facebook
@@ -243,7 +243,7 @@ class FromRuXiaWithLove:
         #
         print("Exiting!")
 
-    if os.environ.has_key('DISPLAY'):
+    if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, path, message_file):
             # Now put your SMS in a file called message.txt, and it will be read from there.
             with open(message_file, encoding="utf8") as content_file:
