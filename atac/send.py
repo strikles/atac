@@ -136,6 +136,10 @@ class FromRuXiaWithLove:
 
 
     def send_email(self, mailing_list, message):
+        email_cfg = self.config['send']['email']
+        content_ndx = email_cfg['active_content']
+        auth_ndx = email_cfg['active_auth']
+        content = email_cfg['content'][content_ndx]
         auth = email_cfg['auth'][auth_ndx]
         # Create secure connection with server and send email
         try:
