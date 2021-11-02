@@ -178,7 +178,7 @@ class FromRuXiaWithLove:
         with tqdm(total=len(ml_emails)) as progress:
             for ml_batch in ml_emails:
                 mailing_list = '; '.join(ml_batch)
-                message = self.compose_email(mailing_list, path_message, subject)
+                message = self.compose_email(auth_ndx, content_ndx, mailing_list, path_message, subject)
                 self.send_email(auth_ndx, content_ndx, mailing_list, message)
                 time.sleep(5)
                 progress.update(1)
