@@ -7,12 +7,11 @@ import atac
 
 
 # sub-command functions
-def send(arguments):
+def email(arguments):
     #
     katie = atac.FromRuXiaWithLove()
-    target = "email"
+    target = "smtp"
     path_emails = os.path.dirname(os.path.abspath(__file__)) + "/contacts/emails/"
-    path_phones = os.path.dirname(os.path.abspath(__file__)) + "/contacts/phones/"
     subject = None
     #
     if getattr(arguments, "auth"):
@@ -27,15 +26,51 @@ def send(arguments):
         target = getattr(arguments, "target")
     if getattr(arguments, "path_emails"):
         path_emails = getattr(arguments, "path_emails")
+    #
+    if "smtp" in target:
+        katie.send_emails(path_emails, auth_ndx, content_ndx, path_message, subject)
+
+
+# sub-command functions
+def phone(arguments):
+    #
+    katie = atac.FromRuXiaWithLove()
+    target = "whatsapp"
+    path_phones = os.path.dirname(os.path.abspath(__file__)) + "/contacts/phones/"
+    subject = None
+    #
+    if getattr(arguments, "auth"):
+        auth_ndx = int(getattr(arguments, "auth"))
+    if getattr(arguments, "content"):
+        content_ndx = int(getattr(arguments, "content"))
+    if getattr(arguments, "message"):
+        path_message = getattr(arguments, "message")
+    if getattr(arguments, "target"):
+        target = getattr(arguments, "target")
     if getattr(arguments, "path_phones"):
         path_phones = getattr(arguments, "path_phones")
     #
-    if "email" in target:
-        katie.send_emails(path_emails, auth_ndx, content_ndx, path_message, subject)
     if "whatsapp" in target and os.environ.get('DISPLAY'):
         katie.send_pywhatkit(path_phones, path_message)
     if "sms" in target:
         katie.send_twilio(path_phones, path_message, 'sms')
+
+
+# sub-command functions
+def social(arguments):
+    #
+    katie = atac.FromRuXiaWithLove()
+    target = "twitter"
+    #
+    if getattr(arguments, "auth"):
+        auth_ndx = int(getattr(arguments, "auth"))
+    if getattr(arguments, "content"):
+        content_ndx = int(getattr(arguments, "content"))
+    if getattr(arguments, "message"):
+        path_message = getattr(arguments, "message")
+    if getattr(arguments, "target"):
+        target = getattr(arguments, "target")
+    #
     if "facebook" in target:
         katie.send_facebook()
     if "twitter" in target:
@@ -47,7 +82,7 @@ def scrape(arguments):
     url = ""
     target = ""
     config = ""
-
+    #
     with open('auth.json') as json_file:
         config = json.load(json_file)
     if getattr(arguments, "url"):
@@ -107,15 +142,31 @@ parser = argparse.ArgumentParser()
 subparsers = parser.add_subparsers()
 
 # create the parser for the "send" command
-parser_send = subparsers.add_parser('send')
-parser_send.add_argument('-a', dest='auth', choices=[str(i) for i in range(len(config['send']['email']['auth']))])
-parser_send.add_argument('-c', dest='content', choices=[str(i) for i in range(len(config['send']['email']['content']))])
-parser_send.add_argument('-m', dest='message', type=str, help='path to message file')
-parser_send.add_argument('-e', dest='path_emails', type=str, help='path to csv dir')
-parser_send.add_argument('-p', dest='path_phones', type=str, help='path to csv dir')
-parser_send.add_argument('-s', dest='subject', type=str, help='email subject')
-parser_send.add_argument('-t', dest='target', choices=['email', 'facebook', 'twitter', 'whatsapp', 'sms', 'all'])
-parser_send.set_defaults(func=send)
+parser_email = subparsers.add_parser('email')
+parser_email.add_argument('-a', dest='auth', choices=[str(i) for i in range(len(config['send']['email']['auth']))])
+parser_email.add_argument('-c', dest='content', choices=[str(i) for i in range(len(config['send']['email']['content']))])
+parser_email.add_argument('-m', dest='message', type=str, help='path to message file')
+parser_email.add_argument('-e', dest='path_emails', type=str, help='path to csv dir')
+parser_email.add_argument('-s', dest='subject', type=str, help='email subject')
+parser_email.add_argument('-t', dest='target', choices=['smtp', 'pinpoint'])
+parser_email.set_defaults(func=email)
+
+# create the parser for the "send" command
+parser_phone = subparsers.add_parser('phone')
+parser_phone.add_argument('-a', dest='auth', choices=[str(i) for i in range(len(config['send']['email']['auth']))])
+parser_phone.add_argument('-c', dest='content', choices=[str(i) for i in range(len(config['send']['email']['content']))])
+parser_phone.add_argument('-m', dest='message', type=str, help='path to message file')
+parser_phone.add_argument('-p', dest='path_phones', type=str, help='path to csv dir')
+parser_phone.add_argument('-t', dest='target', choices=['whatsapp', 'sms'])
+parser_phone.set_defaults(func=phone)
+
+# create the parser for the "send" command
+parser_social = subparsers.add_parser('social')
+parser_social.add_argument('-a', dest='auth', choices=[str(i) for i in range(len(config['send']['email']['auth']))])
+parser_social.add_argument('-c', dest='content', choices=[str(i) for i in range(len(config['send']['email']['content']))])
+parser_social.add_argument('-m', dest='message', type=str, help='path to message file')
+parser_social.add_argument('-t', dest='target', choices=['facebook', 'twitter'])
+parser_social.set_defaults(func=social)
 
 # create the parser for the "scrape" command
 parser_scrape = subparsers.add_parser('scrape')
