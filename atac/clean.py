@@ -50,6 +50,7 @@ class Leon:
 
     def __init__(self):
         self.config = Config()
+        self.config.load_config()
 
 
     def clean_phones(self, path):
