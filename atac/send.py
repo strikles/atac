@@ -71,10 +71,9 @@ class FromRuXiaWithLove:
             self.config = json.load(json_file)
         # get active auth
         email_cfg = self.config['send']['email']
+        content_ndx = email_cfg['active_content']
         auth_ndx = email_cfg['active_auth']
         auth = email_cfg['auth'][auth_ndx]
-        # get active content
-        content_ndx = email_cfg['active_content']
         # set sctive to next and save config
         if email_cfg['rotate_content']:
             email_cfg['active_content'] = (1 + content_ndx) % len(email_cfg['content'])
@@ -164,6 +163,8 @@ class FromRuXiaWithLove:
 
     def send_emails_in_buckets(self, ml_emails):
         email_cfg = self.config['send']['email']
+        content_ndx = email_cfg['active_content']
+        auth_ndx = email_cfg['active_auth']
         content = email_cfg['content'][content_ndx]
         auth = email_cfg['auth'][auth_ndx]
         with tqdm(total=len(ml_emails)) as progress:
