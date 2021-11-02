@@ -264,7 +264,7 @@ class FromRuXiaWithLove:
 
     def send_pywhatkit(self, path, message_file):
         # Now put your SMS in a file called message.txt, and it will be read from there.
-        with open(message_file, 'r') as content_file:
+        with open(message_file, encoding="utf8", 'r') as content_file:
             sms = content_file.read()
         # Check we read a message OK
         if len(sms.strip()) == 0:
