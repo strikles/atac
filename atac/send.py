@@ -46,7 +46,7 @@ class FromRuXiaWithLove:
         message = MIMEMultipart("alternative")
         if subject:
             message["Subject"] = subject
-        else if path_message:
+        elif path_message:
             message["Subject"] = ""
         else:
             message["Subject"] = content['subject']
