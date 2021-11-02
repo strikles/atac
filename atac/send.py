@@ -130,7 +130,7 @@ class FromRuXiaWithLove:
         return numbers
 
 
-    def get_msg(message_file):
+    def get_msg(self, message_file):
         # Now put your SMS in a file called message.txt, and it will be read from there.
         with open(message_file, encoding="utf8") as content_file:
             msg = content_file.read()
