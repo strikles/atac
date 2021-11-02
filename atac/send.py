@@ -163,18 +163,18 @@ class FromRuXiaWithLove:
         WHATSAPP_MSG_COST = 0.005        # Cost per message
         SMS_MSG_COST = 0.005        # Cost per message
         # How many segments is this message going to use?
-        segments = 0
+        num_segments = 0
         if msg_type == "whatsapp":
-            segments = 1
+            num_segments = 1
         else:
-            segments = int(len(sms.encode('utf-8')) / SMS_LENGTH) +1
+            num_segments = int(len(sms.encode('utf-8')) / SMS_LENGTH) +1
         # Calculate how much it's going to cost:
-        messages = len(numbers)
+        num_messages = len(numbers)
         cost = 0
         if msg_type == "whatsapp":
-            cost = WHATSAPP_MSG_COST * messages
+            cost = WHATSAPP_MSG_COST * num_messages
         else:
-            cost = SMS_MSG_COST * segments * messages
+            cost = SMS_MSG_COST * num_segments * num_messages
             print("> {} messages of {} segments each will be sent, at a cost of ${} ".format(messages, segments, cost))
 
 
@@ -187,8 +187,8 @@ class FromRuXiaWithLove:
             print("SMS message not specified- please make a {}' file containing it. \r\nExiting!".format(message_file))
             sys.exit(1)
         else:
-            print("> SMS message to send: \n\n{}".format(sms))
-        numbers = self.get_numbers(path)
+            print("> SMS message to send: \n\n{}".format(msg))
+        phone_numbers = self.get_numbers(path)
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
         if confirm[0].lower() == 'y':
@@ -198,7 +198,7 @@ class FromRuXiaWithLove:
             from_num = self.config['send']['twilio']['PHONE'] # 'From' number in Twilio
             client = Client(account_sid, auth_token)
             # Send the messages
-            for num in numbers:
+            for num in phone_numbers:
                 try:
                     # Send the sms text to the number from the CSV file:
                     if msg_type == "whatsapp":
@@ -224,7 +224,7 @@ class FromRuXiaWithLove:
             sys.exit(1)
         else:
             print("> SMS message to send: \n\n{}".format(msg))
-        numbers = self.get_numbers(path)
+        phone_numbers = self.get_numbers(path)
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
         if confirm[0].lower() == 'y':
@@ -232,7 +232,7 @@ class FromRuXiaWithLove:
             password = self.config['send']['yowsup']['password']
             client = Client(login=user, password=password)
             # Send the messages
-            for num in numbers:
+            for num in phone_numbers:
                 try:
                     print("Sending to " + num)
                     client.send_message(num, msg)
@@ -254,12 +254,12 @@ class FromRuXiaWithLove:
                 sys.exit(1)
             else:
                 print("> SMS message to send: \n\n{}".format(msg))
-            numbers = self.get_numbers(path)
+            phone_numbers = self.get_numbers(path)
             # Check you really want to send them
             confirm = input("Send these messages? [Y/n] ")
             if confirm[0].lower() == 'y':
                 # Send the messages
-                for num in numbers:
+                for num in phone_numbers:
                     try:
                         print("Sending to " + num)
                         pywhatkit.sendwhatmsg_instantly(num, msg, 15, True, 5)
