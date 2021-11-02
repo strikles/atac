@@ -6,26 +6,24 @@ import csv
 import json
 import markdown
 import time
+from random import randint
+from tqdm import tqdm
+
 from bs4 import BeautifulSoup
 from validator_collection import checkers
-
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+import phonenumbers
+from phonenumbers import NumberParseException, phonenumberutil
 from twilio.rest import Client
 from .whatsapp import Client
-
 if os.environ.get('DISPLAY'):
     from pywhatkit import *
 
 import facebook
 import tweepy
-from random import randint
 
-import phonenumbers
-from phonenumbers import NumberParseException, phonenumberutil
-
-from tqdm import tqdm
 
 class FromRuXiaWithLove:
 
@@ -121,7 +119,8 @@ class FromRuXiaWithLove:
                 self.send_email(mailing_list, message)
                 time.sleep(5)
                 progress.update(1)
-                        
+
+
     def send_emails(self, path, message_file):
         print(path)
         status = 0
@@ -267,6 +266,7 @@ class FromRuXiaWithLove:
                     time.sleep(1)
         #
         print("Exiting!")
+
 
     if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, path, message_file):
