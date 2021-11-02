@@ -66,6 +66,9 @@ class FromRuXiaWithLove:
 
 
     def update_config(self):
+        # reload config
+        with open('auth.json') as json_file:
+            self.config = json.load(json_file)
         # get active auth
         email_cfg = self.config['send']['email']
         auth_ndx = email_cfg['active_auth']
@@ -81,6 +84,43 @@ class FromRuXiaWithLove:
         with open('auth.json', 'w') as fp:
             self.config['send']['email'] = email_cfg
             json.dump(self.config, fp, indent=4)
+
+
+    def get_ml_files(self, path):
+        ml_files = None
+        if os.path.isdir(path):
+            ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
+        elif os.path.isfile(path):
+            ml_files = [path]
+        return ml_files
+
+
+    def get_numbers(self, path):
+        # Open the people CSV and get all the numbers out of it
+        numbers = []
+        ml_files = self.get_ml_files(path)
+        #
+        for ml in ml_files:
+            if os.path.isdir(path):
+                cf = path + ml
+            elif os.path.isfile(path):
+                cf = ml
+            print(cf)
+            with open(cf) as file:
+                lines = [line for line in file]
+                with tqdm(total=len(lines)) as progress:
+                    for ndx, phone in csv.reader(lines):
+                        print(phone)
+                        try:
+                            z = phonenumbers.parse(phone)
+                            valid_number = phonenumbers.is_valid_number(z)
+                            if valid_number:
+                                line_type = phonenumberutil.number_type(z)
+                                if line_type == 1:
+                                    numbers.append(phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164))
+                        except NumberParseException as e:
+                            print(str(e))
+        return numbers
 
 
     def send_email(self, mailing_list, message):
@@ -124,17 +164,7 @@ class FromRuXiaWithLove:
     def send_emails(self, path, message_file):
         print(path)
         status = 0
-        ml_files = None
-        if os.path.isdir(path):
-            ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
-        elif os.path.isfile(path):
-            ml_files = [path]
-        # reload config
-        with open('auth.json') as json_file:
-            self.config = json.load(json_file)
-        #
-        self.update_config()
-        #
+        ml_files = self.get_ml_files(path)
         for ml in ml_files:
             cf = path + ml
             print(cf)
@@ -145,40 +175,8 @@ class FromRuXiaWithLove:
                 ml_emails = [[] for i in range(num_buckets)]
                 self.store_emails_in_buckets(lines, ml_emails)
                 self.send_emails_in_buckets(ml_emails)
-        #
+        self.update_config()
         return status
-
-
-    def get_numbers(self, path):
-        # Open the people CSV and get all the numbers out of it
-        numbers = []
-        ml_files = None
-        if os.path.isdir(path):
-            ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
-        elif os.path.isfile(path):
-            ml_files = [path]
-        #
-        for ml in ml_files:
-            if os.path.isdir(path):
-                cf = path + ml
-            elif os.path.isfile(path):
-                cf = ml
-            print(cf)
-            with open(cf) as file:
-                lines = [line for line in file]
-                with tqdm(total=len(lines)) as progress:
-                    for ndx, phone in csv.reader(lines):
-                        print(phone)
-                        try:
-                            z = phonenumbers.parse(phone)
-                            valid_number = phonenumbers.is_valid_number(z)
-                            if valid_number:
-                                line_type = phonenumberutil.number_type(z)
-                                if line_type == 1:
-                                    numbers.append(phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164))
-                        except NumberParseException as e:
-                            print(str(e))
-        return numbers
 
 
     def calculate_twilio_cost(self, msg, phone_numbers, msg_type):
