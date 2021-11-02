@@ -143,12 +143,12 @@ class FromRuXiaWithLove:
         return msg
 
 
-    def send_email(self, mailing_list, message):
+    def send_email(self, auth_ndx, content_ndx, mailing_list, message):
         email_cfg = self.config['send']['email']
-        content_ndx = email_cfg['active_content']
-        auth_ndx = email_cfg['active_auth']
-        content = email_cfg['content'][content_ndx]
-        auth = email_cfg['auth'][auth_ndx]
+        content_index = content_ndx if content_ndx is not None else email_cfg['active_content']
+        auth_index = auth_ndx if auth_ndx is not None else email_cfg['active_auth']
+        content = email_cfg['content'][content_index]
+        auth = email_cfg['auth'][auth_index]
         # Create secure connection with server and send email
         try:
             context = ssl.create_default_context()
@@ -179,7 +179,7 @@ class FromRuXiaWithLove:
             for ml_batch in ml_emails:
                 mailing_list = '; '.join(ml_batch)
                 message = self.compose_email(mailing_list, path_message, subject)
-                self.send_email(mailing_list, message)
+                self.send_email(auth_ndx, content_ndx, mailing_list, message)
                 time.sleep(5)
                 progress.update(1)
 
