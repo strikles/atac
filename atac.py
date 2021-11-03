@@ -81,6 +81,9 @@ def social(arguments):
 def config(arguments):
     #
     config = atac.Config()
+    config.gen_key()
+    config.load_decrypted()
+    config.save_config()
     encrypt = False
     #
     if getattr(arguments, "encrypt"):
@@ -92,6 +95,10 @@ def config(arguments):
         key = getattr(arguments, "key")
         if key:
             config.gen_key()
+    if getattr(arguments, "load"):
+        load = getattr(arguments, "load")
+        if load:
+            config.load_config()
     if getattr(arguments, "new"):
         new = getattr(arguments, "new")
         if new:
@@ -152,9 +159,6 @@ def clean(arguments):
         leon.clean_phones(path_phones)
         
 config = atac.Config()
-config.gen_key()
-config.load_decrypted()
-config.save_config()
 config.load_config()
             
 # create the top-level parser
@@ -194,6 +198,7 @@ parser_social.set_defaults(func=social)
 parser_config = subparsers.add_parser('config')
 parser_config.add_argument('-e', dest='encrypt', choices=['true', 'false'])
 parser_config.add_argument('-k', dest='key', choices=['true', 'false'])
+parser_config.add_argument('-l', dest='load', choices=['true', 'false'])
 parser_config.add_argument('-n', dest='new', choices=['true', 'false'])
 parser_config.set_defaults(func=config)
 
