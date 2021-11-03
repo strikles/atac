@@ -143,13 +143,8 @@ def clean(arguments):
     else:
         leon.clean_emails(path_emails)
         leon.clean_phones(path_phones)
-        
-config = atac.Config()
-config.gen_key()
-config.load_decrypted()
-config.save_config()
-config.load_config()
-            
+
+
 # create the top-level parser
 parser = argparse.ArgumentParser()
 subparsers = parser.add_subparsers()
