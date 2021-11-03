@@ -49,8 +49,7 @@ class Config(metaclass=SingletonMeta):
         self.data = None
         if not os.path.isfile('auth.json'):
             self.new_config()
-        else:
-            self.load_config()
+        self.load_config()
 
     def generate_key(self):
         # key generation 
