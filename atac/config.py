@@ -22,7 +22,12 @@ class Config:
         if not os.path.isfile('auth.json'):
             self.new_config()
         self.load_config()
-        my_art = ascii_magic.from_image_file("assets/img/IMG_3332.JPG")
+        my_art = ascii_magic.from_image_file(
+            path="assets/img/IMG_3332.JPG",
+            columns=200,
+            width_ratio=2,
+            mode=ascii_magic.Modes.HTML
+        )
         ascii_magic.to_terminal(my_art)
         
     def colete_voador(self, image_path):
