@@ -55,8 +55,12 @@ class Config(metaclass=SingletonMeta):
     def generate_key(self):
         # key generation 
         #self.key = Fernet.generate_key()
-        password = bytes(stdiomask.getpass(prompt='\nEnter password - ', mask='*'), 'utf-8')
-        salt = bytes(stdiomask.getpass(prompt='Enter Salt (leave blank if not required) - ', mask='*'), 'utf-8')
+        if "PYTEST_CURRENT_TEST" in os.environ:
+            password = "abcefghik"
+            salt = "123"
+        else:
+            password = bytes(stdiomask.getpass(prompt='\nEnter password - ', mask='*'), 'utf-8')
+            salt = bytes(stdiomask.getpass(prompt='Enter Salt (leave blank if not required) - ', mask='*'), 'utf-8')
         kdf = PBKDF2HMAC(
             algorithm=hashes.SHA256(),
             length=32,
@@ -66,8 +70,7 @@ class Config(metaclass=SingletonMeta):
         return base64.urlsafe_b64encode(kdf.derive(password))
 
     def new_config(self):
-        with open('new.json', 'rb') as new_config: 
-            self.data = new_config.read()
+        self.load_decrypted()
         self.save_config()
 
     def save_config(self):
