@@ -47,6 +47,8 @@ class Config(metaclass=SingletonMeta):
     def __init__(self):
         self.key = None
         self.data = None
+        if not self.key:
+            self.key = self.generate_key()
         if not os.path.isfile('auth.json'):
             self.new_config()
         self.load_config()
@@ -73,8 +75,6 @@ class Config(metaclass=SingletonMeta):
         self.save_config()
 
     def save_config(self):
-        if not self.key:
-            self.key = self.generate_key()
         fernet = Fernet(self.key) 
         # encrypting the file 
         encrypted = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf8'))
@@ -83,8 +83,6 @@ class Config(metaclass=SingletonMeta):
             encrypted_file.write(encrypted) 
 
     def load_config(self):
-        if not self.key:
-            self.key = self.generate_key()
         fernet = Fernet(self.key)
         # opening the encrypted file 
         with open('auth.json', 'rb') as enc_file: 
