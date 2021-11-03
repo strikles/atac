@@ -14,10 +14,6 @@ def email(arguments):
     path_emails = os.path.dirname(os.path.abspath(__file__)) + "/contacts/emails/"
     subject = None
     #
-    if getattr(arguments, "auth"):
-        auth_ndx = int(getattr(arguments, "auth"))
-    if getattr(arguments, "content"):
-        content_ndx = int(getattr(arguments, "content"))
     if getattr(arguments, "subject"):
         subject = getattr(arguments, "subject")
     if getattr(arguments, "message_file"):
@@ -164,8 +160,6 @@ subparsers = parser.add_subparsers()
 
 # create the parser for the "email command
 parser_email = subparsers.add_parser('email')
-parser_email.add_argument('-a', dest='auth', choices=[i for i in range(len(config.data['email']['auth']))])
-parser_email.add_argument('-c', dest='content', choices=[i for i in range(len(config.data['email']['content']))])
 parser_email.add_argument('-m', dest='message_file', type=str, help='path to message file')
 parser_email.add_argument('-e', dest='emails_file', type=str, help='path to csv dir')
 parser_email.add_argument('-s', dest='subject', type=str, help='email subject')
