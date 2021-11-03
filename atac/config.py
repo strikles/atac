@@ -10,7 +10,7 @@ class Config:
     def __init__(self):
         self.key = None
         self.data = None
-        #self.load_config()
+        self.load_config()
 
 
     def gen_key(self):

@@ -30,7 +30,6 @@ class UnderTheMangoTree:
         self.num_phones = 0
         self.num_emails = 0
         self.config = Config()
-        self.config.load_config()
         self.scrape = self.config.data['scrape']
 
 

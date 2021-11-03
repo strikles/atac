@@ -32,7 +32,6 @@ class FromRuXiaWithLove:
 
     def __init__(self):
         self.config = Config()
-        self.config.load_config()
         self.email = self.config.data['email']
         self.phone = self.config.data['phone']
         self.social = self.config.data['social']
