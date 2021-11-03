@@ -39,10 +39,6 @@ def phone(arguments):
     path_phones = os.path.dirname(os.path.abspath(__file__)) + "/contacts/phones/"
     subject = None
     #
-    if getattr(arguments, "auth"):
-        auth_ndx = int(getattr(arguments, "auth"))
-    if getattr(arguments, "content"):
-        content_ndx = int(getattr(arguments, "content"))
     if getattr(arguments, "message_file"):
         path_message = getattr(arguments, "message_file")
     if getattr(arguments, "phones_file"):
@@ -168,8 +164,8 @@ subparsers = parser.add_subparsers()
 
 # create the parser for the "email command
 parser_email = subparsers.add_parser('email')
-parser_email.add_argument('-a', dest='auth', choices=[i for i in range(len(int(config.data['send']['email']['auth'])))])
-parser_email.add_argument('-c', dest='content', choices=[i for i in range(len(int(config.data['send']['email']['content'])))])
+parser_email.add_argument('-a', dest='auth', choices=[i for i in range(len(config.data['email']['auth']))])
+parser_email.add_argument('-c', dest='content', choices=[i for i in range(len(config.data['email']['content']))])
 parser_email.add_argument('-m', dest='message_file', type=str, help='path to message file')
 parser_email.add_argument('-e', dest='emails_file', type=str, help='path to csv dir')
 parser_email.add_argument('-s', dest='subject', type=str, help='email subject')
@@ -178,8 +174,6 @@ parser_email.set_defaults(func=email)
 
 # create the parser for the "phone" command
 parser_phone = subparsers.add_parser('phone')
-parser_phone.add_argument('-a', dest='auth', choices=[i for i in range(len(config['send']['email']['auth']))])
-parser_phone.add_argument('-c', dest='content', choices=[i for i in range(len(config['send']['email']['content']))])
 parser_phone.add_argument('-m', dest='message_file', type=str, help='path to message file')
 parser_phone.add_argument('-p', dest='phones_file', type=str, help='path to csv dir')
 parser_phone.add_argument('-t', dest='target', choices=['whatsapp', 'sms'])
