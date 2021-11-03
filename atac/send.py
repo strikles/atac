@@ -322,4 +322,3 @@ class FromRuXiaWithLove:
             nap = randint(1, 60)
             time.sleep(nap)
         return status
-        
