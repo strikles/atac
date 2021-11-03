@@ -78,7 +78,7 @@ class Config(metaclass=SingletonMeta):
             self.key = self.generate_key()
         fernet = Fernet(self.key) 
         # encrypting the file 
-        encrypted = fernet.encrypt(bytes(self.data, encoding='utf8'))
+        encrypted = fernet.encrypt(self.data)
         # opening the file in write mode and writing the encrypted data 
         with open('auth.json', 'wb') as encrypted_file: 
             encrypted_file.write(encrypted) 
