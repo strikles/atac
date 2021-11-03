@@ -38,9 +38,9 @@ class FromRuXiaWithLove:
         self.social = self.config.data['social']
 
 
-    def compose_email(self, auth_ndx, content_ndx, mailing_list, path_message, subject):
-        content_index = content_ndx if content_ndx is not None else self.email['active_content']
-        auth_index = auth_ndx if auth_ndx is not None else self.email['active_auth']
+    def compose_email(self, mailing_list, path_message, subject):
+        content_index = self.email['active_content']
+        auth_index = self.email['active_auth']
         content = self.email['content'][content_index]
         auth = self.email['auth'][auth_index]
         #
@@ -142,9 +142,9 @@ class FromRuXiaWithLove:
         return msg
 
 
-    def send_email(self, auth_ndx, content_ndx, mailing_list, message):
-        content_index = content_ndx if content_ndx is not None else self.email['active_content']
-        auth_index = auth_ndx if auth_ndx is not None else self.email['active_auth']
+    def send_email(self, mailing_list, message):
+        content_index = self.email['active_content']
+        auth_index = self.email['active_auth']
         content = self.email['content'][content_index]
         auth = self.email['auth'][auth_index]
         # Create secure connection with server and send email
@@ -172,17 +172,17 @@ class FromRuXiaWithLove:
                     progress.update(1)
 
 
-    def send_emails_in_buckets(self, auth_ndx, content_ndx, ml_emails, path_message, subject):
+    def send_emails_in_buckets(self, ml_emails, path_message, subject):
         with tqdm(total=len(ml_emails)) as progress:
             for ml_batch in ml_emails:
                 mailing_list = '; '.join(ml_batch)
-                message = self.compose_email(auth_ndx, content_ndx, mailing_list, path_message, subject)
-                self.send_email(auth_ndx, content_ndx, mailing_list, message)
+                message = self.compose_email(mailing_list, path_message, subject)
+                self.send_email(mailing_list, message)
                 time.sleep(5)
                 progress.update(1)
 
 
-    def send_emails(self, auth_ndx, content_ndx, path_emails, path_message, subject):
+    def send_emails(self, path_emails, path_message, subject):
         print(path_emails)
         status = 0
         ml_files = self.get_ml_files(path_emails)

@@ -24,7 +24,7 @@ def email(arguments):
         target = getattr(arguments, "target")
     #
     if "smtp" in target:
-        katie.send_emails(path_emails, auth_ndx, content_ndx, path_message, subject)
+        katie.send_emails(path_emails, path_message, subject)
 
 
 # sub-command functions
