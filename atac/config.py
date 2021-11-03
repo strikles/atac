@@ -65,7 +65,6 @@ class Config:
         # decrypting the file 
         self.data = json.loads(fernet.decrypt(encrypted))
 
-
     def load_decrypted(self):
         with open('new.json', 'rb') as new_config: 
             self.data = json.loads(new_config.read())
