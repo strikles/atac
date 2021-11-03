@@ -77,6 +77,27 @@ def social(arguments):
         katie.send_twitter()
 
 
+# sub-command functions
+def config(arguments):
+    #
+    config = atac.Config()
+    encrypt = False
+    #
+    if getattr(arguments, "encrypt"):
+        encrypt = getattr(arguments, "encrypt")
+        if encrypt:
+            config.load_decrypted()
+            config.save_config()
+    if getattr(arguments, "key"):
+        key = getattr(arguments, "key")
+        if key:
+            config.gen_key()
+    if getattr(arguments, "new"):
+        new = getattr(arguments, "new")
+        if new:
+            config.new_config()
+
+
 def scrape(arguments):
     #
     url = ""
@@ -131,6 +152,7 @@ def clean(arguments):
         leon.clean_phones(path_phones)
         
 config = atac.Config()
+config.gen_key()
 config.load_decrypted()
 config.save_config()
 config.load_config()
@@ -139,7 +161,7 @@ config.load_config()
 parser = argparse.ArgumentParser()
 subparsers = parser.add_subparsers()
 
-# create the parser for the "send" command
+# create the parser for the "email command
 parser_email = subparsers.add_parser('email')
 parser_email.add_argument('-a', dest='auth', choices=[str(i) for i in range(len(config.data['send']['email']['auth']))])
 parser_email.add_argument('-c', dest='content', choices=[str(i) for i in range(len(config.data['send']['email']['content']))])
@@ -149,7 +171,7 @@ parser_email.add_argument('-s', dest='subject', type=str, help='email subject')
 parser_email.add_argument('-t', dest='target', choices=['smtp', 'aws'])
 parser_email.set_defaults(func=email)
 
-# create the parser for the "send" command
+# create the parser for the "phone" command
 parser_phone = subparsers.add_parser('phone')
 parser_phone.add_argument('-a', dest='auth', choices=[str(i) for i in range(len(config['send']['email']['auth']))])
 parser_phone.add_argument('-c', dest='content', choices=[str(i) for i in range(len(config['send']['email']['content']))])
@@ -160,13 +182,20 @@ parser_email.add_argument('-w', dest='whatsapp', choices=['pywhatkit', 'twilio',
 parser_email.add_argument('-s', dest='sms', choices=['aws', 'twilio'])
 parser_phone.set_defaults(func=phone)
 
-# create the parser for the "send" command
+# create the parser for the "social" command
 parser_social = subparsers.add_parser('social')
 parser_social.add_argument('-a', dest='auth', choices=[str(i) for i in range(len(config['send']['email']['auth']))])
 parser_social.add_argument('-c', dest='content', choices=[str(i) for i in range(len(config['send']['email']['content']))])
 parser_social.add_argument('-m', dest='message', type=str, help='path to message file')
 parser_social.add_argument('-t', dest='target', choices=['facebook', 'twitter'])
 parser_social.set_defaults(func=social)
+
+# create the parser for the "config" command
+parser_config = subparsers.add_parser('config')
+parser_config.add_argument('-e', dest='encrypt', choices=['true', 'false'])
+parser_config.add_argument('-k', dest='key', choices=['true', 'false'])
+parser_config.add_argument('-n', dest='new', choices=['true', 'false'])
+parser_config.set_defaults(func=config)
 
 # create the parser for the "scrape" command
 parser_scrape = subparsers.add_parser('scrape')
