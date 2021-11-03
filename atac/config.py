@@ -52,7 +52,7 @@ class Config(metaclass=SingletonMeta):
         else:
             self.load_config()
 
-    def gen_key(self):
+    def generate_key(self):
         # key generation 
         #self.key = Fernet.generate_key()
         password = bytes(stdiomask.getpass(prompt='\nEnter password - ', mask='*'), 'utf-8')
@@ -63,7 +63,7 @@ class Config(metaclass=SingletonMeta):
             salt=salt,
             iterations=100000,
             backend=default_backend())
-        self.key = base64.urlsafe_b64encode(kdf.derive(password))
+        return base64.urlsafe_b64encode(kdf.derive(password))
 
     def new_config(self):
         with open('new.json', 'rb') as new_config: 
@@ -72,7 +72,7 @@ class Config(metaclass=SingletonMeta):
 
     def save_config(self):
         if not self.key:
-            self.gen_key()
+            self.key = self.generate_key()
         fernet = Fernet(self.key) 
         # encrypting the file 
         encrypted = fernet.encrypt(self.data) 
@@ -82,7 +82,7 @@ class Config(metaclass=SingletonMeta):
 
     def load_config(self):
         if not self.key:
-            self.gen_key()
+            self.key = self.generate_key()
         fernet = Fernet(self.key) 
         # opening the encrypted file 
         with open('auth.json', 'rb') as enc_file: 
