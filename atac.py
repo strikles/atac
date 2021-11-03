@@ -169,12 +169,7 @@ def colete_voador(image_path):
     ascii_image = "\n".join(ascii_image)
 
 # create the top-level parser
-parser = argparse.ArgumentParser(
-    prog='PROG',
-    formatter_class=argparse.RawDescriptionHelpFormatter,
-    description=textwrap.dedent()
-)
-
+parser = argparse.ArgumentParser()
 subparsers = parser.add_subparsers()
 
 # create the parser for the "email command
