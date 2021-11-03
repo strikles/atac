@@ -11,6 +11,7 @@ class Config:
         self.key = None
         self.data = None
         self.load_config()
+        print(self.data)
 
 
     def gen_key(self):
