@@ -1,5 +1,5 @@
 # Activism Tools Against Cybertorture ![python-app](https://github.com/strikles/atac/actions/workflows/python-app.yml/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Upload Python Package](https://github.com/strikles/atac/actions/workflows/python-publish.yml/badge.svg?branch=main)](https://github.com/strikles/atac/actions/workflows/python-publish.yml)
-![](assets/img/IMG_0922.PNG)
+![](assets/img/IMG_3332.JPG)
 
 Cybertorture is recognized by the United Nations under A/HRC/43/49 and is used in grotesque rituals of social stratification (by cowardly colégio militar alumni, law enforcement and others recruited for the purpose) to exact extrajudicial trials and sentences as an interactive spectacle encouraging participation, mongering tensions and hatred by preying on cognitive biases.
 
@@ -10,6 +10,8 @@ Further social stratification schemes and mediocrity standards became common pla
 Sign the petition to either close Colégio Militar (largo da Luz, Portugal) or reform and bring dignity to the school…
 
 https://chng.it/8FtDcsvG
+
+![](assets/img/IMG_3331.PNG)
 
 #### Those who exact the extrajudicial sentences resort to directing violence towards women, parents, creating drug addicts with synthetic pain and forcing acts of self-harm for entertainment, whilst attempting to portray themselves as Artists of human degradation, social stratification and self-harm, with grotesque preludes of vibrotactile and sonic payloads of "kisses" and setting synthetic pain, articulating tongue and jaw of the subject under torture, cyber sodomy, intercourse sabotage in males (via involuntary perineum contractions resorting to rituals involving using a feather) and vibrotactile genital abuse in females (possibly resulting in Stockholm's Syndrome) as being standard in our society!
 
