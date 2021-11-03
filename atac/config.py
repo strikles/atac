@@ -19,7 +19,7 @@ def singleton(class_):
 
 
 @singleton
-class Config:
+class Config(BaseClass)
 
     def __init__(self):
         self.key = None
