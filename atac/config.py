@@ -78,7 +78,7 @@ class Config(metaclass=SingletonMeta):
             self.key = self.generate_key()
         fernet = Fernet(self.key) 
         # encrypting the file 
-        encrypted = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf8'))
+        encrypted = fernet.encrypt(json.dumps(self.data, ensure_ascii=False))
         # opening the file in write mode and writing the encrypted data 
         with open('auth.json', 'w', encoding="utf8") as encrypted_file: 
             encrypted_file.write(encrypted) 
@@ -91,7 +91,7 @@ class Config(metaclass=SingletonMeta):
         with open('auth.json', 'r', encoding="utf8") as enc_file: 
             encrypted = enc_file.read() 
         # decrypting the file 
-        self.data = json.loads(fernet.decrypt(encrypted).decode('utf-8'))
+        self.data = json.loads(fernet.decrypt(encrypted))
         print(self.data)
 
     def load_decrypted(self):
