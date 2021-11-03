@@ -23,7 +23,7 @@ class Config:
             self.new_config()
         self.load_config()
         my_art = ascii_magic.from_image_file(
-            img_path="assets/img/IMG_3332.JPG",
+            img_path="assets/img/IMG_3331.PNG",
             columns=80,
             mode=ascii_magic.Modes.TERMINAL
         )
