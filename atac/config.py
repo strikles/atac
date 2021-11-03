@@ -8,47 +8,7 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 import base64
-
-
-class SingletonMeta(type):
-    """
-    This is a thread-safe implementation of Singleton.
-    """
-    _instances = {}
-    _lock: Lock = Lock()
-    """
-    We now have a lock object that will be used to synchronize threads during
-    first access to the Singleton.
-    """
-    def __call__(cls, *args, **kwargs):
-        """
-        Possible changes to the value of the `__init__` argument do not affect
-        the returned instance.
-        """
-        # Now, imagine that the program has just been launched. Since there's no
-        # Singleton instance yet, multiple threads can simultaneously pass the
-        # previous conditional and reach this point almost at the same time. The
-        # first of them will acquire lock and will proceed further, while the
-        # rest will wait here.
-        with cls._lock:
-            # The first thread to acquire the lock, reaches this conditional,
-            # goes inside and creates the Singleton instance. Once it leaves the
-            # lock block, a thread that might have been waiting for the lock
-            # release may then enter this section. But since the Singleton field
-            # is already initialized, the thread won't create a new object.
-            if cls not in cls._instances:
-                instance = super().__call__(*args, **kwargs)
-                cls._instances[cls] = instance
-                return cls._instances[cls]
-
-
-def singleton(class_):
-    instances = {}
-    def getinstance(*args, **kwargs):
-        if class_ not in instances:
-            instances[class_] = class_(*args, **kwargs)
-        return instances[class_]
-    return getinstance
+from PIL import Image
 
 
 class Config:
@@ -61,6 +21,31 @@ class Config:
         if not os.path.isfile('auth.json'):
             self.new_config()
         self.load_config()
+        self.colete_voador("assets/img/IMG_3332.JPG")
+        
+    def colete_voador(self, image_path):
+        # pass the image as command line argument
+        img = Image.open(image_path)
+        # resize the image
+        width, height = img.size
+        aspect_ratio = height/width
+        new_width = 80
+        new_height = aspect_ratio * new_width * 0.55
+        img = img.resize((new_width, int(new_height)))
+        # new size of image
+        # print(img.size)
+        # convert image to greyscale format
+        img = img.convert('L')
+        pixels = img.getdata()
+        # replace each pixel with a character from array
+        chars = ["B","S","#","&","@","$","%","*","!",":","."]
+        new_pixels = [chars[pixel//25] for pixel in pixels]
+        new_pixels = ''.join(new_pixels)
+        # split string of chars into multiple strings of length equal to new width and create a list
+        new_pixels_count = len(new_pixels)
+        ascii_image = [new_pixels[index:index + new_width] for index in range(0, new_pixels_count, new_width)]
+        ascii_image = "\n".join(ascii_image)
+        print(ascii_image)
 
     def generate_key(self):
         # key generation 
@@ -98,8 +83,6 @@ class Config:
             encrypted = enc_file.read() 
         # decrypting the file 
         self.data = json.loads(fernet.decrypt(encrypted))
-        for key, value in self.data.items() :
-            print (key, value)
 
 
     def load_decrypted(self):
