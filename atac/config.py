@@ -24,8 +24,7 @@ class Config:
         self.load_config()
         my_art = ascii_magic.from_image_file(
             img_path="assets/img/IMG_3332.JPG",
-            columns=120,
-            width_ratio=2,
+            columns=80,
             mode=ascii_magic.Modes.TERMINAL
         )
         ascii_magic.to_terminal(my_art)
