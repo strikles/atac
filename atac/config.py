@@ -97,4 +97,3 @@ class Config(metaclass=SingletonMeta):
     def load_decrypted(self):
         with open('new.json', 'r') as new_config: 
             self.data = json.loads(new_config.read())
-        print(self.data)
