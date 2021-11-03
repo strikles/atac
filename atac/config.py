@@ -9,8 +9,17 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 import base64
 
 
-class Config:
+def singleton(class_):
+    instances = {}
+    def getinstance(*args, **kwargs):
+        if class_ not in instances:
+            instances[class_] = class_(*args, **kwargs)
+        return instances[class_]
+    return getinstance
 
+
+@singleton
+class Config:
 
     def __init__(self):
         self.key = None
@@ -19,8 +28,6 @@ class Config:
             self.new_config()
         else:
             self.load_config()
-        #print(self.data)
-
 
     def gen_key(self):
         # key generation 
@@ -35,12 +42,10 @@ class Config:
             backend=default_backend())
         self.key = base64.urlsafe_b64encode(kdf.derive(password))
 
-
     def new_config(self):
         with open('new.json', 'rb') as new_config: 
             self.data = new_config.read()
         self.save_config()
-
 
     def save_config(self):
         password = bytes(stdiomask.getpass(prompt='\nEnter password - ', mask='*'), 'utf-8')
@@ -59,7 +64,6 @@ class Config:
         with open('auth.json', 'wb') as encrypted_file: 
             encrypted_file.write(encrypted) 
 
-
     def load_config(self):
         password = bytes(stdiomask.getpass(prompt='\nEnter password - ', mask='*'), 'utf-8')
         salt = bytes(stdiomask.getpass(prompt='Enter Salt (leave blank if not required) - ', mask='*'), 'utf-8')
@@ -76,7 +80,6 @@ class Config:
             encrypted = enc_file.read() 
         # decrypting the file 
         self.data = json.loads(fernet.decrypt(encrypted))
-
 
     def load_decrypted(self):
         with open('new.json', 'rb') as new_config: 
