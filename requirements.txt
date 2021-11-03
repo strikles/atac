@@ -1,3 +1,4 @@
+ascii_magic
 attrs==21.2.0
 beautifulsoup4==4.9.3
 boto3

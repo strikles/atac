@@ -9,6 +9,7 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 import base64
 from PIL import Image
+import ascii_magic
 
 
 class Config:
@@ -21,7 +22,8 @@ class Config:
         if not os.path.isfile('auth.json'):
             self.new_config()
         self.load_config()
-        self.colete_voador("assets/img/IMG_3332.JPG")
+        my_art = ascii_magic.from_image_file("assets/img/IMG_3332.JPG")
+        ascii_magic.to_terminal(my_art)
         
     def colete_voador(self, image_path):
         # pass the image as command line argument
