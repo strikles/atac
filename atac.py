@@ -69,7 +69,6 @@ def social(arguments):
 def config(arguments):
     #
     config = atac.Config()
-    config.load_config()
     encrypt = False
     #
     if getattr(arguments, "encrypt"):
