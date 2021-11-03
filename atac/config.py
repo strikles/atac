@@ -44,6 +44,8 @@ class Config:
 
 
     def load_config(self):
+        with open('filekey.key', 'rb') as filekey: 
+            self.key = filekey.read() 
         # using the key 
         fernet = Fernet(self.key) 
         # opening the encrypted file 
