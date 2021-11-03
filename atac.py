@@ -168,8 +168,8 @@ subparsers = parser.add_subparsers()
 
 # create the parser for the "email command
 parser_email = subparsers.add_parser('email')
-parser_email.add_argument('-a', dest='auth', choices=[str(i) for i in range(len(config.data['send']['email']['auth']))])
-parser_email.add_argument('-c', dest='content', choices=[str(i) for i in range(len(config.data['send']['email']['content']))])
+parser_email.add_argument('-a', dest='auth', choices=[i for i in range(len(config.data['send']['email']['auth']))])
+parser_email.add_argument('-c', dest='content', choices=[i for i in range(len(config.data['send']['email']['content']))])
 parser_email.add_argument('-m', dest='message_file', type=str, help='path to message file')
 parser_email.add_argument('-e', dest='emails_file', type=str, help='path to csv dir')
 parser_email.add_argument('-s', dest='subject', type=str, help='email subject')
@@ -178,8 +178,8 @@ parser_email.set_defaults(func=email)
 
 # create the parser for the "phone" command
 parser_phone = subparsers.add_parser('phone')
-parser_phone.add_argument('-a', dest='auth', choices=[str(i) for i in range(len(config['send']['email']['auth']))])
-parser_phone.add_argument('-c', dest='content', choices=[str(i) for i in range(len(config['send']['email']['content']))])
+parser_phone.add_argument('-a', dest='auth', choices=[i for i in range(len(config['send']['email']['auth']))])
+parser_phone.add_argument('-c', dest='content', choices=[i for i in range(len(config['send']['email']['content']))])
 parser_phone.add_argument('-m', dest='message_file', type=str, help='path to message file')
 parser_phone.add_argument('-p', dest='phones_file', type=str, help='path to csv dir')
 parser_phone.add_argument('-t', dest='target', choices=['whatsapp', 'sms'])
@@ -189,8 +189,8 @@ parser_phone.set_defaults(func=phone)
 
 # create the parser for the "social" command
 parser_social = subparsers.add_parser('social')
-parser_social.add_argument('-a', dest='auth', choices=[str(i) for i in range(len(config['send']['email']['auth']))])
-parser_social.add_argument('-c', dest='content', choices=[str(i) for i in range(len(config['send']['email']['content']))])
+parser_social.add_argument('-a', dest='auth', choices=[i for i in range(len(config['send']['email']['auth']))])
+parser_social.add_argument('-c', dest='content', choices=[i for i in range(len(config['send']['email']['content']))])
 parser_social.add_argument('-m', dest='message', type=str, help='path to message file')
 parser_social.add_argument('-t', dest='target', choices=['facebook', 'twitter'])
 parser_social.set_defaults(func=social)
