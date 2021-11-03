@@ -10,8 +10,13 @@ class Config:
     def __init__(self):
         self.key = None
         self.data = None
-        self.load_config()
-        print(self.data)
+        if not os.path.isfile('filekey.key'):
+            self.gen_key()
+        if not os.path.isfile('auth.json'):
+            self.new_config()
+        else:
+            self.load_config()
+        #print(self.data)
 
 
     def gen_key(self):
@@ -29,8 +34,6 @@ class Config:
 
 
     def save_config(self):
-        if not os.path.isfile('filekey.key'):
-            self.gen_key()
         # opening the key 
         with open('filekey.key', 'rb') as filekey: 
             self.key = filekey.read() 
