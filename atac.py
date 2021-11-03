@@ -168,8 +168,8 @@ subparsers = parser.add_subparsers()
 
 # create the parser for the "email command
 parser_email = subparsers.add_parser('email')
-parser_email.add_argument('-a', dest='auth', choices=[i for i in range(len(config.data['send']['email']['auth']))])
-parser_email.add_argument('-c', dest='content', choices=[i for i in range(len(config.data['send']['email']['content']))])
+parser_email.add_argument('-a', dest='auth', choices=[i for i in range(len(int(config.data['send']['email']['auth'])))])
+parser_email.add_argument('-c', dest='content', choices=[i for i in range(len(int(config.data['send']['email']['content'])))])
 parser_email.add_argument('-m', dest='message_file', type=str, help='path to message file')
 parser_email.add_argument('-e', dest='emails_file', type=str, help='path to csv dir')
 parser_email.add_argument('-s', dest='subject', type=str, help='email subject')
