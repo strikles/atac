@@ -89,7 +89,8 @@ class Config(metaclass=SingletonMeta):
             encrypted = enc_file.read() 
         # decrypting the file 
         self.data = json.loads(fernet.decrypt(encrypted))
-        print(self.data)
+        print(type(self.data))
+        print(dir(self.data))
 
     def load_decrypted(self):
         with open('new.json', 'rb') as new_config: 
