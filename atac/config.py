@@ -86,7 +86,8 @@ class Config(metaclass=SingletonMeta):
     def load_config(self):
         if not self.key:
             self.key = self.generate_key()
-        fernet = Fernet(self.key) 
+        fernet = Fernet(self.key)
+        
         # opening the encrypted file 
         with open('auth.json', 'rb') as enc_file: 
             encrypted = enc_file.read() 
