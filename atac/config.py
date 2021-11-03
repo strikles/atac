@@ -71,15 +71,8 @@ class Config(metaclass=SingletonMeta):
         self.save_config()
 
     def save_config(self):
-        password = bytes(stdiomask.getpass(prompt='\nEnter password - ', mask='*'), 'utf-8')
-        salt = bytes(stdiomask.getpass(prompt='Enter Salt (leave blank if not required) - ', mask='*'), 'utf-8')
-        kdf = PBKDF2HMAC(
-            algorithm=hashes.SHA256(),
-            length=32,
-            salt=salt,
-            iterations=100000,
-            backend=default_backend())
-        self.key = base64.urlsafe_b64encode(kdf.derive(password)) 
+        if not self.key:
+            self.gen_key()
         fernet = Fernet(self.key) 
         # encrypting the file 
         encrypted = fernet.encrypt(self.data) 
@@ -88,22 +81,14 @@ class Config(metaclass=SingletonMeta):
             encrypted_file.write(encrypted) 
 
     def load_config(self):
-        if not self.data:
-            password = bytes(stdiomask.getpass(prompt='\nEnter password - ', mask='*'), 'utf-8')
-            salt = bytes(stdiomask.getpass(prompt='Enter Salt (leave blank if not required) - ', mask='*'), 'utf-8')
-            kdf = PBKDF2HMAC(
-                algorithm=hashes.SHA256(),
-                length=32,
-                salt=salt,
-                iterations=100000,
-                backend=default_backend())
-            self.key = base64.urlsafe_b64encode(kdf.derive(password)) 
-            fernet = Fernet(self.key) 
-            # opening the encrypted file 
-            with open('auth.json', 'rb') as enc_file: 
-                encrypted = enc_file.read() 
-            # decrypting the file 
-            self.data = json.loads(fernet.decrypt(encrypted))
+        if not self.key:
+            self.gen_key()
+        fernet = Fernet(self.key) 
+        # opening the encrypted file 
+        with open('auth.json', 'rb') as enc_file: 
+            encrypted = enc_file.read() 
+        # decrypting the file 
+        self.data = json.loads(fernet.decrypt(encrypted))
 
     def load_decrypted(self):
         with open('new.json', 'rb') as new_config: 
