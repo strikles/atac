@@ -11,6 +11,8 @@ Sign the petition to either close Colégio Militar (largo da Luz, Portugal) or r
 
 https://chng.it/8FtDcsvG
 
+![](assets/img/IMG_3331.PNG)
+
 #### Those who exact the extrajudicial sentences resort to directing violence towards women, parents, creating drug addicts with synthetic pain and forcing acts of self-harm for entertainment, whilst attempting to portray themselves as Artists of human degradation, social stratification and self-harm, with grotesque preludes of vibrotactile and sonic payloads of "kisses" and setting synthetic pain, articulating tongue and jaw of the subject under torture, cyber sodomy, intercourse sabotage in males (via involuntary perineum contractions resorting to rituals involving using a feather) and vibrotactile genital abuse in females (possibly resulting in Stockholm's Syndrome) as being standard in our society!
 
 
