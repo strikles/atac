@@ -92,7 +92,7 @@ class Config(metaclass=SingletonMeta):
         with open('auth.json', 'rb') as enc_file: 
             encrypted = enc_file.read() 
         # decrypting the file 
-        self.data = json.loads(unicode(fernet.decrypt(encrypted)))
+        self.data = json.loads(fernet.decrypt(encrypted).decode('utf-8'))
         print(self.data)
 
     def load_decrypted(self):
