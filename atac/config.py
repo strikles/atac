@@ -53,7 +53,7 @@ class Config:
         with open('auth.json', 'rb') as enc_file: 
             encrypted = enc_file.read() 
         # decrypting the file 
-        self.data = fernet.decrypt(encrypted)
+        self.data = json.loads(fernet.decrypt(encrypted))
 
 
     def load_decrypted(self):
