@@ -56,8 +56,8 @@ class Config(metaclass=SingletonMeta):
         # key generation 
         #self.key = Fernet.generate_key()
         if "PYTEST_CURRENT_TEST" in os.environ:
-            password = "abcefghik"
-            salt = "123"
+            password =  bytes("abcefghik")
+            salt = bytes("123")
         else:
             password = bytes(stdiomask.getpass(prompt='\nEnter password - ', mask='*'), 'utf-8')
             salt = bytes(stdiomask.getpass(prompt='Enter Salt (leave blank if not required) - ', mask='*'), 'utf-8')
