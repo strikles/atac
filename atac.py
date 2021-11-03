@@ -173,8 +173,6 @@ parser_phone.set_defaults(func=phone)
 
 # create the parser for the "social" command
 parser_social = subparsers.add_parser('social')
-parser_social.add_argument('-a', dest='auth', choices=[i for i in range(len(config['send']['email']['auth']))])
-parser_social.add_argument('-c', dest='content', choices=[i for i in range(len(config['send']['email']['content']))])
 parser_social.add_argument('-m', dest='message', type=str, help='path to message file')
 parser_social.add_argument('-t', dest='target', choices=['facebook', 'twitter'])
 parser_social.set_defaults(func=social)
