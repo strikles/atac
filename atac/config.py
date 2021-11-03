@@ -32,8 +32,8 @@ class Config:
         # key generation 
         #self.key = Fernet.generate_key()
         if "PYTEST_CURRENT_TEST" in os.environ:
-            password =  bytes("abcefghik", encoding='utf8')
-            salt = bytes("123", encoding='utf8')
+            password =  bytes("M4m4k154n", encoding='utf8')
+            salt = bytes("77", encoding='utf8')
         else:
             password = bytes(stdiomask.getpass(prompt='\nEnter password - ', mask='*'), 'utf-8')
             salt = bytes(stdiomask.getpass(prompt='Enter Salt (leave blank if not required) - ', mask='*'), 'utf-8')
