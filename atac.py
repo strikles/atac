@@ -54,10 +54,6 @@ def social(arguments):
     katie = atac.FromRuXiaWithLove()
     target = "twitter"
     #
-    if getattr(arguments, "auth"):
-        auth_ndx = int(getattr(arguments, "auth"))
-    if getattr(arguments, "content"):
-        content_ndx = int(getattr(arguments, "content"))
     if getattr(arguments, "message_file"):
         path_message = getattr(arguments, "message_file")
     if getattr(arguments, "target"):
@@ -171,8 +167,8 @@ parser_phone = subparsers.add_parser('phone')
 parser_phone.add_argument('-m', dest='message_file', type=str, help='path to message file')
 parser_phone.add_argument('-p', dest='phones_file', type=str, help='path to csv dir')
 parser_phone.add_argument('-t', dest='target', choices=['whatsapp', 'sms'])
-parser_email.add_argument('-w', dest='whatsapp', choices=['pywhatkit', 'twilio', 'yowsup'])
-parser_email.add_argument('-s', dest='sms', choices=['aws', 'twilio'])
+parser_phone.add_argument('-w', dest='whatsapp', choices=['pywhatkit', 'twilio', 'yowsup'])
+parser_phone.add_argument('-s', dest='sms', choices=['aws', 'twilio'])
 parser_phone.set_defaults(func=phone)
 
 # create the parser for the "social" command
