@@ -156,7 +156,7 @@ class FromRuXiaWithLove:
                 print(error_status)
                 server.quit()
         except Exception as err:
-            print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
+            print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
         finally:
             print("\x1b[6;37;42m Sent \x1b[0m")
             
