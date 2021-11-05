@@ -153,6 +153,7 @@ class FromRuXiaWithLove:
                 server.set_debuglevel(1)
                 server.login(auth['user'], auth['password'])
                 server.sendmail(auth['sender'], mailing_list, message.as_string())
+                server.quit()
         except Exception as err:
             print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
         finally:
@@ -177,7 +178,7 @@ class FromRuXiaWithLove:
                 mailing_list = '; '.join(ml_batch)
                 message = self.compose_email(mailing_list, path_message, subject)
                 self.send_email(mailing_list, message)
-                time.sleep(5)
+                time.sleep(10)
                 progress.update(1)
 
 
