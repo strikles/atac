@@ -152,7 +152,8 @@ class FromRuXiaWithLove:
             with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
                 server.set_debuglevel(1)
                 server.login(auth['user'], auth['password'])
-                server.sendmail(auth['sender'], mailing_list, message.as_string())
+                error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
+                print(error_status)
                 server.quit()
         except Exception as err:
             print(f'\x1b[6;37;41m error occurred: {err}\x1b[0m')
