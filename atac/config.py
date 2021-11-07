@@ -82,7 +82,7 @@ class Config:
         if self.encrypted_config:
             fernet = Fernet(self.key)
             # opening the encrypted file 
-            with open(self.config_file, 'rb') as enc_file: 
+            with open(self.config_file_path, 'rb') as enc_file: 
                 encrypted_data = enc_file.read() 
             # decrypting the file 
             try:
@@ -91,5 +91,5 @@ class Config:
                 print("Invalid Key - Unsuccessfully decrypted")
                 sys.exit(1)
         else:
-            with open(self.config_file, 'rb') as new_config: 
+            with open(self.config_file_path, 'rb') as new_config: 
                 self.data = json.loads(new_config.read())
