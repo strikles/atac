@@ -16,7 +16,7 @@ def get_config_arguments(arguments):
         encrypted_config = getattr(arguments, "encrypted_config")
     if getattr(arguments, "config_file"):
         config_file = getattr(arguments, "config_file")
-    if getattr(argumentative, "key_file"):
+    if getattr(arguments, "key_file"):
         key_file = getattr(arguments, "key_file")
     #
     return encrypted_config, config_file, key_file
