@@ -3,7 +3,7 @@ import sys
 import json
 import stdiomask
 from threading import Lock, Thread
-from cryptography.fernet import Fernet
+from cryptography.fernet import Fernet, InvalidToken
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
@@ -75,7 +75,7 @@ class Config:
             with open(config_file_path, 'wb') as encrypted_file: 
                 encrypted_file.write(encrypted_data) 
         else:
-            with open(config_file, 'wb') as unencrypted_file: 
+            with open(config_file_path, 'wb') as unencrypted_file: 
                 unencrypted_file.write(self.data, ensure_ascii=False)
 
     def load_config(self):
