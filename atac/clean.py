@@ -14,7 +14,7 @@ from phonenumbers import NumberParseException, phonenumberutil
 from .config import Config
 
 
-class Leon(Config)
+class Leon(Config):
     #
     FIXED_LINE = 0
     MOBILE = 1
