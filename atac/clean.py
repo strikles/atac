@@ -13,8 +13,9 @@ from phonenumbers import NumberParseException, phonenumberutil
 
 from .config import Config
 
-"""
-    Type of phone numbers.
+
+class Leon(Config)
+    #
     FIXED_LINE = 0
     MOBILE = 1
     # In some regions (e.g. the USA), it is impossible to distinguish between
@@ -43,14 +44,9 @@ from .config import Config
     # A phone number is of type UNKNOWN when it does not fit any of the known
     # patterns for a specific region.
     UNKNOWN = 99
-"""
-
-class Leon:
-
-
-    def __init__(self):
-        self.config = Config()
-
+    
+    def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
+        super().__init__(encrypted_config, config_file_path, key_file_path)
 
     def clean_phones(self, path):
         print(path)
@@ -75,7 +71,6 @@ class Leon:
                         except NumberParseException as e:
                             print(str(e))
 
-
     def valid_email(self, email):
         is_valid = False
         try:
@@ -87,7 +82,6 @@ class Leon:
             # email is not valid, exception message is human-readable
             print(str(e))
         return is_valid
-
 
     def clean_emails(self, path):
         print(path)

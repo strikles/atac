@@ -27,15 +27,42 @@ import tweepy
 from .config import Config
 
 
-class FromRuXiaWithLove:
+class FromRuXiaWithLove(Config):
+    #
+    FIXED_LINE = 0
+    MOBILE = 1
+    # In some regions (e.g. the USA), it is impossible to distinguish between
+    # fixed-line and mobile numbers by looking at the phone number itself.
+    FIXED_LINE_OR_MOBILE = 2
+    # Freephone lines
+    TOLL_FREE = 3
+    PREMIUM_RATE = 4
+    # The cost of this call is shared between the caller and the recipient,
+    # and is hence typically less than PREMIUM_RATE calls. See
+    # http://en.wikipedia.org/wiki/Shared_Cost_Service for more information.
+    SHARED_COST = 5
+    # Voice over IP numbers. This includes TSoIP (Telephony Service over IP).
+    VOIP = 6
+    # A personal number is associated with a particular person, and may be
+    # routed to either a MOBILE or FIXED_LINE number. Some more information
+    # can be found here: http://en.wikipedia.org/wiki/Personal_Numbers
+    PERSONAL_NUMBER = 7
+    PAGER = 8
+    # Used for "Universal Access Numbers" or "Company Numbers". They may be
+    # further routed to specific offices, but allow one number to be used for
+    # a company.
+    UAN = 9
+    # Used for "Voice Mail Access Numbers".
+    VOICEMAIL = 10
+    # A phone number is of type UNKNOWN when it does not fit any of the known
+    # patterns for a specific region.
+    UNKNOWN = 99
 
-
-    def __init__(self):
-        self.config = Config()
-        self.email = self.config.data['email']
-        self.phone = self.config.data['phone']
-        self.social = self.config.data['social']
-
+    def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
+        super().__init__(encrypted_config, config_file_path, key_file_path)
+        self.email = self.data['email']
+        self.phone = self.data['phone']
+        self.social = self.data['social']
 
     def compose_email(self, mailing_list, path_message, subject):
         content_index = self.email['active_content']
@@ -74,10 +101,7 @@ class FromRuXiaWithLove:
         message.attach(part2)
         return message
 
-
     def update_config(self):
-        # reload config
-        self.config.load_config()
         # get active auth
         content_ndx = self.email['active_content']
         auth_ndx = self.email['active_auth']
@@ -90,29 +114,28 @@ class FromRuXiaWithLove:
             self.email['active_auth'] = (1 + auth_ndx) % len(self.email['auth'])
         self.config.save_config()
 
-
-    def get_ml_files(self, path):
-        ml_files = None
-        if os.path.isdir(path):
-            ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
-        elif os.path.isfile(path):
-            ml_files = [path]
-        return ml_files
-
-
-    def get_numbers(self, path):
-        # Open the people CSV and get all the numbers out of it
-        numbers = []
-        ml_files = self.get_ml_files(path)
+    def get_contact_files(self, contact_files_path):
         #
-        for ml in ml_files:
-            if os.path.isdir(path):
-                cf = path + ml
-            elif os.path.isfile(path):
-                cf = ml
-            print(cf)
-            with open(cf) as file:
-                lines = [line for line in file]
+        contact_files = None
+        if os.path.isdir(contact_files_path):
+            contact_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(contact_files_path)))
+        elif os.path.isfile(contact_files_path):
+            contact_files = [contact_files_path]
+        return contact_files
+
+    def get_numbers(self, contact_files_path):
+        # Open the people CSV and get all the numbers out of it
+        phone_numbers = []
+        contact_files = self.get_contact_files(contact_files_path)
+        #
+        for file_name in contact_files:
+            if os.path.isdir(contact_files_path):
+                current_file = contact_files_path + file_name
+            elif os.path.isfile(contact_files_path):
+                current_file = file_name
+            print(current_file)
+            with open(current_file) as contact_file:
+                lines = [line for line in contact_file]
                 with tqdm(total=len(lines)) as progress:
                     for ndx, phone in csv.reader(lines):
                         print(phone)
@@ -121,16 +144,15 @@ class FromRuXiaWithLove:
                             valid_number = phonenumbers.is_valid_number(z)
                             if valid_number:
                                 line_type = phonenumberutil.number_type(z)
-                                if line_type == 1:
-                                    numbers.append(phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164))
+                                if line_type == MOBILE:
+                                    phone_numbers.append(phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164))
                         except NumberParseException as e:
                             print(str(e))
-        return numbers
+        return phone_numbers
 
-
-    def get_msg(self, message_file):
+    def get_message(self, message_file_path):
         # Now put your SMS in a file called message.txt, and it will be read from there.
-        with open(message_file, encoding="utf8") as content_file:
+        with open(message_file_path, encoding="utf8") as content_file:
             msg = content_file.read()
         # Check we read a message OK
         if len(msg.strip()) == 0:
@@ -139,7 +161,6 @@ class FromRuXiaWithLove:
         else:
             print("> SMS message to send: \n\n{}".format(msg))
         return msg
-
 
     def send_email(self, mailing_list, message):
         content_index = self.email['active_content']
@@ -155,51 +176,46 @@ class FromRuXiaWithLove:
                 error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
                 print(error_status)
                 server.quit()
+                print("\x1b[6;37;42m Sent \x1b[0m")
         except Exception as err:
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
-        finally:
-            print("\x1b[6;37;42m Sent \x1b[0m")
-            
-            
-    def store_emails_in_buckets(self, lines, ml_emails):
-        ml_counter = 0
-        num_buckets = len(ml_emails)
+
+    def store_emails_in_buckets(self, lines, emails):
+        counter = 0
+        num_buckets = len(emails)
         with tqdm(total=len(lines)) as progress:
             for ndx, receiver_email in csv.reader(lines):
                 if checkers.is_email(receiver_email):
-                    current_bucket = ml_counter % num_buckets      
-                    ml_emails[current_bucket].append(receiver_email)
-                    ml_counter += 1
+                    current_bucket = counter % num_buckets      
+                    emails[current_bucket].append(receiver_email)
+                    counter += 1
                     progress.update(1)
 
-
-    def send_emails_in_buckets(self, ml_emails, path_message, subject):
-        with tqdm(total=len(ml_emails)) as progress:
-            for ml_batch in ml_emails:
-                mailing_list = '; '.join(ml_batch)
-                message = self.compose_email(mailing_list, path_message, subject)
+    def send_emails_in_buckets(self, emails, message_file_path, subject):
+        with tqdm(total=len(emails)) as progress:
+            for batch in emails:
+                mailing_list = '; '.join(batch)
+                message = self.compose_email(mailing_list, message_file_path, subject)
                 self.send_email(mailing_list, message)
                 time.sleep(10)
                 progress.update(1)
 
-
-    def send_emails(self, path_emails, path_message, subject):
-        print(path_emails)
+    def send_emails(self, email_files_path, message_file_path, subject):
+        print(email_files_path)
         status = 0
-        ml_files = self.get_ml_files(path_emails)
-        for ml in ml_files:
-            cf = path_emails + ml
-            print(cf)
-            with open(cf) as file:
-                lines = [line for line in file]
+        email_files = self.get_contact_files(emails_files_path)
+        for file_name in email_files:
+            current_file_path = email_files_path + file_name
+            print(current_file_path)
+            with open(current_file_path) as contact_file:
+                lines = [line for line in contact_file]
                 num_emails_per_bucket = 77
                 num_buckets = len(lines) // num_emails_per_bucket
-                ml_emails = [[] for i in range(num_buckets)]
-                self.store_emails_in_buckets(lines, ml_emails)
-                self.send_emails_in_buckets(ml_emails, path_message, subject)
+                emails = [[] for i in range(num_buckets)]
+                self.store_emails_in_buckets(lines, emails)
+                self.send_emails_in_buckets(emails, message_file_path, subject)
         self.update_config()
         return status
-
 
     def calculate_twilio_cost(self, msg, phone_numbers, msg_type):
         SMS_LENGTH = 160                 # Max length of one SMS message
@@ -220,10 +236,10 @@ class FromRuXiaWithLove:
             cost = SMS_MSG_COST * num_segments * num_messages
             print("> {} messages of {} segments each will be sent, at a cost of ${} ".format(num_messages, num_segments, cost))
 
-
-    def send_twilio(self, path, message_file, msg_type):
-        msg = self.get_msg(message_file)
-        phone_numbers = self.get_numbers(path)
+    def send_twilio(self, contacts_file_path, message_file_path, msg_type):
+        #
+        msg = self.get_message(message_file_path)
+        phone_numbers = self.get_numbers(contacts_file_path)
         # Check you really want to send them
         self.calculate_twilio_cost(msg, phone_numbers, msg_type)
         confirm = input("Send these messages? [Y/n] ")
@@ -249,10 +265,10 @@ class FromRuXiaWithLove:
         #
         print("Exiting!")
 
-
-    def send_yowsup(self, path, message_file):
-        msg = self.get_msg(message_file)
-        phone_numbers = self.get_numbers(path)
+    def send_yowsup(self, contacts_file_path, message_file_path):
+        #
+        msg = self.get_message(message_file_path)
+        phone_numbers = self.get_numbers(contacts_file_path)
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
         if confirm[0].lower() == 'y':
@@ -271,11 +287,11 @@ class FromRuXiaWithLove:
         #
         print("Exiting!")
 
-
     if os.environ.get('DISPLAY'):
-        def send_pywhatkit(self, path, message_file):
-            msg = self.get_msg(message_file)
-            phone_numbers = self.get_numbers(path)
+        def send_pywhatkit(self, contacts_file_path, message_file_path):
+            #
+            msg = self.get_message(message_file_path)
+            phone_numbers = self.get_numbers(contacts_file_path)
             # Check you really want to send them
             confirm = input("Send these messages? [Y/n] ")
             if confirm[0].lower() == 'y':
@@ -291,7 +307,6 @@ class FromRuXiaWithLove:
             #
             print("Exiting!")
 
-
     def send_facebook(self):
         status = 0
         msg = "Hello, world!"
@@ -302,7 +317,6 @@ class FromRuXiaWithLove:
             graph.put_object(group, 'feed', message=msg, link=link)
             print(graph.get_connections(group, 'feed'))
         return status
-
 
     def send_twitter(self):
         status = 0

@@ -3,7 +3,6 @@ import markovify
 
 class AllTimeHigh:
 
-
     @staticmethod
     def gen_content(content):
         status = 0

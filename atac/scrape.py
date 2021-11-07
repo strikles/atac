@@ -15,10 +15,11 @@ from email_validator import validate_email, EmailNotValidError
 from .config import Config
 
 
-class UnderTheMangoTree:
+class UnderTheMangoTree(Config):
 
-
-    def __init__(self):
+    def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
+        super().__init__(encrypted_config, config_file_path, key_file_path)
+        self.scrape = self.data['scrape']
         # primary queue (urls to be crawled)
         self.primary_unprocessed_urls = deque()
         self.secondary_unprocessed_urls = deque()
@@ -29,10 +30,6 @@ class UnderTheMangoTree:
         self.phones = set()
         self.num_phones = 0
         self.num_emails = 0
-        self.config = Config()
-        print(self.config)
-        self.scrape = self.config.data['scrape']
-
 
     def invalid_url(self, url):
         # reject invalid domains
@@ -51,15 +48,14 @@ class UnderTheMangoTree:
                 return True
         return False
 
-
     @staticmethod
     def set_useragent():
+        #
         ua = UserAgent()
         headers = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
                    "Accept-Language": "en-US,en;q=0.5", "Referer": "https://www.google.com/", "DNT": "1",
                    "Connection": "keep-alive", "Upgrade-Insecure-Requests": "1", 'User-Agent': ua.random}
         return headers
-
 
     @staticmethod
     def make_dirs():
@@ -70,7 +66,6 @@ class UnderTheMangoTree:
             os.makedirs(os.getcwd() + "/contacts/emails")
         if not os.path.isdir(os.getcwd() + "/contacts/phones"):
             os.makedirs(os.getcwd() + "/contacts/phones")
-
 
     @staticmethod
     def truncate_files(data_key):
@@ -95,7 +90,6 @@ class UnderTheMangoTree:
 
             phones_writer.writerow(['', 'phone'])
 
-
     @staticmethod
     def extract_emails(content):
         #
@@ -103,13 +97,11 @@ class UnderTheMangoTree:
                                r"(?!jpg|jpeg|png|svg|gif|webp|yji|pdf|htm|title|content|formats)[a-zA-Z]{2,7}")
         return set(filter(lambda x: (checkers.is_email(x)), rx_emails.findall(content)))
 
-
     @staticmethod
     def extract_phones(content):
         #
         rx_phones = re.compile(r'\+(?:[0-9] ?){6,14}[0-9]')
         return set(rx_phones.findall(content))
-
 
     def save_contacts(self, new_contacts, data_key, type):
         # save to file
@@ -146,11 +138,9 @@ class UnderTheMangoTree:
                     self.num_phones +=1
                     writer.writerow([self.num_phones, c])
 
-
     def process_page(self, data_key, starting_url):
-
+        #
         status = 0
-
         # primary queue (urls to be crawled)
         self.primary_unprocessed_urls.append(starting_url)
         # secondary queue
@@ -160,11 +150,9 @@ class UnderTheMangoTree:
         # a set of fetched emails
         self.emails.clear()
         self.phones.clear()
-
         # make dirs
         self.make_dirs()
         self.truncate_files(data_key)
-
         # process urls 1 by 1 from queue until empty
         while self.primary_unprocessed_urls:
             # move next url from queue to set of processed urls
@@ -179,7 +167,6 @@ class UnderTheMangoTree:
             )
             #
             self.processed_urls.add(url)
-
             # skip if invalid 
             if self.invalid_url(url):
                 continue
@@ -201,19 +188,16 @@ class UnderTheMangoTree:
                 continue
             else:
                 pass
-
             # extract email addresses into the resulting set
             new_emails = self.extract_emails(response.text)
             if new_emails:
                 self.save_contacts(new_emails, data_key, "email")
                 self.emails.update(new_emails)
-
             # extract phone numbers into resulting set
             new_phones = self.extract_phones(response.text)
             if new_phones:
                 self.save_contacts(new_phones, data_key, "phone")
                 self.phones.update(new_phones)
-
             # create a beautiful soup for the html document
             try:
                 soup = BeautifulSoup(response.text, 'lxml')
@@ -222,17 +206,14 @@ class UnderTheMangoTree:
                 continue
             else:
                 pass
-                
             # extract base url to resolve relative links
             parts = urlsplit(url)
             base_url = "{0.scheme}://{0.netloc}".format(parts)
             path = url[:url.rfind('/') + 1] if '/' in parts.path else url
-            
             # find all the anchors
             anchors = soup.find_all("a")
             num_anchors = len(anchors)
             print("> {0} new anchors {1}".format(currentThread().getName(), num_anchors))
-            
             # process all the anchors
             count = 0
             for anchor in anchors:
@@ -253,11 +234,11 @@ class UnderTheMangoTree:
                         break
                     elif link not in self.primary_unprocessed_urls:
                         self.primary_unprocessed_urls.append(link)
-
+            #
             if not self.primary_unprocessed_urls:
                 print(">>> primary queue empty...\n")
                 self.primary_unprocessed_urls.extend(self.secondary_unprocessed_urls)
                 self.secondary_unprocessed_urls.clear()
-
+        #
         return status
         

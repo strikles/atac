@@ -13,14 +13,22 @@ import ascii_magic
 
 class Config:
 
-    def __init__(self):
+    def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
         self.key = None
         self.data = None
+        self.encrypted_config = encrypted_config
+        self.config_file_path = config_file_path
+        self.key_file_path = key_file_path
+        #
+        if self.key_file_path:
+            self.load_key(self.key_file_path)
         if not self.key:
-            self.key = self.generate_key()
-        if not os.path.isfile('auth.json'):
-            self.new_config()
+            self.generate_key()
+        #
+        if not os.path.isfile(self.config_file_path):
+            self.new_config(self.config_file_path, self.encrypted_config)
         self.load_config()
+        #
         my_art = ascii_magic.from_image_file(
             img_path="assets/img/IMG_3339.JPG",
             columns=80,
@@ -43,28 +51,45 @@ class Config:
             salt=salt,
             iterations=100000,
             backend=default_backend())
-        return base64.urlsafe_b64encode(kdf.derive(password))
+        self.key = base64.urlsafe_b64encode(kdf.derive(password))
 
-    def new_config(self):
-        self.load_decrypted()
-        self.save_config()
+    def load_key(self, key_file_path):
+        with open(key_file_path, 'wb') as key_file: 
+            self.key = key_file.read()
 
-    def save_config(self):
-        fernet = Fernet(self.key) 
-        # encrypting the file 
-        encrypted = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf8'))
-        # opening the file in write mode and writing the encrypted data 
-        with open('auth.json', 'wb') as encrypted_file: 
-            encrypted_file.write(encrypted) 
+    def save_key(self, key_file_path):
+        with open(key_file_path, 'wb') as key_file: 
+            key_file.write(self.key) 
 
-    def load_config(self):
-        fernet = Fernet(self.key)
-        # opening the encrypted file 
-        with open('auth.json', 'rb') as enc_file: 
-            encrypted = enc_file.read() 
-        # decrypting the file 
-        self.data = json.loads(fernet.decrypt(encrypted))
-
-    def load_decrypted(self):
+    def new_config(self, config_file_path):
         with open('new.json', 'rb') as new_config: 
             self.data = json.loads(new_config.read())
+        self.save_config(config_file_path, True)
+
+    def save_config(self, config_file_path, encrypted_config):
+        is encrypted_config:
+            fernet = Fernet(self.key) 
+            # encrypting the file 
+            encrypted_data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf8'))
+            # opening the file in write mode and writing the encrypted data 
+            with open(config_file_path, 'wb') as encrypted_file: 
+                encrypted_file.write(encrypted_data) 
+        else:
+            with open(config_file, 'wb') as unencrypted_file: 
+                unencrypted_file.write(self.data, ensure_ascii=False)
+
+    def load_config(self):
+        if self.encrypted_config:
+            fernet = Fernet(self.key)
+            # opening the encrypted file 
+            with open(self.config_file, 'rb') as enc_file: 
+                encrypted_data = enc_file.read() 
+            # decrypting the file 
+            try:
+                self.data = json.loads(fernet.decrypt(encrypted_data))
+            except InvalidToken as e:
+                print("Invalid Key - Unsuccessfully decrypted")
+                sys.exit(1)
+        else:
+            with open(self.config_file, 'rb') as new_config: 
+                self.data = json.loads(new_config.read())
