@@ -9,6 +9,7 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 import base64
 import ascii_magic
+import inspect
 
 
 class Config:
@@ -22,6 +23,7 @@ class Config:
         #
         if self.key_file_path:
             self.load_key(self.key_file_path)
+            print(self.key)
         if not self.key:
             self.generate_key()
         #
@@ -39,6 +41,7 @@ class Config:
     def generate_key(self):
         # key generation 
         #self.key = Fernet.generate_key()
+        print(inspect.stack()[1].function)
         if "PYTEST_CURRENT_TEST" in os.environ:
             password =  bytes("M4m4k154n", encoding='utf8')
             salt = bytes("77", encoding='utf8')
