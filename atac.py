@@ -32,8 +32,8 @@ def config(arguments):
         if generate_key_file:
             config.generate_key()
             config.save_key(generate_key_file)
-    if getattr(arguments, "new_config"):
-        new_config_file = getattr(arguments, "new_config")
+    if getattr(arguments, "new_config_file"):
+        new_config_file = getattr(arguments, "new_config_file")
         if new_config_file:
             config.new_config(new_config_file, encrypted_config)
     if getattr(arguments, "decrypted_config_file"):
