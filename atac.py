@@ -9,23 +9,23 @@ import atac
 def get_config_arguments(arguments):
     #
     encrypted_config = True
-    key_file = None
-    config_file = 'auth.json'
+    key_file_path = None
+    config_file_path = 'auth.json'
     #
     if getattr(arguments, "encrypted_config"):
         encrypted_config = getattr(arguments, "encrypted_config")
     if getattr(arguments, "config_file"):
-        config_file = getattr(arguments, "config_file")
+        config_file_path = getattr(arguments, "config_file")
     if getattr(arguments, "key_file"):
-        key_file = getattr(arguments, "key_file")
+        key_file_path = getattr(arguments, "key_file")
     #
-    return encrypted_config, config_file, key_file
+    return encrypted_config, config_file_path, key_file_path
 
 # sub-command functions
 def config(arguments):
     #
-    encrypted_config, config_file, key_file = get_config_arguments(arguments)
-    config = atac.Config(encrypted_config, config_file, key_file)
+    encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
+    config = atac.Config(encrypted_config, config_file_path, key_file_path)
     #
     if getattr(arguments, "generate_key_file"):
         generate_key_file = getattr(arguments, "generate_key_file")
@@ -44,57 +44,57 @@ def config(arguments):
 # sub-command functions
 def email(arguments):
     #
-    encrypted_config, config_file, key_file = get_config_arguments(arguments)
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
+    encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
+    katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
     target = "smtp"
-    path_emails = os.path.dirname(os.path.abspath(__file__)) + "/contacts/emails/"
+    email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/contacts/emails/"
     subject = None
     #
     if getattr(arguments, "subject"):
         subject = getattr(arguments, "subject")
     if getattr(arguments, "message_file"):
-        path_message = getattr(arguments, "message_file")
+        message_file_path = getattr(arguments, "message_file")
     if getattr(arguments, "emails_file"):
-        path_emails = getattr(arguments, "emails_file")
+        email_files_path = getattr(arguments, "emails_file")
     if getattr(arguments, "target"):
         target = getattr(arguments, "target")
     #
     if "smtp" in target:
-        katie.send_emails(path_emails, path_message, subject)
+        katie.send_emails(email_files_path, message_file_path, subject)
 
 # sub-command functions
 def phone(arguments):
     #
-    encrypted_config, config_file, key_file = get_config_arguments(arguments)
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
+    encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
+    katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
     target = "whatsapp"
-    path_phones = os.path.dirname(os.path.abspath(__file__)) + "/contacts/phones/"
+    phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/contacts/phones/"
     subject = None
     #
     if getattr(arguments, "message_file"):
-        path_message = getattr(arguments, "message_file")
+        message_file_path = getattr(arguments, "message_file")
     if getattr(arguments, "phones_file"):
-        path_phones = getattr(arguments, "phones_file")
+        phone_files_path = getattr(arguments, "phones_file")
     if getattr(arguments, "target"):
         type = getattr(arguments, "target")
     #
     if "whatsapp" in target and os.environ.get('DISPLAY'):
-        katie.send_pywhatkit(path_phones, path_message)
+        katie.send_pywhatkit(phone_files_path, message_file_path)
     if "sms" in target:
-        katie.send_twilio(path_phones, path_message, 'sms')
+        katie.send_twilio(phone_files_path, message_file_path, 'sms')
 
 # sub-command functions
 def social(arguments):
     #
-    encrypted_config, config_file, key_file = get_config_arguments(arguments)
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
+    encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
+    katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
     target = "twitter"
     #
     if getattr(arguments, "message_file"):
-        path_message = getattr(arguments, "message_file")
+        message_file_path = getattr(arguments, "message_file")
     if getattr(arguments, "target"):
         target = getattr(arguments, "target")
     #
@@ -105,26 +105,26 @@ def social(arguments):
 
 def scrape(arguments):
     #
-    encrypted_config, config_file, key_file = get_config_arguments(arguments)
+    encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     #
     url = ""
     target = ""
     #
     if getattr(arguments, "url"):
         url = getattr(arguments, "url")
-        mango = atac.UnderTheMangoTree(encrypted_config, config_file, key_file)
+        mango = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
         mango.process_page("url", url)
     elif getattr(arguments, "target"):
         target = getattr(arguments, "target")
-        mango = atac.UnderTheMangoTree(encrypted_config, config_file, key_file)
+        mango = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
         mango.process_page(target, mango.scrape['targets'][target])
     else:
         # create threads
         mangos = dict()
-        config = atac.Config(encrypted_config, config_file, key_file)
+        config = atac.Config(encrypted_config, config_file_path, key_file_path)
         for data_key, starting_url in config.data['scrape']['targets'].items():
             print("{0} - {1}".format(data_key, starting_url))
-            mangos[data_key] = atac.UnderTheMangoTree(encrypted_config, config_file, key_file)
+            mangos[data_key] = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
             catcher_thread = Thread(
                 target=mangos[data_key].process_page, args=(data_key, starting_url)
             )
@@ -142,22 +142,22 @@ def compose(arguments):
     
 def clean(arguments):
     #
-    encrypted_config, config_file, key_file = get_config_arguments(arguments)
-    leon = atac.Leon(encrypted_config, config_file, key_file)
+    encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
+    leon = atac.Leon(encrypted_config, config_file_path, key_file_path)
     #
-    path_emails = os.path.dirname(os.path.abspath(__file__)) + "/contacts/emails/"
-    path_phones = os.path.dirname(os.path.abspath(__file__)) + "/contacts/phones/"
+    email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/contacts/emails/"
+    phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/contacts/phones/"
     #
     if getattr(arguments, "target"):
         target = getattr(arguments, "target")
     #
     if "email" in target:
-        leon.clean_emails(path_emails)
+        leon.clean_emails(email_files_path)
     if "phone" in target:
-        leon.clean_phones(path_phones)
+        leon.clean_phones(phone_files_path)
     else:
-        leon.clean_emails(path_emails)
-        leon.clean_phones(path_phones)
+        leon.clean_emails(email_files_path)
+        leon.clean_phones(phone_files_path)
 
 # create the top-level parser
 parser = argparse.ArgumentParser()
