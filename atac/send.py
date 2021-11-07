@@ -203,7 +203,7 @@ class FromRuXiaWithLove(Config):
     def send_emails(self, email_files_path, message_file_path, subject):
         print(email_files_path)
         status = 0
-        email_files = self.get_contact_files(emails_files_path)
+        email_files = self.get_contact_files(email_files_path)
         for file_name in email_files:
             current_file_path = email_files_path + file_name
             print(current_file_path)
