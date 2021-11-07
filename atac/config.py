@@ -21,10 +21,10 @@ class Config:
         self.config_file_path = config_file_path
         self.key_file_path = key_file_path
         #
-        if self.key_file_path:
+        if encrypted_config and not self.key_file_path:
             self.load_key(self.key_file_path)
             print(self.key)
-        if not self.key:
+        if encrypted_config and not self.key:
             self.generate_key()
         #
         if not os.path.isfile(self.config_file_path):
