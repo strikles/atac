@@ -171,7 +171,7 @@ class FromRuXiaWithLove(Config):
         try:
             context = ssl.create_default_context()
             with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
-                server.set_debuglevel(1)
+                server.set_debuglevel(2)
                 server.login(auth['user'], auth['password'])
                 error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
                 print(error_status)
