@@ -28,18 +28,18 @@ def config(arguments):
     config = atac.Config(encrypted_config, config_file_path, key_file_path)
     #
     if getattr(arguments, "generate_key_file"):
-        generate_key_file = getattr(arguments, "generate_key_file")
-        if generate_key_file:
+        generate_key_file_path = getattr(arguments, "generate_key_file")
+        if generate_key_file_path:
             config.generate_key()
-            config.save_key(generate_key_file)
+            config.save_key(generate_key_file_path)
     if getattr(arguments, "new_config_file"):
-        new_config_file = getattr(arguments, "new_config_file")
-        if new_config_file:
-            config.new_config(new_config_file, encrypted_config)
+        new_config_file_path = getattr(arguments, "new_config_file")
+        if new_config_file_path:
+            config.new_config(new_config_file_path, encrypted_config)
     if getattr(arguments, "decrypted_config_file"):
-        decrypted_config_file = getattr(arguments, "decrypted_config_file")
-        if decrypted_config_file:
-            config.save_config(decrypted_config_file, False)
+        decrypted_config_file_path = getattr(arguments, "decrypted_config_file")
+        if decrypted_config_file_path:
+            config.save_config(decrypted_config_file_path, False)
 
 # sub-command functions
 def email(arguments):
