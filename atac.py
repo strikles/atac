@@ -27,8 +27,8 @@ def config(arguments):
     encrypted_config, config_file, key_file = get_config_arguments(arguments)
     config = atac.Config(encrypted_config, config_file, key_file)
     #
-    if getattr(arguments, "generate_key"):
-        generate_key_file = getattr(arguments, "generate_key")
+    if getattr(arguments, "generate_key_file"):
+        generate_key_file = getattr(arguments, "generate_key_file")
         if generate_key_file:
             config.generate_key()
             config.save_key(generate_key_file)
