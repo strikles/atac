@@ -54,7 +54,7 @@ class Config:
         self.key = base64.urlsafe_b64encode(kdf.derive(password))
 
     def load_key(self, key_file_path):
-        with open(key_file_path, 'wb') as key_file: 
+        with open(key_file_path, 'rb') as key_file: 
             self.key = key_file.read()
 
     def save_key(self, key_file_path):
