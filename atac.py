@@ -36,10 +36,10 @@ def config(arguments):
         new_config_file = getattr(arguments, "new_config")
         if new_config_file:
             config.new_config(new_config_file, encrypted_config)
-    if getattr(arguments, "decrypted_config_file_path"):
-        decrypted_config_file = getattr(arguments, "decrypted_config_file_path")
+    if getattr(arguments, "decrypted_config_file"):
+        decrypted_config_file = getattr(arguments, "decrypted_config_file")
         if decrypted_config_file:
-            config.save_config(decrypted_config_file_path, False)
+            config.save_config(decrypted_config_file, False)
 
 # sub-command functions
 def email(arguments):
