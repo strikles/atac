@@ -67,7 +67,7 @@ class Config:
         self.save_config(config_file_path, True)
 
     def save_config(self, config_file_path, encrypted_config):
-        is encrypted_config:
+        if encrypted_config:
             fernet = Fernet(self.key) 
             # encrypting the file 
             encrypted_data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf8'))
