@@ -72,7 +72,7 @@ class FromRuXiaWithLove(Config):
         message.attach(part2)
         return message
 
-    def update_config(self):
+    def update_email_config(self):
         # get active auth
         content_ndx = self.email['active_content']
         auth_ndx = self.email['active_auth']
@@ -186,7 +186,7 @@ class FromRuXiaWithLove(Config):
                 emails = [[] for i in range(num_buckets)]
                 self.store_emails_in_buckets(lines, emails)
                 self.send_emails_in_buckets(emails, message_file_path, subject)
-        self.update_config()
+        self.update_email_config()
         return status
 
     def calculate_twilio_cost(self, msg, phone_numbers, msg_type):
