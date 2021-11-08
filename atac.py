@@ -78,7 +78,7 @@ def phone(arguments):
     if getattr(arguments, "phones_file"):
         phone_files_path = getattr(arguments, "phones_file")
     if getattr(arguments, "target"):
-        type = getattr(arguments, "target")
+        target = getattr(arguments, "target")
     #
     if "whatsapp" in target and os.environ.get('DISPLAY'):
         katie.send_pywhatkit(phone_files_path, message_file_path)

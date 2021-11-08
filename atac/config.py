@@ -85,8 +85,8 @@ class Config:
         if self.encrypted_config:
             fernet = Fernet(self.key)
             # opening the encrypted file 
-            with open(self.config_file_path, 'rb') as enc_file: 
-                encrypted_data = enc_file.read() 
+            with open(self.config_file_path, 'rb') as encrypted_file: 
+                encrypted_data = encrypted_file.read() 
             # decrypting the file 
             try:
                 self.data = json.loads(fernet.decrypt(encrypted_data))
