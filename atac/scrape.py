@@ -198,7 +198,7 @@ class UnderTheMangoTree(Config):
             if new_phones:
                 self.save_contacts(new_phones, data_key, "phone")
                 self.phones.update(new_phones)
-            # create a beautiful soup for the html document
+            # create a beautiful soup for the html document to get anchors
             try:
                 soup = BeautifulSoup(response.text, 'lxml')
             except Exception as bs_err:

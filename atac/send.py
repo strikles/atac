@@ -107,18 +107,19 @@ class FromRuXiaWithLove(Config):
             print(current_file)
             with open(current_file) as contact_file:
                 lines = [line for line in contact_file]
-                with tqdm(total=len(lines)) as progress:
-                    for ndx, phone in csv.reader(lines):
-                        print(phone)
-                        try:
-                            z = phonenumbers.parse(phone)
-                            valid_number = phonenumbers.is_valid_number(z)
-                            if valid_number:
-                                line_type = phonenumberutil.number_type(z)
-                                if line_type == phonenumberutil.PhoneNumberType.MOBILE:
-                                    phone_numbers.append(phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164))
-                        except NumberParseException as e:
-                            print(str(e))
+                for ndx, phone in csv.reader(lines):
+                    print(phone)
+                    try:
+                        z = phonenumbers.parse(phone)
+                    except NumberParseException as e:
+                        print(str(e))
+                        continue
+                    valid_number = phonenumbers.is_valid_number(z)
+                    if valid_number:
+                        line_type = phonenumberutil.number_type(z)
+                        if line_type == phonenumberutil.PhoneNumberType.MOBILE:
+                            phone_number_e164 = phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164)
+                            phone_numbers.append(phone_number_e164)
         return phone_numbers
 
     def get_message(self, message_file_path):
