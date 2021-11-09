@@ -1,38 +1,17 @@
-import os, sys
+import os
 import atac
+
 
 encrypted_config = True
 config_file = 'auth.json'
 key_file = None
+
 
 def test_markov():
     content = os.path.dirname(os.path.abspath(__file__)) + '/assets/pg1009.txt'
     two_back = atac.AllTimeHigh()
     assert(two_back.gen_content(content)) == 0
 
-"""
-def test_email():
-    katie = FromRuXiaWithLove()
-    assert(katie.send_email()) == 0
-"""
-
-"""
-def test_facebook():
-    katie = FromRuXiaWithLove()
-    assert(katie.send_facebook()) == 0
-"""
-
-"""
-def test_twitter():
-    katie = FromRuXiaWithLove()
-    assert(katie.send_twitter()) == 0
-"""
-    
-"""
-def test_whatsapp():
-    katie = FromRuXiaWithLove()
-    assert(katie.send_whatsapp()) == 0
-"""
 
 def test_invalid_url():
     mango = atac.UnderTheMangoTree(encrypted_config, config_file, key_file)
@@ -43,6 +22,7 @@ def test_invalid_url():
     url3 = "strikles@gmail.com"
     assert(mango.invalid_url(url3)) == False
 
+
 def test_extract_emails():
     mango = atac.UnderTheMangoTree(encrypted_config, config_file, key_file)
     content = "me@gmail.com, you@yahoo.com"
@@ -52,6 +32,7 @@ def test_extract_emails():
     expected.update({'you@yahoo.com'})
     assert(new_emails == expected) == True
 
+
 def test_extract_phones():
     mango = atac.UnderTheMangoTree(encrypted_config, config_file, key_file)
     content = "+351 99999999, +31 45678541"
@@ -60,14 +41,7 @@ def test_extract_phones():
     expected.update({'+351 99999999'})
     expected.update({'+31 45678541'})
     assert(new_phones == expected) == True
-    
-"""
-def test_save_emails():
-"""
 
-"""
-def test_save_phones():
-"""
 
 def test_process_page():
     mango = atac.UnderTheMangoTree(encrypted_config, config_file, key_file)
