@@ -58,6 +58,7 @@ class FromRuXiaWithLove(Config):
             message["Subject"] = ""
         else:
             message["Subject"] = content['subject']
+        #
         message["From"] = auth['sender']
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
@@ -74,6 +75,7 @@ class FromRuXiaWithLove(Config):
         # The email client will try to render the last part first
         message.attach(part1)
         message.attach(part2)
+        #
         return message
 
     def update_email_config(self):
@@ -87,11 +89,13 @@ class FromRuXiaWithLove(Config):
         # set active auth to next and save config
         if self.email['rotate_auth']:
             self.email['active_auth'] = (1 + auth_ndx) % len(self.email['auth'])
+        #
         self.config.save_config()
 
     def get_contact_files(self, contact_files_path):
         #
         contact_files = []
+        #
         if os.path.isdir(contact_files_path):
             contact_file_names = list(filter(lambda c: c.endswith('.csv'), os.listdir(contact_files_path)))
             for file_name in contact_file_names:
@@ -104,6 +108,7 @@ class FromRuXiaWithLove(Config):
         else:
             print("Invalid contact file path!")
             sys.exit(1)
+        #
         return contact_files
 
     def get_phone_numbers(self, contact_files_path):
@@ -127,6 +132,7 @@ class FromRuXiaWithLove(Config):
                         if line_type == phonenumberutil.PhoneNumberType.MOBILE:
                             phone_number_e164 = phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164)
                             phone_numbers.append(phone_number_e164)
+        #
         return phone_numbers
 
     def get_message(self, message_file_path):
@@ -188,8 +194,8 @@ class FromRuXiaWithLove(Config):
         print(email_files_path)
         status = 0
         email_files = self.get_contact_files(email_files_path)
-        for file_path in email_files:
-            with open(file_path) as contact_file:
+        for email_file_path in email_files:
+            with open(email_file_path) as contact_file:
                 lines = [line for line in contact_file]
                 num_emails_per_bucket = 1000
                 num_buckets = len(lines) // num_emails_per_bucket
