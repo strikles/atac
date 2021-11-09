@@ -9,15 +9,14 @@ import time
 from random import randint
 from tqdm import tqdm
 
-from bs4 import BeautifulSoup
 from validator_collection import checkers
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
-from twilio.rest import Client
-from .whatsapp import Client
+from twilio.rest import Client as TwilioClient
+from .whatsapp import Client as YowsupClient
 if os.environ.get('DISPLAY'):
     from pywhatkit import *
 
@@ -235,7 +234,7 @@ class FromRuXiaWithLove(Config):
             account_sid = self.phone['twilio']['SID']
             auth_token = self.phone['twilio']['TOKEN']
             from_num = self.phone['twilio']['PHONE'] # 'From' number in Twilio
-            client = Client(account_sid, auth_token)
+            client = TwilioClient(account_sid, auth_token)
             # Send the messages
             for num in phone_numbers:
                 try:
@@ -261,7 +260,7 @@ class FromRuXiaWithLove(Config):
         if confirm[0].lower() == 'y':
             user = self.phone['yowsup']['user']
             password = self.phone['yowsup']['password']
-            client = Client(login=user, password=password)
+            client = YowsupClient(login=user, password=password)
             # Send the messages
             for num in phone_numbers:
                 try:
