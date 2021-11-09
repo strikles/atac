@@ -212,7 +212,7 @@ class FromRuXiaWithLove(Config):
         if msg_type == "whatsapp":
             num_segments = 1
         else:
-            num_segments = int(len(sms.encode('utf-8')) / SMS_LENGTH) +1
+            num_segments = int(len(msg.encode('utf-8')) / SMS_LENGTH) +1
         # Calculate how much it's going to cost:
         num_messages = len(phone_numbers)
         cost = 0
