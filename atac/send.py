@@ -34,12 +34,28 @@ class FromRuXiaWithLove(Config):
         self.email = self.data['email']
         self.phone = self.data['phone']
         self.social = self.data['social']
-
-    def compose_email(self, mailing_list, message_file_path, subject):
+        
+    def get_email_config(self):
         content_index = self.email['active_content']
         auth_index = self.email['active_auth']
         content = self.email['content'][content_index]
         auth = self.email['auth'][auth_index]
+        return auth, content
+
+    def update_email_config(self):
+        auth, content = self.get_email_config()
+        # set sctive to next and save config
+        if self.email['rotate_content']:
+            self.email['active_content'] = (1 + self.email['active_content']) % len(content)
+        # set active auth to next and save config
+        if self.email['rotate_auth']:
+            self.email['active_auth'] = (1 + self.email['active_auth']) % len(auth)
+        #
+        self.config.save_config()
+
+    def compose_email(self, mailing_list, message_file_path, subject):
+        #
+        auth, content = self.get_email_config()
         #
         if not message_file_path:
             md = 'assets/mail_content/' + content['markdown']
@@ -75,20 +91,6 @@ class FromRuXiaWithLove(Config):
         message.attach(part2)
         #
         return message
-
-    def update_email_config(self):
-        # get active auth
-        content_ndx = self.email['active_content']
-        auth_ndx = self.email['active_auth']
-        auth = self.email['auth'][auth_ndx]
-        # set sctive to next and save config
-        if self.email['rotate_content']:
-            self.email['active_content'] = (1 + content_ndx) % len(self.email['content'])
-        # set active auth to next and save config
-        if self.email['rotate_auth']:
-            self.email['active_auth'] = (1 + auth_ndx) % len(self.email['auth'])
-        #
-        self.config.save_config()
 
     def get_contact_files(self, contact_files_path):
         #
@@ -152,10 +154,8 @@ class FromRuXiaWithLove(Config):
         return msg
 
     def send_email(self, mailing_list, message):
-        content_index = self.email['active_content']
-        auth_index = self.email['active_auth']
-        content = self.email['content'][content_index]
-        auth = self.email['auth'][auth_index]
+        #
+        auth, content = self.get_email_config()
         # Create secure connection with server and send email
         try:
             context = ssl.create_default_context()
