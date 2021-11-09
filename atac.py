@@ -1,7 +1,5 @@
 import argparse
 import os
-import sys
-import json
 from threading import Thread
 import atac
 
@@ -20,6 +18,7 @@ def get_config_arguments(arguments):
         key_file_path = getattr(arguments, "key_file")
     #
     return encrypted_config, config_file_path, key_file_path
+
 
 # sub-command functions
 def config(arguments):
@@ -40,6 +39,7 @@ def config(arguments):
         decrypted_config_file_path = getattr(arguments, "decrypted_config_file")
         if decrypted_config_file_path:
             config.save_config(decrypted_config_file_path, False)
+
 
 # sub-command functions
 def email(arguments):
@@ -63,6 +63,7 @@ def email(arguments):
     if "smtp" in target:
         katie.send_emails(email_files_path, message_file_path, subject)
 
+
 # sub-command functions
 def phone(arguments):
     #
@@ -85,6 +86,7 @@ def phone(arguments):
     if "sms" in target:
         katie.send_twilio(phone_files_path, message_file_path, 'sms')
 
+
 # sub-command functions
 def social(arguments):
     #
@@ -102,6 +104,7 @@ def social(arguments):
         katie.send_facebook()
     if "twitter" in target:
         katie.send_twitter()
+
 
 def scrape(arguments):
     #
@@ -130,6 +133,7 @@ def scrape(arguments):
             )
             catcher_thread.start()
 
+
 def compose(arguments):
     #
     corpus = os.path.dirname(os.path.abspath(__file__)) + '/assets/pg1009.txt'
@@ -139,7 +143,8 @@ def compose(arguments):
     #
     two_bach = atac.AllTimeHigh()
     two_bach.gen_content(corpus)
-    
+
+
 def clean(arguments):
     #
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
@@ -158,6 +163,7 @@ def clean(arguments):
     else:
         leon.clean_emails(email_files_path)
         leon.clean_phones(phone_files_path)
+
 
 # create the top-level parser
 parser = argparse.ArgumentParser()
