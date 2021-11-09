@@ -16,11 +16,11 @@ def test_markov():
 def test_invalid_url():
     mango = atac.UnderTheMangoTree(encrypted_config, config_file, key_file)
     url1 = ""
-    assert(mango.invalid_url(url1)) == False
+    assert(mango.invalid_url(url1)) is False
     url2 = "www.google.com"
-    assert(mango.invalid_url(url2)) == True
+    assert(mango.invalid_url(url2)) is True
     url3 = "strikles@gmail.com"
-    assert(mango.invalid_url(url3)) == False
+    assert(mango.invalid_url(url3)) is False
 
 
 def test_extract_emails():
@@ -30,7 +30,7 @@ def test_extract_emails():
     expected = set()
     expected.update({'me@gmail.com'})
     expected.update({'you@yahoo.com'})
-    assert(new_emails == expected) == True
+    assert(new_emails == expected) is True
 
 
 def test_extract_phones():
@@ -40,7 +40,7 @@ def test_extract_phones():
     expected = set()
     expected.update({'+351 99999999'})
     expected.update({'+31 45678541'})
-    assert(new_phones == expected) == True
+    assert(new_phones == expected) is True
 
 
 def test_process_page():
