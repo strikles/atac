@@ -72,7 +72,6 @@ def phone(arguments):
     #
     target = "whatsapp"
     phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/contacts/phones/"
-    subject = None
     #
     if getattr(arguments, "message_file"):
         message_file_path = getattr(arguments, "message_file")
@@ -101,9 +100,9 @@ def social(arguments):
         target = getattr(arguments, "target")
     #
     if "facebook" in target:
-        katie.send_facebook()
+        katie.send_facebook(message_file_path)
     if "twitter" in target:
-        katie.send_twitter()
+        katie.send_twitter(message_file_path)
 
 
 def scrape(arguments):
