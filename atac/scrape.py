@@ -103,14 +103,14 @@ class UnderTheMangoTree(Config):
         rx_phones = re.compile(r'\+(?:[0-9] ?){6,14}[0-9]')
         return set(rx_phones.findall(content))
 
-    def save_contacts(self, new_contacts, data_key, type):
+    def save_contacts(self, new_contacts, data_key, contact_type):
         # save to file
-        if type == "email":
+        if contact_type == "email":
             csv_path = os.getcwd() + "/contacts/emails/" + data_key + "_emails.csv"
-        elif type == "phone":
+        elif contact_type == "phone":
             csv_path = os.getcwd() + "/contacts/phones/" + data_key + "_phones.csv"
         else:
-            raise Exception('unknown type: {}'.format(type))
+            raise Exception('unknown type: {}'.format(contact_type))
             
         with open(csv_path, mode='a') as f:
             writer = csv.writer(f,
@@ -118,24 +118,24 @@ class UnderTheMangoTree(Config):
                                 quotechar='"',
                                 quoting=csv.QUOTE_MINIMAL)
                                 
-            if type == "email":
+            if contact_type == "email":
                 unique_contacts = list(filter(lambda e: e not in self.emails, new_contacts))
-            elif type == "phone":
+            elif contact_type == "phone":
                 unique_contacts = list(filter(lambda e: e not in self.phones, new_contacts))
                 
             for c in unique_contacts:
-                if type == "email":
+                if contact_type == "email":
                     try:
                         if validate_email(c):
-                            print("\x1b[6;37;41m new {0}:{1} \x1b[0m".format(type, c))
+                            print("\x1b[6;37;41m new {0}:{1} \x1b[0m".format(contact_type, c))
                             self.num_emails +=1
                             writer.writerow([self.num_emails, c])
                     except EmailNotValidError as e:
                         # email is not valid, exception message is human-readable
                         print(str(e))
-                elif type == "phone":
-                    print("\x1b[6;37;41m new {0}:{1} \x1b[0m".format(type, c))
-                    self.num_phones +=1
+                elif contact_type == "phone":
+                    print("\x1b[6;37;41m new {0}:{1} \x1b[0m".format(contact_type, c))
+                    self.num_phones += 1
                     writer.writerow([self.num_phones, c])
 
     def process_page(self, data_key, starting_url):
