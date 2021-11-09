@@ -39,7 +39,7 @@ class Config:
         ascii_magic.to_terminal(my_art)
 
     def generate_key(self):
-        # key generation 
+        # key generation
         print(inspect.stack()[1].function)
         if "PYTEST_CURRENT_TEST" in os.environ:
             password = bytes("M4m4k154n", encoding='utf8')
@@ -56,42 +56,42 @@ class Config:
         self.key = base64.urlsafe_b64encode(kdf.derive(password))
 
     def load_key(self, key_file_path):
-        with open(key_file_path, 'rb') as key_file: 
+        with open(key_file_path, 'rb') as key_file:
             self.key = key_file.read()
 
     def save_key(self, key_file_path):
-        with open(key_file_path, 'wb') as key_file: 
-            key_file.write(self.key) 
+        with open(key_file_path, 'wb') as key_file:
+            key_file.write(self.key)
 
     def new_config(self, config_file_path):
-        with open('new.json', 'rb') as new_config: 
+        with open('new.json', 'rb') as new_config:
             self.data = json.loads(new_config.read())
         self.save_config(config_file_path, True)
 
     def save_config(self, config_file_path, encrypted_config):
         if encrypted_config:
-            fernet = Fernet(self.key) 
-            # encrypting the file 
+            fernet = Fernet(self.key)
+            # encrypting the file
             encrypted_data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf8'))
-            # opening the file in write mode and writing the encrypted data 
-            with open(config_file_path, 'wb') as encrypted_file: 
-                encrypted_file.write(encrypted_data) 
+            # opening the file in write mode and writing the encrypted data
+            with open(config_file_path, 'wb') as encrypted_file:
+                encrypted_file.write(encrypted_data)
         else:
-            with open(config_file_path, 'wb') as unencrypted_file: 
+            with open(config_file_path, 'wb') as unencrypted_file:
                 unencrypted_file.write(self.data, ensure_ascii=False)
 
     def load_config(self):
         if self.encrypted_config:
             fernet = Fernet(self.key)
-            # opening the encrypted file 
-            with open(self.config_file_path, 'rb') as encrypted_file: 
-                encrypted_data = encrypted_file.read() 
-            # decrypting the file 
+            # opening the encrypted file
+            with open(self.config_file_path, 'rb') as encrypted_file:
+                encrypted_data = encrypted_file.read()
+            # decrypting the file
             try:
                 self.data = json.loads(fernet.decrypt(encrypted_data))
             except InvalidToken as e:
                 print("Invalid Key {} - Unsuccessfully decrypted").format(e)
                 sys.exit(1)
         else:
-            with open(self.config_file_path, 'rb') as new_config: 
+            with open(self.config_file_path, 'rb') as new_config:
                 self.data = json.loads(new_config.read())
