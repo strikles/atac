@@ -15,7 +15,7 @@ from .config import Config
 
 
 class Leon(Config):
-    
+
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
         super().__init__(encrypted_config, config_file_path, key_file_path)
 

@@ -41,7 +41,7 @@ class UnderTheMangoTree(Config):
             if j in url.lower():
                 print(">>> invalid path...\n")
                 return True
-        # reject invalid file types 
+        # reject invalid file types
         for k in self.scrape["invalid_files"]:
             if url.lower().endswith(k):
                 print(">>> invalid file..\n")
@@ -59,7 +59,7 @@ class UnderTheMangoTree(Config):
 
     @staticmethod
     def make_dirs():
-        # make dirs 
+        # make dirs
         if not os.path.isdir(os.getcwd() + "/contacts"):
             os.makedirs(os.getcwd() + "/contacts")
         if not os.path.isdir(os.getcwd() + "/contacts/emails"):
@@ -133,7 +133,7 @@ class UnderTheMangoTree(Config):
                                 quoting=csv.QUOTE_MINIMAL)
 
             unique_contacts = list(filter(lambda phone: phone not in self.phones, new_contacts))
-                
+
             for contact in unique_contacts:
                 print("\x1b[6;37;41m new phone:{0}\x1b[0m".format(contact))
                 self.num_phones += 1
@@ -168,7 +168,7 @@ class UnderTheMangoTree(Config):
             )
             #
             self.processed_urls.add(url)
-            # skip if invalid 
+            # skip if invalid
             if self.invalid_url(url):
                 continue
             # get page with timeout of 10s

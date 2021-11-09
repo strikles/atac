@@ -33,7 +33,7 @@ class FromRuXiaWithLove(Config):
         self.email = self.data['email']
         self.phone = self.data['phone']
         self.social = self.data['social']
-        
+
     def get_email_config(self):
         content_index = self.email['active_content']
         auth_index = self.email['active_auth']
@@ -174,7 +174,7 @@ class FromRuXiaWithLove(Config):
         with tqdm(total=len(lines)) as progress:
             for ndx, receiver_email in csv.reader(lines):
                 if checkers.is_email(receiver_email):
-                    current_bucket = counter % num_buckets      
+                    current_bucket = counter % num_buckets
                     emails[current_bucket].append(receiver_email)
                     counter += 1
                     progress.update(1)

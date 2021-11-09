@@ -219,18 +219,18 @@ parser_scrape.add_argument('-c', dest='config_file', type=str, help='config file
 parser_scrape.add_argument('-e', dest='encrypted_config', choices=[True, False], nargs='?', const=True, default=True)
 parser_scrape.add_argument('-k', dest='key_file', type=str, help='key file path')
 parser_scrape.add_argument('-t', dest='target', choices=[
-                                                            'museums', 
-                                                            'embassies', 
-                                                            'activism', 
-                                                            'education', 
-                                                            'religion', 
-                                                            'rescue', 
-                                                            'addiction', 
-                                                            'music', 
-                                                            'journalists', 
-                                                            'defense', 
-                                                            'ukraine', 
-                                                            'islam', 
+                                                            'museums',
+                                                            'embassies',
+                                                            'activism',
+                                                            'education',
+                                                            'religion',
+                                                            'rescue',
+                                                            'addiction',
+                                                            'music',
+                                                            'journalists',
+                                                            'defense',
+                                                            'ukraine',
+                                                            'islam',
                                                             'all'
                                                         ])
 parser_scrape.add_argument('-u', dest='url', help="The URL to scrape.")
