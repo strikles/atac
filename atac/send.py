@@ -41,7 +41,7 @@ class FromRuXiaWithLove(Config):
         content = self.email['content'][content_index]
         auth = self.email['auth'][auth_index]
         #
-        if os.path.isfile(message_file_path);
+        if os.path.isfile(message_file_path):
             pass
         else:
             md = 'assets/mail_content/' + content['markdown']
