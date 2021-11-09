@@ -94,7 +94,7 @@ class FromRuXiaWithLove(Config):
             contact_files = [contact_files_path]
         return contact_files
 
-    def get_numbers(self, contact_files_path):
+    def get_phone_numbers(self, contact_files_path):
         # Open the people CSV and get all the numbers out of it
         phone_numbers = []
         contact_files = self.get_contact_files(contact_files_path)
@@ -211,7 +211,7 @@ class FromRuXiaWithLove(Config):
     def send_twilio(self, contacts_file_path, message_file_path, msg_type):
         #
         msg = self.get_message(message_file_path)
-        phone_numbers = self.get_numbers(contacts_file_path)
+        phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
         self.calculate_twilio_cost(msg, phone_numbers, msg_type)
         confirm = input("Send these messages? [Y/n] ")
@@ -240,7 +240,7 @@ class FromRuXiaWithLove(Config):
     def send_yowsup(self, contacts_file_path, message_file_path):
         #
         msg = self.get_message(message_file_path)
-        phone_numbers = self.get_numbers(contacts_file_path)
+        phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
         if confirm[0].lower() == 'y':
@@ -263,7 +263,7 @@ class FromRuXiaWithLove(Config):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
             #
             msg = self.get_message(message_file_path)
-            phone_numbers = self.get_numbers(contacts_file_path)
+            phone_numbers = self.get_phone_numbers(contacts_file_path)
             # Check you really want to send them
             confirm = input("Send these messages? [Y/n] ")
             if confirm[0].lower() == 'y':
