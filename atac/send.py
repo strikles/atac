@@ -35,11 +35,21 @@ class FromRuXiaWithLove(Config):
         self.phone = self.data['phone']
         self.social = self.data['social']
 
-    def compose_email(self, mailing_list, path_message, subject):
+    def compose_email(self, mailing_list, message_file_path, subject):
         content_index = self.email['active_content']
         auth_index = self.email['active_auth']
         content = self.email['content'][content_index]
         auth = self.email['auth'][auth_index]
+        #
+        if os.path.isfile(message_file_path);
+            pass
+        else:
+            md = 'assets/mail_content/' + content['markdown']
+            message_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md))
+        #
+        if not os.path.isfile(message_file_path):
+            print("Invalid message file path!")
+            sys.exit(1)
         #
         message = MIMEMultipart("alternative")
         if subject:
@@ -54,14 +64,8 @@ class FromRuXiaWithLove(Config):
         text = ""
         html = ""
         # convert markdown to html
-        if path_message:
-            message_file = path_message
-        else:
-            md = 'assets/mail_content/' + content['markdown']
-            mesage_file = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md))
-        #
-        with open(message_file, 'r') as f:
-            ptext = f.read()
+        with open(message_file_path, 'r') as message_file:
+            ptext = message_file.read()
             html = markdown.markdown(ptext)
         # Turn these into plain/html MIMEText objects
         part1 = MIMEText(text, "plain")
