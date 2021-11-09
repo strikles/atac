@@ -8,7 +8,7 @@ key_file = None
 
 
 def test_markov():
-    content = os.path.dirname(os.path.abspath(__file__)) + '/assets/pg1009.txt'
+    content = os.path.dirname(sys.modules['__main__'].__file__) + '/assets/pg1009.txt'
     two_back = atac.AllTimeHigh()
     assert(two_back.gen_content(content)) == 0
 
