@@ -181,7 +181,7 @@ class FromRuXiaWithLove(Config):
             print(current_file_path)
             with open(current_file_path) as contact_file:
                 lines = [line for line in contact_file]
-                num_emails_per_bucket = 77
+                num_emails_per_bucket = 1000
                 num_buckets = len(lines) // num_emails_per_bucket
                 emails = [[] for i in range(num_buckets)]
                 self.store_emails_in_buckets(lines, emails)
