@@ -138,6 +138,7 @@ class FromRuXiaWithLove(Config):
         if not os.path.isfile(message_file_path):
             print("invalid message file path!")
             sys.exit(1)
+        msg = None
         # Now put your SMS in a file called message.txt, and it will be read from there.
         with open(message_file_path, encoding="utf8") as content_file:
             msg = content_file.read()
