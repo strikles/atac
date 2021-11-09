@@ -41,9 +41,7 @@ class FromRuXiaWithLove(Config):
         content = self.email['content'][content_index]
         auth = self.email['auth'][auth_index]
         #
-        if os.path.isfile(message_file_path):
-            pass
-        else:
+        if not message_file_path:
             md = 'assets/mail_content/' + content['markdown']
             message_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md))
         #
