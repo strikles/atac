@@ -33,4 +33,5 @@ jobs:
         flake8 . --exclude=dead --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
+        tree
         pytest -s
