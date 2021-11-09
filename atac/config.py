@@ -40,10 +40,9 @@ class Config:
 
     def generate_key(self):
         # key generation 
-        #self.key = Fernet.generate_key()
         print(inspect.stack()[1].function)
         if "PYTEST_CURRENT_TEST" in os.environ:
-            password =  bytes("M4m4k154n", encoding='utf8')
+            password = bytes("M4m4k154n", encoding='utf8')
             salt = bytes("77", encoding='utf8')
         else:
             password = bytes(stdiomask.getpass(prompt='\nEnter password - ', mask='*'), 'utf-8')
@@ -91,7 +90,7 @@ class Config:
             try:
                 self.data = json.loads(fernet.decrypt(encrypted_data))
             except InvalidToken as e:
-                print("Invalid Key - Unsuccessfully decrypted")
+                print("Invalid Key {} - Unsuccessfully decrypted").format(e)
                 sys.exit(1)
         else:
             with open(self.config_file_path, 'rb') as new_config: 
