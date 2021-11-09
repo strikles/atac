@@ -65,7 +65,7 @@ class FromRuXiaWithLove(Config):
         # convert markdown to html
         with open(message_file_path, 'r') as message_file:
             ptext = message_file.read()
-            html = markdown.markdown(ptext)
+        html = markdown.markdown(ptext)
         # Turn these into plain/html MIMEText objects
         part1 = MIMEText(text, "plain")
         part2 = MIMEText(html, "html")
