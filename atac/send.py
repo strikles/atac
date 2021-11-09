@@ -212,7 +212,7 @@ class FromRuXiaWithLove(Config):
         if msg_type == "whatsapp":
             num_segments = 1
         else:
-            num_segments = int(len(msg.encode('utf-8')) / SMS_LENGTH) +1
+            num_segments = int(len(msg.encode('utf-8')) / SMS_LENGTH) + 1
         # Calculate how much it's going to cost:
         num_messages = len(phone_numbers)
         cost = 0
@@ -233,7 +233,7 @@ class FromRuXiaWithLove(Config):
             # Set up Twilio client
             account_sid = self.phone['twilio']['SID']
             auth_token = self.phone['twilio']['TOKEN']
-            from_num = self.phone['twilio']['PHONE'] # 'From' number in Twilio
+            from_num = self.phone['twilio']['PHONE']
             client = TwilioClient(account_sid, auth_token)
             # Send the messages
             for num in phone_numbers:
@@ -244,6 +244,7 @@ class FromRuXiaWithLove(Config):
                         from_num = "whatsapp:"+from_num
                     print("Sending to " + num)
                     message = client.messages.create(to=num, from_=from_num, body=msg)
+                    print(message.sid)
                 except Exception as e:
                     print(str(e))
                 finally:
