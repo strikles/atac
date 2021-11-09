@@ -128,7 +128,7 @@ class UnderTheMangoTree(Config):
                     try:
                         if validate_email(c):
                             print("\x1b[6;37;41m new {0}:{1} \x1b[0m".format(contact_type, c))
-                            self.num_emails +=1
+                            self.num_emails += 1
                             writer.writerow([self.num_emails, c])
                     except EmailNotValidError as e:
                         # email is not valid, exception message is human-readable
@@ -241,4 +241,3 @@ class UnderTheMangoTree(Config):
                 self.secondary_unprocessed_urls.clear()
         #
         return status
-        
