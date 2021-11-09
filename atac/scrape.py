@@ -103,40 +103,41 @@ class UnderTheMangoTree(Config):
         rx_phones = re.compile(r'\+(?:[0-9] ?){6,14}[0-9]')
         return set(rx_phones.findall(content))
 
-    def save_contacts(self, new_contacts, data_key, contact_type):
+    def save_email_contacts(self, new_contacts, data_key):
         # save to file
-        if contact_type == "email":
-            csv_path = os.getcwd() + "/contacts/emails/" + data_key + "_emails.csv"
-        elif contact_type == "phone":
-            csv_path = os.getcwd() + "/contacts/phones/" + data_key + "_phones.csv"
-        else:
-            raise Exception('unknown type: {}'.format(contact_type))
-            
+        csv_path = os.getcwd() + "/contacts/emails/" + data_key + "_emails.csv"
         with open(csv_path, mode='a') as f:
             writer = csv.writer(f,
                                 delimiter=',',
                                 quotechar='"',
                                 quoting=csv.QUOTE_MINIMAL)
-                                
-            if contact_type == "email":
-                unique_contacts = list(filter(lambda e: e not in self.emails, new_contacts))
-            elif contact_type == "phone":
-                unique_contacts = list(filter(lambda e: e not in self.phones, new_contacts))
+
+            unique_contacts = list(filter(lambda e: e not in self.emails, new_contacts))
+            for c in unique_contacts:
+                try:
+                    if validate_email(c):
+                        print("\x1b[6;37;41m new {0}:{1} \x1b[0m".format(contact_type, c))
+                        self.num_emails += 1
+                        writer.writerow([self.num_emails, c])
+                except EmailNotValidError as e:
+                    # email is not valid, exception message is human-readable
+                    print(str(e))
+
+    def save_phone_contacts(self, new_contacts, data_key):
+        # save to file
+        csv_path = os.getcwd() + "/contacts/phones/" + data_key + "_phones.csv"
+        with open(csv_path, mode='a') as f:
+            writer = csv.writer(f,
+                                delimiter=',',
+                                quotechar='"',
+                                quoting=csv.QUOTE_MINIMAL)
+
+            unique_contacts = list(filter(lambda e: e not in self.phones, new_contacts))
                 
             for c in unique_contacts:
-                if contact_type == "email":
-                    try:
-                        if validate_email(c):
-                            print("\x1b[6;37;41m new {0}:{1} \x1b[0m".format(contact_type, c))
-                            self.num_emails += 1
-                            writer.writerow([self.num_emails, c])
-                    except EmailNotValidError as e:
-                        # email is not valid, exception message is human-readable
-                        print(str(e))
-                elif contact_type == "phone":
-                    print("\x1b[6;37;41m new {0}:{1} \x1b[0m".format(contact_type, c))
-                    self.num_phones += 1
-                    writer.writerow([self.num_phones, c])
+                print("\x1b[6;37;41m new {0}:{1} \x1b[0m".format(contact_type, c))
+                self.num_phones += 1
+                writer.writerow([self.num_phones, c])
 
     def process_page(self, data_key, starting_url):
         #
@@ -191,12 +192,12 @@ class UnderTheMangoTree(Config):
             # extract email addresses into the resulting set
             new_emails = self.extract_emails(response.text)
             if new_emails:
-                self.save_contacts(new_emails, data_key, "email")
+                self.save_email_contacts(new_emails, data_key)
                 self.emails.update(new_emails)
             # extract phone numbers into resulting set
             new_phones = self.extract_phones(response.text)
             if new_phones:
-                self.save_contacts(new_phones, data_key, "phone")
+                self.save_phone_contacts(new_phones, data_key)
                 self.phones.update(new_phones)
             # create a beautiful soup for the html document to get anchors
             try:
