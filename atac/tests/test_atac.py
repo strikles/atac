@@ -10,7 +10,7 @@ key_file = None
 
 def test_markov():
     path = os.path.abspath('..')
-    content = path + '/assets/pg1009.txt'
+    content = path + '/atac/assets/pg1009.txt'
     two_back = atac.AllTimeHigh()
     assert(two_back.gen_content(content)) == 0
 
