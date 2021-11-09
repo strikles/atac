@@ -135,13 +135,13 @@ def scrape(arguments):
 
 def compose(arguments):
     #
-    corpus = os.path.dirname(os.path.abspath(__file__)) + '/assets/pg1009.txt'
+    corpus_file_path = os.path.dirname(os.path.abspath(__file__)) + '/assets/pg1009.txt'
     #
     if getattr(arguments, "corpus"):
-        target = getattr(arguments, "corpus")
+        corpus_file_path = getattr(arguments, "corpus")
     #
     two_bach = atac.AllTimeHigh()
-    two_bach.gen_content(corpus)
+    two_bach.gen_content(corpus_file_path)
 
 
 def clean(arguments):
