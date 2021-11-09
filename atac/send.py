@@ -87,9 +87,14 @@ class FromRuXiaWithLove(Config):
 
     def get_contact_files(self, contact_files_path):
         #
-        contact_files = None
+        contact_files = []
         if os.path.isdir(contact_files_path):
-            contact_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(contact_files_path)))
+            contact_file_names = list(filter(lambda c: c.endswith('.csv'), os.listdir(contact_files_path)))
+            for file_name in contact_file_names:
+                file_full_path = os.path.join(contact_files_path, file_name)
+                print(file_full_path)
+                if os.path.isfile(file_full_path):
+                    contact_files.append(file_full_path)
         elif os.path.isfile(contact_files_path):
             contact_files = [contact_files_path]
         return contact_files
@@ -99,13 +104,8 @@ class FromRuXiaWithLove(Config):
         phone_numbers = []
         contact_files = self.get_contact_files(contact_files_path)
         #
-        for file_name in contact_files:
-            if os.path.isdir(contact_files_path):
-                current_file = contact_files_path + file_name
-            elif os.path.isfile(contact_files_path):
-                current_file = file_name
-            print(current_file)
-            with open(current_file) as contact_file:
+        for file_path in contact_files:
+            with open(file_path) as contact_file:
                 lines = [line for line in contact_file]
                 for ndx, phone in csv.reader(lines):
                     print(phone)
@@ -176,10 +176,8 @@ class FromRuXiaWithLove(Config):
         print(email_files_path)
         status = 0
         email_files = self.get_contact_files(email_files_path)
-        for file_name in email_files:
-            current_file_path = email_files_path + file_name
-            print(current_file_path)
-            with open(current_file_path) as contact_file:
+        for file_path in email_files:
+            with open(file_path) as contact_file:
                 lines = [line for line in contact_file]
                 num_emails_per_bucket = 1000
                 num_buckets = len(lines) // num_emails_per_bucket
