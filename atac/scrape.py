@@ -106,19 +106,19 @@ class UnderTheMangoTree(Config):
     def save_email_contacts(self, new_contacts, data_key):
         # save to file
         csv_path = os.getcwd() + "/contacts/emails/" + data_key + "_emails.csv"
-        with open(csv_path, mode='a') as f:
-            writer = csv.writer(f,
+        with open(csv_path, mode='a') as contact_file:
+            writer = csv.writer(contact_file,
                                 delimiter=',',
                                 quotechar='"',
                                 quoting=csv.QUOTE_MINIMAL)
 
-            unique_contacts = list(filter(lambda e: e not in self.emails, new_contacts))
-            for c in unique_contacts:
+            unique_contacts = list(filter(lambda email: email not in self.emails, new_contacts))
+            for contact in unique_contacts:
                 try:
-                    if validate_email(c):
-                        print("\x1b[6;37;41m new {0}:{1} \x1b[0m".format(contact_type, c))
+                    if validate_email(contact):
+                        print("\x1b[6;37;41m new email:{0} \x1b[0m".format(contact))
                         self.num_emails += 1
-                        writer.writerow([self.num_emails, c])
+                        writer.writerow([self.num_emails, contact])
                 except EmailNotValidError as e:
                     # email is not valid, exception message is human-readable
                     print(str(e))
@@ -126,18 +126,18 @@ class UnderTheMangoTree(Config):
     def save_phone_contacts(self, new_contacts, data_key):
         # save to file
         csv_path = os.getcwd() + "/contacts/phones/" + data_key + "_phones.csv"
-        with open(csv_path, mode='a') as f:
-            writer = csv.writer(f,
+        with open(csv_path, mode='a') as contact_file:
+            writer = csv.writer(contact_file,
                                 delimiter=',',
                                 quotechar='"',
                                 quoting=csv.QUOTE_MINIMAL)
 
-            unique_contacts = list(filter(lambda e: e not in self.phones, new_contacts))
+            unique_contacts = list(filter(lambda phone: phone not in self.phones, new_contacts))
                 
-            for c in unique_contacts:
-                print("\x1b[6;37;41m new {0}:{1} \x1b[0m".format(contact_type, c))
+            for contact in unique_contacts:
+                print("\x1b[6;37;41m new phone:{0}\x1b[0m".format(contact))
                 self.num_phones += 1
-                writer.writerow([self.num_phones, c])
+                writer.writerow([self.num_phones, contact])
 
     def process_page(self, data_key, starting_url):
         #
