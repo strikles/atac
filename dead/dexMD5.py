@@ -13,6 +13,7 @@ else:
 try:
     zipFile = zipfile.ZipFile(apkFile,'r')
     print(zipFile.namelist())
+    zipFile.extractall('tmp')
     classesDexFile = zipFile.read('classes.dex')
     hash = hashlib.md5()
     hash.update(classesDexFile)
