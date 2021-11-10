@@ -16,7 +16,7 @@ from email.mime.multipart import MIMEMultipart
 import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
 from twilio.rest import Client as TwilioClient
-from .whatsapp import Client as YowsupClient
+#from .whatsapp import Client as YowsupClient
 if os.environ.get('DISPLAY'):
     from pywhatkit import *
 
@@ -252,6 +252,7 @@ class FromRuXiaWithLove(Config):
         #
         print("Exiting!")
 
+    '''
     def send_yowsup(self, contacts_file_path, message_file_path):
         #
         msg = self.get_message(message_file_path)
@@ -273,6 +274,7 @@ class FromRuXiaWithLove(Config):
                     time.sleep(1)
         #
         print("Exiting!")
+    '''
 
     if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
