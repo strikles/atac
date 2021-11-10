@@ -12,6 +12,7 @@ else:
     apk = APK(apkFile)
 try:
     zipFile = zipfile.ZipFile(apkFile,'r')
+    print(zip.namelist())
     classesDexFile = zipFile.read('classes.dex')
     hash = hashlib.md5()
     hash.update(classesDexFile)
