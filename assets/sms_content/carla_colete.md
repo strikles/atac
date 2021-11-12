@@ -4,5 +4,5 @@ The extrajudicial trials and sentences are exacted over synthetic telepathy wher
 Carla Maria Marinho Rodrigues has been planning to force me into a prison cell, a psychiatric hospital or into suicide in stochastic proximity games of vibrotactile cybertorture, intercourse sabotage and abuse of synthetic telepathy in the vicinity of would be victims of directed violence picking women and my parents as her main targets since at least 2005.
 Convict Carla Maria Marinho Rodrigues for attempted murder and place her in a cushioned room wearing a straight jacket in a psychiatric prison hospital!
 
-sign the petition 
+sign the petition
 https://chng.it/vvZrqQzv
