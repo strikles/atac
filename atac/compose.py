@@ -63,7 +63,8 @@ class AllTimeHigh(object):
         message["From"] = self.fix_mixed_encoding(sender_email).encode('utf-8')
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
-        body = MIMEMultipart("alternative", charset=cs)
+        body = MIMEMultipart("alternative")
+        body.set_charset(cs)
         text = None
         html = None
         # Turn these into plain/html MIMEText objects
@@ -72,7 +73,7 @@ class AllTimeHigh(object):
         # convert markdown to html
         with open(message_file_path, encoding="utf-8") as message_file:
             text = self.fix_mixed_encoding(message_file.read()).encode('utf-8')
-            html = markdown.markdown(text)
+            html = markdown.markdown(text).encode('utf-8')
         part1.set_payload(text, charset=cs)
         part2.set_payload(html, charset=cs)
         # Add HTML/plain-text parts to MIMEMultipart message
