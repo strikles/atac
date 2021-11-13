@@ -10,8 +10,6 @@ from random import randint
 from tqdm import tqdm
 
 from validator_collection import checkers
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 
 import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
@@ -23,13 +21,15 @@ if os.environ.get('DISPLAY'):
 import facebook
 import tweepy
 
+from .compose import AllTimeHigh
 from .config import Config
 
 
-class FromRuXiaWithLove(Config):
+class FromRuXiaWithLove(Config, AllTimeHigh):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
-        super().__init__(encrypted_config, config_file_path, key_file_path)
+        super(AllTimeHigh, self).__init__()
+        super(Config, self).__init__(encrypted_config, config_file_path, key_file_path)
         self.email = self.data['email']
         self.phone = self.data['phone']
         self.social = self.data['social']
@@ -51,45 +51,6 @@ class FromRuXiaWithLove(Config):
             self.email['active_auth'] = (1 + self.email['active_auth']) % len(auth)
         #
         self.save_config()
-
-    def compose_email(self, mailing_list, message_file_path, subject):
-        #
-        auth, content = self.get_email_config()
-        #
-        if not message_file_path:
-            md = 'assets/mail_content/' + content['markdown']
-            message_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md))
-        #
-        if not os.path.isfile(message_file_path):
-            print("Invalid message file path!")
-            sys.exit(1)
-        #
-        message = MIMEMultipart("alternative")
-        if subject:
-            message["Subject"] = subject
-        elif message_file_path:
-            message["Subject"] = ""
-        else:
-            message["Subject"] = content['subject']
-        #
-        message["From"] = auth['sender']
-        message["To"] = mailing_list
-        # Create the plain-text and HTML version of your message
-        text = ""
-        html = ""
-        # convert markdown to html
-        with open(message_file_path, 'r') as message_file:
-            ptext = message_file.read()
-            html = markdown.markdown(ptext)
-        # Turn these into plain/html MIMEText objects
-        part1 = MIMEText(text, "plain")
-        part2 = MIMEText(html, "html")
-        # Add HTML/plain-text parts to MIMEMultipart message
-        # The email client will try to render the last part first
-        message.attach(part1)
-        message.attach(part2)
-        #
-        return message
 
     def get_contact_files(self, contact_files_path):
         #
@@ -180,17 +141,32 @@ class FromRuXiaWithLove(Config):
                     progress.update(1)
 
     def send_emails_in_buckets(self, emails, message_file_path, subject):
+        auth, _ = self.get_email_config()
         with tqdm(total=len(emails)) as progress:
             for batch in emails:
                 mailing_list = '; '.join(batch)
-                message = self.compose_email(mailing_list, message_file_path, subject)
+                message = self.compose_email(auth['sender'], mailing_list, message_file_path, subject)
                 self.send_email(mailing_list, message)
                 time.sleep(10)
                 progress.update(1)
 
     def send_emails(self, email_files_path, message_file_path, subject):
-        print(email_files_path)
+        #
         status = 0
+        auth, content = self.get_email_config()
+        #
+        if not subject:
+            subject = content['subject']
+        #
+        if not message_file_path:
+            md = 'assets/mail_content/' + content['markdown']
+            message_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md))
+        #
+        if not os.path.isfile(message_file_path):
+            print("Invalid message file path!")
+            sys.exit(1)
+        #
+        print(email_files_path)
         email_files = self.get_contact_files(email_files_path)
         for email_file_path in email_files:
             with open(email_file_path) as contact_file:
