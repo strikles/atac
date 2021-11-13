@@ -41,8 +41,8 @@ class AllTimeHigh(object):
         email.set_charset('utf8')
         #
         email["Subject"] = Header(subject, "utf-8", 'replace')
-        email["From"] = sender_email.decode('utf-8', 'replace')
-        email["To"] = mailing_list.decode('utf-8', 'replace')
+        email["From"] = sender_email.encode('utf-8').decode('utf-8')
+        email["To"] = mailing_list.encode('utf-8').decode('utf-8')
         # Create the plain-text and HTML version of your message
         message = MIMEMultipart("alternative")
         email.set_charset('utf8')
