@@ -66,11 +66,11 @@ class AllTimeHigh(object):
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart("text", "plain")
         part1.set_charset('utf8')
-        #part1.add_header('Content-Transfer-Encoding', 'quoted-printable')
+        part1.add_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         part2 = MIMENonMultipart("text", "html")
         part2.set_charset('utf8')
-        #part2.add_header('Content-Transfer-Encoding', 'quoted-printable')
+        part2.add_header('Content-Transfer-Encoding', 'quoted-printable')
         # convert markdown to html
         with open(message_file_path, encoding="utf-8") as message_file:
             text = self.fix_mixed_encoding(message_file.read()).encode('utf-8')
