@@ -38,10 +38,10 @@ class AllTimeHigh(object):
         #
         email = MIMEMultipart('mixed')
         #
-        cs_ = charset.Charset('utf-8')
-        cs_.header_encoding = charset.QP
-        cs_.body_encoding = charset.QP
-        email.set_charset(cs_)
+        #cs_ = charset.Charset('utf-8')
+        #cs_.header_encoding = charset.QP
+        #cs_.body_encoding = charset.QP
+        #email.set_charset(cs_)
         #
         email["Subject"] = subject
         email["From"] = sender_email
@@ -51,13 +51,13 @@ class AllTimeHigh(object):
         text = None
         html = None
         # Turn these into plain/html MIMEText objects
-        part1 = MIMENonMultipart("plain", "utf-8")
+        part1 = MIMENonMultipart("plain")
         part1.add_header('Content-Transfer-Encoding', 'quoted-printable')
         #
-        part2 = MIMENonMultipart("html", "utf-8")
+        part2 = MIMENonMultipart("html")
         part2.add_header('Content-Transfer-Encoding', 'quoted-printable')
         # convert markdown to html
-        with open(message_file_path, encoding='utf8') as message_file:
+        with open(message_file_path) as message_file:
             text = message_file.read()
             html = markdown.markdown(text)
         part1.set_payload(text)
