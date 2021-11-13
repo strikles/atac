@@ -8,7 +8,7 @@ from email import charset
 from email.encoders import encode_base64
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
-from email.mime.nonmultipart import MIMENonMtipart
+from email.mime.nonmultipart import MIMENonMultipart
 from email.mime.text import MIMEText
 import mimetypes
 
