@@ -53,7 +53,7 @@ class AllTimeHigh(object):
 
     def compose_email(self, sender_email, mailing_list, message_file_path, subject):
         #
-        message = Message()
+        message = MIMEMultipart("mixed")
         cs = charset.Charset('utf-8')
         cs.header_encoding = charset.QP
         cs.body_encoding = charset.QP
