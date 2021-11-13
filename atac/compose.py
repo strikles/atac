@@ -70,7 +70,7 @@ class AllTimeHigh(object):
         email.attach(message)
         print(email.as_string())
         #
-        return email.encode("utf8")
+        return email
 
     def get_message(self, message_file_path):
         #
