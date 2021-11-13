@@ -73,7 +73,7 @@ class AllTimeHigh(object):
         #part2.add_header('Content-Transfer-Encoding', 'quoted-printable')
         # convert markdown to html
         with open(message_file_path, encoding="utf-8") as message_file:
-            text = self.fix_mixed_encoding(message_file.read())
+            text = self.fix_mixed_encoding(message_file.read()).encode('utf-8')
             html = markdown.markdown(text)
         part1.set_payload(text)
         part2.set_payload(html)
@@ -94,7 +94,7 @@ class AllTimeHigh(object):
             sys.exit(1)
         msg = None
         # Now put your SMS in a file called message.txt, and it will be read from there.
-        with open(message_file_path, encoding="utf8") as content_file:
+        with open(message_file_path, encoding="utf-8") as content_file:
             msg = content_file.read()
         # Check we read a message OK
         if len(msg.strip()) == 0:
