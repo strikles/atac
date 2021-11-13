@@ -8,6 +8,7 @@ from email import charset
 from email.encoders import encode_base64
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
+from email.mime.nonmultipart import MIMENonMtipart
 from email.mime.text import MIMEText
 import mimetypes
 
@@ -50,10 +51,10 @@ class AllTimeHigh(object):
         text = None
         html = None
         # Turn these into plain/html MIMEText objects
-        part1 = MIMEText(text, "plain", "utf-8")
+        part1 = MIMENonMultipart("plain", "utf-8")
         part1.replace_header('content-transfer-encoding', 'quoted-printable')
         #
-        part2 = MIMEText(html, "html", "utf-8")
+        part2 = MIMENonMultipart("html", "utf-8")
         part2.replace_header('content-transfer-encoding', 'quoted-printable')
         # convert markdown to html
         with open(message_file_path, encoding='utf8') as message_file:
