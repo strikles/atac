@@ -1,7 +1,7 @@
 import os
 import sys
 import json
-
+import markdown
 import markovify
 
 from email.mime.text import MIMEText
