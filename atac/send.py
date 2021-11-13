@@ -50,7 +50,7 @@ class FromRuXiaWithLove(Config):
         if self.email['rotate_auth']:
             self.email['active_auth'] = (1 + self.email['active_auth']) % len(auth)
         #
-        self.config.save_config()
+        self.save_config()
 
     def compose_email(self, mailing_list, message_file_path, subject):
         #
