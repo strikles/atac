@@ -74,15 +74,15 @@ class AllTimeHigh(object):
         # Turn these into plain/html MIMEText objects
         part1 = MIMEText(text, "plain")
         part2 = MIMEText(html, "html")
-        part1.set_payload(text.encode('utf-8'), charset=cs)
+        #part1.set_payload(text.encode('utf-8'), charset=cs)
         #part2.set_payload(html, charset=cs)
         # Add HTML/plain-text parts to MIMEMultipart message
         # The email client will try to render the last part first
-        body.attach(part1)
+        #body.attach(part1)
         #body.attach(part2)
         #
         message.attach(body)
-        #print(message.as_string())
+        print(message.as_string())
         #
         return message
 
