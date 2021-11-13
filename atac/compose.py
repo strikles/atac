@@ -10,7 +10,7 @@ from email.mime.multipart import MIMEMultipart
 
 class AllTimeHigh(object):
 
-    def __init__(self, _, _, _, _):
+    def __init__(self, a, b, c, d):
         pass
 
     @staticmethod
