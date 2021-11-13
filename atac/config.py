@@ -42,11 +42,11 @@ class Config(object):
         # key generation
         print(inspect.stack()[1].function)
         if "PYTEST_CURRENT_TEST" in os.environ:
-            password = bytes("M4m4k154n", encoding='utf8')
-            salt = bytes("77", encoding='utf8')
+            password = bytes("M4m4k154n", encoding='utf-8')
+            salt = bytes("77", encoding='utf-8')
         else:
-            password = bytes(stdiomask.getpass(prompt='\nEnter password - ', mask='*'), 'utf-8')
-            salt = bytes(stdiomask.getpass(prompt='Enter Salt (leave blank if not required) - ', mask='*'), 'utf-8')
+            password = bytes(stdiomask.getpass(prompt='\nEnter password - ', mask='*'), encoding='utf-8')
+            salt = bytes(stdiomask.getpass(prompt='Enter Salt (optional) - ', mask='*'), encoding='utf-8')
         kdf = PBKDF2HMAC(
             algorithm=hashes.SHA256(),
             length=32,

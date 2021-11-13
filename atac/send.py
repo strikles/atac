@@ -117,7 +117,7 @@ class FromRuXiaWithLove(Config, AllTimeHigh):
             for ndx, receiver_email in csv.reader(lines):
                 if checkers.is_email(receiver_email):
                     current_bucket = counter % num_buckets
-                    emails[current_bucket].append(receiver_email)
+                    emails[current_bucket].append(receiver_email.encode('utf-8').decode('utf-8'))
                     counter += 1
                     progress.update(1)
 
@@ -150,7 +150,7 @@ class FromRuXiaWithLove(Config, AllTimeHigh):
         print(email_files_path)
         email_files = self.get_contact_files(email_files_path)
         for email_file_path in email_files:
-            with open(email_file_path) as contact_file:
+            with open(email_file_path, encoding='utf-8') as contact_file:
                 lines = [line for line in contact_file]
                 num_emails_per_bucket = 1000
                 num_buckets = len(lines) // num_emails_per_bucket
