@@ -52,25 +52,18 @@ class AllTimeHigh(object):
 
     def compose_email(self, sender_email, mailing_list, message_file_path, subject):
         #
-        email = MIMEMultipart('mixed')
-        email.set_charset('utf8')
+        email = MIMEMultipart('mixed', charset='utf-8')
         #
         email["Subject"] = self.fix_mixed_encoding(subject)
         email["From"] = self.fix_mixed_encoding(sender_email)
         email["To"] = mailing_list
         # Create the plain-text and HTML version of your message
-        message = MIMEMultipart("alternative")
-        email.set_charset('utf8')
+        message = MIMEMultipart("alternative", charset='utf-8')
         text = None
         html = None
         # Turn these into plain/html MIMEText objects
-        part1 = MIMENonMultipart("text", "plain")
-        part1.set_charset('utf8')
-        part1.add_header('Content-Transfer-Encoding', 'quoted-printable')
-        #
-        part2 = MIMENonMultipart("text", "html")
-        part2.set_charset('utf8')
-        part2.add_header('Content-Transfer-Encoding', 'quoted-printable')
+        part1 = MIMENonMultipart("text", "plain", charset='utf-8')
+        part2 = MIMENonMultipart("text", "html", charset='utf-8')
         # convert markdown to html
         with open(message_file_path, encoding="utf-8") as message_file:
             text = self.fix_mixed_encoding(message_file.read()).encode('utf-8')
