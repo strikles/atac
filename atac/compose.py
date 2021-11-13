@@ -35,14 +35,29 @@ class AllTimeHigh(object):
             print(text_model.make_short_sentence(280))
         return status
 
+    @staticmethod
+    def mixed_decoding(self, s):
+        output = ''
+        ii = 0
+        for c in s:
+            if ii <= len(s)-1:
+                if s[ii] == '\\' and s[ii+1] == 'x':
+                    b = s[ii:ii+4].encode('ascii').decode('unicode-escape')
+                    output = output+b
+                    ii += 3
+                else:
+                    output = output+s[ii]
+            ii += 1
+        return output
+
     def compose_email(self, sender_email, mailing_list, message_file_path, subject):
         #
         email = MIMEMultipart('mixed')
         email.set_charset('utf8')
         #
-        email["Subject"] = Header(subject, "utf-8", 'replace')
-        email["From"] = sender_email.encode('utf-8').decode('utf-8')
-        email["To"] = mailing_list.encode('utf-8').decode('utf-8')
+        email["Subject"] = self.fix_encoding(subject)
+        email["From"] = self.fix_encoding(sender_email)
+        email["To"] = mailing_list
         # Create the plain-text and HTML version of your message
         message = MIMEMultipart("alternative")
         email.set_charset('utf8')
@@ -58,7 +73,7 @@ class AllTimeHigh(object):
         #part2.add_header('Content-Transfer-Encoding', 'quoted-printable')
         # convert markdown to html
         with open(message_file_path, encoding="utf-8") as message_file:
-            text = message_file.read().encode('utf-8').decode('utf-8')
+            text = self.fix_encoding(message_file.read())
             html = markdown.markdown(text)
         part1.set_payload(text)
         part2.set_payload(html)
