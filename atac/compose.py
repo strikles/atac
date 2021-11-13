@@ -76,7 +76,6 @@ class AllTimeHigh(object):
         body.attach(part2)
         #
         message.attach(body)
-        print(message.as_string())
         #
         return message
 
