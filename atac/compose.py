@@ -6,6 +6,7 @@ import markovify
 
 from email import charset
 from email.encoders import encode_base64
+from email.header import Header
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
@@ -37,27 +38,26 @@ class AllTimeHigh(object):
     def compose_email(self, sender_email, mailing_list, message_file_path, subject):
         #
         email = MIMEMultipart('mixed')
+        email.set_charset('utf8')
         #
-        #cs_ = charset.Charset('utf-8')
-        #cs_.header_encoding = charset.QP
-        #cs_.body_encoding = charset.QP
-        #email.set_charset(cs_)
-        #
-        email["Subject"] = subject
-        email["From"] = sender_email
-        email["To"] = mailing_list
+        email["Subject"] = Header(subject, "utf-8", 'replace')
+        email["From"] = sender_email.decode('utf-8', 'replace')
+        email["To"] = mailing_list.decode('utf-8', 'replace')
         # Create the plain-text and HTML version of your message
         message = MIMEMultipart("alternative")
+        email.set_charset('utf8')
         text = None
         html = None
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart("text", "plain")
+        part1.set_charset('utf8')
         #part1.add_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         part2 = MIMENonMultipart("text", "html")
+        part2.set_charset('utf8')
         #part2.add_header('Content-Transfer-Encoding', 'quoted-printable')
         # convert markdown to html
-        with open(message_file_path) as message_file:
+        with open(message_file_path, encoding="utf8") as message_file:
             text = message_file.read()
             html = markdown.markdown(text)
         part1.set_payload(text)
@@ -70,7 +70,7 @@ class AllTimeHigh(object):
         email.attach(message)
         print(email.as_string())
         #
-        return email
+        return email.encode("utf8")
 
     def get_message(self, message_file_path):
         #
