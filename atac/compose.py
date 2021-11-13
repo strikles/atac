@@ -72,8 +72,8 @@ class AllTimeHigh(object):
         part2 = MIMENonMultipart("text", "html")
         # convert markdown to html
         with open(message_file_path, encoding="utf-8") as message_file:
-            text = self.fix_mixed_encoding(message_file.read()).encode('utf-8')
-            html = markdown.markdown(text).encode('utf-8')
+            text = self.fix_mixed_encoding(message_file.read())
+            html = markdown.markdown(text)
         part1.set_payload(text, charset=cs)
         part2.set_payload(html, charset=cs)
         # Add HTML/plain-text parts to MIMEMultipart message
