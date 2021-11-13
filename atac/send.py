@@ -28,8 +28,7 @@ from .config import Config
 class FromRuXiaWithLove(AllTimeHigh, Config):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
-        super(AllTimeHigh, self).__init__()
-        super(Config, self).__init__(encrypted_config, config_file_path, key_file_path)
+        super().__init__(encrypted_config, config_file_path, key_file_path)
         self.email = self.data['email']
         self.phone = self.data['phone']
         self.social = self.data['social']

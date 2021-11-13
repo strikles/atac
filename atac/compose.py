@@ -10,6 +10,9 @@ from email.mime.multipart import MIMEMultipart
 
 class AllTimeHigh(object):
 
+    def __init__(self, **kwargs)
+        pass
+
     @staticmethod
     def gen_content(content):
         status = 0
