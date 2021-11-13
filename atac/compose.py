@@ -77,10 +77,9 @@ class AllTimeHigh(object):
         part1.set_payload(text, charset=cs)
         part2.set_payload(html, charset=cs)
         # Add HTML/plain-text parts to MIMEMultipart message
-        # The email client will try to render the last part first
         body.attach(part1)
         body.attach(part2)
-        #
+        # The email client will try to render the last part first
         message.attach(body)
         print(message.as_string())
         #
