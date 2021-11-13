@@ -12,7 +12,7 @@ import ascii_magic
 import inspect
 
 
-class Config:
+class Config(object)
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
         self.key = None

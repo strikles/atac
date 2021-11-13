@@ -8,7 +8,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 
-class AllTimeHigh:
+class AllTimeHigh(object)
 
     @staticmethod
     def gen_content(content):

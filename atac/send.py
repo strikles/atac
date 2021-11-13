@@ -25,7 +25,7 @@ from .compose import AllTimeHigh
 from .config import Config
 
 
-class FromRuXiaWithLove(Config, AllTimeHigh):
+class FromRuXiaWithLove(AllTimeHigh, Config):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
         super(AllTimeHigh, self).__init__()
