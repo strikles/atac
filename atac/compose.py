@@ -58,7 +58,7 @@ class AllTimeHigh(object):
         part2.add_header('Content-Transfer-Encoding', 'quoted-printable')
         # convert markdown to html
         with open(message_file_path, encoding='utf8') as message_file:
-            text = message_file.read().decode('string-escape')
+            text = message_file.read()
             html = markdown.markdown(text)
         part1.set_payload(text)
         part2.set_payload(html)
@@ -68,6 +68,7 @@ class AllTimeHigh(object):
         message.attach(part2)
         #
         email.attach(message)
+        print(email.as_string())
         #
         return email
 
