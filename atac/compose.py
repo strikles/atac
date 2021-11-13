@@ -52,3 +52,21 @@ class AllTimeHigh(object):
         message.attach(part2)
         #
         return message
+
+    def get_message(self, message_file_path):
+        #
+        if not os.path.isfile(message_file_path):
+            print("invalid message file path!")
+            sys.exit(1)
+        msg = None
+        # Now put your SMS in a file called message.txt, and it will be read from there.
+        with open(message_file_path, encoding="utf8") as content_file:
+            msg = content_file.read()
+        # Check we read a message OK
+        if len(msg.strip()) == 0:
+            print("message file is empty!")
+            sys.exit(1)
+        else:
+            print("> message to send: \n\n{}".format(msg))
+        #
+        return msg
