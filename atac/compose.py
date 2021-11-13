@@ -52,30 +52,33 @@ class AllTimeHigh(object):
 
     def compose_email(self, sender_email, mailing_list, message_file_path, subject):
         #
-        message = MIMEMultipart('mixed', charset='utf-8')
+        cs = email.charset.Charset('utf-8')
+        cs.body_encoding = email.charset.QP
+        message = MIMEMultipart('mixed', charset=cs)
         #
-        message["Subject"] = self.fix_mixed_encoding(subject)
-        message["From"] = self.fix_mixed_encoding(sender_email)
+        message["Subject"] = self.fix_mixed_encoding(subject).encode('utf-8')
+        message["From"] = self.fix_mixed_encoding(sender_email).encode('utf-8')
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
-        body = MIMEMultipart("alternative", charset='utf-8')
+        body = MIMEMultipart("alternative", charset=cs)
         text = None
         html = None
         # Turn these into plain/html MIMEText objects
-        part1 = MIMENonMultipart("text", "plain", charset='utf-8')
-        part2 = MIMENonMultipart("text", "html", charset='utf-8')
+        part1 = MIMENonMultipart("text", "plain", charset=cs)
+        part2 = MIMENonMultipart("text", "html", charset=cs)
         # convert markdown to html
         with open(message_file_path, encoding="utf-8") as message_file:
             text = self.fix_mixed_encoding(message_file.read()).encode('utf-8')
             html = markdown.markdown(text)
-        part1.set_payload(text)
-        part2.set_payload(html)
+        part1.set_payload(text, charset=cs)
+        part2.set_payload(html, charset=cs)
         # Add HTML/plain-text parts to MIMEMultipart message
         # The email client will try to render the last part first
         body.attach(part1)
         body.attach(part2)
         #
         message.attach(body)
+        print(message.as_string())
         #
         return message
 
