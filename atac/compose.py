@@ -7,6 +7,7 @@ import markovify
 from email import charset
 from email.encoders import encode_base64
 from email.header import Header
+from email.message import Message
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
@@ -52,11 +53,13 @@ class AllTimeHigh(object):
 
     def compose_email(self, sender_email, mailing_list, message_file_path, subject):
         #
+        message = Message()
         cs = charset.Charset('utf-8')
+        cs.header_encoding = charset.QP
         cs.body_encoding = charset.QP
-        message = MIMEMultipart('mixed', charset=cs)
+        message.set_charset(cs)
         #
-        message["Subject"] = self.fix_mixed_encoding(subject).encode('utf-8')
+        message["Subject"] = Header(self.fix_mixed_encoding(subject), 'utf-8')
         message["From"] = self.fix_mixed_encoding(sender_email).encode('utf-8')
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
