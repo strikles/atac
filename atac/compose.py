@@ -47,13 +47,13 @@ class AllTimeHigh(object):
         email["To"] = mailing_list
         # Create the plain-text and HTML version of your message
         message = MIMEMultipart("alternative")
-        text = u''
-        html = u''
+        text = None
+        html = None
         # Turn these into plain/html MIMEText objects
-        part1 = MIMEText(text, "plain")
+        part1 = MIMEText(text, "plain", "utf-8")
         part1.replace_header('content-transfer-encoding', 'quoted-printable')
         #
-        part2 = MIMEText(html, "html")
+        part2 = MIMEText(html, "html", "utf-8")
         part2.replace_header('content-transfer-encoding', 'quoted-printable')
         # convert markdown to html
         with open(message_file_path, encoding='utf8') as message_file:
