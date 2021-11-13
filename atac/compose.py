@@ -36,7 +36,7 @@ class AllTimeHigh(object):
         return status
 
     @staticmethod
-    def fix_mixed_encoding(self, s):
+    def fix_mixed_encoding(s):
         output = ''
         ii = 0
         for c in s:
