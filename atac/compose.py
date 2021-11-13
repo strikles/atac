@@ -55,8 +55,8 @@ class AllTimeHigh(object):
             html = markdown.markdown(ptext)
         # Turn these into plain/html MIMEText objects
         part1 = MIMEText(None, "plain")
-        part2.replace_header('content-transfer-encoding', 'quoted-printable')
-        part2.set_payload(text)
+        part1.replace_header('content-transfer-encoding', 'quoted-printable')
+        part1.set_payload(text)
         #
         part2 = MIMEText(None, "html")
         part2.replace_header('content-transfer-encoding', 'quoted-printable')
