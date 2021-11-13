@@ -68,8 +68,8 @@ class AllTimeHigh(object):
         text = None
         html = None
         # Turn these into plain/html MIMEText objects
-        part1 = MIMENonMultipart("text", "plain", charset=cs)
-        part2 = MIMENonMultipart("text", "html", charset=cs)
+        part1 = MIMENonMultipart("text", "plain")
+        part2 = MIMENonMultipart("text", "html")
         # convert markdown to html
         with open(message_file_path, encoding="utf-8") as message_file:
             text = self.fix_mixed_encoding(message_file.read()).encode('utf-8')
