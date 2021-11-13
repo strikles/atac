@@ -58,7 +58,7 @@ class AllTimeHigh(object):
         #part2.add_header('Content-Transfer-Encoding', 'quoted-printable')
         # convert markdown to html
         with open(message_file_path, encoding="utf8") as message_file:
-            text = "" #message_file.read()
+            text = message_file.read().encode('utf-8').decode('utf-8')
             html = markdown.markdown(text)
         part1.set_payload(text)
         part2.set_payload(html)
