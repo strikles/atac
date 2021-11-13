@@ -52,13 +52,13 @@ class AllTimeHigh(object):
 
     def compose_email(self, sender_email, mailing_list, message_file_path, subject):
         #
-        email = MIMEMultipart('mixed', charset='utf-8')
+        message = MIMEMultipart('mixed', charset='utf-8')
         #
-        email["Subject"] = self.fix_mixed_encoding(subject)
-        email["From"] = self.fix_mixed_encoding(sender_email)
-        email["To"] = mailing_list
+        message["Subject"] = self.fix_mixed_encoding(subject)
+        message["From"] = self.fix_mixed_encoding(sender_email)
+        message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
-        message = MIMEMultipart("alternative", charset='utf-8')
+        body = MIMEMultipart("alternative", charset='utf-8')
         text = None
         html = None
         # Turn these into plain/html MIMEText objects
@@ -72,13 +72,13 @@ class AllTimeHigh(object):
         part2.set_payload(html)
         # Add HTML/plain-text parts to MIMEMultipart message
         # The email client will try to render the last part first
-        message.attach(part1)
-        message.attach(part2)
+        body.attach(part1)
+        body.attach(part2)
         #
-        email.attach(message)
-        print(email.as_string())
+        message.attach(body)
+        print(message.as_string())
         #
-        return email
+        return message
 
     def get_message(self, message_file_path):
         #
