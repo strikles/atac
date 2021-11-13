@@ -36,7 +36,7 @@ class AllTimeHigh(object):
         return status
 
     @staticmethod
-    def mixed_decoding(self, s):
+    def fix_mixed_decoding(self, s):
         output = ''
         ii = 0
         for c in s:
@@ -55,8 +55,8 @@ class AllTimeHigh(object):
         email = MIMEMultipart('mixed')
         email.set_charset('utf8')
         #
-        email["Subject"] = self.fix_encoding(subject)
-        email["From"] = self.fix_encoding(sender_email)
+        email["Subject"] = self.fix_mixed_encoding(subject)
+        email["From"] = self.fix_mixed_encoding(sender_email)
         email["To"] = mailing_list
         # Create the plain-text and HTML version of your message
         message = MIMEMultipart("alternative")
@@ -73,7 +73,7 @@ class AllTimeHigh(object):
         #part2.add_header('Content-Transfer-Encoding', 'quoted-printable')
         # convert markdown to html
         with open(message_file_path, encoding="utf-8") as message_file:
-            text = self.fix_encoding(message_file.read())
+            text = self.fix_mixed_encoding(message_file.read())
             html = markdown.markdown(text)
         part1.set_payload(text)
         part2.set_payload(html)
