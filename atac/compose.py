@@ -59,8 +59,8 @@ class AllTimeHigh(object):
         cs.body_encoding = charset.QP
         message.set_charset(cs)
         #
-        message["Subject"] = self.fix_mixed_encoding(subject).encode('utf-8')
-        message["From"] = self.fix_mixed_encoding(sender_email).encode('utf-8')
+        message["Subject"] = self.fix_mixed_encoding(subject)
+        message["From"] = self.fix_mixed_encoding(sender_email)
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
         body = MIMEMultipart("alternative")
