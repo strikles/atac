@@ -67,13 +67,13 @@ class AllTimeHigh(object):
         body.set_charset(cs)
         text = None
         html = None
-        # Turn these into plain/html MIMEText objects
-        part1 = MIMENonMultipart("text", "plain")
-        part2 = MIMENonMultipart("text", "html")
         # convert markdown to html
         with open(message_file_path, encoding="utf-8") as message_file:
             text = self.fix_mixed_encoding(message_file.read())
             html = markdown.markdown(text)
+        # Turn these into plain/html MIMEText objects
+        part1 = MIMEText(text, "plain")
+        part2 = MIMEText(html, "html")
         part1.set_payload(text, charset=cs)
         part2.set_payload(html, charset=cs)
         # Add HTML/plain-text parts to MIMEMultipart message
