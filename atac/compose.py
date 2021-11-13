@@ -45,25 +45,24 @@ class AllTimeHigh(object):
         email["Subject"] = subject
         email["From"] = sender_email
         email["To"] = mailing_list
-
         # Create the plain-text and HTML version of your message
-        text = ''
-        html = ''
+        message = MIMEMultipart("alternative")
+        text = u''
+        html = u''
+        # Turn these into plain/html MIMEText objects
+        part1 = MIMEText(text, "plain")
+        part1.replace_header('content-transfer-encoding', 'quoted-printable')
+        #
+        part2 = MIMEText(html, "html")
+        part2.replace_header('content-transfer-encoding', 'quoted-printable')
         # convert markdown to html
         with open(message_file_path, encoding='utf8') as message_file:
-            ptext = message_file.read()
-            html = markdown.markdown(ptext)
-        # Turn these into plain/html MIMEText objects
-        part1 = MIMEText(None, "plain")
-        part1.replace_header('content-transfer-encoding', 'quoted-printable')
+            text = message_file.read()
+            html = markdown.markdown(text)
         part1.set_payload(text)
-        #
-        part2 = MIMEText(None, "html")
-        part2.replace_header('content-transfer-encoding', 'quoted-printable')
         part2.set_payload(html)
         # Add HTML/plain-text parts to MIMEMultipart message
         # The email client will try to render the last part first
-        message = MIMEMultipart("alternative")
         message.attach(part1)
         message.attach(part2)
         #
