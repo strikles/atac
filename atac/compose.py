@@ -60,6 +60,7 @@ class AllTimeHigh(object):
         cs.header_encoding = charset.QP
         cs.body_encoding = charset.QP
         message.set_charset(cs)
+        message.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         message["Subject"] = self.fix_mixed_encoding(subject)
         message["From"] = self.fix_mixed_encoding(sender_email)
@@ -67,6 +68,7 @@ class AllTimeHigh(object):
         # Create the plain-text and HTML version of your message
         body = MIMEMultipart("alternative")
         body.set_charset(cs)
+        body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         text = None
         html = None
         # convert markdown to html
