@@ -12,4 +12,4 @@ def test_markov():
     path = os.path.abspath('..')
     content = path + '/atac/assets/pg1009.txt'
     two_back = atac.AllTimeHigh(None, None, None)
-    assert(two_back.gen_content(content)) == 0
+    assert(len(two_back.generate_markov_content(content)) < 200) is True

@@ -21,7 +21,7 @@ class AllTimeHigh(object):
         pass
 
     @staticmethod
-    def gen_content(content):
+    def generate_markov_content(content):
         status = 0
         # Get raw text as string.
         with open(content) as f:
@@ -29,12 +29,12 @@ class AllTimeHigh(object):
         # Build the model.
         text_model = markovify.Text(text, state_size=3)
         # Print five randomly-generated sentences
+        '''
         for i in range(5):
             print(text_model.make_sentence(tries=100))
-        # Print three randomly-generated sentences of no more than 280 characters
-        for i in range(3):
-            print(text_model.make_short_sentence(280))
-        return status
+        '''
+        # return randomly-generated sentence of no more than 280 characters
+        return text_model.make_short_sentence(280)
 
     @staticmethod
     def fix_mixed_encoding(s):
