@@ -38,6 +38,7 @@ class AllTimeHigh(object):
 
     @staticmethod
     def fix_mixed_encoding(s):
+        #
         output = ''
         ii = 0
         for c in s:
@@ -49,6 +50,7 @@ class AllTimeHigh(object):
                 else:
                     output = output+s[ii]
             ii += 1
+        #
         return output
 
     def compose_email(self, sender_email, mailing_list, message_file_path, subject):
