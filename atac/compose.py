@@ -50,7 +50,7 @@ class AllTimeHigh(Config):
         #
         return output
 
-    def compose_encrypted_email(self, sender_email, recipient_email, key_id, message, subject):
+    def compose_encrypted_email(self, sender_email, recipient_email, key_id, message_content, subject):
         #
         message = MIMEMultipart("mixed")
         cs = charset.Charset('utf-8')
@@ -67,7 +67,7 @@ class AllTimeHigh(Config):
         body.set_charset(cs)
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         # convert markdown to html
-        text = self.fix_mixed_encoding(message)
+        text = self.fix_mixed_encoding(message_content)
         html = markdown.markdown(text)
         # Encrypt the message body.
         encrypted_text = self.gpg.encrypt(text, key_id)
@@ -84,7 +84,7 @@ class AllTimeHigh(Config):
         #
         return message
 
-    def compose_email(self, sender_email, mailing_list, message, subject):
+    def compose_email(self, sender_email, mailing_list, message_content, subject):
         #
         message = MIMEMultipart("mixed")
         cs = charset.Charset('utf-8')
@@ -101,7 +101,7 @@ class AllTimeHigh(Config):
         body.set_charset(cs)
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
-        text = self.fix_mixed_encoding(message)
+        text = self.fix_mixed_encoding(message_content)
         html = markdown.markdown(text)
         # Turn these into plain/html MIMEText objects
         part1 = MIMEText(text, "plain")
