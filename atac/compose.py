@@ -34,8 +34,8 @@ class AllTimeHigh(Config):
         # Get raw text as string.
         with open(content) as f:
             text = f.read()
-        except FileNotFoundError:
-            print('{} file not found'.format(content))
+        except OSError as e:
+            print('{} file not found {}'.format(content, e.errno))
         finally:
             f.close()
         # Build the model.
@@ -158,8 +158,8 @@ class AllTimeHigh(Config):
         # Now put your SMS in a file called message.txt, and it will be read from there.
         with open(message_file_path, encoding="utf-8") as content_file:
             msg = content_file.read()
-        except FileNotFoundError:
-            print('{} file not found'.format(message_file_path))
+        except OSError as e:
+            print('{} file not found {}'.format(message_file_path, e.errno))
         finally:
             content_file.close()
         # Check we read a message OK
