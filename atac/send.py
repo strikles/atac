@@ -162,23 +162,25 @@ class FromRuXiaWithLove(AllTimeHigh):
             for batch in unencrypted_email_batches:
                 mailing_list = '; '.join(batch)
                 e = (Envelope()
-                     .message(message)
-                     .from_(auth['sender'])
-                     .to(mailing_list))
+                    .subject(subject)
+                    .message(message)
+                    .from_(auth['sender'])
+                    .to(mailing_list))
                 e.as_message()  # returns EmailMessage
-                e.smtp("localhost").send()  # directly sends
+                e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                 time.sleep(10)
                 progress.update(1)
         #
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
             for email_recipient, gpg_key_id in encrypted_emails:
                 e = (Envelope()
-                     .message(message)
-                     .from_(auth['sender'])
-                     .to(email_recipient)
-                     .encryption())
+                    .subject(subject)
+                    .message(message)
+                    .from_(auth['sender'])
+                    .to(email_recipient)
+                    .encryption())
                 e.as_message()  # returns EmailMessage
-                e.smtp("localhost").send()  # directly sends
+                e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                 time.sleep(10)
                 encrypted_progress.update(1)
 
