@@ -110,6 +110,8 @@ class AllTimeHigh(Config):
         # Turn these into plain/html MIMEText objects
         part1 = MIMEText(encrypted_text, "plain")
         part2 = MIMEText(encrypted_html, "html")
+        part1.set_payload(text, charset=cs)
+        part2.set_payload(html, charset=cs)
         # Add HTML/plain-text parts to MIMEMultipart message
         body.attach(part1)
         body.attach(part2)
@@ -141,8 +143,8 @@ class AllTimeHigh(Config):
         # Turn these into plain/html MIMEText objects
         part1 = MIMEText(text, "plain")
         part2 = MIMEText(html, "html")
-        #part1.set_payload(text, charset=cs)
-        #part2.set_payload(html, charset=cs)
+        part1.set_payload(text, charset=cs)
+        part2.set_payload(html, charset=cs)
         # Add HTML/plain-text parts to MIMEMultipart message
         body.attach(part1)
         body.attach(part2)
