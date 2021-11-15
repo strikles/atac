@@ -46,6 +46,7 @@ class UnderTheMangoTree(Config):
             if url.lower().endswith(k):
                 print(">>> invalid file..\n")
                 return True
+        #
         return False
 
     @staticmethod
@@ -55,6 +56,7 @@ class UnderTheMangoTree(Config):
         headers = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
                    "Accept-Language": "en-US,en;q=0.5", "Referer": "https://www.google.com/", "DNT": "1",
                    "Connection": "keep-alive", "Upgrade-Insecure-Requests": "1", 'User-Agent': ua.random}
+        #
         return headers
 
     @staticmethod
@@ -95,12 +97,14 @@ class UnderTheMangoTree(Config):
         #
         rx_emails = re.compile(r"[a-zA-Z0-9_+&*-]+(?:\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\.)+"
                                r"(?!jpg|jpeg|png|svg|gif|webp|yji|pdf|htm|title|content|formats)[a-zA-Z]{2,7}")
+        #
         return set(filter(lambda x: (checkers.is_email(x)), rx_emails.findall(content)))
 
     @staticmethod
     def extract_phones(content):
         #
         rx_phones = re.compile(r'\+(?:[0-9] ?){6,14}[0-9]')
+        #
         return set(rx_phones.findall(content))
 
     def save_email_contacts(self, new_contacts, data_key):

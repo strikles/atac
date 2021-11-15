@@ -124,6 +124,7 @@ class AllTimeHigh(Config):
         return message
 
     def create_image(self, text, window_height, window_width):
+        #
         img = Image.new('L', (window_height, window_width), color='white')
         draw = ImageDraw.Draw(img)
         font = ImageFont.truetype("arial", 24)

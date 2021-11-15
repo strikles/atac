@@ -245,6 +245,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 unencrypted_emails, encrypted_emails = self.store_emails_in_buckets(lines)
                 self.send_emails_in_buckets(unencrypted_emails, encrypted_emails, message_file_path, subject)
         self.update_email_config()
+        #
         return status
 
     def calculate_twilio_cost(self, msg, phone_numbers, msg_type):
@@ -364,6 +365,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         print("Exiting!")
 
     def send_facebook(self, message_file_path):
+        #
         status = 0
         msg = "Hello, world!"
         graph = facebook.GraphAPI(self.social['facebook']['access_token'])
@@ -372,9 +374,11 @@ class FromRuXiaWithLove(AllTimeHigh):
         for group in groups:
             graph.put_object(group, 'feed', message=msg, link=link)
             print(graph.get_connections(group, 'feed'))
+        #
         return status
 
     def send_twitter(self, message_file_path):
+        #
         status = 0
         CONSUMER_KEY = self.social['twitter']['consumer_key']
         CONSUMER_SECRET = self.social['twitter']['consumer_secret']
@@ -393,4 +397,5 @@ class FromRuXiaWithLove(AllTimeHigh):
             s = api.update_status(m)
             nap = randint(1, 60)
             time.sleep(nap)
+        #
         return status
