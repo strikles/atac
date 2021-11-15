@@ -40,13 +40,16 @@ class FromRuXiaWithLove(AllTimeHigh):
         self.social = self.data['social']
 
     def get_email_config(self):
+        #
         content_index = self.email['active_content']
         auth_index = self.email['active_auth']
         content = self.email['content'][content_index]
         auth = self.email['auth'][auth_index]
+        #
         return auth, content
 
     def update_email_config(self):
+        #
         auth, content = self.get_email_config()
         # set sctive to next and save config
         if self.email['rotate_content']:
@@ -245,6 +248,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         return status
 
     def calculate_twilio_cost(self, msg, phone_numbers, msg_type):
+        #
         SMS_LENGTH = 160                 # Max length of one SMS message
         WHATSAPP_MSG_COST = 0.005        # Cost per message
         SMS_MSG_COST = 0.005        # Cost per message
@@ -337,7 +341,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             #
             print("Exiting!")
 
-    def send_signal(self):
+    def send_signal(self, contacts_file_path, message_file_path):
         #
         msg = self.get_message(message_file_path)
         phone_numbers = self.get_phone_numbers(contacts_file_path)

@@ -142,8 +142,7 @@ class AllTimeHigh(Config):
         # transfer the array into an actual image
         img = qr.make_image(fill_color="white", back_color="black")
         # save it to a file
-        # img.save("site_inversed.png")
-        return img
+        img.save("site_inversed.png")
 
     def get_message(self, message_file_path):
         #
