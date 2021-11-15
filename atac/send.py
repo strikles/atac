@@ -5,6 +5,7 @@ import smtplib
 import ssl
 import csv
 import json
+import frontmatter
 import markdown
 import time
 from random import randint
@@ -13,16 +14,19 @@ from tqdm import tqdm
 from validator_collection import checkers
 from envelope import Envelope
 
-import phonenumbers
-from phonenumbers import NumberParseException, phonenumberutil
-from twilio.rest import Client as TwilioClient
-#from .whatsapp import Client as YowsupClient
-if os.environ.get('DISPLAY'):
-    from pywhatkit import *
-from .signalcli import Signalcli
 import facebook
 import tweepy
 
+import phonenumbers
+from phonenumbers import NumberParseException, phonenumberutil
+
+from twilio.rest import Client as TwilioClient
+
+#from .whatsapp import Client as YowsupClient
+if os.environ.get('DISPLAY'):
+    from pywhatkit import *
+
+from .signalcli import Signalcli
 from .compose import AllTimeHigh
 from .config import Config
 
@@ -157,14 +161,14 @@ class FromRuXiaWithLove(AllTimeHigh):
         message = None
         #
         with open(message_file_path, encoding="utf-8") as message_file:
-            message = message_file.read()
+            message = frontmatter.loads(message_file.read())
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
                 mailing_list = '; '.join(batch)
                 e = (Envelope()
                     .subject(subject)
-                    .message(message)
+                    .message(message.content)
                     .from_(auth['sender'])
                     .to(mailing_list))
                 e.attach(path="/tmp/file.jpg", inline=True)
@@ -177,7 +181,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             for email_recipient, gpg_key_id in encrypted_emails:
                 e = (Envelope()
                     .subject(subject)
-                    .message(message)
+                    .message(message.content)
                     .from_(auth['sender'])
                     .to(email_recipient)
                     .encryption())
@@ -193,12 +197,12 @@ class FromRuXiaWithLove(AllTimeHigh):
         message = None
         #
         with open(message_file_path, encoding="utf-8") as message_file:
-            message = message_file.read()
+            message = frontmatter.loads(message_file.read())
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
                 mailing_list = '; '.join(batch)
-                mime_message = self.compose_email(auth['sender'], mailing_list, message, subject)
+                mime_message = self.compose_email(auth['sender'], mailing_list, message.content, subject)
                 self.send_email(mailing_list, mime_message)
                 time.sleep(10)
                 progress.update(1)
@@ -208,7 +212,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 encrypted_mime_message = self.compose_encrypted_email(auth['sender'],
                                                                     email_recipient,
                                                                     gpg_key_id,
-                                                                    message,
+                                                                    message.content,
                                                                     subject)
                 self.send_email(email_recipient, encrypted_mime_message)
                 time.sleep(10)

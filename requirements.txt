@@ -24,6 +24,7 @@ phonenumbers
 pyaxmlparser
 PyJWT==1.7.1
 pyrsistent==0.17.3
+python-frontmatter
 pytz==2021.1
 pywhatkit
 qrcode
@@ -41,5 +42,4 @@ typing-extensions==3.10.0.0
 Unidecode==1.2.0
 urllib3==1.26.4
 validator-collection==1.5.0
-PyYAML
 zipp==3.4.1
