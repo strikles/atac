@@ -31,7 +31,6 @@ regex==2021.4.4
 requests==2.25.1
 requests-oauthlib==1.3.0
 shadow-useragent==0.0.17
--e git+git://github.com/kbin76/signal-cli-python-api.git#egg=signal-cli-python-api
 six
 soupsieve==2.2.1
 stdiomask
