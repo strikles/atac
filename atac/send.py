@@ -1,3 +1,4 @@
+import regex as re
 import os
 import sys
 import smtplib
@@ -18,7 +19,7 @@ from twilio.rest import Client as TwilioClient
 #from .whatsapp import Client as YowsupClient
 if os.environ.get('DISPLAY'):
     from pywhatkit import *
-
+import signalcli
 import facebook
 import tweepy
 
@@ -166,6 +167,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .message(message)
                     .from_(auth['sender'])
                     .to(mailing_list))
+                e.attach(path="/tmp/file.jpg", inline=True)
                 e.as_message()  # returns EmailMessage
                 e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                 time.sleep(10)
@@ -179,6 +181,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .from_(auth['sender'])
                     .to(email_recipient)
                     .encryption())
+                e.attach(path="/tmp/file.jpg", inline=True)
                 e.as_message()  # returns EmailMessage
                 e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                 time.sleep(10)
@@ -329,6 +332,28 @@ class FromRuXiaWithLove(AllTimeHigh):
                         time.sleep(1)
             #
             print("Exiting!")
+
+    def send_signal(self):
+        #
+        msg = self.get_message(message_file_path)
+        phone_numbers = self.get_phone_numbers(contacts_file_path)
+        # Check you really want to send them
+        confirm = input("Send these messages? [Y/n] ")
+        if confirm[0].lower() == 'y':
+            ## create new signal-cli object (will automatically start signal-cli in the background)
+            sig = signalcli.Signalcli(debug=True, user_name="+46123456789")
+            # Send the messages
+            for num in phone_numbers:
+                try:
+                    print("Sending to " + num)
+                    recipient_identity = num
+                    sig.send_message(recipient_identity, msg, recipient_type="direct", attachments = []):
+                except Exception as e:
+                    print(str(e))
+                finally:
+                    time.sleep(1)
+        #
+        print("Exiting!")
 
     def send_facebook(self, message_file_path):
         status = 0
