@@ -347,7 +347,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 try:
                     print("Sending to " + num)
                     recipient_identity = num
-                    sig.send_message(recipient_identity, msg, "direct", []):
+                    sig.send_message(recipient_identity, msg, "direct", [])
                 except Exception as e:
                     print(str(e))
                 finally:
