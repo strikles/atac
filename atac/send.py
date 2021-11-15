@@ -157,8 +157,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         with open(message_file_path, encoding="utf-8") as message_file:
             message = message_file.read()
         #
-        with tqdm(total=len(emails)) as progress:
-            for batch in emails:
+        with tqdm(total=len(unencrypted_email_batches)) as progress:
+            for batch in unencrypted_email_batches:
                 mailing_list = '; '.join(batch)
                 mime_message = self.compose_email(auth['sender'], mailing_list, message, subject)
                 self.send_email(mailing_list, mime_message)
@@ -197,8 +197,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         for email_file_path in email_files:
             with open(email_file_path, encoding='utf-8') as contact_file:
                 lines = [line for line in contact_file]
-                emails, encrypted_emails = self.store_emails_in_buckets(lines)
-                self.send_emails_in_buckets(emails, emails, encrypted_emails, message_file_path, subject)
+                unencrypted_emails, encrypted_emails = self.store_emails_in_buckets(lines)
+                self.send_emails_in_buckets(unencrypted_emails, encrypted_emails, message_file_path, subject)
         self.update_email_config()
         return status
 
