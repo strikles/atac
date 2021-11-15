@@ -73,24 +73,32 @@ class UnderTheMangoTree(Config):
     def truncate_files(data_key):
         # save to file
         csv_path = os.getcwd() + "/contacts/emails/" + data_key + "_emails.csv"
-        with open(csv_path, mode='a') as emails_file:
-            emails_file.truncate(0)
-            emails_writer = csv.writer(emails_file,
-                                       delimiter=',',
-                                       quotechar='"',
-                                       quoting=csv.QUOTE_MINIMAL)
-
-            emails_writer.writerow(['', 'email'])
-
+        try:
+            with open(csv_path, mode='a') as emails_file:
+                emails_file.truncate(0)
+                emails_writer = csv.writer(emails_file,
+                                           delimiter=',',
+                                           quotechar='"',
+                                           quoting=csv.QUOTE_MINIMAL)
+                emails_writer.writerow(['', 'email'])
+        except OSError as e:
+            print('{} file error {}'.format(csv_path, e.errno))
+        finally:
+            emails_file.close()
+        #
         csv_path = os.getcwd() + "/contacts/phones/" + data_key + "_phones.csv"
-        with open(csv_path, mode='a') as phones_file:
-            phones_file.truncate(0)
-            phones_writer = csv.writer(phones_file,
-                                       delimiter=',',
-                                       quotechar='"',
-                                       quoting=csv.QUOTE_MINIMAL)
-
-            phones_writer.writerow(['', 'phone'])
+        try:
+            with open(csv_path, mode='a') as phones_file:
+                phones_file.truncate(0)
+                phones_writer = csv.writer(phones_file,
+                                           delimiter=',',
+                                           quotechar='"',
+                                           quoting=csv.QUOTE_MINIMAL)
+                phones_writer.writerow(['', 'phone'])
+        except OSError as e:
+            print('{} file error {}'.format(csv_path, e.errno))
+        finally:
+            phones_file.close()
 
     @staticmethod
     def extract_emails(content):
@@ -110,22 +118,26 @@ class UnderTheMangoTree(Config):
     def save_email_contacts(self, new_contacts, data_key):
         # save to file
         csv_path = os.getcwd() + "/contacts/emails/" + data_key + "_emails.csv"
-        with open(csv_path, mode='a') as contact_file:
-            writer = csv.writer(contact_file,
-                                delimiter=',',
-                                quotechar='"',
-                                quoting=csv.QUOTE_MINIMAL)
-
-            unique_contacts = list(filter(lambda email: email not in self.emails, new_contacts))
-            for contact in unique_contacts:
-                try:
-                    if validate_email(contact):
-                        print("\x1b[6;37;41m new email:{0} \x1b[0m".format(contact))
-                        self.num_emails += 1
-                        writer.writerow([self.num_emails, contact])
-                except EmailNotValidError as e:
-                    # email is not valid, exception message is human-readable
-                    print(str(e))
+        try:
+            with open(csv_path, mode='a') as contact_file:
+                writer = csv.writer(contact_file,
+                                    delimiter=',',
+                                    quotechar='"',
+                                    quoting=csv.QUOTE_MINIMAL)
+                unique_contacts = list(filter(lambda email: email not in self.emails, new_contacts))
+                for contact in unique_contacts:
+                    try:
+                        if validate_email(contact):
+                            print("\x1b[6;37;41m new email:{0} \x1b[0m".format(contact))
+                            self.num_emails += 1
+                            writer.writerow([self.num_emails, contact])
+                    except EmailNotValidError as e:
+                        # email is not valid, exception message is human-readable
+                        print(str(e))
+        except OSError as e:
+            print('{} file error {}'.format(csv_path, e.errno))
+        finally:
+            contact_file.close()
 
     def save_phone_contacts(self, new_contacts, data_key):
         # save to file
@@ -136,17 +148,15 @@ class UnderTheMangoTree(Config):
                                     delimiter=',',
                                     quotechar='"',
                                     quoting=csv.QUOTE_MINIMAL)
-        except FileNotFoundError:
-            print('{} file not found'.format(csv_path))
+                unique_contacts = list(filter(lambda phone: phone not in self.phones, new_contacts))
+                for contact in unique_contacts:
+                    print("\x1b[6;37;41m new phone:{0}\x1b[0m".format(contact))
+                    self.num_phones += 1
+                    writer.writerow([self.num_phones, contact])
+        except OSError as e:
+            print('{} file error {}'.format(csv_path, e.errno))
         finally:
             contact_file.close()
-
-            unique_contacts = list(filter(lambda phone: phone not in self.phones, new_contacts))
-
-            for contact in unique_contacts:
-                print("\x1b[6;37;41m new phone:{0}\x1b[0m".format(contact))
-                self.num_phones += 1
-                writer.writerow([self.num_phones, contact])
 
     def process_page(self, data_key, starting_url):
         #

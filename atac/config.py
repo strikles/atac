@@ -58,36 +58,72 @@ class Config(object):
         self.key = base64.urlsafe_b64encode(kdf.derive(password))
 
     def load_key(self, key_file_path):
-        with open(key_file_path, 'rb') as key_file:
-            self.key = key_file.read()
+        #
+        try:
+            with open(key_file_path, 'rb') as key_file:
+                self.key = key_file.read()
+        except OSError as e:
+            print('{} file not found {}'.format(key_file_path, e.errno))
+        finally:
+            key_file.close()
 
     def save_key(self, key_file_path):
-        with open(key_file_path, 'wb') as key_file:
-            key_file.write(self.key)
+        #
+        try:
+            with open(key_file_path, 'wb') as key_file:
+                key_file.write(self.key)
+        except OSError as e:
+            print('{} file not found {}'.format(key_file_path, e.errno))
+        finally:
+            key_file.close()
 
     def new_config(self, config_file_path):
-        with open('new.json', 'rb') as new_config:
-            self.data = json.loads(new_config.read())
+        #
+        try:
+            with open('new.json', 'rb') as new_config:
+                self.data = json.loads(new_config.read())
+        except OSError as e:
+            print('{} file not found {}'.format('new.json', e.errno))
+        finally:
+            new_config.close()
+        #
         self.save_config(config_file_path, True)
 
     def save_config(self, config_file_path, encrypted_config):
+        #
         if encrypted_config:
             fernet = Fernet(self.key)
             # encrypting the file
             encrypted_data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf8'))
             # opening the file in write mode and writing the encrypted data
-            with open(config_file_path, 'wb') as encrypted_file:
-                encrypted_file.write(encrypted_data)
+            try:
+                with open(config_file_path, 'wb') as encrypted_file:
+                    encrypted_file.write(encrypted_data)
+            except OSError as e:
+                print('{} file not found {}'.format(config_file_path, e.errno))
+            finally:
+                encrypted_file.close()
         else:
-            with open(config_file_path, 'wb') as unencrypted_file:
-                unencrypted_file.write(self.data, ensure_ascii=False)
+            try:
+                with open(config_file_path, 'wb') as unencrypted_file:
+                    unencrypted_file.write(self.data, ensure_ascii=False)
+            except OSError as e:
+                print('{} file not found {}'.format(config_file_path, e.errno))
+            finally:
+                unencrypted_file.close()
 
     def load_config(self):
+        #
         if self.encrypted_config:
             fernet = Fernet(self.key)
             # opening the encrypted file
-            with open(self.config_file_path, 'rb') as encrypted_file:
-                encrypted_data = encrypted_file.read()
+            try:
+                with open(self.config_file_path, 'rb') as encrypted_file:
+                    encrypted_data = encrypted_file.read()
+            except OSError as e:
+                print('{} file not found {}'.format(self.config_file_path, e.errno))
+            finally:
+                encrypted_file.close()
             # decrypting the file
             try:
                 self.data = json.loads(fernet.decrypt(encrypted_data))
@@ -95,5 +131,10 @@ class Config(object):
                 print("Invalid Key {} - Unsuccessfully decrypted").format(e)
                 sys.exit(1)
         else:
-            with open(self.config_file_path, 'rb') as new_config:
-                self.data = json.loads(new_config.read())
+            try:
+                with open(self.config_file_path, 'rb') as new_config:
+                    self.data = json.loads(new_config.read())
+            except OSError as e:
+                print('{} file not found {}'.format(self.config_file_path, e.errno))
+            finally:
+                new_config.close()
