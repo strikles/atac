@@ -63,7 +63,7 @@ class Config(object):
             with open(key_file_path, 'rb') as key_file:
                 self.key = key_file.read()
         except OSError as e:
-            print('{} file not found {}'.format(key_file_path, e.errno))
+            print('{} file error {}'.format(key_file_path, e.errno))
         finally:
             key_file.close()
 
@@ -73,7 +73,7 @@ class Config(object):
             with open(key_file_path, 'wb') as key_file:
                 key_file.write(self.key)
         except OSError as e:
-            print('{} file not found {}'.format(key_file_path, e.errno))
+            print('{} file error {}'.format(key_file_path, e.errno))
         finally:
             key_file.close()
 
@@ -83,7 +83,7 @@ class Config(object):
             with open('new.json', 'rb') as new_config:
                 self.data = json.loads(new_config.read())
         except OSError as e:
-            print('{} file not found {}'.format('new.json', e.errno))
+            print('{} file error {}'.format('new.json', e.errno))
         finally:
             new_config.close()
         #
@@ -100,7 +100,7 @@ class Config(object):
                 with open(config_file_path, 'wb') as encrypted_file:
                     encrypted_file.write(encrypted_data)
             except OSError as e:
-                print('{} file not found {}'.format(config_file_path, e.errno))
+                print('{} file error {}'.format(config_file_path, e.errno))
             finally:
                 encrypted_file.close()
         else:
@@ -121,7 +121,7 @@ class Config(object):
                 with open(self.config_file_path, 'rb') as encrypted_file:
                     encrypted_data = encrypted_file.read()
             except OSError as e:
-                print('{} file not found {}'.format(self.config_file_path, e.errno))
+                print('{} file error {}'.format(self.config_file_path, e.errno))
             finally:
                 encrypted_file.close()
             # decrypting the file
@@ -135,6 +135,6 @@ class Config(object):
                 with open(self.config_file_path, 'rb') as new_config:
                     self.data = json.loads(new_config.read())
             except OSError as e:
-                print('{} file not found {}'.format(self.config_file_path, e.errno))
+                print('{} file error {}'.format(self.config_file_path, e.errno))
             finally:
                 new_config.close()

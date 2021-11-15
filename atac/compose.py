@@ -36,7 +36,7 @@ class AllTimeHigh(Config):
             with open(content) as f:
                 text = f.read()
         except OSError as e:
-            print('{} file not found {}'.format(content, e.errno))
+            print('{} file error {}'.format(content, e.errno))
         finally:
             f.close()
         # Build the model.
@@ -161,7 +161,7 @@ class AllTimeHigh(Config):
             with open(message_file_path, encoding="utf-8") as content_file:
                 msg = content_file.read()
         except OSError as e:
-            print('{} file not found {}'.format(message_file_path, e.errno))
+            print('{} file error {}'.format(message_file_path, e.errno))
         finally:
             content_file.close()
         # Check we read a message OK

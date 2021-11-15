@@ -102,7 +102,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                                 phone_number_e164 = phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164)
                                 phone_numbers.append(phone_number_e164)
             except OSError as e:
-                print('{} file not found {}'.format(file_path, e.errno))
+                print('{} file error {}'.format(file_path, e.errno))
             finally:
                  contact_file.close()
         #
@@ -174,7 +174,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             with open(message_file_path, encoding="utf-8") as message_file:
                 message = frontmatter.loads(message_file.read())
         except OSError as e:
-            print('{} file not found {}'.format(message_file_path, e.errno))
+            print('{} file error {}'.format(message_file_path, e.errno))
         finally:
             message_file.close()
         #
@@ -219,7 +219,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             with open(message_file_path, encoding="utf-8") as message_file:
                 message = frontmatter.loads(message_file.read())
         except OSError as e:
-            print('{} file not found {}'.format(message_file_path, e.errno))
+            print('{} file error {}'.format(message_file_path, e.errno))
         finally:
             message_file.close()
         #
@@ -269,7 +269,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     unencrypted_emails, encrypted_emails = self.store_emails_in_buckets(lines)
                     self.send_emails_in_buckets(unencrypted_emails, encrypted_emails, message_file_path, subject)
             except OSError as e:
-                print('{} file not found {}'.format(email_file_path, e.errno))
+                print('{} file error {}'.format(email_file_path, e.errno))
             finally:
                 contact_file.close()
         #
