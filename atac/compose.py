@@ -32,8 +32,9 @@ class AllTimeHigh(Config):
     def generate_markov_content(content):
         status = 0
         # Get raw text as string.
-        with open(content) as f:
-            text = f.read()
+        try:
+            with open(content) as f:
+                text = f.read()
         except OSError as e:
             print('{} file not found {}'.format(content, e.errno))
         finally:

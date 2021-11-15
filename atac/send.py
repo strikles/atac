@@ -209,8 +209,9 @@ class FromRuXiaWithLove(AllTimeHigh):
         auth, _ = self.get_email_config()
         message = None
         #
-        with open(message_file_path, encoding="utf-8") as message_file:
-            message = frontmatter.loads(message_file.read())
+        try:
+            with open(message_file_path, encoding="utf-8") as message_file:
+                message = frontmatter.loads(message_file.read())
         except OSError as e:
             print('{} file not found {}'.format(message_file_path, e.errno))
         finally:
