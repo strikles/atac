@@ -1,6 +1,7 @@
 import os
 import sys
 import json
+import yaml
 import markdown
 import markovify
 
@@ -15,10 +16,10 @@ from email.mime.text import MIMEText
 import mimetypes
 
 
-class AllTimeHigh(object):
+class AllTimeHigh(Config):
 
-    def __init__(self, a, b, c):
-        pass
+    def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
+        super().__init__(encrypted_config, config_file_path, key_file_path)
 
     @staticmethod
     def generate_markov_content(content):
@@ -48,7 +49,41 @@ class AllTimeHigh(object):
         #
         return output
 
-    def compose_email(self, sender_email, mailing_list, message_file_path, subject):
+    def compose_encrypted_email(self, sender_email, recipient_email, key_id, message, subject):
+        #
+        message = MIMEMultipart("mixed")
+        cs = charset.Charset('utf-8')
+        cs.header_encoding = charset.QP
+        cs.body_encoding = charset.QP
+        message.set_charset(cs)
+        message.replace_header('Content-Transfer-Encoding', 'quoted-printable')
+        #
+        message["Subject"] = self.fix_mixed_encoding(subject)
+        message["From"] = self.fix_mixed_encoding(sender_email)
+        message["To"] = recipient_email
+        # Create the plain-text and HTML version of your message
+        body = MIMEMultipart("alternative")
+        body.set_charset(cs)
+        body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
+        # convert markdown to html
+        text = self.fix_mixed_encoding(message)
+        html = markdown.markdown(text)
+        # Encrypt the message body.
+        encrypted_text = self.gpg.encrypt(text, key_id)
+        encrypted_html = self.gpg.encrypt(html, key_id)
+        # Turn these into plain/html MIMEText objects
+        part1 = MIMEText(encrypted_text, "plain")
+        part2 = MIMEText(encrypted_html, "html")
+        # Add HTML/plain-text parts to MIMEMultipart message
+        body.attach(part1)
+        body.attach(part2)
+        # The email client will try to render the last part first
+        message.attach(body)
+        print(message.as_string())
+        #
+        return message
+
+    def compose_email(self, sender_email, mailing_list, message, subject):
         #
         message = MIMEMultipart("mixed")
         cs = charset.Charset('utf-8')
@@ -64,17 +99,14 @@ class AllTimeHigh(object):
         body = MIMEMultipart("alternative")
         body.set_charset(cs)
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
-        text = None
-        html = None
-        # convert markdown to html
-        with open(message_file_path, encoding="utf-8") as message_file:
-            text = self.fix_mixed_encoding(message_file.read())
-            html = markdown.markdown(text)
+        #
+        text = self.fix_mixed_encoding(message)
+        html = markdown.markdown(text)
         # Turn these into plain/html MIMEText objects
         part1 = MIMEText(text, "plain")
         part2 = MIMEText(html, "html")
-        part1.set_payload(text, charset=cs)
-        part2.set_payload(html, charset=cs)
+        #part1.set_payload(text, charset=cs)
+        #part2.set_payload(html, charset=cs)
         # Add HTML/plain-text parts to MIMEMultipart message
         body.attach(part1)
         body.attach(part2)

@@ -110,26 +110,67 @@ class FromRuXiaWithLove(Config, AllTimeHigh):
         except Exception as err:
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
 
-    def store_emails_in_buckets(self, lines, emails):
-        counter = 0
-        num_buckets = len(emails)
-        with tqdm(total=len(lines)) as progress:
+    def find_gpg_keyid(self, recipient):
+        # We need the keyid to encrypt the message to the recipient.
+        # Let's walk through all keys in the keyring and find the
+        # appropriate one.
+        keys = self.gpg.list_keys()
+        for key in keys:
+            for uid in key['uids']:
+                if recipient in uid:
+                    return key['keyid']
+
+    def store_emails_in_buckets(self, lines):
+        #
+        encrypted_emails = []
+        unencrypted_emails = []
+        #
+        with tqdm(total=len(lines)) as filter_progress:
             for ndx, receiver_email in csv.reader(lines):
                 if checkers.is_email(receiver_email):
-                    current_bucket = counter % num_buckets
-                    emails[current_bucket].append(receiver_email.encode('utf-8').decode('utf-8'))
-                    counter += 1
-                    progress.update(1)
+                    key_id = self.find_keyid(receiver_email)
+                    if key_id:
+                        encrypted_emails.append(receiver_email)
+                    else:
+                        unencrypted_emails.append(receiver_email)
+                filter_progress.update(1)
+        #
+        counter = 0
+        num_emails_per_bucket = 2000
+        num_buckets = len(unencrypted_emails) // num_emails_per_bucket
+        batch_emails = [[] for i in range(num_buckets)]
+        #
+        with tqdm(total=len(unencrypted_emails)) as batch_progress:
+            for unencrypted_email in unencrypted_emails:
+                current_bucket = counter % num_buckets
+                batch_emails[current_bucket].append(unencrypted_email)
+                counter += 1
+                batch_progress.update(1)
+        #
+        return batch_emails, encrypted_emails
 
-    def send_emails_in_buckets(self, emails, message_file_path, subject):
+    def send_emails_in_buckets(self, emails, encrypted_emails, message_file_path, subject):
+        #
         auth, _ = self.get_email_config()
+        message = None
+        #
+        with open(message_file_path, encoding="utf-8") as message_file:
+            message = message_file.read()
+        #
         with tqdm(total=len(emails)) as progress:
             for batch in emails:
                 mailing_list = '; '.join(batch)
-                message = self.compose_email(auth['sender'], mailing_list, message_file_path, subject)
-                self.send_email(mailing_list, message)
+                mime_message = self.compose_email(auth['sender'], mailing_list, message, subject)
+                self.send_email(mailing_list, mime_message)
                 time.sleep(10)
                 progress.update(1)
+        #
+        with tqdm(total=len(encrypted_emails)) as encrypted_progress:
+            for email_recipient in encrypted_emails:
+                encrypted_mime_message = self.compose_encrypted_email(auth['sender'], email_recipient, message, subject)
+                self.send_email(email_recipient, encrypted_mime_message)
+                time.sleep(10)
+                encrypted_progress.update(1)
 
     def send_emails(self, email_files_path, message_file_path, subject):
         #
@@ -152,11 +193,8 @@ class FromRuXiaWithLove(Config, AllTimeHigh):
         for email_file_path in email_files:
             with open(email_file_path, encoding='utf-8') as contact_file:
                 lines = [line for line in contact_file]
-                num_emails_per_bucket = 2000
-                num_buckets = len(lines) // num_emails_per_bucket
-                emails = [[] for i in range(num_buckets)]
-                self.store_emails_in_buckets(lines, emails)
-                self.send_emails_in_buckets(emails, message_file_path, subject)
+                emails, encrypted_emails = self.store_emails_in_buckets(lines)
+                self.send_emails_in_buckets(emails, emails, encrypted_emails, message_file_path, subject)
         self.update_email_config()
         return status
 
