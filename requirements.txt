@@ -27,6 +27,7 @@ pyrsistent==0.17.3
 python-frontmatter
 pytz==2021.1
 pywhatkit
+pywhatsapp
 qrcode
 regex==2021.4.4
 requests==2.25.1

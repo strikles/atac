@@ -5,6 +5,7 @@ import yaml
 import markdown
 import markovify
 import qrcode
+
 from email import charset
 from email.encoders import encode_base64
 from email.header import Header
@@ -15,7 +16,12 @@ from email.mime.nonmultipart import MIMENonMultipart
 from email.mime.text import MIMEText
 import mimetypes
 
+from PIL import Image
+from PIL import ImageFont
+from PIL import ImageDraw
+
 from .config import Config
+
 
 class AllTimeHigh(Config):
 
@@ -116,6 +122,13 @@ class AllTimeHigh(Config):
         print(message.as_string())
         #
         return message
+
+    def create_image(self, text):
+        img = Image.new('L', (window_height, window_width), color='white')
+        draw = ImageDraw.Draw(img)
+        font = ImageFont.truetype("arial", 24)
+        draw.text((0, 0), text, font=font)
+        img.save('sample-out.jpg')
 
     def create_qr_code(self, url):
         # instantiate QRCode object
