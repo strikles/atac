@@ -10,6 +10,7 @@ from random import randint
 from tqdm import tqdm
 
 from validator_collection import checkers
+from envelope import Envelope
 
 import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
@@ -148,6 +149,38 @@ class FromRuXiaWithLove(AllTimeHigh):
                 batch_progress.update(1)
         #
         return batch_emails, encrypted_emails
+
+    def send_emails_in_buckets_envelope(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
+        #
+        auth, _ = self.get_email_config()
+        message = None
+        #
+        with open(message_file_path, encoding="utf-8") as message_file:
+            message = message_file.read()
+        #
+        with tqdm(total=len(unencrypted_email_batches)) as progress:
+            for batch in unencrypted_email_batches:
+                mailing_list = '; '.join(batch)
+                e = (Envelope()
+                     .message(message)
+                     .from_(auth['sender'])
+                     .to(mailing_list))
+                e.as_message()  # returns EmailMessage
+                e.smtp("localhost").send()  # directly sends
+                time.sleep(10)
+                progress.update(1)
+        #
+        with tqdm(total=len(encrypted_emails)) as encrypted_progress:
+            for email_recipient, gpg_key_id in encrypted_emails:
+                e = (Envelope()
+                     .message(message)
+                     .from_(auth['sender'])
+                     .to(email_recipient)
+                     .encryption())
+                e.as_message()  # returns EmailMessage
+                e.smtp("localhost").send()  # directly sends
+                time.sleep(10)
+                encrypted_progress.update(1)
 
     def send_emails_in_buckets(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
         #
