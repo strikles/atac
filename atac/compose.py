@@ -157,8 +157,9 @@ class AllTimeHigh(Config):
             sys.exit(1)
         msg = None
         # Now put your SMS in a file called message.txt, and it will be read from there.
-        with open(message_file_path, encoding="utf-8") as content_file:
-            msg = content_file.read()
+        try:
+            with open(message_file_path, encoding="utf-8") as content_file:
+                msg = content_file.read()
         except OSError as e:
             print('{} file not found {}'.format(message_file_path, e.errno))
         finally:
