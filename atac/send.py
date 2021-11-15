@@ -85,21 +85,26 @@ class FromRuXiaWithLove(AllTimeHigh):
         contact_files = self.get_contact_files(contact_files_path)
         #
         for file_path in contact_files:
-            with open(file_path) as contact_file:
-                lines = [line for line in contact_file]
-                for ndx, phone in csv.reader(lines):
-                    print(phone)
-                    try:
-                        z = phonenumbers.parse(phone)
-                    except NumberParseException as e:
-                        print(str(e))
-                        continue
-                    valid_number = phonenumbers.is_valid_number(z)
-                    if valid_number:
-                        line_type = phonenumberutil.number_type(z)
-                        if line_type == phonenumberutil.PhoneNumberType.MOBILE:
-                            phone_number_e164 = phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164)
-                            phone_numbers.append(phone_number_e164)
+            try:
+                with open(file_path) as contact_file:
+                    lines = [line for line in contact_file]
+                    for ndx, phone in csv.reader(lines):
+                        print(phone)
+                        try:
+                            z = phonenumbers.parse(phone)
+                        except NumberParseException as e:
+                            print(str(e))
+                            continue
+                        valid_number = phonenumbers.is_valid_number(z)
+                        if valid_number:
+                            line_type = phonenumberutil.number_type(z)
+                            if line_type == phonenumberutil.PhoneNumberType.MOBILE:
+                                phone_number_e164 = phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164)
+                                phone_numbers.append(phone_number_e164)
+            except FileNotFoundError:
+                print('{} file not found'.format(file_path))
+            finally:
+                contact_file.close()
         #
         return phone_numbers
 
@@ -163,8 +168,13 @@ class FromRuXiaWithLove(AllTimeHigh):
         auth, _ = self.get_email_config()
         message = None
         #
-        with open(message_file_path, encoding="utf-8") as message_file:
-            message = frontmatter.loads(message_file.read())
+        try:
+            with open(message_file_path, encoding="utf-8") as message_file:
+                message = frontmatter.loads(message_file.read())
+        except FileNotFoundError:
+            print('{} file not found'.format(message_file_path))
+        finally:
+            message_file.close()
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
@@ -201,6 +211,10 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         with open(message_file_path, encoding="utf-8") as message_file:
             message = frontmatter.loads(message_file.read())
+        except FileNotFoundError:
+            print('{} file not found'.format(message_file_path))
+        finally:
+            message_file.close()
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
@@ -240,10 +254,16 @@ class FromRuXiaWithLove(AllTimeHigh):
         print(email_files_path)
         email_files = self.get_contact_files(email_files_path)
         for email_file_path in email_files:
-            with open(email_file_path, encoding='utf-8') as contact_file:
-                lines = [line for line in contact_file]
-                unencrypted_emails, encrypted_emails = self.store_emails_in_buckets(lines)
-                self.send_emails_in_buckets(unencrypted_emails, encrypted_emails, message_file_path, subject)
+            try:
+                with open(email_file_path, encoding='utf-8') as contact_file:
+                    lines = [line for line in contact_file]
+                    unencrypted_emails, encrypted_emails = self.store_emails_in_buckets(lines)
+                    self.send_emails_in_buckets(unencrypted_emails, encrypted_emails, message_file_path, subject)
+            except FileNotFoundError:
+                print('{} file not found'.format(email_file_path))
+            finally:
+                contact_file.close()
+        #
         self.update_email_config()
         #
         return status

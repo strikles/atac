@@ -130,11 +130,16 @@ class UnderTheMangoTree(Config):
     def save_phone_contacts(self, new_contacts, data_key):
         # save to file
         csv_path = os.getcwd() + "/contacts/phones/" + data_key + "_phones.csv"
-        with open(csv_path, mode='a') as contact_file:
-            writer = csv.writer(contact_file,
-                                delimiter=',',
-                                quotechar='"',
-                                quoting=csv.QUOTE_MINIMAL)
+        try:
+            with open(csv_path, mode='a') as contact_file:
+                writer = csv.writer(contact_file,
+                                    delimiter=',',
+                                    quotechar='"',
+                                    quoting=csv.QUOTE_MINIMAL)
+        except FileNotFoundError:
+            print('{} file not found'.format(csv_path))
+        finally:
+            contact_file.close()
 
             unique_contacts = list(filter(lambda phone: phone not in self.phones, new_contacts))
 

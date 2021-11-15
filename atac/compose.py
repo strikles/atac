@@ -34,6 +34,10 @@ class AllTimeHigh(Config):
         # Get raw text as string.
         with open(content) as f:
             text = f.read()
+        except FileNotFoundError:
+            print('{} file not found'.format(content))
+        finally:
+            f.close()
         # Build the model.
         text_model = markovify.Text(text, state_size=3)
         # return randomly-generated sentence of no more than 280 characters
@@ -154,6 +158,10 @@ class AllTimeHigh(Config):
         # Now put your SMS in a file called message.txt, and it will be read from there.
         with open(message_file_path, encoding="utf-8") as content_file:
             msg = content_file.read()
+        except FileNotFoundError:
+            print('{} file not found'.format(message_file_path))
+        finally:
+            content_file.close()
         # Check we read a message OK
         if len(msg.strip()) == 0:
             print("message file is empty!")
