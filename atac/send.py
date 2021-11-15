@@ -147,6 +147,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                         encrypted_emails.append([receiver_email, gpg_key_id])
                     else:
                         unencrypted_emails.append(receiver_email)
+                #
                 filter_progress.update(1)
         #
         counter = 0
@@ -159,6 +160,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 current_bucket = counter % num_buckets
                 batch_emails[current_bucket].append(unencrypted_email)
                 counter += 1
+                #
                 batch_progress.update(1)
         #
         return batch_emails, encrypted_emails
@@ -184,9 +186,11 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .message(message.content)
                     .from_(auth['sender'])
                     .to(mailing_list))
+                #
                 e.attach(path="/tmp/file.jpg", inline=True)
                 e.as_message()  # returns EmailMessage
                 e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
+                #
                 time.sleep(10)
                 progress.update(1)
         #
@@ -198,9 +202,11 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .from_(auth['sender'])
                     .to(email_recipient)
                     .encryption())
+                #
                 e.attach(path="/tmp/file.jpg", inline=True)
                 e.as_message()  # returns EmailMessage
                 e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
+                #
                 time.sleep(10)
                 encrypted_progress.update(1)
 
@@ -222,6 +228,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 mailing_list = '; '.join(batch)
                 mime_message = self.compose_email(auth['sender'], mailing_list, message.content, subject)
                 self.send_email(mailing_list, mime_message)
+                #
                 time.sleep(10)
                 progress.update(1)
         #
@@ -233,6 +240,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                                                                     message.content,
                                                                     subject)
                 self.send_email(email_recipient, encrypted_mime_message)
+                #
                 time.sleep(10)
                 encrypted_progress.update(1)
 
