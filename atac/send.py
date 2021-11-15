@@ -130,7 +130,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 if checkers.is_email(receiver_email):
                     key_id = self.find_keyid(receiver_email)
                     if key_id:
-                        encrypted_emails.append(receiver_email)
+                        encrypted_emails.append([receiver_email, key_id])
                     else:
                         unencrypted_emails.append(receiver_email)
                 filter_progress.update(1)
@@ -149,7 +149,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         return batch_emails, encrypted_emails
 
-    def send_emails_in_buckets(self, emails, encrypted_emails, message_file_path, subject):
+    def send_emails_in_buckets(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
         #
         auth, _ = self.get_email_config()
         message = None
@@ -166,8 +166,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                 progress.update(1)
         #
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
-            for email_recipient in encrypted_emails:
-                encrypted_mime_message = self.compose_encrypted_email(auth['sender'], email_recipient, message, subject)
+            for email_recipient, key_id in encrypted_emails:
+                encrypted_mime_message = self.compose_encrypted_email(auth['sender'], email_recipient, key_id, message, subject)
                 self.send_email(email_recipient, encrypted_mime_message)
                 time.sleep(10)
                 encrypted_progress.update(1)
