@@ -15,6 +15,7 @@ from email.mime.nonmultipart import MIMENonMultipart
 from email.mime.text import MIMEText
 import mimetypes
 
+from .config import Config
 
 class AllTimeHigh(Config):
 
