@@ -5,6 +5,7 @@ import yaml
 import markdown
 import markovify
 import qrcode
+import ascii_magic
 
 from email import charset
 from email.encoders import encode_base64
@@ -27,6 +28,29 @@ class AllTimeHigh(Config):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
         super().__init__(encrypted_config, config_file_path, key_file_path)
+        #
+        art = ascii_magic.from_image_file(
+            img_path="assets/img/IMG_3339.JPG",
+            columns=80,
+            mode=ascii_magic.Modes.TERMINAL
+        )
+        #
+        ascii_magic.to_terminal(art)
+
+    def generate_ascii(self, image_path):
+        #
+        if not os.path.isfile(image_path):
+            print("Invalid image path!")
+            sys.exit(1)
+        #
+        art = ascii_magic.from_image_file(
+            img_path=image_path,
+            columns=200,
+            mode=ascii_magic.Modes.HTML
+        )
+        #
+        ascii_magic.to_html_file('ascii.html', art, additional_styles='background: #222;')
+        return art
 
     @staticmethod
     def generate_markov_content(content):

@@ -9,7 +9,6 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 import base64
-import ascii_magic
 import inspect
 
 
@@ -32,13 +31,6 @@ class Config(object):
         if not os.path.isfile(self.config_file_path):
             self.new_config(self.config_file_path, self.encrypted_config)
         self.load_config()
-        #
-        my_art = ascii_magic.from_image_file(
-            img_path="assets/img/IMG_3339.JPG",
-            columns=80,
-            mode=ascii_magic.Modes.TERMINAL
-        )
-        ascii_magic.to_terminal(my_art)
 
     def generate_key(self):
         # key generation
