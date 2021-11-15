@@ -28,11 +28,6 @@ class AllTimeHigh(object):
             text = f.read()
         # Build the model.
         text_model = markovify.Text(text, state_size=3)
-        # Print five randomly-generated sentences
-        '''
-        for i in range(5):
-            print(text_model.make_sentence(tries=100))
-        '''
         # return randomly-generated sentence of no more than 280 characters
         return text_model.make_short_sentence(280)
 
