@@ -303,27 +303,29 @@ class FromRuXiaWithLove(AllTimeHigh):
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
         self.calculate_twilio_cost(msg, phone_numbers, msg_type)
+        #
         confirm = input("Send these messages? [Y/n] ")
-        if confirm[0].lower() == 'y':
-            # Set up Twilio client
-            account_sid = self.phone['twilio']['SID']
-            auth_token = self.phone['twilio']['TOKEN']
-            from_num = self.phone['twilio']['PHONE']
-            client = TwilioClient(account_sid, auth_token)
-            # Send the messages
-            for num in phone_numbers:
-                try:
-                    # Send the sms text to the number from the CSV file:
-                    if msg_type == "whatsapp":
-                        num = "whatsapp:"+num
-                        from_num = "whatsapp:"+from_num
-                    print("Sending to " + num)
-                    message = client.messages.create(to=num, from_=from_num, body=msg)
-                    print(message.sid)
-                except Exception as e:
-                    print(str(e))
-                finally:
-                    time.sleep(1)
+        if confirm[0].lower() != 'y':
+            sys.exit(1)
+        # Set up Twilio client
+        account_sid = self.phone['twilio']['SID']
+        auth_token = self.phone['twilio']['TOKEN']
+        from_num = self.phone['twilio']['PHONE']
+        client = TwilioClient(account_sid, auth_token)
+        # Send the messages
+        for num in phone_numbers:
+            try:
+                # Send the sms text to the number from the CSV file:
+                if msg_type == "whatsapp":
+                    num = "whatsapp:"+num
+                    from_num = "whatsapp:"+from_num
+                print("Sending to " + num)
+                message = client.messages.create(to=num, from_=from_num, body=msg)
+                print(message.sid)
+            except Exception as e:
+                print(str(e))
+            finally:
+                time.sleep(1)
         #
         print("Exiting!")
 
@@ -358,16 +360,17 @@ class FromRuXiaWithLove(AllTimeHigh):
             phone_numbers = self.get_phone_numbers(contacts_file_path)
             # Check you really want to send them
             confirm = input("Send these messages? [Y/n] ")
-            if confirm[0].lower() == 'y':
-                # Send the messages
-                for num in phone_numbers:
-                    try:
-                        print("Sending to " + num)
-                        pywhatkit.sendwhatmsg_instantly(num, msg, 15, True, 5)
-                    except Exception as e:
-                        print(str(e))
-                    finally:
-                        time.sleep(1)
+            if confirm[0].lower() != 'y':
+                sys.exit(1)
+            # Send the messages
+            for num in phone_numbers:
+                try:
+                    print("Sending to " + num)
+                    pywhatkit.sendwhatmsg_instantly(num, msg, 15, True, 5)
+                except Exception as e:
+                    print(str(e))
+                finally:
+                    time.sleep(1)
             #
             print("Exiting!")
 
@@ -377,19 +380,20 @@ class FromRuXiaWithLove(AllTimeHigh):
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
-        if confirm[0].lower() == 'y':
-            ## create new signal-cli object (will automatically start signal-cli in the background)
-            sig = signalcli.Signalcli(debug=True, user_name="+46123456789")
-            # Send the messages
-            for num in phone_numbers:
-                try:
-                    print("Sending to " + num)
-                    recipient_identity = num
-                    sig.send_message(recipient_identity, msg, "direct", [])
-                except Exception as e:
-                    print(str(e))
-                finally:
-                    time.sleep(1)
+        if confirm[0].lower() != 'y':
+            sys.exit(1)
+        ## create new signal-cli object (will automatically start signal-cli in the background)
+        sig = signalcli.Signalcli(debug=True, user_name="+46123456789")
+        # Send the messages
+        for num in phone_numbers:
+            try:
+                print("Sending to " + num)
+                recipient_identity = num
+                sig.send_message(recipient_identity, msg, "direct", [])
+            except Exception as e:
+                print(str(e))
+            finally:
+                time.sleep(1)
         #
         print("Exiting!")
 
