@@ -175,26 +175,3 @@ class AllTimeHigh(Config):
         img = qr.make_image(fill_color="white", back_color="black")
         # save it to a file
         img.save("site_inversed.png")
-
-    def get_message(self, message_file_path):
-        #
-        if not os.path.isfile(message_file_path):
-            print("invalid message file path!")
-            sys.exit(1)
-        msg = None
-        # Now put your SMS in a file called message.txt, and it will be read from there.
-        try:
-            with open(message_file_path, encoding="utf-8") as content_file:
-                msg = content_file.read()
-        except OSError as e:
-            print('{} file error {}'.format(message_file_path, e.errno))
-        finally:
-            content_file.close()
-        # Check we read a message OK
-        if len(msg.strip()) == 0:
-            print("message file is empty!")
-            sys.exit(1)
-        else:
-            print("> message to send: \n\n{}".format(msg))
-        #
-        return msg

@@ -39,6 +39,29 @@ class FromRuXiaWithLove(AllTimeHigh):
         self.phone = self.data['phone']
         self.social = self.data['social']
 
+    def get_file_content(self, file_path):
+        #
+        if not os.path.isfile(file_path):
+            print("invalid file path!")
+            sys.exit(1)
+        content = None
+        # Now put your SMS in a file called message.txt, and it will be read from there.
+        try:
+            with open(file_path, encoding="utf-8") as content_file:
+                content = content_file.read()
+        except OSError as e:
+            print('{} file error {}'.format(file_path, e.errno))
+        finally:
+            content_file.close()
+        # Check we read a message OK
+        if len(content.strip()) == 0:
+            print("file is empty!")
+            sys.exit(1)
+        else:
+            print("> file content: \n\n{}".format(content))
+        #
+        return content
+
     def get_email_config(self):
         #
         content_index = self.email['active_content']
@@ -85,26 +108,21 @@ class FromRuXiaWithLove(AllTimeHigh):
         contact_files = self.get_contact_files(contact_files_path)
         #
         for file_path in contact_files:
-            try:
-                with open(file_path) as contact_file:
-                    lines = [line for line in contact_file]
-                    for ndx, phone in csv.reader(lines):
-                        print(phone)
-                        try:
-                            z = phonenumbers.parse(phone)
-                        except NumberParseException as e:
-                            print(str(e))
-                            continue
-                        valid_number = phonenumbers.is_valid_number(z)
-                        if valid_number:
-                            line_type = phonenumberutil.number_type(z)
-                            if line_type == phonenumberutil.PhoneNumberType.MOBILE:
-                                phone_number_e164 = phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164)
-                                phone_numbers.append(phone_number_e164)
-            except OSError as e:
-                print('{} file error {}'.format(file_path, e.errno))
-            finally:
-                 contact_file.close()
+            contact_file = self.get_file_contents(file_path)
+            lines = [line for line in contact_file]
+            for ndx, phone in csv.reader(lines):
+                print(phone)
+                try:
+                    z = phonenumbers.parse(phone)
+                except NumberParseException as e:
+                    print(str(e))
+                    continue
+                valid_number = phonenumbers.is_valid_number(z)
+                if valid_number:
+                    line_type = phonenumberutil.number_type(z)
+                    if line_type == phonenumberutil.PhoneNumberType.MOBILE:
+                        phone_number_e164 = phonenumbers.format_number(z, phonenumbers.PhoneNumberFormat.E164)
+                        phone_numbers.append(phone_number_e164)
         #
         return phone_numbers
 
@@ -168,15 +186,7 @@ class FromRuXiaWithLove(AllTimeHigh):
     def send_emails_in_buckets_envelope(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
         #
         auth, _ = self.get_email_config()
-        message = None
-        #
-        try:
-            with open(message_file_path, encoding="utf-8") as message_file:
-                message = frontmatter.loads(message_file.read())
-        except OSError as e:
-            print('{} file error {}'.format(message_file_path, e.errno))
-        finally:
-            message_file.close()
+        message = frontmatter.loads(self.get_file_content(message_file_path))
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
@@ -213,15 +223,7 @@ class FromRuXiaWithLove(AllTimeHigh):
     def send_emails_in_buckets(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
         #
         auth, _ = self.get_email_config()
-        message = None
-        #
-        try:
-            with open(message_file_path, encoding="utf-8") as message_file:
-                message = frontmatter.loads(message_file.read())
-        except OSError as e:
-            print('{} file error {}'.format(message_file_path, e.errno))
-        finally:
-            message_file.close()
+        message = frontmatter.loads(self.get_file_content(message_file_path))
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
@@ -263,15 +265,10 @@ class FromRuXiaWithLove(AllTimeHigh):
         print(email_files_path)
         email_files = self.get_contact_files(email_files_path)
         for email_file_path in email_files:
-            try:
-                with open(email_file_path, encoding='utf-8') as contact_file:
-                    lines = [line for line in contact_file]
-                    unencrypted_emails, encrypted_emails = self.store_emails_in_buckets(lines)
-                    self.send_emails_in_buckets(unencrypted_emails, encrypted_emails, message_file_path, subject)
-            except OSError as e:
-                print('{} file error {}'.format(email_file_path, e.errno))
-            finally:
-                contact_file.close()
+            contact_file = self.get_file_content(email_file_path)
+            lines = [line for line in contact_file]
+            unencrypted_emails, encrypted_emails = self.store_emails_in_buckets(lines)
+            self.send_emails_in_buckets(unencrypted_emails, encrypted_emails, message_file_path, subject)
         #
         self.update_email_config()
         #
@@ -299,7 +296,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_twilio(self, contacts_file_path, message_file_path, msg_type):
         #
-        msg = self.get_message(message_file_path)
+        msg = self.get_file_content(message_file_path)
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
         self.calculate_twilio_cost(msg, phone_numbers, msg_type)
@@ -356,7 +353,7 @@ class FromRuXiaWithLove(AllTimeHigh):
     if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
             #
-            msg = self.get_message(message_file_path)
+            msg = self.get_file_content(message_file_path)
             phone_numbers = self.get_phone_numbers(contacts_file_path)
             # Check you really want to send them
             confirm = input("Send these messages? [Y/n] ")
@@ -376,7 +373,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_signal(self, contacts_file_path, message_file_path):
         #
-        msg = self.get_message(message_file_path)
+        msg = self.get_file_content(message_file_path)
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
