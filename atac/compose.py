@@ -4,7 +4,7 @@ import json
 import yaml
 import markdown
 import markovify
-
+import qrcode
 from email import charset
 from email.encoders import encode_base64
 from email.header import Header
@@ -116,6 +116,21 @@ class AllTimeHigh(Config):
         print(message.as_string())
         #
         return message
+
+    def create_qr_code(self, url):
+        # instantiate QRCode object
+        qr = qrcode.QRCode(version=1, box_size=10, border=4)
+        # add data to the QR code
+        qr.add_data(url)
+        # compile the data into a QR code array
+        qr.make()
+        # print the image shape
+        # print("The shape of the QR image:", np.array(qr.get_matrix()).shape)
+        # transfer the array into an actual image
+        img = qr.make_image(fill_color="white", back_color="black")
+        # save it to a file
+        # img.save("site_inversed.png")
+        return img
 
     def get_message(self, message_file_path):
         #
