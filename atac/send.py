@@ -143,10 +143,9 @@ class FromRuXiaWithLove(AllTimeHigh):
                 error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
                 print(error_status)
                 print("\x1b[6;37;42m Sent \x1b[0m")
+                server.quit()
         except Exception as err:
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
-        finally:
-            server.quit()
 
     def find_gpg_keyid(self, recipient):
         # We need the keyid to encrypt the message to the recipient.
