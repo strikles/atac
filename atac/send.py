@@ -110,7 +110,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         for file_path in contact_files:
             contact_file = self.get_file_contents(file_path)
-            for ndx, phone in csv.reader(contact_file)
+            for ndx, phone in csv.reader(contact_file):
                 print(phone)
                 try:
                     z = phonenumbers.parse(phone)
