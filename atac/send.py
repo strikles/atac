@@ -143,7 +143,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 print("\x1b[6;37;42m Sent \x1b[0m")
         except Exception as err:
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
-        finally if server:
+        finally:
             server.quit()
 
     def find_gpg_keyid(self, recipient):
