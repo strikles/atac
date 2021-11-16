@@ -13,7 +13,7 @@ gpgListPatrn='(?<entropy>\d+)\s*bit\s*(?<algo>\S+)\s*key\s*(?<pubkeyid>[^,]+)'
 # Loop through the array and get the public keys
 for email in "${emailAddrs[@]}"
 do
-    echo "${email}\n"
+    echo "${email} \n"
     # Get the public key ids for the email address by matching the regex gpgListPatt
     pubkeyids=$(gpg --batch --search-keys $email 2>&1 | grep -Po $gpgListPatrn | cut -d' ' -f5)
     # For each public key id, get the public key
