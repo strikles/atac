@@ -1,4 +1,4 @@
-CSV of email address
+#CSV of email address
 csv=$1
 
 # Get headers from CSV
