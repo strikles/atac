@@ -53,12 +53,8 @@ class FromRuXiaWithLove(AllTimeHigh):
             print('{} file error {}'.format(file_path, e.errno))
         finally:
             content_file.close()
-        # Check we read a message OK
-        if len(lines) == 0:
-            print("file is empty!")
-            sys.exit(1)
-        else:
-            print("> file content: \n\n{}".format(u'\n'.join(lines)))
+        #
+        print("> file content: \n\n{}".format(u'\n'.join(lines)))
         #
         return lines
 
