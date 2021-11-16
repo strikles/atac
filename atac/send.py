@@ -59,7 +59,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             print("file is empty!")
             sys.exit(1)
         else:
-            print("> file content: \n\n{}".format('\n',join(lines)))
+            print("> file content: \n\n{}".format('\n'.join(lines)))
         #
         return lines
 
