@@ -135,12 +135,16 @@ class FromRuXiaWithLove(AllTimeHigh):
             with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
                 server.set_debuglevel(2)
                 server.login(auth['user'], auth['password'])
+                server.ehlo() # Can be omitted
+                server.starttls(context=context) # Secure the connection
+                server.ehlo() # Can be omitted
                 error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
                 print(error_status)
-                server.quit()
                 print("\x1b[6;37;42m Sent \x1b[0m")
         except Exception as err:
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
+        finally if server:
+            server.quit()
 
     def find_gpg_keyid(self, recipient):
         # We need the keyid to encrypt the message to the recipient.
