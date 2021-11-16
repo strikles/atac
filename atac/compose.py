@@ -161,7 +161,7 @@ class AllTimeHigh(Config):
         draw = ImageDraw.Draw(img)
         font = ImageFont.truetype("arial", 24)
         draw.text((0, 0), text, font=font)
-        img.save('sample-out.jpg')
+        img.save('content.jpg')
 
     def create_qr_code(self, url):
         # instantiate QRCode object
@@ -175,4 +175,4 @@ class AllTimeHigh(Config):
         # transfer the array into an actual image
         img = qr.make_image(fill_color="white", back_color="black")
         # save it to a file
-        img.save("site_inversed.png")
+        img.save("qr.png")
