@@ -49,6 +49,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         try:
             with open(file_path, encoding="utf-8") as content_file:
                 content = content_file.read()
+                lines = [line for line in content_file]
         except OSError as e:
             print('{} file error {}'.format(file_path, e.errno))
         finally:
@@ -60,7 +61,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         else:
             print("> file content: \n\n{}".format(content))
         #
-        return content
+        return lines
 
     def get_email_config(self):
         #
@@ -109,8 +110,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         for file_path in contact_files:
             contact_file = self.get_file_contents(file_path)
-            lines = [line for line in contact_file]
-            for ndx, phone in csv.reader(lines):
+            for ndx, phone in csv.reader(contact_file)
                 print(phone)
                 try:
                     z = phonenumbers.parse(phone)
@@ -158,7 +158,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         unencrypted_emails = []
         #
         with tqdm(total=len(lines)) as filter_progress:
-            for ndx, receiver_email in csv.reader(lines):
+            for ndx, receiver_email in csv.reader(lines)
                 if checkers.is_email(receiver_email):
                     gpg_key_id = self.find_gpg_keyid(receiver_email)
                     if gpg_key_id:
@@ -186,7 +186,7 @@ class FromRuXiaWithLove(AllTimeHigh):
     def send_emails_in_buckets_envelope(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
         #
         auth, _ = self.get_email_config()
-        message = frontmatter.loads(self.get_file_content(message_file_path))
+        message = frontmatter.loads('\n'.join(self.get_file_content(message_file_path)))
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
@@ -223,7 +223,7 @@ class FromRuXiaWithLove(AllTimeHigh):
     def send_emails_in_buckets(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
         #
         auth, _ = self.get_email_config()
-        message = frontmatter.loads(self.get_file_content(message_file_path))
+        message = frontmatter.loads('\n'.join(self.get_file_content(message_file_path)))
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
@@ -266,8 +266,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         email_files = self.get_contact_files(email_files_path)
         for email_file_path in email_files:
             contact_file = self.get_file_content(email_file_path)
-            lines = [line for line in contact_file]
-            unencrypted_emails, encrypted_emails = self.store_emails_in_buckets(lines)
+            unencrypted_emails, encrypted_emails = self.store_emails_in_buckets(contact_file)
             self.send_emails_in_buckets(unencrypted_emails, encrypted_emails, message_file_path, subject)
         #
         self.update_email_config()
@@ -296,7 +295,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_twilio(self, contacts_file_path, message_file_path, msg_type):
         #
-        msg = self.get_file_content(message_file_path)
+        msg = '\n'.join(self.get_file_content(message_file_path))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
         self.calculate_twilio_cost(msg, phone_numbers, msg_type)
@@ -353,7 +352,7 @@ class FromRuXiaWithLove(AllTimeHigh):
     if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
             #
-            msg = self.get_file_content(message_file_path)
+            msg = '\n'.join(self.get_file_content(message_file_path))
             phone_numbers = self.get_phone_numbers(contacts_file_path)
             # Check you really want to send them
             confirm = input("Send these messages? [Y/n] ")
@@ -373,7 +372,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_signal(self, contacts_file_path, message_file_path):
         #
-        msg = self.get_file_content(message_file_path)
+        msg = '\n'.join(self.get_file_content(message_file_path))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
