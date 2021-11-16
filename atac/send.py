@@ -58,7 +58,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             print("file is empty!")
             sys.exit(1)
         else:
-            print("> file content: \n\n{}".format(u''.join(lines)))
+            print("> file content: \n\n{}".format(u'\n'.join(lines)))
         #
         return lines
 
