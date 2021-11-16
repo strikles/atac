@@ -55,7 +55,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         finally:
             content_file.close()
         # Check we read a message OK
-        if len(content.strip()) == 0:
+        if len(lines) == 0:
             print("file is empty!")
             sys.exit(1)
         else:
