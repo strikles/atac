@@ -14,12 +14,12 @@ gpgListPatrn='(?<entropy>\d+)\s*bit\s*(?<algo>\S+)\s*key\s*(?<pubkeyid>[^,]+)'
 for email in "${emailAddrs[@]}"
 do
     # Get the public key ids for the email address by matching the regex gpgListPatt
-    pubkeyids=$(gpg --batch --keyserver hkp://keyserver.ubuntu.com --search-keys $email 2>&1 | grep -Po $gpgListPatrn | cut -d' ' -f5)
+    pubkeyids=$(gpg --batch --search-keys $email 2>&1 | grep -Po $gpgListPatrn | cut -d' ' -f5)
     # For each public key id, get the public key
     for pubkeyid in $pubkeyids
     do
         # Add the public key to the local keyring
-        recvr=$(gpg --keyserver hkp://keyserver.ubuntu.com --recv-keys $pubkeyids 2>&1)
+        recvr=$(gpg --recv-keys $pubkeyids 2>&1)
         # Check exit code to see if the key was added
         if [ $? -eq 0 ]; then
             # If the public key is added, do some extra work with it
