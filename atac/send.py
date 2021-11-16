@@ -10,7 +10,6 @@ import markdown
 import time
 from random import randint
 from tqdm import tqdm
-import quopri
 
 from validator_collection import checkers
 from envelope import Envelope

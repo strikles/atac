@@ -6,6 +6,7 @@ import markdown
 import markovify
 import qrcode
 import ascii_magic
+import quopri
 
 from email import charset
 from email.encoders import encode_base64
