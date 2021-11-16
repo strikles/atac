@@ -142,7 +142,7 @@ class AllTimeHigh(Config):
         html = markdown.markdown(text)
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
-        part2 = MIMENonMultipary('text', 'html', charset='utf-8')
+        part2 = MIMENonMultipart('text', 'html', charset='utf-8')
         part1.set_payload(text, charset=cs)
         part2.set_payload(html, charset=cs)
         # Add HTML/plain-text parts to MIMEMultipart message
