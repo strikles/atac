@@ -143,9 +143,11 @@ class FromRuXiaWithLove(AllTimeHigh):
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
 
     def find_gpg_keyid(self, recipient):
-        # We need the keyid to encrypt the message to the recipient.
-        # Let's walk through all keys in the keyring and find the
-        # appropriate one.
+        '''
+        We need the keyid to encrypt the message to the recipient.
+        Let's walk through all keys in the keyring and find the
+        appropriate one.
+        '''
         keys = self.gpg.list_keys()
         for key in keys:
             for uid in key['uids']:
