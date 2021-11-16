@@ -49,7 +49,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         # Now put your SMS in a file called message.txt, and it will be read from there.
         try:
             with open(file_path, encoding="utf-8") as content_file:
-                lines = [quopri.decodestring(self.fix_mixed_encoding(line.strip())).decode('utf-8') for line in content_file]
+                lines = [self.fix_mixed_encoding(line.strip()) for line in content_file]
         except OSError as e:
             print('{} file error {}'.format(file_path, e.errno))
         finally:
@@ -160,7 +160,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         with tqdm(total=len(lines)) as filter_progress:
             for ndx, receiver_email in csv.reader(lines):
-                receiver_email = self.fix_mixed_encoding(receiver_email)
+                receiver_email = self.receiver_email
                 if checkers.is_email(receiver_email):
                     gpg_key_id = self.find_gpg_keyid(receiver_email)
                     if gpg_key_id:

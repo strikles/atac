@@ -76,7 +76,7 @@ class AllTimeHigh(Config):
         for c in s:
             if ii <= len(s)-1:
                 if s[ii] == '\\' and s[ii+1] == 'x':
-                    b = s[ii:ii+4].encode('ascii').decode('unicode-escape')
+                    b = s[ii:ii+4].encode('ascii').decode('utf-8')
                     output = output+b
                     ii += 3
                 else:
@@ -94,15 +94,15 @@ class AllTimeHigh(Config):
         message.set_charset(cs)
         message.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
-        message["Subject"] = self.fix_mixed_encoding(subject)
-        message["From"] = self.fix_mixed_encoding(sender_email)
+        message["Subject"] = subject
+        message["From"] = sender_email
         message["To"] = recipient_email
         # Create the plain-text and HTML version of your message
         body = MIMEMultipart("alternative")
         body.set_charset(cs)
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         # convert markdown to html
-        text = self.fix_mixed_encoding(message_content)
+        text = message_content
         html = markdown.markdown(text)
         # Encrypt the message body.
         encrypted_text = self.gpg.encrypt(text, key_id)
@@ -130,15 +130,15 @@ class AllTimeHigh(Config):
         message.set_charset(cs)
         message.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
-        message["Subject"] = self.fix_mixed_encoding(subject)
-        message["From"] = self.fix_mixed_encoding(sender_email)
+        message["Subject"] = subject
+        message["From"] = sender_email
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
         body = MIMEMultipart("alternative")
         body.set_charset(cs)
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
-        text = self.fix_mixed_encoding(message_content)
+        text = message_content
         html = markdown.markdown(text)
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
