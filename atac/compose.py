@@ -108,10 +108,10 @@ class AllTimeHigh(Config):
         encrypted_text = self.gpg.encrypt(text, key_id)
         encrypted_html = self.gpg.encrypt(html, key_id)
         # Turn these into plain/html MIMEText objects
-        part1 = MIMEText(encrypted_text, "plain")
-        part2 = MIMEText(encrypted_html, "html")
-        part1.set_payload(text, charset=cs)
-        part2.set_payload(html, charset=cs)
+        part1 = MIMEText(encrypted_text, "plain", 'utf-8')
+        part2 = MIMEText(encrypted_html, "html", 'utf-8')
+        # part1.set_payload(encrypted_text, charset=cs)
+        #part2.set_payload(encrypted_html, charset=cs)
         # Add HTML/plain-text parts to MIMEMultipart message
         body.attach(part1)
         body.attach(part2)
@@ -141,8 +141,8 @@ class AllTimeHigh(Config):
         text = self.fix_mixed_encoding(message_content)
         html = markdown.markdown(text)
         # Turn these into plain/html MIMEText objects
-        part1 = MIMEText(text, "plain")
-        part2 = MIMEText(html, "html")
+        part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
+        part2 = MIMENonMultipary('text', 'html', charset='utf-8')
         part1.set_payload(text, charset=cs)
         part2.set_payload(html, charset=cs)
         # Add HTML/plain-text parts to MIMEMultipart message

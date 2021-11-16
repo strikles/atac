@@ -58,7 +58,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             print("file is empty!")
             sys.exit(1)
         else:
-            print("> file content: \n\n{}".format(''.join(lines)))
+            print("> file content: \n\n{}".format(u''.join(lines)))
         #
         return lines
 
@@ -191,7 +191,7 @@ class FromRuXiaWithLove(AllTimeHigh):
     def send_emails_in_buckets_envelope(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
         #
         auth, _ = self.get_email_config()
-        message = frontmatter.loads(''.join(self.get_file_content(message_file_path)))
+        message = frontmatter.loads(u''.join(self.get_file_content(message_file_path)))
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
@@ -228,7 +228,7 @@ class FromRuXiaWithLove(AllTimeHigh):
     def send_emails_in_buckets(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
         #
         auth, _ = self.get_email_config()
-        message = frontmatter.loads(''.join(self.get_file_content(message_file_path)))
+        message = frontmatter.loads(u''.join(self.get_file_content(message_file_path)))
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
@@ -300,7 +300,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_twilio(self, contacts_file_path, message_file_path, msg_type):
         #
-        msg = ''.join(self.get_file_content(message_file_path))
+        msg = u''.join(self.get_file_content(message_file_path))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
         self.calculate_twilio_cost(msg, phone_numbers, msg_type)
@@ -357,7 +357,7 @@ class FromRuXiaWithLove(AllTimeHigh):
     if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
             #
-            msg = ''.join(self.get_file_content(message_file_path))
+            msg = u''.join(self.get_file_content(message_file_path))
             phone_numbers = self.get_phone_numbers(contacts_file_path)
             # Check you really want to send them
             confirm = input("Send these messages? [Y/n] ")
@@ -377,7 +377,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_signal(self, contacts_file_path, message_file_path):
         #
-        msg = ''.join(self.get_file_content(message_file_path))
+        msg = u''.join(self.get_file_content(message_file_path))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
