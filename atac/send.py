@@ -158,7 +158,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         unencrypted_emails = []
         #
         with tqdm(total=len(lines)) as filter_progress:
-            for ndx, receiver_email in csv.reader(lines)
+            for ndx, receiver_email in csv.reader(lines):
                 if checkers.is_email(receiver_email):
                     gpg_key_id = self.find_gpg_keyid(receiver_email)
                     if gpg_key_id:
