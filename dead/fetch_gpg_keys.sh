@@ -23,7 +23,7 @@ do
         # Check exit code to see if the key was added
         if [ $? -eq 0 ]; then
             # If the public key is added, do some extra work with it
-            # [do stuff]
+            echo "gpg key added to keyring"
         fi
     done
 done
