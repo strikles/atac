@@ -33,7 +33,9 @@ class Config(object):
         self.load_config()
 
     def generate_key(self):
-        # key generation
+        '''
+        key generation
+        '''
         print(inspect.stack()[1].function)
         if "PYTEST_CURRENT_TEST" in os.environ:
             password = bytes("M4m4k154n", encoding='utf-8')
@@ -50,7 +52,8 @@ class Config(object):
         self.key = base64.urlsafe_b64encode(kdf.derive(password))
 
     def load_key(self, key_file_path):
-        #
+        '''
+        '''
         try:
             with open(key_file_path, 'rb') as key_file:
                 self.key = key_file.read()
@@ -60,7 +63,8 @@ class Config(object):
             key_file.close()
 
     def save_key(self, key_file_path):
-        #
+        '''
+        '''
         try:
             with open(key_file_path, 'wb') as key_file:
                 key_file.write(self.key)
@@ -70,7 +74,8 @@ class Config(object):
             key_file.close()
 
     def new_config(self, config_file_path):
-        #
+        '''
+        '''
         try:
             with open('new.json', 'rb') as new_config:
                 self.data = json.loads(new_config.read())
@@ -82,7 +87,8 @@ class Config(object):
         self.save_config(config_file_path, True)
 
     def save_config(self, config_file_path, encrypted_config):
-        #
+        '''
+        '''
         if encrypted_config:
             fernet = Fernet(self.key)
             # encrypting the file
@@ -105,7 +111,8 @@ class Config(object):
                 unencrypted_file.close()
 
     def load_config(self):
-        #
+        '''
+        '''
         if self.encrypted_config:
             fernet = Fernet(self.key)
             # opening the encrypted file

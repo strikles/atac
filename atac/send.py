@@ -40,7 +40,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         self.social = self.data['social']
 
     def get_file_content(self, file_path):
-        #
+        '''
+        '''
         if not os.path.isfile(file_path):
             print("invalid file path!")
             sys.exit(1)
@@ -59,7 +60,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         return lines
 
     def get_email_config(self):
-        #
+        '''
+        '''
         content_index = self.email['active_content']
         auth_index = self.email['active_auth']
         content = self.email['content'][content_index]
@@ -68,7 +70,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         return auth, content
 
     def update_email_config(self):
-        #
+        '''
+        '''
         auth, content = self.get_email_config()
         # set sctive to next and save config
         if self.email['rotate_content']:
@@ -80,7 +83,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         self.save_config()
 
     def get_contact_files(self, contact_files_path):
-        #
+        '''
+        '''
         contact_files = []
         #
         if os.path.isdir(contact_files_path):
@@ -99,7 +103,9 @@ class FromRuXiaWithLove(AllTimeHigh):
         return contact_files
 
     def get_phone_numbers(self, contact_files_path):
-        # Open the people CSV and get all the numbers out of it
+        '''
+        Open the people CSV and get all the numbers out of it
+        '''
         phone_numbers = []
         contact_files = self.get_contact_files(contact_files_path)
         #
@@ -122,7 +128,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         return phone_numbers
 
     def send_email(self, mailing_list, message):
-        #
+        '''
+        '''
         auth, content = self.get_email_config()
         # Create secure connection with server and send email
         try:
@@ -155,7 +162,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                     return key['keyid']
 
     def store_emails_in_buckets(self, lines):
-        #
+        '''
+        '''
         encrypted_emails = []
         unencrypted_emails = []
         #
@@ -186,7 +194,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         return batch_emails, encrypted_emails
 
     def send_emails_in_buckets_envelope(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
-        #
+        '''
+        '''
         auth, _ = self.get_email_config()
         message = frontmatter.loads(u'\n'.join(self.get_file_content(message_file_path)))
         #
@@ -223,7 +232,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                 encrypted_progress.update(1)
 
     def send_emails_in_buckets(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
-        #
+        '''
+        '''
         auth, _ = self.get_email_config()
         message = frontmatter.loads(u'\n'.join(self.get_file_content(message_file_path)))
         #
@@ -249,7 +259,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                 encrypted_progress.update(1)
 
     def send_emails(self, email_files_path, message_file_path, subject):
-        #
+        '''
+        '''
         status = 0
         #
         if not os.path.isfile(message_file_path):
@@ -268,7 +279,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         return status
 
     def calculate_twilio_cost(self, msg, phone_numbers, msg_type):
-        #
+        '''
+        '''
         SMS_LENGTH = 160                 # Max length of one SMS message
         WHATSAPP_MSG_COST = 0.005        # Cost per message
         SMS_MSG_COST = 0.005        # Cost per message
@@ -288,7 +300,8 @@ class FromRuXiaWithLove(AllTimeHigh):
             print("> {} messages of {} segments each will be sent, at a cost of ${} ".format(num_messages, num_segments, cost))
 
     def send_twilio(self, contacts_file_path, message_file_path, msg_type):
-        #
+        '''
+        '''
         msg = u'\n'.join(self.get_file_content(message_file_path))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
@@ -345,7 +358,8 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
-            #
+            '''
+            '''
             msg = u'\n'.join(self.get_file_content(message_file_path))
             phone_numbers = self.get_phone_numbers(contacts_file_path)
             # Check you really want to send them
@@ -365,7 +379,8 @@ class FromRuXiaWithLove(AllTimeHigh):
             print("Exiting!")
 
     def send_signal(self, contacts_file_path, message_file_path):
-        #
+        '''
+        '''
         msg = u'\n'.join(self.get_file_content(message_file_path))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
@@ -388,7 +403,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         print("Exiting!")
 
     def send_facebook(self, message_file_path):
-        #
+        '''
+        '''
         status = 0
         msg = "Hello, world!"
         graph = facebook.GraphAPI(self.social['facebook']['access_token'])
@@ -401,7 +417,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         return status
 
     def send_twitter(self, message_file_path):
-        #
+        '''
+        '''
         status = 0
         CONSUMER_KEY = self.social['twitter']['consumer_key']
         CONSUMER_SECRET = self.social['twitter']['consumer_secret']

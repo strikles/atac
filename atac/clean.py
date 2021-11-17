@@ -20,6 +20,8 @@ class Leon(Config):
         super().__init__(encrypted_config, config_file_path, key_file_path)
 
     def clean_phones(self, path):
+        '''
+        '''
         print(path)
         status = 0
         # get mailing list csv files
@@ -43,6 +45,8 @@ class Leon(Config):
                             print(str(e))
 
     def valid_email(self, email):
+        '''
+        '''
         is_valid = False
         try:
             # Validate.
@@ -55,6 +59,8 @@ class Leon(Config):
         return is_valid
 
     def clean_emails(self, path):
+        '''
+        '''
         print(path)
         status = 0
         # get mailing list csv files

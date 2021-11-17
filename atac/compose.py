@@ -38,7 +38,8 @@ class AllTimeHigh(Config):
         ascii_magic.to_terminal(art)
 
     def generate_ascii(self, image_path):
-        #
+        '''
+        '''
         if not os.path.isfile(image_path):
             print("Invalid image path!")
             sys.exit(1)
@@ -54,6 +55,8 @@ class AllTimeHigh(Config):
 
     @staticmethod
     def generate_markov_content(content):
+        '''
+        '''
         status = 0
         # Get raw text as string.
         try:
@@ -70,7 +73,8 @@ class AllTimeHigh(Config):
 
     @staticmethod
     def fix_mixed_encoding(s):
-        #
+        '''
+        '''
         output = ''
         ii = 0
         for c in s:
@@ -86,7 +90,8 @@ class AllTimeHigh(Config):
         return output
 
     def compose_encrypted_email(self, sender_email, recipient_email, key_id, message_content, subject):
-        #
+        '''
+        '''
         message = MIMEMultipart("mixed")
         cs = charset.Charset('utf-8')
         cs.header_encoding = charset.QP
@@ -122,7 +127,8 @@ class AllTimeHigh(Config):
         return message
 
     def compose_email(self, sender_email, mailing_list, message_content, subject):
-        #
+        '''
+        '''
         message = MIMEMultipart("mixed")
         cs = charset.Charset('utf-8')
         cs.header_encoding = charset.QP
@@ -155,7 +161,8 @@ class AllTimeHigh(Config):
         return message
 
     def create_image(self, text, window_height, window_width):
-        #
+        '''
+        '''
         img = Image.new('L', (window_height, window_width), color='white')
         draw = ImageDraw.Draw(img)
         font = ImageFont.truetype("arial", 24)
@@ -163,6 +170,8 @@ class AllTimeHigh(Config):
         img.save('content.jpg')
 
     def create_qr_code(self, url):
+        '''
+        '''
         # instantiate QRCode object
         qr = qrcode.QRCode(version=1, box_size=10, border=4)
         # add data to the QR code
