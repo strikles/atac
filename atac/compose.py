@@ -30,7 +30,7 @@ class AllTimeHigh(Config):
         super().__init__(encrypted_config, config_file_path, key_file_path)
         #
         art = ascii_magic.from_image_file(
-            img_path="assets/img/IMG_3339.JPG",
+            img_path="data/img/IMG_3339.JPG",
             columns=80,
             mode=ascii_magic.Modes.TERMINAL
         )

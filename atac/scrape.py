@@ -62,17 +62,17 @@ class UnderTheMangoTree(Config):
     @staticmethod
     def make_dirs():
         # make dirs
-        if not os.path.isdir(os.getcwd() + "/contacts"):
-            os.makedirs(os.getcwd() + "/contacts")
-        if not os.path.isdir(os.getcwd() + "/contacts/emails"):
-            os.makedirs(os.getcwd() + "/contacts/emails")
-        if not os.path.isdir(os.getcwd() + "/contacts/phones"):
-            os.makedirs(os.getcwd() + "/contacts/phones")
+        if not os.path.isdir(os.getcwd() + "/data/contacts"):
+            os.makedirs(os.getcwd() + "/data/contacts")
+        if not os.path.isdir(os.getcwd() + "/data/contacts/emails"):
+            os.makedirs(os.getcwd() + "/data/contacts/emails")
+        if not os.path.isdir(os.getcwd() + "/data/contacts/phones"):
+            os.makedirs(os.getcwd() + "/data/contacts/phones")
 
     @staticmethod
     def truncate_files(data_key):
         # save to file
-        csv_path = os.getcwd() + "/contacts/emails/" + data_key + "_emails.csv"
+        csv_path = os.getcwd() + "/data/contacts/emails/" + data_key + "_emails.csv"
         try:
             with open(csv_path, mode='a') as emails_file:
                 emails_file.truncate(0)
@@ -86,7 +86,7 @@ class UnderTheMangoTree(Config):
         finally:
             emails_file.close()
         #
-        csv_path = os.getcwd() + "/contacts/phones/" + data_key + "_phones.csv"
+        csv_path = os.getcwd() + "/data/contacts/phones/" + data_key + "_phones.csv"
         try:
             with open(csv_path, mode='a') as phones_file:
                 phones_file.truncate(0)
@@ -117,7 +117,7 @@ class UnderTheMangoTree(Config):
 
     def save_email_contacts(self, new_contacts, data_key):
         # save to file
-        csv_path = os.getcwd() + "/contacts/emails/" + data_key + "_emails.csv"
+        csv_path = os.getcwd() + "/data/contacts/emails/" + data_key + "_emails.csv"
         try:
             with open(csv_path, mode='a') as contact_file:
                 writer = csv.writer(contact_file,
@@ -141,7 +141,7 @@ class UnderTheMangoTree(Config):
 
     def save_phone_contacts(self, new_contacts, data_key):
         # save to file
-        csv_path = os.getcwd() + "/contacts/phones/" + data_key + "_phones.csv"
+        csv_path = os.getcwd() + "/data/contacts/phones/" + data_key + "_phones.csv"
         try:
             with open(csv_path, mode='a') as contact_file:
                 writer = csv.writer(contact_file,

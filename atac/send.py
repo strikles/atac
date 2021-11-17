@@ -251,14 +251,6 @@ class FromRuXiaWithLove(AllTimeHigh):
     def send_emails(self, email_files_path, message_file_path, subject):
         #
         status = 0
-        auth, content = self.get_email_config()
-        #
-        if not subject:
-            subject = content['subject']
-        #
-        if not message_file_path:
-            md = 'assets/mail_content/' + content['markdown']
-            message_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md))
         #
         if not os.path.isfile(message_file_path):
             print("Invalid message file path!")
