@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/602e3a069768475e81dfaa52915fb15f)](https://app.codacy.com/gh/strikles/atac?utm_source=github.com&utm_medium=referral&utm_content=strikles/atac&utm_campaign=Badge_Grade_Settings)
 # Activism Tools Against Cybertorture ![python-app](https://github.com/strikles/atac/actions/workflows/python-app.yml/badge.svg) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Upload Python Package](https://github.com/strikles/atac/actions/workflows/python-publish.yml/badge.svg?branch=main)](https://github.com/strikles/atac/actions/workflows/python-publish.yml)
 ![](assets/img/IMG_3332.JPG)
 
