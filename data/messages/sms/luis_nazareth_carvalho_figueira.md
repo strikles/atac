@@ -4,4 +4,4 @@ Several Portuguese police officers who behave like mafiosi linked to Colégio Mi
 
 These cowards are protected by elected government officials, the police and the armed forces and make whole families stab themselves and jump out of the window, whilst remotely break teeth of whole families to force them into submission.
 
-Indivduals like Tito Enrico Miranda Fernandes, Pedro Miguel Grilo and Luis Nazareth Carvalho Figueira are some of the most dangerous international criminals connected to Portuguese law enforcement and I’m afraid the threat won’t be addressed until they are shit down like the mad dogs they are :(
+Indivduals like Tito Enrico Miranda Fernandes, Pedro Miguel Grilo and Luis Nazareth Carvalho Figueira are some of the most dangerous international criminals connected to Portuguese law enforcement and I’m afraid the threat won’t be addressed until they are killed like the mad dogs they are :(
