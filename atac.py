@@ -48,7 +48,7 @@ def email(arguments):
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
     target = "smtp"
-    email_files_path = os.path.dirname(os.path.abspath(__file__)) + "data/contacts/emails/"
+    email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
     subject = None
     #
     if getattr(arguments, "subject"):
@@ -80,7 +80,7 @@ def phone(arguments):
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
     target = "whatsapp"
-    phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "data/contacts/phones/"
+    phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
     #
     if getattr(arguments, "message_file"):
         message_file_path = getattr(arguments, "message_file")
@@ -144,7 +144,7 @@ def scrape(arguments):
 
 def compose(arguments):
     #
-    corpus_file_path = os.path.dirname(os.path.abspath(__file__)) + 'data/pg1009.txt'
+    corpus_file_path = os.path.dirname(os.path.abspath(__file__)) + '/data/pg1009.txt'
     #
     if getattr(arguments, "corpus"):
         corpus_file_path = getattr(arguments, "corpus")
@@ -158,8 +158,8 @@ def clean(arguments):
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     leon = atac.Leon(encrypted_config, config_file_path, key_file_path)
     #
-    email_files_path = os.path.dirname(os.path.abspath(__file__)) + "data/contacts/emails/"
-    phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "data/contacts/phones/"
+    email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
+    phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
     #
     if getattr(arguments, "target"):
         target = getattr(arguments, "target")
