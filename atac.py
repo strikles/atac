@@ -69,7 +69,7 @@ def email(arguments):
         subject = content['subject']
     #
     if not message_file_path:
-        md = 'data/message_content/mail_content/' + content['markdown']
+        md = 'data/messages/email/' + content['markdown']
         message_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md))
     #
     if "smtp" in target:
