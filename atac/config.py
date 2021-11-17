@@ -29,7 +29,8 @@ class Config(object):
             self.generate_key()
         #
         if not os.path.isfile(self.config_file_path):
-            self.new_config(self.config_file_path, self.encrypted_config)
+            self.new_config()
+        #
         self.load_config()
 
     def generate_key(self):
@@ -73,7 +74,7 @@ class Config(object):
         finally:
             key_file.close()
 
-    def new_config(self, config_file_path):
+    def new_config(self):
         '''
         '''
         try:
@@ -84,29 +85,29 @@ class Config(object):
         finally:
             new_config.close()
         #
-        self.save_config(config_file_path, True)
+        self.save_config()
 
-    def save_config(self, config_file_path, encrypted_config):
+    def save_config(self):
         '''
         '''
-        if encrypted_config:
+        if self.encrypted_config:
             fernet = Fernet(self.key)
             # encrypting the file
             encrypted_data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf8'))
             # opening the file in write mode and writing the encrypted data
             try:
-                with open(config_file_path, 'wb') as encrypted_file:
+                with open(self.config_file_path, 'wb') as encrypted_file:
                     encrypted_file.write(encrypted_data)
             except OSError as e:
-                print('{} file error {}'.format(config_file_path, e.errno))
+                print('{} file error {}'.format(self.config_file_path, e.errno))
             finally:
                 encrypted_file.close()
         else:
             try:
-                with open(config_file_path, 'wb') as unencrypted_file:
+                with open(self.config_file_path, 'wb') as unencrypted_file:
                     unencrypted_file.write(self.data, ensure_ascii=False)
             except OSError as e:
-                print('{} file not found {}'.format(config_file_path, e.errno))
+                print('{} file not found {}'.format(self.config_file_path, e.errno))
             finally:
                 unencrypted_file.close()
 
