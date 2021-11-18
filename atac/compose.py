@@ -28,14 +28,6 @@ class AllTimeHigh(Config):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
         super().__init__(encrypted_config, config_file_path, key_file_path)
-        #
-        art = ascii_magic.from_image_file(
-            img_path="data/img/IMG_3339.JPG",
-            columns=80,
-            mode=ascii_magic.Modes.TERMINAL
-        )
-        #
-        ascii_magic.to_terminal(art)
 
     @staticmethod
     def generate_ascii(self, image_path):
@@ -59,16 +51,8 @@ class AllTimeHigh(Config):
         '''
         '''
         status = 0
-        # Get raw text as string.
-        try:
-            with open(content) as f:
-                text = f.read()
-        except OSError as e:
-            print('{} file error {}'.format(content, e.errno))
-        finally:
-            f.close()
         # Build the model.
-        text_model = markovify.Text(text, state_size=3)
+        text_model = markovify.Text(content, state_size=3)
         # return randomly-generated sentence of no more than 280 characters
         return text_model.make_short_sentence(280)
 
