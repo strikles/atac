@@ -35,4 +35,5 @@ jobs:
       run: |
         pwd
         tree
+      mkdir ~/gnupg
         pytest -s
