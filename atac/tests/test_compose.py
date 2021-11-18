@@ -7,7 +7,7 @@ encrypted_config = True
 config_file = 'auth.json'
 key_file = None
 
-corpus = "Nel mezzo del cammin di nostra vita "
+corpus = ("Nel mezzo del cammin di nostra vita "
 "mi ritrovai per una selva oscura, "
 "ché la diritta via era smarrita. "
 "Ahi quanto a dir qual era è cosa dura "
@@ -24,7 +24,7 @@ corpus = "Nel mezzo del cammin di nostra vita "
 "che mavea di paura il cor compunto, "
 "guardai in alto e vidi le sue spalle "
 "vestite già de raggi del pianeta "
-"che mena dritto altrui per ogne calle. "
+"che mena dritto altrui per ogne calle. ")
 
 def test_markov():
     two_back = atac.AllTimeHigh(encrypted_config, config_file, key_file)
