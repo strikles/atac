@@ -37,6 +37,7 @@ class AllTimeHigh(Config):
         #
         ascii_magic.to_terminal(art)
 
+    @staticmethod
     def generate_ascii(self, image_path):
         '''
         '''
@@ -160,6 +161,7 @@ class AllTimeHigh(Config):
         #
         return message
 
+    @staticmethod
     def create_image(self, text, window_height, window_width):
         '''
         '''
@@ -169,6 +171,7 @@ class AllTimeHigh(Config):
         draw.text((0, 0), text, font=font)
         img.save('content.jpg')
 
+    @staticmethod
     def create_qr_code(self, url):
         '''
         '''
