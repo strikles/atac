@@ -40,5 +40,5 @@ def test_extract_phones():
 
 def test_process_page():
     mango = atac.UnderTheMangoTree(encrypted_config, config_file, key_file)
-    status = mango.process_page("test", "https://raw.githubusercontent.com/strikles/atac/main/SCRAPEME.md")
+    status = mango.process_page("test", "https://raw.githubusercontent.com/strikles/atac-data/main/SCRAPEME.md?token=AN6LTTK5IYWUOICJ7B3JFCTBSZDTS")
     assert(status) == 0
