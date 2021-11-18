@@ -50,24 +50,8 @@ class AllTimeHigh(Config):
     def generate_markov_content(content):
         '''
         '''
-        status = 0
-        response = None
-        try:
-            url = "https://raw.githubusercontent.com/jsvine/markovify/master/test/texts/sherlock.txt"
-            response = requests.get(url, timeout=10, stream=False)
-            response.encoding = "utf-8"
-            # If the response was successful, no Exception will be raised
-            response.raise_for_status()
-        except HTTPError as http_err:
-            print(f'HTTP error occurred: {http_err}')
-            continue
-        except Exception as err:
-            print(f'Other error occurred: {err}')
-            continue
-        else:
-            pass
         # Build the model.
-        text_model = markovify.Text(response.text, state_size=3)
+        text_model = markovify.Text(content, state_size=3)
         # return randomly-generated sentence of no more than 280 characters
         return text_model.make_short_sentence(280)
 

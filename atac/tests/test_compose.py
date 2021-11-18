@@ -1,5 +1,6 @@
 import os
 import sys
+import requests
 import atac
 
 
@@ -10,25 +11,21 @@ key_file = None
 
 def test_markov():
     #
-    corpus = ("Nel mezzo del cammin di nostra vita "
-    "mi ritrovai per una selva oscura, "
-    "ché la diritta via era smarrita. "
-    "Ahi quanto a dir qual era è cosa dura "
-    "esta selva selvaggia e aspra e forte "
-    "che nel pensier rinova la paura! "
-    "Tant è amara che poco è più morte; "
-    "ma per trattar del ben chi vi trovai, "
-    "dirò de laltre cose chi vho scorte "
-    "Io non so ben ridir com i vintrai, "
-    "tant era pien di sonno a quel punto "
-    "che la verace via abbandonai. "
-    "Ma poi chi fui al piè dun colle giunto, "
-    "là dove terminava quella valle "
-    "che mavea di paura il cor compunto, "
-    "guardai in alto e vidi le sue spalle "
-    "vestite già de raggi del pianeta "
-    "che mena dritto altrui per ogne calle. ")
+    response = None
+    try:
+        url = "https://raw.githubusercontent.com/jsvine/markovify/master/test/texts/sherlock.txt"
+        response = requests.get(url, timeout=10, stream=False)
+        response.encoding = "utf-8"
+        # If the response was successful, no Exception will be raised
+        response.raise_for_status()
+    except HTTPError as http_err:
+        print(f'HTTP error occurred: {http_err}')
+        continue
+    except Exception as err:
+        print(f'Other error occurred: {err}')
+        continue
+    else:
+        pass
     #
-    print(corpus)
     two_back = atac.AllTimeHigh(encrypted_config, config_file, key_file)
-    assert(len(two_back.generate_markov_content(corpus)) < 200) is True
+    assert(len(two_back.generate_markov_content(response.text)) < 200) is True
