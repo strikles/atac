@@ -21,12 +21,8 @@ def test_markov():
         response.raise_for_status()
     except HTTPError as http_err:
         print(f'HTTP error occurred: {http_err}')
-        continue
     except Exception as err:
         print(f'Other error occurred: {err}')
-        continue
-    else:
-        pass
     #
     two_back = atac.AllTimeHigh(encrypted_config, config_file, key_file)
     assert(len(two_back.generate_markov_content(response.text)) < 200) is True
