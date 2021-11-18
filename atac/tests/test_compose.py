@@ -1,6 +1,7 @@
 import os
 import sys
 import requests
+from requests import HTTPError
 import atac
 
 
