@@ -2,7 +2,6 @@ import os
 import sys
 import smtplib
 import csv
-import json
 import time
 from validator_collection import checkers
 
