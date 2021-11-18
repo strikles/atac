@@ -1,8 +1,0 @@
-Traceback (most recent call last):
-  File "/root/opvs/atac/atac.py", line 4, in <module>
-    import atac
-  File "/root/opvs/atac/atac/__init__.py", line 1, in <module>
-    from .config import Config
-  File "/root/opvs/atac/atac/config.py", line 4, in <module>
-    import gnupg
-ModuleNotFoundError: No module named 'gnupg'
