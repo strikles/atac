@@ -22,7 +22,6 @@ from phonenumbers import NumberParseException, phonenumberutil
 
 from twilio.rest import Client as TwilioClient
 
-#from .whatsapp import Client as YowsupClient
 if os.environ.get('DISPLAY'):
     from pywhatkit import *
 
