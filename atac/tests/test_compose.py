@@ -27,6 +27,5 @@ corpus = "Nel mezzo del cammin di nostra vita "
 "che mena dritto altrui per ogne calle. "
 
 def test_markov():
-    path = os.path.abspath('..')
     two_back = atac.AllTimeHigh(encrypted_config, config_file, key_file)
     assert(len(two_back.generate_markov_content(corpus)) < 200) is True
