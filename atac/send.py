@@ -255,7 +255,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 mailing_list = '; '.join(batch)
                 mime_message = self.compose_email(auth['sender'],
                                                 mailing_list,
-                                                message.content,
+                                                message,
                                                 subject)
                 #
                 self.send_email(mailing_list, mime_message)
@@ -268,7 +268,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 encrypted_mime_message = self.compose_encrypted_email(auth['sender'],
                                                                     email_recipient,
                                                                     gpg_key_id,
-                                                                    message.content,
+                                                                    message,
                                                                     subject)
                 #
                 self.send_email(email_recipient, encrypted_mime_message)
