@@ -9,13 +9,8 @@ import ascii_magic
 
 from email import charset
 from email.encoders import encode_base64
-from email.header import Header
-from email.message import Message
-from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
-from email.mime.text import MIMEText
-import mimetypes
 
 from PIL import Image
 from PIL import ImageFont
