@@ -93,7 +93,7 @@ class Config(object):
         if encrypted_config:
             fernet = Fernet(self.key)
             # encrypting the file
-            encrypted_data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf8'))
+            encrypted_data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf-8'))
             # opening the file in write mode and writing the encrypted data
             try:
                 with open(config_file_path, 'wb') as encrypted_file:
@@ -105,7 +105,7 @@ class Config(object):
         else:
             try:
                 with open(config_file_path, 'wb') as unencrypted_file:
-                    unencrypted_file.write(json.dumps(self.data, ensure_ascii=False))
+                    unencrypted_file.write(json.dumps(self.data, ensure_ascii=False).encode('utf-8')
             except OSError as e:
                 print('{} file not found {}'.format(config_file_path, e.errno))
             finally:
