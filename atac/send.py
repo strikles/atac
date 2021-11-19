@@ -169,8 +169,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                 is_valid_email = validate_email(
                     email_address=receiver_email,
                     check_format=True,
-                    check_blacklist=True,
-                    check_dns=True,
+                    check_blacklist=False,
+                    check_dns=False,
                     dns_timeout=10,
                     check_smtp=False,
                     smtp_timeout=10,
@@ -178,7 +178,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     smtp_from_address=auth['sender'],
                     smtp_skip_tls=False,
                     smtp_tls_context=None,
-                    smtp_debug=False)
+                    smtp_debug=True)
                 #
                 if is_valid_email:
                     gpg_key_id = self.find_gpg_keyid(receiver_email)
