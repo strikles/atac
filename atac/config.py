@@ -105,7 +105,7 @@ class Config(object):
         else:
             try:
                 with open(config_file_path, 'wb') as unencrypted_file:
-                    unencrypted_file.write(json.dumps(self.data, ensure_ascii=False).encode('utf-8')
+                    unencrypted_file.write(json.dumps(self.data, ensure_ascii=False).encode('utf-8'))
             except OSError as e:
                 print('{} file not found {}'.format(config_file_path, e.errno))
             finally:
