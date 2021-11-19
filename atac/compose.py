@@ -27,7 +27,7 @@ class AllTimeHigh(Config):
         super().__init__(encrypted_config, config_file_path, key_file_path)
 
     @staticmethod
-    def generate_ascii(self, image_path):
+    def generate_ascii(image_path):
         '''
         '''
         if not os.path.isfile(image_path):
@@ -108,7 +108,7 @@ class AllTimeHigh(Config):
         return message
 
     @staticmethod
-    def compose_email(self, sender_email, mailing_list, message_content, subject):
+    def compose_email(sender_email, mailing_list, message_content, subject):
         '''
         '''
         message = MIMEMultipart("mixed")
@@ -143,7 +143,7 @@ class AllTimeHigh(Config):
         return message
 
     @staticmethod
-    def create_image(self, text, window_height, window_width):
+    def create_image(text, window_height, window_width):
         '''
         '''
         img = Image.new('L', (window_height, window_width), color='white')
@@ -153,7 +153,7 @@ class AllTimeHigh(Config):
         img.save('content.jpg')
 
     @staticmethod
-    def create_qr_code(self, url):
+    def create_qr_code(url):
         '''
         '''
         # instantiate QRCode object
