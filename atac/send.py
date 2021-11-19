@@ -35,7 +35,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         self.phone = self.data['phone']
         self.social = self.data['social']
 
-    def get_file_content(self, file_path):
+    def get_file_content(self, file_path, file_type='contact'):
         '''
         '''
         if not os.path.isfile(file_path):
@@ -45,10 +45,11 @@ class FromRuXiaWithLove(AllTimeHigh):
         # Now put your SMS in a file called message.txt, and it will be read from there.
         try:
             with open(file_path, encoding="utf-8") as content_file:
-                lines = [line for line in content_file]
-                for i in range(len(lines)):
-                    lines[i] = textwrap.wrap(text=lines[i], width=70, break_long_words=False)
-                lines = [item for sublist in lines for item in sublist]
+                lines = [line.rstrip() for line in content_file]
+                if file_type == 'message'
+                    for i in range(len(lines)):
+                        lines[i] = textwrap.wrap(text=lines[i], width=70, break_long_words=False)
+                    lines = [item for sublist in lines for item in sublist]
 
                 print('\n>>> '.join(map(str, lines)))
         except OSError as e:
@@ -214,7 +215,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         '''
         '''
         auth, _ = self.get_email_config()
-        message = frontmatter.loads(u'\n'.join(self.get_file_content(message_file_path)))
+        message = frontmatter.loads(u'\n'.join(self.get_file_content(message_file_path, 'message')))
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
@@ -253,7 +254,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         '''
         print(subject)
         auth, _ = self.get_email_config()
-        message = '\n'.join(self.get_file_content(message_file_path))
+        message = '\n'.join(self.get_file_content(message_file_path, 'nessage'))
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
@@ -325,7 +326,7 @@ class FromRuXiaWithLove(AllTimeHigh):
     def send_twilio(self, contacts_file_path, message_file_path, msg_type):
         '''
         '''
-        msg = u'\n'.join(self.get_file_content(message_file_path))
+        msg = u'\n'.join(self.get_file_content(message_file_path, 'message'))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
         self.calculate_twilio_cost(msg, phone_numbers, msg_type)
@@ -383,7 +384,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
             '''
             '''
-            msg = u'\n'.join(self.get_file_content(message_file_path))
+            msg = u'\n'.join(self.get_file_content(message_file_path, 'message'))
             phone_numbers = self.get_phone_numbers(contacts_file_path)
             # Check you really want to send them
             confirm = input("Send these messages? [Y/n] ")
