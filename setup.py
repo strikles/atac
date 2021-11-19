@@ -11,7 +11,40 @@ setup(
   download_url = 'https://github.com/user/reponame/archive/v_01.tar.gz',    # I explain this later on
   keywords = ['activism', 'scrape', 'cybertorture'],   # Keywords that define your package best
   install_requires=[            # I get to this in a second
-          'beautifulsoup4',
+        'ascii-magic',
+        'beautifulsoup4',
+        'bs4',
+        'colorama',
+        'coloredlogs',
+        'coverage',
+        'cryptography',
+        'envelope',
+        'facebook-sdk',
+        'fake-useragent'
+        'lxml',
+        'Markdown',
+        'markovify',
+        'phonenumbers',
+        'Pillow',
+        'py3-validate-email',
+        'pyaxmlparser',
+        'python-frontmatter',
+        'python-gnupg',
+        'pywhatkit',
+        'pywhatsapp',
+        'PyYAML',
+        'qrcode',
+        'regex',
+        'requests',
+        'shadow-useragent',
+        'stdiomask',
+        'tqdm',
+        'tweepy',
+        'twilio',
+        'urllib3',
+        'validators',
+        'wikipedia',
+        'yowsup2'
       ],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
