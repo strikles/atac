@@ -19,7 +19,7 @@ from twilio.rest import Client as TwilioClient
 if os.environ.get('DISPLAY'):
     from pywhatkit import *
 
-from .signalcli import Signalcli
+#from .signalcli import Signalcli
 from .compose import AllTimeHigh
 from .config import Config
 
@@ -389,7 +389,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             print("Exiting!")
 
     def send_signal(self, contacts_file_path, message_file_path):
-        '''
+        pass
         '''
         msg = u'\n'.join(self.get_file_content(message_file_path))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
@@ -411,6 +411,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 time.sleep(1)
         #
         print("Exiting!")
+        '''
 
     def send_facebook(self, message_file_path):
         pass
