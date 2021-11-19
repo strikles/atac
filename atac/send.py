@@ -9,6 +9,7 @@ from tqdm import tqdm
 
 from envelope import Envelope
 from validate_email import validate_email
+import validators
 
 import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
@@ -164,13 +165,14 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         with tqdm(total=len(lines)) as filter_progress:
             for ndx, receiver_email in csv.reader(lines):
+                #
                 is_valid_email = validate_email(
                     email_address=receiver_email,
                     check_format=True,
                     check_blacklist=True,
                     check_dns=True,
                     dns_timeout=10,
-                    check_smtp=True,
+                    check_smtp=False,
                     smtp_timeout=10,
                     smtp_helo_host=auth['server'],
                     smtp_from_address=auth['sender'],
