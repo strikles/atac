@@ -45,7 +45,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         try:
             with open(file_path, encoding="utf-8") as content_file:
                 lines = content_file.read().splitlines()
-                print('\n>>>'.join(map(str, lines)))
+                print('\n>>> '.join(map(str, lines)))
         except OSError as e:
             print('{} file error {}'.format(file_path, e.errno))
         finally:
@@ -131,7 +131,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         try:
             context = ssl.create_default_context()
             with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
-                server.set_debuglevel(2)
+                #server.set_debuglevel(2)
                 server.login(auth['user'], auth['password'])
                 '''
                 server.ehlo() # Can be omitted
