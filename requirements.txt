@@ -14,7 +14,7 @@ coloredlogs==15.0
 coverage==6.1.2
 cryptography==35.0.0
 dnspython==2.1.0
-envelope==1.5.3
+envelope
 facebook-sdk==3.1.0
 fake-useragent==0.1.11
 filelock==3.4.0
@@ -33,6 +33,7 @@ phonenumbers==8.12.37
 Pillow==8.4.0
 protobuf==3.19.1
 PyAutoGUI==0.9.53
+py3-validate-email
 pyaxmlparser==0.3.26
 pycparser==2.21
 PyGetWindow==0.0.9
@@ -56,8 +57,7 @@ pywhatsapp==0.0.7
 PyYAML==6.0
 qrcode==7.3.1
 regex==2021.4.4
-requests==2.25.1
-requests-oauthlib==1.3.0
+requests
 s3transfer==0.5.0
 shadow-useragent==0.0.17
 six==1.16.0

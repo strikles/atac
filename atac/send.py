@@ -12,6 +12,7 @@ from random import randint
 from tqdm import tqdm
 
 from envelope import Envelope
+from validate_email import validate_email
 
 import facebook
 import tweepy
@@ -164,10 +165,25 @@ class FromRuXiaWithLove(AllTimeHigh):
         '''
         encrypted_emails = []
         unencrypted_emails = []
+        auth, content = self.get_email_config()
         #
         with tqdm(total=len(lines)) as filter_progress:
             for ndx, receiver_email in csv.reader(lines):
-                if checkers.is_email(receiver_email):
+                is_valid_email = validate_email(
+                    email_address=receiver_email,
+                    check_format=True,
+                    check_blacklist=True,
+                    check_dns=True,
+                    dns_timeout=10,
+                    check_smtp=True,
+                    smtp_timeout=10,
+                    smtp_helo_host=auth['server'],
+                    smtp_from_address=auth['sender'],
+                    smtp_skip_tls=False,
+                    smtp_tls_context=None,
+                    smtp_debug=False)
+                #
+                if is_valid_email:
                     gpg_key_id = self.find_gpg_keyid(receiver_email)
                     if gpg_key_id:
                         encrypted_emails.append([receiver_email, gpg_key_id])
