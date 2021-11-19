@@ -46,8 +46,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         try:
             with open(file_path, encoding="utf-8") as content_file:
                 lines = [line for line in content_file]
-                for line in range(len(lines)):
-                    lines[i] = textwrap.wrap(text=line, width=70, break_long_words=False)
+                for i in range(len(lines)):
+                    lines[i] = textwrap.wrap(text=lines[i], width=70, break_long_words=False)
                 lines = [item for sublist in lines for item in sublist]
 
                 print('\n>>> '.join(map(str, lines)))
