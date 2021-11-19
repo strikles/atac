@@ -181,95 +181,96 @@ def clean(arguments):
         leon.clean_emails(email_files_path)
         leon.clean_phones(phone_files_path)
 
+if __name__ == "__main__":
 
-# create the top-level parser
-parser = argparse.ArgumentParser()
-subparsers = parser.add_subparsers()
+    # create the top-level parser
+    parser = argparse.ArgumentParser()
+    subparsers = parser.add_subparsers()
 
-# create the parser for the "config" command
-parser_config = subparsers.add_parser('config')
-parser_config.add_argument('-c', dest='config_file', type=str, help='config file')
-parser_config.add_argument('-e', dest='encrypted_config', choices=[True, False], nargs='?', const=True, default=True)
-parser_config.add_argument('-k', dest='key_file', type=str, help='key file path')
-parser_config.add_argument('-g', dest='generate_key_file', type=str, help='generate key file')
-parser_config.add_argument('-d', dest='decrypted_config_file', type=str, help='decrypted config file')
-parser_config.add_argument('-n', dest='new_config_file', type=str, help='new config file')
-parser_config.set_defaults(func=config)
+    # create the parser for the "config" command
+    parser_config = subparsers.add_parser('config')
+    parser_config.add_argument('-c', dest='config_file', type=str, help='config file')
+    parser_config.add_argument('-e', dest='encrypted_config', choices=[True, False], nargs='?', const=True, default=True)
+    parser_config.add_argument('-k', dest='key_file', type=str, help='key file path')
+    parser_config.add_argument('-g', dest='generate_key_file', type=str, help='generate key file')
+    parser_config.add_argument('-d', dest='decrypted_config_file', type=str, help='decrypted config file')
+    parser_config.add_argument('-n', dest='new_config_file', type=str, help='new config file')
+    parser_config.set_defaults(func=config)
 
-# create the parser for the "email command
-parser_email = subparsers.add_parser('email')
-parser_email.add_argument('-c', dest='config_file', type=str, help='config file')
-parser_email.add_argument('-e', dest='encrypted_config', choices=[True, False], nargs='?', const=True, default=True)
-parser_email.add_argument('-k', dest='key_file', type=str, help='key file path')
-parser_email.add_argument('-m', dest='message_file', type=str, help='path to message file')
-parser_email.add_argument('-p', dest='emails_file', type=str, help='path to csv dir')
-parser_email.add_argument('-s', dest='subject', type=str, help='email subject')
-parser_email.add_argument('-t', dest='target', choices=['smtp', 'aws'])
-parser_email.add_argument('-v', dest='verbose')
-parser_email.set_defaults(func=email)
+    # create the parser for the "email command
+    parser_email = subparsers.add_parser('email')
+    parser_email.add_argument('-c', dest='config_file', type=str, help='config file')
+    parser_email.add_argument('-e', dest='encrypted_config', choices=[True, False], nargs='?', const=True, default=True)
+    parser_email.add_argument('-k', dest='key_file', type=str, help='key file path')
+    parser_email.add_argument('-m', dest='message_file', type=str, help='path to message file')
+    parser_email.add_argument('-p', dest='emails_file', type=str, help='path to csv dir')
+    parser_email.add_argument('-s', dest='subject', type=str, help='email subject')
+    parser_email.add_argument('-t', dest='target', choices=['smtp', 'aws'])
+    parser_email.add_argument('-v', dest='verbose')
+    parser_email.set_defaults(func=email)
 
-# create the parser for the "phone" command
-parser_phone = subparsers.add_parser('phone')
-parser_phone.add_argument('-c', dest='config_file', type=str, help='config file')
-parser_phone.add_argument('-e', dest='encrypted_config', choices=[True, False], nargs='?', const=True, default=True)
-parser_phone.add_argument('-k', dest='key_file', type=str, help='key file path')
-parser_phone.add_argument('-m', dest='message_file', type=str, help='path to message file')
-parser_phone.add_argument('-p', dest='phones_file', type=str, help='path to csv dir')
-parser_phone.add_argument('-t', dest='target', choices=['whatsapp', 'sms'])
-parser_phone.add_argument('-w', dest='whatsapp', choices=['pywhatkit', 'twilio', 'yowsup'])
-parser_phone.add_argument('-s', dest='sms', choices=['aws', 'twilio'])
-parser_phone.add_argument('-v', dest='verbose')
-parser_phone.set_defaults(func=phone)
+    # create the parser for the "phone" command
+    parser_phone = subparsers.add_parser('phone')
+    parser_phone.add_argument('-c', dest='config_file', type=str, help='config file')
+    parser_phone.add_argument('-e', dest='encrypted_config', choices=[True, False], nargs='?', const=True, default=True)
+    parser_phone.add_argument('-k', dest='key_file', type=str, help='key file path')
+    parser_phone.add_argument('-m', dest='message_file', type=str, help='path to message file')
+    parser_phone.add_argument('-p', dest='phones_file', type=str, help='path to csv dir')
+    parser_phone.add_argument('-t', dest='target', choices=['whatsapp', 'sms'])
+    parser_phone.add_argument('-w', dest='whatsapp', choices=['pywhatkit', 'twilio', 'yowsup'])
+    parser_phone.add_argument('-s', dest='sms', choices=['aws', 'twilio'])
+    parser_phone.add_argument('-v', dest='verbose')
+    parser_phone.set_defaults(func=phone)
 
-# create the parser for the "social" command
-parser_social = subparsers.add_parser('social')
-parser_social.add_argument('-c', dest='config_file', type=str, help='config file')
-parser_social.add_argument('-e', dest='encrypted_config', choices=[True, False], nargs='?', const=True, default=True)
-parser_social.add_argument('-k', dest='key_file', type=str, help='key file path')
-parser_social.add_argument('-m', dest='message', type=str, help='path to message file')
-parser_social.add_argument('-t', dest='target', choices=['facebook', 'twitter'])
-parser_social.add_argument('-v', dest='verbose')
-parser_social.set_defaults(func=social)
+    # create the parser for the "social" command
+    parser_social = subparsers.add_parser('social')
+    parser_social.add_argument('-c', dest='config_file', type=str, help='config file')
+    parser_social.add_argument('-e', dest='encrypted_config', choices=[True, False], nargs='?', const=True, default=True)
+    parser_social.add_argument('-k', dest='key_file', type=str, help='key file path')
+    parser_social.add_argument('-m', dest='message', type=str, help='path to message file')
+    parser_social.add_argument('-t', dest='target', choices=['facebook', 'twitter'])
+    parser_social.add_argument('-v', dest='verbose')
+    parser_social.set_defaults(func=social)
 
-# create the parser for the "scrape" command
-parser_scrape = subparsers.add_parser('scrape')
-parser_scrape.add_argument('-c', dest='config_file', type=str, help='config file')
-parser_scrape.add_argument('-e', dest='encrypted_config', choices=[True, False], nargs='?', const=True, default=True)
-parser_scrape.add_argument('-k', dest='key_file', type=str, help='key file path')
-parser_scrape.add_argument('-t', dest='target', choices=[
-                                                            'museums',
-                                                            'embassies',
-                                                            'activism',
-                                                            'education',
-                                                            'religion',
-                                                            'rescue',
-                                                            'addiction',
-                                                            'music',
-                                                            'journalists',
-                                                            'defense',
-                                                            'ukraine',
-                                                            'islam',
-                                                            'all'
-                                                        ])
-parser_scrape.add_argument('-u', dest='url', help="The URL to scrape.")
-parser_scrape.add_argument('-v', dest='verbose')
-parser_scrape.set_defaults(func=scrape)
+    # create the parser for the "scrape" command
+    parser_scrape = subparsers.add_parser('scrape')
+    parser_scrape.add_argument('-c', dest='config_file', type=str, help='config file')
+    parser_scrape.add_argument('-e', dest='encrypted_config', choices=[True, False], nargs='?', const=True, default=True)
+    parser_scrape.add_argument('-k', dest='key_file', type=str, help='key file path')
+    parser_scrape.add_argument('-t', dest='target', choices=[
+                                                                'museums',
+                                                                'embassies',
+                                                                'activism',
+                                                                'education',
+                                                                'religion',
+                                                                'rescue',
+                                                                'addiction',
+                                                                'music',
+                                                                'journalists',
+                                                                'defense',
+                                                                'ukraine',
+                                                                'islam',
+                                                                'all'
+                                                            ])
+    parser_scrape.add_argument('-u', dest='url', help="The URL to scrape.")
+    parser_scrape.add_argument('-v', dest='verbose')
+    parser_scrape.set_defaults(func=scrape)
 
-# create the parser for the "compose" command
-parser_compose = subparsers.add_parser('compose')
-parser_compose.add_argument('-c', dest='corpus', type=str, help='path to corpus')
-parser_compose.add_argument('-v', dest='verbose')
-parser_compose.set_defaults(func=compose)
+    # create the parser for the "compose" command
+    parser_compose = subparsers.add_parser('compose')
+    parser_compose.add_argument('-c', dest='corpus', type=str, help='path to corpus')
+    parser_compose.add_argument('-v', dest='verbose')
+    parser_compose.set_defaults(func=compose)
 
-# create the parser for the "compose" command
-parser_clean = subparsers.add_parser('clean')
-parser_clean.add_argument('-c', dest='config_file', type=str, help='config file')
-parser_clean.add_argument('-e', dest='encrypted_config', choices=[True, False], nargs='?', const=True, default=True)
-parser_clean.add_argument('-k', dest='key_file', type=str, help='key file path')
-parser_clean.add_argument('-t', dest='target', choices=['email', 'phone', 'all'])
-parser_clean.add_argument('-v', dest='verbose')
-parser_clean.set_defaults(func=clean)
+    # create the parser for the "compose" command
+    parser_clean = subparsers.add_parser('clean')
+    parser_clean.add_argument('-c', dest='config_file', type=str, help='config file')
+    parser_clean.add_argument('-e', dest='encrypted_config', choices=[True, False], nargs='?', const=True, default=True)
+    parser_clean.add_argument('-k', dest='key_file', type=str, help='key file path')
+    parser_clean.add_argument('-t', dest='target', choices=['email', 'phone', 'all'])
+    parser_clean.add_argument('-v', dest='verbose')
+    parser_clean.set_defaults(func=clean)
 
-# parse the args and call whatever function was selected
-args = parser.parse_args()
-args.func(args)
+    # parse the args and call whatever function was selected
+    args = parser.parse_args()
+    args.func(args)
