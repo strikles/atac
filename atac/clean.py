@@ -5,7 +5,7 @@ import csv
 import time
 from tqdm import tqdm
 
-from validate_email import validate_email
+import validators
 
 import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil

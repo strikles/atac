@@ -69,6 +69,7 @@ twilio==6.58.0
 typing-extensions==3.10.0.0
 Unidecode==1.2.0
 urllib3==1.26.4
+validators
 wikipedia==1.4.0
 yowsup2==2.5.0
 zipp==3.4.1

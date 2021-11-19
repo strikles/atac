@@ -4,7 +4,7 @@ import csv
 import json
 import requests
 from requests import HTTPError
-from validate_email import validate_email
+import validators
 from threading import currentThread
 from fake_useragent import UserAgent
 from urllib.parse import urlsplit
@@ -113,7 +113,7 @@ class UnderTheMangoTree(Config):
         rx_emails = re.compile(r"[a-zA-Z0-9_+&*-]+(?:\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\.)+"
                                r"(?!jpg|jpeg|png|svg|gif|webp|yji|pdf|htm|title|content|formats)[a-zA-Z]{2,7}")
         #
-        return set(filter(lambda x: (validate_email(email_address=x)), rx_emails.findall(content)))
+        return set(filter(lambda x: (validators.email(x)), rx_emails.findall(content)))
 
     @staticmethod
     def extract_phones(content):
@@ -253,7 +253,7 @@ class UnderTheMangoTree(Config):
                 elif not link.startswith('http'):
                     link = path + link
                 # add the new url to queue if not in unprocessed list nor in processed list
-                if checkers.is_url(link) and link not in self.processed_urls:
+                if validators.url(link) and link not in self.processed_urls:
                     count += 1
                     if count > 20 and url not in self.secondary_unprocessed_urls:
                         self.secondary_unprocessed_urls.append(url)
