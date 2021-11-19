@@ -40,6 +40,7 @@ def config(arguments):
     if getattr(arguments, "decrypted_config_file"):
         decrypted_config_file_path = getattr(arguments, "decrypted_config_file")
         if decrypted_config_file_path:
+            config.load_config()
             config.save_config(decrypted_config_file_path, False)
 
 
