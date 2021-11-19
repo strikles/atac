@@ -45,7 +45,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         try:
             with open(file_path, encoding="utf-8") as content_file:
                 lines = content_file.read().splitlines()
-                print('\n'.join(map(str, lines)))
+                print('\n>>>'.join(map(str, lines)))
         except OSError as e:
             print('{} file error {}'.format(file_path, e.errno))
         finally:
