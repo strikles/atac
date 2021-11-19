@@ -64,7 +64,7 @@ def email(arguments):
     if getattr(arguments, "target"):
         target = getattr(arguments, "target")
     #
-    auth, content = katie.get_email_config()
+    _, content = katie.get_email_config()
     #
     if not subject:
         subject = content['subject']

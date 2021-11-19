@@ -107,6 +107,7 @@ class AllTimeHigh(Config):
         #
         return message
 
+    @staticmethod
     def compose_email(self, sender_email, mailing_list, message_content, subject):
         '''
         '''
