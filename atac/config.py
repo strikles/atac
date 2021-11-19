@@ -3,7 +3,6 @@ import sys
 import json
 import gnupg
 import stdiomask
-from threading import Lock, Thread
 from cryptography.fernet import Fernet, InvalidToken
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
