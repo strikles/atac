@@ -79,6 +79,7 @@ class AllTimeHigh(Config):
         cs.body_encoding = charset.QP
         message.set_charset(cs)
         message.replace_header('Content-Transfer-Encoding', 'quoted-printable')
+        message.replace_header('format', 'flowed')
         #
         message["Subject"] = subject
         message["From"] = sender_email
@@ -87,6 +88,7 @@ class AllTimeHigh(Config):
         body = MIMEMultipart("alternative")
         body.set_charset(cs)
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
+        body.replace_header('format', 'flowed')
         # convert markdown to html
         text = message_content
         html = markdown.markdown(text)
