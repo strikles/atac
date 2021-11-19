@@ -75,6 +75,7 @@ def email(arguments):
     #
     if "smtp" in target:
         katie.send_emails(email_files_path, message_file_path, subject)
+        print(subject)
 
 
 # sub-command functions

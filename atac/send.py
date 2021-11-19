@@ -245,13 +245,18 @@ class FromRuXiaWithLove(AllTimeHigh):
     def send_emails_in_buckets(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
         '''
         '''
+        print(subject)
         auth, _ = self.get_email_config()
         message = frontmatter.loads(u'\n'.join(self.get_file_content(message_file_path)))
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
                 mailing_list = '; '.join(batch)
-                mime_message = self.compose_email(auth['sender'], mailing_list, message.content, subject)
+                mime_message = self.compose_email(auth['sender'],
+                                                mailing_list,
+                                                message.content,
+                                                subject)
+                #
                 self.send_email(mailing_list, mime_message)
                 #
                 time.sleep(10)
@@ -264,6 +269,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                                                                     gpg_key_id,
                                                                     message.content,
                                                                     subject)
+                #
                 self.send_email(email_recipient, encrypted_mime_message)
                 #
                 time.sleep(10)
