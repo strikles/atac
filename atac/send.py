@@ -32,6 +32,8 @@ from .config import Config
 class FromRuXiaWithLove(AllTimeHigh):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
+        '''
+        '''
         super().__init__(encrypted_config, config_file_path, key_file_path)
         self.email = self.data['email']
         self.phone = self.data['phone']

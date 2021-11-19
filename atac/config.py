@@ -14,6 +14,8 @@ import inspect
 class Config(object):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
+        '''
+        '''
         self.key = None
         self.data = None
         self.encrypted_config = encrypted_config
