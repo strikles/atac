@@ -44,7 +44,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         # Now put your SMS in a file called message.txt, and it will be read from there.
         try:
             with open(file_path, encoding="utf-8") as content_file:
-                lines = content_file.splitlines(True)
+                lines = content_file.read().splitlines(True)
         except OSError as e:
             print('{} file error {}'.format(file_path, e.errno))
         finally:
