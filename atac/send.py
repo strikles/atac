@@ -45,7 +45,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         # Now put your SMS in a file called message.txt, and it will be read from there.
         try:
             with open(file_path, encoding="utf-8") as content_file:
-                lines = textwrap.wrap(text=content.read(), width=70, break_long_words=False)
+                lines = textwrap.wrap(text=content_file.read(), width=70, break_long_words=False)
                 print('\n>>> '.join(map(str, lines)))
         except OSError as e:
             print('{} file error {}'.format(file_path, e.errno))
