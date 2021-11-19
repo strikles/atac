@@ -44,6 +44,7 @@ class Leon(Config):
                         except NumberParseException as e:
                             print(str(e))
 
+    @staticmethod
     def valid_email(self, email):
         '''
         '''
@@ -52,6 +53,7 @@ class Leon(Config):
             return False
         return result
 
+    @staticmethod
     def clean_emails(self, path):
         '''
         '''
