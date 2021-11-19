@@ -136,14 +136,9 @@ class UnderTheMangoTree(Config):
                                     quoting=csv.QUOTE_MINIMAL)
                 unique_contacts = list(filter(lambda email: email not in self.emails, new_contacts))
                 for contact in unique_contacts:
-                    try:
-                        if validate_email(contact):
-                            print("\x1b[6;37;41m new email:{0} \x1b[0m".format(contact))
-                            self.num_emails += 1
-                            writer.writerow([self.num_emails, contact])
-                    except EmailNotValidError as e:
-                        # email is not valid, exception message is human-readable
-                        print(str(e))
+                    print("\x1b[6;37;41m new email:{0} \x1b[0m".format(contact))
+                    self.num_emails += 1
+                    writer.writerow([self.num_emails, contact])
         except OSError as e:
             print('{} file error {}'.format(csv_path, e.errno))
         finally:
