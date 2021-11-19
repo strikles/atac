@@ -85,29 +85,29 @@ class Config(object):
         finally:
             new_config.close()
         #
-        self.save_config()
+        self.save_config(self.config_file_path, self.encrypted_config)
 
-    def save_config(self):
+    def save_config(self, config_file_path, encrypted_config):
         '''
         '''
-        if self.encrypted_config:
+        if encrypted_config:
             fernet = Fernet(self.key)
             # encrypting the file
             encrypted_data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf8'))
             # opening the file in write mode and writing the encrypted data
             try:
-                with open(self.config_file_path, 'wb') as encrypted_file:
+                with open(config_file_path, 'wb') as encrypted_file:
                     encrypted_file.write(encrypted_data)
             except OSError as e:
-                print('{} file error {}'.format(self.config_file_path, e.errno))
+                print('{} file error {}'.format(config_file_path, e.errno))
             finally:
                 encrypted_file.close()
         else:
             try:
-                with open(self.config_file_path, 'wb') as unencrypted_file:
+                with open(config_file_path, 'wb') as unencrypted_file:
                     unencrypted_file.write(self.data, ensure_ascii=False)
             except OSError as e:
-                print('{} file not found {}'.format(self.config_file_path, e.errno))
+                print('{} file not found {}'.format(config_file_path, e.errno))
             finally:
                 unencrypted_file.close()
 
