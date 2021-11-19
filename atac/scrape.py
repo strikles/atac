@@ -6,7 +6,7 @@ import requests
 from requests import HTTPError
 from threading import currentThread
 from fake_useragent import UserAgent
-from validator_collection import checkers
+#from validator_collection import checkers
 from urllib.parse import urlsplit
 from collections import deque
 from bs4 import BeautifulSoup
