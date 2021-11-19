@@ -5,7 +5,6 @@ import ssl
 import csv
 import frontmatter
 import time
-from random import randint
 from tqdm import tqdm
 
 from envelope import Envelope
