@@ -4,6 +4,7 @@ import csv
 import json
 import requests
 from requests import HTTPError
+from validate_email import validate_email
 from threading import currentThread
 from fake_useragent import UserAgent
 from urllib.parse import urlsplit
@@ -112,7 +113,7 @@ class UnderTheMangoTree(Config):
         rx_emails = re.compile(r"[a-zA-Z0-9_+&*-]+(?:\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\.)+"
                                r"(?!jpg|jpeg|png|svg|gif|webp|yji|pdf|htm|title|content|formats)[a-zA-Z]{2,7}")
         #
-        return set(filter(lambda x: (checkers.is_email(x)), rx_emails.findall(content)))
+        return set(filter(lambda x: (validate_email(email_address=x)), rx_emails.findall(content)))
 
     @staticmethod
     def extract_phones(content):
