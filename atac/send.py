@@ -45,13 +45,13 @@ class FromRuXiaWithLove(AllTimeHigh):
         try:
             with open(file_path, encoding="utf-8") as content_file:
                 lines = content_file.read().splitlines()
-                print(lines)
+                print('\n'.join(map(str, lines)))
         except OSError as e:
             print('{} file error {}'.format(file_path, e.errno))
         finally:
             content_file.close()
         #
-        print("> file content: \n\n{}".format(' '.join(lines)))
+        print("> file content: \n\n{}".format('\n'.join(lines)))
         #
         return lines
 
