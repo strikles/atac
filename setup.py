@@ -38,6 +38,7 @@ setup(
         'requests',
         'shadow-useragent',
         'stdiomask',
+        'textwrap',
         'tqdm',
         'tweepy',
         'twilio',
