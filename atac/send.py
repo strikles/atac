@@ -36,8 +36,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         self.social = self.data['social']
 
     def get_file_content(self, file_path, file_type='contact'):
-        '''
-        '''
+        """
+        """
         if not os.path.isfile(file_path):
             print("invalid file path!")
             sys.exit(1)
