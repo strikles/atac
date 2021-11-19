@@ -6,6 +6,7 @@ import time
 from tqdm import tqdm
 
 import validators
+from validators import ValidationFailure
 
 import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
@@ -46,7 +47,10 @@ class Leon(Config):
     def valid_email(self, email):
         '''
         '''
-        return validate_email(email_address=email)
+        result = validators.email(email)
+        if isinstance(result, ValidationFailure):
+            return False
+        return result
 
     def clean_emails(self, path):
         '''
