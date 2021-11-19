@@ -3,8 +3,10 @@ import sys
 import smtplib
 import csv
 import time
-
 from tqdm import tqdm
+
+from validate_email import validate_email
+
 import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
 
@@ -44,16 +46,7 @@ class Leon(Config):
     def valid_email(self, email):
         '''
         '''
-        is_valid = False
-        try:
-            # Validate.
-            is_valid = validate_email(email)
-            # Update with the normalized form.
-            email = is_valid.email
-        except EmailNotValidError as e:
-            # email is not valid, exception message is human-readable
-            print(str(e))
-        return is_valid
+        return validate_email(email_address=email)
 
     def clean_emails(self, path):
         '''
