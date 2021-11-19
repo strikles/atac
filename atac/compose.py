@@ -50,7 +50,7 @@ class AllTimeHigh(Config):
         # Build the model.
         text_model = markovify.Text(content, state_size=3)
         # return randomly-generated sentence of no more than 280 characters
-        return text_model.make_short_sentence(280)
+        return text_model.make_short_sentence(200)
 
     @staticmethod
     def fix_mixed_encoding(s):
