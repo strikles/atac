@@ -23,7 +23,6 @@ class Leon(Config):
         '''
         '''
         print(path)
-        status = 0
         # get mailing list csv files
         ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
         for ml in ml_files:
@@ -33,7 +32,7 @@ class Leon(Config):
             with open(cf) as file:
                 lines = [line for line in file]
                 with tqdm(total=len(lines)) as progress:
-                    for ndx, phone in csv.reader(lines):
+                    for _, phone in csv.reader(lines):
                         print(phone)
                         try:
                             z = phonenumbers.parse(phone)
@@ -56,7 +55,6 @@ class Leon(Config):
         '''
         '''
         print(path)
-        status = 0
         # get mailing list csv files
         ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
         for ml in ml_files:
