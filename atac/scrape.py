@@ -6,12 +6,10 @@ import requests
 from requests import HTTPError
 from threading import currentThread
 from fake_useragent import UserAgent
-#from validator_collection import checkers
 from urllib.parse import urlsplit
 from collections import deque
 from bs4 import BeautifulSoup
 from functools import reduce
-from email_validator import validate_email, EmailNotValidError
 from .config import Config
 
 

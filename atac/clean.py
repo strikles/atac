@@ -3,10 +3,8 @@ import sys
 import smtplib
 import csv
 import time
-from validator_collection import checkers
 
 from tqdm import tqdm
-from email_validator import validate_email, EmailNotValidError
 import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
 

@@ -11,7 +11,6 @@ import time
 from random import randint
 from tqdm import tqdm
 
-from validator_collection import checkers
 from envelope import Envelope
 
 import facebook
