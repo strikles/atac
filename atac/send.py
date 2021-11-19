@@ -46,7 +46,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         try:
             with open(file_path, encoding="utf-8") as content_file:
                 lines = [line.rstrip() for line in content_file]
-                if file_type == 'message'
+                if file_type == 'message':
                     for i in range(len(lines)):
                         lines[i] = textwrap.wrap(text=lines[i], width=70, break_long_words=False)
                     lines = [item for sublist in lines for item in sublist]
