@@ -3,18 +3,13 @@ import sys
 import smtplib
 import ssl
 import csv
-import json
 import frontmatter
-import markdown
 import time
 from random import randint
 from tqdm import tqdm
 
 from envelope import Envelope
 from validate_email import validate_email
-
-import facebook
-import tweepy
 
 import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
