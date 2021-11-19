@@ -217,7 +217,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .from_(auth['sender'])
                     .to(mailing_list))
                 #
-                e.attach(path="/tmp/file.jpg", inline=True)
+                #e.attach(path="/tmp/file.jpg", inline=True)
                 e.as_message()  # returns EmailMessage
                 e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                 #
@@ -233,7 +233,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .to(email_recipient)
                     .encryption())
                 #
-                e.attach(path="/tmp/file.jpg", inline=True)
+                #e.attach(path="/tmp/file.jpg", inline=True)
                 e.as_message()  # returns EmailMessage
                 e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                 #
