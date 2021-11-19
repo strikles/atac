@@ -1,4 +1,3 @@
-import regex as re
 import os
 import sys
 import smtplib
