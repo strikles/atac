@@ -417,8 +417,9 @@ class FromRuXiaWithLove(AllTimeHigh):
         print("Exiting!")
 
     def send_facebook(self, message_file_path):
+        pass
         '''
-        '''
+
         status = 0
         msg = "Hello, world!"
         graph = facebook.GraphAPI(self.social['facebook']['access_token'])
@@ -429,9 +430,10 @@ class FromRuXiaWithLove(AllTimeHigh):
             print(graph.get_connections(group, 'feed'))
         #
         return status
+        '''
 
     def send_twitter(self, message_file_path):
-        '''
+        pass
         '''
         status = 0
         CONSUMER_KEY = self.social['twitter']['consumer_key']
@@ -453,3 +455,4 @@ class FromRuXiaWithLove(AllTimeHigh):
             time.sleep(nap)
         #
         return status
+        '''
