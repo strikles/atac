@@ -58,7 +58,6 @@ class UnderTheMangoTree(Config):
             If no sound is set for the animal or passed in as a
             parameter.
         """
-
         for i in self.scrape["invalid_domains"]:
             if i in url.lower():
                 print(">>> invalid domain...\n")
