@@ -1,3 +1,5 @@
+$$
+
 % Set the Page Layout
 \documentclass[12pt]{article}
 \usepackage[inner = 2.0cm, outer = 2.0cm, top = 2.0cm, bottom = 2.0cm]{geometry}
@@ -57,3 +59,5 @@
 \end{algorithm}
 
 \end{document}
+
+$$
