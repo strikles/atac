@@ -23,6 +23,8 @@ class AllTimeHigh(Config):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
         """
+        class init
+
         Parameters
         ----------
         encrypted_config : bool
@@ -66,7 +68,7 @@ class AllTimeHigh(Config):
         '''
         output = ''
         ii = 0
-        for c in s:
+        for _ in s:
             if ii <= len(s)-1:
                 if s[ii] == '\\' and s[ii+1] == 'x':
                     b = s[ii:ii+4].encode('ascii').decode('utf-8')
