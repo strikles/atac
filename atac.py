@@ -22,7 +22,7 @@ def get_config_arguments(arguments):
 
 
 # sub-command functions
-def config(arguments):
+def configuration(arguments):
     '''
     '''
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
@@ -196,7 +196,7 @@ if __name__ == "__main__":
     parser_config.add_argument('-g', dest='generate_key_file', type=str, help='generate key file')
     parser_config.add_argument('-d', dest='decrypted_config_file', type=str, help='decrypted config file')
     parser_config.add_argument('-n', dest='new_config_file', type=str, help='new config file')
-    parser_config.set_defaults(func=config)
+    parser_config.set_defaults(func=configuration)
 
     # create the parser for the "email command
     parser_email = subparsers.add_parser('email')
