@@ -1,19 +1,23 @@
 ### Activism Tools Against Cybertorture
 
-#### Codacy
+#### Q.A. Metrics
+
+##### GitHub
+![python-app](https://github.com/strikles/atac/actions/workflows/python-app.yml/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Upload Python Package](https://github.com/strikles/atac/actions/workflows/python-publish.yml/badge.svg?branch=main)](https://github.com/strikles/atac/actions/workflows/python-publish.yml)
+
+##### Codacy
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d3de586ed5a248ca917c99e95757252c)](https://www.codacy.com/gh/strikles/atac/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=strikles/atac&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/d3de586ed5a248ca917c99e95757252c)](https://www.codacy.com/gh/strikles/atac/dashboard?utm_source=github.com&utm_medium=referral&utm_content=strikles/atac&utm_campaign=Badge_Coverage)
 
-#### DeepSource
+##### DeepSource
 [![DeepSource](https://deepsource.io/gh/strikles/atac.svg/?label=active+issues&show_trend=true&token=knjxrFWrr_WNtdD2XCDeYO0i)](https://deepsource.io/gh/strikles/atac/?ref=repository-badge)
 [![DeepSource](https://deepsource.io/gh/strikles/atac.svg/?label=resolved+issues&show_trend=true&token=knjxrFWrr_WNtdD2XCDeYO0i)](https://deepsource.io/gh/strikles/atac/?ref=repository-badge)
 
-#### GitHub
-![python-app](https://github.com/strikles/atac/actions/workflows/python-app.yml/badge.svg)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
-[![Upload Python Package](https://github.com/strikles/atac/actions/workflows/python-publish.yml/badge.svg?branch=main)](https://github.com/strikles/atac/actions/workflows/python-publish.yml)
-
 ![](assets/img/IMG_3332.JPG)
+
+### Summary
 
 Cybertorture is recognized by the United Nations under A/HRC/43/49 and is used in grotesque rituals of social stratification (by cowardly colégio militar alumni, law enforcement and others recruited for the purpose) to exact extrajudicial trials and sentences as an interactive spectacle encouraging participation, mongering tensions and hatred by preying on cognitive biases.
 
@@ -35,7 +39,7 @@ The procedure is hidden under a veil of medical malpractice via psychiatric frau
 
 ![](assets/img/28B6320C-154B-42E4-9642-8212498D9913.jpeg)
 
-#### Since Cybertorture paired with Psychiatric Fraud and False therapy has been used for quite some time now to stratify society with extrajudicial trials and sentences for motives as repugnant as "someone not liking you" or "talking nonsense", I decided to write some tools
+##### Since Cybertorture paired with Psychiatric Fraud and False therapy has been used for quite some time now to stratify society with extrajudicial trials and sentences for motives as repugnant as "someone not liking you" or "talking nonsense", I decided to write some tools
 
 ![](assets/img/tumblr_inline_pec2nqah2k1qlr65v_540.gif)
 
