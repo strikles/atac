@@ -13,9 +13,7 @@ import inspect
 
 class Config(object):
 
-    """
-
-    A class used to represent a Configuration object
+    """ A class used to represent a Configuration object
 
     Attributes
     ----------
@@ -40,10 +38,7 @@ class Config(object):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
 
-        """
-
-        class init
-
+        """ class init
 
         Parameters
         ----------

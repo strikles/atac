@@ -18,10 +18,7 @@ class UnderTheMangoTree(Config):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
 
-        """
-
-        class init
-
+        """ class init
 
         Parameters
         ----------
@@ -48,8 +45,7 @@ class UnderTheMangoTree(Config):
 
     def invalid_url(self, url):
 
-        """
-        Prints what the animals name is and what sound it makes.
+        """ Prints what the animals name is and what sound it makes.
 
         If the argument `sound` isn't passed in, the default Animal
         sound is used.
