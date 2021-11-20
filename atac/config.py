@@ -11,7 +11,7 @@ import base64
 import inspect
 
 
-class Config(object):
+class Config:
     """ A class used to represent a Configuration object
 
     Attributes
