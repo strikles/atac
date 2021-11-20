@@ -33,7 +33,6 @@ class AllTimeHigh(Config):
         key_file_path : str
             path to encryption key file
         """
-
         super().__init__(encrypted_config, config_file_path, key_file_path)
 
     @staticmethod

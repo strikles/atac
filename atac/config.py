@@ -66,7 +66,8 @@ class Config(object):
         self.load_config()
 
     def generate_key(self):
-        """
+        """ generates encryption key from password + salts
+
         Parameters
         ----------
         name : str
@@ -93,6 +94,7 @@ class Config(object):
 
     def load_key(self, key_file_path):
         """
+
         Parameters
         ----------
         name : str
@@ -112,6 +114,7 @@ class Config(object):
 
     def save_key(self, key_file_path):
         """
+
         Parameters
         ----------
         name : str
@@ -131,6 +134,7 @@ class Config(object):
 
     def new_config(self):
         """
+
         Parameters
         ----------
         name : str
@@ -152,6 +156,7 @@ class Config(object):
 
     def save_config(self, config_file_path, encrypted_config):
         """
+
         Parameters
         ----------
         name : str
@@ -184,6 +189,7 @@ class Config(object):
 
     def load_config(self):
         """
+
         Parameters
         ----------
         name : str
