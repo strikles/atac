@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 from envelope import Envelope
 from validate_email import validate_email
-import validators
+# import validators
 
 import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
@@ -22,7 +22,6 @@ if os.environ.get('DISPLAY'):
 
 #from .signalcli import Signalcli
 from .compose import AllTimeHigh
-from .config import Config
 
 
 class FromRuXiaWithLove(AllTimeHigh):
@@ -47,9 +46,12 @@ class FromRuXiaWithLove(AllTimeHigh):
         self.phone = self.data['phone']
         self.social = self.data['social']
 
-    def get_file_content(self, file_path, file_type='contact'):
+    @staticmethod
+    def get_file_content(file_path, file_type='contact'):
+
         """
         """
+
         if not os.path.isfile(file_path):
             print("invalid file path!")
             sys.exit(1)
@@ -96,7 +98,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         self.save_config(self.config_file_path, self.encrypted_config)
 
-    def get_contact_files(self, contact_files_path):
+    @staticmethod
+    def get_contact_files(contact_files_path):
         '''
         '''
         contact_files = []
@@ -117,9 +120,11 @@ class FromRuXiaWithLove(AllTimeHigh):
         return contact_files
 
     def get_phone_numbers(self, contact_files_path):
-        '''
+
+        """
         Open the people CSV and get all the numbers out of it
-        '''
+        """
+
         phone_numbers = []
         contact_files = self.get_contact_files(contact_files_path)
         #
@@ -164,11 +169,13 @@ class FromRuXiaWithLove(AllTimeHigh):
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
 
     def find_gpg_keyid(self, recipient):
-        '''
+
+        """
         We need the keyid to encrypt the message to the recipient.
         Let's walk through all keys in the keyring and find the
         appropriate one.
-        '''
+        """
+
         keys = self.gpg.list_keys()
         for key in keys:
             for uid in key['uids']:
