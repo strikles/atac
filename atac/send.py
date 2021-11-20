@@ -130,7 +130,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         for file_path in contact_files:
             contact_file = self.get_file_contents(file_path)
-            for ndx, phone in csv.reader(contact_file):
+            for _, phone in csv.reader(contact_file):
                 print(phone)
                 try:
                     z = phonenumbers.parse(phone)
@@ -149,18 +149,18 @@ class FromRuXiaWithLove(AllTimeHigh):
     def send_email(self, mailing_list, message):
         '''
         '''
-        auth, content = self.get_email_config()
+        auth, _ = self.get_email_config()
         # Create secure connection with server and send email
         try:
             context = ssl.create_default_context()
             with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
                 #server.set_debuglevel(2)
                 server.login(auth['user'], auth['password'])
-                '''
+                """
                 server.ehlo() # Can be omitted
                 server.starttls(context=context) # Secure the connection
                 server.ehlo() # Can be omitted
-                '''
+                """
                 error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
                 print(error_status)
                 print("\x1b[6;37;42m Sent \x1b[0m")
@@ -190,7 +190,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         auth, content = self.get_email_config()
         #
         with tqdm(total=len(lines)) as filter_progress:
-            for ndx, receiver_email in csv.reader(lines):
+            for _, receiver_email in csv.reader(lines):
                 #
                 is_valid_email = validate_email(
                     email_address=receiver_email,
@@ -321,7 +321,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         return status
 
-    def calculate_twilio_cost(self, msg, phone_numbers, msg_type):
+    @staticmethod
+    def calculate_twilio_cost(msg, phone_numbers, msg_type):
         '''
         '''
         SMS_LENGTH = 160                 # Max length of one SMS message
