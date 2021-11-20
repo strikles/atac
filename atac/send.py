@@ -38,7 +38,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         key_file_path : str
             path to encryption key file
         """
-
         super().__init__(encrypted_config, config_file_path, key_file_path)
         self.email = self.data['email']
         self.phone = self.data['phone']
@@ -121,7 +120,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
         Open the people CSV and get all the numbers out of it
         """
-
         phone_numbers = []
         contact_files = self.get_contact_files(contact_files_path)
         #
@@ -172,7 +170,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         Let's walk through all keys in the keyring and find the
         appropriate one.
         """
-
         keys = self.gpg.list_keys()
         for key in keys:
             for uid in key['uids']:
