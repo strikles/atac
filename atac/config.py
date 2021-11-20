@@ -212,8 +212,8 @@ class Config(object):
             # decrypting the file
             try:
                 self.data = json.loads(fernet.decrypt(encrypted_data))
-            except InvalidToken as e:
-                print("Invalid Key {} - Unsuccessfully decrypted").format(e)
+            except InvalidToken:
+                print("Invalid Key - Unsuccessfully decrypted")
                 sys.exit(1)
         else:
             try:
