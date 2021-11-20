@@ -70,7 +70,7 @@ class Leon(Config):
                 lines = file.readlines()
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
-                        if self.valid_email(receiver_email):
+                        if valid_email(receiver_email):
                             ml_emails.append({'index': ndx, 'email': receiver_email})
                         else:
                             print('{0} INVALID'.format(receiver_email))

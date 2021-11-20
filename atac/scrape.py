@@ -5,7 +5,7 @@ import csv
 import requests
 from requests import HTTPError
 import validators
-from threading import currentThread
+import threading
 from fake_useragent import UserAgent
 from urllib.parse import urlsplit
 from collections import deque
@@ -211,7 +211,7 @@ class UnderTheMangoTree(Config):
             # move next url from queue to set of processed urls
             url = self.primary_unprocessed_urls.popleft()
             print("\x1b[6;37;42m {0} urls:{1} {2} | emails:{3} phones:{4} - {5} \x1b[0m".format(
-                current_thread().get_name(),
+                threading.current_thread().get_name(),
                 len(self.primary_unprocessed_urls),
                 len(self.secondary_unprocessed_urls),
                 len(self.emails),
