@@ -27,9 +27,7 @@ from .compose import AllTimeHigh
 class FromRuXiaWithLove(AllTimeHigh):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
-
-        """
-        class init
+        """ class init
 
         Parameters
         ----------
@@ -48,7 +46,6 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     @staticmethod
     def get_file_content(file_path, file_type='contact'):
-
         """
         """
 
