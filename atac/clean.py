@@ -32,7 +32,7 @@ class Leon(Config):
             print(cf)
             #read
             with open(cf) as file:
-                lines = [line for line in file]
+                lines = file.readlines()
                 with tqdm(total=len(lines)) as progress:
                     for _, phone in csv.reader(lines):
                         print(phone)
@@ -67,7 +67,7 @@ class Leon(Config):
             ml_emails = []
             #read
             with open(cf) as file:
-                lines = [line for line in file]
+                lines = file.readlines()
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
                         if self.valid_email(receiver_email):
