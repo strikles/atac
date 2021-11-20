@@ -1,7 +1,7 @@
 import argparse
 import os
 from threading import Thread
-import atac
+# import atac
 
 
 def get_config_arguments(arguments):
@@ -26,7 +26,7 @@ def config(arguments):
     '''
     '''
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    config = atac.Config(encrypted_config, config_file_path, key_file_path)
+    config = Config(encrypted_config, config_file_path, key_file_path)
     #
     if getattr(arguments, "generate_key_file"):
         generate_key_file_path = getattr(arguments, "generate_key_file")
@@ -49,7 +49,7 @@ def email(arguments):
     '''
     '''
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
+    katie = FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
     target = "smtp"
     email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
@@ -83,7 +83,7 @@ def phone(arguments):
     '''
     '''
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
+    katie = FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
     target = "whatsapp"
     phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
@@ -106,7 +106,7 @@ def social(arguments):
     '''
     '''
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
+    katie = FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
     target = "twitter"
     #
@@ -131,19 +131,19 @@ def scrape(arguments):
     #
     if getattr(arguments, "url"):
         url = getattr(arguments, "url")
-        mango = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
+        mango = UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
         mango.process_page("url", url)
     elif getattr(arguments, "target"):
         target = getattr(arguments, "target")
-        mango = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
+        mango = UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
         mango.process_page(target, mango.scrape['targets'][target])
     else:
         # create threads
         mangos = dict()
-        config = atac.Config(encrypted_config, config_file_path, key_file_path)
+        config = Config(encrypted_config, config_file_path, key_file_path)
         for data_key, starting_url in config.data['scrape']['targets'].items():
             print("{0} - {1}".format(data_key, starting_url))
-            mangos[data_key] = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
+            mangos[data_key] = UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
             catcher_thread = Thread(
                 target=mangos[data_key].process_page, args=(data_key, starting_url)
             )
@@ -158,7 +158,7 @@ def compose(arguments):
     if getattr(arguments, "corpus"):
         corpus_file_path = getattr(arguments, "corpus")
     #
-    two_bach = atac.AllTimeHigh()
+    two_bach = AllTimeHigh()
     two_bach.gen_content(corpus_file_path)
 
 
@@ -166,7 +166,7 @@ def clean(arguments):
     '''
     '''
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    leon = atac.Leon(encrypted_config, config_file_path, key_file_path)
+    leon = Leon(encrypted_config, config_file_path, key_file_path)
     #
     email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
     phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
