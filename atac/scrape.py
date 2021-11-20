@@ -211,7 +211,7 @@ class UnderTheMangoTree(Config):
             # move next url from queue to set of processed urls
             url = self.primary_unprocessed_urls.popleft()
             print("\x1b[6;37;42m {0} urls:{1} {2} | emails:{3} phones:{4} - {5} \x1b[0m".format(
-                currentThread().getName(),
+                current_thread().get_name(),
                 len(self.primary_unprocessed_urls),
                 len(self.secondary_unprocessed_urls),
                 len(self.emails),
