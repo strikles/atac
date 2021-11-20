@@ -225,7 +225,7 @@ class UnderTheMangoTree(Config):
                 continue
             # get page with timeout of 10s
             try:
-                proxies = dict()
+                proxies = {}
                 if self.scrape["active_proxies"]:
                     proxies = self.scrape["proxies"]
 

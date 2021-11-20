@@ -26,7 +26,7 @@ def config(arguments):
     '''
     '''
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    config = Config(encrypted_config, config_file_path, key_file_path)
+    config = atac.Config(encrypted_config, config_file_path, key_file_path)
     #
     if getattr(arguments, "generate_key_file"):
         generate_key_file_path = getattr(arguments, "generate_key_file")
@@ -49,7 +49,7 @@ def email(arguments):
     '''
     '''
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    katie = FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
+    katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
     target = "smtp"
     email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
@@ -83,7 +83,7 @@ def phone(arguments):
     '''
     '''
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    katie = FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
+    katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
     target = "whatsapp"
     phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
@@ -106,7 +106,7 @@ def social(arguments):
     '''
     '''
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    katie = FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
+    katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
     target = "twitter"
     #
@@ -131,19 +131,19 @@ def scrape(arguments):
     #
     if getattr(arguments, "url"):
         url = getattr(arguments, "url")
-        mango = UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
+        mango = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
         mango.process_page("url", url)
     elif getattr(arguments, "target"):
         target = getattr(arguments, "target")
-        mango = UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
+        mango = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
         mango.process_page(target, mango.scrape['targets'][target])
     else:
         # create threads
-        mangos = dict()
-        config = Config(encrypted_config, config_file_path, key_file_path)
+        mangos = {}
+        config = atac.Config(encrypted_config, config_file_path, key_file_path)
         for data_key, starting_url in config.data['scrape']['targets'].items():
             print("{0} - {1}".format(data_key, starting_url))
-            mangos[data_key] = UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
+            mangos[data_key] = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
             catcher_thread = Thread(
                 target=mangos[data_key].process_page, args=(data_key, starting_url)
             )
