@@ -46,7 +46,7 @@ class Leon(Config):
                             print(str(e))
 
     @staticmethod
-    def valid_email(self, email):
+    def valid_email(email):
         '''
         '''
         result = validators.email(email)
@@ -55,7 +55,7 @@ class Leon(Config):
         return result
 
     @staticmethod
-    def clean_emails(self, path):
+    def clean_emails(path):
         '''
         '''
         print(path)
