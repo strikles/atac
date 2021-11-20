@@ -13,18 +13,22 @@ import inspect
 
 class Config(object):
     """
-    A class used to represent an Animal
+    A class used to represent a Configuration object
 
     Attributes
     ----------
-    says_str : str
-        a formatted string to print out what the animal says
-    name : str
-        the name of the animal
-    sound : str
-        the sound that the animal makes
-    num_legs : int
-        the number of legs the animal has (default 4)
+    key : str
+        a encryption key
+    data : dict
+        configuration data
+    encrypted_config: bool
+        use an encrypted configuration file
+    config_file_path : str
+        path to the configuration file
+    key_file_path : str
+        path to encryption key file
+    gpg : class
+        python-gnupg gnupg.GPG
 
     Methods
     -------
@@ -62,9 +66,16 @@ class Config(object):
         self.load_config()
 
     def generate_key(self):
-        '''
-        key generation
-        '''
+        """
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
+            """
         print(inspect.stack()[1].function)
         if "PYTEST_CURRENT_TEST" in os.environ:
             password = bytes("M4m4k154n", encoding='utf-8')
@@ -81,8 +92,16 @@ class Config(object):
         self.key = base64.urlsafe_b64encode(kdf.derive(password))
 
     def load_key(self, key_file_path):
-        '''
-        '''
+        """
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
+            """
         try:
             with open(key_file_path, 'rb') as key_file:
                 self.key = key_file.read()
@@ -92,8 +111,16 @@ class Config(object):
             key_file.close()
 
     def save_key(self, key_file_path):
-        '''
-        '''
+        """
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
+            """
         try:
             with open(key_file_path, 'wb') as key_file:
                 key_file.write(self.key)
@@ -103,8 +130,16 @@ class Config(object):
             key_file.close()
 
     def new_config(self):
-        '''
-        '''
+        """
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
+            """
         try:
             with open('new.json', 'rb') as new_config:
                 self.data = json.loads(new_config.read())
@@ -116,8 +151,16 @@ class Config(object):
         self.save_config(self.config_file_path, self.encrypted_config)
 
     def save_config(self, config_file_path, encrypted_config):
-        '''
-        '''
+        """
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
+            """
         if encrypted_config:
             fernet = Fernet(self.key)
             # encrypting the file
@@ -140,8 +183,16 @@ class Config(object):
                 unencrypted_file.close()
 
     def load_config(self):
-        '''
-        '''
+        """
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
+            """
         if self.encrypted_config:
             fernet = Fernet(self.key)
             # opening the encrypted file
