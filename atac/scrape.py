@@ -45,7 +45,9 @@ class UnderTheMangoTree(Config):
         self.num_emails = 0
 
     def invalid_url(self, url):
-        """Prints what the animals name is and what sound it makes.
+
+        """
+        Prints what the animals name is and what sound it makes.
 
         If the argument `sound` isn't passed in, the default Animal
         sound is used.
@@ -61,6 +63,7 @@ class UnderTheMangoTree(Config):
             If no sound is set for the animal or passed in as a
             parameter.
         """
+
         for i in self.scrape["invalid_domains"]:
             if i in url.lower():
                 print(">>> invalid domain...\n")
