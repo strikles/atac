@@ -1,7 +1,7 @@
 import regex as re
 import os
 import csv
-import json
+#import json
 import requests
 from requests import HTTPError
 import validators
@@ -10,13 +10,14 @@ from fake_useragent import UserAgent
 from urllib.parse import urlsplit
 from collections import deque
 from bs4 import BeautifulSoup
-from functools import reduce
+#from functools import reduce
 from .config import Config
 
 
 class UnderTheMangoTree(Config):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
+
         """
         class init
 
@@ -29,6 +30,7 @@ class UnderTheMangoTree(Config):
         key_file_path : str
             path to encryption key file
         """
+
         super().__init__(encrypted_config, config_file_path, key_file_path)
         self.scrape = self.data['scrape']
         # primary queue (urls to be crawled)

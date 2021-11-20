@@ -22,6 +22,7 @@ from .config import Config
 class AllTimeHigh(Config):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
+
         """
         class init
 
@@ -34,6 +35,7 @@ class AllTimeHigh(Config):
         key_file_path : str
             path to encryption key file
         """
+
         super().__init__(encrypted_config, config_file_path, key_file_path)
 
     @staticmethod

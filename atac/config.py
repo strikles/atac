@@ -38,6 +38,7 @@ class Config(object):
     """
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
+
         """
         class init
 
@@ -50,6 +51,7 @@ class Config(object):
         key_file_path : str
             path to encryption key file
         """
+
         self.key = None
         self.data = None
         self.encrypted_config = encrypted_config
