@@ -19,8 +19,7 @@ https://chng.it/8FtDcsvG
 
 ![](assets/img/IMG_3331.PNG)
 
-#### Those who exact the extrajudicial sentences resort to directing violence towards women, parents, creating drug addicts with synthetic pain and forcing acts of self-harm for entertainment, whilst attempting to portray themselves as Artists of human degradation, social stratification and self-harm, with grotesque preludes of vibrotactile and sonic payloads of "kisses" and setting synthetic pain, articulating tongue and jaw of the subject under torture, cyber sodomy, intercourse sabotage in males (via involuntary perineum contractions resorting to rituals involving using a feather) and vibrotactile genital abuse in females (possibly resulting in Stockholm's Syndrome) as being standard in our society!
-
+## Those who exact the extrajudicial sentences resort to directing violence towards women, parents, creating drug addicts with synthetic pain and forcing acts of self-harm for entertainment, whilst attempting to portray themselves as Artists of human degradation, social stratification and self-harm, with grotesque preludes of vibrotactile and sonic payloads of "kisses" and setting synthetic pain, articulating tongue and jaw of the subject under torture, cyber sodomy, intercourse sabotage in males (via involuntary perineum contractions resorting to rituals involving using a feather) and vibrotactile genital abuse in females (possibly resulting in Stockholm's Syndrome) as being standard in our society
 
 > "Deus autem, primum principium rerum, comparatur ad res creatas ut artifex ad artificiata"
 
@@ -28,7 +27,7 @@ The procedure is hidden under a veil of medical malpractice via psychiatric frau
 
 ![](assets/img/28B6320C-154B-42E4-9642-8212498D9913.jpeg)
 
-#### Since Cybertorture paired with Psychiatric Fraud and False therapy has been used for quite some time now to stratify society with extrajudicial trials and sentences for motives as repugnant as "someone not liking you" or "talking nonsense", I decided to write some tools!
+### Since Cybertorture paired with Psychiatric Fraud and False therapy has been used for quite some time now to stratify society with extrajudicial trials and sentences for motives as repugnant as "someone not liking you" or "talking nonsense", I decided to write some tools
 
 ![](assets/img/tumblr_inline_pec2nqah2k1qlr65v_540.gif)
 
@@ -69,10 +68,10 @@ automated composition of text using markovify
 #### [send.py](send.py)
 send script:
 
-0. email
-0. facebook
-0. twitter
-0. whatsapp
+1. email
+2. facebook
+3. twitter
+4. whatsapp
 
 ![](assets/img/AgreeableCoordinatedFlounder-small.gif)
 
