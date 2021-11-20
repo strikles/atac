@@ -211,7 +211,7 @@ class UnderTheMangoTree(Config):
             # move next url from queue to set of processed urls
             url = self.primary_unprocessed_urls.popleft()
             print("\x1b[6;37;42m {0} urls:{1} {2} | emails:{3} phones:{4} - {5} \x1b[0m".format(
-                threading.current_thread().get_native_id(),
+                threading.get_native_id(),
                 len(self.primary_unprocessed_urls),
                 len(self.secondary_unprocessed_urls),
                 len(self.emails),
@@ -266,7 +266,7 @@ class UnderTheMangoTree(Config):
             # find all the anchors
             anchors = soup.find_all("a")
             num_anchors = len(anchors)
-            print("> {0} new anchors {1}".format(threading.current_thread().get_native_id(), num_anchors))
+            print("> {0} new anchors {1}".format(threading.get_native_id(), num_anchors))
             # process all the anchors
             count = 0
             for anchor in anchors:
