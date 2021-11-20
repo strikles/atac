@@ -1,5 +1,4 @@
-"""
-Create portable serialized representations of Python objects.
+"""Create portable serialized representations of Python objects.
 
 See module copyreg for a mechanism for registering custom picklers.
 See module pickletools source for extensive comments.
