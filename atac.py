@@ -1,7 +1,7 @@
 import argparse
 import os
 from threading import Thread
-# import atac
+import atac
 
 
 def get_config_arguments(arguments):
@@ -158,7 +158,7 @@ def compose(arguments):
     if getattr(arguments, "corpus"):
         corpus_file_path = getattr(arguments, "corpus")
     #
-    two_bach = AllTimeHigh()
+    two_bach = atac.AllTimeHigh()
     two_bach.gen_content(corpus_file_path)
 
 
@@ -166,7 +166,7 @@ def clean(arguments):
     '''
     '''
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    leon = Leon(encrypted_config, config_file_path, key_file_path)
+    leon = atac.Leon(encrypted_config, config_file_path, key_file_path)
     #
     email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
     phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
