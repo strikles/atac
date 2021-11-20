@@ -1,14 +1,14 @@
-## Activism Tools Against Cybertorture
+### Activism Tools Against Cybertorture
 
-### Codacy
+#### Codacy
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d3de586ed5a248ca917c99e95757252c)](https://www.codacy.com/gh/strikles/atac/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=strikles/atac&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/d3de586ed5a248ca917c99e95757252c)](https://www.codacy.com/gh/strikles/atac/dashboard?utm_source=github.com&utm_medium=referral&utm_content=strikles/atac&utm_campaign=Badge_Coverage)
 
-### DeepSource
+#### DeepSource
 [![DeepSource](https://deepsource.io/gh/strikles/atac.svg/?label=active+issues&show_trend=true&token=knjxrFWrr_WNtdD2XCDeYO0i)](https://deepsource.io/gh/strikles/atac/?ref=repository-badge)
 [![DeepSource](https://deepsource.io/gh/strikles/atac.svg/?label=resolved+issues&show_trend=true&token=knjxrFWrr_WNtdD2XCDeYO0i)](https://deepsource.io/gh/strikles/atac/?ref=repository-badge)
 
-### Guthub
+#### GitHub
 ![python-app](https://github.com/strikles/atac/actions/workflows/python-app.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
 [![Upload Python Package](https://github.com/strikles/atac/actions/workflows/python-publish.yml/badge.svg?branch=main)](https://github.com/strikles/atac/actions/workflows/python-publish.yml)
@@ -35,16 +35,16 @@ The procedure is hidden under a veil of medical malpractice via psychiatric frau
 
 ![](assets/img/28B6320C-154B-42E4-9642-8212498D9913.jpeg)
 
-### Since Cybertorture paired with Psychiatric Fraud and False therapy has been used for quite some time now to stratify society with extrajudicial trials and sentences for motives as repugnant as "someone not liking you" or "talking nonsense", I decided to write some tools
+#### Since Cybertorture paired with Psychiatric Fraud and False therapy has been used for quite some time now to stratify society with extrajudicial trials and sentences for motives as repugnant as "someone not liking you" or "talking nonsense", I decided to write some tools
 
 ![](assets/img/tumblr_inline_pec2nqah2k1qlr65v_540.gif)
 
-#### [scrape.py](scrape.py)
+##### [scrape.py](scrape.py)
 web scraper that gathers contact information
 
 [scrapeme](SCRAPEME.md)
 
-#### The current scraping algorithm is the following
+###### The current scraping algorithm is the following
 ```markdown
 P ← starting URLs (primary queue) 
 S ← ∅ (secondary queue)
@@ -68,12 +68,12 @@ it is based on [https://chato.cl/papers/castillo_06_controlling_queue_size_web_c
 
 ![](assets/img/IMG_0729.PNG)
 
-#### [compose.py](compose.py)
+##### [compose.py](compose.py)
 automated composition of text using markovify
 
 ![](assets/img/IMG_0999.JPG)
 
-#### [send.py](send.py)
+##### [send.py](send.py)
 send script:
 
 1.  email
