@@ -284,7 +284,7 @@ class UnderTheMangoTree(Config):
                         self.secondary_unprocessed_urls.append(url)
                         if url in self.processed_urls:
                             self.processed_urls.remove(url)
-                        break
+                            break
                     elif link not in self.primary_unprocessed_urls:
                         self.primary_unprocessed_urls.append(link)
             #
