@@ -12,6 +12,7 @@ import inspect
 
 
 class Config(object):
+
     """
     A class used to represent a Configuration object
 
