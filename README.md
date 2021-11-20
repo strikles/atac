@@ -74,4 +74,3 @@ send script:
 4.  whatsapp
 
 ![](assets/img/AgreeableCoordinatedFlounder-small.gif)
-
