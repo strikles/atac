@@ -21,19 +21,6 @@ from .config import Config
 
 class AllTimeHigh(Config):
 
-    def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
-        """ class init
-
-        Parameters
-        ----------
-        encrypted_config : bool
-            use an encrypted configuration file
-        config_file_path : str
-            path to the configuration file
-        key_file_path : str
-            path to encryption key file
-        """
-        super().__init__(encrypted_config, config_file_path, key_file_path)
 
     @staticmethod
     def generate_ascii(image_path):
