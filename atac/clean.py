@@ -46,15 +46,6 @@ class Leon(Config):
                             print(str(e))
 
     @staticmethod
-    def valid_email(email):
-        '''
-        '''
-        result = validators.email(email)
-        if isinstance(result, ValidationFailure):
-            return False
-        return result
-
-    @staticmethod
     def clean_emails(path):
         '''
         '''
@@ -70,7 +61,7 @@ class Leon(Config):
                 lines = file.readlines()
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
-                        if self.valid_email(receiver_email):
+                        if validators.email(receiver_email)
                             ml_emails.append({'index': ndx, 'email': receiver_email})
                         else:
                             print('{0} INVALID'.format(receiver_email))
