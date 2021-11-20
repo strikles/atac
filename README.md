@@ -68,10 +68,10 @@ automated composition of text using markovify
 #### [send.py](send.py)
 send script:
 
- 1.  email
- 2.  facebook
- 3.  twitter
- 4.  whatsapp
+1.  email
+2.  facebook
+3.  twitter
+4.  whatsapp
 
 ![](assets/img/AgreeableCoordinatedFlounder-small.gif)
 
