@@ -21,7 +21,7 @@ class Leon(Config):
         super().__init__(encrypted_config, config_file_path, key_file_path)
 
     @staticmethod
-    def clean_phones(self, path):
+    def clean_phones(path):
         '''
         '''
         print(path)
