@@ -36,7 +36,7 @@ web scraper that gathers contact information
 
 [scrapeme](SCRAPEME.md)
 
-#### The current scraping algorithm is the following:
+#### The current scraping algorithm is the following
 ```
 P ← starting URLs (primary queue) 
 S ← ∅ (secondary queue)
@@ -68,10 +68,10 @@ automated composition of text using markovify
 #### [send.py](send.py)
 send script:
 
-1. email
-2. facebook
-3. twitter
-4. whatsapp
+ 1.  email
+ 2.  facebook
+ 3.  twitter
+ 4.  whatsapp
 
 ![](assets/img/AgreeableCoordinatedFlounder-small.gif)
 
