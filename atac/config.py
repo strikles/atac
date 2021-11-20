@@ -21,7 +21,7 @@ class Config(object):
         a encryption key
     data : dict
         configuration data
-    encrypted_config: bool
+    encrypted_config : bool
         use an encrypted configuration file
     config_file_path : str
         path to the configuration file
@@ -32,20 +32,20 @@ class Config(object):
 
     Methods
     -------
-    says(sound=None)
-        Prints the animals name and what sound it makes
+    generate_key()
+        Generates a new encryption key from a password + salt
     """
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
         """
         Parameters
         ----------
-        name : str
-            The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
+        encrypted_config : bool
+            use an encrypted configuration file
+        config_file_path : str
+            path to the configuration file
+        key_file_path : str
+            path to encryption key file
         """
         self.key = None
         self.data = None

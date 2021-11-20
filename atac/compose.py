@@ -1,14 +1,14 @@
 import os
 import sys
-import json
-import yaml
+#import json
+#import yaml
 import markdown
 import markovify
 import qrcode
 import ascii_magic
 
 from email import charset
-from email.encoders import encode_base64
+#from email.encoders import encode_base64
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
 
@@ -22,8 +22,16 @@ from .config import Config
 class AllTimeHigh(Config):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
-        '''
-        '''
+        """
+        Parameters
+        ----------
+        encrypted_config : bool
+            use an encrypted configuration file
+        config_file_path : str
+            path to the configuration file
+        key_file_path : str
+            path to encryption key file
+        """
         super().__init__(encrypted_config, config_file_path, key_file_path)
 
     @staticmethod
