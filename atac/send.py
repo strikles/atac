@@ -82,7 +82,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         if self.email['rotate_auth']:
             self.email['active_auth'] = (1 + self.email['active_auth']) % len(auth)
         #
-        self.save_config()
+        self.save_config(self.config_file_path, self.encrypted_config)
 
     def get_contact_files(self, contact_files_path):
         '''
