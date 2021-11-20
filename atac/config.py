@@ -76,7 +76,7 @@ class Config:
             The sound the animal makes
         num_legs : int, optional
             The number of legs the animal (default is 4)
-            """
+        """
         print(inspect.stack()[1].function)
         if "PYTEST_CURRENT_TEST" in os.environ:
             password = bytes("M4m4k154n", encoding='utf-8')
@@ -103,7 +103,7 @@ class Config:
             The sound the animal makes
         num_legs : int, optional
             The number of legs the animal (default is 4)
-            """
+        """
         try:
             with open(key_file_path, 'rb') as key_file:
                 self.key = key_file.read()
@@ -123,7 +123,7 @@ class Config:
             The sound the animal makes
         num_legs : int, optional
             The number of legs the animal (default is 4)
-            """
+        """
         try:
             with open(key_file_path, 'wb') as key_file:
                 key_file.write(self.key)
@@ -143,7 +143,7 @@ class Config:
             The sound the animal makes
         num_legs : int, optional
             The number of legs the animal (default is 4)
-            """
+        """
         try:
             with open('new.json', 'rb') as new_config:
                 self.data = json.loads(new_config.read())
@@ -165,7 +165,7 @@ class Config:
             The sound the animal makes
         num_legs : int, optional
             The number of legs the animal (default is 4)
-            """
+        """
         if encrypted_config:
             fernet = Fernet(self.key)
             # encrypting the file
@@ -198,7 +198,7 @@ class Config:
             The sound the animal makes
         num_legs : int, optional
             The number of legs the animal (default is 4)
-            """
+        """
         if self.encrypted_config:
             fernet = Fernet(self.key)
             # opening the encrypted file
