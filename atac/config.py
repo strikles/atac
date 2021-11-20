@@ -26,7 +26,7 @@ class Config(object):
         path to the configuration file
     key_file_path : str
         path to encryption key file
-    gpg : class
+    gpg : gnupg.GPG
         python-gnupg gnupg.GPG
 
     Methods
