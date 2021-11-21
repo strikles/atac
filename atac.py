@@ -182,8 +182,8 @@ def clean(arguments):
         leon.clean_emails(email_files_path)
         leon.clean_phones(phone_files_path)
 
-if __name__ == "__main__":
 
+if __name__ == "__main__":
     # create the top-level parser
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers()
