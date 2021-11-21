@@ -173,6 +173,8 @@ class FromRuXiaWithLove(AllTimeHigh):
             for uid in key['uids']:
                 if recipient in uid:
                     return key['keyid']
+        #
+        return None
 
     def store_emails_in_buckets(self, lines):
         """
