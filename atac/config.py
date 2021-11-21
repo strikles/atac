@@ -69,7 +69,7 @@ class Config:
 
     def generate_key(self):
         """
-        generates encryption key from password + salts
+        Generates encryption key from password + salts
 
         Parameters
         ----------

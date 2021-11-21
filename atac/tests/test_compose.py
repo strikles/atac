@@ -12,7 +12,7 @@ key_file = None
 
 def test_markov():
     """
-    generates encryption key from password + salts
+    Generates encryption key from password + salts
 
     Parameters
     ----------
