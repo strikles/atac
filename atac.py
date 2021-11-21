@@ -6,6 +6,16 @@ import atac
 
 def get_config_arguments(arguments):
     """
+    Generate New Config
+
+    Parameters
+    ----------
+    name : str
+        The name of the animal
+    sound : str
+        The sound the animal makes
+    num_legs : int, optional
+        The number of legs the animal (default is 4)
     """
     encrypted_config = True
     key_file_path = None
@@ -24,6 +34,16 @@ def get_config_arguments(arguments):
 # sub-command functions
 def configuration(arguments):
     """
+    Generate New Config
+
+    Parameters
+    ----------
+    name : str
+        The name of the animal
+    sound : str
+        The sound the animal makes
+    num_legs : int, optional
+        The number of legs the animal (default is 4)
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     config = atac.Config(encrypted_config, config_file_path, key_file_path)
@@ -47,6 +67,16 @@ def configuration(arguments):
 # sub-command functions
 def email(arguments):
     """
+    Generate New Config
+
+    Parameters
+    ----------
+    name : str
+        The name of the animal
+    sound : str
+        The sound the animal makes
+    num_legs : int, optional
+        The number of legs the animal (default is 4)
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
@@ -81,6 +111,16 @@ def email(arguments):
 # sub-command functions
 def phone(arguments):
     """
+    Generate New Config
+
+    Parameters
+    ----------
+    name : str
+        The name of the animal
+    sound : str
+        The sound the animal makes
+    num_legs : int, optional
+        The number of legs the animal (default is 4)
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
@@ -104,6 +144,16 @@ def phone(arguments):
 # sub-command functions
 def social(arguments):
     """
+    Generate New Config
+
+    Parameters
+    ----------
+    name : str
+        The name of the animal
+    sound : str
+        The sound the animal makes
+    num_legs : int, optional
+        The number of legs the animal (default is 4)
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
@@ -123,6 +173,16 @@ def social(arguments):
 
 def scrape(arguments):
     """
+    Generate New Config
+
+    Parameters
+    ----------
+    name : str
+        The name of the animal
+    sound : str
+        The sound the animal makes
+    num_legs : int, optional
+        The number of legs the animal (default is 4)
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     #
@@ -152,6 +212,16 @@ def scrape(arguments):
 
 def compose(arguments):
     """
+    Generate New Config
+
+    Parameters
+    ----------
+    name : str
+        The name of the animal
+    sound : str
+        The sound the animal makes
+    num_legs : int, optional
+        The number of legs the animal (default is 4)
     """
     corpus_file_path = os.path.dirname(os.path.abspath(__file__)) + '/data/pg1009.txt'
     #
@@ -164,6 +234,16 @@ def compose(arguments):
 
 def clean(arguments):
     """
+    Generate New Config
+
+    Parameters
+    ----------
+    name : str
+        The name of the animal
+    sound : str
+        The sound the animal makes
+    num_legs : int, optional
+        The number of legs the animal (default is 4)
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     leon = atac.Leon(encrypted_config, config_file_path, key_file_path)

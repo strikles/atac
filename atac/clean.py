@@ -41,6 +41,16 @@ class Leon(Config):
     @staticmethod
     def clean_phones(path):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         print(path)
         # get mailing list csv files
@@ -66,6 +76,16 @@ class Leon(Config):
     @staticmethod
     def clean_emails(path):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         print(path)
         # get mailing list csv files
