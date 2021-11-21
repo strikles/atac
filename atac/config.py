@@ -147,13 +147,149 @@ class Config:
         num_legs : int, optional
             The number of legs the animal (default is 4)
         """
-        try:
-            with open('new.json', 'rb') as new_config:
-                self.data = json.loads(new_config.read())
-        except OSError as e:
-            print('{} file error {}'.format('new.json', e.errno))
-        finally:
-            new_config.close()
+        self.data = {
+            "compose": {},
+            "email": {
+                "active_auth": 0,
+                "active_content": 0,
+                "auth": [
+                    {
+                        "password": "your password",
+                        "port": 465,
+                        "sender": "your.email@gmail.com",
+                        "server": "smtp.gmail.com",
+                        "user": "your.email@gmail.com"
+                    }
+                ],
+                "content": [
+                    {
+                        "markdown": "political_asylum.md",
+                        "subject": "Political asylum - Cláudio André Silva Nunes Marques Neto (ID 11229457)"
+                    }
+                ],
+                "rotate_auth": False,
+                "rotate_content": False
+            },
+            "phone": {
+                "twilio": {
+                    "PHONE": "+YOUR PHONE NUMBER",
+                    "SID": "YOUR SID",
+                    "TOKEN": "YOUR TOKEN"
+                }
+            },
+            "scrape": {
+                "active_proxies": False,
+                "invalid_domains": [
+                    "adobe.",
+                    "aerialtelly.",
+                    "allmovie",
+                    "altavista.",
+                    "amazon.",
+                    "aol.",
+                    "apache.",
+                    "apple.",
+                    "ask.",
+                    "bing.",
+                    "creativecommons.",
+                    "debian.",
+                    "dmoz.",
+                    "domaintools.",
+                    "duckduckgo.",
+                    "ecosia.",
+                    "facebook.",
+                    "github.",
+                    "google.",
+                    "imdb.",
+                    "justgiving.",
+                    "movieinsider.",
+                    "mozilla.",
+                    "musicmoz.",
+                    "oracle.",
+                    "patreon.",
+                    "phpbb.",
+                    "reddit.",
+                    "rottentomatoes.",
+                    "startpage.",
+                    "symfony.",
+                    "w3.",
+                    "wikipedia.",
+                    "wikimedia.",
+                    "wordpress.",
+                    "xmlmind.",
+                    "yahoo.",
+                    "yandex.",
+                    "yelp.",
+                    "youtube."
+                ],
+                "invalid_files": [
+                    ".pdf",
+                    ".iso",
+                    ".gz",
+                    ".bz2",
+                    ".tar",
+                    ".zip",
+                    ".jpg",
+                    ".jpeg",
+                    ".mp3",
+                    ".mp4",
+                    ".png",
+                    ".svg",
+                    ".gif",
+                    ".webp",
+                    ".yji",
+                    ".css",
+                    ".js"
+                ],
+                "invalid_paths": [
+                    "forum",
+                    "admin",
+                    "auth"
+                ],
+                "proxies": {
+                    "http": "http://10.10.1.10:3128",
+                    "https": "http://10.10.1.10:1080"
+                },
+                "targets": {
+                    "activism": "https://curlie.org/en/Society/Activism",
+                    "addiction": "https://curlie.org/en/Health/Addictions/",
+                    "defense": "https://curlie.org/en/Business/Aerospace_and_Defense/Defense/",
+                    "education": "https://curlie.org/en/Reference/Education",
+                    "embassies": "https://curlie.org/en/Society/Government/Embassies_and_Consulates/By_Country_of_Origin",
+                    "islam": "https://curlie.org/en/Society/Religion_and_Spirituality/Islam/",
+                    "journalists": "https://curlie.org/en/News/Journalism/",
+                    "museums": "https://curlie.org/en/Reference/Museums/Arts_and_Entertainment/Art_Museums",
+                    "music": "https://curlie.org/en/Arts/Music/Bands_and_Artists/",
+                    "religion": "https://curlie.org/en/Society/Religion_and_Spirituality/",
+                    "rescue": "https://curlie.org/Society/Religion_and_Spirituality/Christianity/Organizations/Rescue/",
+                    "ukraine": "https://curlie.org/en/Regional/Europe/Ukraine/"
+                }
+            },
+            "social": {
+                "facebook": {
+                    "access_token": "",
+                    "page_id": ""
+                },
+                "twitter": {
+                    "access_token": "",
+                    "access_token_secret": "",
+                    "consumer_key": "",
+                    "consumer_secret": "",
+                    "handles": [
+                        "@UNPOL @UNODC @WHO @Cyber_Torture @theintercept",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        "",
+                        ""
+                    ]
+                }
+            }
+        }
         #
         self.save_config(self.config_file_path, self.encrypted_config)
 
