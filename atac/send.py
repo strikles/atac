@@ -416,7 +416,6 @@ class FromRuXiaWithLove(AllTimeHigh):
             print("Exiting!")
 
     def send_signal(self, contacts_file_path, message_file_path):
-        pass
         """
         msg = u'\n'.join(self.get_file_content(message_file_path))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
@@ -441,9 +440,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
 
     def send_facebook(self, message_file_path):
-        pass
         """
-
         status = 0
         msg = "Hello, world!"
         graph = facebook.GraphAPI(self.social['facebook']['access_token'])
@@ -457,7 +454,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
 
     def send_twitter(self, message_file_path):
-        pass
         """
         status = 0
         CONSUMER_KEY = self.social['twitter']['consumer_key']
