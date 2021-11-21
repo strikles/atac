@@ -21,7 +21,6 @@ from .config import Config
 
 class AllTimeHigh(Config):
 
-
     @staticmethod
     def generate_ascii(image_path):
         '''

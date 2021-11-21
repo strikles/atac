@@ -15,7 +15,6 @@ from .config import Config
 
 class Leon(Config):
 
-
     @staticmethod
     def clean_phones(path):
         '''
