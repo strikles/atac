@@ -11,7 +11,18 @@ key_file = None
 
 
 def test_markov():
-    #
+    """
+    generates encryption key from password + salts
+
+    Parameters
+    ----------
+    name : str
+        The name of the animal
+    sound : str
+        The sound the animal makes
+    num_legs : int, optional
+        The number of legs the animal (default is 4)
+    """
     response = None
     try:
         url = "https://raw.githubusercontent.com/jsvine/markovify/master/test/texts/sherlock.txt"
