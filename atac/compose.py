@@ -47,6 +47,16 @@ class AllTimeHigh(Config):
     @staticmethod
     def generate_ascii(image_path):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         if not os.path.isfile(image_path):
             print("Invalid image path!")
@@ -64,6 +74,16 @@ class AllTimeHigh(Config):
     @staticmethod
     def generate_markov_content(content):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         # Build the model.
         text_model = markovify.Text(content, state_size=3)
@@ -73,6 +93,16 @@ class AllTimeHigh(Config):
     @staticmethod
     def fix_mixed_encoding(s):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         output = ''
         ii = 0
@@ -90,6 +120,16 @@ class AllTimeHigh(Config):
 
     def compose_encrypted_email(self, sender_email, recipient_email, key_id, message_content, subject):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         message = MIMEMultipart("mixed")
         cs = charset.Charset('utf-8')
@@ -130,6 +170,16 @@ class AllTimeHigh(Config):
     @staticmethod
     def compose_email(sender_email, mailing_list, message_content, subject):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         message = MIMEMultipart("mixed")
         cs = charset.Charset('utf-8')
@@ -165,6 +215,16 @@ class AllTimeHigh(Config):
     @staticmethod
     def create_image(text, window_height, window_width):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         img = Image.new('L', (window_height, window_width), color='white')
         draw = ImageDraw.Draw(img)
@@ -175,6 +235,16 @@ class AllTimeHigh(Config):
     @staticmethod
     def create_qr_code(url):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         # instantiate QRCode object
         qr = qrcode.QRCode(version=1, box_size=10, border=4)
