@@ -221,5 +221,5 @@ class Config:
                     self.data = json.loads(new_config.read())
             except OSError as e:
                 print('{} file error {}'.format(self.config_file_path, e.errno))
-            finally:nhhyyh
+            finally:
                 new_config.close()
