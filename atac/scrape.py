@@ -40,7 +40,7 @@ class UnderTheMangoTree(Config):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
         """
-        class init
+        Class init
 
         Parameters
         ----------
@@ -112,7 +112,7 @@ class UnderTheMangoTree(Config):
     @staticmethod
     def make_dirs():
         """
-        make dirs
+        Make dirs
         """
         if not os.path.isdir(os.getcwd() + "/data/contacts"):
             os.makedirs(os.getcwd() + "/data/contacts")
@@ -124,7 +124,7 @@ class UnderTheMangoTree(Config):
     @staticmethod
     def truncate_files(data_key):
         """
-        save to file
+        Save to file
         """
         csv_path = os.getcwd() + "/data/contacts/emails/" + data_key + "_emails.csv"
         try:
@@ -173,7 +173,7 @@ class UnderTheMangoTree(Config):
 
     def save_email_contacts(self, new_contacts, data_key):
         """
-        save to file
+        Save to file
         """
         csv_path = os.getcwd() + "/data/contacts/emails/" + data_key + "_emails.csv"
         try:
@@ -194,7 +194,7 @@ class UnderTheMangoTree(Config):
 
     def save_phone_contacts(self, new_contacts, data_key):
         """
-        save to file
+        Save to file
         """
         csv_path = os.getcwd() + "/data/contacts/phones/" + data_key + "_phones.csv"
         try:

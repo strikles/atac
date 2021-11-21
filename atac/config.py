@@ -38,7 +38,7 @@ class Config:
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
         """
-        class init
+        Class init
 
         Parameters
         ----------
