@@ -78,8 +78,8 @@ class UnderTheMangoTree(Config):
 
     @staticmethod
     def set_useragent():
-        '''
-        '''
+        """
+        """
         ua = UserAgent()
         headers = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
                    "Accept-Language": "en-US,en;q=0.5", "Referer": "https://www.google.com/", "DNT": "1",
@@ -89,9 +89,9 @@ class UnderTheMangoTree(Config):
 
     @staticmethod
     def make_dirs():
-        '''
+        """
         make dirs
-        '''
+        """
         if not os.path.isdir(os.getcwd() + "/data/contacts"):
             os.makedirs(os.getcwd() + "/data/contacts")
         if not os.path.isdir(os.getcwd() + "/data/contacts/emails"):
@@ -101,9 +101,9 @@ class UnderTheMangoTree(Config):
 
     @staticmethod
     def truncate_files(data_key):
-        '''
+        """
         save to file
-        '''
+        """
         csv_path = os.getcwd() + "/data/contacts/emails/" + data_key + "_emails.csv"
         try:
             with open(csv_path, mode='a') as emails_file:
@@ -134,8 +134,8 @@ class UnderTheMangoTree(Config):
 
     @staticmethod
     def extract_emails(content):
-        '''
-        '''
+        """
+        """
         rx_emails = re.compile(r"[a-zA-Z0-9_+&*-]+(?:\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\.)+"
                                r"(?!jpg|jpeg|png|svg|gif|webp|yji|pdf|htm|title|content|formats)[a-zA-Z]{2,7}")
         #
@@ -143,16 +143,16 @@ class UnderTheMangoTree(Config):
 
     @staticmethod
     def extract_phones(content):
-        '''
-        '''
+        """
+        """
         rx_phones = re.compile(r'\+(?:[0-9] ?){6,14}[0-9]')
         #
         return set(rx_phones.findall(content))
 
     def save_email_contacts(self, new_contacts, data_key):
-        '''
+        """
         save to file
-        '''
+        """
         csv_path = os.getcwd() + "/data/contacts/emails/" + data_key + "_emails.csv"
         try:
             with open(csv_path, mode='a') as contact_file:
@@ -171,9 +171,9 @@ class UnderTheMangoTree(Config):
             contact_file.close()
 
     def save_phone_contacts(self, new_contacts, data_key):
-        '''
+        """
         save to file
-        '''
+        """
         csv_path = os.getcwd() + "/data/contacts/phones/" + data_key + "_phones.csv"
         try:
             with open(csv_path, mode='a') as contact_file:
@@ -192,8 +192,8 @@ class UnderTheMangoTree(Config):
             contact_file.close()
 
     def process_page(self, data_key, starting_url):
-        '''
-        '''
+        """
+        """
         status = 0
         # primary queue (urls to be crawled)
         self.primary_unprocessed_urls.append(starting_url)
