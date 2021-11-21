@@ -2,7 +2,5 @@ __pycache__/
 env/
 venv/
 .idea/
-data/
-dead/
 log/
 
