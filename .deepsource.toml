@@ -1,6 +1,6 @@
 version = 1
 
-test_patterns = ["tests_*.py"]
+test_patterns = ["/atac/tests/test_*.py"]
 
 exclude_patterns = ["data/*"]
 
