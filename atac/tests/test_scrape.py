@@ -10,7 +10,7 @@ key_file = None
 
 def test_invalid_url():
     """
-    generates encryption key from password + salts
+    Generates encryption key from password + salts
 
     Parameters
     ----------
@@ -32,7 +32,7 @@ def test_invalid_url():
 
 def test_extract_emails():
     """
-    generates encryption key from password + salts
+    Generates encryption key from password + salts
 
     Parameters
     ----------
@@ -54,7 +54,7 @@ def test_extract_emails():
 
 def test_extract_phones():
     """
-    generates encryption key from password + salts
+    Generates encryption key from password + salts
 
     Parameters
     ----------
@@ -76,7 +76,7 @@ def test_extract_phones():
 
 def test_process_page():
     """
-    generates encryption key from password + salts
+    Generates encryption key from password + salts
 
     Parameters
     ----------
