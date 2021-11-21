@@ -27,7 +27,8 @@ from .compose import AllTimeHigh
 class FromRuXiaWithLove(AllTimeHigh):
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
-        """ class init
+        """
+        class init
 
         Parameters
         ----------
@@ -239,7 +240,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .from_(auth['sender'])
                     .to(mailing_list))
                 #
-                #e.attach(path="/tmp/file.jpg", inline=True)
+                # e.attach(path="/tmp/file.jpg", inline=True)
                 e.as_message()  # returns EmailMessage
                 e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                 #
@@ -255,7 +256,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .to(email_recipient)
                     .encryption())
                 #
-                #e.attach(path="/tmp/file.jpg", inline=True)
+                # e.attach(path="/tmp/file.jpg", inline=True)
                 e.as_message()  # returns EmailMessage
                 e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                 #
@@ -370,7 +371,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         print("Exiting!")
 
-    '''
+    """
     def send_yowsup(self, contacts_file_path, message_file_path):
         #
         msg = self.get_message(message_file_path)
@@ -392,7 +393,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     time.sleep(1)
         #
         print("Exiting!")
-    '''
+    """
 
     if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
@@ -418,14 +419,14 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_signal(self, contacts_file_path, message_file_path):
         pass
-        '''
+        """
         msg = u'\n'.join(self.get_file_content(message_file_path))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
         confirm = input("Send these messages? [Y/n] ")
         if confirm[0].lower() != 'y':
             sys.exit(1)
-        ## create new signal-cli object (will automatically start signal-cli in the background)
+        # create new signal-cli object (will automatically start signal-cli in the background)
         sig = signalcli.Signalcli(debug=True, user_name="+46123456789")
         # Send the messages
         for num in phone_numbers:
@@ -439,11 +440,11 @@ class FromRuXiaWithLove(AllTimeHigh):
                 time.sleep(1)
         #
         print("Exiting!")
-        '''
+        """
 
     def send_facebook(self, message_file_path):
         pass
-        '''
+        """
 
         status = 0
         msg = "Hello, world!"
@@ -455,11 +456,11 @@ class FromRuXiaWithLove(AllTimeHigh):
             print(graph.get_connections(group, 'feed'))
         #
         return status
-        '''
+        """
 
     def send_twitter(self, message_file_path):
         pass
-        '''
+        """
         status = 0
         CONSUMER_KEY = self.social['twitter']['consumer_key']
         CONSUMER_SECRET = self.social['twitter']['consumer_secret']
@@ -480,4 +481,4 @@ class FromRuXiaWithLove(AllTimeHigh):
             time.sleep(nap)
         #
         return status
-        '''
+        """
