@@ -72,8 +72,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         return lines
 
     def get_email_config(self):
-        '''
-        '''
+        """
+        """
         content_index = self.email['active_content']
         auth_index = self.email['active_auth']
         content = self.email['content'][content_index]
@@ -82,8 +82,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         return auth, content
 
     def update_email_config(self):
-        '''
-        '''
+        """
+        """
         auth, content = self.get_email_config()
         # set sctive to next and save config
         if self.email['rotate_content']:
@@ -96,8 +96,8 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     @staticmethod
     def get_contact_files(contact_files_path):
-        '''
-        '''
+        """
+        """
         contact_files = []
         #
         if os.path.isdir(contact_files_path):
@@ -116,7 +116,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         return contact_files
 
     def get_phone_numbers(self, contact_files_path):
-
         """
         Open the people CSV and get all the numbers out of it
         """
@@ -142,8 +141,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         return phone_numbers
 
     def send_email(self, mailing_list, message):
-        '''
-        '''
+        """
+        """
         auth, _ = self.get_email_config()
         # Create secure connection with server and send email
         try:
@@ -164,7 +163,6 @@ class FromRuXiaWithLove(AllTimeHigh):
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
 
     def find_gpg_keyid(self, recipient):
-
         """
         We need the keyid to encrypt the message to the recipient.
         Let's walk through all keys in the keyring and find the
@@ -177,8 +175,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                     return key['keyid']
 
     def store_emails_in_buckets(self, lines):
-        '''
-        '''
+        """
+        """
         encrypted_emails = []
         unencrypted_emails = []
         auth, content = self.get_email_config()
@@ -225,8 +223,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         return batch_emails, encrypted_emails
 
     def send_emails_in_buckets_envelope(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
-        '''
-        '''
+        """
+        """
         auth, _ = self.get_email_config()
         message = frontmatter.loads(u'\n'.join(self.get_file_content(message_file_path, 'message')))
         #
@@ -263,8 +261,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                 encrypted_progress.update(1)
 
     def send_emails_in_buckets(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
-        '''
-        '''
+        """
+        """
         print(subject)
         auth, _ = self.get_email_config()
         message = '\n'.join(self.get_file_content(message_file_path, 'message'))
@@ -296,8 +294,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                 encrypted_progress.update(1)
 
     def send_emails(self, email_files_path, message_file_path, subject):
-        '''
-        '''
+        """
+        """
         status = 0
         #
         if not os.path.isfile(message_file_path):
@@ -317,8 +315,8 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     @staticmethod
     def calculate_twilio_cost(msg, phone_numbers, msg_type):
-        '''
-        '''
+        """
+        """
         SMS_LENGTH = 160                 # Max length of one SMS message
         WHATSAPP_MSG_COST = 0.005        # Cost per message
         SMS_MSG_COST = 0.005        # Cost per message
@@ -338,8 +336,8 @@ class FromRuXiaWithLove(AllTimeHigh):
             print("> {} messages of {} segments each will be sent, at a cost of ${} ".format(num_messages, num_segments, cost))
 
     def send_twilio(self, contacts_file_path, message_file_path, msg_type):
-        '''
-        '''
+        """
+        """
         msg = u'\n'.join(self.get_file_content(message_file_path, 'message'))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
@@ -396,8 +394,8 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
-            '''
-            '''
+            """
+            """
             msg = u'\n'.join(self.get_file_content(message_file_path, 'message'))
             phone_numbers = self.get_phone_numbers(contacts_file_path)
             # Check you really want to send them

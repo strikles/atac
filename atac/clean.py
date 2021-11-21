@@ -17,8 +17,8 @@ class Leon(Config):
 
     @staticmethod
     def clean_phones(path):
-        '''
-        '''
+        """
+        """
         print(path)
         # get mailing list csv files
         ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
@@ -42,8 +42,8 @@ class Leon(Config):
 
     @staticmethod
     def clean_emails(path):
-        '''
-        '''
+        """
+        """
         print(path)
         # get mailing list csv files
         ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))

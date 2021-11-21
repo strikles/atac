@@ -5,8 +5,8 @@ import atac
 
 
 def get_config_arguments(arguments):
-    '''
-    '''
+    """
+    """
     encrypted_config = True
     key_file_path = None
     config_file_path = 'auth.json'
@@ -23,8 +23,8 @@ def get_config_arguments(arguments):
 
 # sub-command functions
 def configuration(arguments):
-    '''
-    '''
+    """
+    """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     config = atac.Config(encrypted_config, config_file_path, key_file_path)
     #
@@ -46,8 +46,8 @@ def configuration(arguments):
 
 # sub-command functions
 def email(arguments):
-    '''
-    '''
+    """
+    """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
@@ -80,8 +80,8 @@ def email(arguments):
 
 # sub-command functions
 def phone(arguments):
-    '''
-    '''
+    """
+    """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
@@ -103,8 +103,8 @@ def phone(arguments):
 
 # sub-command functions
 def social(arguments):
-    '''
-    '''
+    """
+    """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
@@ -122,8 +122,8 @@ def social(arguments):
 
 
 def scrape(arguments):
-    '''
-    '''
+    """
+    """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     #
     url = ""
@@ -151,8 +151,8 @@ def scrape(arguments):
 
 
 def compose(arguments):
-    '''
-    '''
+    """
+    """
     corpus_file_path = os.path.dirname(os.path.abspath(__file__)) + '/data/pg1009.txt'
     #
     if getattr(arguments, "corpus"):
@@ -163,8 +163,8 @@ def compose(arguments):
 
 
 def clean(arguments):
-    '''
-    '''
+    """
+    """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     leon = atac.Leon(encrypted_config, config_file_path, key_file_path)
     #
