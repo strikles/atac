@@ -1,7 +1,8 @@
+from .config import Config
+
 import regex as re
 import os
 import csv
-#import json
 import requests
 from requests import HTTPError
 import validators
@@ -10,8 +11,6 @@ from fake_useragent import UserAgent
 from urllib.parse import urlsplit
 from collections import deque
 from bs4 import BeautifulSoup
-#from functools import reduce
-from .config import Config
 
 
 class UnderTheMangoTree(Config):

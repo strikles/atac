@@ -1,3 +1,5 @@
+from .config import Config
+
 import os
 import sys
 import smtplib
@@ -9,8 +11,6 @@ from validators import ValidationFailure
 
 import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
-
-from .config import Config
 
 
 class Leon(Config):

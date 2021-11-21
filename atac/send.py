@@ -1,3 +1,5 @@
+from .compose import AllTimeHigh
+
 import os
 import sys
 import smtplib
@@ -10,7 +12,6 @@ from tqdm import tqdm
 
 from envelope import Envelope
 from validate_email import validate_email
-# import validators
 
 import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
@@ -19,9 +20,6 @@ from twilio.rest import Client as TwilioClient
 
 if os.environ.get('DISPLAY'):
     from pywhatkit import *
-
-#from .signalcli import Signalcli
-from .compose import AllTimeHigh
 
 
 class FromRuXiaWithLove(AllTimeHigh):

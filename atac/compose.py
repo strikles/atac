@@ -1,3 +1,5 @@
+from .config import Config
+
 import os
 import sys
 #import json
@@ -15,8 +17,6 @@ from email.mime.nonmultipart import MIMENonMultipart
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
-
-from .config import Config
 
 
 class AllTimeHigh(Config):
