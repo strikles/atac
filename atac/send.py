@@ -23,6 +23,29 @@ if os.environ.get('DISPLAY'):
 
 
 class FromRuXiaWithLove(AllTimeHigh):
+    """
+    A class used to represent a Configuration object
+
+    Attributes
+    ----------
+    key : str
+        a encryption key
+    data : dict
+        configuration data
+    encrypted_config : bool
+        use an encrypted configuration file
+    config_file_path : str
+        path to the configuration file
+    key_file_path : str
+        path to encryption key file
+    gpg : gnupg.GPG
+        python-gnupg gnupg.GPG
+
+    Methods
+    -------
+    generate_key()
+        Generates a new encryption key from a password + salt
+    """
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
         """
@@ -45,8 +68,17 @@ class FromRuXiaWithLove(AllTimeHigh):
     @staticmethod
     def get_file_content(file_path, file_type='contact'):
         """
-        """
+        Generate New Config
 
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
+        """
         if not os.path.isfile(file_path):
             print("invalid file path!")
             sys.exit(1)
@@ -72,6 +104,16 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def get_email_config(self):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         content_index = self.email['active_content']
         auth_index = self.email['active_auth']
@@ -82,6 +124,16 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def update_email_config(self):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         auth, content = self.get_email_config()
         # set sctive to next and save config
@@ -96,6 +148,16 @@ class FromRuXiaWithLove(AllTimeHigh):
     @staticmethod
     def get_contact_files(contact_files_path):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         contact_files = []
         #
@@ -117,6 +179,15 @@ class FromRuXiaWithLove(AllTimeHigh):
     def get_phone_numbers(self, contact_files_path):
         """
         Open the people CSV and get all the numbers out of it
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         phone_numbers = []
         contact_files = self.get_contact_files(contact_files_path)
@@ -141,6 +212,16 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_email(self, mailing_list, message):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         auth, _ = self.get_email_config()
         # Create secure connection with server and send email
@@ -165,7 +246,16 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
         We need the keyid to encrypt the message to the recipient.
         Let's walk through all keys in the keyring and find the
-        appropriate one.
+        appropriate one
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         keys = self.gpg.list_keys()
         for key in keys:
@@ -177,6 +267,16 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def store_emails_in_buckets(self, lines):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         encrypted_emails = []
         unencrypted_emails = []
@@ -225,6 +325,16 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_emails_in_buckets_envelope(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         auth, _ = self.get_email_config()
         message = frontmatter.loads(u'\n'.join(self.get_file_content(message_file_path, 'message')))
@@ -263,6 +373,16 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_emails_in_buckets(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         print(subject)
         auth, _ = self.get_email_config()
@@ -296,6 +416,16 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_emails(self, email_files_path, message_file_path, subject):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         status = 0
         #
@@ -317,9 +447,19 @@ class FromRuXiaWithLove(AllTimeHigh):
     @staticmethod
     def calculate_twilio_cost(msg, phone_numbers, msg_type):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
-        SMS_LENGTH = 160                 # Max length of one SMS message
-        WHATSAPP_MSG_COST = 0.005        # Cost per message
+        SMS_LENGTH = 160            # Max length of one SMS message
+        WHATSAPP_MSG_COST = 0.005   # Cost per message
         SMS_MSG_COST = 0.005        # Cost per message
         # How many segments is this message going to use?
         num_segments = 0
@@ -338,6 +478,16 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_twilio(self, contacts_file_path, message_file_path, msg_type):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
         """
         msg = u'\n'.join(self.get_file_content(message_file_path, 'message'))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
@@ -396,6 +546,16 @@ class FromRuXiaWithLove(AllTimeHigh):
     if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
             """
+            Generate New Config
+
+            Parameters
+            ----------
+            name : str
+                The name of the animal
+            sound : str
+                The sound the animal makes
+            num_legs : int, optional
+                The number of legs the animal (default is 4)
             """
             msg = u'\n'.join(self.get_file_content(message_file_path, 'message'))
             phone_numbers = self.get_phone_numbers(contacts_file_path)
@@ -417,6 +577,17 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_signal(self, contacts_file_path, message_file_path):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
+
         msg = u'\n'.join(self.get_file_content(message_file_path))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
@@ -441,6 +612,17 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_facebook(self, message_file_path):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
+
         status = 0
         msg = "Hello, world!"
         graph = facebook.GraphAPI(self.social['facebook']['access_token'])
@@ -455,6 +637,17 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_twitter(self, message_file_path):
         """
+        Generate New Config
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
+
         status = 0
         CONSUMER_KEY = self.social['twitter']['consumer_key']
         CONSUMER_SECRET = self.social['twitter']['consumer_secret']

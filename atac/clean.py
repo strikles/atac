@@ -14,6 +14,29 @@ from phonenumbers import NumberParseException, phonenumberutil
 
 
 class Leon(Config):
+    """
+    A class used to represent a Configuration object
+
+    Attributes
+    ----------
+    key : str
+        a encryption key
+    data : dict
+        configuration data
+    encrypted_config : bool
+        use an encrypted configuration file
+    config_file_path : str
+        path to the configuration file
+    key_file_path : str
+        path to encryption key file
+    gpg : gnupg.GPG
+        python-gnupg gnupg.GPG
+
+    Methods
+    -------
+    generate_key()
+        Generates a new encryption key from a password + salt
+    """
 
     @staticmethod
     def clean_phones(path):

@@ -135,8 +135,79 @@ class Config:
         finally:
             key_file.close()
 
+    def save_config(self, config_file_path, encrypted_config):
+        """
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
+        """
+        if encrypted_config:
+            fernet = Fernet(self.key)
+            # encrypting the file
+            encrypted_data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf-8'))
+            # opening the file in write mode and writing the encrypted data
+            try:
+                with open(config_file_path, 'wb') as encrypted_file:
+                    encrypted_file.write(encrypted_data)
+            except OSError as e:
+                print('{} file error {}'.format(config_file_path, e.errno))
+            finally:
+                encrypted_file.close()
+        else:
+            try:
+                with open(config_file_path, 'wb') as unencrypted_file:
+                    unencrypted_file.write(json.dumps(self.data, ensure_ascii=False, indent=4, sort_keys=True).encode('utf-8'))
+            except OSError as e:
+                print('{} file not found {}'.format(config_file_path, e.errno))
+            finally:
+                unencrypted_file.close()
+
+    def load_config(self):
+        """
+
+        Parameters
+        ----------
+        name : str
+            The name of the animal
+        sound : str
+            The sound the animal makes
+        num_legs : int, optional
+            The number of legs the animal (default is 4)
+        """
+        if self.encrypted_config:
+            fernet = Fernet(self.key)
+            # opening the encrypted file
+            try:
+                with open(self.config_file_path, 'rb') as encrypted_file:
+                    encrypted_data = encrypted_file.read()
+            except OSError as e:
+                print('{} file error {}'.format(self.config_file_path, e.errno))
+            finally:
+                encrypted_file.close()
+            # decrypting the file
+            try:
+                self.data = json.loads(fernet.decrypt(encrypted_data))
+            except InvalidToken:
+                print("Invalid Key - Unsuccessfully decrypted")
+                sys.exit(1)
+        else:
+            try:
+                with open(self.config_file_path, 'rb') as new_config:
+                    self.data = json.loads(new_config.read())
+            except OSError as e:
+                print('{} file error {}'.format(self.config_file_path, e.errno))
+            finally:
+                new_config.close()
+
     def new_config(self):
         """
+        Generate New Config
 
         Parameters
         ----------
@@ -292,73 +363,3 @@ class Config:
         }
         #
         self.save_config(self.config_file_path, self.encrypted_config)
-
-    def save_config(self, config_file_path, encrypted_config):
-        """
-
-        Parameters
-        ----------
-        name : str
-            The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
-        """
-        if encrypted_config:
-            fernet = Fernet(self.key)
-            # encrypting the file
-            encrypted_data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf-8'))
-            # opening the file in write mode and writing the encrypted data
-            try:
-                with open(config_file_path, 'wb') as encrypted_file:
-                    encrypted_file.write(encrypted_data)
-            except OSError as e:
-                print('{} file error {}'.format(config_file_path, e.errno))
-            finally:
-                encrypted_file.close()
-        else:
-            try:
-                with open(config_file_path, 'wb') as unencrypted_file:
-                    unencrypted_file.write(json.dumps(self.data, ensure_ascii=False, indent=4, sort_keys=True).encode('utf-8'))
-            except OSError as e:
-                print('{} file not found {}'.format(config_file_path, e.errno))
-            finally:
-                unencrypted_file.close()
-
-    def load_config(self):
-        """
-
-        Parameters
-        ----------
-        name : str
-            The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
-        """
-        if self.encrypted_config:
-            fernet = Fernet(self.key)
-            # opening the encrypted file
-            try:
-                with open(self.config_file_path, 'rb') as encrypted_file:
-                    encrypted_data = encrypted_file.read()
-            except OSError as e:
-                print('{} file error {}'.format(self.config_file_path, e.errno))
-            finally:
-                encrypted_file.close()
-            # decrypting the file
-            try:
-                self.data = json.loads(fernet.decrypt(encrypted_data))
-            except InvalidToken:
-                print("Invalid Key - Unsuccessfully decrypted")
-                sys.exit(1)
-        else:
-            try:
-                with open(self.config_file_path, 'rb') as new_config:
-                    self.data = json.loads(new_config.read())
-            except OSError as e:
-                print('{} file error {}'.format(self.config_file_path, e.errno))
-            finally:
-                new_config.close()
