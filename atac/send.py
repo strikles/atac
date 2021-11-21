@@ -398,7 +398,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 #
                 self.send_email(mailing_list, mime_message)
                 #
-                time.sleep(10)
+                time.sleep(5)
                 progress.update(1)
         #
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
@@ -411,7 +411,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 #
                 self.send_email(email_recipient, encrypted_mime_message)
                 #
-                time.sleep(10)
+                time.sleep(5)
                 encrypted_progress.update(1)
 
     def send_emails(self, email_files_path, message_file_path, subject):
