@@ -53,10 +53,6 @@ class AllTimeHigh(Config):
         ----------
         name : str
             The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         if not os.path.isfile(image_path):
             print("Invalid image path!")
@@ -80,10 +76,6 @@ class AllTimeHigh(Config):
         ----------
         name : str
             The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         # Build the model.
         text_model = markovify.Text(content, state_size=3)
@@ -99,10 +91,6 @@ class AllTimeHigh(Config):
         ----------
         name : str
             The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         output = ''
         ii = 0
@@ -223,8 +211,6 @@ class AllTimeHigh(Config):
             The name of the animal
         sound : str
             The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         img = Image.new('L', (window_height, window_width), color='white')
         draw = ImageDraw.Draw(img)
@@ -241,10 +227,6 @@ class AllTimeHigh(Config):
         ----------
         name : str
             The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         # instantiate QRCode object
         qr = qrcode.QRCode(version=1, box_size=10, border=4)

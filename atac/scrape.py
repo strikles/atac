@@ -101,6 +101,8 @@ class UnderTheMangoTree(Config):
     @staticmethod
     def set_useragent():
         """
+        Set user agent to random
+
         """
         ua = UserAgent()
         headers = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
@@ -113,6 +115,7 @@ class UnderTheMangoTree(Config):
     def make_dirs():
         """
         Make dirs
+
         """
         if not os.path.isdir(os.getcwd() + "/data/contacts"):
             os.makedirs(os.getcwd() + "/data/contacts")
@@ -125,6 +128,7 @@ class UnderTheMangoTree(Config):
     def truncate_files(data_key):
         """
         Save to file
+
         """
         csv_path = os.getcwd() + "/data/contacts/emails/" + data_key + "_emails.csv"
         try:
@@ -174,6 +178,7 @@ class UnderTheMangoTree(Config):
     def save_email_contacts(self, new_contacts, data_key):
         """
         Save to file
+
         """
         csv_path = os.getcwd() + "/data/contacts/emails/" + data_key + "_emails.csv"
         try:
@@ -195,6 +200,7 @@ class UnderTheMangoTree(Config):
     def save_phone_contacts(self, new_contacts, data_key):
         """
         Save to file
+
         """
         csv_path = os.getcwd() + "/data/contacts/phones/" + data_key + "_phones.csv"
         try:

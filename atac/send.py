@@ -72,8 +72,6 @@ class FromRuXiaWithLove(AllTimeHigh):
 
         Parameters
         ----------
-        name : str
-            The name of the animal
         sound : str
             The sound the animal makes
         num_legs : int, optional
@@ -106,14 +104,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
         Generate New Config
 
-        Parameters
-        ----------
-        name : str
-            The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         content_index = self.email['active_content']
         auth_index = self.email['active_auth']
@@ -126,14 +116,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
         Generate New Config
 
-        Parameters
-        ----------
-        name : str
-            The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         auth, content = self.get_email_config()
         # set sctive to next and save config
@@ -154,10 +136,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         ----------
         name : str
             The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         contact_files = []
         #
@@ -184,10 +162,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         ----------
         name : str
             The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         phone_numbers = []
         contact_files = self.get_contact_files(contact_files_path)
@@ -220,8 +194,6 @@ class FromRuXiaWithLove(AllTimeHigh):
             The name of the animal
         sound : str
             The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         auth, _ = self.get_email_config()
         # Create secure connection with server and send email
@@ -252,10 +224,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         ----------
         name : str
             The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         keys = self.gpg.list_keys()
         for key in keys:
@@ -273,10 +241,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         ----------
         name : str
             The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         encrypted_emails = []
         unencrypted_emails = []
@@ -585,8 +549,6 @@ class FromRuXiaWithLove(AllTimeHigh):
             The name of the animal
         sound : str
             The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
 
         msg = u'\n'.join(self.get_file_content(message_file_path))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
@@ -618,10 +580,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         ----------
         name : str
             The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
 
         status = 0
         msg = "Hello, world!"
@@ -643,10 +601,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         ----------
         name : str
             The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
 
         status = 0
         CONSUMER_KEY = self.social['twitter']['consumer_key']

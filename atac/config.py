@@ -71,14 +71,6 @@ class Config:
         """
         Generates encryption key from password + salts
 
-        Parameters
-        ----------
-        name : str
-            The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         print(inspect.stack()[1].function)
         if "PYTEST_CURRENT_TEST" in os.environ:
@@ -97,15 +89,12 @@ class Config:
 
     def load_key(self, key_file_path):
         """
+        Load encryption key file
 
         Parameters
         ----------
         name : str
             The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         try:
             with open(key_file_path, 'rb') as key_file:
@@ -117,15 +106,12 @@ class Config:
 
     def save_key(self, key_file_path):
         """
+        Save encryption key file
 
         Parameters
         ----------
         name : str
             The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         try:
             with open(key_file_path, 'wb') as key_file:
@@ -137,6 +123,7 @@ class Config:
 
     def save_config(self, config_file_path, encrypted_config):
         """
+        Save json configuration file
 
         Parameters
         ----------
@@ -144,8 +131,6 @@ class Config:
             The name of the animal
         sound : str
             The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         if encrypted_config:
             fernet = Fernet(self.key)
@@ -170,15 +155,8 @@ class Config:
 
     def load_config(self):
         """
+        Loads json configuration
 
-        Parameters
-        ----------
-        name : str
-            The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         if self.encrypted_config:
             fernet = Fernet(self.key)
@@ -209,14 +187,6 @@ class Config:
         """
         Generate New Config
 
-        Parameters
-        ----------
-        name : str
-            The name of the animal
-        sound : str
-            The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
         """
         self.data = {
             "compose": {},
