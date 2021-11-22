@@ -8,7 +8,7 @@ import markdown
 import markovify
 import qrcode
 import ascii_magic
-
+from datetime import datetime
 from email import charset
 #from email.encoders import encode_base64
 from email.mime.multipart import MIMEMultipart
@@ -106,6 +106,16 @@ class AllTimeHigh(Config):
         #
         return output
 
+    @staticmethod
+    def get_datetime():
+        # datetime object containing current date and time
+        now = datetime.now()
+        # print("now =", now)
+        # dd/mm/YY H:M:S
+        dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+        print("date and time =", dt_string)
+        return dt_string
+
     def compose_encrypted_email(self, sender_email, recipient_email, key_id, message_content, subject):
         """
         Generate New Config
@@ -127,7 +137,7 @@ class AllTimeHigh(Config):
         message.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         message.replace_header('format', 'flowed')
         #
-        message["Subject"] = subject
+        message["Subject"] = self.get_datetime() + " " + subject
         message["From"] = sender_email
         message["To"] = recipient_email
         # Create the plain-text and HTML version of your message
