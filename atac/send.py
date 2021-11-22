@@ -375,7 +375,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 #
                 self.send_email(email_recipient, encrypted_mime_message)
                 #
-                time.sleep(5)
+                time.sleep(1)
                 encrypted_progress.update(1)
 
     def send_emails(self, email_files_path, message_file_path, subject):
