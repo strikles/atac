@@ -15,7 +15,7 @@ from bs4 import BeautifulSoup
 
 class UnderTheMangoTree(Config):
     """
-    A class used to represent a Configuration object
+    A class used to represent a scraper object
 
     Attributes
     ----------
@@ -66,15 +66,12 @@ class UnderTheMangoTree(Config):
 
     def invalid_url(self, url):
         """
-        Prints what the animals name is and what sound it makes.
-
-        If the argument `sound` isn't passed in, the default Animal
-        sound is used.
+        Check url against blacklist
 
         Parameters
         ----------
-        sound : str, optional
-            The sound the animal makes (default is None)
+        url : str
+            The url to validate against
 
         Raises
         ------
@@ -114,7 +111,7 @@ class UnderTheMangoTree(Config):
     @staticmethod
     def make_dirs():
         """
-        Make dirs
+        Make directories
 
         """
         if not os.path.isdir(os.getcwd() + "/data/contacts"):
@@ -127,8 +124,12 @@ class UnderTheMangoTree(Config):
     @staticmethod
     def truncate_files(data_key):
         """
-        Save to file
+        Save contacts to file
 
+        Parameters
+        ----------
+        data_key : str
+            the scraped prefix
         """
         csv_path = os.getcwd() + "/data/contacts/emails/" + data_key + "_emails.csv"
         try:
@@ -161,6 +162,12 @@ class UnderTheMangoTree(Config):
     @staticmethod
     def extract_emails(content):
         """
+        Use regex to extract emails from content
+
+        Parameters
+        ----------
+        content : str
+            the content scraped
         """
         rx_emails = re.compile(r"[a-zA-Z0-9_+&*-]+(?:\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\.)+"
                                r"(?!jpg|jpeg|png|svg|gif|webp|yji|pdf|htm|title|content|formats)[a-zA-Z]{2,7}")
@@ -170,6 +177,12 @@ class UnderTheMangoTree(Config):
     @staticmethod
     def extract_phones(content):
         """
+        Use regex to extract phones from content
+
+        Parameters
+        ----------
+        content : str
+            the content scraped
         """
         rx_phones = re.compile(r'\+(?:[0-9] ?){6,14}[0-9]')
         #
@@ -179,6 +192,10 @@ class UnderTheMangoTree(Config):
         """
         Save to file
 
+        Parameters
+        ----------
+        content : str
+            the content scraped
         """
         csv_path = os.getcwd() + "/data/contacts/emails/" + data_key + "_emails.csv"
         try:
@@ -201,6 +218,10 @@ class UnderTheMangoTree(Config):
         """
         Save to file
 
+        Parameters
+        ----------
+        content : str
+            the content scraped
         """
         csv_path = os.getcwd() + "/data/contacts/phones/" + data_key + "_phones.csv"
         try:
@@ -221,6 +242,12 @@ class UnderTheMangoTree(Config):
 
     def process_page(self, data_key, starting_url):
         """
+        Save to file
+
+        Parameters
+        ----------
+        content : str
+            the content scraped
         """
         status = 0
         # primary queue (urls to be crawled)
