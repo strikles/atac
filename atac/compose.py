@@ -51,8 +51,8 @@ class AllTimeHigh(Config):
 
         Parameters
         ----------
-        name : str
-            The name of the animal
+        image_path : str
+            Path to image file
         """
         if not os.path.isfile(image_path):
             print("Invalid image path!")
@@ -70,12 +70,12 @@ class AllTimeHigh(Config):
     @staticmethod
     def generate_markov_content(content):
         """
-        Generate New Config
+        Generate Markov Content
 
         Parameters
         ----------
-        name : str
-            The name of the animal
+        content : str
+            Corpus to generate markov sequences from
         """
         # Build the model.
         text_model = markovify.Text(content, state_size=3)
@@ -85,12 +85,12 @@ class AllTimeHigh(Config):
     @staticmethod
     def fix_mixed_encoding(s):
         """
-        Generate New Config
+        Fixed mixed encoding
 
         Parameters
         ----------
-        name : str
-            The name of the animal
+        s : str
+            The mixed encoding string to fix
         """
         output = ''
         ii = 0
@@ -108,26 +108,35 @@ class AllTimeHigh(Config):
 
     @staticmethod
     def get_datetime():
+        """
+        Return datetime string
+
+        """
         # datetime object containing current date and time
         now = datetime.now()
         # print("now =", now)
         # dd/mm/YY H:M:S
         dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
         print("date and time =", dt_string)
+        #
         return dt_string
 
     def compose_encrypted_email(self, sender_email, recipient_email, key_id, message_content, subject):
         """
-        Generate New Config
+        Compose MIMEMultipart encrypted email message
 
         Parameters
         ----------
-        name : str
+        sender_email : str
             The name of the animal
-        sound : str
+        recipient_email: str
             The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
+        key_id : int, optional
+            The gnupg keyid for the email addresses
+        message_content : str
+            The message to send
+        subject : str
+            The message subject
         """
         message = MIMEMultipart("mixed")
         cs = charset.Charset('utf-8')
@@ -168,16 +177,18 @@ class AllTimeHigh(Config):
     @staticmethod
     def compose_email(sender_email, mailing_list, message_content, subject):
         """
-        Generate New Config
+        Compose MIMEMultipart email message
 
         Parameters
         ----------
-        name : str
+        sender_email : str
             The name of the animal
-        sound : str
+        mailing_list : list
             The sound the animal makes
-        num_legs : int, optional
-            The number of legs the animal (default is 4)
+        message_content : str
+            The message content to send
+        subject : str
+            The email subject
         """
         message = MIMEMultipart("mixed")
         cs = charset.Charset('utf-8')
@@ -213,14 +224,16 @@ class AllTimeHigh(Config):
     @staticmethod
     def create_image(text, window_height, window_width):
         """
-        Generate New Config
+        Generate Image from text
 
         Parameters
         ----------
-        name : str
+        text : str
             The name of the animal
-        sound : str
-            The sound the animal makes
+        window_height : int
+            The image height
+        window_width : int
+        The image width
         """
         img = Image.new('L', (window_height, window_width), color='white')
         draw = ImageDraw.Draw(img)
@@ -231,12 +244,12 @@ class AllTimeHigh(Config):
     @staticmethod
     def create_qr_code(url):
         """
-        Generate New Config
+        Generate QR Code
 
         Parameters
         ----------
-        name : str
-            The name of the animal
+        url : str
+            The QR code data
         """
         # instantiate QRCode object
         qr = qrcode.QRCode(version=1, box_size=10, border=4)
