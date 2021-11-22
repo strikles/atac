@@ -73,11 +73,6 @@ class UnderTheMangoTree(Config):
         url : str
             The url to validate against
 
-        Raises
-        ------
-        NotImplementedError
-            If no sound is set for the animal or passed in as a
-            parameter.
         """
         for i in self.scrape["invalid_domains"]:
             if i in url.lower():
@@ -98,7 +93,7 @@ class UnderTheMangoTree(Config):
     @staticmethod
     def set_useragent():
         """
-        Set user agent to random
+        Set user agent to random and return headers dictionary
 
         """
         ua = UserAgent()
@@ -111,7 +106,7 @@ class UnderTheMangoTree(Config):
     @staticmethod
     def make_dirs():
         """
-        Make directories
+        Make contacts directories if they don’t exist
 
         """
         if not os.path.isdir(os.getcwd() + "/data/contacts"):
@@ -216,12 +211,12 @@ class UnderTheMangoTree(Config):
 
     def save_phone_contacts(self, new_contacts, data_key):
         """
-        Save to file
+        Save contacts to file
 
         Parameters
         ----------
-        content : str
-            the content scraped
+        new_contacts : list
+            Phone contacts
         """
         csv_path = os.getcwd() + "/data/contacts/phones/" + data_key + "_phones.csv"
         try:
@@ -242,12 +237,14 @@ class UnderTheMangoTree(Config):
 
     def process_page(self, data_key, starting_url):
         """
-        Save to file
+        Scrape page
 
         Parameters
         ----------
-        content : str
-            the content scraped
+        data_key : str
+            the scrape data key
+        starting_url : str
+            The scrape starting url
         """
         status = 0
         # primary queue (urls to be crawled)
