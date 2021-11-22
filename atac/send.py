@@ -72,9 +72,9 @@ class FromRuXiaWithLove(AllTimeHigh):
 
         Parameters
         ----------
-        sound : str
+        file_path : str
             The sound the animal makes
-        num_legs : int, optional
+        file_type : int, optional
             The number of legs the animal (default is 4)
         """
         if not os.path.isfile(file_path):
@@ -134,7 +134,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
         Parameters
         ----------
-        name : str
+        contact_files_path : str
             The name of the animal
         """
         contact_files = []
@@ -160,7 +160,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
         Parameters
         ----------
-        name : str
+        contact_files_path : str
             The name of the animal
         """
         phone_numbers = []
@@ -190,9 +190,9 @@ class FromRuXiaWithLove(AllTimeHigh):
 
         Parameters
         ----------
-        name : str
+        mailing_list : list
             The name of the animal
-        sound : str
+        message : MIMEMultipart
             The sound the animal makes
         """
         auth, _ = self.get_email_config()
@@ -222,7 +222,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
         Parameters
         ----------
-        name : str
+        recipient : str
             The name of the animal
         """
         keys = self.gpg.list_keys()
@@ -239,7 +239,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
         Parameters
         ----------
-        name : str
+        lines : list
             The name of the animal
         """
         encrypted_emails = []
@@ -293,12 +293,14 @@ class FromRuXiaWithLove(AllTimeHigh):
 
         Parameters
         ----------
-        name : str
+        unencrypted_email_batches : list
             The name of the animal
-        sound : str
+        encrypted_emails : list
             The sound the animal makes
-        num_legs : int, optional
+        message_file_path : str
             The number of legs the animal (default is 4)
+        subject : str
+            The email subject
         """
         auth, _ = self.get_email_config()
         message = frontmatter.loads(u'\n'.join(self.get_file_content(message_file_path, 'message')))
@@ -341,12 +343,14 @@ class FromRuXiaWithLove(AllTimeHigh):
 
         Parameters
         ----------
-        name : str
+        unencrypted_email_batches : list
             The name of the animal
-        sound : str
+        encrypted_emails : list
             The sound the animal makes
-        num_legs : int, optional
+        message_file_path : str
             The number of legs the animal (default is 4)
+        subject : str
+            The email subject
         """
         print(subject)
         auth, _ = self.get_email_config()
@@ -384,12 +388,14 @@ class FromRuXiaWithLove(AllTimeHigh):
 
         Parameters
         ----------
-        name : str
+        unencrypted_email_batches : list
             The name of the animal
-        sound : str
+        email_file_path : str
             The sound the animal makes
-        num_legs : int, optional
+        message_file_path : str
             The number of legs the animal (default is 4)
+        subject : str
+            The email subject
         """
         status = 0
         #
@@ -415,11 +421,11 @@ class FromRuXiaWithLove(AllTimeHigh):
 
         Parameters
         ----------
-        name : str
+        msg : str
             The name of the animal
-        sound : str
+        phone_numbers : list
             The sound the animal makes
-        num_legs : int, optional
+        msg_type : str
             The number of legs the animal (default is 4)
         """
         SMS_LENGTH = 160            # Max length of one SMS message
@@ -446,11 +452,11 @@ class FromRuXiaWithLove(AllTimeHigh):
 
         Parameters
         ----------
-        name : str
+        contacts_file_path : str
             The name of the animal
-        sound : str
+        message_file_path : str
             The sound the animal makes
-        num_legs : int, optional
+        msg_type : str
             The number of legs the animal (default is 4)
         """
         msg = u'\n'.join(self.get_file_content(message_file_path, 'message'))
