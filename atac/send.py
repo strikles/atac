@@ -69,7 +69,7 @@ class FromRuXiaWithLove(AllTimeHigh):
     @staticmethod
     def get_file_content(file_path, file_type='contact'):
         """
-        Generate New Config
+        Get file content
 
         Parameters
         ----------
@@ -102,7 +102,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def get_email_config(self):
         """
-        Generate New Config
+        Get email config
 
         """
         content_index = self.email['active_content']
@@ -114,7 +114,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def update_email_config(self):
         """
-        Generate New Config
+        Update email config
 
         """
         auth, content = self.get_email_config()
@@ -130,7 +130,7 @@ class FromRuXiaWithLove(AllTimeHigh):
     @staticmethod
     def get_contact_files(contact_files_path):
         """
-        Generate New Config
+        Get contact files
 
         Parameters
         ----------
@@ -186,7 +186,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_email(self, mailing_list, message):
         """
-        Generate New Config
+        Send email
 
         Parameters
         ----------
@@ -235,7 +235,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def store_emails_in_buckets(self, lines):
         """
-        Generate New Config
+        Store emails in buckets
 
         Parameters
         ----------
@@ -292,7 +292,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_emails_in_buckets_envelope(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
         """
-        Generate New Config
+        Send emails in buckets using envelope
 
         Parameters
         ----------
@@ -342,7 +342,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_emails_in_buckets(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
         """
-        Generate New Config
+        Send emails in buckets
 
         Parameters
         ----------
@@ -387,7 +387,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_emails(self, email_files_path, message_file_path, subject):
         """
-        Generate New Config
+        Send Emails
 
         Parameters
         ----------
@@ -420,7 +420,7 @@ class FromRuXiaWithLove(AllTimeHigh):
     @staticmethod
     def calculate_twilio_cost(msg, phone_numbers, msg_type):
         """
-        Generate New Config
+        Calculate Twilio cost
 
         Parameters
         ----------
@@ -451,7 +451,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_twilio(self, contacts_file_path, message_file_path, msg_type):
         """
-        Generate New Config
+        Send Twilio message
 
         Parameters
         ----------
@@ -519,7 +519,7 @@ class FromRuXiaWithLove(AllTimeHigh):
     if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
             """
-            Generate New Config
+            Send Pywhatkit
 
             Parameters
             ----------
@@ -550,7 +550,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_signal(self, contacts_file_path, message_file_path):
         """
-        Generate New Config
+        Send Signal message
 
         Parameters
         ----------
@@ -583,7 +583,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_facebook(self, message_file_path):
         """
-        Generate New Config
+        Send Facebook
 
         Parameters
         ----------
@@ -604,7 +604,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def send_twitter(self, message_file_path):
         """
-        Generate New Config
+        Send Twitter
 
         Parameters
         ----------
