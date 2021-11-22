@@ -90,14 +90,13 @@ class FromRuXiaWithLove(AllTimeHigh):
                     for i in range(len(lines)):
                         lines[i] = textwrap.wrap(text=lines[i], width=70, break_long_words=False)
                     lines = [item for sublist in lines for item in sublist]
-
-                print('\n>>> '.join(map(str, lines)))
+                # print('\n>>> '.join(map(str, lines)))
         except OSError as e:
             print('{} file error {}'.format(file_path, e.errno))
         finally:
             content_file.close()
         #
-        print("> file content: \n\n{}".format('\n'.join(lines)))
+        # print("> file content: \n\n{}".format('\n'.join(lines)))
         #
         return lines
 
