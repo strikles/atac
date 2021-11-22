@@ -3,4 +3,6 @@ env/
 venv/
 .idea/
 log/
-
+auth.json
+new.json
+auth.key
