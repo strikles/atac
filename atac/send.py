@@ -135,7 +135,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         Parameters
         ----------
         contact_files_path : str
-            The name of the animal
+            The path to the contacts CSV
         """
         contact_files = []
         #
@@ -161,7 +161,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         Parameters
         ----------
         contact_files_path : str
-            The name of the animal
+            The path to the phone numbers CSV
         """
         phone_numbers = []
         contact_files = self.get_contact_files(contact_files_path)
@@ -191,9 +191,9 @@ class FromRuXiaWithLove(AllTimeHigh):
         Parameters
         ----------
         mailing_list : list
-            The name of the animal
+            The emails list
         message : MIMEMultipart
-            The sound the animal makes
+            The email messsage to send
         """
         auth, _ = self.get_email_config()
         # Create secure connection with server and send email
@@ -223,7 +223,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         Parameters
         ----------
         recipient : str
-            The name of the animal
+            The email recipient
         """
         keys = self.gpg.list_keys()
         for key in keys:
@@ -240,7 +240,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         Parameters
         ----------
         lines : list
-            The name of the animal
+            The contacts list
         """
         encrypted_emails = []
         unencrypted_emails = []
@@ -519,16 +519,14 @@ class FromRuXiaWithLove(AllTimeHigh):
     if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
             """
-            Send Pywhatkit
+            Send Pywhatkit message
 
             Parameters
             ----------
-            name : str
-                The name of the animal
-            sound : str
-                The sound the animal makes
-            num_legs : int, optional
-                The number of legs the animal (default is 4)
+            contacts_file_path : str
+                The path to the phone numbers CSV
+            message_file_path : str
+                The path to the message file
             """
             msg = u'\n'.join(self.get_file_content(message_file_path, 'message'))
             phone_numbers = self.get_phone_numbers(contacts_file_path)
