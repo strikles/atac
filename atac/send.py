@@ -249,7 +249,9 @@ class FromRuXiaWithLove(AllTimeHigh):
         with tqdm(total=len(lines)) as filter_progress:
             for _, receiver_email in csv.reader(lines):
                 #
-                is_valid_email = validate_email(
+                is_valid_email = validators.email(receiver_email)
+                """
+                validate_email(
                     email_address=receiver_email,
                     check_format=True,
                     check_blacklist=False,
@@ -262,6 +264,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     smtp_skip_tls=False,
                     smtp_tls_context=None,
                     smtp_debug=True)
+                """
                 #
                 if is_valid_email:
                     gpg_key_id = self.find_gpg_keyid(receiver_email)
