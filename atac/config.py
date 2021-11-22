@@ -93,8 +93,8 @@ class Config:
 
         Parameters
         ----------
-        name : str
-            The name of the animal
+        key_file_path : str
+            path to encryption key file
         """
         try:
             with open(key_file_path, 'rb') as key_file:
@@ -110,8 +110,8 @@ class Config:
 
         Parameters
         ----------
-        name : str
-            The name of the animal
+        key_file_path : str
+            path to encryption key file
         """
         try:
             with open(key_file_path, 'wb') as key_file:
@@ -127,10 +127,10 @@ class Config:
 
         Parameters
         ----------
-        name : str
-            The name of the animal
-        sound : str
-            The sound the animal makes
+        config_file_path : str
+            Path to config file
+        encrypted_config: bool
+            Use encrypted configuration file
         """
         if encrypted_config:
             fernet = Fernet(self.key)
