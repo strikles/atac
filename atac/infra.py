@@ -103,19 +103,19 @@ class LoveAtLast:
         )
 
     def delete_user(self):
-        response = client.delete_user(
+        response = self.workmail.delete_user(
             OrganizationId='string',
             UserId='string'
         )
 
     def describe_user(self):
-        response = client.delete_user(
+        response = self.workmail.delete_user(
             OrganizationId='string',
             UserId='string'
         )
 
     def create_organization(self):
-        response = client.create_organization(
+        response = self.workmail.create_organization(
             DirectoryId='string',
             Alias='string',
             ClientToken='string',
@@ -130,7 +130,7 @@ class LoveAtLast:
         )
 
     def delete_organization(self):
-        response = client.delete_organization(
+        response = self.workmail.delete_organization(
             ClientToken='string',
             OrganizationId='string',
             DeleteDirectory=True|False
