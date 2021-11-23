@@ -17,7 +17,7 @@
 
 ![](assets/img/IMG_3332.JPG)
 
-### Summary
+#### Summary
 
 Cybertorture is recognized by the United Nations under A/HRC/43/49 and is used in grotesque rituals of social stratification (by cowardly colégio militar alumni, law enforcement and others recruited for the purpose) to exact extrajudicial trials and sentences as an interactive spectacle encouraging participation, mongering tensions and hatred by preying on cognitive biases.
 
@@ -39,7 +39,7 @@ The procedure is hidden under a veil of medical malpractice via psychiatric frau
 
 ![](assets/img/28B6320C-154B-42E4-9642-8212498D9913.jpeg)
 
-##### Since Cybertorture paired with Psychiatric Fraud and False therapy has been used for quite some time now to stratify society with extrajudicial trials and sentences for motives as repugnant as "someone not liking you" or "talking nonsense", I decided to write some tools
+#### Since Cybertorture paired with Psychiatric Fraud and False therapy has been used for quite some time now to stratify society with extrajudicial trials and sentences for motives as repugnant as "someone not liking you" or "talking nonsense", I decided to write some tools
 
 ![](assets/img/tumblr_inline_pec2nqah2k1qlr65v_540.gif)
 
@@ -48,7 +48,7 @@ web scraper that gathers contact information
 
 [scrapeme](SCRAPEME.md)
 
-###### The current scraping algorithm is the following
+##### The current scraping algorithm is the following
 ```markdown
 P ← starting URLs (primary queue) 
 S ← ∅ (secondary queue)
