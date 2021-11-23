@@ -1,3 +1,4 @@
+import os
 import boto3
 
 class  Moonraker:
@@ -21,7 +22,7 @@ class  Moonraker:
         """
         self.ec2 = boto3.client("ec2", region_name="us-west-2")
 
-    def create_key_pair():
+    def create_key_pair(self):
         """
         """
         key_pair = self.ec2.create_key_pair(KeyName="ec2-key-pair")
@@ -30,7 +31,7 @@ class  Moonraker:
         with os.fdopen(os.open("/tmp/aws_ec2_key.pem", os.O_WRONLY | os.O_CREAT, 0o400), "w+") as handle:
             handle.write(private_key)
 
-    def create_instance():
+    def create_instance(self):
         instances = self.ec2.run_instances(
             ImageId="ami-0b0154d3d8011b0cd",
             MinCount=1,
@@ -40,14 +41,14 @@ class  Moonraker:
         )
         print(instances["Instances"][0]["InstanceId"])
 
-    def get_public_ip(instance_id):
+    def get_public_ip(self, instance_id):
         reservations = self.ec2.describe_instances(InstanceIds=[instance_id]).get("Reservations")
 
         for reservation in reservations:
             for instance in reservation['Instances']:
                 print(instance.get("PublicIpAddress"))
 
-    def get_running_instances():
+    def get_running_instances(self):
         reservations = self.ec2.describe_instances(Filters=[
             {
                 "Name": "instance-state-name",
@@ -63,11 +64,11 @@ class  Moonraker:
                 private_ip = instance["PrivateIpAddress"]
                 print(f"{instance_id}, {instance_type}, {public_ip}, {private_ip}")
 
-    def stop_instance(instance_id):
+    def stop_instance(self, instance_id):
         response = self.ec2.stop_instances(InstanceIds=[instance_id])
         print(response)
 
-    def terminate_instance(instance_id):
+    def terminate_instance(self, instance_id):
         response = self.ec2.terminate_instances(InstanceIds=[instance_id])
         print(response)
 
