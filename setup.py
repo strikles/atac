@@ -13,6 +13,7 @@ setup(
     install_requires=[            # I get to this in a second
         'ascii-magic',
         'beautifulsoup4',
+        'boto3',
         'bs4',
         'colorama',
         'coloredlogs',
