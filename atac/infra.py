@@ -32,6 +32,8 @@ class  Moonraker:
             handle.write(private_key)
 
     def create_instance(self):
+        """
+        """
         instances = self.ec2.run_instances(
             ImageId="ami-0b0154d3d8011b0cd",
             MinCount=1,
@@ -42,13 +44,16 @@ class  Moonraker:
         print(instances["Instances"][0]["InstanceId"])
 
     def get_public_ip(self, instance_id):
+        """
+        """
         reservations = self.ec2.describe_instances(InstanceIds=[instance_id]).get("Reservations")
-
         for reservation in reservations:
             for instance in reservation['Instances']:
                 print(instance.get("PublicIpAddress"))
 
     def get_running_instances(self):
+        """
+        """
         reservations = self.ec2.describe_instances(Filters=[
             {
                 "Name": "instance-state-name",
@@ -65,10 +70,14 @@ class  Moonraker:
                 print(f"{instance_id}, {instance_type}, {public_ip}, {private_ip}")
 
     def stop_instance(self, instance_id):
+        """
+        """
         response = self.ec2.stop_instances(InstanceIds=[instance_id])
         print(response)
 
     def terminate_instance(self, instance_id):
+        """
+        """
         response = self.ec2.terminate_instances(InstanceIds=[instance_id])
         print(response)
 
@@ -95,6 +104,8 @@ class LoveAtLast:
         self.workmail = boto3.client('workmail')
 
     def create_user(self):
+        """
+        """
         response = self.workmail.create_user(
             OrganizationId='string',
             Name='string',
@@ -103,18 +114,24 @@ class LoveAtLast:
         )
 
     def delete_user(self):
+        """
+        """
         response = self.workmail.delete_user(
             OrganizationId='string',
             UserId='string'
         )
 
     def describe_user(self):
+        """
+        """
         response = self.workmail.delete_user(
             OrganizationId='string',
             UserId='string'
         )
 
     def create_organization(self):
+        """
+        """
         response = self.workmail.create_organization(
             DirectoryId='string',
             Alias='string',
@@ -130,6 +147,8 @@ class LoveAtLast:
         )
 
     def delete_organization(self):
+        """
+        """
         response = self.workmail.delete_organization(
             ClientToken='string',
             OrganizationId='string',
