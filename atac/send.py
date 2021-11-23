@@ -556,7 +556,9 @@ class FromRuXiaWithLove(AllTimeHigh):
             The name of the animal
         sound : str
             The sound the animal makes
+        """
 
+        r"""
         msg = u'\n'.join(self.get_file_content(message_file_path))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
@@ -587,7 +589,9 @@ class FromRuXiaWithLove(AllTimeHigh):
         ----------
         name : str
             The name of the animal
+        """
 
+        """
         status = 0
         msg = "Hello, world!"
         graph = facebook.GraphAPI(self.social['facebook']['access_token'])
@@ -608,7 +612,9 @@ class FromRuXiaWithLove(AllTimeHigh):
         ----------
         name : str
             The name of the animal
+        """
 
+        """
         status = 0
         CONSUMER_KEY = self.social['twitter']['consumer_key']
         CONSUMER_SECRET = self.social['twitter']['consumer_secret']
