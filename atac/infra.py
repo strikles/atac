@@ -10,6 +10,22 @@ def generate_password(length):
     return "".join(random.sample(all,length))
 
 
+def generate_word():
+    """
+    """
+    r = RandomWords()
+    # Return a single random word
+    return r.get_random_word(
+        hasDictionaryDef="true",
+        includePartOfSpeech="noun,verb",
+        minCorpusCount=1,
+        maxCorpusCount=10,
+        minDictionaryCount=1,
+        maxDictionaryCount=10,
+        minLength=5,
+        maxLength=10)
+
+
 class  Moonraker:
     """
     A class used to represent a Configuration object
