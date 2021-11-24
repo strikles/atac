@@ -3,7 +3,7 @@ import random
 import string
 import boto3
 
-def generate_password():
+def generate_password(length):
     """
     """
     all = string.ascii_letters + string.digits + string.punctuation
