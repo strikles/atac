@@ -47,6 +47,7 @@ setup(
         'pywhatsapp',
         'PyYAML',
         'qrcode',
+        'random-word',
         'regex',
         'requests',
         'shadow-useragent',

@@ -22,6 +22,7 @@ pywhatkit==5.2
 pywhatsapp==0.0.7
 PyYAML==6.0
 qrcode==7.3.1
+random-word
 regex==2021.4.4
 requests==2.26.0
 shadow-useragent==0.0.17

@@ -2,6 +2,7 @@ import os
 import random
 import string
 import boto3
+from random_word import RandomWords
 
 def generate_password(length):
     """
