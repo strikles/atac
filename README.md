@@ -1,23 +1,23 @@
 ### Activism Tools Against Cybertorture
 
-#### Q.A. Metrics
-
 ##### GitHub
 ![python-app](https://github.com/strikles/atac/actions/workflows/python-app.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Upload Python Package](https://github.com/strikles/atac/actions/workflows/python-publish.yml/badge.svg?branch=main)](https://github.com/strikles/atac/actions/workflows/python-publish.yml)
 
+#### Q.A. Metrics
+
 ##### Codacy
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d3de586ed5a248ca917c99e95757252c)](https://www.codacy.com/gh/strikles/atac/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=strikles/atac&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/d3de586ed5a248ca917c99e95757252c)](https://www.codacy.com/gh/strikles/atac/dashboard?utm_source=github.com&utm_medium=referral&utm_content=strikles/atac&utm_campaign=Badge_Coverage)
 
-##### DeepSource
-[![DeepSource](https://deepsource.io/gh/strikles/atac.svg/?label=active+issues&show_trend=true&token=knjxrFWrr_WNtdD2XCDeYO0i)](https://deepsource.io/gh/strikles/atac/?ref=repository-badge)
-[![DeepSource](https://deepsource.io/gh/strikles/atac.svg/?label=resolved+issues&show_trend=true&token=knjxrFWrr_WNtdD2XCDeYO0i)](https://deepsource.io/gh/strikles/atac/?ref=repository-badge)
-
 ##### Code Inspector
 [![Code Quality Score](https://api.codiga.io/project/29990/score/svg)](https://www.code-inspector.com/public/project/29990/atac/dashboard)
 [![Code Grade](https://www.code-inspector.com/project/29990/status/svg)](https://www.code-inspector.com/public/project/29990/atac/dashboard)
+
+##### DeepSource
+[![DeepSource](https://deepsource.io/gh/strikles/atac.svg/?label=active+issues&show_trend=true&token=knjxrFWrr_WNtdD2XCDeYO0i)](https://deepsource.io/gh/strikles/atac/?ref=repository-badge)
+[![DeepSource](https://deepsource.io/gh/strikles/atac.svg/?label=resolved+issues&show_trend=true&token=knjxrFWrr_WNtdD2XCDeYO0i)](https://deepsource.io/gh/strikles/atac/?ref=repository-badge)
 
 ![](assets/img/IMG_3332.JPG)
 
