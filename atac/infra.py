@@ -1,5 +1,14 @@
 import os
+import random
+import string
 import boto3
+
+def generate_password():
+    """
+    """
+    all = string.ascii_letters + string.digits + string.punctuation
+    return "".join(random.sample(all,length))
+
 
 class  Moonraker:
     """
