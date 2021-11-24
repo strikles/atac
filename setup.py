@@ -1,16 +1,28 @@
 from distutils.core import setup
+
 setup(
-    name='atac',        # How you named your package folder (MyLib)
-    packages=['atac'],  # Chose the same as "name"
-    version='0.1',      # Start with a small number and increase it with every change you make
-    license='MIT',      # Chose a license from here: https://help.github.com/articles/licensing-a-repository
-    description='activism tools',   # Give a short description about your library
-    author='strikles',                   # Type in your name
-    author_email='strikles@gmail.com',      # Type in your E-Mail
-    url='https://github.com/strikles/atac',   # Provide either the link to your github or to your website
-    download_url='https://github.com/strikles/atac/archive/v_01.tar.gz',    # I explain this later on
-    keywords=['activism', 'scrape', 'cybertorture'],   # Keywords that define your package best
-    install_requires=[            # I get to this in a second
+    # How you named your package folder (MyLib)
+    name='atac',
+    # Chose the same as "name"
+    packages=['atac'],
+    # Start with a small number and increase it with every change you make
+    version='0.1',
+    # Chose a license from here: https://help.github.com/articles/licensing-a-repository
+    license='MIT',
+    # Give a short description about your library
+    description='activism tools',
+    # Type in your name
+    author='strikles',
+    # Type in your E-Mail
+    author_email='strikles@gmail.com',
+    # Provide either the link to your github or to your website
+    url='https://github.com/strikles/atac',
+    # I explain this later on
+    download_url='https://github.com/strikles/atac/archive/v_01.tar.gz',
+    # Keywords that define your package best
+    keywords=['activism', 'scrape', 'cybertorture'],
+    # I get to this in a second
+    install_requires=[
         'ascii-magic',
         'beautifulsoup4',
         'boto3',
