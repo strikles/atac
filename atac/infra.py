@@ -133,6 +133,7 @@ class LoveAtLast:
     def create_user(self, organization_id):
         """
         """
+        faker = Faker()
         display_name = faker.name()
         user_name = ".".join(display_name.split(" "))
         response = self.workmail.create_user(
