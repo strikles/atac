@@ -129,54 +129,58 @@ class LoveAtLast:
         """
         self.workmail = boto3.client('workmail')
 
-    def create_user(self):
+    def create_user(self, organization_id):
         """
         """
+        display_name = faker.name()
+        user_name = ".".join(display_name.split(" "))
         response = self.workmail.create_user(
-            OrganizationId='string',
-            Name='string',
-            DisplayName='string',
-            Password='string'
+            OrganizationId=organization_id,
+            Name=user_mame,
+            DisplayName=display_name,
+            Password=generate_password()
         )
 
-    def delete_user(self):
+    def delete_user(self, organization_id, user_id):
         """
         """
         response = self.workmail.delete_user(
-            OrganizationId='string',
-            UserId='string'
+            OrganizationId=organization_id,
+            UserId=user_id
         )
 
-    def describe_user(self):
+    def describe_user(self, organization_id, user_id):
         """
         """
         response = self.workmail.delete_user(
-            OrganizationId='string',
-            UserId='string'
+            OrganizationId=organization_id,
+            UserId=user_id
         )
 
     def create_organization(self):
         """
         """
         response = self.workmail.create_organization(
-            DirectoryId='string',
-            Alias='string',
-            ClientToken='string',
+            # DirectoryId='string',
+            Alias=generate_word()
+            # ClientToken='string',
+            """
             Domains=[
                 {
                     'DomainName': 'string',
                     'HostedZoneId': 'string'
                 },
             ],
-            KmsKeyArn='string',
-            EnableInteroperability=True|False
+            """
+            # KmsKeyArn='string',
+            # EnableInteroperability=True|False
         )
 
-    def delete_organization(self):
+    def delete_organization(self, organization_id):
         """
         """
         response = self.workmail.delete_organization(
-            ClientToken='string',
-            OrganizationId='string',
-            DeleteDirectory=True|False
+            # ClientToken='string',
+            OrganizationId=organization_id,
+            DeleteDirectory=True
         )
