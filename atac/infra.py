@@ -3,6 +3,7 @@ import random
 import string
 import boto3
 from random_word import RandomWords
+from faker import Faker
 
 def generate_password(length):
     """

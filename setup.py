@@ -33,6 +33,7 @@ setup(
         'cryptography',
         'envelope',
         'facebook-sdk',
+        'Faker',
         'fake-useragent'
         'lxml',
         'Markdown',
