@@ -174,6 +174,7 @@ class LoveAtLast:
             # KmsKeyArn='string',
             # EnableInteroperability=True|False
         )
+    """
 
     def delete_organization(self, organization_id):
         response = self.workmail.delete_organization(
@@ -181,4 +182,3 @@ class LoveAtLast:
             OrganizationId=organization_id,
             DeleteDirectory=True
         )
-    """
