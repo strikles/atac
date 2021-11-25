@@ -159,24 +159,17 @@ class LoveAtLast:
             UserId=user_id
         )
 
-    """
     def create_organization(self):
+        """
+        """
+        organization_alias = generate_word()
         response = self.workmail.create_organization(
-            # DirectoryId='string',
-            Alias=generate_word()
-            # ClientToken='string',
-            Domains=[
-                {
-                    'DomainName': 'string',
-                    'HostedZoneId': 'string'
-                },
-            ],
-            # KmsKeyArn='string',
-            # EnableInteroperability=True|False
+            Alias=organization_alias
         )
-    """
 
     def delete_organization(self, organization_id):
+        """
+        """
         response = self.workmail.delete_organization(
             # ClientToken='string',
             OrganizationId=organization_id,
