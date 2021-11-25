@@ -138,7 +138,7 @@ class LoveAtLast:
         user_name = ".".join(display_name.split(" "))
         response = self.workmail.create_user(
             OrganizationId=organization_id,
-            Name=user_mame,
+            Name=user_name,
             DisplayName=display_name,
             Password=generate_password()
         )
