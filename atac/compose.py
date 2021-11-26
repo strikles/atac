@@ -333,7 +333,7 @@ class Fractal:
 class Invader:
     """
     """
-    def __init__():
+    def __init__(self):
         """
         """
         self.origDimension = 1500
