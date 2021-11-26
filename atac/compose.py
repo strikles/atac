@@ -5,11 +5,8 @@ from email import charset
 #from email.encoders import encode_base64
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
-
 import markdown
 import os
-import qrcode
-import random
 import sys
 
 

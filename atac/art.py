@@ -5,9 +5,13 @@ from matplotlib import pyplot as plt
 from matplotlib import colors
 import numpy as np
 import os
+
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
+
+import qrcode
+import random
 from samila import GenerativeImage
 import sys
 
