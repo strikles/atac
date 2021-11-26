@@ -369,7 +369,7 @@ class Invader:
                 botRightX = topLeftX + squareSize
                 botRightY = topLeftY + squareSize
                 #
-                create_square((topLeftX, topLeftY, botRightX, botRightY), draw, random.choice(randColors), element, size)
+                self.create_square((topLeftX, topLeftY, botRightX, botRightY), draw, random.choice(randColors), element, size)
                 if (element == int(size/2) or element == 0):
                     incrementer *= -1;
                 element += incrementer
@@ -397,6 +397,6 @@ class Invader:
 
                 finalBotRightX = botRightX
                 finalBotRightY = botRightY
-                create_invader((topLeftX, topLeftY, botRightX, botRightY), draw, size)
+                self.create_invader((topLeftX, topLeftY, botRightX, botRightY), draw, size)
         #    origImage.save("Examples/Example-"+str(size)+"x"+str(size)+"-"+str(invaders)+"-"+str(imgSize)+".jpg")
         origImage.crop((0, 0, botRightX-padding, botRightY-padding)).save("Examples/paddingTest.jpg")
