@@ -333,27 +333,27 @@ class Fractal:
 class Invader:
     """
     """
-    origDimension = 1500
-
-    r = lambda: random.randint(50,255)
-    rc = lambda: ('#%02X%02X%02X' % (r(),r(),r()))
-    listSym = []
+    def __init__():
+        """
+        """
+        self.origDimension = 1500
+        self.r = lambda: random.randint(50,255)
+        self.rc = lambda: ('#%02X%02X%02X' % (self.r(),self.r(),self.r()))
+        self.listSym = []
     #
-    @staticmethod
-    def create_square(border, draw, randColor, element, size):
+    def create_square(self, border, draw, randColor, element, size):
         if (element == int(size/2)):
             draw.rectangle(border, randColor)
         elif (len(listSym) == element+1):
             draw.rectangle(border,listSym.pop())
         else:
-            listSym.append(randColor)
+            self.listSym.append(randColor)
             draw.rectangle(border, randColor)
 
-    @staticmethod
-    def create_invader(border, draw, size):
+    def create_invader(self, border, draw, size):
         x0, y0, x1, y1 = border
         squareSize = (x1-x0)/size
-        randColors = [rc(), rc(), rc(), (0,0,0), (0,0,0), (0,0,0)]
+        randColors = [self.rc(), self.rc(), self.rc(), (0,0,0), (0,0,0), (0,0,0)]
         incrementer = 1
         element = 0
         #
@@ -371,10 +371,9 @@ class Invader:
                     incrementer *= -1;
                 element += incrementer
 
-    @staticmethod
-    def run(size, invaders, imgSize):
+    def run(self, size, invaders, imgSize):
         #
-        origDimension = imgSize
+        self.origDimension = imgSize
         origImage = Image.new('RGB', (origDimension, origDimension))
         draw = ImageDraw.Draw(origImage)
         #
