@@ -363,7 +363,7 @@ class Sudoku:
         x, y = self.findNextCell(x, y)
         if show_each_step:
             self.clear_terminal()
-            print self
+            print(self)
             time.sleep(0.3)
         if x == -1:
             return True
