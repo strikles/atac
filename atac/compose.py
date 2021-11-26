@@ -285,11 +285,14 @@ class AllTimeHigh(Config):
         # save it to a file
         img.save("qr.png")
 
+
 class Fractal:
     """
     """
 
     def mandelbrot(self, z, max_iter):
+        """
+        """
         c = z
         for n in range(max_iter):
             if abs(z) > 2:
@@ -298,6 +301,8 @@ class Fractal:
         return max_iter
 
     def mandelbrot_set(self, x_min, x_max, y_min, y_max, width, height, max_iter):
+        """
+        """
         r1 = np.linspace(x_min, x_max, width)
         r2 = np.linspace(y_min, y_max, height)
         n3 = np.empty((width, height))
@@ -307,6 +312,8 @@ class Fractal:
         return (r1, r2, n3)
 
     def mandelbrot_image(self, x_min, x_max, y_min, y_max, width=10, height=10, max_iter=80, cmap='hot'):
+        """
+        """
         dpi = 72
         img_width = dpi * width
         img_height = dpi * height
@@ -326,9 +333,12 @@ class Fractal:
         self.save_image(fig)
 
     def save_image(self, fig):
+        """
+        """
         filename = "mandelbrot.png"
         fig.savefig(filename)
         self.mandelbrot_image(-2.0, 0.5, -1.25, 1.25, cmap='viridis')
+
 
 class Invader:
     """
@@ -342,6 +352,8 @@ class Invader:
         self.listSym = []
     #
     def create_square(self, border, draw, randColor, element, size):
+        """
+        """
         if (element == int(size/2)):
             draw.rectangle(border, randColor)
         elif (len(self.listSym) == element+1):
@@ -351,6 +363,8 @@ class Invader:
             draw.rectangle(border, randColor)
 
     def create_invader(self, border, draw, size):
+        """
+        """
         x0, y0, x1, y1 = border
         squareSize = (x1-x0)/size
         randColors = [self.rc(), self.rc(), self.rc(), (0,0,0), (0,0,0), (0,0,0)]
@@ -372,7 +386,8 @@ class Invader:
                 element += incrementer
 
     def run(self, size, invaders, imgSize):
-        #
+        """
+        """
         self.origDimension = imgSize
         origImage = Image.new('RGB', (self.origDimension, self.origDimension))
         draw = ImageDraw.Draw(origImage)
