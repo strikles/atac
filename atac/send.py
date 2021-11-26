@@ -693,3 +693,58 @@ class IRC:
 
             if "PRIVMSG" in text and channel in text and "hello" in text:
                 irc.send(channel, "Hello!")
+
+"""
+RPL_NAMREPLY   = '353'
+RPL_ENDOFNAMES = '366'
+
+irc = {
+    'host':          'chat.freenode.net',
+    'port':          6667,
+    'channel':       '#raspiuserguide',
+    'namesinterval': 5
+}
+
+user = {
+    'nick':       'botnick',
+    'username':   'botuser',
+    'hostname':   'localhost',
+    'servername': 'localhost',
+    'realname':   'Raspberry Pi Names Bot'
+}
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+print('Connecting to {host}:{port}...'.format(**irc))
+try:
+    s.connect((irc['host'], irc['port']))
+except socket.error:
+    print('Error connecting to IRC server {host}:{port}'.format(**irc))
+    sys.exit(1)
+
+s.send('NICK {nick}\r\n'.format(**user).encode())
+s.send('USER {username} {hostname} {servername} :{realname}\r\n'.format(**user).encode())
+s.send('JOIN {channel}\r\n'.format(**irc).encode())
+s.send('NAMES {channel}\r\n'.format(**irc).encode())
+
+read_buffer = ''
+names = []
+
+while True:
+    read_buffer += s.recv(1024).decode()
+    lines = read_buffer.split('\r\n')
+    read_buffer = lines.pop();
+    for line in lines:
+        response = line.rstrip().split(' ', 3)
+        response_code = response[1]
+        if response_code == RPL_NAMREPLY:
+            names_list = response[3].split(':')[1]
+            names += names_list.split(' ')
+        if response_code == RPL_ENDOFNAMES:
+            print('\r\nUsers in {channel}:'.format(**irc))
+            for name in names:
+                print(name)
+            names = []
+            time.sleep(irc['namesinterval'])
+            s.send('NAMES {channel}\r\n'.format(**irc).encode())
+"""
