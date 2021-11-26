@@ -1,6 +1,5 @@
 from .config import Config
 
-import ascii_magic
 from datetime import datetime
 from email import charset
 #from email.encoders import encode_base64
@@ -8,7 +7,6 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
 
 import markdown
-import markovify
 import os
 import qrcode
 import random
