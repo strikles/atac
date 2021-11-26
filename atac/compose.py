@@ -1,18 +1,20 @@
 from .config import Config
 
-import os
-import sys
-#import json
-#import yaml
-import markdown
-import markovify
-import qrcode
 import ascii_magic
 from datetime import datetime
 from email import charset
 #from email.encoders import encode_base64
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
+import markdown
+import markovify
+import math
+import matplotlib.pyplot as plt
+import os
+import qrcode
+import random
+from samila import GenerativeImage
+import sys
 
 from PIL import Image
 from PIL import ImageFont
@@ -220,6 +222,21 @@ class AllTimeHigh(Config):
         print(message.as_string())
         #
         return message
+
+    def generate_art_samila(self):
+        """
+        """
+        def f1(x,y):
+            result = random.uniform(-1,1) * x**2  - math.sin(y**2) + abs(y-x)
+            return result
+        def f2(x,y):
+            result = random.uniform(-1,1) * y**3 - math.cos(x**2) + 2*x
+            return result
+        #
+        g = GenerativeImage(f1,f2)
+        g.generate()
+        #g.plot()
+        g.save_image(file_adr="samila.png")
 
     @staticmethod
     def create_image(text, window_height, window_width):

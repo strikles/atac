@@ -51,6 +51,7 @@ setup(
         'random-word',
         'regex',
         'requests',
+        'samila',
         'shadow-useragent',
         'stdiomask',
         'tqdm',

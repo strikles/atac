@@ -26,6 +26,7 @@ qrcode==7.3.1
 random-word
 regex==2021.4.4
 requests==2.26.0
+samila==0.0.3
 shadow-useragent==0.0.17
 stdiomask==0.0.6
 tqdm==4.61.2
