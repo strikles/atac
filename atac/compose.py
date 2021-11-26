@@ -344,8 +344,8 @@ class Invader:
     def create_square(self, border, draw, randColor, element, size):
         if (element == int(size/2)):
             draw.rectangle(border, randColor)
-        elif (len(listSym) == element+1):
-            draw.rectangle(border,listSym.pop())
+        elif (len(self.listSym) == element+1):
+            draw.rectangle(border,self.listSym.pop())
         else:
             self.listSym.append(randColor)
             draw.rectangle(border, randColor)
@@ -374,10 +374,10 @@ class Invader:
     def run(self, size, invaders, imgSize):
         #
         self.origDimension = imgSize
-        origImage = Image.new('RGB', (origDimension, origDimension))
+        origImage = Image.new('RGB', (self.origDimension, self.origDimension))
         draw = ImageDraw.Draw(origImage)
         #
-        invaderSize = origDimension/invaders
+        invaderSize = self.origDimension/invaders
         print(invaderSize)
         padding = invaderSize/size
         print(padding)
