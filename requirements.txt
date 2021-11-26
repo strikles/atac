@@ -28,7 +28,9 @@ regex==2021.4.4
 requests==2.26.0
 samila==0.3
 shadow-useragent==0.0.17
+spacy
 stdiomask==0.0.6
+syllapy
 tqdm==4.61.2
 tweepy==4.4.0
 twilio==6.58.0

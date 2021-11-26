@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Generative Art Stuff.
+
+@author: strikles
+"""
+
 import ascii_magic
 import math
 import markovify
@@ -13,8 +21,62 @@ from PIL import ImageDraw
 import qrcode
 import random
 from samila import GenerativeImage
+from scipy.io import wavfile
+import spacy
+from spacy.matcher import Matcher
+import syllapy
 import sys
+import utils
 
+
+def generate_haiku():
+    """
+    """
+    nlp = spacy.load("en_core_web_sm")
+    matcher2 = Matcher(nlp.vocab)
+    matcher3 = Matcher(nlp.vocab)
+    matcher4 = Matcher(nlp.vocab)
+    #
+    pattern = [{'POS':  {"IN": ["NOUN", "ADP", "ADJ", "ADV"]} },
+               {'POS':  {"IN": ["NOUN", "VERB"]} }]
+    matcher2.add("TwoWords", [pattern])
+    pattern = [{'POS':  {"IN": ["NOUN", "ADP", "ADJ", "ADV"]} },
+               {'IS_ASCII': True, 'IS_PUNCT': False, 'IS_SPACE': False},
+               {'POS':  {"IN": ["NOUN", "VERB", "ADJ", "ADV"]} }]
+    matcher3.add("ThreeWords", [pattern])
+    pattern = [{'POS':  {"IN": ["NOUN", "ADP", "ADJ", "ADV"]} },
+               {'IS_ASCII': True, 'IS_PUNCT': False, 'IS_SPACE': False},
+               {'IS_ASCII': True, 'IS_PUNCT': False, 'IS_SPACE': False},
+               {'POS':  {"IN": ["NOUN", "VERB", "ADJ", "ADV"]} }]
+    matcher4.add("FourWords", [pattern])
+    #
+    doc = nlp(open("data/orwell_1984.txt").read())
+    #
+    matches2 = matcher2(doc)
+    matches3 = matcher3(doc)
+    matches4 = matcher4(doc)
+    #
+    g_5 = []
+    g_7 = []
+    #
+    for match_id, start, end in matches2 + matches3 + matches4:
+        string_id = nlp.vocab.strings[match_id]  # Get string representation
+        span = doc[start:end]  # The matched span
+        #
+        syl_count = 0
+        for token in span:
+            syl_count += syllapy.count(token.text)
+        if syl_count == 5:
+            if span.text not in g_5:
+                g_5.append(span.text)
+        if syl_count == 7:
+            if span.text not in g_7:
+                g_7.append(span.text)
+    #
+    print("Enter for a new haiku. ^C to quit\n")
+    while (True):
+        print("%s\n%s\n%s" %(random.choice(g_5),random.choice(g_7),random.choice(g_5)))
+        input("\n")
 
 def generate_ascii(image_path):
     """
@@ -111,6 +173,68 @@ def create_qr_code(url):
     img = qr.make_image(fill_color="white", back_color="black")
     # save it to a file
     img.save("qr.png")
+
+
+def twinkle_sine():
+    """
+    """
+    right_hand_notes = ['C4', 'C4', 'G4', 'G4',
+                       'A4', 'A4', 'G4',
+                       'F4', 'F4', 'E4', 'E4',
+                       'D4', 'D4', 'C4',
+                       'G4', 'G4', 'F4', 'F4',
+                       'E4', 'E4', 'D4',
+                       'G4', 'G4', 'F4', 'F4',
+                       'E4', 'E4', 'D4',
+                       'C4', 'C4', 'G4', 'G4',
+                       'A4', 'A4', 'G4',
+                       'F4', 'F4', 'E4', 'E4',
+                       'D4', 'D4', 'C4',]
+    right_hand_duration = [0.5, 0.5, 0.5, 0.5,
+                           0.5, 0.5, 1]*6
+    #
+    left_hand_notes = ['C3',
+                      'A3',
+                      'F3',
+                      'D3', 'C3',
+                      'G3', 'F3',
+                      'E3', 'D3',
+                      'G3', 'F3',
+                      'E3', 'D3',
+                      'C3', 'E3', 'G3', 'C4',
+                      'A3', 'A3', 'G3',
+                      'F3', 'B2', 'E3', 'C3',
+                      'D3', 'D3', 'C3']
+    #
+    left_hand_duration = [2,
+                          2,
+                          2,
+                          1, 1,
+                          1, 1,
+                          1, 1,
+                          1, 1,
+                          1, 1,
+                          0.5, 0.5, 0.5, 0.5,
+                          0.5, 0.5, 1,
+                          0.5, 0.5, 0.5, 0.5,
+                          0.5, 0.5, 1]
+    #
+    factor = [0.68, 0.26, 0.03, 0.  , 0.03]
+    length = [0.01, 0.6, 0.29, 0.1]
+    decay = [0.05,0.02,0.005,0.1]
+    sustain_level = 0.1
+    #
+    right_hand = utils.get_song_data(right_hand_notes, right_hand_duration, 2,
+                                     factor, length, decay, sustain_level)
+    factor = [0.73, 0.16, 0.06, 0.01, 0.02, 0.01  , 0.01]
+    length = [0.01, 0.29, 0.6, 0.1]
+    decay = [0.05,0.02,0.005,0.1]
+    left_hand = utils.get_song_data(left_hand_notes, left_hand_duration, 2,
+                                     factor, length, decay, sustain_level)
+    data = left_hand+right_hand
+    data = data * (4096/np.max(data))
+    #
+    wavfile.write('data/twinkle_star.wav', 44100, data.astype(np.int16))
 
 
 class Fractal:
