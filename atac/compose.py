@@ -288,6 +288,7 @@ class AllTimeHigh(Config):
 class Fractal:
     """
     """
+    @staticmethod
     def mandelbrot(z, max_iter):
         c = z
         for n in range(max_iter):
@@ -296,6 +297,7 @@ class Fractal:
             z = z*z + c
         return max_iter
 
+    @staticmethod
     def mandelbrot_set(x_min, x_max, y_min, y_max, width, height, max_iter):
         r1 = np.linspace(x_min, x_max, width)
         r2 = np.linspace(y_min, y_max, height)
@@ -305,6 +307,7 @@ class Fractal:
                 n3[i,j] = mandelbrot(r1[i] + 1j*r2[j], max_iter)
         return (r1, r2, n3)
 
+    @staticmethod
     def mandelbrot_image(x_min, x_max, y_min, y_max, width=10, height=10, max_iter=80, cmap='hot'):
         dpi = 72
         img_width = dpi * width
@@ -324,6 +327,7 @@ class Fractal:
         plt.show()
         save_image(fig)
 
+    @staticmethod
     def save_image(fig):
         filename = "mandelbrot.png"
         fig.savefig(filename)
@@ -338,6 +342,7 @@ class Invader:
     rc = lambda: ('#%02X%02X%02X' % (r(),r(),r()))
     listSym = []
 
+    @staticmethod
     def create_square(border, draw, randColor, element, size):
         if (element == int(size/2)):
             draw.rectangle(border, randColor)
@@ -347,6 +352,7 @@ class Invader:
             listSym.append(randColor)
             draw.rectangle(border, randColor)
 
+    @staticmethod
     def create_invader(border, draw, size):
         x0, y0, x1, y1 = border
         squareSize = (x1-x0)/size
@@ -368,6 +374,7 @@ class Invader:
                     incrementer *= -1;
                 element += incrementer
 
+    @staticmethod
     def run(size, invaders, imgSize):
         #
         origDimension = imgSize
