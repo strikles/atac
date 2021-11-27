@@ -37,6 +37,7 @@ def get_config_arguments(arguments):
         print("{} {}", encrypted_config, type(encrypted_config))
     if hasattr(arguments, "config_file"):
         config_file_path = getattr(arguments, "config_file")
+        print("{} {}", config_file_path, type(config_file_path))
     if hasattr(arguments, "key_file"):
         key_file_path = getattr(arguments, "key_file")
     #
@@ -65,7 +66,7 @@ def configuration(arguments):
         if generate_key_file_path:
             config.generate_key()
             config.save_key(generate_key_file_path)
-    if hasattr(arguments, "new_action='store_false')_file"):
+    if hasattr(arguments, "new_config_file"):
         new_config_file_path = getattr(arguments, "new_config_file")
         if new_config_file_path:
             config.new_config(new_config_file_path, encrypted_config)
