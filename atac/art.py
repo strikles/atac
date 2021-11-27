@@ -158,6 +158,8 @@ def create_image(text, window_height, window_width):
 
 
 def make_gif(frame_folder):
+    """
+    """
     frames = [Image.open(image) for image in glob.glob(f"{frame_folder}/*.JPG")]
     frame_one = frames[0]
     frame_one.save("my_awesome.gif", format="GIF", append_images=frames, save_all=True, duration=100, loop=0)
@@ -249,7 +251,8 @@ def twinkle_sine():
 
 
 class Sudoku:
-
+    """
+    """
     def __repr__(self):
         return "Sudoku()"
 
@@ -268,11 +271,15 @@ class Sudoku:
         self.numbers = range(1, dim**2 + 1)
 
     def createF(self):
-        """Return a random filled dim**2 x dim**2 Sudoku board."""
+        """
+        Return a random filled dim**2 x dim**2 Sudoku board.
+        """
         n = self.dim**2
         self.board = [[None for _ in range(n)] for _ in range(n)]
 
         def search(c=0):
+            """
+            """
             i, j = divmod(c, n)
             i0, j0 = i - i % 3, j - j % 3  # Origin of mxm block
             numbers = list(range(1, n + 1))
@@ -293,6 +300,8 @@ class Sudoku:
         return search()
 
     def create(self, difficulty="easy"):
+        """
+        """
         self.createF()
         if difficulty == "easy":
             for i in range(30):
@@ -311,6 +320,8 @@ class Sudoku:
                 self.board[iX][iY] = "."
 
     def createStatic(self):
+        """
+        """
         self.dim = 3
         self.board = [[None for _ in range(self.dim**2)]
                       for _ in range(self.dim**2)]
@@ -328,6 +339,8 @@ class Sudoku:
         self.board[8] = [".", ".", ".",  ".", ".", ".",  ".", 7, "."]
 
     def findNextCell(self, x, y):
+        """
+        """
         for i in range(x, self.dim**2):
             for j in range(y, self.dim**2):
                 if self.board[i][j] == ".":
@@ -339,6 +352,8 @@ class Sudoku:
         return -1, -1
 
     def isValid(self, x, y, value):
+        """
+        """
         rowValid = all([value != self.board[x][i]
                         for i in range(self.dim**2)])
         if rowValid:
@@ -354,6 +369,8 @@ class Sudoku:
         return False
 
     def clear_terminal(self):
+        """
+        """
         # for windows
         if name == "nt":
             _ = sp.call("cls",shell=True)
@@ -363,6 +380,8 @@ class Sudoku:
             _ = sp.call("clear",shell=True)
 
     def solve(self, x=0, y=0, show_each_step=False):
+        """
+        """
         x, y = self.findNextCell(x, y)
         if show_each_step:
             self.clear_terminal()
