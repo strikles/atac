@@ -21,6 +21,7 @@ from os import name
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
+import py5
 #
 import qrcode
 import random
@@ -249,6 +250,29 @@ def twinkle_sine():
     data = data * (4096/np.max(data))
     #
     wavfile.write('data/twinkle_star.wav', 44100, data.astype(np.int16))
+
+
+def draw_tile(x, y, w, h):
+  horizontal = True if random(2) >= 1.0 else False
+
+  if horizontal:
+    py5.line(x, y + (h / 2), x + w, y + (h / 2))
+  else:
+    py5.line(x + (w / 2), y, x + ( w / 2), y + h)
+
+
+def tiles():
+    """
+    """
+    tile_size = 20
+    py5.size(520, 520)
+    py5.background(255, 255, 255)
+    py5.stroke(0)
+    #
+    for x in range(0, width, tile_size):
+      for y in range(0, height, tile_size):
+        draw_tile(x, y, tile_size, tile_size)
+        py5.saveFrame("art-######.png")
 
 
 class Sudoku:
