@@ -559,7 +559,7 @@ class Conway:
 
     grid = []
 
-    def gameOfLife(self, grid):
+    def gameOfLife(self):
         state = {}
         rows = len(self.grid)
         if rows == 0:
@@ -630,4 +630,4 @@ class Conway:
             for j in range(cols):
                 if self.grid[i][j]:
                     py5.rect(5+i*10, 5+j*10, 8, 8)
-                    self.gameOfLife(grid)
+                    self.gameOfLife()
