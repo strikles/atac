@@ -34,7 +34,7 @@ def get_config_arguments(arguments):
     #
     if getattr(arguments, "encrypted_config"):
         encrypted_config = getattr(arguments, "encrypted_config")
-        print(type(encrypted_config))
+        print("{} {}", encrypted_config, type(encrypted_config))
     if getattr(arguments, "config_file"):
         config_file_path = getattr(arguments, "config_file")
     if getattr(arguments, "key_file"):
