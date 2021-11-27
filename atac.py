@@ -32,13 +32,13 @@ def get_config_arguments(arguments):
     key_file_path = None
     config_file_path = 'auth.json'
     #
-    if hasattr(arguments, "encrypted_config"):
+    if arguments.encrypted_config is not None:
         encrypted_config = getattr(arguments, "encrypted_config")
         print("{} {}", encrypted_config, type(encrypted_config))
-    if hasattr(arguments, "config_file"):
+    if arguments.config_file is not None:
         config_file_path = getattr(arguments, "config_file")
         print("{} {}", config_file_path, type(config_file_path))
-    if hasattr(arguments, "key_file"):
+    if arguments.key_file is not None:
         key_file_path = getattr(arguments, "key_file")
     #
     return encrypted_config, config_file_path, key_file_path
@@ -61,16 +61,16 @@ def configuration(arguments):
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     config = atac.Config(encrypted_config, config_file_path, key_file_path)
     #
-    if hasattr(arguments, "generate_key_file"):
+    if arguments.generate_key_file is not None:
         generate_key_file_path = getattr(arguments, "generate_key_file")
         if generate_key_file_path:
             config.generate_key()
             config.save_key(generate_key_file_path)
-    if hasattr(arguments, "new_config_file"):
+    if arguments.new_config_file is not None:
         new_config_file_path = getattr(arguments, "new_config_file")
         if new_config_file_path:
             config.new_config(new_config_file_path, encrypted_config)
-    if hasattr(arguments, "decrypted_config_file"):
+    if arguments.decrypted_config_file is not None:
         decrypted_config_file_path = getattr(arguments, "decrypted_config_file")
         if decrypted_config_file_path:
             config.load_config()
@@ -98,13 +98,13 @@ def email(arguments):
     email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
     subject = None
     #
-    if hasattr(arguments, "subject"):
+    if arguments.subject is not None:
         subject = getattr(arguments, "subject")
-    if hasattr(arguments, "message_file"):
+    if arguments.message_file is not None:
         message_file_path = getattr(arguments, "message_file")
-    if hasattr(arguments, "emails_file"):
+    if arguments.emails_file is not None:
         email_files_path = getattr(arguments, "emails_file")
-    if hasattr(arguments, "target"):
+    if arguments.target is not None:
         target = getattr(arguments, "target")
     #
     _, content = katie.get_email_config()
@@ -141,11 +141,11 @@ def phone(arguments):
     target = "whatsapp"
     phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
     #
-    if hasattr(arguments, "message_file"):
+    if arguments.message_file is not None:
         message_file_path = getattr(arguments, "message_file")
-    if hasattr(arguments, "phones_file"):
+    if arguments.phones_file is not None:
         phone_files_path = getattr(arguments, "phones_file")
-    if hasattr(arguments, "target"):
+    if arguments.target is not None:
         target = getattr(arguments, "target")
     #
     if "whatsapp" in target and os.environ.get('DISPLAY'):
@@ -173,9 +173,9 @@ def social(arguments):
     #
     target = "twitter"
     #
-    if hasattr(arguments, "message_file"):
+    if arguments.message_file is not None:
         message_file_path = getattr(arguments, "message_file")
-    if hasattr(arguments, "target"):
+    if arguments.target is not None:
         target = getattr(arguments, "target")
     #
     if "facebook" in target:
@@ -202,11 +202,11 @@ def scrape(arguments):
     url = ""
     target = ""
     #
-    if hasattr(arguments, "url"):
+    if arguments.url is not None:
         url = getattr(arguments, "url")
         mango = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
         mango.process_page("url", url)
-    elif hasattr(arguments, "target"):
+    elif arguments.target is not None:
         target = getattr(arguments, "target")
         mango = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
         mango.process_page(target, mango.scrape['targets'][target])
@@ -238,7 +238,7 @@ def compose(arguments):
     """
     corpus_file_path = os.path.dirname(os.path.abspath(__file__)) + '/data/pg1009.txt'
     #
-    if hasattr(arguments, "corpus"):
+    if arguments.corpus is not None
         corpus_file_path = getattr(arguments, "corpus")
     #
     two_bach = atac.AllTimeHigh()
@@ -264,7 +264,7 @@ def clean(arguments):
     email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
     phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
     #
-    if hasattr(arguments, "target"):
+    if arguments.target is not None:
         target = getattr(arguments, "target")
     #
     if "email" in target:
