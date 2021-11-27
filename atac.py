@@ -4,6 +4,17 @@ from threading import Thread
 import atac
 
 
+def str2bool(v):
+    if isinstance(v, bool):
+        return v
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
+
+
 def get_config_arguments(arguments):
     """
     Generate New Config
@@ -271,7 +282,7 @@ if __name__ == "__main__":
     # create the parser for the "config" command
     parser_config = subparsers.add_parser('config')
     parser_config.add_argument('-c', dest='config_file', type=str, help='config file')
-    parser_config.add_argument('-e', dest='encrypted_config', default=True, action=argparse.BooleanOptionalAction)
+    parser_config.add_argument('-e', dest='encrypted_config', type=str2bool, nargs='?', const=True, default=False, help="Activate nice mode.")
     parser_config.add_argument('-k', dest='key_file', type=str, help='key file path')
     parser_config.add_argument('-g', dest='generate_key_file', type=str, help='generate key file')
     parser_config.add_argument('-d', dest='decrypted_config_file', type=str, help='decrypted config file')
@@ -281,7 +292,7 @@ if __name__ == "__main__":
     # create the parser for the "email command
     parser_email = subparsers.add_parser('email')
     parser_email.add_argument('-c', dest='config_file', type=str, help='config file')
-    parser_email.add_argument('-e', dest='encrypted_config', default=True, action=argparse.BooleanOptionalAction)
+    parser_email.add_argument('-e', dest='encrypted_config', type=str2bool, nargs='?', const=True, default=False, help="Activate nice mode.")
     parser_email.add_argument('-k', dest='key_file', type=str, help='key file path')
     parser_email.add_argument('-m', dest='message_file', type=str, help='path to message file')
     parser_email.add_argument('-p', dest='emails_file', type=str, help='path to csv dir')
@@ -293,7 +304,7 @@ if __name__ == "__main__":
     # create the parser for the "phone" command
     parser_phone = subparsers.add_parser('phone')
     parser_phone.add_argument('-c', dest='config_file', type=str, help='config file')
-    parser_phone.add_argument('-e', dest='encrypted_config', default=True, action=argparse.BooleanOptionalAction)
+    parser_phone.add_argument('-e', dest='encrypted_config', type=str2bool, nargs='?', const=True, default=False, help="Activate nice mode.")
     parser_phone.add_argument('-k', dest='key_file', type=str, help='key file path')
     parser_phone.add_argument('-m', dest='message_file', type=str, help='path to message file')
     parser_phone.add_argument('-p', dest='phones_file', type=str, help='path to csv dir')
@@ -306,7 +317,7 @@ if __name__ == "__main__":
     # create the parser for the "social" command
     parser_social = subparsers.add_parser('social')
     parser_social.add_argument('-c', dest='config_file', type=str, help='config file')
-    parser_social.add_argument('-e', dest='encrypted_config', default=True, action=argparse.BooleanOptionalAction)
+    parser_social.add_argument('-e', dest='encrypted_config', type=str2bool, nargs='?', const=True, default=False, help="Activate nice mode.")
     parser_social.add_argument('-k', dest='key_file', type=str, help='key file path')
     parser_social.add_argument('-m', dest='message', type=str, help='path to message file')
     parser_social.add_argument('-t', dest='target', choices=['facebook', 'twitter'])
@@ -316,7 +327,7 @@ if __name__ == "__main__":
     # create the parser for the "scrape" command
     parser_scrape = subparsers.add_parser('scrape')
     parser_scrape.add_argument('-c', dest='config_file', type=str, help='config file')
-    parser_scrape.add_argument('-e', dest='encrypted_config', default=True, action=argparse.BooleanOptionalAction)
+    parser_scrape.add_argument('-e', dest='encrypted_config', type=str2bool, nargs='?', const=True, default=False, help="Activate nice mode.")
     parser_scrape.add_argument('-k', dest='key_file', type=str, help='key file path')
     parser_scrape.add_argument('-t', dest='target', choices=[
                                                                 'museums',
@@ -346,7 +357,7 @@ if __name__ == "__main__":
     # create the parser for the "compose" command
     parser_clean = subparsers.add_parser('clean')
     parser_clean.add_argument('-c', dest='config_file', type=str, help='config file')
-    parser_clean.add_argument('-e', dest='encrypted_config', default=True, action=argparse.BooleanOptionalAction)
+    parser_clean.add_argument('-e', dest='encrypted_config', type=str2bool, nargs='?', const=True, default=False, help="Activate nice mode.")
     parser_clean.add_argument('-k', dest='key_file', type=str, help='key file path')
     parser_clean.add_argument('-t', dest='target', choices=['email', 'phone', 'all'])
     parser_clean.add_argument('-v', dest='verbose')
