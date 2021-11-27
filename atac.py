@@ -238,7 +238,7 @@ def compose(arguments):
     """
     corpus_file_path = os.path.dirname(os.path.abspath(__file__)) + '/data/pg1009.txt'
     #
-    if arguments.corpus is not None
+    if arguments.corpus is not None:
         corpus_file_path = getattr(arguments, "corpus")
     #
     two_bach = atac.AllTimeHigh()
