@@ -25,6 +25,7 @@ import py5
 #
 import qrcode
 import random
+from random import randint
 from samila import GenerativeImage
 #
 from scipy.io import wavfile
@@ -548,3 +549,85 @@ class Invader:
                 self.create_invader((topLeftX, topLeftY, botRightX, botRightY), draw, size)
         #    origImage.save("Examples/Example-"+str(size)+"x"+str(size)+"-"+str(invaders)+"-"+str(imgSize)+".jpg")
         origImage.crop((0, 0, botRightX-padding, botRightY-padding)).save("Examples/paddingTest.jpg")
+
+
+class Conway:
+    """
+    https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
+    conway's game of life
+    """
+
+    grid = []
+
+    def gameOfLife(self, grid):
+        state = {}
+        rows = len(self.grid)
+        if rows == 0:
+            return
+        cols = len(self.grid[0])
+
+        for i in range(rows):
+            for j in range(cols):
+                an = 0
+                cs = grid[i][j]
+                if i-1 >=0 and j-1 >= 0 and grid[i-1][j-1] == 1:
+                    an += 1
+                if i-1 >= 0 and grid[i-1][j] == 1:
+                    an += 1
+                if i-1 >= 0 and j+1 < cols and grid[i-1][j+1] == 1:
+                    an += 1
+                if i+1 < rows and j-1 >= 0 and grid[i+1][j-1] == 1:
+                    an += 1
+                if i+1 < rows and grid[i+1][j] == 1:
+                    an += 1
+                if i+1 < rows and j+1 < cols and grid[i+1][j+1] == 1:
+                    an += 1
+                if j-1 >= 0 and grid[i][j-1] == 1:
+                    an += 1
+                if j+1 < cols and grid[i][j+1] == 1:
+                    an += 1
+
+                if an < 2 and cs == 1:
+                    state[(i, j)] = 0
+                elif an > 3 and cs == 1:
+                    state[(i, j)] = 0
+                elif an == 3 and cs == 0:
+                    state[(i, j)] = 1
+
+        for k, v in state.items():
+            self.grid[k[0]][k[1]] = v
+
+    def randomState(self, rows, cols, alive):
+        state = {}
+        tots = 0
+        while tots < alive:
+            r = randint(0, rows-1)
+            c = randint(0, cols-1)
+            if (r, c) in state:
+                continue
+            state[(r, c)] = 1
+            tots += 1
+        return state
+
+    def initBoard(self, rows, cols, state):
+        self.grid = [[0 for _ in range(cols)] for _ in range(rows)]
+        for k, v in state.items():
+            self.grid[k[0]][k[1]] = v
+
+    def setup(self):
+        py5.size(1080/2, 1920/2)
+        py5.frameRate(2)
+
+    def draw(self):
+        self.initBoard(53, 95, self.randomState(53, 95, 1000))
+        py5.background(255)
+        py5.fill(0)
+        rows = len(self.grid)
+        if rows == 0:
+            return
+        cols = len(self.grid[0])
+        for i in range(rows):
+            for j in range(cols):
+                if self.grid[i][j]:
+                    py5.rect(5+i*10, 5+j*10, 8, 8)
+                    self.gameOfLife(grid)
