@@ -79,11 +79,8 @@ def generate_haiku():
         if syl_count == 7:
             if span.text not in g_7:
                 g_7.append(span.text)
-    #
-    print("Enter for a new haiku. ^C to quit\n")
-    while (True):
-        print("%s\n%s\n%s" %(random.choice(g_5),random.choice(g_7),random.choice(g_5)))
-        input("\n")
+        #
+        return "{}\n{}\n{}".format(random.choice(g_5),random.choice(g_7),random.choice(g_5))
 
 
 def generate_ascii(image_path):
