@@ -299,7 +299,7 @@ if __name__ == "__main__":
     parser_email.add_argument('-m', dest='message_file', type=str, help='path to message file')
     parser_email.add_argument('-p', dest='emails_file', type=str, help='path to csv dir')
     parser_email.add_argument('-s', dest='subject', type=str, help='email subject')
-    parser_email.add_argument('-t', dest='target', choices=['smtp', 'aws'])
+    parser_email.add_argument('-t', dest='target', choices=['smtp', 'aws'], const='smtp')
     parser_email.add_argument('-v', dest='verbose')
     parser_email.set_defaults(func=email)
 
@@ -312,7 +312,7 @@ if __name__ == "__main__":
     parser_phone.add_argument('-p', dest='phones_file', type=str, help='path to csv dir')
     parser_phone.add_argument('-t', dest='target', choices=['whatsapp', 'sms'])
     parser_phone.add_argument('-w', dest='whatsapp', choices=['pywhatkit', 'twilio', 'yowsup'])
-    parser_phone.add_argument('-s', dest='sms', choices=['aws', 'twilio'])
+    parser_phone.add_argument('-s', dest='sms', choices=['aws', 'twilio'], const='aws')
     parser_phone.add_argument('-v', dest='verbose')
     parser_phone.set_defaults(func=phone)
 
@@ -322,7 +322,7 @@ if __name__ == "__main__":
     parser_social.add_argument('-e', dest='encrypted_config', action='store_false')
     parser_social.add_argument('-k', dest='key_file', type=str, help='key file path')
     parser_social.add_argument('-m', dest='message', type=str, help='path to message file')
-    parser_social.add_argument('-t', dest='target', choices=['facebook', 'twitter'])
+    parser_social.add_argument('-t', dest='target', choices=['facebook', 'twitter'], const='twitter')
     parser_social.add_argument('-v', dest='verbose')
     parser_social.set_defaults(func=social)
 
@@ -345,7 +345,7 @@ if __name__ == "__main__":
                                                                 'ukraine',
                                                                 'islam',
                                                                 'all'
-                                                            ])
+                                                            ], const='all')
     parser_scrape.add_argument('-u', dest='url', help="The URL to scrape.")
     parser_scrape.add_argument('-v', dest='verbose')
     parser_scrape.set_defaults(func=scrape)
