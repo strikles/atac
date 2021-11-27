@@ -7,6 +7,7 @@ Generative Art Stuff.
 """
 
 import ascii_magic
+import glob
 import math
 import markovify
 #
