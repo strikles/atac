@@ -569,22 +569,22 @@ class Conway:
         for i in range(rows):
             for j in range(cols):
                 an = 0
-                cs = grid[i][j]
-                if i-1 >=0 and j-1 >= 0 and grid[i-1][j-1] == 1:
+                cs = self.grid[i][j]
+                if i-1 >=0 and j-1 >= 0 and self.grid[i-1][j-1] == 1:
                     an += 1
-                if i-1 >= 0 and grid[i-1][j] == 1:
+                if i-1 >= 0 and self. grid[i-1][j] == 1:
                     an += 1
-                if i-1 >= 0 and j+1 < cols and grid[i-1][j+1] == 1:
+                if i-1 >= 0 and j+1 < cols and self.grid[i-1][j+1] == 1:
                     an += 1
-                if i+1 < rows and j-1 >= 0 and grid[i+1][j-1] == 1:
+                if i+1 < rows and j-1 >= 0 and self.grid[i+1][j-1] == 1:
                     an += 1
-                if i+1 < rows and grid[i+1][j] == 1:
+                if i+1 < rows and self.grid[i+1][j] == 1:
                     an += 1
-                if i+1 < rows and j+1 < cols and grid[i+1][j+1] == 1:
+                if i+1 < rows and j+1 < cols and self.grid[i+1][j+1] == 1:
                     an += 1
-                if j-1 >= 0 and grid[i][j-1] == 1:
+                if j-1 >= 0 and self.grid[i][j-1] == 1:
                     an += 1
-                if j+1 < cols and grid[i][j+1] == 1:
+                if j+1 < cols and self.grid[i][j+1] == 1:
                     an += 1
 
                 if an < 2 and cs == 1:
