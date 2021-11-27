@@ -261,7 +261,7 @@ def draw_tile(x, y, w, h):
     py5.line(x + (w / 2), y, x + ( w / 2), y + h)
 
 
-def tiles():
+def tiles(width, height):
     """
     """
     tile_size = 20
