@@ -32,13 +32,13 @@ def get_config_arguments(arguments):
     key_file_path = None
     config_file_path = 'auth.json'
     #
-    if getattr(arguments, "encrypted_config"):
-        encrypted_config = getattr(arguments, "encrypted_config")
+    if hasattr(arguments, "encrypted_config"):
+        encrypted_config = hasattr(arguments, "encrypted_config")
         print("{} {}", encrypted_config, type(encrypted_config))
-    if getattr(arguments, "config_file"):
-        config_file_path = getattr(arguments, "config_file")
-    if getattr(arguments, "key_file"):
-        key_file_path = getattr(arguments, "key_file")
+    if hasattr(arguments, "config_file"):
+        config_file_path = hasattr(arguments, "config_file")
+    if hasattr(arguments, "key_file"):
+        key_file_path = hasattr(arguments, "key_file")
     #
     return encrypted_config, config_file_path, key_file_path
 
@@ -60,17 +60,17 @@ def configuration(arguments):
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     config = atac.Config(encrypted_config, config_file_path, key_file_path)
     #
-    if getattr(arguments, "generate_key_file"):
-        generate_key_file_path = getattr(arguments, "generate_key_file")
+    if hasattr(arguments, "generate_key_file"):
+        generate_key_file_path = hasattr(arguments, "generate_key_file")
         if generate_key_file_path:
             config.generate_key()
             config.save_key(generate_key_file_path)
-    if getattr(arguments, "new_config_file"):
-        new_config_file_path = getattr(arguments, "new_config_file")
+    if hasattr(arguments, "new_config_file"):
+        new_config_file_path = hasattr(arguments, "new_config_file")
         if new_config_file_path:
             config.new_config(new_config_file_path, encrypted_config)
-    if getattr(arguments, "decrypted_config_file"):
-        decrypted_config_file_path = getattr(arguments, "decrypted_config_file")
+    if hasattr(arguments, "decrypted_config_file"):
+        decrypted_config_file_path = hasattr(arguments, "decrypted_config_file")
         if decrypted_config_file_path:
             config.load_config()
             config.save_config(decrypted_config_file_path, False)
@@ -97,14 +97,14 @@ def email(arguments):
     email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
     subject = None
     #
-    if getattr(arguments, "subject"):
-        subject = getattr(arguments, "subject")
-    if getattr(arguments, "message_file"):
-        message_file_path = getattr(arguments, "message_file")
-    if getattr(arguments, "emails_file"):
-        email_files_path = getattr(arguments, "emails_file")
-    if getattr(arguments, "target"):
-        target = getattr(arguments, "target")
+    if hasattr(arguments, "subject"):
+        subject = hasattr(arguments, "subject")
+    if hasattr(arguments, "message_file"):
+        message_file_path = hasattr(arguments, "message_file")
+    if hasattr(arguments, "emails_file"):
+        email_files_path = hasattr(arguments, "emails_file")
+    if hasattr(arguments, "target"):
+        target = hasattr(arguments, "target")
     #
     _, content = katie.get_email_config()
     #
@@ -140,12 +140,12 @@ def phone(arguments):
     target = "whatsapp"
     phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
     #
-    if getattr(arguments, "message_file"):
-        message_file_path = getattr(arguments, "message_file")
-    if getattr(arguments, "phones_file"):
-        phone_files_path = getattr(arguments, "phones_file")
-    if getattr(arguments, "target"):
-        target = getattr(arguments, "target")
+    if hasattr(arguments, "message_file"):
+        message_file_path = hasattr(arguments, "message_file")
+    if hasattr(arguments, "phones_file"):
+        phone_files_path = hasattr(arguments, "phones_file")
+    if hasattr(arguments, "target"):
+        target = hasattr(arguments, "target")
     #
     if "whatsapp" in target and os.environ.get('DISPLAY'):
         katie.send_pywhatkit(phone_files_path, message_file_path)
@@ -172,10 +172,10 @@ def social(arguments):
     #
     target = "twitter"
     #
-    if getattr(arguments, "message_file"):
-        message_file_path = getattr(arguments, "message_file")
-    if getattr(arguments, "target"):
-        target = getattr(arguments, "target")
+    if hasattr(arguments, "message_file"):
+        message_file_path = hasattr(arguments, "message_file")
+    if hasattr(arguments, "target"):
+        target = hasattr(arguments, "target")
     #
     if "facebook" in target:
         katie.send_facebook(message_file_path)
@@ -201,12 +201,12 @@ def scrape(arguments):
     url = ""
     target = ""
     #
-    if getattr(arguments, "url"):
-        url = getattr(arguments, "url")
+    if hasattr(arguments, "url"):
+        url = hasattr(arguments, "url")
         mango = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
         mango.process_page("url", url)
-    elif getattr(arguments, "target"):
-        target = getattr(arguments, "target")
+    elif hasattr(arguments, "target"):
+        target = hasattr(arguments, "target")
         mango = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
         mango.process_page(target, mango.scrape['targets'][target])
     else:
@@ -237,8 +237,8 @@ def compose(arguments):
     """
     corpus_file_path = os.path.dirname(os.path.abspath(__file__)) + '/data/pg1009.txt'
     #
-    if getattr(arguments, "corpus"):
-        corpus_file_path = getattr(arguments, "corpus")
+    if hasattr(arguments, "corpus"):
+        corpus_file_path = hasattr(arguments, "corpus")
     #
     two_bach = atac.AllTimeHigh()
     two_bach.gen_content(corpus_file_path)
@@ -263,8 +263,8 @@ def clean(arguments):
     email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
     phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
     #
-    if getattr(arguments, "target"):
-        target = getattr(arguments, "target")
+    if hasattr(arguments, "target"):
+        target = hasattr(arguments, "target")
     #
     if "email" in target:
         leon.clean_emails(email_files_path)
