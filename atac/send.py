@@ -278,7 +278,9 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         counter = 0
         num_emails_per_bucket = 2000
-        num_buckets = len(unencrypted_emails) // num_emails_per_bucket
+        num_buckets = len(unencrypted_emails)
+        if len(unencrypted_emails) > num_emails_per_bucket:
+            num_buckets = len(unencrypted_emails) // num_emails_per_bucket
         batch_emails = [[] for i in range(num_buckets)]
         #
         with tqdm(total=len(unencrypted_emails)) as batch_progress:
