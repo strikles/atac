@@ -28,6 +28,7 @@ random-word
 regex==2021.4.4
 requests==2.26.0
 samila==0.3
+scipy
 shadow-useragent==0.0.17
 spacy
 stdiomask==0.0.6

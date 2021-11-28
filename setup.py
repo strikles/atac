@@ -53,6 +53,7 @@ setup(
         'regex',
         'requests',
         'samila',
+        'scipy',
         'shadow-useragent',
         'spacy',
         'stdiomask',
