@@ -323,7 +323,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .to(mailing_list)
                     .attach(path="art.png", inline=True)
                     .smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
-                    .send())
+                    .check(check_mx=True, check_smtp=True)
+                    .send(send=True))
                 #
                 print(type(e), e.as_message())
                 #
@@ -341,7 +342,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .encryption()
                     .attach(path="art.png", inline=True)
                     .smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
-                    .send())
+                    .check(check_mx=True, check_smtp=True)
+                    .send(send=True)
                 #
                 print(type(e), e.as_message())
                 #
