@@ -7,6 +7,7 @@ encrypted_config = True
 config_file = 'auth.json'
 key_file = None
 
+
 def test_send_email():
     """
     """
@@ -17,6 +18,7 @@ def test_send_email():
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     message = katie.compose_email(sender_email, mailing_list, message_content, subject)
     katie.send_email(mailing_list, message)
+
 
 def test_send_emails():
     """
