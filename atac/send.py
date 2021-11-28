@@ -277,8 +277,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                 filter_progress.update(1)
         #
         counter = 0
-        num_emails_per_bucket = 2000
-        num_buckets = len(unencrypted_emails)
+        num_emails_per_bucket = 500
+        num_buckets = 1
         if len(unencrypted_emails) > num_emails_per_bucket:
             num_buckets = len(unencrypted_emails) // num_emails_per_bucket
         batch_emails = [[] for i in range(num_buckets)]
