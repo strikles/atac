@@ -314,7 +314,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
                 mailing_list = '; '.join(batch)
-                atac.generate_art_samila()
+                generate_art_samila()
                 e = (Envelope()
                     .subject(subject)
                     .message(message.content + "<img src='cid:art.png' />")
