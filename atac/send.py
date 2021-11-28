@@ -325,6 +325,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                     .send())
                 #
+                print(type(e), e.get_payload())
+                #
                 progress.update(1)
         #
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
@@ -340,6 +342,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .attach(path="art.png", inline=True)
                     .smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                     .send())
+                #
+                print(type(e), e.get_payload())
                 #
                 encrypted_progress.update(1)
 
