@@ -27,5 +27,6 @@ from .compose import AllTimeHigh
 from .clean import Leon
 from .scrape import UnderTheMangoTree
 from .send import FromRuXiaWithLove
+from .art import *
 
 __all__ = ['Config', 'AllTimeHigh', 'Leon', 'UnderTheMangoTree', 'FromRuXiaWithLove']

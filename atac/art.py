@@ -137,7 +137,7 @@ def generate_art_samila():
     g = GenerativeImage(f1,f2)
     g.generate()
     #g.plot()
-    g.save_image(file_adr="samila.png")
+    g.save_image(file_adr="art.png")
 
 
 def create_image(text, window_height, window_width):
@@ -355,15 +355,15 @@ class Sudoku:
         self.dim = 3
         self.board = [[None for _ in range(self.dim**2)]
                       for _ in range(self.dim**2)]
-
+        #
         self.board[0] = [".", 3, ".",  ".", ".", ".",  ".", ".", "."]
         self.board[1] = [".", ".", ".",  1, 9, 5,  ".", ".", "."]
         self.board[2] = [".", ".", 8,  ".", ".", ".",  ".", 6, "."]
-
+        #
         self.board[3] = [8, ".", ".",  ".", 6, ".",  ".", ".", "."]
         self.board[4] = [4, ".", ".",  8, ".", ".",  ".", ".", 1]
         self.board[5] = [".", ".", ".",  ".", 2, ".",  ".", ".", "."]
-
+        #
         self.board[6] = [".", 6, ".",  ".", ".", ".",  2, 8, "."]
         self.board[7] = [".", ".", ".",  4, 1, 9,  ".", ".", 5]
         self.board[8] = [".", ".", ".",  ".", ".", ".",  ".", 7, "."]
@@ -404,7 +404,6 @@ class Sudoku:
         # for windows
         if name == "nt":
             _ = sp.call("cls",shell=True)
-
         # for mac and linux(here, os.name is 'posix')
         else:
             _ = sp.call("clear",shell=True)
@@ -569,7 +568,7 @@ class Conway:
         if rows == 0:
             return
         cols = len(self.grid[0])
-
+        #
         for i in range(rows):
             for j in range(cols):
                 an = 0
@@ -590,14 +589,14 @@ class Conway:
                     an += 1
                 if j+1 < cols and self.grid[i][j+1] == 1:
                     an += 1
-
+                #
                 if an < 2 and cs == 1:
                     state[(i, j)] = 0
                 elif an > 3 and cs == 1:
                     state[(i, j)] = 0
                 elif an == 3 and cs == 0:
                     state[(i, j)] = 1
-
+        #
         for k, v in state.items():
             self.grid[k[0]][k[1]] = v
 

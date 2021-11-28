@@ -314,9 +314,10 @@ class FromRuXiaWithLove(AllTimeHigh):
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
                 mailing_list = '; '.join(batch)
+                atac.generate_art_samila()
                 e = (Envelope()
                     .subject(subject)
-                    .message(message.content + "<img src='cid:image.jpg' />")
+                    .message(message.content + "<img src='cid:art.png' />")
                     .from_(auth['sender'])
                     .to(mailing_list))
                 #
@@ -329,9 +330,10 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
             for email_recipient, gpg_key_id in encrypted_emails:
+                atac.generate_art_samila()
                 e = (Envelope()
                     .subject(subject)
-                    .message(message.content + "<img src='cid:image.jpg' />")
+                    .message(message.content + "<img src='cid:art.png' />")
                     .from_(auth['sender'])
                     .to(email_recipient)
                     .encryption())
@@ -415,6 +417,38 @@ class FromRuXiaWithLove(AllTimeHigh):
             contact_file = self.get_file_content(email_file_path)
             unencrypted_emails, encrypted_emails = self.store_emails_in_buckets(contact_file)
             self.send_emails_in_buckets(unencrypted_emails, encrypted_emails, message_file_path, subject)
+        #
+        self.update_email_config()
+        #
+        return status
+
+    def send_emails_envelope(self, email_files_path, message_file_path, subject):
+        """
+        Send Emails
+
+        Parameters
+        ----------
+        unencrypted_email_batches : list
+            The name of the animal
+        email_file_path : str
+            The sound the animal makes
+        message_file_path : str
+            The number of legs the animal (default is 4)
+        subject : str
+            The email subject
+        """
+        status = 0
+        #
+        if not os.path.isfile(message_file_path):
+            print("Invalid message file path!")
+            sys.exit(1)
+        #
+        print(email_files_path)
+        email_files = self.get_contact_files(email_files_path)
+        for email_file_path in email_files:
+            contact_file = self.get_file_content(email_file_path)
+            unencrypted_emails, encrypted_emails = self.store_emails_in_buckets(contact_file)
+            self.send_emails_in_buckets_envelope(unencrypted_emails, encrypted_emails, message_file_path, subject)
         #
         self.update_email_config()
         #

@@ -52,3 +52,13 @@ def test_send_emails():
     subject = "Cybertorture extrajudicial sentences and the Portuguese Police"
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     katie.send_emails(email_files_path, message_file_path, subject)
+
+
+def test_send_emails_envelope():
+    """
+    """
+    email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
+    message_file_path = os.getcwd() + "/atac/tests/test_message.md"
+    subject = "Cybertorture extrajudicial sentences and the Portuguese Police"
+    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
+    katie.send_emails_envelope(email_files_path, message_file_path, subject)
