@@ -313,9 +313,11 @@ class FromRuXiaWithLove(AllTimeHigh):
         message_content = []
         with open(message_file_path, encoding="utf-8") as content_file:
             message_content = content_file.readlines()
+            print(message_content)
         message = ""
         for line in message_content:
             message += markdown2.markdown(line)
+        print(message)
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
