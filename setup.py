@@ -43,7 +43,6 @@ setup(
         'py3-validate-email',
         'py5',
         'pyaxmlparser',
-        'python3-utils',
         'python-frontmatter',
         'python-gnupg',
         'pywhatkit',
@@ -63,6 +62,7 @@ setup(
         'tweepy',
         'twilio',
         'urllib3',
+        'utils',
         'validators',
         'wikipedia',
         'yowsup2'
