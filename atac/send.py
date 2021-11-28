@@ -325,7 +325,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                     .send())
                 #
-                print(type(e), e.get_payload())
+                print(type(e), e.as_message())
                 #
                 progress.update(1)
         #
@@ -343,7 +343,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                     .send())
                 #
-                print(type(e), e.get_payload())
+                print(type(e), e.as_message())
                 #
                 encrypted_progress.update(1)
 
