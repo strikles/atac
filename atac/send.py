@@ -320,12 +320,10 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .subject(subject)
                     .message(message.content + "<img src='cid:art.png' />")
                     .from_(auth['sender'])
-                    .to(mailing_list))
-                #
-                e.attach(path="art.png", inline=True)
-                e.as_message()  # returns EmailMessage
-                e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
-                e.send()
+                    .to(mailing_list)
+                    .attach(path="art.png", inline=True)
+                    .smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
+                    .send())
                 #
                 progress.update(1)
         #
@@ -338,12 +336,10 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .message(message.content + "<img src='cid:art.png' />")
                     .from_(auth['sender'])
                     .to(email_recipient)
-                    .encryption())
-                #
-                e.attach(path="art.png", inline=True)
-                e.as_message()  # returns EmailMessage
-                e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
-                e.send()
+                    .encryption()
+                    .attach(path="art.png", inline=True)
+                    .smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
+                    .send())
                 #
                 encrypted_progress.update(1)
 

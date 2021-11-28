@@ -10,6 +10,7 @@ config_file = 'auth.json'
 key_file = None
 
 
+@pytest.mark.skip(reason="spam")
 def test_send_email():
     """
     """
@@ -43,6 +44,7 @@ def test_send_email():
     message_content = u'\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message.md", "message"))
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     katie.send_email(mailing_list, message)
+
 
 @pytest.mark.skip(reason="spam")
 def test_send_emails():
