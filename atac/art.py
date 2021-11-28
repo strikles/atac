@@ -254,12 +254,14 @@ def twinkle_sine():
 
 
 def draw_tile(x, y, w, h):
-  horizontal = True if random(2) >= 1.0 else False
-
-  if horizontal:
-    py5.line(x, y + (h / 2), x + w, y + (h / 2))
-  else:
-    py5.line(x + (w / 2), y, x + ( w / 2), y + h)
+    """
+    """
+    horizontal = True if random(2) >= 1.0 else False
+    #
+    if horizontal:
+        py5.line(x, y + (h / 2), x + w, y + (h / 2))
+    else:
+        py5.line(x + (w / 2), y, x + ( w / 2), y + h)
 
 
 def tiles(width, height):
@@ -292,6 +294,8 @@ class Sudoku:
         return res
 
     def __init__(self, dim=3):
+        """
+        """
         self.dim = dim
         self.board = None
         self.numbers = range(1, dim**2 + 1)
