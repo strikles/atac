@@ -325,6 +325,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 e.attach(path="art.png", inline=True)
                 e.as_message()  # returns EmailMessage
                 e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
+                e.send()
                 #
                 progress.update(1)
         #
@@ -342,6 +343,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 e.attach(path="art.png", inline=True)
                 e.as_message()  # returns EmailMessage
                 e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
+                e.send()
                 #
                 encrypted_progress.update(1)
 
