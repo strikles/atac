@@ -369,7 +369,9 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
         print(subject)
         auth, _ = self.get_email_config()
-        message = markdown.markdown('\r\n'.join(self.get_file_content(message_file_path, 'message')))
+        message = ""
+        with open(message_file_path, encoding="utf-8") as content_file:
+            message = markdown.markdown(content_file.read())
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
