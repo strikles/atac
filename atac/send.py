@@ -310,9 +310,12 @@ class FromRuXiaWithLove(AllTimeHigh):
             The email subject
         """
         auth, _ = self.get_email_config()
-        message = ""
+        message_content = []
         with open(message_file_path, encoding="utf-8") as content_file:
-            message = markdown2.markdown(content_file.read())
+            message_content = content_file.readlines()
+        message = ""
+        for line in message_content:
+            message += markdown2.markdown(line)
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
@@ -369,9 +372,12 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
         print(subject)
         auth, _ = self.get_email_config()
-        message = ""
+        message_content = []
         with open(message_file_path, encoding="utf-8") as content_file:
-            message = content_file.read()
+            message_content = content_file.readlines()
+        message = ""
+        for line in message_content:
+            message += markdown2.markdown(line)
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
