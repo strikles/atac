@@ -316,11 +316,11 @@ class FromRuXiaWithLove(AllTimeHigh):
                 mailing_list = '; '.join(batch)
                 e = (Envelope()
                     .subject(subject)
-                    .message(message.content)
+                    .message(message.content + "<img src='cid:image.jpg' />")
                     .from_(auth['sender'])
                     .to(mailing_list))
                 #
-                # e.attach(path="/tmp/file.jpg", inline=True)
+                e.attach(path="art.png", inline=True)
                 e.as_message()  # returns EmailMessage
                 e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                 #
@@ -331,12 +331,12 @@ class FromRuXiaWithLove(AllTimeHigh):
             for email_recipient, gpg_key_id in encrypted_emails:
                 e = (Envelope()
                     .subject(subject)
-                    .message(message.content)
+                    .message(message.content + "<img src='cid:image.jpg' />")
                     .from_(auth['sender'])
                     .to(email_recipient)
                     .encryption())
                 #
-                # e.attach(path="/tmp/file.jpg", inline=True)
+                e.attach(path="art.png", inline=True)
                 e.as_message()  # returns EmailMessage
                 e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                 #
