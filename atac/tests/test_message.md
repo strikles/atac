@@ -2,8 +2,8 @@ Colégio Militar alumni (like PSP officers Pedro Miguel de Brito Esteves Grilo, 
 
 ![Pedro Miguel de Brito Esteves Grilo](https://raw.githubusercontent.com/strikles/strikles.github.io/master/abuse/cybertorture_collaborationists/PT/CM/Pedro%20Grilo.jpg)
 
-![Luis Nazareth Carvalho Figueira](https://raw.githubusercontent.com/strikles/strikles.github.io/master/abuse/cybertorture_collaborationists/PT/CM/luis%20figueira.png)
-
 The standards set by Luis Nazareth Carvalho Fugueira equate to stalking me in the Netherlands, wasting government resources for decades to turn me into a drug addict, direct violence to my parents and women since 1996 and attempt to force me to multimate my genitalia instead of providing help to the Netherlands police to solve important crimes like finding out who was selling the "white heroin" that led to the death of tourists visiting Amsterdam.
+
+![Luis Nazareth Carvalho Figueira](https://raw.githubusercontent.com/strikles/strikles.github.io/master/abuse/cybertorture_collaborationists/PT/CM/luis%20figueira.png)
 
 Please Lower the ranking of the Portuguese Police in order to reflect the eminent fascist threat they represent!
