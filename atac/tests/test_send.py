@@ -11,12 +11,12 @@ key_file = None
 def test_send_email():
     """
     """
-    sender_email = ""
-    mailing_list = ["civilsociety@ohchr.org"]
-    message_content = "This is a test atac email"
-    subject = "test atac email"
+    mailing_list = "perceptionchange@un.org"
+    subject = "Cybertorture extrajudicial sentences and the Portuguese Police"
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
-    message = katie.compose_email(sender_email, mailing_list, message_content, subject)
+    auth, _ = katie.get_email_config()
+    message_content = katie.get_file_content(os.getcwd() + "/atac/tests/test_message.md", "message")
+    message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     katie.send_email(mailing_list, message)
 
 
@@ -25,6 +25,6 @@ def test_send_emails():
     """
     email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
     message_file_path = os.getcwd() + "/atac/tests/test_message.md"
-    subject = "test atac email"
+    subject = "Cybertorture extrajudicial sentences and the Portuguese Police"
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     katie.send_emails(email_files_path, message_file_path, subject)
