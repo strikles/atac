@@ -136,7 +136,7 @@ def generate_art_samila():
     #
     g = GenerativeImage(f1,f2)
     g.generate()
-    #g.plot()
+    g.plot()
     g.save_image(file_adr="art.png")
 
 

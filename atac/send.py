@@ -315,6 +315,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             for batch in unencrypted_email_batches:
                 mailing_list = '; '.join(batch)
                 generate_art_samila()
+                time.sleep(10)
                 e = (Envelope()
                     .subject(subject)
                     .message(message.content + "<img src='cid:art.png' />")
@@ -325,12 +326,12 @@ class FromRuXiaWithLove(AllTimeHigh):
                 e.as_message()  # returns EmailMessage
                 e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                 #
-                time.sleep(10)
                 progress.update(1)
         #
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
             for email_recipient, gpg_key_id in encrypted_emails:
                 generate_art_samila()
+                time.sleep(10)
                 e = (Envelope()
                     .subject(subject)
                     .message(message.content + "<img src='cid:art.png' />")
@@ -342,7 +343,6 @@ class FromRuXiaWithLove(AllTimeHigh):
                 e.as_message()  # returns EmailMessage
                 e.smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                 #
-                time.sleep(10)
                 encrypted_progress.update(1)
 
     def send_emails_in_buckets(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
