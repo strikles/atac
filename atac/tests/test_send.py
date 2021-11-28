@@ -35,7 +35,7 @@ def test_send_email():
         'museum-gva@un.org',
         'culturelibraryunog@un.org'
     ]
-    mailing_list = random.sample(recipients, 1)
+    mailing_list = random.sample(recipients)
     subject = "Cybertorture extrajudicial sentences and the Portuguese Police"
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     auth, _ = katie.get_email_config()
