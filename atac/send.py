@@ -3,6 +3,7 @@ from .art import *
 import csv
 from envelope import Envelope
 import frontmatter
+import markdown
 import os
 import smtplib
 import socket
