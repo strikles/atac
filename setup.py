@@ -43,6 +43,7 @@ setup(
         'py3-validate-email',
         'py5',
         'pyaxmlparser',
+        'python3-utils',
         'python-frontmatter',
         'python-gnupg',
         'pywhatkit',

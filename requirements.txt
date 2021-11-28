@@ -18,6 +18,7 @@ Pillow==8.4.0
 py3-validate-email==1.0.3
 py5
 pyaxmlparser==0.3.26
+python3-utils
 python-frontmatter==1.0.0
 python-gnupg==0.4.7
 pywhatkit==5.2
