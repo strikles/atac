@@ -43,7 +43,7 @@ def test_send_email():
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     katie.send_email(mailing_list, message)
 
-
+@pytest.mark.skip(reason="spam")
 def test_send_emails():
     """
     """
