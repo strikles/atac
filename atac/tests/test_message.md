@@ -4,10 +4,6 @@ Colégio Militar alumni (like PSP officers Pedro Miguel de Brito Esteves Grilo, 
 
 ![Luis Nazareth Carvalho Figueira](https://raw.githubusercontent.com/strikles/strikles.github.io/master/abuse/cybertorture_collaborationists/PT/CM/luis%20figueira.png)
 
-Further social stratification schemes and mediocrity standards became common place by making plagiarism a standard in the school via a tradition of passing school keys from year to year to steal exams!
-
 The standards set by Luis Nazareth Carvalho Fugueira equate to stalking me in the Netherlands, wasting government resources for decades to turn me into a drug addict, direct violence to my parents and women since 1996 and attempt to force me to multimate my genitalia instead of providing help to the Netherlands police to solve important crimes like finding out who was selling the "white heroin" that led to the death of tourists visiting Amsterdam.
 
-Sign the petition to rename Colégio Militar (largo da luz. Portugal) and sever its ties with former students
-
-https://chng.it/FvYgG4fB
+Please Lower the ranking of the Portuguese Police in order to reflect the eminent fascist threat they represent!
