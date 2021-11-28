@@ -1,4 +1,5 @@
 import os
+import random
 import sys
 import atac
 
@@ -11,7 +12,30 @@ key_file = None
 def test_send_email():
     """
     """
-    mailing_list = "perceptionchange@un.org"
+    recipients = [
+        'civilsociety@ohchr.org',
+        'youthenvoy@un.org',
+        'education-outreach@un.org',
+        'contactnewscentre@un.org',
+        'staffunionu@un.org',
+        'sssgeneva@un.org',
+        'controlcenter.security-unog@un.org',
+        'unog.protocol@un.org',
+        'unog.political@un.org',
+        'unog.ngo@un.org',
+        'sdg-lab@un.org',
+        'perceptionchange@un.org',
+        'procurementunog@un.org',
+        'dcmdirector@un.org',
+        'unoda-geneva@un.org',
+        'press_geneva@un.org',
+        'untv@un.org',
+        'library-gva@un.org',
+        'archives-gva@un.org',
+        'museum-gva@un.org',
+        'culturelibraryunog@un.org'
+    ]
+    mailing_list = random.sample(recipients, 1)
     subject = "Cybertorture extrajudicial sentences and the Portuguese Police"
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     auth, _ = katie.get_email_config()
