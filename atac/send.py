@@ -330,7 +330,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
             for email_recipient, gpg_key_id in encrypted_emails:
-                atac.generate_art_samila()
+                generate_art_samila()
                 e = (Envelope()
                     .subject(subject)
                     .message(message.content + "<img src='cid:art.png' />")
