@@ -5,7 +5,7 @@ from email import charset
 #from email.encoders import encode_base64
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
-import markdown
+import markdown2
 import os
 import sys
 
@@ -109,7 +109,7 @@ class AllTimeHigh(Config):
         body.replace_header('format', 'flowed')
         # convert markdown to html
         text = message_content
-        html = markdown.markdown(text)
+        html = markdown2.markdown(text)
         # Encrypt the message body.
         encrypted_text = self.gpg.encrypt(text, key_id)
         encrypted_html = self.gpg.encrypt(html, key_id)
