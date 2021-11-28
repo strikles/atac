@@ -15,7 +15,7 @@ def test_send_email():
     message_content = ""
     subject = ""
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
-    message = katie.compose_mail(sender_email, mailing_list, message_content, subject)
+    message = katie.compose_email(sender_email, mailing_list, message_content, subject)
     katie.send_email(mailing_list, message)
 
 def test_send_emails():
