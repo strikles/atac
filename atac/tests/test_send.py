@@ -11,8 +11,8 @@ def test_send_email():
     """
     """
     sender_email = ""
-    mailing_list = []
-    message_content = ""
+    mailing_list = ["civilsociety@ohchr.org"]
+    message_content = "This is a test atac email"
     subject = "test atac email"
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     message = katie.compose_email(sender_email, mailing_list, message_content, subject)
