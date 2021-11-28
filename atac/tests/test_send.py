@@ -23,8 +23,8 @@ def test_send_email():
 def test_send_emails():
     """
     """
-    email_files_path = os.getcwd() + "atac/tests/test_emails.csv"
-    message_file_path = os.getcwd() + "atac/tests/test_message.md"
+    email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
+    message_file_path = os.getcwd() + "/atac/tests/test_message.md"
     subject = "test atac email"
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     katie.send_emails(email_files_path, message_file_path, subject)
