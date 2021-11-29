@@ -31,7 +31,6 @@ setup(
         'coloredlogs',
         'coverage',
         'cryptography',
-        'envelope',
         'facebook-sdk',
         'Faker',
         'fake-useragent'

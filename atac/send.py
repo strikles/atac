@@ -1,7 +1,6 @@
 from .compose import AllTimeHigh
 
 import csv
-from envelope import Envelope
 import frontmatter
 import mistune
 import os
@@ -294,69 +293,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         return batch_emails, encrypted_emails
 
-    def send_emails_in_buckets_envelope(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
-        """
-        Send emails in buckets using envelope
-
-        Parameters
-        ----------
-        unencrypted_email_batches : list
-            The name of the animal
-        encrypted_emails : list
-            The sound the animal makes
-        message_file_path : str
-            The number of legs the animal (default is 4)
-        subject : str
-            The email subject
-        """
-        auth, _ = self.get_email_config()
-        message_content = []
-        with open(message_file_path, encoding="utf-8") as content_file:
-            message_content = content_file.readlines()
-            print(message_content)
-        message = ""
-        for line in message_content:
-            message += mistune.html(line)
-        print(message)
-        #
-        with tqdm(total=len(unencrypted_email_batches)) as progress:
-            for batch in unencrypted_email_batches:
-                mailing_list = '; '.join(batch)
-                #generate_art_samila()
-                time.sleep(5)
-                e = (Envelope()
-                    .subject(subject)
-                    .message("<img src='cid:art.png' /><br>" + message, alternative="plain")
-                    .from_(auth['sender'])
-                    .to(mailing_list)
-                    #.attach(path="art.png", inline=True)
-                    .smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
-                    #.check(check_mx=True, check_smtp=True)
-                    .send(send=True))
-                #
-                print(type(e), e.as_message())
-                #
-                progress.update(1)
-        #
-        with tqdm(total=len(encrypted_emails)) as encrypted_progress:
-            for email_recipient, gpg_key_id in encrypted_emails:
-                #generate_art_samila()
-                time.sleep(5)
-                e = (Envelope()
-                    .subject(subject)
-                    .message("<img src='cid:art.png' /><br>" + message, alternative="plain")
-                    .from_(auth['sender'])
-                    .to(email_recipient)
-                    .encryption()
-                    #.attach(path="art.png", inline=True)
-                    .smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
-                    #.check(check_mx=True, check_smtp=True)
-                    .send(send=True))
-                #
-                print(type(e), e.as_message())
-                #
-                encrypted_progress.update(1)
-
     def send_emails_in_buckets(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
         """
         Send emails in buckets
@@ -431,38 +367,6 @@ class FromRuXiaWithLove(AllTimeHigh):
             contact_file = self.get_file_content(email_file_path)
             unencrypted_emails, encrypted_emails = self.store_emails_in_buckets(contact_file)
             self.send_emails_in_buckets(unencrypted_emails, encrypted_emails, message_file_path, subject)
-        #
-        self.update_email_config()
-        #
-        return status
-
-    def send_emails_envelope(self, email_files_path, message_file_path, subject):
-        """
-        Send Emails
-
-        Parameters
-        ----------
-        unencrypted_email_batches : list
-            The name of the animal
-        email_file_path : str
-            The sound the animal makes
-        message_file_path : str
-            The number of legs the animal (default is 4)
-        subject : str
-            The email subject
-        """
-        status = 0
-        #
-        if not os.path.isfile(message_file_path):
-            print("Invalid message file path!")
-            sys.exit(1)
-        #
-        print(email_files_path)
-        email_files = self.get_contact_files(email_files_path)
-        for email_file_path in email_files:
-            contact_file = self.get_file_content(email_file_path)
-            unencrypted_emails, encrypted_emails = self.store_emails_in_buckets(contact_file)
-            self.send_emails_in_buckets_envelope(unencrypted_emails, encrypted_emails, message_file_path, subject)
         #
         self.update_email_config()
         #
