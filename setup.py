@@ -36,7 +36,7 @@ setup(
         'Faker',
         'fake-useragent'
         'lxml',
-        'markdown2',
+        'marko',
         'markovify',
         'phonenumbers',
         'Pillow',
