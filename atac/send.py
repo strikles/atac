@@ -83,21 +83,14 @@ class FromRuXiaWithLove(AllTimeHigh):
             print("invalid file path!")
             sys.exit(1)
         lines = None
-        # Now put your SMS in a file called message.txt, and it will be read from there.
+        #
         try:
             with open(file_path, encoding="utf-8") as content_file:
                 lines = [line.rstrip() for line in content_file]
-                if file_type == 'message':
-                    for i in range(len(lines)):
-                        lines[i] = textwrap.wrap(text=lines[i], width=70, break_long_words=False)
-                    lines = [item for sublist in lines for item in sublist]
-                # print('\n>>> '.join(map(str, lines)))
         except OSError as e:
             print('{} file error {}'.format(file_path, e.errno))
         finally:
             content_file.close()
-        #
-        # print("> file content: \n\n{}".format('\n'.join(lines)))
         #
         return lines
 
