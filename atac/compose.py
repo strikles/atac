@@ -109,7 +109,7 @@ class AllTimeHigh(Config):
         body.replace_header('format', 'flowed')
         # convert markdown to html
         text = message_content
-        html = marko.convert(text)
+        html = marko.convert(text) + "<br><img src="cid:image1"><br>"
         # Encrypt the message body.
         encrypted_text = self.gpg.encrypt(text, key_id)
         encrypted_html = self.gpg.encrypt(html, key_id)
@@ -123,6 +123,13 @@ class AllTimeHigh(Config):
         body.attach(part2)
         # The email client will try to render the last part first
         message.attach(body)
+        fp = open('art.png', 'rb')
+        msg_image = MIMEImage(fp.read())
+        fp.close()
+        # Define the image's ID as referenced above
+        msg_image.add_header('Content-ID', '<art>')
+        message.attach(msg_image)
+
         print(message.as_string())
         #
         return message
@@ -159,7 +166,7 @@ class AllTimeHigh(Config):
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         text = message_content
-        html = marko.convert(text)
+        html = marko.convert(text) + "<br><img src="cid:image1"><br>"
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
         part2 = MIMENonMultipart('text', 'html', charset='utf-8')
@@ -170,6 +177,12 @@ class AllTimeHigh(Config):
         body.attach(part2)
         # The email client will try to render the last part first
         message.attach(body)
+        fp = open('art.png', 'rb')
+        msg_image = MIMEImage(fp.read())
+        fp.close()
+        # Define the image's ID as referenced above
+        msg_image.add_header('Content-ID', '<art>')
+        message.attach(msg_image)
         print(message.as_string())
         #
         return message

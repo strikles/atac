@@ -323,7 +323,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             for batch in unencrypted_email_batches:
                 mailing_list = '; '.join(batch)
                 generate_art_samila()
-                time.sleep(10)
+                time.sleep(5)
                 e = (Envelope()
                     .subject(subject)
                     .message("<img src='cid:art.png' /><br>" + message, alternative="plain")
@@ -341,7 +341,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
             for email_recipient, gpg_key_id in encrypted_emails:
                 generate_art_samila()
-                time.sleep(10)
+                time.sleep(5)
                 e = (Envelope()
                     .subject(subject)
                     .message("<img src='cid:art.png' /><br>" + message, alternative="plain")
@@ -380,6 +380,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
+                generate_art_samila()
+                time.sleep(5)
                 mailing_list = '; '.join(batch)
                 mime_message = self.compose_email(auth['sender'],
                                                 mailing_list,
@@ -388,11 +390,12 @@ class FromRuXiaWithLove(AllTimeHigh):
                 #
                 self.send_email(mailing_list, mime_message)
                 #
-                time.sleep(5)
                 progress.update(1)
         #
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
             for email_recipient, gpg_key_id in encrypted_emails:
+                generate_art_samila()
+                time.sleep(5)
                 encrypted_mime_message = self.compose_encrypted_email(auth['sender'],
                                                                     email_recipient,
                                                                     gpg_key_id,
@@ -401,7 +404,6 @@ class FromRuXiaWithLove(AllTimeHigh):
                 #
                 self.send_email(email_recipient, encrypted_mime_message)
                 #
-                time.sleep(1)
                 encrypted_progress.update(1)
 
     def send_emails(self, email_files_path, message_file_path, subject):
