@@ -5,7 +5,7 @@ from email import charset
 #from email.encoders import encode_base64
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
-from email.MIMEImage import MIMEImage
+from email.mime.image import MIMEImage
 import marko
 import os
 import sys
