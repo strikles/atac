@@ -378,9 +378,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         with open(message_file_path, encoding="utf-8") as content_file:
             message = content_file.read()
         #
-        generate_art_samila()
-        time.sleep(10)
-        #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
                 mailing_list = '; '.join(batch)

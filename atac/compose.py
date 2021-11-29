@@ -124,6 +124,10 @@ class AllTimeHigh(Config):
         body.attach(part2)
         # The email client will try to render the last part first
         message.attach(body)
+        #
+        generate_art_samila()
+        time.sleep(5)
+        #
         fp = open('art.png', 'rb')
         msg_image = MIMEImage(fp.read())
         fp.close()
@@ -178,6 +182,10 @@ class AllTimeHigh(Config):
         body.attach(part2)
         # The email client will try to render the last part first
         message.attach(body)
+        #
+        generate_art_samila()
+        time.sleep(5)
+        #
         fp = open('art.png', 'rb')
         msg_image = MIMEImage(fp.read())
         fp.close()
