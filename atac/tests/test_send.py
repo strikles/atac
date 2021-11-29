@@ -24,17 +24,16 @@ def test_send_email():
     ]
     #
     auth, _ = katie.get_email_config()
+    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     mailing_list = random.sample(recipients, 1).pop()
     #
     subject = "Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_pt.md", "message"))
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     status = katie.send_email(mailing_list, message)
     assert(status == 0) is True
     #
     subject = "Pedido de ajuda humanitária de emergência para lidar com as familias destruidas pela policia portuguesa com cibertortura"
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_figueira.md", "message"))
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     status = katie.send_email(mailing_list, message)
@@ -45,16 +44,16 @@ def test_send_email():
 def test_send_emails():
     """
     """
+    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
+    #
     email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
     message_file_path = os.getcwd() + "/atac/tests/test_message.md"
     subject = "Cybertorture extrajudicial sentences and the Portuguese Police"
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     status = katie.send_emails(email_files_path, message_file_path, subject)
     assert(status == 0) is True
     #
     email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
     message_file_path = os.getcwd() + "/atac/tests/test_message_figueira.md"
     subject = "Pedido de ajuda humanitária de emergência para lidar com as familias destruidas pela policia portuguesa com cibertortura"
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     status = katie.send_emails(email_files_path, message_file_path, subject)
     assert(status == 0) is True
