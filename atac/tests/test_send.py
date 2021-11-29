@@ -51,8 +51,8 @@ def test_send_emails():
     """
     """
     email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
-    message_file_path = os.getcwd() + "/atac/tests/test_message.md"
-    subject = "Cybertorture extrajudicial sentences and the Portuguese Police"
+    message_file_path = os.getcwd() + "/atac/tests/test_message_pt.md"
+    subject = "test email"
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     katie.send_emails(email_files_path, message_file_path, subject)
 
@@ -61,7 +61,7 @@ def test_send_emails_envelope():
     """
     """
     email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
-    message_file_path = os.getcwd() + "/atac/tests/test_message.md"
-    subject = "Cybertorture extrajudicial sentences and the Portuguese Police"
+    message_file_path = os.getcwd() + "/atac/tests/test_message_pt.md"
+    subject = "Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     katie.send_emails_envelope(email_files_path, message_file_path, subject)
