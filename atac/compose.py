@@ -4,9 +4,9 @@ from .config import Config
 from datetime import datetime
 from email import charset
 #from email.encoders import encode_base64
+from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
-from email.mime.image import MIMEImage
 import mistune
 import os
 import sys
