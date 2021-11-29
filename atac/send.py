@@ -196,6 +196,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         message : MIMEMultipart
             The email messsage to send
         """
+        status = 0
         auth, _ = self.get_email_config()
         # Create secure connection with server and send email
         try:
@@ -214,6 +215,9 @@ class FromRuXiaWithLove(AllTimeHigh):
                 server.quit()
         except Exception as err:
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
+            status = 1
+        #
+        return status
 
     def find_gpg_keyid(self, recipient):
         """
@@ -359,7 +363,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         if not os.path.isfile(message_file_path):
             print("Invalid message file path!")
-            sys.exit(1)
+            status = 1
+            return status
         #
         print(email_files_path)
         email_files = self.get_contact_files(email_files_path)

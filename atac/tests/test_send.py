@@ -28,7 +28,8 @@ def test_send_email():
     auth, _ = katie.get_email_config()
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_pt.md", "message"))
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
-    katie.send_email(mailing_list, message)
+    status = katie.send_email(mailing_list, message)
+    assert(status == 0) is True
 
 
 # @pytest.mark.skip(reason="we fight spam :)")
@@ -39,4 +40,5 @@ def test_send_emails():
     message_file_path = os.getcwd() + "/atac/tests/test_message.md"
     subject = "Cybertorture extrajudicial sentences and the Portuguese Police"
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
-    katie.send_emails(email_files_path, message_file_path, subject)
+    status = katie.send_emails(email_files_path, message_file_path, subject)
+    assert(status == 0) is True
