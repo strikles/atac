@@ -22,11 +22,20 @@ def test_send_email():
         'sef@sef.pt',
         'sec.geral.mai@sg.mai.gov.pt'
     ]
+    #
+    auth, _ = katie.get_email_config()
     mailing_list = random.sample(recipients, 1).pop()
+    #
     subject = "Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
-    auth, _ = katie.get_email_config()
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_pt.md", "message"))
+    message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
+    status = katie.send_email(mailing_list, message)
+    assert(status == 0) is True
+    #
+    subject = "Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
+    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
+    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_figueira.md", "message"))
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     status = katie.send_email(mailing_list, message)
     assert(status == 0) is True
