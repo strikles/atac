@@ -1,3 +1,4 @@
+from .art import *
 from .config import Config
 
 from datetime import datetime
