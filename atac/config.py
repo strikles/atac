@@ -195,11 +195,11 @@ class Config:
                 "active_content": 0,
                 "auth": [
                     {
-                        "password": os.environ['GMAIL'],
+                        "password": os.environ['GMAIL_PASSWORD'],
                         "port": 465,
-                        "sender": "strikles@gmail.com",
+                        "sender": os.environ['GMAIL_USER'],
                         "server": "smtp.gmail.com",
-                        "user": "strikles@gmail.com"
+                        "user": os.environ['GMAIL_USER']
                     }
                 ],
                 "content": [

@@ -36,8 +36,8 @@ setup(
         'Faker',
         'fake-useragent'
         'lxml',
-        'marko',
         'markovify',
+        'mistune',
         'phonenumbers',
         'Pillow',
         'py3-validate-email',

@@ -11,8 +11,8 @@ facebook-sdk==3.1.0
 Faker
 fake-useragent==0.1.11
 lxml==4.6.3
-marko
 markovify==0.9.0
+mistune==2.0.0rc1
 phonenumbers==8.12.37
 Pillow==8.4.0
 py3-validate-email==1.0.3

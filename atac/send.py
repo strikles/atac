@@ -3,7 +3,7 @@ from .compose import AllTimeHigh
 import csv
 from envelope import Envelope
 import frontmatter
-import marko
+import mistune
 import os
 import smtplib
 import socket
@@ -316,7 +316,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             print(message_content)
         message = ""
         for line in message_content:
-            message += marko.convert(line)
+            message += mistune.html(line)
         print(message)
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
