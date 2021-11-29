@@ -125,10 +125,12 @@ class AllTimeHigh(Config):
         # The email client will try to render the last part first
         message.attach(body)
         #
-        generate_art_samila()
+        #generate_art_samila()
+        signature = Invader()
+        signature.run(17, 1, 17)
         time.sleep(5)
         #
-        fp = open('art.png', 'rb')
+        fp = open('art.jpg', 'rb')
         msg_image = MIMEImage(fp.read())
         fp.close()
         # Define the image's ID as referenced above
@@ -171,7 +173,7 @@ class AllTimeHigh(Config):
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         text = message_content
-        html = mistune.html(text) + "<br><img src='cid:art'><br>"
+        html = "<br><img src='cid:header'><br>" + mistune.html(text) + "<br><img src='cid:signature'><br>"
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
         part2 = MIMENonMultipart('text', 'html', charset='utf-8')
@@ -184,14 +186,24 @@ class AllTimeHigh(Config):
         message.attach(body)
         #
         generate_art_samila()
+        signature = Invader()
+        signature.run(17, 15, 427)
         time.sleep(5)
         #
-        fp = open('art.png', 'rb')
-        msg_image = MIMEImage(fp.read())
-        fp.close()
+        hfp = open('header.png', 'rb')
+        msg_image_header = MIMEImage(hfp.read())
+        hfp.close()
         # Define the image's ID as referenced above
-        msg_image.add_header('Content-ID', '<art>')
-        message.attach(msg_image)
+        msg_image_header.add_header('Content-ID', '<header>')
+        message.attach(msg_image_header)
+        #
+        sfp = open('signature.jpg', 'rb')
+        msg_image_signature = MIMEImage(sfp.read())
+        sfp.close()
+        # Define the image's ID as referenced above
+        msg_image_signature.add_header('Content-ID', '<signature>')
+        message.attach(msg_image_signature)
+        #
         print(message.as_string())
         #
         return message

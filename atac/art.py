@@ -137,7 +137,7 @@ def generate_art_samila():
     g = GenerativeImage(f1,f2)
     g.generate()
     g.plot()
-    status = g.save_image(file_adr="art.png")
+    status = g.save_image(file_adr="header.png")
     #
     return status
 
@@ -553,7 +553,7 @@ class Invader:
                 finalBotRightY = botRightY
                 self.create_invader((topLeftX, topLeftY, botRightX, botRightY), draw, size)
         #    origImage.save("Examples/Example-"+str(size)+"x"+str(size)+"-"+str(invaders)+"-"+str(imgSize)+".jpg")
-        origImage.crop((0, 0, botRightX-padding, botRightY-padding)).save("Examples/paddingTest.jpg")
+        origImage.crop((0, 0, botRightX-padding, botRightY-padding)).save("signature.jpg")
 
 
 class Conway:
