@@ -33,7 +33,7 @@ def test_send_email():
     status = katie.send_email(mailing_list, message)
     assert(status == 0) is True
     #
-    subject = "This is a request for emergency humanitarian help to address the threat the Portuguese police represents to the families of their cybertorture victims”
+    subject = "This is a request for emergency humanitarian help to address the threat the Portuguese police represents to the families of their cybertorture victims"
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_figueira.md", "message"))
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     status = katie.send_email(mailing_list, message)
@@ -54,6 +54,6 @@ def test_send_emails():
     #
     email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
     message_file_path = os.getcwd() + "/atac/tests/test_message_figueira.md"
-    subject = "This is a request for emergency humanitarian help to address the threat the Portuguese police represents to the families of their cybertorture victims”
+    subject = "This is a request for emergency humanitarian help to address the threat the Portuguese police represents to the families of their cybertorture victims"
     status = katie.send_emails(email_files_path, message_file_path, subject)
     assert(status == 0) is True
