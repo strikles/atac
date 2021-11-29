@@ -322,14 +322,14 @@ class FromRuXiaWithLove(AllTimeHigh):
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
                 mailing_list = '; '.join(batch)
-                generate_art_samila()
+                #generate_art_samila()
                 time.sleep(5)
                 e = (Envelope()
                     .subject(subject)
                     .message("<img src='cid:art.png' /><br>" + message, alternative="plain")
                     .from_(auth['sender'])
                     .to(mailing_list)
-                    .attach(path="art.png", inline=True)
+                    #.attach(path="art.png", inline=True)
                     .smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                     #.check(check_mx=True, check_smtp=True)
                     .send(send=True))
@@ -340,7 +340,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
             for email_recipient, gpg_key_id in encrypted_emails:
-                generate_art_samila()
+                #generate_art_samila()
                 time.sleep(5)
                 e = (Envelope()
                     .subject(subject)
@@ -348,7 +348,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     .from_(auth['sender'])
                     .to(email_recipient)
                     .encryption()
-                    .attach(path="art.png", inline=True)
+                    #.attach(path="art.png", inline=True)
                     .smtp(auth['server'], auth['port'], auth['user'], auth['password'], "starttls")
                     #.check(check_mx=True, check_smtp=True)
                     .send(send=True))
