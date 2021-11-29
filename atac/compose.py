@@ -109,7 +109,7 @@ class AllTimeHigh(Config):
         body.replace_header('format', 'flowed')
         # convert markdown to html
         text = message_content
-        html = marko.convert(text) + "<br><img src="cid:image1"><br>"
+        html = marko.convert(text) + "<br><img src='cid:art'><br>"
         # Encrypt the message body.
         encrypted_text = self.gpg.encrypt(text, key_id)
         encrypted_html = self.gpg.encrypt(html, key_id)
@@ -166,7 +166,7 @@ class AllTimeHigh(Config):
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         text = message_content
-        html = marko.convert(text) + "<br><img src="cid:image1"><br>"
+        html = marko.convert(text) + "<br><img src='cid:art'><br>"
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
         part2 = MIMENonMultipart('text', 'html', charset='utf-8')

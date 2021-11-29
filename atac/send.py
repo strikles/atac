@@ -515,7 +515,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         msg_type : str
             The number of legs the animal (default is 4)
         """
-        msg = u'\n'.join(self.get_file_content(message_file_path, 'message'))
+        msg = '\n'.join(self.get_file_content(message_file_path, 'message'))
         phone_numbers = self.get_phone_numbers(contacts_file_path)
         # Check you really want to send them
         self.calculate_twilio_cost(msg, phone_numbers, msg_type)
@@ -581,7 +581,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             message_file_path : str
                 The path to the message file
             """
-            msg = u'\n'.join(self.get_file_content(message_file_path, 'message'))
+            msg = '\n'.join(self.get_file_content(message_file_path, 'message'))
             phone_numbers = self.get_phone_numbers(contacts_file_path)
             # Check you really want to send them
             confirm = input("Send these messages? [Y/n] ")
