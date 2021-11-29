@@ -4,5 +4,6 @@ Ex-alunos do colégio militar ligados a Pedro Miguel De Brito Esteves Grilo, Tit
 2. "desisto"
 3. "nunca gostei dele"
 
-[//]: # (endoflist)
+<!-->
+
 numa tentativa de esconderem as atitudes de merda que tiveram comigo e com a minha família tais como terem partido os dentes remotamente aos meus pais como cobardes, terem sodomizado e abusado sexualmente dos meus pais e terem tentado enfiar a família toda num hospital psiquiátrico) dirigindo violência contra mulheres na Holanda tais como Madelin Hiddingh e outras senhoras do Timm & Pimm em Amsterdão.
