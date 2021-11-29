@@ -23,8 +23,8 @@ def test_send_email():
         'sec.geral.mai@sg.mai.gov.pt'
     ]
     #
-    auth, _ = katie.get_email_config()
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
+    auth, _ = katie.get_email_config()
     mailing_list = random.sample(recipients, 1).pop()
     #
     subject = "Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
