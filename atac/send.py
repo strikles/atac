@@ -25,8 +25,7 @@ import validators
 
 
 class FromRuXiaWithLove(AllTimeHigh):
-    """
-    A class used to represent a Configuration object
+    """ A class used to represent a Configuration object
 
     Attributes
     ----------
@@ -50,8 +49,7 @@ class FromRuXiaWithLove(AllTimeHigh):
     """
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
-        """
-        Class init
+        """ Class init
 
         Parameters
         ----------
@@ -69,8 +67,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     @staticmethod
     def get_file_content(file_path, file_type='contact'):
-        """
-        Get file content
+        """ Get file content
 
         Parameters
         ----------
@@ -82,8 +79,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         if not os.path.isfile(file_path):
             print("invalid file path!")
             sys.exit(1)
-        lines = None
         #
+        lines = None
         try:
             with open(file_path, encoding="utf-8") as content_file:
                 lines = [line.rstrip() for line in content_file]
@@ -95,10 +92,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         return lines
 
     def get_email_config(self):
-        """
-        Get email config
-
-        """
+        """ Get email config """
         content_index = self.email['active_content']
         auth_index = self.email['active_auth']
         content = self.email['content'][content_index]
@@ -107,10 +101,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         return auth, content
 
     def update_email_config(self):
-        """
-        Update email config
-
-        """
+        """ Update email config """
         auth, content = self.get_email_config()
         # set sctive to next and save config
         if self.email['rotate_content']:
@@ -123,8 +114,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     @staticmethod
     def get_contact_files(contact_files_path):
-        """
-        Get contact files
+        """ Get contact files
 
         Parameters
         ----------
@@ -149,8 +139,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         return contact_files
 
     def get_phone_numbers(self, contact_files_path):
-        """
-        Open the people CSV and get all the numbers out of it
+        """ Open the people CSV and get all the numbers out of it
 
         Parameters
         ----------
@@ -179,8 +168,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         return phone_numbers
 
     def send_email(self, mailing_list, message):
-        """
-        Send email
+        """ Send email
 
         Parameters
         ----------
@@ -214,6 +202,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def find_gpg_keyid(self, recipient):
         """
+
         We need the keyid to encrypt the message to the recipient.
         Let's walk through all keys in the keyring and find the
         appropriate one
@@ -232,8 +221,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         return None
 
     def store_emails_in_buckets(self, lines):
-        """
-        Store emails in buckets
+        """ Store emails in buckets
 
         Parameters
         ----------
@@ -291,8 +279,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         return batch_emails, encrypted_emails
 
     def send_emails_in_buckets(self, unencrypted_email_batches, encrypted_emails, message_file_path, subject):
-        """
-        Send emails in buckets
+        """ Send emails in buckets
 
         Parameters
         ----------
@@ -338,8 +325,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 encrypted_progress.update(1)
 
     def send_emails(self, email_files_path, message_file_path, subject):
-        """
-        Send Emails
+        """ Send Emails
 
         Parameters
         ----------
@@ -372,8 +358,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     @staticmethod
     def calculate_twilio_cost(msg, phone_numbers, msg_type):
-        """
-        Calculate Twilio cost
+        """ Calculate Twilio cost
 
         Parameters
         ----------
@@ -403,8 +388,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             print("> {} messages of {} segments each will be sent, at a cost of ${} ".format(num_messages, num_segments, cost))
 
     def send_twilio(self, contacts_file_path, message_file_path, msg_type):
-        """
-        Send Twilio message
+        """ Send Twilio message
 
         Parameters
         ----------
@@ -471,8 +455,7 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
-            """
-            Send Pywhatkit message
+            """ Send Pywhatkit message
 
             Parameters
             ----------
@@ -500,8 +483,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             print("Exiting!")
 
     def send_signal(self, contacts_file_path, message_file_path):
-        """
-        Send Signal message
+        """ Send Signal message
 
         Parameters
         ----------
@@ -535,8 +517,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
 
     def send_facebook(self, message_file_path):
-        """
-        Send Facebook
+        """ Send Facebook
 
         Parameters
         ----------
@@ -558,8 +539,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
 
     def send_twitter(self, message_file_path):
-        """
-        Send Twitter
+        """ Send Twitter
 
         Parameters
         ----------
