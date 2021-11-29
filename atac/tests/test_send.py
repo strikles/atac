@@ -15,33 +15,18 @@ def test_send_email():
     """
     """
     recipients = [
-        'civilsociety@ohchr.org',
-        'youthenvoy@un.org',
-        'education-outreach@un.org',
-        'contactnewscentre@un.org',
-        'staffunionu@un.org',
-        'sssgeneva@un.org',
-        'controlcenter.security-unog@un.org',
-        'unog.protocol@un.org',
-        'unog.political@un.org',
-        'unog.ngo@un.org',
-        'sdg-lab@un.org',
-        'perceptionchange@un.org',
-        'procurementunog@un.org',
-        'dcmdirector@un.org',
-        'unoda-geneva@un.org',
-        'press_geneva@un.org',
-        'untv@un.org',
-        'library-gva@un.org',
-        'archives-gva@un.org',
-        'museum-gva@un.org',
-        'culturelibraryunog@un.org'
+        'contacto@psp.pt',
+        'geral@prociv.pt',
+        'gnr@gnr.pt',
+        'mail@ansr.pt',
+        'sef@sef.pt',
+        'sec.geral.mai@sg.mai.gov.pt'
     ]
     mailing_list = random.sample(recipients, 1).pop()
-    subject = "Cybertorture extrajudicial sentences and the Portuguese Police"
+    subject = "Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     auth, _ = katie.get_email_config()
-    message_content = u'\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message.md", "message"))
+    message_content = u'\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_pt.md", "message"))
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     katie.send_email(mailing_list, message)
 
@@ -61,7 +46,7 @@ def test_send_emails_envelope():
     """
     """
     email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
-    message_file_path = os.getcwd() + "/atac/tests/test_message_pt.md"
-    subject = "Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
+    message_file_path = os.getcwd() + "/atac/tests/test_message.md"
+    subject = "Cybertorture extrajudicial sentences and the Portuguese Police"
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     katie.send_emails_envelope(email_files_path, message_file_path, subject)
