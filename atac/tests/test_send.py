@@ -26,7 +26,7 @@ def test_send_email():
     subject = "Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     auth, _ = katie.get_email_config()
-    message_content = u'\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_pt.md", "message"))
+    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_pt.md", "message"))
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     katie.send_email(mailing_list, message)
 

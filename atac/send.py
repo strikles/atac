@@ -326,7 +326,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 time.sleep(10)
                 e = (Envelope()
                     .subject(subject)
-                    .message("<img src='cid:art.png' />&nbsp;" + message)
+                    .message("<img src='cid:art.png' /><br>" + message, alternative="plain")
                     .from_(auth['sender'])
                     .to(mailing_list)
                     .attach(path="art.png", inline=True)
@@ -344,7 +344,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 time.sleep(10)
                 e = (Envelope()
                     .subject(subject)
-                    .message("<img src='cid:art.png' />&nbsp;" + message)
+                    .message("<img src='cid:art.png' /><br>" + message, alternative="plain")
                     .from_(auth['sender'])
                     .to(email_recipient)
                     .encryption()
@@ -374,12 +374,9 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
         print(subject)
         auth, _ = self.get_email_config()
-        message_content = []
-        with open(message_file_path, encoding="utf-8") as content_file:
-            message_content = content_file.readlines()
         message = ""
-        for line in message_content:
-            message += markdown2.markdown(line)
+        with open(message_file_path, encoding="utf-8") as content_file:
+            message = content_file.read()
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:
             for batch in unencrypted_email_batches:
