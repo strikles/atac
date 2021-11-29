@@ -3,7 +3,7 @@ from .art import *
 import csv
 from envelope import Envelope
 import frontmatter
-import markdown2
+import marko
 import os
 import smtplib
 import socket
@@ -316,7 +316,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             print(message_content)
         message = ""
         for line in message_content:
-            message += markdown2.markdown(line)
+            message += marko.convert(line)
         print(message)
         #
         with tqdm(total=len(unencrypted_email_batches)) as progress:

@@ -5,7 +5,7 @@ from email import charset
 #from email.encoders import encode_base64
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
-import markdown2
+import marko
 import os
 import sys
 
@@ -109,7 +109,7 @@ class AllTimeHigh(Config):
         body.replace_header('format', 'flowed')
         # convert markdown to html
         text = message_content
-        html = markdown2.markdown(text)
+        html = marko.convert(text)
         # Encrypt the message body.
         encrypted_text = self.gpg.encrypt(text, key_id)
         encrypted_html = self.gpg.encrypt(html, key_id)
@@ -159,7 +159,7 @@ class AllTimeHigh(Config):
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         text = message_content
-        html = markdown2.markdown(text)
+        html = marko.convert(text)
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
         part2 = MIMENonMultipart('text', 'html', charset='utf-8')
