@@ -53,7 +53,7 @@ def test_send_emails():
     assert(status == 0) is True
     #
     email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
-    message_file_path = os.getcwd() + "/atac/tests/test_message.md"
+    message_file_path = os.getcwd() + "/atac/tests/test_message_figueira.md"
     subject = "Pedido de ajuda humanitária de emergência para lidar com as familias destruidas pela policia portuguesa com cibertortura"
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     status = katie.send_emails(email_files_path, message_file_path, subject)
