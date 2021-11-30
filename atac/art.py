@@ -158,7 +158,11 @@ def create_image(text, window_height, window_width):
     global num_calls
     img = Image.new('L', (window_height, window_width), color='white')
     draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype("arial.ttf", 12)
+    font = ImageFont.truetype(
+        os.path.join(
+            os.path.dirname(__file__), 'arial.ttf'
+        ),
+        12)
     draw.text((0, 0), text, font=font)
     img.save('sudoku{}.jpg'.format(num_calls))
     num_calls += 1
