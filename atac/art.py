@@ -168,14 +168,14 @@ def create_image(text, window_height, window_width):
     num_calls += 1
 
 
-def make_gif(frame_folder):
+def make_gif(frame_folder, output_file_nane, glob_pattern):
     """
     """
-    frames = [Image.open(image) for image in glob.glob(f"{frame_folder}/sudoku*.jpg")]
+    frames = [Image.open(image) for image in glob.glob(f"{frame_folder}/{glob_pattern}")]
     frame_one = frames[0]
-    frame_one.save("sudoku.gif", format="GIF", append_images=frames, save_all=True, duration=277, loop=0)
+    frame_one.save(output_file_name, format="GIF", append_images=frames, save_all=True, duration=277, loop=0)
     print(">> make_gif" + os.path.join(
-            os.path.dirname(__file__), 'sudoku.gif'
+            os.path.dirname(__file__), output_file_name
     ))
 
 
@@ -619,7 +619,7 @@ class Conway:
             self.grid[k[0]][k[1]] = v
 
     def setup(self):
-        py5.size(1080/2, 1920/2)
+        py5.size(427, 427)
         py5.frameRate(2)
 
     def draw(self):
@@ -635,3 +635,4 @@ class Conway:
                 if self.grid[i][j]:
                     py5.rect(5+i*10, 5+j*10, 8, 8)
                     self.gameOfLife()
+                    py5.saveFrame("conways-######.png")

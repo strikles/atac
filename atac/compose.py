@@ -181,12 +181,21 @@ class AllTimeHigh(Config):
         message.attach(body)
         #
         generate_art_samila()
+        #
         signature = Invader()
         signature.run(17, 15, 427)
+        #
         sudoku = Sudoku()
         sudoku.create()
         sudoku.solve()
+        #
+        gol = Conway()
+        gol.setup()
+        gol.draw()
         time.sleep(5)
+        #
+        make_gif(".", "sudoku.gif", "sudoku*.jpg")
+        make_gif(".", "conway.gif", "conways-*.png")
         #
         hfp = open('header.png', 'rb')
         msg_image_header = MIMEImage(hfp.read())
@@ -195,7 +204,7 @@ class AllTimeHigh(Config):
         msg_image_header.add_header('Content-ID', '<header>')
         message.attach(msg_image_header)
         #
-        make_gif(".")
+        make_gif(".", "conway.gif", "sudoku*.jpg")
         time.sleep(5)
         #
         sfp = open('sudoku.gif', 'rb')
