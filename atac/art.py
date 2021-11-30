@@ -416,8 +416,8 @@ class Sudoku:
             if self.isValid(x, y, value):
                 self.board[x][y] = value
                 if self.solve(x, y, show_each_step):
-                    return True
                     make_gif(".")
+                    return True
                 self.board[x][y] = "."
                 return False
 
