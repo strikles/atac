@@ -162,7 +162,7 @@ def create_image(text, window_height, window_width):
         os.path.join(
             os.path.dirname(__file__), 'fonts/LiberationMono-Bold.ttf'
         ),
-        32)
+        31)
     draw.text((0, 0), text, font=font)
     img.save('sudoku{}.jpg'.format(num_calls))
     num_calls += 1
