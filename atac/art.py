@@ -300,7 +300,7 @@ class Sudoku:
         for i, line in enumerate(self.board):
             if i % self.dim == 0:
                 res += "\n"
-            res += "|{}|{}|{}|\t|{}|{}|{}|\t|{}|{}|{}|\n".format(
+            res += "|{}|{}|{}| |{}|{}|{}| |{}|{}|{}|\n".format(
                 *(cell or " " for cell in line))
         return res
 
