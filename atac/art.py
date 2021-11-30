@@ -158,11 +158,7 @@ def create_image(text, window_height, window_width):
     global num_calls
     img = Image.new('L', (window_height, window_width), color='white')
     draw = ImageDraw.Draw(img)
-    font = ImageFont.truetype(
-        os.path.join(
-            os.path.dirname(__file__), 'fonts/LiberationMono-Bold.ttf'
-        ),
-        31)
+    font = ImageFont.truetype('fonts/LiberationMono-Bold.ttf', 31)
     draw.text((0, 0), text, font=font)
     img.save('sudoku{}.jpg'.format(num_calls))
     num_calls += 1
