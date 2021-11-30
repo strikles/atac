@@ -110,8 +110,7 @@ class  Moonraker:
 
 
 class LoveAtLast:
-    """
-    A class used to represent a Configuration object
+    """ A class used to represent a Configuration object
 
     Attributes
     ----------
@@ -122,8 +121,7 @@ class LoveAtLast:
     """
 
     def __init__(self):
-        """
-        Class init
+        """ Class init
 
         Parameters
         ----------

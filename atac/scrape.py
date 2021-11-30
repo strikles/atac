@@ -14,8 +14,7 @@ from bs4 import BeautifulSoup
 
 
 class UnderTheMangoTree(Config):
-    """
-    A class used to represent a scraper object
+    """ A class used to represent a scraper object
 
     Attributes
     ----------
@@ -39,8 +38,7 @@ class UnderTheMangoTree(Config):
     """
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
-        """
-        Class init
+        """ Class init
 
         Parameters
         ----------
@@ -65,8 +63,7 @@ class UnderTheMangoTree(Config):
         self.num_emails = 0
 
     def invalid_url(self, url):
-        """
-        Check url against blacklist
+        """ Check url against blacklist
 
         Parameters
         ----------
@@ -92,10 +89,7 @@ class UnderTheMangoTree(Config):
 
     @staticmethod
     def set_useragent():
-        """
-        Set user agent to random and return headers dictionary
-
-        """
+        """ Set user agent to random and return headers dictionary """
         ua = UserAgent()
         headers = {"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
                    "Accept-Language": "en-US,en;q=0.5", "Referer": "https://www.google.com/", "DNT": "1",
@@ -105,10 +99,7 @@ class UnderTheMangoTree(Config):
 
     @staticmethod
     def make_dirs():
-        """
-        Make contacts directories if they don’t exist
-
-        """
+        """ Make contacts directories if they don’t exist """
         if not os.path.isdir(os.getcwd() + "/data/contacts"):
             os.makedirs(os.getcwd() + "/data/contacts")
         if not os.path.isdir(os.getcwd() + "/data/contacts/emails"):
@@ -118,8 +109,7 @@ class UnderTheMangoTree(Config):
 
     @staticmethod
     def truncate_files(data_key):
-        """
-        Save contacts to file
+        """ Save contacts to file
 
         Parameters
         ----------
@@ -156,8 +146,7 @@ class UnderTheMangoTree(Config):
 
     @staticmethod
     def extract_emails(content):
-        """
-        Use regex to extract emails from content
+        """ Use regex to extract emails from content
 
         Parameters
         ----------
@@ -171,8 +160,7 @@ class UnderTheMangoTree(Config):
 
     @staticmethod
     def extract_phones(content):
-        """
-        Use regex to extract phones from content
+        """ Use regex to extract phones from content
 
         Parameters
         ----------
@@ -184,8 +172,7 @@ class UnderTheMangoTree(Config):
         return set(rx_phones.findall(content))
 
     def save_email_contacts(self, new_contacts, data_key):
-        """
-        Save to file
+        """ Save to file
 
         Parameters
         ----------
@@ -210,8 +197,7 @@ class UnderTheMangoTree(Config):
             contact_file.close()
 
     def save_phone_contacts(self, new_contacts, data_key):
-        """
-        Save contacts to file
+        """ Save contacts to file
 
         Parameters
         ----------
@@ -236,8 +222,7 @@ class UnderTheMangoTree(Config):
             contact_file.close()
 
     def process_page(self, data_key, starting_url):
-        """
-        Scrape page
+        """ Scrape page
 
         Parameters
         ----------
