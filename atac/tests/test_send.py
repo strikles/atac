@@ -10,7 +10,7 @@ config_file = 'auth.json'
 key_file = None
 
 
-# @pytest.mark.skip(reason="we fight spam :)")
+#@pytest.mark.skip(reason="we fight spam :)")
 def test_send_email():
     """
     """
@@ -30,18 +30,20 @@ def test_send_email():
     #
     subject = "Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_pt.md", "message"))
+    mailing_list = random.sample(recipients, 1).pop()
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     status = katie.send_email(mailing_list, message)
     assert(status == 0) is True
     #
     subject = "This is a request for emergency humanitarian help to address the threat the Portuguese police represents to the families of their cybertorture victims"
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_figueira.md", "message"))
+    mailing_list = random.sample(recipients, 1).pop()
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     status = katie.send_email(mailing_list, message)
     assert(status == 0) is True
 
 
-# @pytest.mark.skip(reason="we fight spam :)")
+@pytest.mark.skip(reason="we fight spam :)")
 def test_send_emails():
     """
     """

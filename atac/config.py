@@ -12,8 +12,7 @@ import inspect
 
 
 class Config:
-    """
-    A class used to represent a Configuration object
+    """ A class used to represent a Configuration object
 
     Attributes
     ----------
@@ -37,8 +36,7 @@ class Config:
     """
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
-        """
-        Class init
+        """ Class init
 
         Parameters
         ----------
@@ -68,10 +66,7 @@ class Config:
         self.load_config()
 
     def generate_key(self):
-        """
-        Generates encryption key from password + salts
-
-        """
+        """ Generates encryption key from password + salts """
         print(inspect.stack()[1].function)
         if "PYTEST_CURRENT_TEST" in os.environ:
             password = bytes("M4m4k154n", encoding='utf-8')
@@ -88,8 +83,7 @@ class Config:
         self.key = base64.urlsafe_b64encode(kdf.derive(password))
 
     def load_key(self, key_file_path):
-        """
-        Load encryption key file
+        """ Load encryption key file
 
         Parameters
         ----------
@@ -105,8 +99,7 @@ class Config:
             key_file.close()
 
     def save_key(self, key_file_path):
-        """
-        Save encryption key file
+        """ Save encryption key file
 
         Parameters
         ----------
@@ -122,8 +115,7 @@ class Config:
             key_file.close()
 
     def save_config(self, config_file_path, encrypted_config):
-        """
-        Save json configuration file
+        """ Save json configuration file
 
         Parameters
         ----------
@@ -154,10 +146,7 @@ class Config:
                 unencrypted_file.close()
 
     def load_config(self):
-        """
-        Loads json configuration
-
-        """
+        """ Loads json configuration """
         if self.encrypted_config:
             fernet = Fernet(self.key)
             # opening the encrypted file
@@ -184,10 +173,7 @@ class Config:
                 new_config.close()
 
     def new_config(self):
-        """
-        Generate New Config
-
-        """
+        """ Generate New Config """
         self.data = {
             "compose": {},
             "email": {

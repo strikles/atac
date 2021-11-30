@@ -12,8 +12,7 @@ import sys
 
 
 class AllTimeHigh(Config):
-    """
-    A class used to represent a Configuration object
+    """ A class used to represent a Configuration object
 
     Attributes
     ----------
@@ -38,8 +37,7 @@ class AllTimeHigh(Config):
 
     @staticmethod
     def fix_mixed_encoding(s):
-        """
-        Fixed mixed encoding
+        """ Fixed mixed encoding
 
         Parameters
         ----------
@@ -62,8 +60,7 @@ class AllTimeHigh(Config):
 
     @staticmethod
     def get_datetime():
-        """
-        Return datetime string
+        """ Return datetime string
 
         """
         # datetime object containing current date and time
@@ -76,8 +73,7 @@ class AllTimeHigh(Config):
         return dt_string
 
     def compose_encrypted_email(self, sender_email, recipient_email, key_id, message_content, subject):
-        """
-        Compose MIMEMultipart encrypted email message
+        """ Compose MIMEMultipart encrypted email message
 
         Parameters
         ----------
@@ -143,8 +139,7 @@ class AllTimeHigh(Config):
 
     @staticmethod
     def compose_email(sender_email, mailing_list, message_content, subject):
-        """
-        Compose MIMEMultipart email message
+        """ Compose MIMEMultipart email message
 
         Parameters
         ----------
@@ -188,6 +183,9 @@ class AllTimeHigh(Config):
         generate_art_samila()
         signature = Invader()
         signature.run(17, 15, 427)
+        sudoku = Sudoku()
+        sudoku.create()
+        sudoku.solve()
         time.sleep(5)
         #
         hfp = open('header.png', 'rb')
@@ -197,7 +195,7 @@ class AllTimeHigh(Config):
         msg_image_header.add_header('Content-ID', '<header>')
         message.attach(msg_image_header)
         #
-        sfp = open('signature.jpg', 'rb')
+        sfp = open('sudoku.gif', 'rb')
         msg_image_signature = MIMEImage(sfp.read())
         sfp.close()
         # Define the image's ID as referenced above
