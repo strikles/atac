@@ -10,7 +10,7 @@ config_file = 'auth.json'
 key_file = None
 
 
-#@pytest.mark.skip(reason="we fight spam :)")
+@pytest.mark.skip(reason="we fight spam :)")
 def test_send_email():
     """
     """
