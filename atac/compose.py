@@ -194,7 +194,7 @@ class AllTimeHigh(Config):
         time.sleep(5)
         #
         make_gif(".", "sudoku.gif", "sudoku*.jpg")
-        make_gif(".", "conway.gif", "conways-*.png")
+        make_gif(".", "conway.gif", "conway-*.jpg")
         #
         hfp = open('header.png', 'rb')
         msg_image_header = MIMEImage(hfp.read())
