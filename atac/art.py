@@ -620,7 +620,7 @@ class Conway:
 
     def draw(self, dimensions):
         self.initBoard(53, 95, self.randomState(53, 95, 1000))
-        img = Image.new('L', (window_height, window_width), color='white')
+        img = Image.new('L', (dimensions, dimensions), color='white')
         draw = ImageDraw.Draw(img)
         rows = len(self.grid)
         if rows == 0:
