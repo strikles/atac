@@ -620,8 +620,8 @@ class Conway:
 
     def draw(self, dimensions):
         self.initBoard(53, 95, self.randomState(53, 95, 1000))
-        orig_image = Image.new('RGB', (dimensions, dimensions), color='#ffffff')
-        draw = ImageDraw.Draw(orig_image)
+        img = Image.new('L', (window_height, window_width), color='white')
+        draw = ImageDraw.Draw(img)
         rows = len(self.grid)
         if rows == 0:
             return
@@ -630,5 +630,5 @@ class Conway:
             for j in range(cols):
                 if self.grid[i][j]:
                     draw.rectangle((5+i*10, 5+j*10, 13+i*10, 13+j*10), fill="black")
-                    draw.save('conway-{}.jpg'.format(num_calls), "JPEG")
+                    img.save('conway-{}.jpg'.format(num_calls), "JPEG")
                     self.gameOfLife()
