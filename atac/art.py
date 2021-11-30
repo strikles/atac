@@ -408,7 +408,7 @@ class Sudoku:
         x, y = self.findNextCell(x, y)
         if show_each_step:
             print(self)
-            generate_image(self.__str__(), 300, 300)
+            create_image(self.__str__(), 300, 300)
             time.sleep(0.3)
         if x == -1:
             return True
