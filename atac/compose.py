@@ -195,6 +195,9 @@ class AllTimeHigh(Config):
         msg_image_header.add_header('Content-ID', '<header>')
         message.attach(msg_image_header)
         #
+        make_gif(".")
+        time.sleep(5)
+        #
         sfp = open('sudoku.gif', 'rb')
         msg_image_signature = MIMEImage(sfp.read())
         sfp.close()
