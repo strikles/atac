@@ -173,7 +173,7 @@ def make_gif(frame_folder):
     """
     frames = [Image.open(image) for image in glob.glob(f"{frame_folder}/sudoku*.jpg")]
     frame_one = frames[0]
-    frame_one.save("sudoku.gif", format="GIF", append_images=frames, save_all=True, loop=1)
+    frame_one.save("sudoku.gif", format="GIF", append_images=frames, save_all=True, duration=277, loop=0)
     print(">> make_gif" + os.path.join(
             os.path.dirname(__file__), 'sudoku.gif'
     ))
@@ -415,7 +415,7 @@ class Sudoku:
         x, y = self.findNextCell(x, y)
         if show_each_step:
             print(self)
-            create_image(self.__str__(), 300, 300)
+            create_image(self.__str__(), 427, 427)
             time.sleep(0.3)
         if x == -1:
             return True
