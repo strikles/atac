@@ -618,14 +618,10 @@ class Conway:
         for k, v in state.items():
             self.grid[k[0]][k[1]] = v
 
-    def setup(self):
-        py5.size(427, 427)
-        py5.frameRate(2)
-
-    def draw(self):
+    def draw(self, dimensions):
         self.initBoard(53, 95, self.randomState(53, 95, 1000))
-        py5.background(255)
-        py5.fill(0)
+        orig_image = Image.new('RGB', (dimensions, dimensions))
+        draw = ImageDraw.Draw(orig_image)
         rows = len(self.grid)
         if rows == 0:
             return
@@ -633,6 +629,6 @@ class Conway:
         for i in range(rows):
             for j in range(cols):
                 if self.grid[i][j]:
-                    py5.rect(5+i*10, 5+j*10, 8, 8)
+                    draw.rectangle(5+i*10, 5+j*10, 13+i*10, 13+j*10)
+                    draw.save('conway-{}.jpg'.format(num_calls))
                     self.gameOfLife()
-                    py5.saveFrame("conways-######.png")

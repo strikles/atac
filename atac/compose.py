@@ -190,8 +190,7 @@ class AllTimeHigh(Config):
         sudoku.solve()
         #
         gol = Conway()
-        gol.setup()
-        gol.draw()
+        gol.draw(427)
         time.sleep(5)
         #
         make_gif(".", "sudoku.gif", "sudoku*.jpg")
@@ -204,10 +203,7 @@ class AllTimeHigh(Config):
         msg_image_header.add_header('Content-ID', '<header>')
         message.attach(msg_image_header)
         #
-        make_gif(".", "conway.gif", "sudoku*.jpg")
-        time.sleep(5)
-        #
-        sfp = open('sudoku.gif', 'rb')
+        sfp = open('conway.gif', 'rb')
         msg_image_signature = MIMEImage(sfp.read())
         sfp.close()
         # Define the image's ID as referenced above
