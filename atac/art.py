@@ -174,6 +174,9 @@ def make_gif(frame_folder):
     frames = [Image.open(image) for image in glob.glob(f"{frame_folder}/sudoku*.jpg")]
     frame_one = frames[0]
     frame_one.save("sudoku.gif", format="GIF", append_images=frames, save_all=True, duration=100, loop=0)
+    print(">> make_gif" + os.path.join(
+            os.path.dirname(__file__), 'sudoku.gif'
+    ))
 
 
 def create_qr_code(url):
