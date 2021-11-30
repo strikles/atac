@@ -630,5 +630,5 @@ class Conway:
             for j in range(cols):
                 if self.grid[i][j]:
                     draw.rectangle((5+i*10, 5+j*10, 13+i*10, 13+j*10), fill="black")
-                    draw.save('conway-{}.jpg'.format(num_calls), , "JPEG")
+                    draw.save('conway-{}.jpg'.format(num_calls), "JPEG")
                     self.gameOfLife()
