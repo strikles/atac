@@ -398,7 +398,7 @@ class Sudoku:
             columnValid = all([value != self.board[i][y]
                                for i in range(self.dim**2)])
             if columnValid:
-                subGridTopX, subGridTopY = int(3 * (x / 3)), int(3 * (y / 3))
+                subGridTopX, subGridTopY = int(3 * (x // 3)), int(3 * (y // 3))
                 for i in range(subGridTopX, subGridTopX + 3):
                     for j in range(subGridTopY, subGridTopY + 3):
                         if self.board[i][j] == value:
