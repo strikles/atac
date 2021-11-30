@@ -141,7 +141,7 @@ def generate_art_samila():
     #
     return status
 
-
+num_calls = 0
 def create_image(text, window_height, window_width):
     """
     Generate Image from text
@@ -159,15 +159,16 @@ def create_image(text, window_height, window_width):
     draw = ImageDraw.Draw(img)
     font = ImageFont.truetype("arial", 24)
     draw.text((0, 0), text, font=font)
-    img.save('content.jpg')
+    img.save('sudoku{}.jpg'.format(num_calls))
+    num_calls += 1
 
 
 def make_gif(frame_folder):
     """
     """
-    frames = [Image.open(image) for image in glob.glob(f"{frame_folder}/*.JPG")]
+    frames = [Image.open(image) for image in glob.glob(f"{frame_folder}/sudoku*.jpg")]
     frame_one = frames[0]
-    frame_one.save("my_awesome.gif", format="GIF", append_images=frames, save_all=True, duration=100, loop=0)
+    frame_one.save("sudoku.gif", format="GIF", append_images=frames, save_all=True, duration=100, loop=0)
 
 
 def create_qr_code(url):
@@ -406,6 +407,7 @@ class Sudoku:
         x, y = self.findNextCell(x, y)
         if show_each_step:
             print(self)
+            self.generate_image(self.__str__(), 300, 300)
             time.sleep(0.3)
         if x == -1:
             return True
@@ -414,6 +416,7 @@ class Sudoku:
                 self.board[x][y] = value
                 if self.solve(x, y, show_each_step):
                     return True
+                    make_gif(".")
                 self.board[x][y] = "."
                 return False
 
