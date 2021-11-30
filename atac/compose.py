@@ -182,18 +182,18 @@ class AllTimeHigh(Config):
         #
         generate_art_samila()
         #
-        signature = Invader()
-        signature.run(17, 15, 427)
+        #signature = Invader()
+        #signature.run(17, 15, 427)
         #
-        sudoku = Sudoku()
-        sudoku.create()
-        sudoku.solve()
+        #sudoku = Sudoku()
+        #sudoku.create()
+        #sudoku.solve()
         #
         gol = Conway()
         gol.draw(427)
         time.sleep(5)
         #
-        make_gif(".", "sudoku.gif", "sudoku*.jpg")
+        #make_gif(".", "sudoku.gif", "sudoku*.jpg")
         make_gif(".", "conway.gif", "conway-*.jpg")
         #
         hfp = open('header.png', 'rb')
