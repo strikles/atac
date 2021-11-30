@@ -400,22 +400,11 @@ class Sudoku:
                 return True
         return False
 
-    def clear_terminal(self):
-        """
-        """
-        # for windows
-        if name == "nt":
-            _ = sp.call("cls",shell=True)
-        # for mac and linux(here, os.name is 'posix')
-        else:
-            _ = sp.call("clear",shell=True)
-
     def solve(self, x=0, y=0, show_each_step=False):
         """
         """
         x, y = self.findNextCell(x, y)
         if show_each_step:
-            self.clear_terminal()
             print(self)
             time.sleep(0.3)
         if x == -1:
