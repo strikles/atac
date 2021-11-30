@@ -168,7 +168,7 @@ def create_image(text, window_height, window_width):
     num_calls += 1
 
 
-def make_gif(frame_folder, output_file_nane, glob_pattern):
+def make_gif(frame_folder, output_file_name, glob_pattern):
     """
     """
     frames = [Image.open(image) for image in glob.glob(f"{frame_folder}/{glob_pattern}")]
