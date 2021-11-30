@@ -20,6 +20,7 @@ def test_send_email():
         'gnr@gnr.pt',
         'mail@ansr.pt',
         'sef@sef.pt',
+        'geral@igai.pt',
         'sec.geral.mai@sg.mai.gov.pt'
     ]
     #
