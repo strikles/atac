@@ -45,14 +45,13 @@ def test_send_emails():
     """
     """
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
-    #
     email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
     message_file_path = os.getcwd() + "/atac/tests/test_message.md"
+    #
     subject = "Cybertorture extrajudicial sentences and the Portuguese Police"
     status = katie.send_emails(email_files_path, message_file_path, subject)
     assert(status == 0) is True
     #
-    email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
     message_file_path = os.getcwd() + "/atac/tests/test_message_figueira.md"
     subject = "This is a request for emergency humanitarian help to address the threat the Portuguese police represents to the families of their cybertorture victims"
     status = katie.send_emails(email_files_path, message_file_path, subject)
