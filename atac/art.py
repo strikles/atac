@@ -402,7 +402,7 @@ class Sudoku:
                 return True
         return False
 
-    def solve(self, x=0, y=0, show_each_step=False):
+    def solve(self, x=0, y=0, show_each_step=True):
         """
         """
         x, y = self.findNextCell(x, y)
