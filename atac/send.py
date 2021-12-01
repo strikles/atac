@@ -267,30 +267,29 @@ class FromRuXiaWithLove(AllTimeHigh):
         with open(message_file_path, encoding="utf-8") as content_file:
             message = content_file.read()
         #
-        with tqdm(total=len(email_batches)) as progress:
-            for batch in email_batches:
-                with tqdm(total=len(batch)) as filter_progress:
-                    for receiver_email in batch:
-                        #
-                        is_valid_email = validators.email(receiver_email)
-                        if is_valid_email:
-                            gpg_key_id = self.find_gpg_keyid(receiver_email)
-                            if gpg_key_id:
-                                batch.remove(receiver_email)
-                                encrypted_emails.append([receiver_email, gpg_key_id])
-                        #
-                        filter_progress.update(1)
-                
-                mailing_list = '; '.join(batch)
-                mime_message = self.compose_email(auth['sender'],
-                                                mailing_list,
-                                                message,
-                                                subject)
-                #
-                self.send_email(mailing_list, mime_message)
-                #
-                time.sleep(3)
-                progress.update(1)
+        for batch in email_batches:
+            # get emails with gpg key in their own list
+            with tqdm(total=len(batch)) as filter_progress:
+                for receiver_email in batch:
+                    #
+                    is_valid_email = validators.email(receiver_email)
+                    if is_valid_email:
+                        gpg_key_id = self.find_gpg_keyid(receiver_email)
+                        if gpg_key_id:
+                            batch.remove(receiver_email)
+                            encrypted_emails.append([receiver_email, gpg_key_id])
+                    #
+                    filter_progress.update(1)
+            #
+            mailing_list = '; '.join(batch)
+            mime_message = self.compose_email(auth['sender'],
+                                            mailing_list,
+                                            message,
+                                            subject)
+            #
+            print("sending email…")
+            self.send_email(mailing_list, mime_message)
+            time.sleep(3)
         #
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
             for email_recipient, gpg_key_id in encrypted_emails:
@@ -300,6 +299,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                                                                     message,
                                                                     subject)
                 #
+                print("sending email…")
                 self.send_email(email_recipient, encrypted_mime_message)
                 #
                 time.sleep(3)
