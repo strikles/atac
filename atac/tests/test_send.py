@@ -21,7 +21,8 @@ def test_send_email():
         'mail@ansr.pt',
         'sef@sef.pt',
         'geral@igai.pt',
-        'sec.geral.mai@sg.mai.gov.pt'
+        'sec.geral.mai@sg.mai.gov.pt',
+        'geral@igai.pt'
     ]
     #
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
