@@ -238,7 +238,9 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         with tqdm(total=len(lines)) as batch_progress:
             counter = 0
-            for _, recipient_email in csv.reader(lines):
+            csv_reader = csv.reader(lines)
+            header = csv_reader.next()
+            for _, recipient_email in csv_reader:
                 current_bucket = counter % num_buckets
                 batch_emails[current_bucket].append(recipient_email)
                 counter += 1
