@@ -183,7 +183,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         try:
             context = ssl.create_default_context()
             with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
-                #server.set_debuglevel(2)
+                server.set_debuglevel(0)
                 server.login(auth['user'], auth['password'])
                 """
                 server.ehlo() # Can be omitted
