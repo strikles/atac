@@ -228,22 +228,20 @@ class FromRuXiaWithLove(AllTimeHigh):
         lines : list
             The contacts list
         """
-        encrypted_emails = []
         auth, content = self.get_email_config()
         #
-        counter = 0
         num_emails_per_bucket = 500
         num_buckets = 1
-        if len(unencrypted_emails) > num_emails_per_bucket:
-            num_buckets = len(unencrypted_emails) // num_emails_per_bucket
+        if len(lines) > num_emails_per_bucket:
+            num_buckets = len(lines) // num_emails_per_bucket
         batch_emails = [[] for i in range(num_buckets)]
         #
-        with tqdm(total=len(unencrypted_emails)) as batch_progress:
-            for unencrypted_email in unencrypted_emails:
+        with tqdm(total=len(lines)) as batch_progress:
+            counter = 0
+            for _, recipient_email in csv.reader(lines):
                 current_bucket = counter % num_buckets
-                batch_emails[current_bucket].append(unencrypted_email)
+                batch_emails[current_bucket].append(recipient_email)
                 counter += 1
-                #
                 batch_progress.update(1)
         #
         return batch_emails
