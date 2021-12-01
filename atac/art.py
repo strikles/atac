@@ -288,6 +288,8 @@ class Sudoku:
         return "Sudoku()"
 
     def __str__(self):
+        """
+        """
         res = ""
         for i, line in enumerate(self.board):
             if i % self.dim == 0:
@@ -327,7 +329,7 @@ class Sudoku:
                 # No number is valid in this cell: backtrack and try again.
                 self.board[i][j] = None
                 return None
-
+        #
         return search()
 
     def create(self, difficulty="easy"):
@@ -592,6 +594,8 @@ class Conway:
             self.grid[k[0]][k[1]] = v
 
     def randomState(self, rows, cols, alive):
+        """
+        """
         state = {}
         tots = 0
         while tots < alive:
@@ -604,11 +608,15 @@ class Conway:
         return state
 
     def initBoard(self, rows, cols, state):
+        """
+        """
         self.grid = [[0 for _ in range(cols)] for _ in range(rows)]
         for k, v in state.items():
             self.grid[k[0]][k[1]] = v
 
     def draw(self, dimensions):
+        """
+        """
         num_iters = 0
         self.initBoard(53, 95, self.randomState(53, 95, 1000))
         img = Image.new('L', (dimensions, dimensions), color='white')
