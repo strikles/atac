@@ -24,8 +24,8 @@ from PIL import ImageDraw
 import py5
 #
 import qrcode
+from random import choice, randint, uniform
 import random
-from random import choice, randint, random
 from samila import GenerativeImage
 #
 from scipy.io import wavfile
