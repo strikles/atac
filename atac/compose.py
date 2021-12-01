@@ -207,12 +207,15 @@ class AllTimeHigh(Config):
         #sudoku.create()
         #sudoku.solve()
         #
-        gol = Conway()
-        gol.draw(427)
+        #gol = Conway()
+        #gol.draw(427)
+        #
+        generate_branches()
         time.sleep(5)
         #
+        make_gif(".", "branches.gif", "branches-*.png")
         #make_gif(".", "sudoku.gif", "sudoku*.jpg")
-        make_gif(".", "conway.gif", "conway-*.jpg")
+        #make_gif(".", "conway.gif", "conway-*.jpg")
         #
         hfp = open('header.png', 'rb')
         msg_image_header = MIMEImage(hfp.read())
@@ -221,7 +224,7 @@ class AllTimeHigh(Config):
         msg_image_header.add_header('Content-ID', '<header>')
         message.attach(msg_image_header)
         #
-        sfp = open('conway.gif', 'rb')
+        sfp = open('branches.gif', 'rb')
         msg_image_signature = MIMEImage(sfp.read())
         sfp.close()
         # Define the image's ID as referenced above

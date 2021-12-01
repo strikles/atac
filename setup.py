@@ -27,6 +27,7 @@ setup(
         'beautifulsoup4',
         'boto3',
         'bs4',
+        'cairo',
         'colorama',
         'coloredlogs',
         'coverage',
