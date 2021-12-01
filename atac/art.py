@@ -95,7 +95,7 @@ def generate_branches():
             ctx.set_source_rgb(rgbColor[0],rgbColor[1], rgbColor[2])
             ctx.set_line_width(branchThickness)
             ctx.stroke()
-            surface.write_to_png("branches-{}".format(num_iters))
+            surface.write_to_png("branches-{}.png".format(num_iters))
             num_iters += 1
     
     #%% Plot the image
