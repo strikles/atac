@@ -29,7 +29,7 @@ def test_send_email():
     auth, _ = katie.get_email_config()
     mailing_list = random.sample(recipients, 1).pop()
     #
-    subject = "Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
+    subject = "A árvore dos cagalhões - Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_pt.md", "message"))
     mailing_list = random.sample(recipients, 1).pop()
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
