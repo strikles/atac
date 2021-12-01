@@ -304,9 +304,7 @@ class Sudoku:
         self.numbers = range(1, dim**2 + 1)
 
     def createF(self):
-        """
-        Return a random filled dim**2 x dim**2 Sudoku board.
-        """
+        """ Return a random filled dim**2 x dim**2 Sudoku board """
         n = self.dim**2
         self.board = [[None for _ in range(n)] for _ in range(n)]
 
