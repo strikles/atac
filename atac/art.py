@@ -86,7 +86,9 @@ def generate_branches():
                 y2 = h*math.sin(theta) + y1
                 #
                 ctx.line_to(x2,y2)
+                ctx.stroke()
                 surface.write_to_png("branches-{}.png".format(num_iters))
+                #
                 num_iters += 1
                 branchLength = branchLength + h
                 x1,y1 = x2,y2 # Reset
