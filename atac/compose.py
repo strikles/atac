@@ -121,18 +121,36 @@ class AllTimeHigh(Config):
         # The email client will try to render the last part first
         message.attach(body)
         #
-        #generate_art_samila()
-        signature = Invader()
-        signature.run(17, 1, 17)
+        generate_art_samila()
+        #
+        #signature = Invader()
+        #signature.run(17, 15, 427)
+        #
+        #sudoku = Sudoku()
+        #sudoku.create()
+        #sudoku.solve()
+        #
+        gol = Conway()
+        gol.draw(427)
         time.sleep(5)
         #
-        fp = open('art.jpg', 'rb')
-        msg_image = MIMEImage(fp.read())
-        fp.close()
+        #make_gif(".", "sudoku.gif", "sudoku*.jpg")
+        make_gif(".", "conway.gif", "conway-*.jpg")
+        #
+        hfp = open('header.png', 'rb')
+        msg_image_header = MIMEImage(hfp.read())
+        hfp.close()
         # Define the image's ID as referenced above
-        msg_image.add_header('Content-ID', '<art>')
-        message.attach(msg_image)
-
+        msg_image_header.add_header('Content-ID', '<header>')
+        message.attach(msg_image_header)
+        #
+        sfp = open('conway.gif', 'rb')
+        msg_image_signature = MIMEImage(sfp.read())
+        sfp.close()
+        # Define the image's ID as referenced above
+        msg_image_signature.add_header('Content-ID', '<signature>')
+        message.attach(msg_image_signature)
+        #
         print(message.as_string())
         #
         return message
