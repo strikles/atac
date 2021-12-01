@@ -87,8 +87,7 @@ def generate_haiku():
 
 
 def generate_ascii(image_path):
-    """
-    Generate New Config
+    """ Generate New Config
 
     Parameters
     ----------
@@ -110,8 +109,7 @@ def generate_ascii(image_path):
 
 
 def generate_markov_content(content):
-    """
-    Generate Markov Content
+    """ Generate Markov Content
 
     Parameters
     ----------
@@ -143,8 +141,7 @@ def generate_art_samila():
 
 num_calls = 0
 def create_image(text, window_height, window_width):
-    """
-    Generate Image from text
+    """ Generate Image from text
 
     Parameters
     ----------
@@ -176,8 +173,7 @@ def make_gif(frame_folder, output_file_name, glob_pattern):
 
 
 def create_qr_code(url):
-    """
-    Generate QR Code
+    """ Generate QR Code
 
     Parameters
     ----------
