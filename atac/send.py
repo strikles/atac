@@ -268,7 +268,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             message = content_file.read()
         #
         with tqdm(total=len(email_batches)) as progress:
-            for batch in unencrypted_email_batches:
+            for batch in email_batches:
                 with tqdm(total=len(batch)) as filter_progress:
                     for receiver_email in batch:
                         #
