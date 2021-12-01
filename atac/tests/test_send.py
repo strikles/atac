@@ -52,7 +52,7 @@ def test_send_emails():
     email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
     message_file_path = os.getcwd() + "/atac/tests/test_message.md"
     #
-    subject = "Cybertorture extrajudicial sentences and the Portuguese Police"
+    subject = "Madeline McCann, Cybertorture extrajudicial trial and sentences and the Portuguese Police"
     status = katie.send_emails(email_files_path, message_file_path, subject)
     assert(status == 0) is True
     #
