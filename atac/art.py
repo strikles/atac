@@ -87,7 +87,6 @@ def generate_branches():
                 #
                 ctx.line_to(x2,y2)
                 ctx.stroke()
-                surface.write_to_png("branches-{}.png".format(num_iters))
                 #
                 num_iters += 1
                 branchLength = branchLength + h
@@ -99,6 +98,7 @@ def generate_branches():
             ctx.set_source_rgb(rgbColor[0],rgbColor[1], rgbColor[2])
             ctx.set_line_width(branchThickness)
             ctx.stroke()
+            surface.write_to_png("branches-{}.png".format(num_iters))
 
     #%% Plot the image
     ## Convert to numpy array 
