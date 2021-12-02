@@ -9,7 +9,8 @@ import matplotlib.animation as animation # for compiling animation and exporting
 
 order = 100 # -order to order i.e -100 to 100
 pbar = tqdm(total=(order*2+1))
-
+# this is to store the points of last circle of epicycle which draws the required figure
+draw_x, draw_y = [], []
 
 # function to generate x+iy at given time t
 def f(t, t_list, x_list, y_list):
@@ -29,8 +30,11 @@ def sort_coeff(coeffs):
 
 # make frame at time t
 # t goes from 0 to 2*PI for complete cycle
-def make_frame(i, time, coeffs, circles, circle_lines, drawing, orig_drawing):
-    global order, pbar
+def make_frame(i, time, coeffs, circles, circle_lines, drawing, orig_drawing, x_list, y_list):
+    global order
+    global pbar
+    global draw_x
+    global draw_y
     # get t from time
     t = time[i]
     # exponential term to be multiplied with coefficient 
@@ -94,7 +98,6 @@ def generate_fourier_epicycles_drawing():
     ylim_data = plt.ylim()
     #
     # plt.show()
-    
     # time data from 0 to 2*PI as x,y is the function of time.
     t_list = np.linspace(0, tau, len(x_list)) # now we can relate f(t) -> x,y
     # Now find forier coefficient from -n to n circles
@@ -121,9 +124,6 @@ def generate_fourier_epicycles_drawing():
     np.save("coeff.npy", c)
     #
     ## -- now to make animation with epicycle -- ##
-    #
-    # this is to store the points of last circle of epicycle which draws the required figure
-    draw_x, draw_y = [], []
     # make figure for animation
     fig, ax = plt.subplots()
     fig.patch.set_facecolor('yellow')
@@ -152,7 +152,7 @@ def generate_fourier_epicycles_drawing():
     # make animation
     # time is array from 0 to tau 
     time = np.linspace(0, tau, num=num_frames)
-    anim = animation.FuncAnimation(fig, make_frame, frames=num_frames, fargs=(time, c, circles, circle_lines, drawing, orig_drawing), interval=40, repeat=True)
+    anim = animation.FuncAnimation(fig, make_frame, frames=num_frames, fargs=(time, c, circles, circle_lines, drawing, orig_drawing, x_list, y_list, interval=40, repeat=True)
     #anim.save('epicycle.mp4', writer=writer)
     anim.save("colete.gif", dpi=72, writer=animation.PillowWriter(fps=25))
     pbar.close()
