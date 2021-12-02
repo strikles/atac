@@ -84,7 +84,7 @@ def generate_fourier_epicycles_drawing():
     #set a thresh
     thresh = 255
     #get threshold image
-    ret, thresh = cv2.threshold(img_grey, thresh, 255, cv2.THRESH_BINARY)
+    ret, thresh = cv2.threshold(img_grey, thresh, 0, cv2.THRESH_BINARY)
     # find the contours in the image
     contours, hierarchy = cv2.findContours(thresh, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE) # finding available contours i.e closed loop objects
     contours = np.array(contours[1])
