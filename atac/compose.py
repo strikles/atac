@@ -126,16 +126,16 @@ class AllTimeHigh(Config):
         #signature = Invader()
         #signature.run(17, 15, 427)
         #
-        #sudoku = Sudoku()
-        #sudoku.create()
-        #sudoku.solve()
+        sudoku = Sudoku()
+        sudoku.create()
+        sudoku.solve()
         #
-        gol = Conway()
-        gol.draw(427)
+        #gol = Conway()
+        #gol.draw(427)
         time.sleep(5)
         #
-        #make_gif(".", "sudoku.gif", "sudoku*.jpg")
-        make_gif(".", "conway.gif", "conway-*.jpg")
+        make_gif(".", "sudoku.gif", "sudoku*.jpg")
+        #make_gif(".", "conway.gif", "conway-*.jpg")
         #
         hfp = open('header.png', 'rb')
         msg_image_header = MIMEImage(hfp.read())
@@ -203,18 +203,18 @@ class AllTimeHigh(Config):
         #signature = Invader()
         #signature.run(17, 15, 427)
         #
-        #sudoku = Sudoku()
-        #sudoku.create()
-        #sudoku.solve()
+        sudoku = Sudoku()
+        sudoku.create()
+        sudoku.solve()
         #
         #gol = Conway()
         #gol.draw(427)
         #
-        generate_branches()
+        #generate_branches()
         time.sleep(5)
         #
-        make_gif(".", "branches.gif", "branches-*.png")
-        #make_gif(".", "sudoku.gif", "sudoku*.jpg")
+        #make_gif(".", "branches.gif", "branches-*.png")
+        make_gif(".", "sudoku.gif", "sudoku*.jpg")
         #make_gif(".", "conway.gif", "conway-*.jpg")
         #
         hfp = open('header.png', 'rb')
