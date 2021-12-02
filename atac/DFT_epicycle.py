@@ -19,6 +19,7 @@ def f(t, t_list, x_list, y_list):
 # save the coefficients in order 0, 1, -1, 2, -2, ...
 # it is necessary to make epicycles
 def sort_coeff(coeffs):
+    global order
     new_coeffs = []
     new_coeffs.append(coeffs[order])
     for i in range(1, order+1):
@@ -28,8 +29,8 @@ def sort_coeff(coeffs):
 
 # make frame at time t
 # t goes from 0 to 2*PI for complete cycle
-def make_frame(i, time, coeffs):
-    global pbar
+def make_frame(i, time, coeffs, circles, circle_lines, drawing, orig_drawing):
+    global order, pbar
     # get t from time
     t = time[i]
     # exponential term to be multiplied with coefficient 
@@ -151,7 +152,7 @@ def generate_fourier_epicycles_drawing():
     # make animation
     # time is array from 0 to tau 
     time = np.linspace(0, tau, num=num_frames)
-    anim = animation.FuncAnimation(fig, make_frame, frames=num_frames, fargs=(time, c), interval=40, repeat=True)
+    anim = animation.FuncAnimation(fig, make_frame, frames=num_frames, fargs=(time, c, circles, circle_lines, drawing, orig_drawing), interval=40, repeat=True)
     #anim.save('epicycle.mp4', writer=writer)
     anim.save("colete.gif", dpi=72, writer=animation.PillowWriter(fps=25))
     pbar.close()
