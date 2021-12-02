@@ -78,7 +78,7 @@ def generate_fourier_epicycles_drawing():
     global pbar
     # reading the image and convert to greyscale mode
     # ensure that you use image with black image with white background
-    img = cv2.imread("img/cybertorture.jpg")
+    img = cv2.imread("img/straightjacket.jpg")
     img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # find the contours in the image
     ret, thresh = cv2.threshold(img_gray, 127, 255, 0) # making pure black and white image
