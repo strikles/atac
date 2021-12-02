@@ -85,9 +85,6 @@ ax.set_ylim(ylim_data[0]-200, ylim_data[1]+200)
 ax.set_axis_off()
 # to have symmetric axes
 ax.set_aspect('equal')
-# Set up formatting for the video file
-Writer = animation.writers['ffmpeg']
-writer = Writer(fps=30, metadata=dict(artist='Amrit Aryal'), bitrate=1800)
 #
 print("compiling animation ...")
 # set number of frames
