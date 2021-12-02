@@ -76,19 +76,17 @@ def make_frame(i, time, coeffs, circles, circle_lines, drawing, orig_drawing, x_
 
 def generate_fourier_epicycles_drawing():
     global pbar
+    global draw_x
+    global draw_y
+    global order
     # reading the image and convert to greyscale mode
     # ensure that you use image with black image with white background
-    img = cv2.imread("img/cybertorture.jpg", cv2.IMREAD_UNCHANGED)
-    #convert img to grey
-    img_grey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    #set a thresh
-    thresh = 255
-    #get threshold image
-    ret, thresh = cv2.threshold(img_grey, thresh, 0, cv2.THRESH_BINARY)
+    img = cv2.imread("img/cybertorture.jpg")
+    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # find the contours in the image
-    contours, hierarchy = cv2.findContours(thresh, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE) # finding available contours i.e closed loop objects
-    contours = np.array(contours[1])
-    print(type(contours))
+    ret, thresh = cv2.threshold(img_gray, 127, 255, 0) # making pure black and white image
+    contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE) # finding available contours i.e closed loop objects
+    contours = np.array(contours[1]) # contour at index 1 is the one we are looking for
     # split the co-ordinate points of the contour
     # we reshape this to make it 1D array
     x_list, y_list = contours[:, :, 0].reshape(-1,), -contours[:, :, 1].reshape(-1,)
@@ -102,15 +100,13 @@ def generate_fourier_epicycles_drawing():
     # later we will need these data to fix the size of figure
     xlim_data = plt.xlim() 
     ylim_data = plt.ylim()
-    #
-    # plt.show()
+    plt.show()
     # time data from 0 to 2*PI as x,y is the function of time.
     t_list = np.linspace(0, tau, len(x_list)) # now we can relate f(t) -> x,y
     # Now find forier coefficient from -n to n circles
     # ..., c-3, c-2, c-1, c0, c1, c2, c3, ...
     # you can change the order to get proper figure
     # too much is also not good, and too less will not produce good result
-    #
     print("generating coefficients ...")
     # lets compute fourier coefficients from -order to order
     c = []
@@ -121,19 +117,16 @@ def generate_fourier_epicycles_drawing():
         coef = 1/tau*quad_vec(lambda t: f(t, t_list, x_list, y_list)*np.exp(-n*t*1j), 0, tau, limit=100, full_output=1)[0]
         c.append(coef)
         pbar.update(1)
-    #
     pbar.close()
+    
     print("completed generating coefficients.")
-    #
     # converting list into numpy array
     c = np.array(c)
     # save the coefficients for later use
     np.save("coeff.npy", c)
-    #
     ## -- now to make animation with epicycle -- ##
     # make figure for animation
     fig, ax = plt.subplots()
-    fig.patch.set_facecolor('yellow')
     # different plots to make epicycle
     # there are -order to order numbers of circles
     circles = [ax.plot([], [], 'r-')[0] for i in range(-order, order+1)]
@@ -150,12 +143,10 @@ def generate_fourier_epicycles_drawing():
     ax.set_axis_off()
     # to have symmetric axes
     ax.set_aspect('equal')
+    # Set up formatting for the video file
     #Writer = animation.writers['ffmpeg']
     #writer = Writer(fps=30, metadata=dict(artist='Amrit Aryal'), bitrate=1800)
     print("compiling animation ...")
-    # set number of frames
-    num_frames = 100
-    pbar = tqdm(total=num_frames)
     # make animation
     # time is array from 0 to tau 
     time = np.linspace(0, tau, num=num_frames)
