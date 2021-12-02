@@ -80,13 +80,13 @@ def generate_fourier_epicycles_drawing():
     # ensure that you use image with black image with white background
     img = cv2.imread("img/cybertorture.jpg", cv2.IMREAD_UNCHANGED)
     #convert img to grey
-    img_grey = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    img_grey = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     #set a thresh
     thresh = 100
     #get threshold image
     ret,thresh = cv2.threshold(img_grey, thresh, 255, cv2.THRESH_BINARY)
     # find the contours in the image
-    contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE) # finding available contours i.e closed loop objects
+    contours, hierarchy = cv2.findContours(thresh, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE) # finding available contours i.e closed loop objects
     contours = np.array(contours[1]) # contour at index 1 is the one we are looking for
     # split the co-ordinate points of the contour
     # we reshape this to make it 1D array
