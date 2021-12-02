@@ -34,7 +34,7 @@ ax.plot(x_list, y_list)
 xlim_data = plt.xlim() 
 ylim_data = plt.ylim()
 #
-plt.show()
+# plt.show()
 
 # time data from 0 to 2*PI as x,y is the function of time.
 t_list = np.linspace(0, tau, len(x_list)) # now we can relate f(t) -> x,y
@@ -89,7 +89,7 @@ ax.set_aspect('equal')
 #writer = Writer(fps=30, metadata=dict(artist='Amrit Aryal'), bitrate=1800)
 print("compiling animation ...")
 # set number of frames
-frames = 300
+frames = 100
 pbar = tqdm(total=frames)
 
 
@@ -152,6 +152,6 @@ def generate_fourier_epicycles_drawing():
     time = np.linspace(0, tau, num=frames)
     anim = animation.FuncAnimation(fig, make_frame, frames=frames, fargs=(time, c), interval=40, repeat=True)
     #anim.save('epicycle.mp4', writer=writer)
-    anim.save("colete.gif", dpi=300, writer=animation.PillowWriter(fps=25))
+    anim.save("colete.gif", dpi=72, writer=animation.PillowWriter(fps=25))
     pbar.close()
     print("completed: colete.gif")
