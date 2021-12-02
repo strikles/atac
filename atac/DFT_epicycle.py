@@ -149,6 +149,7 @@ def generate_fourier_epicycles_drawing():
     print("compiling animation ...")
     # make animation
     # time is array from 0 to tau 
+    num_frames = 100
     time = np.linspace(0, tau, num=num_frames)
     anim = animation.FuncAnimation(fig, make_frame, frames=num_frames, fargs=(time, c, circles, circle_lines, drawing, orig_drawing, x_list, y_list), interval=40, repeat=True)
     #anim.save('epicycle.mp4', writer=writer)
