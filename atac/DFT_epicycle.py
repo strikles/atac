@@ -87,9 +87,7 @@ def generate_fourier_epicycles_drawing():
     ret, thresh = cv2.threshold(img_grey, thresh, 255, cv2.THRESH_BINARY)
     # find the contours in the image
     contours, hierarchy = cv2.findContours(thresh, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE) # finding available contours i.e closed loop objects
-    #x, y, z = np.ogrid[-np.pi:np.pi:100j, -np.pi:np.pi:100j, -np.pi:np.pi:100j]
-    #contours = np.sin(np.exp((np.sin(x)**3 + np.cos(y)**2)))
-    contours = np.array(contours[0]) # contour at index 1 is the one we are looking for
+    contours = [numpy.array([[1,1],[10,50],[50,50]], dtype=numpy.int32) , numpy.array([[99,99],[99,60],[60,99]], dtype=numpy.int32)]
     print(type(contours))
     # split the co-ordinate points of the contour
     # we reshape this to make it 1D array
