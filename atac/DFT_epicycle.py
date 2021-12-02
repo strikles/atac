@@ -75,6 +75,7 @@ def make_frame(i, time, coeffs, circles, circle_lines, drawing, orig_drawing, x_
 
 
 def generate_fourier_epicycles_drawing():
+    global pbar
     # reading the image and convert to greyscale mode
     # ensure that you use image with black image with white background
     img = cv2.imread("img/cybertorture.jpg")
