@@ -139,7 +139,7 @@ def generate_fourier_epicycles_drawing():
     # original drawing
     orig_drawing, = ax.plot([], [], 'g-', linewidth=0.5)
     # to fix the size of figure so that the figure does not get cropped/trimmed
-    ax.set_xlim(xlim_data[0] - 2, xlim_data[1] + 2)
+    ax.set_xlim(xlim_data[0] - 50, xlim_data[1] + 50)
     ax.set_ylim(ylim_data[0], ylim_data[1])
     # hide axes
     ax.set_axis_off()
