@@ -69,6 +69,7 @@ np.save("coeff.npy", c)
 draw_x, draw_y = [], []
 # make figure for animation
 fig, ax = plt.subplots()
+fig.patch.set_facecolor('yellow')
 # different plots to make epicycle
 # there are -order to order numbers of circles
 circles = [ax.plot([], [], 'r-')[0] for i in range(-order, order+1)]
