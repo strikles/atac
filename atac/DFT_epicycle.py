@@ -149,7 +149,7 @@ def generate_fourier_epicycles_drawing():
     # make animation
     # time is array from 0 to tau 
     time = np.linspace(0, tau, num=frames)
-    anim = animation.FuncAnimation(fig, make_frame, frames=frames, fargs=(time, c),interval=5)
+    anim = animation.FuncAnimation(fig, make_frame, frames=frames, fargs=(time, c),interval=40, blit=True, repeat=True)
     #anim.save('epicycle.mp4', writer=writer)
     anim.save("colete.gif", dpi=300, writer=animation.PillowWriter(fps=25))
     pbar.close()
