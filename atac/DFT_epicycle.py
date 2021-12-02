@@ -12,88 +12,6 @@ def f(t, t_list, x_list, y_list):
     return np.interp(t, t_list, x_list + 1j*y_list)
 
 
-# reading the image and convert to greyscale mode
-# ensure that you use image with black image with white background
-img = cv2.imread("img/cybertorture.jpg")
-img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-# find the contours in the image
-ret, thresh = cv2.threshold(img_gray, 127, 255, 0) # making pure black and white image
-contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE) # finding available contours i.e closed loop objects
-contours = np.array(contours[1]) # contour at index 1 is the one we are looking for
-# split the co-ordinate points of the contour
-# we reshape this to make it 1D array
-x_list, y_list = contours[:, :, 0].reshape(-1,), -contours[:, :, 1].reshape(-1,)
-# center the contour to origin
-x_list = x_list - np.mean(x_list)
-y_list = y_list - np.mean(y_list)
-# visualize the contour
-fig = plt.figure()
-ax = fig.add_subplot(111)
-ax.plot(x_list, y_list)
-# later we will need these data to fix the size of figure
-xlim_data = plt.xlim() 
-ylim_data = plt.ylim()
-#
-# plt.show()
-
-# time data from 0 to 2*PI as x,y is the function of time.
-t_list = np.linspace(0, tau, len(x_list)) # now we can relate f(t) -> x,y
-# Now find forier coefficient from -n to n circles
-# ..., c-3, c-2, c-1, c0, c1, c2, c3, ...
-order = 100 # -order to order i.e -100 to 100
-# you can change the order to get proper figure
-# too much is also not good, and too less will not produce good result
-
-print("generating coefficients ...")
-# lets compute fourier coefficients from -order to order
-c = []
-pbar = tqdm(total=(order*2+1))
-# we need to calculate the coefficients from -order to order
-for n in range(-order, order+1):
-    # calculate definite integration from 0 to 2*PI
-    # formula is given in readme
-    coef = 1/tau*quad_vec(lambda t: f(t, t_list, x_list, y_list)*np.exp(-n*t*1j), 0, tau, limit=100, full_output=1)[0]
-    c.append(coef)
-    pbar.update(1)
-pbar.close()
-print("completed generating coefficients.")
-
-# converting list into numpy array
-c = np.array(c)
-# save the coefficients for later use
-np.save("coeff.npy", c)
-
-## -- now to make animation with epicycle -- ##
-
-# this is to store the points of last circle of epicycle which draws the required figure
-draw_x, draw_y = [], []
-# make figure for animation
-fig, ax = plt.subplots()
-fig.patch.set_facecolor('yellow')
-# different plots to make epicycle
-# there are -order to order numbers of circles
-circles = [ax.plot([], [], 'r-')[0] for i in range(-order, order+1)]
-# circle_lines are radius of each circles
-circle_lines = [ax.plot([], [], 'b-')[0] for i in range(-order, order+1)]
-# drawing is plot of final drawing
-drawing, = ax.plot([], [], 'k-', linewidth=2)
-# original drawing
-orig_drawing, = ax.plot([], [], 'g-', linewidth=0.5)
-# to fix the size of figure so that the figure does not get cropped/trimmed
-ax.set_xlim(xlim_data[0]-200, xlim_data[1]+200)
-ax.set_ylim(ylim_data[0]-200, ylim_data[1]+200)
-# hide axes
-ax.set_axis_off()
-# to have symmetric axes
-ax.set_aspect('equal')
-#Writer = animation.writers['ffmpeg']
-#writer = Writer(fps=30, metadata=dict(artist='Amrit Aryal'), bitrate=1800)
-print("compiling animation ...")
-# set number of frames
-frames = 100
-pbar = tqdm(total=frames)
-
-
 # save the coefficients in order 0, 1, -1, 2, -2, ...
 # it is necessary to make epicycles
 def sort_coeff(coeffs):
@@ -148,10 +66,90 @@ def make_frame(i, time, coeffs):
 
 
 def generate_fourier_epicycles_drawing():
+    # reading the image and convert to greyscale mode
+    # ensure that you use image with black image with white background
+    img = cv2.imread("img/cybertorture.jpg")
+    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    # find the contours in the image
+    ret, thresh = cv2.threshold(img_gray, 127, 255, 0) # making pure black and white image
+    contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE) # finding available contours i.e closed loop objects
+    contours = np.array(contours[1]) # contour at index 1 is the one we are looking for
+    # split the co-ordinate points of the contour
+    # we reshape this to make it 1D array
+    x_list, y_list = contours[:, :, 0].reshape(-1,), -contours[:, :, 1].reshape(-1,)
+    # center the contour to origin
+    x_list = x_list - np.mean(x_list)
+    y_list = y_list - np.mean(y_list)
+    # visualize the contour
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.plot(x_list, y_list)
+    # later we will need these data to fix the size of figure
+    xlim_data = plt.xlim() 
+    ylim_data = plt.ylim()
+    #
+    # plt.show()
+    
+    # time data from 0 to 2*PI as x,y is the function of time.
+    t_list = np.linspace(0, tau, len(x_list)) # now we can relate f(t) -> x,y
+    # Now find forier coefficient from -n to n circles
+    # ..., c-3, c-2, c-1, c0, c1, c2, c3, ...
+    order = 100 # -order to order i.e -100 to 100
+    # you can change the order to get proper figure
+    # too much is also not good, and too less will not produce good result
+    
+    print("generating coefficients ...")
+    # lets compute fourier coefficients from -order to order
+    c = []
+    pbar = tqdm(total=(order*2+1))
+    # we need to calculate the coefficients from -order to order
+    for n in range(-order, order+1):
+        # calculate definite integration from 0 to 2*PI
+        # formula is given in readme
+        coef = 1/tau*quad_vec(lambda t: f(t, t_list, x_list, y_list)*np.exp(-n*t*1j), 0, tau, limit=100, full_output=1)[0]
+        c.append(coef)
+        pbar.update(1)
+    pbar.close()
+    print("completed generating coefficients.")
+    #
+    # converting list into numpy array
+    c = np.array(c)
+    # save the coefficients for later use
+    np.save("coeff.npy", c)
+    #
+    ## -- now to make animation with epicycle -- ##
+    #
+    # this is to store the points of last circle of epicycle which draws the required figure
+    draw_x, draw_y = [], []
+    # make figure for animation
+    fig, ax = plt.subplots()
+    fig.patch.set_facecolor('yellow')
+    # different plots to make epicycle
+    # there are -order to order numbers of circles
+    circles = [ax.plot([], [], 'r-')[0] for i in range(-order, order+1)]
+    # circle_lines are radius of each circles
+    circle_lines = [ax.plot([], [], 'b-')[0] for i in range(-order, order+1)]
+    # drawing is plot of final drawing
+    drawing, = ax.plot([], [], 'k-', linewidth=2)
+    # original drawing
+    orig_drawing, = ax.plot([], [], 'g-', linewidth=0.5)
+    # to fix the size of figure so that the figure does not get cropped/trimmed
+    ax.set_xlim(xlim_data[0]-200, xlim_data[1]+200)
+    ax.set_ylim(ylim_data[0]-200, ylim_data[1]+200)
+    # hide axes
+    ax.set_axis_off()
+    # to have symmetric axes
+    ax.set_aspect('equal')
+    #Writer = animation.writers['ffmpeg']
+    #writer = Writer(fps=30, metadata=dict(artist='Amrit Aryal'), bitrate=1800)
+    print("compiling animation ...")
+    # set number of frames
+    num_frames = 100
+    pbar = tqdm(total=num_frames)
     # make animation
     # time is array from 0 to tau 
-    time = np.linspace(0, tau, num=frames)
-    anim = animation.FuncAnimation(fig, make_frame, frames=frames, fargs=(time, c), interval=40, repeat=True)
+    time = np.linspace(0, tau, num=num_frames)
+    anim = animation.FuncAnimation(fig, make_frame, frames=num_frames, fargs=(time, c), interval=40, repeat=True)
     #anim.save('epicycle.mp4', writer=writer)
     anim.save("colete.gif", dpi=72, writer=animation.PillowWriter(fps=25))
     pbar.close()
