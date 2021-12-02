@@ -156,6 +156,6 @@ def generate_fourier_epicycles_drawing():
     time = np.linspace(0, tau, num=num_frames)
     anim = animation.FuncAnimation(fig, make_frame, frames=num_frames, fargs=(time, c, circles, circle_lines, drawing, orig_drawing, x_list, y_list), interval=40, repeat=True)
     #anim.save('epicycle.mp4', writer=writer)
-    anim.save("colete.gif", dpi=72, writer=animation.PillowWriter(fps=25))
+    anim.save("colete.gif", dpi=500, writer=animation.PillowWriter(fps=25))
     pbar.close()
     print("completed: colete.gif")
