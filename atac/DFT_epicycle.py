@@ -105,7 +105,7 @@ def generate_fourier_epicycles_drawing():
     # ..., c-3, c-2, c-1, c0, c1, c2, c3, ...
     # you can change the order to get proper figure
     # too much is also not good, and too less will not produce good result
-    
+    #
     print("generating coefficients ...")
     # lets compute fourier coefficients from -order to order
     c = []
@@ -116,6 +116,7 @@ def generate_fourier_epicycles_drawing():
         coef = 1/tau*quad_vec(lambda t: f(t, t_list, x_list, y_list)*np.exp(-n*t*1j), 0, tau, limit=100, full_output=1)[0]
         c.append(coef)
         pbar.update(1)
+    #
     pbar.close()
     print("completed generating coefficients.")
     #

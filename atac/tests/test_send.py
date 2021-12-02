@@ -29,14 +29,14 @@ def test_send_email():
     auth, _ = katie.get_email_config()
     mailing_list = random.sample(recipients, 1).pop()
     #
-    subject = "A árvore dos cagalhões - Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
+    subject = "A árvore dos cagalhões - Cibertortura, Cibersodomia e angariação de ódios entre a população - Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_pt.md", "message"))
     mailing_list = random.sample(recipients, 1).pop()
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     status = katie.send_email(mailing_list, message)
     assert(status == 0) is True
     #
-    subject = "This is a request for emergency humanitarian help to address the threat the Portuguese police represents to the families of their cybertorture victims"
+    subject = "This is a request for emergency humanitarian help to address the threat the hate mongering Portuguese police represents to the families of their cybertorture victims"
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_figueira.md", "message"))
     mailing_list = random.sample(recipients, 1).pop()
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
@@ -52,7 +52,7 @@ def test_send_emails():
     email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
     message_file_path = os.getcwd() + "/atac/tests/test_message.md"
     #
-    subject = "Madeline McCann, Cybertorture extrajudicial trial and sentences and the Portuguese Police"
+    subject = "Madeline McCann, Cybertorture extrajudicial trial and sentences and the hate mongering Portuguese Police"
     status = katie.send_emails(email_files_path, message_file_path, subject)
     assert(status == 0) is True
     #
