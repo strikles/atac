@@ -7,6 +7,10 @@ from tqdm import tqdm # for progress bar
 import matplotlib.animation as animation # for compiling animation and exporting video 
 
 
+order = 100 # -order to order i.e -100 to 100
+pbar = tqdm(total=(order*2+1))
+
+
 # function to generate x+iy at given time t
 def f(t, t_list, x_list, y_list):
     return np.interp(t, t_list, x_list + 1j*y_list)
@@ -94,14 +98,12 @@ def generate_fourier_epicycles_drawing():
     t_list = np.linspace(0, tau, len(x_list)) # now we can relate f(t) -> x,y
     # Now find forier coefficient from -n to n circles
     # ..., c-3, c-2, c-1, c0, c1, c2, c3, ...
-    order = 100 # -order to order i.e -100 to 100
     # you can change the order to get proper figure
     # too much is also not good, and too less will not produce good result
     
     print("generating coefficients ...")
     # lets compute fourier coefficients from -order to order
     c = []
-    pbar = tqdm(total=(order*2+1))
     # we need to calculate the coefficients from -order to order
     for n in range(-order, order+1):
         # calculate definite integration from 0 to 2*PI
