@@ -78,10 +78,14 @@ def generate_fourier_epicycles_drawing():
     global pbar
     # reading the image and convert to greyscale mode
     # ensure that you use image with black image with white background
-    img = cv2.imread("img/straightjacket.jpg")
-    img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    img = cv2.imread("img/cybertorture.jpg", cv2.IMREAD_UNCHANGED)
+    #convert img to grey
+    img_grey = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
+    #set a thresh
+    thresh = 100
+    #get threshold image
+    ret,thresh = cv2.threshold(img_grey, thresh, 255, cv2.THRESH_BINARY)
     # find the contours in the image
-    ret, thresh = cv2.threshold(img_gray, 127, 255, 0) # making pure black and white image
     contours, hierarchy = cv2.findContours(thresh, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE) # finding available contours i.e closed loop objects
     contours = np.array(contours[1]) # contour at index 1 is the one we are looking for
     # split the co-ordinate points of the contour
@@ -139,7 +143,7 @@ def generate_fourier_epicycles_drawing():
     # original drawing
     orig_drawing, = ax.plot([], [], 'g-', linewidth=0.5)
     # to fix the size of figure so that the figure does not get cropped/trimmed
-    ax.set_xlim(xlim_data[0] - 50, xlim_data[1] + 50)
+    ax.set_xlim(xlim_data[0], xlim_data[1])
     ax.set_ylim(ylim_data[0], ylim_data[1])
     # hide axes
     ax.set_axis_off()
