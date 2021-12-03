@@ -142,7 +142,7 @@ class AllTimeHigh(Config):
         # Sort so that largest epicycles are at the center, and the smaller ones are at the location of the drawing points
         fourier_data.sort(key=lambda x: x.amplitude, reverse=True)
         epicycles = Epicycles(fourier_data, plot_size=[427, 427])
-epicycles.run()
+        epicycles.run()
         time.sleep(5)
         #
         #make_gif(".", "sudoku.gif", "sudoku*.jpg")
