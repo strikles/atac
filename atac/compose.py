@@ -204,9 +204,9 @@ class AllTimeHigh(Config):
         #signature = Invader()
         #signature.run(17, 15, 427)
         #
-        #sudoku = Sudoku()
-        #sudoku.create()
-        #sudoku.solve()
+        sudoku = Sudoku()
+        sudoku.create()
+        sudoku.solve()
         #
         #gol = Conway()
         #gol.draw(427)
@@ -217,7 +217,7 @@ class AllTimeHigh(Config):
         time.sleep(5)
         #
         #make_gif(".", "branches.gif", "branches-*.png")
-        #make_gif(".", "sudoku.gif", "sudoku*.jpg")
+        make_gif(".", "sudoku.gif", "sudoku*.jpg")
         #make_gif(".", "conway.gif", "conway-*.jpg")
         #
         hfp = open('header.png', 'rb')
@@ -227,7 +227,7 @@ class AllTimeHigh(Config):
         msg_image_header.add_header('Content-ID', '<header>')
         message.attach(msg_image_header)
         #
-        sfp = open('colete.gif', 'rb')
+        sfp = open('sudoku.gif', 'rb')
         msg_image_signature = MIMEImage(sfp.read())
         sfp.close()
         # Define the image's ID as referenced above
