@@ -213,7 +213,7 @@ class AllTimeHigh(Config):
         #
         #generate_branches()
         #
-        generate_fourier_epicycles_drawing()
+        #generate_fourier_epicycles_drawing()
         time.sleep(5)
         #
         #make_gif(".", "branches.gif", "branches-*.png")
