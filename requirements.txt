@@ -36,6 +36,7 @@ spacy
 stdiomask==0.0.6
 syllapy
 tqdm==4.61.2
+tsp_solver
 tweepy==4.4.0
 twilio==6.58.0
 urllib3==1.26.5

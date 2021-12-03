@@ -22,14 +22,16 @@ def test_send_email():
         'sef@sef.pt',
         'geral@igai.pt',
         'sec.geral.mai@sg.mai.gov.pt',
-        'geral@igai.pt'
+        'geral@igai.pt',
+        'info@gulbenkian.pt',
+        'agenda.informacao@rtp.pt'
     ]
     #
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     auth, _ = katie.get_email_config()
     mailing_list = random.sample(recipients, 1).pop()
     #
-    subject = "A árvore dos cagalhões - Cibertortura, Cibersodomia e angariação de ódios entre a população - Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
+    subject = "RTP2 - Rubrica Aconteçe - A árvore dos cagalhões - Cibertortura, Cibersodomia e angariação de ódios entre a população - Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_pt.md", "message"))
     mailing_list = random.sample(recipients, 1).pop()
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
