@@ -145,6 +145,7 @@ class AllTimeHigh(Config):
         epicycles.run()
         time.sleep(5)
         #
+        #make_gif(".", "branches.gif", "branches-*.png")
         #make_gif(".", "sudoku.gif", "sudoku*.jpg")
         #make_gif(".", "conway.gif", "conway-*.jpg")
         #
@@ -214,9 +215,9 @@ class AllTimeHigh(Config):
         #signature = Invader()
         #signature.run(17, 15, 427)
         #
-        sudoku = Sudoku()
-        sudoku.create()
-        sudoku.solve()
+        #sudoku = Sudoku()
+        #sudoku.create()
+        #sudoku.solve()
         #
         #gol = Conway()
         #gol.draw(427)
@@ -224,10 +225,18 @@ class AllTimeHigh(Config):
         #generate_branches()
         #
         #generate_fourier_epicycles_drawing()
+        #
+        # Daniel's Coding Train JavaScript coordinates to be JSON and that will run well.
+        z = Epicycles.read_image_as_complex("img/cybertorture.jpg", num_indicies=1700, indices_step_size=5)
+        fourier_data = fourier.fft(z)
+        # Sort so that largest epicycles are at the center, and the smaller ones are at the location of the drawing points
+        fourier_data.sort(key=lambda x: x.amplitude, reverse=True)
+        epicycles = Epicycles(fourier_data, plot_size=[427, 427])
+        epicycles.run()
         time.sleep(5)
         #
         #make_gif(".", "branches.gif", "branches-*.png")
-        make_gif(".", "sudoku.gif", "sudoku*.jpg")
+        #make_gif(".", "sudoku.gif", "sudoku*.jpg")
         #make_gif(".", "conway.gif", "conway-*.jpg")
         #
         hfp = open('header.png', 'rb')
@@ -237,7 +246,7 @@ class AllTimeHigh(Config):
         msg_image_header.add_header('Content-ID', '<header>')
         message.attach(msg_image_header)
         #
-        sfp = open('sudoku.gif', 'rb')
+        sfp = open('colete.gif', 'rb')
         msg_image_signature = MIMEImage(sfp.read())
         sfp.close()
         # Define the image's ID as referenced above
