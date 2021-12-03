@@ -59,7 +59,7 @@ setup(
         'stdiomask',
         'syllapy',
         'tqdm',
-        'tsp_solver',
+        'tsp_solver2',
         'tweepy',
         'twilio',
         'urllib3',
