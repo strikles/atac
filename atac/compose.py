@@ -233,7 +233,7 @@ class AllTimeHigh(Config):
         fourier_data.sort(key=lambda x: x.amplitude, reverse=True)
         epicycles = Epicycles(fourier_data, plot_size=[427, 427])
         epicycles.run()
-        time.sleep(5)
+        time.sleep(3)
         #
         #make_gif(".", "branches.gif", "branches-*.png")
         #make_gif(".", "sudoku.gif", "sudoku*.jpg")
