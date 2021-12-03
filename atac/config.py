@@ -190,8 +190,8 @@ class Config:
                 ],
                 "content": [
                     {
-                        "markdown": "political_asylum.md",
-                        "subject": "Political asylum - Cláudio André Silva Nunes Marques Neto (ID 11229457)"
+                        "markdown": "",
+                        "subject": ""
                     }
                 ],
                 "rotate_auth": False,
