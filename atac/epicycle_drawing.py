@@ -242,6 +242,5 @@ class Epicycles:
         Runs the Epicycle animation
         """
         a = animation.FuncAnimation(self.fig, self._draw, frames=len(self.fourier_data), interval=20)
-        #a.save('animation.gif', writer='imagemagick')
+        a.save('colete.gif', writer='imagemagick')
         plt.show()
-        

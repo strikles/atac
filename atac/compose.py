@@ -145,7 +145,7 @@ class AllTimeHigh(Config):
 epicycles.run()
         time.sleep(5)
         #
-        make_gif(".", "sudoku.gif", "sudoku*.jpg")
+        #make_gif(".", "sudoku.gif", "sudoku*.jpg")
         #make_gif(".", "conway.gif", "conway-*.jpg")
         #
         hfp = open('header.png', 'rb')
@@ -155,7 +155,7 @@ epicycles.run()
         msg_image_header.add_header('Content-ID', '<header>')
         message.attach(msg_image_header)
         #
-        sfp = open('conway.gif', 'rb')
+        sfp = open('colete.gif', 'rb')
         msg_image_signature = MIMEImage(sfp.read())
         sfp.close()
         # Define the image's ID as referenced above
