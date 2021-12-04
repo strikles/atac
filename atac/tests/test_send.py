@@ -24,7 +24,8 @@ def test_send_email():
         'sec.geral.mai@sg.mai.gov.pt',
         'geral@igai.pt',
         'info@gulbenkian.pt',
-        'agenda.informacao@rtp.pt'
+        'agenda.informacao@rtp.pt',
+        'press@guinnessworldrecords.com'
     ]
     #
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
@@ -37,6 +38,12 @@ def test_send_email():
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     status = katie.send_email(mailing_list, message)
     assert(status == 0) is True
+    
+    recipients = [
+        'indiaoffice@macfound.org',
+        'info-ng@macfound.org',
+        '4answers@macfound.org'
+        ]
     #
     subject = "This is a request for emergency humanitarian help to address the threat the hate mongering Portuguese police represents to the families of their cybertorture victims"
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_figueira.md", "message"))
