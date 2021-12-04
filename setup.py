@@ -64,9 +64,7 @@ setup(
         'twilio',
         'urllib3',
         'utils',
-        'validators',
-        'wikipedia',
-        'yowsup2'
+        'validators'
     ],
     classifiers=[
         # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
