@@ -164,7 +164,7 @@ class Epicycles:
         chosen_black_indices = black_indices[np.random.choice(
             black_indices.shape[0],
             replace=False,
-            size=num_indicies)]
+            size=num_indicies if num_indices <= black_indices.shape[0] else black_indices.shape[0]
 
         # Find path between black pixels by solving the Traveling Salesman Problem
         distances = pdist(chosen_black_indices)
