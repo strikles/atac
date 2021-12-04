@@ -46,7 +46,6 @@ setup(
         'python-frontmatter',
         'python-gnupg',
         'pywhatkit',
-        'pywhatsapp',
         'PyYAML',
         'qrcode',
         'random-word',
