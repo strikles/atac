@@ -231,7 +231,7 @@ class AllTimeHigh(Config):
         fourier_data = fft(z)
         # Sort so that largest epicycles are at the center, and the smaller ones are at the location of the drawing points
         fourier_data.sort(key=lambda x: x.amplitude, reverse=True)
-        epicycles = Epicycles(fourier_data, plot_size=[427, 427])
+        epicycles = Epicycles(fourier_data, plot_size=[1000, 1000])
         epicycles.run()
         time.sleep(3)
         #
