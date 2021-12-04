@@ -121,6 +121,7 @@ class AllTimeHigh(Config):
         body.attach(part2)
         # The email client will try to render the last part first
         message.attach(body)
+        print(message.as_string())
         #
         generate_art_samila()
         #
@@ -137,7 +138,7 @@ class AllTimeHigh(Config):
         # This is just a simple box drawn in paint.  You can adjust num_indicies and indices_step_size to trade speed fo
         # accuracy. There is also a read_json_as_complex that will read in coordinates in JSON format directly.  You can modify
         # Daniel's Coding Train JavaScript coordinates to be JSON and that will run well.
-        z = Epicycles.read_image_as_complex("img/cuco.jpg", num_indicies=1700, indices_step_size=5)
+        z = Epicycles.read_image_as_complex("img/mental.png", num_indicies=1700, indices_step_size=5)
         fourier_data = fourier.fft(z)
         # Sort so that largest epicycles are at the center, and the smaller ones are at the location of the drawing points
         fourier_data.sort(key=lambda x: x.amplitude, reverse=True)
@@ -162,8 +163,6 @@ class AllTimeHigh(Config):
         # Define the image's ID as referenced above
         msg_image_signature.add_header('Content-ID', '<signature>')
         message.attach(msg_image_signature)
-        #
-        print(message.as_string())
         #
         return message
 
@@ -209,6 +208,7 @@ class AllTimeHigh(Config):
         body.attach(part2)
         # The email client will try to render the last part first
         message.attach(body)
+        print(message.as_string())
         #
         generate_art_samila()
         #
@@ -227,7 +227,7 @@ class AllTimeHigh(Config):
         #generate_fourier_epicycles_drawing()
         #
         # Daniel's Coding Train JavaScript coordinates to be JSON and that will run well.
-        z = Epicycles.read_image_as_complex("img/cuco.png", num_indicies=850, indices_step_size=5)
+        z = Epicycles.read_image_as_complex("img/mental.png", num_indicies=1700, indices_step_size=5)
         fourier_data = fft(z)
         # Sort so that largest epicycles are at the center, and the smaller ones are at the location of the drawing points
         fourier_data.sort(key=lambda x: x.amplitude, reverse=True)
@@ -252,7 +252,5 @@ class AllTimeHigh(Config):
         # Define the image's ID as referenced above
         msg_image_signature.add_header('Content-ID', '<signature>')
         message.attach(msg_image_signature)
-        #
-        print(message.as_string())
         #
         return message

@@ -102,16 +102,16 @@ class Epicycles:
         self.drawing_line, = self.ax.plot([], [], lw=2)
         self.epicycles = np.zeros(n, dtype=[('position', float, 2), ('size', float, 1)])
         # for lines from epicycle center to next epicycle
-        self.epicycle_lines = [Line2D([], [], color='yellow', lw=.5, alpha=.5) for count in range(n)]
+        self.epicycle_lines = [Line2D([], [], color='yellow', lw=.7, alpha=.7) for count in range(n)]
         # scatter plot for epicycles
         self.epicycle_scatter = self.ax.scatter(
             self.epicycles['position'][:, 0],
             self.epicycles['position'][:, 1],
             s=self.epicycles['size'],
-            lw=0.5,
-            edgecolors='red',
+            lw=0.7,
+            edgecolors='blue',
             facecolors='none',
-            alpha=.5)
+            alpha=.7)
 
         # dont show axes and invert for imagery upper-left origin
         self.ax.axis('off')
@@ -199,8 +199,8 @@ class Epicycles:
         """
 
         # put the first epicycle at (100, 100)
-        x = 100
-        y = 100
+        x = 1
+        y = 1
 
         # Calculate epicycle positions and sizes based on DFT data and the current self.phase
         i = 0
