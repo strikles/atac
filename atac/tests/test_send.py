@@ -38,7 +38,7 @@ def test_send_email():
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     status = katie.send_email(mailing_list, message)
     assert(status == 0) is True
-    
+    #me
     recipients = [
         'indiaoffice@macfound.org',
         'info-ng@macfound.org',
