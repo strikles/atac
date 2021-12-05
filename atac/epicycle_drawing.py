@@ -15,9 +15,7 @@ import time
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from matplotlib import animation
-from PIL import Image
-from PIL import ImageOps
-from PIL import ImageFilter
+from PIL import Image, ImageOps, ImageFilter
 from tsp_solver.greedy_numpy import solve_tsp
 from scipy.spatial.distance import pdist, squareform
 
@@ -151,7 +149,8 @@ class Epicycles:
 
         # Convert image to black and white
         image = Image.open(image_file_path, "r")
-        bw_image = image.convert('1', dither=Image.NONE)
+        #bw_image = image.convert('1', dither=Image.NONE)
+        be_image = ImageOps.grayscale(image)
         #plt.imshow(bw_image)
 
         # Identify black pixels and select random subset of them

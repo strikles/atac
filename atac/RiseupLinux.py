@@ -171,7 +171,6 @@ class POP(Riseup):
     Using POP3;
     '''
 
-
     port = '995'
 
     def __init__(self, user=None, pwd=None):
