@@ -4,7 +4,7 @@ Ex-alunos do colégio militar e associados criminosos ligados a Pedro Miguel De 
 2. "desisto"
 3. "nunca gostei dele"
 
-numa tentativa de esconderem as atitudes de merda que tiveram comigo e com a minha família tais como terem partido os dentes remotamente aos meus pais como cobardes, terem sodomizado e abusado sexualmente dos meus pais e terem tentado enfiar a família toda num hospital psiquiátrico) dirigindo violência contra mulheres na Holanda tais como Madelin Hiddingh e outras senhoras do Timm & Pimm em Amsterdão.
+numa tentativa de esconderem as atitudes de merda que tiveram comigo e com a minha família tais como terem partido os dentes remotamente aos meus pais como cobardes, terem feito do meu pai um deficiente, terem sodomizado e abusado sexualmente dos meus pais e terem tentado enfiar a família toda num hospital psiquiátrico) dirigindo violência contra mulheres na Holanda tais como Madelin Hiddingh e outras senhoras do Timm & Pimm em Amsterdão em associação criminosa com Jasper Kums (Eenvoud Agency)
 
 Estes indivíduos insistem em angariar ódios entre a população para distribuírem sentenças extrajudiciais de cibertortura e forçarem psicoses sintéticas na proximidade física de familiares e em estabelecimentos comerciais desde que sou forçado a acordar para andar às voltas e gastar todo o dinheirinho que tenho (depois de terem forçado a minha mãe a pedir empréstimos no banco) com cibertortura vibrotactil genital e pancadinhas periódicas de 10 em 10 segundos para partir tudo o que tenho à minha volta em formato de espectáculo, numa tentativa de esconderem terem feito do meu pai um aleijado para me enfiarem a qualquer custo num hospital psiquiátrico, cadeia ou caixão desde que saí do colégio militar em 1996.
 
