@@ -47,6 +47,13 @@ def test_send_email():
     status = katie.send_email(mailing_list, message)
     assert(status == 0) is True
     #
+    subject = "RTP2 - Rubrica Aconteçe parte 3 - A árvore dos cagalhões - Cibertortura, Cibersodomia e angariação de ódios entre a população - Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
+    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_duarte.md", "message"))
+    mailing_list = random.sample(recipients, 1).pop()
+    message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
+    status = katie.send_email(mailing_list, message)
+    assert(status == 0) is True
+    #
     recipients = [
         'indiaoffice@macfound.org',
         'info-ng@macfound.org',
@@ -62,6 +69,13 @@ def test_send_email():
 
     subject = "RTP2 - Rubrica Aconteçe parte 2 - A árvore dos cagalhões - Cibertortura, Cibersodomia e angariação de ódios entre a população - Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/ferronha_colete.md", "message"))
+    mailing_list = random.sample(recipients, 1).pop()
+    message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
+    status = katie.send_email(mailing_list, message)
+    assert(status == 0) is True
+    
+    subject = "RTP2 - Rubrica Aconteçe parte 3 - A árvore dos cagalhões - Cibertortura, Cibersodomia e angariação de ódios entre a população - Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
+    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_duarte.md", "message"))
     mailing_list = random.sample(recipients, 1).pop()
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     status = katie.send_email(mailing_list, message)
