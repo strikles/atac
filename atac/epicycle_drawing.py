@@ -149,8 +149,8 @@ class Epicycles:
 
         # Convert image to black and white
         image = Image.open(image_file_path, "r")
-        #bw_image = image.convert('1', dither=Image.NONE)
-        bw_image = ImageOps.grayscale(image)
+        bw_image = image.convert('1', dither=Image.NONE)
+        #bw_image = ImageOps.grayscale(image)
         #plt.imshow(bw_image)
 
         # Identify black pixels and select random subset of them
