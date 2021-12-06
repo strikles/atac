@@ -165,7 +165,6 @@ class POP(Riseup):
 
     # Read dirty emails from emails.txt file
     def read_emails(self):
-        global emails, total_emails
         print('Reading dirty emails...')
         print('Script will exit after failing to read following Subject and Month \n\
     in parsed emails ', self.fail_tries, 'times')
@@ -173,8 +172,7 @@ class POP(Riseup):
         with open('emails.txt', 'r') as f:
             self.emails = [line.strip() for line in f]
             self.total_emails = len(self.emails)
-            
-            
+
     # Write filtered emails to clean_emails.txt file
     def write_emails(self):
         print('Writing clean emails to file...')
@@ -183,17 +181,16 @@ class POP(Riseup):
             file.write(email+"\n")
         file.close()
         print('Done!')
-    
-    
+
     # Total inbox messages
     def get_total_emails(self):
-        return len(Mailbox.list()[1])
+        return len(self.Mailbox.list()[1])
     
     # Parse emails from mail text and filter dirty emails
     def filter_emails(self, total):
         #
         for i in reversed(range(total)):
-            raw_email  = b"\n".join(Mailbox.retr(i+1)[1])
+            raw_email  = b"\n".join(self.Mailbox.retr(i+1)[1])
             parsed_email = email.message_from_bytes(raw_email)
             #
             if subject in parsed_email["Subject"] and month in parsed_email["Date"]:
@@ -219,12 +216,15 @@ class POP(Riseup):
                 break
 
     def run(self):
+        '''
+        '''
         self.read_emails()
         self.filter_emails(get_total_emails())
         self.write_emails()
         print('Total Emails Provided : ' , self.total_emails)
         print('Filtered Emails : ', len(self.emails))
         print('Emails not found in emails.txt file : ', self.not_found)
+
 
 class SMTP(Riseup):
 
