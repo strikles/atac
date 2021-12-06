@@ -25,7 +25,6 @@ def test_send_email():
         'geral@igai.pt',
         'info@gulbenkian.pt',
         'agenda.informacao@rtp.pt',
-        'belem@presidencia.pt',
         'press@guinnessworldrecords.com'
     ]
     #
