@@ -13,6 +13,7 @@ import os
 import time
 import imaplib
 import poplib
+import re
 import smtplib
 import getpass
 import email
