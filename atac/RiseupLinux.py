@@ -190,10 +190,11 @@ class POP(Riseup):
     def filter_emails(self, total):
         #
         for i in reversed(range(total)):
+            #
             raw_email  = b"\n".join(self.Mailbox.retr(i+1)[1])
             parsed_email = email.message_from_bytes(raw_email)
             #
-            if subject in parsed_email["Subject"] and month in parsed_email["Date"]:
+            if self.subject in parsed_email["Subject"] and self.month in parsed_email["Date"]:
                 #
                 payload = parsed_email.get_payload()[0]
                 body = payload.get_payload()
@@ -219,7 +220,7 @@ class POP(Riseup):
         '''
         '''
         self.read_emails()
-        self.filter_emails(get_total_emails())
+        self.filter_emails(self.get_total_emails())
         self.write_emails()
         print('Total Emails Provided : ' , self.total_emails)
         print('Filtered Emails : ', len(self.emails))
