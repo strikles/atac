@@ -57,7 +57,6 @@ class Riseup:
 
     def log_in(self):
         ''' Set Login credentials '''
-
         if self.user == None and self.pwd == None:
             user = input('\nYour Riseup username: ')
             pwd = getpass.getpass()
@@ -139,8 +138,7 @@ class IMAP(Riseup):
         return            
 
     def search_message(self):
-        ''' User can search in chosen message
-        directory for terms to find message;
+        ''' User can search in chosen message directory for terms to find message;
         '''
         pass
 
