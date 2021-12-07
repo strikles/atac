@@ -59,18 +59,15 @@ def dft(z):
     """
     dft_data = []
     N = len(z)
-
     # k is frequency
     for k in range(0, N):
         zk = complex(0, 0)
-
         for n in range(0, N):
             phi = (2 * np.pi * k * n) / N
             zk += z[n] * complex(np.cos(phi), -np.sin(phi))
-
         zk /= N
         dft_data.append(FourierDatum(zk, k))
-
+    #
     return dft_data
 
 
@@ -125,12 +122,11 @@ class Epicycles:
 
         with open(json_file_path) as json_file:
             data = json.load(json_file)
-
+        #
         z = []
-
         for i in range(0, len(data)):
             z.append(complex(data[i]["x"], data[i]["y"]))
-
+        #
         return z
 
     @staticmethod
@@ -152,26 +148,23 @@ class Epicycles:
         bw_image = image.convert('1', dither=Image.NONE)
         #bw_image = ImageOps.grayscale(image)
         #plt.imshow(bw_image)
-
         # Identify black pixels and select random subset of them
         bw_image_array = np.array(bw_image, dtype=np.int)
         black_indices = np.argwhere(bw_image_array == 0)
-
+        #
         chosen_black_indices = black_indices[np.random.choice(
             black_indices.shape[0],
             replace=False,
             size=num_indicies if num_indicies <= black_indices.shape[0] else black_indices.shape[0]
         )]
-
         # Find path between black pixels by solving the Traveling Salesman Problem
         distances = pdist(chosen_black_indices)
         distance_matrix = squareform(distances)
-
+        #
         print("Solving traveling salesman problem for drawing path...")
         optimized_path = solve_tsp(distance_matrix)
         print("Done solving traveling salesman.")
         optimized_path_points = [chosen_black_indices[x] for x in optimized_path]
-
         # Plot the traveling salesman path of the points to draw
         """
         plt.figure()
@@ -180,13 +173,11 @@ class Epicycles:
         plt.xticks([])
         plt.yticks([])
         """
-
         # Save the black pixel path (x, y) coordinates as complex numbers
         z = []
-
         for i in range(0, len(optimized_path_points), indices_step_size):
             z.append(complex(optimized_path_points[i][1], optimized_path_points[i][0]))
-
+        #
         return z
 
     def _draw(self, frame):
