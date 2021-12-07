@@ -41,11 +41,9 @@ LOGGER.addHandler(fh)
 
 class Riseup:
 
-    ''' Parent class of mail
+    ''' Parent class of mail program;
 
-    program;
-    Login credentials are optional, so user can
-    decide to have persistent session or not;
+    Login credentials are optional, so user can decide to have persistent session or not;
     '''
     
     SERVER = 'mail.riseup.net'
@@ -133,14 +131,13 @@ class IMAP(Riseup):
                     for x in range(msg_size):
                         print('[+] Message: ', msg.get_payload[x])
                 print('\n')
-
+        #
         except:
             print('Couldn\'t open unread messages..')
         return            
 
     def search_message(self):
-        ''' User can search in chosen message directory for terms to find message;
-        '''
+        ''' User can search in chosen message directory for terms to find message; '''
         pass
 
 
@@ -280,10 +277,7 @@ class SMTP(Riseup):
         return
 
     def sendmail(self):
-        '''
-        Is sending message if a connection could
-        be established before;
-        '''
+        ''' Is sending message if a connection could be established before; '''
 
         # Riseup just accepts MIME;
         from email.mime.text import MIMEText
@@ -308,11 +302,10 @@ class SMTP(Riseup):
         return
 
     def get_text(self):
-        '''
-        Gets the message which will be sent;
+        ''' Gets the message which will be sent;
+        
         Choosing between write message directly, or read message from f;
         '''
-
         try:
             opt = input('\nWrite message or read from file? (w/r)  : \n')
             if opt == 'w':
@@ -330,6 +323,7 @@ class SMTP(Riseup):
 
     def encrypt_msg(self):
         ''' Encrypts the message;
+        
         Just working with files until now;
         '''
         # Specify file (and Path)
@@ -346,10 +340,7 @@ class SMTP(Riseup):
 # Not ready to use yet !
 class Canary:
 
-    '''
-    Downloading the canary statement
-    of Riseup to verify it is still safe
-    to use;
+    ''' Downloading the canary statement of Riseup to verify it is still safe to use;
 
     -- Recommended: --
     Read more about:
@@ -387,8 +378,7 @@ class Canary:
 
     @classmethod
     def verify_statement(cls):
-        ''' Canary Statement is verified here;'''
-        
+        ''' Canary Statement is verified here; '''
         # Load statement
         os.system(f'wget {cls.CANARYLINK}')
         # Verify

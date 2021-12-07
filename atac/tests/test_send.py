@@ -97,3 +97,4 @@ def test_send_emails():
     subject = "This is a request for emergency humanitarian help to address the threat the Portuguese police represents to the families of their cybertorture victims"
     status = katie.send_emails(email_files_path, message_file_path, subject)
     assert(status == 0) is True
+    #
