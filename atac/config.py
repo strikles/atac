@@ -33,6 +33,7 @@ class Config:
     -------
     generate_key()
         Generates a new encryption key from a password + salt
+
     """
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
