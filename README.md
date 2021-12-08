@@ -27,7 +27,7 @@ Cybertorture is recognized by the United Nations under A/HRC/43/49 and is used i
 
 ![](img/E6B4E6DF-976A-4823-A6D2-EB42E8C54433.jpeg)
 
-This is hidden under a veil of medical malpractice, corruption and fraud by cowardly colégio militar alumni linked to Pedro Miguel de Brito Esteves Grilo @PSP (who instructed me to jump out of the window in front of my mother as my anus was taped after forcing me to hit myself in the head), the security staff of the Portuguese President, law enforcement and elected government officials like the president of Portugal - Marcelo Rebelo de Sousa - along with others recruited for the purpose like Carla Maria Marinho Rodrigues, to exact extrajudicial trials and sentences as an interactive spectacle encouraging participation, mongering tensions and hatred by preying on cognitive biases.
+This is hidden under a veil of medical malpractice, corruption and fraud by cowardly colégio militar alumni linked to Pedro Miguel de Brito Esteves Grilo @PSP (who instructed me to jump out of the window in front of my mother as my anus was gaped after forcing me to hit myself in the head), the security staff of the Portuguese President, law enforcement and elected government officials like the president of Portugal - Marcelo Rebelo de Sousa - along with others recruited for the purpose like Carla Maria Marinho Rodrigues, to exact extrajudicial trials and sentences as an interactive spectacle encouraging participation, mongering tensions and hatred by preying on cognitive biases.
 
 ![](img/EAF80C43-899F-4409-A315-473C9D04576D.jpeg)
 
