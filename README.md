@@ -23,7 +23,7 @@
 
 #### Summary
 
-Cybertorture is recognized by the United Nations under A/HRC/43/49 and is used in grotesque rituals of simulating mental illness (Van Gogh syndrome) to force genital self-mutilation in the format of an extrajudicial trials and sentences circus with an audience where individuals take turns delivering noxious vibrotactil payloads to induce self-harm
+Cybertorture is recognized by the United Nations under A/HRC/43/49 and is used in grotesque rituals of simulating mental illness (Van Gogh syndrome) to force genital self-mutilation in the format of an extrajudicial trials and sentences circus of the macabre with an audience where individuals take turns delivering noxious vibrotactil payloads to induce self-harm
 
 This is hidden under a veil of medical malpractice, corruption and fraud by cowardly colégio militar alumni linked to the security staff of the Portuguese President, law enforcement and elected government officials like the president of Portugal - Marcelo Rebelo de Sousa - along with others recruited for the purpose like Augusto Tavares, to exact extrajudicial trials and sentences as an interactive spectacle encouraging participation, mongering tensions and hatred by preying on cognitive biases.
 
