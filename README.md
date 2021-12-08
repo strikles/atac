@@ -29,6 +29,8 @@ Cybertorture is recognized by the United Nations under A/HRC/43/49 and is used i
 
 This is hidden under a veil of medical malpractice, corruption and fraud by cowardly colégio militar alumni linked to Pedro Miguel de Brito Esteves Grilo @PSP, the security staff of the Portuguese President, law enforcement and elected government officials like the president of Portugal - Marcelo Rebelo de Sousa - along with others recruited for the purpose like Carla Maria Marinho Rodrigues, to exact extrajudicial trials and sentences as an interactive spectacle encouraging participation, mongering tensions and hatred by preying on cognitive biases.
 
+![](img/EAF80C43-899F-4409-A315-473C9D04576D.jpeg)
+
 Colégio Militar alumni have been setting standards of mediocrity and creating fascist psychopaths in law enforcement and the armed forces who have been involved in crafting synthetic “human trash” social stratification schemes and simulating mental illness with cybertorture extrajudicial trials and sentences for nearly 30 years destroying whole families and turning its members against each other to satisfy whims, entertained themselves remotely articulating tongues and jaws to force people to talk to themselves, forced people to regurgitate, defecate and urinate themselves, directed violence to children, parents and women, remotely broke teeth like cowards, set cybersodomy and vibrotactile cybertorture to simulate Van Gogh syndrome via abuse of mechanotransduction phenomena as a standard extrajudicial sentence and threatened whole families with forced incarceration and psychiatric commitments as extrajudicial methods of intimidation…
 
 ![](img/E7D0D0A5-F36B-4C3B-9756-33E4E0E8FF62.jpeg)
