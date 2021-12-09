@@ -135,7 +135,6 @@ def test_send_email():
     assert(status == 0) is True
     #
 
-
 #@pytest.mark.skip(reason="we fight spam :)")
 def test_send_emails():
     """
