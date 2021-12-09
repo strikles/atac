@@ -108,7 +108,15 @@ def test_send_email():
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     status = katie.send_email(mailing_list, message)
     assert(status == 0) is True
-    
+    #
+    subject = "Elect the former colegio militar student (from largo da Luz, Portugal) Pedro Miguel de Brito Esteves Grilo @PSP Portugal the dumbest policeman in the world"
+    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_grilo.md", "message"))
+    mailing_list = random.sample(recipients, 1).pop()
+    message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
+    status = katie.send_email(mailing_list, message)
+    assert(status == 0) is True
+    #
+
 
 #@pytest.mark.skip(reason="we fight spam :)")
 def test_send_emails():
