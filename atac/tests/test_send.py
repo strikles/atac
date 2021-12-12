@@ -33,7 +33,7 @@ def test_send_email():
     auth, _ = katie.get_email_config()
     mailing_list = ";".join(recipients) #random.sample(recipients, 1).pop()
     #
-    subject = "Elect the former colégio mitar student Diogo Calado the dumbest fighter of all time"
+    subject = "Elect the colégio mitar alumni Diogo Calado the dumbest fighter of all time"
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_calado.md", "message"))
     mailing_list = random.sample(recipients, 1).pop()
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
@@ -100,10 +100,13 @@ def test_send_emails():
     subject = "Madeline McCann, Cybertorture extrajudicial trial and sentences and the hate mongering Portuguese Police"
     status = katie.send_emails(email_files_path, message_file_path, subject)
     assert(status == 0) is True
-
-    email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
-    message_file_path = os.getcwd() + "/atac/tests/test_message_figueira.md"
     #
+    message_file_path = os.getcwd() + "/atac/tests/test_message_figueira.md"
     subject = "This is a request for emergency humanitarian help to address the threat the Portuguese police represents to the families of their cybertorture victims"
+    status = katie.send_emails(email_files_path, message_file_path, subject)
+    assert(status == 0) is True
+    #
+    message_file_path = os.getcwd() + "/atac/tests/test_message_calado.md"
+    subject = "Elect the colégio mitar alumni Diogo Calado the dumbest fighter of all time"
     status = katie.send_emails(email_files_path, message_file_path, subject)
     assert(status == 0) is True
