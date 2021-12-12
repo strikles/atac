@@ -33,6 +33,13 @@ def test_send_email():
     auth, _ = katie.get_email_config()
     mailing_list = ";".join(recipients) #random.sample(recipients, 1).pop()
     #
+    subject = "Elect the former colégio mitar student Diogo Calado the dumbest fighter of all time"
+    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_calado.md", "message"))
+    mailing_list = random.sample(recipients, 1).pop()
+    message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
+    status = katie.send_email(mailing_list, message)
+    assert(status == 0) is True
+    #
     subject = "Elect José Ricardo Nazareth Carvalho Figueira and Luis Nazareth Carvalho Figueira the dumbest colegio militar alumni of all time"
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_figueira.md", "message"))
     mailing_list = random.sample(recipients, 1).pop()
