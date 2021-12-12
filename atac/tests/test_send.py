@@ -60,74 +60,12 @@ def test_send_email():
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     status = katie.send_email(mailing_list, message)
     assert(status == 0) is True
-    #
-    '''
-    subject = "Cibertortura, Cibersodomia e angariação de ódios entre a população - Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
-    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_pt.md", "message"))
-    mailing_list = random.sample(recipients, 1).pop()
-    message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
-    status = katie.send_email(mailing_list, message)
-    assert(status == 0) is True
-    '''
-    #
-    '''
-    subject = "Cibertortura, Cibersodomia e angariação de ódios entre a população - Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
-    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/ferronha_colete.md", "message"))
-    mailing_list = random.sample(recipients, 1).pop()
-    message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
-    status = katie.send_email(mailing_list, message)
-    assert(status == 0) is True
-    '''
-    #
-    '''
-    subject = "Cibertortura, Cibersodomia e angariação de ódios entre a população - Exoneração imediata de ex-alunos do colégio militar associados a Luís Nazareth Carvalho Figueira"
-    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_duarte.md", "message"))
-    mailing_list = random.sample(recipients, 1).pop()
-    message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
-    status = katie.send_email(mailing_list, message)
-    assert(status == 0) is True
-    '''
-    #
-    '''
-    subject = "Cibertortura, Cibersodomia e angariação de ódios entre a população - Exoneração imediata de ex-alunos do colégio militar"
-    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_brito.md", "message"))
-    mailing_list = random.sample(recipients, 1).pop()
-    message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
-    status = katie.send_email(mailing_list, message)
-    assert(status == 0) is True
-    '''
-    #
-    '''
-    subject = "espectáculos extrajudiciais de cibertortura e automutilação genital na polícia portuguesa e governo português versus prevenção de pedofilia no caso de Madelin McCann - Exoneração imediata de ex-alunos do colégio militar associados a Pedro Miguel De Brito Esteves Grilo"
-    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/ferronha_colete.md", "message"))
-    mailing_list = random.sample(recipients, 1).pop()
-    message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
-    status = katie.send_email(mailing_list, message)
-    assert(status == 0) is True
-    '''
-    #
-    '''
-    subject = "Elect the former colegio militar student (from largo da Luz, Portugal) Pedro Miguel de Brito Esteves Grilo @PSP Portugal the dumbest policeman in the world"
-    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_grilo.md", "message"))
-    mailing_list = random.sample(recipients, 1).pop()
-    message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
-    status = katie.send_email(mailing_list, message)
-    assert(status == 0) is True
-    '''
-    #
-    '''
-    subject = "Elect the former colegio militar student (from largo da Luz, Portugal) Nuno Poiares @PSP Portugal the dumbest policeman from sci division in the world"
-    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_poiares.md", "message"))
-    mailing_list = random.sample(recipients, 1).pop()
-    message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
-    status = katie.send_email(mailing_list, message)
-    assert(status == 0) is True
-    '''
+    
     recipients = [
         'indiaoffice@macfound.org',
         'info-ng@macfound.org',
         '4answers@macfound.org'
-        ]
+    ]
     #
     subject = "This is a request for emergency humanitarian help to address the threat the hate mongering Portuguese police represents to the families of their victims of cybertorture paired with psychiatric abuse"
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_humanitarian.md", "message"))
