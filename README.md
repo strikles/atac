@@ -37,7 +37,7 @@ Colégio Militar alumni have been setting standards of mediocrity and creating f
 
 Further social stratification schemes and mediocrity standards became common place by making plagiarism a standard in the school via a tradition of passing school keys from year to year to steal exams!
 
-Sign the petition
+Sign the petition:
 
 https://chng.it/8FtDcsvG
 
