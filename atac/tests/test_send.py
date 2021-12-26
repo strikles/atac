@@ -33,6 +33,13 @@ def test_send_email():
     auth, _ = katie.get_email_config()
     mailing_list = ";".join(recipients) #random.sample(recipients, 1).pop()
     #
+    subject = "cybertorture, violence towards parents and women during Christmas Day and colégio militar alumni Rui Ricardo Borges Marques Sabino Reino
+    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/Sabino.md", "message"))
+    mailing_list = random.sample(recipients, 1).pop()
+    message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
+    status = katie.send_email(mailing_list, message)
+    assert(status == 0) is True
+    #
     subject = "Elect the colégio mitar alumni Diogo Calado the dumbest fighter of all time"
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_calado.md", "message"))
     mailing_list = random.sample(recipients, 1).pop()
@@ -73,6 +80,13 @@ def test_send_email():
         'info-ng@macfound.org',
         '4answers@macfound.org'
     ]
+    #
+    subject = "cybertorture, violence towards parents and women during Christmas Day and colégio militar alumni Rui Ricardo Borges Marques Sabino Reino
+    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/Sabino.md", "message"))
+    mailing_list = random.sample(recipients, 1).pop()
+    message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
+    status = katie.send_email(mailing_list, message)
+    assert(status == 0) is True
     #
     subject = "This is a request for emergency humanitarian help to address the threat the hate mongering Portuguese police represents to the families of their victims of cybertorture paired with psychiatric abuse"
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_humanitarian.md", "message"))
