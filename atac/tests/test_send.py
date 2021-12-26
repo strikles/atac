@@ -81,7 +81,7 @@ def test_send_email():
         '4answers@macfound.org'
     ]
     #
-    subject = "cybertorture, violence towards parents and women during Christmas Day and colégio militar alumni Rui Ricardo Borges Marques Sabino Reino
+    subject = "cybertorture, violence towards parents and women during Christmas Day and colégio militar alumni Rui Ricardo Borges Marques Sabino Reino”
     message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/Sabino.md", "message"))
     mailing_list = random.sample(recipients, 1).pop()
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
