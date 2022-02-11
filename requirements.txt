@@ -15,7 +15,7 @@ markovify==0.9.0
 mistune==2.0.0rc1
 numpy
 phonenumbers==8.12.37
-Pillow==8.4.0
+Pillow==9.0.1
 py3-validate-email==1.0.3
 py5
 pyaxmlparser==0.3.26
