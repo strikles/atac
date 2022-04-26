@@ -10,14 +10,13 @@ cryptography==35.0.0
 facebook-sdk==3.1.0
 Faker
 fake-useragent==0.1.11
-lxml==4.6.3
+lxml
 markovify==0.9.0
-mistune==2.0.0rc1
+mistune
 numpy
 phonenumbers==8.12.37
 Pillow==8.4.0
 py3-validate-email==1.0.3
-py5
 pyaxmlparser==0.3.26
 python-frontmatter==1.0.0
 python-gnupg==0.4.7

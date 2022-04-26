@@ -21,7 +21,6 @@ from os import name
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
-import py5
 #
 import qrcode
 from random import choice, randint, uniform

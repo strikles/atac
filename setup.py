@@ -41,7 +41,6 @@ setup(
         'phonenumbers',
         'Pillow',
         'py3-validate-email',
-        'py5',
         'pyaxmlparser',
         'python-frontmatter',
         'python-gnupg',
