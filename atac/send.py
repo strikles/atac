@@ -76,6 +76,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         file_type : int, optional
             The number of legs the animal (default is 4)
         """
+
+        print("File type is: " + file_type)
         if not os.path.isfile(file_path):
             print("invalid file path!")
             sys.exit(1)
