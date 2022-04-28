@@ -28,7 +28,7 @@ def get_config_arguments(arguments):
     num_legs : int, optional
         The number of legs the animal (default is 4)
     """
-    encrypted_config = True
+    encrypted_config = False
     key_file_path = None
     config_file_path = 'auth.json'
     #
@@ -329,7 +329,7 @@ if __name__ == "__main__":
     # create the parser for the "scrape" command
     parser_scrape = subparsers.add_parser('scrape')
     parser_scrape.add_argument('-c', dest='config_file', type=str, help='config file')
-    parser_scrape.add_argument('-e', dest='encrypted_config', action='store_false')
+    parser_scrape.add_argument('-e', dest='encrypted_config', action='store_true')
     parser_scrape.add_argument('-k', dest='key_file', type=str, help='key file path')
     parser_scrape.add_argument('-t', dest='target', choices=[
                                                                 'museums',
