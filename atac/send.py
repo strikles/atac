@@ -232,7 +232,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
         auth, content = self.get_email_config()
         #
-        num_emails_per_bucket = 500
+        num_emails_per_bucket = 100
         num_buckets = 1
         if len(lines) > num_emails_per_bucket:
             num_buckets = len(lines) // num_emails_per_bucket
@@ -245,7 +245,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             for _, recipient_email in csv_reader:
                 current_bucket = counter % num_buckets
                 batch_emails[current_bucket].append(recipient_email)
-                counter += 1
+                counter = counter + 1
                 batch_progress.update(1)
         #
         return batch_emails

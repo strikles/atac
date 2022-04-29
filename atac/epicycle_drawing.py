@@ -11,6 +11,7 @@ import json
 import numpy as np
 import math
 import cmath
+import os
 import time
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
@@ -224,6 +225,6 @@ class Epicycles:
 
     def run(self):
         """ Runs the Epicycle animation """
-        a = animation.FuncAnimation(self.fig, self._draw, frames=len(self.fourier_data), interval=20)
-        a.save('colete.gif', writer='imagemagick')
-        plt.show()
+        if not os.path.isfile("colete.gif"):
+            a = animation.FuncAnimation(self.fig, self._draw, frames=len(self.fourier_data), interval=20)
+            a.save('colete.gif', writer='imagemagick')
