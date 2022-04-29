@@ -33,8 +33,8 @@ def test_send_email():
     auth, _ = katie.get_email_config()
     mailing_list = ";".join(recipients) #random.sample(recipients, 1).pop()
     #
-    subject = "Elect José Ricardo Nazareth Carvalho Figueira and Luis Nazareth Carvalho Figueira the dumbest colegio militar alumni of all time"
-    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/test_message_figueira.md", "message"))
+    subject = "Neuro Rights and Blue-whale suicide games abusing biophotonics to exact Cybertorture in order to force the SUT to complete tasks to bargain for relief"
+    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/data/messages/email/cybertorture.md", "message"))
     mailing_list = random.sample(recipients, 1).pop()
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     status = katie.send_email(mailing_list, message)
@@ -47,8 +47,8 @@ def test_send_email():
         '4answers@macfound.org'
     ]
     #
-    subject = "Madeline McCann, Cybertorture extrajudicial trial and sentences and the hate mongering Portuguese Police"
-    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/atac/tests/ferronha_colete.md", "message"))
+    subject = "Neuro Rights and Blue Whale Suicide Games: Jasper Kums and Colegio Militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night abusing biophotonics to direct violence against parents, women and children"
+    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/data/messages/email/devil.md", "message"))
     mailing_list = random.sample(recipients, 1).pop()
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     status = katie.send_email(mailing_list, message)
