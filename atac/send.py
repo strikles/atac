@@ -232,7 +232,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
         auth, content = self.get_email_config()
         #
-        num_emails_per_bucket = 100
+        num_emails_per_bucket = 1
         num_buckets = 1
         if len(lines) > num_emails_per_bucket:
             num_buckets = len(lines) // num_emails_per_bucket
