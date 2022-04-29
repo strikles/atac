@@ -283,21 +283,21 @@ if __name__ == "__main__":
 
     # create the parser for the "config" command
     parser_config = subparsers.add_parser('config')
-    parser_config.add_argument('-c', dest='config_file', type=str, help='config file')
-    parser_config.add_argument('-e', dest='encrypted_config', action='store_false')
-    parser_config.add_argument('-k', dest='key_file', type=str, help='key file path')
-    parser_config.add_argument('-g', dest='generate_key_file', type=str, help='generate key file')
-    parser_config.add_argument('-d', dest='decrypted_config_file', type=str, help='decrypted config file')
-    parser_config.add_argument('-n', dest='new_config_file', type=str, help='new config file')
+    parser_config.add_argument('-c', dest='config_file', type=str, help='use config file path')
+    parser_config.add_argument('-e', dest='encrypted_config', action='store_true')
+    parser_config.add_argument('-k', dest='key_file', type=str, help='use key file path')
+    parser_config.add_argument('-g', dest='generate_key_file', type=str, help='generate new key file path')
+    parser_config.add_argument('-d', dest='decrypted_config_file', type=str, help='output decrypted config file path')
+    parser_config.add_argument('-n', dest='new_config_file', type=str, help='generate new config file path')
     parser_config.set_defaults(func=configuration)
 
     # create the parser for the "email command
     parser_email = subparsers.add_parser('email')
-    parser_email.add_argument('-c', dest='config_file', type=str, help='config file')
-    parser_email.add_argument('-e', dest='encrypted_config', action='store_false')
-    parser_email.add_argument('-k', dest='key_file', type=str, help='key file path')
+    parser_email.add_argument('-c', dest='config_file', type=str, help='use config file path')
+    parser_email.add_argument('-e', dest='encrypted_config', action='store_true')
+    parser_email.add_argument('-k', dest='key_file', type=str, help='use key file path')
     parser_email.add_argument('-m', dest='message_file', type=str, help='path to message file')
-    parser_email.add_argument('-p', dest='emails_file', type=str, help='path to csv dir')
+    parser_email.add_argument('-p', dest='emails_file', type=str, help='path to csv dir or file')
     parser_email.add_argument('-s', dest='subject', type=str, help='email subject')
     parser_email.add_argument('-t', dest='target', choices=['smtp', 'aws'], default='smtp')
     parser_email.add_argument('-v', dest='verbose')
@@ -305,11 +305,11 @@ if __name__ == "__main__":
 
     # create the parser for the "phone" command
     parser_phone = subparsers.add_parser('phone')
-    parser_phone.add_argument('-c', dest='config_file', type=str, help='config file')
-    parser_phone.add_argument('-e', dest='encrypted_config', action='store_false')
-    parser_phone.add_argument('-k', dest='key_file', type=str, help='key file path')
+    parser_phone.add_argument('-c', dest='config_file', type=str, help='use config file path')
+    parser_phone.add_argument('-e', dest='encrypted_config', action='store_true')
+    parser_phone.add_argument('-k', dest='key_file', type=str, help='use key file path')
     parser_phone.add_argument('-m', dest='message_file', type=str, help='path to message file')
-    parser_phone.add_argument('-p', dest='phones_file', type=str, help='path to csv dir')
+    parser_phone.add_argument('-p', dest='phones_file', type=str, help='path to csv dir or file')
     parser_phone.add_argument('-t', dest='target', choices=['whatsapp', 'sms'])
     parser_phone.add_argument('-w', dest='whatsapp', choices=['pywhatkit', 'twilio', 'yowsup'])
     parser_phone.add_argument('-s', dest='sms', choices=['aws', 'twilio'], default='aws')
@@ -318,9 +318,9 @@ if __name__ == "__main__":
 
     # create the parser for the "social" command
     parser_social = subparsers.add_parser('social')
-    parser_social.add_argument('-c', dest='config_file', type=str, help='config file')
-    parser_social.add_argument('-e', dest='encrypted_config', action='store_false')
-    parser_social.add_argument('-k', dest='key_file', type=str, help='key file path')
+    parser_social.add_argument('-c', dest='config_file', type=str, help='use config file path')
+    parser_social.add_argument('-e', dest='encrypted_config', action='store_true')
+    parser_social.add_argument('-k', dest='key_file', type=str, help='use key file path')
     parser_social.add_argument('-m', dest='message', type=str, help='path to message file')
     parser_social.add_argument('-t', dest='target', choices=['facebook', 'twitter'], default='twitter')
     parser_social.add_argument('-v', dest='verbose')
@@ -328,9 +328,9 @@ if __name__ == "__main__":
 
     # create the parser for the "scrape" command
     parser_scrape = subparsers.add_parser('scrape')
-    parser_scrape.add_argument('-c', dest='config_file', type=str, help='config file')
+    parser_scrape.add_argument('-c', dest='config_file', type=str, help='use config file path')
     parser_scrape.add_argument('-e', dest='encrypted_config', action='store_true')
-    parser_scrape.add_argument('-k', dest='key_file', type=str, help='key file path')
+    parser_scrape.add_argument('-k', dest='key_file', type=str, help='use key file path')
     parser_scrape.add_argument('-t', dest='target', choices=[
                                                                 'museums',
                                                                 'embassies',
@@ -359,7 +359,7 @@ if __name__ == "__main__":
     # create the parser for the "compose" command
     parser_clean = subparsers.add_parser('clean')
     parser_clean.add_argument('-c', dest='config_file', type=str, help='config file')
-    parser_clean.add_argument('-e', dest='encrypted_config', action='store_false')
+    parser_clean.add_argument('-e', dest='encrypted_config', action='store_true')
     parser_clean.add_argument('-k', dest='key_file', type=str, help='key file path')
     parser_clean.add_argument('-t', dest='target', choices=['email', 'phone', 'all'])
     parser_clean.add_argument('-v', dest='verbose')
