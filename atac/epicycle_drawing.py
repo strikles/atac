@@ -21,7 +21,7 @@ from tsp_solver.greedy_numpy import solve_tsp
 from scipy.spatial.distance import pdist, squareform
 
 
-plt.style.use('dark_background')
+#plt.style.use('dark_background')
 
 
 class FourierDatum:
@@ -96,7 +96,7 @@ class Epicycles:
         self.drawing_line, = self.ax.plot([], [], lw=1.5)
         self.epicycles = np.zeros(n, dtype=[('position', float, 2), ('size', float, 1)])
         # for lines from epicycle center to next epicycle
-        self.epicycle_lines = [Line2D([], [], color='yellow', lw=.7, alpha=.7) for count in range(n)]
+        self.epicycle_lines = [Line2D([], [], color='orange', lw=.7, alpha=.7) for count in range(n)]
         # scatter plot for epicycles
         self.epicycle_scatter = self.ax.scatter(
             self.epicycles['position'][:, 0],
@@ -104,7 +104,7 @@ class Epicycles:
             s=self.epicycles['size'],
             lw=0.7,
             edgecolors='red',
-            facecolors='none',
+            facecolors='black',
             alpha=.7)
         # dont show axes and invert for imagery upper-left origin
         self.ax.axis('off')

@@ -99,10 +99,9 @@ class Config:
         try:
             with open(key_file_path, 'rb') as key_file:
                 self.key = key_file.read()
-        except OSError as e:
-            print('{} file error {}'.format(key_file_path, e.errno))
-        finally:
             key_file.close()
+        except OSError as e:
+            print('{} file error {}'.format(key_file_path, e.errno)) 
 
     def save_key(self, key_file_path):
 
@@ -116,10 +115,9 @@ class Config:
         try:
             with open(key_file_path, 'wb') as key_file:
                 key_file.write(self.key)
+            key_file.close()
         except OSError as e:
             print('{} file error {}'.format(key_file_path, e.errno))
-        finally:
-            key_file.close()
 
     def save_config(self, config_file_path, encrypted_config):
 
@@ -140,18 +138,17 @@ class Config:
             try:
                 with open(config_file_path, 'wb') as encrypted_file:
                     encrypted_file.write(encrypted_data)
+                encrypted_file.close()
             except OSError as e:
                 print('{} file error {}'.format(config_file_path, e.errno))
-            finally:
-                encrypted_file.close()
         else:
             try:
                 with open(config_file_path, 'wb') as unencrypted_file:
                     unencrypted_file.write(json.dumps(self.data, ensure_ascii=False, indent=4, sort_keys=True).encode('utf-8'))
+                unencrypted_file.close()
             except OSError as e:
                 print('{} file not found {}'.format(config_file_path, e.errno))
-            finally:
-                unencrypted_file.close()
+
 
     def load_config(self):
 
@@ -163,10 +160,10 @@ class Config:
             try:
                 with open(self.config_file_path, 'rb') as encrypted_file:
                     encrypted_data = encrypted_file.read()
+                encrypted_file.close()
             except OSError as e:
                 print('{} file error {}'.format(self.config_file_path, e.errno))
-            finally:
-                encrypted_file.close()
+                
             # decrypting the file
             try:
                 self.data = json.loads(fernet.decrypt(encrypted_data))
@@ -177,10 +174,10 @@ class Config:
             try:
                 with open(self.config_file_path, 'rb') as new_config:
                     self.data = json.loads(new_config.read())
+                new_config.close()
             except OSError as e:
                 print('{} file error {}'.format(self.config_file_path, e.errno))
-            finally:
-                new_config.close()
+                
 
     def new_config(self):
 
