@@ -297,17 +297,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
             for email_recipient, gpg_key_id in encrypted_emails:
-                encrypted_mime_message = self.compose_encrypted_email(auth['sender'],
-                                                                    email_recipient,
-                                                                    gpg_key_id,
-                                                                    message,
-                                                                    subject)
-                #
-                print("sending email…")
-                self.send_email(email_recipient, encrypted_mime_message)
-                #
-                time.sleep(3)
-                encrypted_progress.update(1)
+                print("Encrypted email recipient" + email_recipient)
 
     def send_emails(self, email_files_path, message_file_path, subject):
         """ Send Emails
@@ -341,102 +331,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         return status
 
-    @staticmethod
-    def calculate_twilio_cost(msg, phone_numbers, msg_type):
-        """ Calculate Twilio cost
-
-        Parameters
-        ----------
-        msg : str
-            The name of the animal
-        phone_numbers : list
-            The sound the animal makes
-        msg_type : str
-            The number of legs the animal (default is 4)
-        """
-        SMS_LENGTH = 160            # Max length of one SMS message
-        WHATSAPP_MSG_COST = 0.005   # Cost per message
-        SMS_MSG_COST = 0.005        # Cost per message
-        # How many segments is this message going to use?
-        num_segments = 0
-        if msg_type == "whatsapp":
-            num_segments = 1
-        else:
-            num_segments = int(len(msg.encode('utf-8')) / SMS_LENGTH) + 1
-        # Calculate how much it's going to cost:
-        num_messages = len(phone_numbers)
-        cost = 0
-        if msg_type == "whatsapp":
-            cost = WHATSAPP_MSG_COST * num_messages
-        else:
-            cost = SMS_MSG_COST * num_segments * num_messages
-            print("> {} messages of {} segments each will be sent, at a cost of ${} ".format(num_messages, num_segments, cost))
-
-    def send_twilio(self, contacts_file_path, message_file_path, msg_type):
-        """ Send Twilio message
-
-        Parameters
-        ----------
-        contacts_file_path : str
-            The name of the animal
-        message_file_path : str
-            The sound the animal makes
-        msg_type : str
-            The number of legs the animal (default is 4)
-        """
-        msg = '\n'.join(self.get_file_content(message_file_path, 'message'))
-        phone_numbers = self.get_phone_numbers(contacts_file_path)
-        # Check you really want to send them
-        self.calculate_twilio_cost(msg, phone_numbers, msg_type)
-        #
-        confirm = input("Send these messages? [Y/n] ")
-        if confirm[0].lower() != 'y':
-            sys.exit(1)
-        # Set up Twilio client
-        account_sid = self.phone['twilio']['SID']
-        auth_token = self.phone['twilio']['TOKEN']
-        from_num = self.phone['twilio']['PHONE']
-        client = TwilioClient(account_sid, auth_token)
-        # Send the messages
-        for num in phone_numbers:
-            try:
-                # Send the sms text to the number from the CSV file:
-                if msg_type == "whatsapp":
-                    num = "whatsapp:"+num
-                    from_num = "whatsapp:"+from_num
-                print("Sending to " + num)
-                message = client.messages.create(to=num, from_=from_num, body=msg)
-                print(message.sid)
-            except Exception as e:
-                print(str(e))
-            finally:
-                time.sleep(1)
-        #
-        print("Exiting!")
-
-    """
-    def send_yowsup(self, contacts_file_path, message_file_path):
-        #
-        msg = self.get_message(message_file_path)
-        phone_numbers = self.get_phone_numbers(contacts_file_path)
-        # Check you really want to send them
-        confirm = input("Send these messages? [Y/n] ")
-        if confirm[0].lower() == 'y':
-            user = self.phone['yowsup']['user']
-            password = self.phone['yowsup']['password']
-            client = YowsupClient(login=user, password=password)
-            # Send the messages
-            for num in phone_numbers:
-                try:
-                    print("Sending to " + num)
-                    client.send_message(num, msg)
-                except Exception as e:
-                    print(str(e))
-                finally:
-                    time.sleep(1)
-        #
-        print("Exiting!")
-    """
 
     if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
