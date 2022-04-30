@@ -210,7 +210,7 @@ class AllTimeHigh(Config):
         message.attach(body)
         print(message.as_string())
         #
-        generate_art_samila()
+        #generate_art_samila()
         #
         #signature = Invader()
         #signature.run(17, 15, 427)
@@ -227,6 +227,7 @@ class AllTimeHigh(Config):
         #generate_fourier_epicycles_drawing()
         #
         # Daniel's Coding Train JavaScript coordinates to be JSON and that will run well.
+        '''
         z = Epicycles.read_image_as_complex("img/jesus.jpeg", num_indicies=1700, indices_step_size=5)
         fourier_data = fft(z)
         # Sort so that largest epicycles are at the center, and the smaller ones are at the location of the drawing points
@@ -234,19 +235,20 @@ class AllTimeHigh(Config):
         epicycles = Epicycles(fourier_data, plot_size=[427, 277])
         epicycles.run()
         time.sleep(3)
+        '''
         #
         #make_gif(".", "branches.gif", "branches-*.png")
         #make_gif(".", "sudoku.gif", "sudoku*.jpg")
         #make_gif(".", "conway.gif", "conway-*.jpg")
         #
-        hfp = open('header.png', 'rb')
+        hfp = open('data/assets/img/jesus/jesus_king.png', 'rb')
         msg_image_header = MIMEImage(hfp.read())
         hfp.close()
         # Define the image's ID as referenced above
         msg_image_header.add_header('Content-ID', '<header>')
         message.attach(msg_image_header)
         #
-        sfp = open('colete.gif', 'rb')
+        sfp = open('data/assets/img/jesus/lamb_of_god.png', 'rb')
         msg_image_signature = MIMEImage(sfp.read())
         sfp.close()
         # Define the image's ID as referenced above
