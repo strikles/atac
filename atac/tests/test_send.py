@@ -59,6 +59,7 @@ def test_send_email():
 def test_send_emails():
     """
     """
+
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     email_files_path = os.getcwd() + "/atac/tests/test_emails.csv"
     message_file_path = os.getcwd() + "/data/messages/email/devil.md"
