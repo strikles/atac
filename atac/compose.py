@@ -106,7 +106,7 @@ class AllTimeHigh(Config):
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         text = message_content
-        html = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(text) + "<p align='center' width='100%'><img src='cid:signature'></p>"
+        html = "<p align='center' width='100%'><img width='25%' src='cid:header'></p>" + mistune.html(text) + "<p align='center' width='100%'><img width='25%' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
         part2 = MIMENonMultipart('text', 'html', charset='utf-8')
