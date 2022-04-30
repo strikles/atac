@@ -177,7 +177,7 @@ class Config:
         self.data = {
             "compose": {},
             "email": {
-                "active_auth": 0,
+                "active_auth": 1,
                 "active_content": 0,
                 "auth": [
                     {
