@@ -181,7 +181,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         # Create secure connection with server and send email
         try:
             Envelope()\
-                .message("<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(message.as_string()) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>")\
+                .message("<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(message) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>")\
                 .attach(path="data/assets/img/jesus/jesus_king.png", inline="header")\
                 .attach(path="data/assets/img/jesus/lamb_of_god.png", inline="signature")\
                 .subject(subject)\
