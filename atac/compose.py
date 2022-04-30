@@ -147,8 +147,6 @@ class AllTimeHigh(Config):
         '''
         #
         #make_gif(".", "branches.gif", "branches-*.png")
-        #make_gif(".", "sudoku.gif", "sudoku*.jpg")
-        #make_gif(".", "conway.gif", "conway-*.jpg")
         #
         hfp = open('data/assets/img/jesus/jesus_king.png', 'rb')
         msg_image_header = MIMEImage(hfp.read())
