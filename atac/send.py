@@ -1,7 +1,7 @@
 from .compose import AllTimeHigh
 
 import csv
-import frontmatter
+from envelope import Envelope
 import mistune
 import os
 import smtplib
@@ -18,9 +18,6 @@ from phonenumbers import NumberParseException, phonenumberutil
 if os.environ.get('DISPLAY'):
     from pywhatkit import *
 
-from twilio.rest import Client as TwilioClient
-
-from validate_email import validate_email
 import validators
 
 
@@ -169,7 +166,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         return phone_numbers
 
-    def send_email(self, mailing_list, message):
+    def send_email(self, mailing_list, message, subject):
         """ Send email
 
         Parameters
@@ -183,6 +180,18 @@ class FromRuXiaWithLove(AllTimeHigh):
         auth, _ = self.get_email_config()
         # Create secure connection with server and send email
         try:
+            Envelope("<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(message.as_string()) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>")
+                .attach(path="data/assets/img/jesus/jesus_king.png", inline="header")
+                .attach(path="data/assets/img/jesus/lamb_of_god.png", inline="signature")
+                .subject(subject)
+                .to(mailing_list)
+                .check(check_mx=True, check_smtp=True)
+                .list_unsubscribe(mail=auth["sender"]+"?subject=unsubscribe")
+                .smtp(auth["server"], auth["port"], auth["sender"], auth["password"], "starttls")
+                .signature()
+                .send()
+
+            '''
             #context = ssl.create_default_context()
             with smtplib.SMTP(auth['server'], auth['port']) as server:
                 server.set_debuglevel(0)
@@ -193,6 +202,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                 print(error_status)
                 print("\x1b[6;37;42m Sent \x1b[0m")
                 server.quit()
+            '''
+
         except Exception as err:
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
             status = 1
@@ -283,13 +294,15 @@ class FromRuXiaWithLove(AllTimeHigh):
                     filter_progress.update(1)
             #
             mailing_list = '; '.join(batch)
+            '''
             mime_message = self.compose_email(auth['sender'],
                                             mailing_list,
                                             message,
                                             subject)
+            '''
             #
             print("sending email…")
-            self.send_email(mailing_list, mime_message)
+            self.send_email(mailing_list, message, subject)
             time.sleep(10)
         #
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
