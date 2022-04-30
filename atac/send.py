@@ -199,7 +199,6 @@ class FromRuXiaWithLove(AllTimeHigh):
 
     def find_gpg_keyid(self, recipient):
         """
-
         We need the keyid to encrypt the message to the recipient.
         Let's walk through all keys in the keyring and find the
         appropriate one
