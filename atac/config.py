@@ -65,7 +65,7 @@ class Config:
             self.generate_key()
         #
         if not os.path.isfile(self.config_file_path):
-            self.new_config()
+            self.new_config(self.config_file_path)
         #
         self.load_config()
 
@@ -118,7 +118,7 @@ class Config:
         except OSError as e:
             print('{} file error {}'.format(key_file_path, e.errno))
 
-    def save_config(self, config_file_path):
+    def save_config(self, config_file_path, encrypted_config):
 
         """ Save json configuration file
 
@@ -132,7 +132,7 @@ class Config:
         #
         data = None
         #
-        if self.encrypted_config:
+        if encrypted_config:
             fernet = Fernet(self.key)
             # encrypting the file
             data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf-8'))
@@ -170,7 +170,7 @@ class Config:
             self.data = data
                 
 
-    def new_config(self):
+    def new_config(self, config_file_path):
 
         """ Generate New Config """
         
@@ -327,4 +327,4 @@ class Config:
             }
         }
         #
-        self.save_config(self.config_file_path)
+        self.save_config(config_file_path, self.encrypted_config)
