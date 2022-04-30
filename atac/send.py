@@ -180,14 +180,16 @@ class FromRuXiaWithLove(AllTimeHigh):
         auth, _ = self.get_email_config()
         # Create secure connection with server and send email
         try:
-            Envelope()\
+            #
+            msg = Envelope()\
                 .message("<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(message) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>")\
                 .attach(path="data/assets/img/jesus/jesus_king.png", inline="header")\
                 .attach(path="data/assets/img/jesus/lamb_of_god.png", inline="signature")\
                 .subject(subject)\
                 .to(mailing_list)\
-                .smtp(auth["server"], auth["port"], auth["sender"], auth["password"], "starttls", timeout=3, attempts=3, delay=3)\
-                .send()
+                .smtp(auth["server"], auth["port"], auth["sender"], auth["password"], "starttls", timeout=3, attempts=3, delay=3)
+            #
+            msg.send()
         except Exception as err:
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
             status = 1
