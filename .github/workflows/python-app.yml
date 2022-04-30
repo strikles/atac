@@ -40,7 +40,7 @@ jobs:
         GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
       run: |
         pwd
-        git pull --recurse-submodules
+        git submodule update --init
         tree
         mkdir ~/.gnupg
         pytest -s
