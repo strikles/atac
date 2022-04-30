@@ -180,30 +180,17 @@ class FromRuXiaWithLove(AllTimeHigh):
         auth, _ = self.get_email_config()
         # Create secure connection with server and send email
         try:
-            Envelope("<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(message.as_string()) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>")
-                .attach(path="data/assets/img/jesus/jesus_king.png", inline="header")
-                .attach(path="data/assets/img/jesus/lamb_of_god.png", inline="signature")
-                .subject(subject)
-                .to(mailing_list)
-                .check(check_mx=True, check_smtp=True)
-                .list_unsubscribe(mail=auth["sender"]+"?subject=unsubscribe")
-                .smtp(auth["server"], auth["port"], auth["sender"], auth["password"], "starttls")
-                .signature()
+            Envelope()\
+                .message("<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(message.as_string()) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>")\
+                .attach(path="data/assets/img/jesus/jesus_king.png", inline="header")\
+                .attach(path="data/assets/img/jesus/lamb_of_god.png", inline="signature")\
+                .subject(subject)\
+                .to(mailing_list)\
+                .check(check_mx=True, check_smtp=True)\
+                .list_unsubscribe(mail=auth["sender"]+"?subject=unsubscribe")\
+                .smtp(auth["server"], auth["port"], auth["sender"], auth["password"], "starttls")\
+                .signature()\
                 .send()
-
-            '''
-            #context = ssl.create_default_context()
-            with smtplib.SMTP(auth['server'], auth['port']) as server:
-                server.set_debuglevel(0)
-                server.ehlo()
-                server.starttls()
-                server.login(auth['user'], auth['password'])
-                error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
-                print(error_status)
-                print("\x1b[6;37;42m Sent \x1b[0m")
-                server.quit()
-            '''
-
         except Exception as err:
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
             status = 1
