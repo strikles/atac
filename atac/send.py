@@ -293,7 +293,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             #
             print("sending email…")
             self.send_email(mailing_list, mime_message)
-            time.sleep(3)
+            time.sleep(10)
         #
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
             for email_recipient, gpg_key_id in encrypted_emails:
