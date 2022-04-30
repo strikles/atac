@@ -187,7 +187,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                 .attach(path="data/assets/img/jesus/lamb_of_god.png", inline="signature")\
                 .subject(subject)\
                 .to(mailing_list)\
-                .smtp(auth['server'], auth['port'], auth['sender'], auth['password'], 'starttls', timeout=3, attempts=3, delay=3)
+                .sender(auth['sender'])\
+                .smtp(auth['server'], auth['port'], auth['user'], auth['password'], 'starttls', timeout=3, attempts=3, delay=3)
             #
             msg.send()
         except Exception as err:
