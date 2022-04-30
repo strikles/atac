@@ -190,7 +190,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                 .sender(auth['sender'])\
                 .smtp(auth['server'], auth['port'], auth['user'], auth['password'], 'starttls', timeout=3, attempts=3, delay=3)
             #
-            msg.send()
+            send_status = msg.send()
+            print("send status:" + send_status)
         except Exception as err:
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
             status = 1
