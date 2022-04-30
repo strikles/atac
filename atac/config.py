@@ -130,16 +130,18 @@ class Config:
             Use encrypted configuration file
         """
         #
-        data = self.data
+        data = None
         #
         if self.encrypted_config:
             fernet = Fernet(self.key)
             # encrypting the file
             data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf-8'))
+        else:
+            data = json.dumps(self.data, ensure_ascii=False).encode('utf-8')
         # opening the file in write mode and writing the encrypted data
         try:
-            with open(config_file_path, 'wb') as encrypted_file:
-                encrypted_file.write(data)
+            with open(config_file_path, 'wb') as config_file:
+                config_file.write(data)
         except OSError as e:
             print('{} file error {}'.format(config_file_path, e.errno))
 
@@ -325,4 +327,4 @@ class Config:
             }
         }
         #
-        self.save_config(self.config_file_path, self.encrypted_config)
+        self.save_config(self.config_file_path)
