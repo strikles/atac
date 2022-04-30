@@ -34,7 +34,7 @@ def test_send_email():
     mailing_list = random.sample(recipients, 1).pop()
     #
     subject = "Neuro Rights and Blue-whale suicide games abusing biophotonics to exact Cybertorture in order to force the SUT to complete tasks to bargain for relief"
-    message_content = '\n'.join(katie.get_file_content(os.path.join(os.getcwd(), "/data/messages/email/cybertorture.md", "message")))
+    message_content = '\n'.join(katie.get_file_content(os.path.join(os.getcwd(), "/data/messages/email/cybertorture.md")))
     print(os.path.abspath(os.cwd()))
     mailing_list = random.sample(recipients, 1).pop()
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
