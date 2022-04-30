@@ -137,7 +137,7 @@ class Config:
             # encrypting the file
             data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf-8'))
         else:
-            data = json.dumps(self.data, ensure_ascii=False).encode('utf-8')
+            data = json.dumps(self.data, ensure_ascii=False, indent=4).encode('utf-8')
         # opening the file in write mode and writing the encrypted data
         try:
             with open(config_file_path, 'wb') as config_file:
@@ -189,7 +189,7 @@ class Config:
                     },
                     {
                         "password": os.environ['PROTONMAIL_PASSWORD'],
-                        "port": 1143,
+                        "port": 1025,
                         "sender": os.environ['PROTONMAIL_USER'],
                         "server": "127.0.0.1",
                         "user": os.environ['PROTONMAIL_USER']
