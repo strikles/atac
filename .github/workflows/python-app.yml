@@ -38,6 +38,8 @@ jobs:
       env:
         GMAIL_USER: ${{ secrets.GMAIL_USER }}
         GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+        PROTONMAIL_USER: ${{ secrets.PROTONMAIL_USER }}
+        PROTONMAIL_PASSWORD: ${{ secrets.PROTONMAIL_PASSWORD }}
       run: |
         pwd
         git submodule update --init
