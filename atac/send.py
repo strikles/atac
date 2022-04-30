@@ -187,7 +187,6 @@ class FromRuXiaWithLove(AllTimeHigh):
                 .subject(subject)\
                 .to(mailing_list)\
                 .smtp(auth["server"], auth["port"], auth["sender"], auth["password"], "starttls", timeout=3, attempts=3, delay=3)\
-                .signature()\
                 .send()
         except Exception as err:
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
