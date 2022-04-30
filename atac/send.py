@@ -187,7 +187,6 @@ class FromRuXiaWithLove(AllTimeHigh):
                 .subject(subject)\
                 .to(mailing_list)\
                 .check(check_mx=True, check_smtp=True)\
-                .list_unsubscribe(mail=auth["sender"]+"?subject=unsubscribe")\
                 .smtp(auth["server"], auth["port"], auth["sender"], auth["password"], "starttls")\
                 .signature()\
                 .send()
