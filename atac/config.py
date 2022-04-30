@@ -182,7 +182,7 @@ class Config:
                 "auth": [
                     {
                         "password": os.environ['GMAIL_PASSWORD'],
-                        "port": 465,
+                        "port": 587,
                         "sender": os.environ['GMAIL_USER'],
                         "server": "smtp.gmail.com",
                         "user": os.environ['GMAIL_USER']

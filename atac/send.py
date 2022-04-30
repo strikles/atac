@@ -186,6 +186,8 @@ class FromRuXiaWithLove(AllTimeHigh):
             #context = ssl.create_default_context()
             with smtplib.SMTP(auth['server'], auth['port']) as server:
                 server.set_debuglevel(0)
+                server.ehlo()
+                server.starttls()
                 server.login(auth['user'], auth['password'])
                 error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
                 print(error_status)
