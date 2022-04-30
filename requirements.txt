@@ -21,6 +21,7 @@ py3-validate-email
 pyaxmlparser
 python-frontmatter
 python-gnupg
+python-magic-bin; platform_system == 'Windows'
 pywhatkit
 PyYAML
 qrcode
