@@ -32,6 +32,7 @@ setup(
         'coloredlogs',
         'coverage',
         'cryptography',
+        'python-magic-bin',
         'envelope',
         'facebook-sdk',
         'Faker',
