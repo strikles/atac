@@ -34,7 +34,7 @@ def test_send_email():
     mailing_list = random.sample(recipients, 1).pop()
     #
     subject = "Neuro Rights and Blue-whale suicide games abusing biophotonics to exact Cybertorture in order to force the SUT to complete tasks to bargain for relief"
-    message_content = '\n'.join(katie.get_file_content(os.path.join(os.getcwd(), "/data/messages/email/cybertorture.md")))
+    message_content = '\n'.join(katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "/data/messages/email/cybertorture.md")), "message"))
     print(os.path.abspath(os.cwd()))
     mailing_list = random.sample(recipients, 1).pop()
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
@@ -49,7 +49,7 @@ def test_send_email():
     ]
     #
     subject = "Neuro Rights and Blue Whale Suicide Games: Jasper Kums and Colegio Militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night abusing biophotonics to direct violence against parents, women and children"
-    message_content = '\n'.join(katie.get_file_content(os.getcwd() + "/data/messages/email/devil.md", "message"))
+    message_content = '\n'.join(katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "/data/messages/email/devil.md")), "message"))
     mailing_list = random.sample(recipients, 1).pop()
     message = katie.compose_email(auth['sender'], mailing_list, message_content, subject)
     status = katie.send_email(mailing_list, message)
