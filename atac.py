@@ -69,7 +69,7 @@ def configuration(arguments):
     if arguments.new_config_file is not None:
         new_config_file_path = getattr(arguments, "new_config_file")
         if new_config_file_path:
-            config.new_config(new_config_file_path, encrypted_config)
+            config.new_config(new_config_file_path)
     if arguments.decrypted_config_file is not None:
         decrypted_config_file_path = getattr(arguments, "decrypted_config_file")
         if decrypted_config_file_path:

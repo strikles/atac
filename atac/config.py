@@ -100,7 +100,6 @@ class Config:
         try:
             with open(key_file_path, 'rb') as key_file:
                 self.key = key_file.read()
-            key_file.close()
         except OSError as e:
             print('{} file error {}'.format(key_file_path, e.errno)) 
 
@@ -116,11 +115,10 @@ class Config:
         try:
             with open(key_file_path, 'wb') as key_file:
                 key_file.write(self.key)
-            key_file.close()
         except OSError as e:
             print('{} file error {}'.format(key_file_path, e.errno))
 
-    def save_config(self, config_file_path, encrypted_config):
+    def save_config(self, config_file_path):
 
         """ Save json configuration file
 
@@ -131,53 +129,43 @@ class Config:
         encrypted_config: bool
             Use encrypted configuration file
         """
-        if encrypted_config:
+        #
+        data = self.data
+        #
+        if self.encrypted_config:
             fernet = Fernet(self.key)
             # encrypting the file
-            encrypted_data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf-8'))
-            # opening the file in write mode and writing the encrypted data
-            try:
-                with open(config_file_path, 'wb') as encrypted_file:
-                    encrypted_file.write(encrypted_data)
-                encrypted_file.close()
-            except OSError as e:
-                print('{} file error {}'.format(config_file_path, e.errno))
-        else:
-            try:
-                with open(config_file_path, 'wb') as unencrypted_file:
-                    unencrypted_file.write(json.dumps(self.data, ensure_ascii=False, indent=4, sort_keys=True).encode('utf-8'))
-                unencrypted_file.close()
-            except OSError as e:
-                print('{} file not found {}'.format(config_file_path, e.errno))
+            data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode('utf-8'))
+        # opening the file in write mode and writing the encrypted data
+        try:
+            with open(config_file_path, 'wb') as encrypted_file:
+                encrypted_file.write(data)
+        except OSError as e:
+            print('{} file error {}'.format(config_file_path, e.errno))
 
 
     def load_config(self):
 
         """ Loads json configuration """
-        
+
+        data = None
+        try:
+            with open(self.config_file_path, 'rb') as config:
+                data = json.loads(config.read())
+        except OSError as e:
+            print('{} file error {}'.format(self.config_file_path, e.errno))
+
         if self.encrypted_config:
-            fernet = Fernet(self.key)
-            # opening the encrypted file
-            try:
-                with open(self.config_file_path, 'rb') as encrypted_file:
-                    encrypted_data = encrypted_file.read()
-                encrypted_file.close()
-            except OSError as e:
-                print('{} file error {}'.format(self.config_file_path, e.errno))
-                
+            #
+            fernet = Fernet(self.key)                
             # decrypting the file
             try:
-                self.data = json.loads(fernet.decrypt(encrypted_data))
+                self.data = json.loads(fernet.decrypt(data))
             except InvalidToken:
                 print("Invalid Key - Unsuccessfully decrypted")
                 sys.exit(1)
         else:
-            try:
-                with open(self.config_file_path, 'rb') as new_config:
-                    self.data = json.loads(new_config.read())
-                new_config.close()
-            except OSError as e:
-                print('{} file error {}'.format(self.config_file_path, e.errno))
+            self.data = data
                 
 
     def new_config(self):
@@ -196,6 +184,13 @@ class Config:
                         "sender": os.environ['GMAIL_USER'],
                         "server": "smtp.gmail.com",
                         "user": os.environ['GMAIL_USER']
+                    },
+                    {
+                        "password": os.environ['PROTONMAIL_PASSWORD'],
+                        "port": 1143,
+                        "sender": os.environ['PROTONMAIL_USER'],
+                        "server": "127.0.0.1",
+                        "user": os.environ['PROTONMAIL_USER']
                     }
                 ],
                 "content": [
