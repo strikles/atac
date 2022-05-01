@@ -2,6 +2,7 @@ from .compose import AllTimeHigh
 
 import csv
 from envelope import Envelope
+import json
 import mistune
 import os
 import smtplib
@@ -166,7 +167,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         return phone_numbers
 
-    def send_email(self, mailing_list, message, subject):
+    def send_email_envelope(self, mailing_list, message, subject):
         """ Send email
 
         Parameters
@@ -188,15 +189,50 @@ class FromRuXiaWithLove(AllTimeHigh):
                 .subject(subject)\
                 .to(mailing_list)\
                 .sender(auth['sender'])\
-                .smtp(auth['server'], auth['port'], auth['user'], auth['password'], 'starttls', timeout=3, attempts=3, delay=3)
+                .smtp(auth['server'], auth['port'], auth['user'], auth['password'], security='tls', attempts=3, delay=3)
             #
-            send_status = msg.send()
-            print("send status:" + send_status)
+            send_debug = msg.send(False)
+            send_status = msg.send(True)
+            
         except Exception as err:
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
             status = 1
         #
-        return status
+        return status`
+        
+        
+    def send_email(self, mailing_list, message_content, subject):
+        """ Send email
+        Parameters
+        ----------
+        mailing_list : list
+            The emails list
+        message : MIMEMultipart
+            The email messsage to send
+        """
+        status = 0
+        auth, _ = self.get_email_config()
+        message = self.compose_email(auth['sender'], mailing_list, message_content, subject)
+        # Create secure connection with server and send email
+        try:
+            context = ssl.create_default_context()
+            with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
+                server.set_debuglevel(0)
+                #
+                server.ehlo() # Can be omitted
+                server.starttls(context=context) # Secure the connection
+                server.ehlo() # Can be omitted
+                #
+                server.login(auth['user'], auth['password'])
+                error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
+                print(error_status)
+                print("\x1b[6;37;42m Sent \x1b[0m")
+                server.quit()
+        except Exception as err:
+            print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
+            status = 1
+        #
+        return `
 
     def find_gpg_keyid(self, recipient):
         """
