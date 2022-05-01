@@ -133,7 +133,7 @@ class AllTimeHigh(Config):
                 else:
                     text.append(parrot.augment(input_phrase=phrase,
                         use_gpu=False,
-                        max_return_phrases = 1)
+                        max_return_phrases = 1))
         #
         html = "<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(text) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects
