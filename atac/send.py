@@ -242,7 +242,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                         print("Upgrading unsecure connection with server with starttls")
                         server.ehlo() # Can be omitted
                         server.starttls(context=context) # Secure the connection
-                        #server.ehlo() # Can be omitted
+                        # server.ehlo() # Can be omitted
                     #
                     print("Logging into server")
                     server.login(auth['user'], auth['password'])
