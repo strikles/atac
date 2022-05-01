@@ -167,7 +167,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         return phone_numbers
 
-    def send_email_envelope(self, mailing_list, message, subject):
+    def send_email_plain(self, mailing_list, message, subject):
         """ Send email
 
         Parameters
@@ -213,24 +213,40 @@ class FromRuXiaWithLove(AllTimeHigh):
         status = 0
         auth, _ = self.get_email_config()
         message = self.compose_email(auth['sender'], mailing_list, message_content, subject)
-        # Create secure connection with server and send email
-        try:
-            #context = ssl.create_default_context()
-            with smtplib.SMTP(auth['server'], auth['port']) as server:
-                server.set_debuglevel(0)
-                #
-                #server.ehlo() # Can be omitted
-                #server.starttls(context=context) # Secure the connection
-                #server.ehlo() # Can be omitted
-                #
-                server.login(auth['user'], auth['password'])
-                error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
-                print(error_status)
-                print("\x1b[6;37;42m Sent \x1b[0m")
-                server.quit()
-        except Exception as err:
-            print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
-            status = 1
+        if auth['security'] is "tls":
+            # Create secure connection with server and send email
+            try:
+                #context = ssl.create_default_context()
+                with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
+                    server.set_debuglevel(0)
+                    server.login(auth['user'], auth['password'])
+                    error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
+                    print(error_status)
+                    print("\x1b[6;37;42m Sent \x1b[0m")
+                    server.quit()
+            except Exception as err:
+                print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
+                status = 1
+        else:
+            # Create unsecure connection with server upgrade with starttls and send email
+            try:
+                if auth['security'] is "starttls":
+                    context = ssl.create_default_context()
+                with smtplib.SMTP(auth['server'], auth['port']) as server:
+                    server.set_debuglevel(0)
+                    if auth['security'] is "starttls":
+                        server.ehlo() # Can be omitted
+                        server.starttls(context=context) # Secure the connection
+                        server.ehlo() # Can be omitted
+                    #
+                    server.login(auth['user'], auth['password'])
+                    error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
+                    print(error_status)
+                    print("\x1b[6;37;42m Sent \x1b[0m")
+                    server.quit()
+            except Exception as err:
+                print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
+                status = 1
         #
         return status
 

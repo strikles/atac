@@ -185,14 +185,16 @@ class Config:
                         "port": 587,
                         "sender": os.environ['GMAIL_USER'],
                         "server": "smtp.gmail.com",
-                        "user": os.environ['GMAIL_USER']
+                        "user": os.environ['GMAIL_USER'],
+                        "security": "tls"
                     },
                     {
                         "password": os.environ['PROTONMAIL_PASSWORD'],
                         "port": 1025,
                         "sender": os.environ['PROTONMAIL_USER'],
                         "server": "127.0.0.1",
-                        "user": os.environ['PROTONMAIL_USER']
+                        "user": os.environ['PROTONMAIL_USER'],
+                        "security": "none"
                     }
                 ],
                 "content": [
