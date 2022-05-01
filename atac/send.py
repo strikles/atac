@@ -213,10 +213,10 @@ class FromRuXiaWithLove(AllTimeHigh):
         status = 0
         auth, _ = self.get_email_config()
         message = self.compose_email(auth['sender'], mailing_list, message_content, subject)
-        if auth['security'] is "tls":
+        if auth['security'] == "tls":
             # Create secure connection with server and send email
             try:
-                #context = ssl.create_default_context()
+                context = ssl.create_default_context()
                 with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
                     server.set_debuglevel(0)
                     server.login(auth['user'], auth['password'])
@@ -230,11 +230,11 @@ class FromRuXiaWithLove(AllTimeHigh):
         else:
             # Create unsecure connection with server upgrade with starttls and send email
             try:
-                if auth['security'] is "starttls":
+                if auth['security'] == "starttls":
                     context = ssl.create_default_context()
                 with smtplib.SMTP(auth['server'], auth['port']) as server:
                     server.set_debuglevel(0)
-                    if auth['security'] is "starttls":
+                    if auth['security'] == "starttls":
                         server.ehlo() # Can be omitted
                         server.starttls(context=context) # Secure the connection
                         server.ehlo() # Can be omitted
