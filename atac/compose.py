@@ -113,12 +113,7 @@ class AllTimeHigh(Config):
             #
             message["Subject"] = parrot.augment(input_phrase=subject,
                                     use_gpu=False,
-                                    diversity_ranker="levenshtein",
-                                    do_diverse=False, 
-                                    max_return_phrases = 1, 
-                                    max_length=4096, 
-                                    adequacy_threshold = 0.99, 
-                                    fluency_threshold = 0.90)
+                                    max_return_phrases = 1)
         #
         message["From"] = sender_email
         message["To"] = mailing_list
@@ -138,12 +133,7 @@ class AllTimeHigh(Config):
                 else:
                     text.append(parrot.augment(input_phrase=phrase,
                         use_gpu=False,
-                        diversity_ranker="levenshtein",
-                        do_diverse=False, 
-                        max_return_phrases = 1, 
-                        max_length=4096, 
-                        adequacy_threshold = 0.99, 
-                        fluency_threshold = 0.90))
+                        max_return_phrases = 1)
         #
         html = "<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(text) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects

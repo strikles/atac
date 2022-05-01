@@ -117,7 +117,7 @@ def email(arguments):
         message_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md))
     #
     if "smtp" in target:
-        katie.send_emails(email_files_path, message_file_path, subject)
+        katie.send_emails(email_files_path, message_file_path, subject, False)
         print(subject)
 
 
