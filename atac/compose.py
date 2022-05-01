@@ -136,6 +136,7 @@ class AllTimeHigh(Config):
                     max_length=256, 
                     adequacy_threshold = 0.99, 
                     fluency_threshold = 0.90).pop())
+        #
         html = "<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(text) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
