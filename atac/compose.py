@@ -106,7 +106,7 @@ class AllTimeHigh(Config):
         message.set_charset(cs)
         message.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
-        if do_paraphrase:
+        if not do_paraphrase:
             message["Subject"] = subject
         else:
             parrot = Parrot(model_tag="prithivida/parrot_paraphraser_on_T5")
