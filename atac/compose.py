@@ -11,12 +11,10 @@ import mistune
 import os
 import sys
 
-from parrot import Parrot
-import torch
-import warnings
-warnings.filterwarnings("ignore")
+from transformers import *
 
 from bs4 import BeautifulSoup
+
 
 class AllTimeHigh(Config):
     """ A class used to represent a Configuration object
@@ -82,6 +80,19 @@ class AllTimeHigh(Config):
         #
         return dt_string
 
+    @staticmethod
+    def get_paraphrased_sentences(model, tokenizer, sentence, num_return_sequences=5, num_beams=5):
+        # tokenize the text to be form of a list of token IDs
+        inputs = tokenizer([sentence], truncation=True, padding="longest", return_tensors="pt")
+        # generate the paraphrased sentences
+        outputs = model.generate(
+            **inputs,
+            num_beams=num_beams,
+            num_return_sequences=num_return_sequences,
+        )
+        # decode the generated sentences using the tokenizer to get them back to text
+        return tokenizer.batch_decode(outputs, skip_special_tokens=True)
+
 
     @staticmethod
     def compose_email(sender_email, mailing_list, message_content, subject, do_paraphrase):
@@ -109,11 +120,12 @@ class AllTimeHigh(Config):
         if not do_paraphrase:
             message["Subject"] = subject
         else:
-            parrot = Parrot(model_tag="prithivida/parrot_paraphraser_on_T5")
+            model = PegasusForConditionalGeneration.from_pretrained("tuner007/pegasus_paraphrase")
+            tokenizer = PegasusTokenizerFast.from_pretrained("tuner007/pegasus_paraphrase")
+            #tokenizer = AutoTokenizer.from_pretrained("Vamsi/T5_Paraphrase_Paws")
+            #model = AutoModelForSeq2SeqLM.from_pretrained("Vamsi/T5_Paraphrase_Paws")
             #
-            message["Subject"] = parrot.augment(input_phrase=subject,
-                                    use_gpu=False,
-                                    max_return_phrases = 1)
+            message["Subject"] = AllTimeHigh.get_paraphrased_sentences(model, tokenizer, subject, num_beams=10, num_return_sequences=1)
         #
         message["From"] = sender_email
         message["To"] = mailing_list
@@ -131,9 +143,7 @@ class AllTimeHigh(Config):
                 if bool(BeautifulSoup(phrase, "html.parser").find()):
                     text.append(phrase)
                 else:
-                    text.append(parrot.augment(input_phrase=phrase,
-                        use_gpu=False,
-                        max_return_phrases = 1))
+                    text.append(AllTimeHigh.get_paraphrased_sentences(model, tokenizer, subject, num_beams=10, num_return_sequences=1))
         #
         html = "<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(text) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects
