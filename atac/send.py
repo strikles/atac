@@ -214,10 +214,10 @@ class FromRuXiaWithLove(AllTimeHigh):
         auth, _ = self.get_email_config()
         message = self.compose_email(auth['sender'], mailing_list, message_content, subject)
         if auth['security'] == "tls":
-            print("Creating secure ssl/tls connection with server and sending email")
             try:
                 print("Creating ssl context")
                 context = ssl.create_default_context()
+                print("Creating secure ssl/tls connection with server and sending email")
                 with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
                     server.set_debuglevel(0)
                     print("Logging into server")
@@ -234,8 +234,8 @@ class FromRuXiaWithLove(AllTimeHigh):
                 if auth['security'] == "starttls":
                     print("Creating ssl context")
                     context = ssl.create_default_context()
+                print("Creating unsecure connection with server")
                 with smtplib.SMTP(auth['server'], auth['port']) as server:
-                    print("Creating unsecure connection with server")
                     server.set_debuglevel(0)
                     if auth['security'] == "starttls":
                         print("Upgrading unsecure connection with server with starttls")
