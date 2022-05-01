@@ -143,7 +143,7 @@ class AllTimeHigh(Config):
                 if bool(BeautifulSoup(phrase, "html.parser").find()):
                     text.append(phrase)
                 else:
-                    text.append(AllTimeHigh.get_paraphrased_sentences(model, tokenizer, subject, num_beams=10, num_return_sequences=1))
+                    text.append(AllTimeHigh.get_paraphrased_sentences(model, tokenizer, phrase, num_beams=10, num_return_sequences=1))
         #
         html = "<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(text) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects
