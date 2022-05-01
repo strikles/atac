@@ -40,3 +40,4 @@ tweepy
 urllib3
 utils
 validators
+git+https://github.com/PrithivirajDamodaran/Parrot_Paraphraser.git

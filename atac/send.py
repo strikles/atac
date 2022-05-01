@@ -356,6 +356,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             for email_recipient, gpg_key_id in encrypted_emails:
                 print("Encrypted email recipient" + email_recipient)
 
+
     def send_emails(self, email_files_path, message_file_path, subject):
         """ Send Emails
 
@@ -418,6 +419,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             #
             print("Exiting!")
 
+
     def send_signal(self, contacts_file_path, message_file_path):
         """ Send Signal message
 
@@ -473,6 +475,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         return status
         """
+
 
     def send_twitter(self, message_file_path):
         """ Send Twitter

@@ -11,6 +11,12 @@ import mistune
 import os
 import sys
 
+from parrot import Parrot
+import torch
+import warnings
+warnings.filterwarnings("ignore")
+
+from bs4 import BeautifulSoup
 
 class AllTimeHigh(Config):
     """ A class used to represent a Configuration object
@@ -29,7 +35,9 @@ class AllTimeHigh(Config):
         path to encryption key file
     gpg : gnupg.GPG
         python-gnupg gnupg.GPG
+    """
 
+    """
     Methods
     -------
     generate_key()
@@ -105,7 +113,20 @@ class AllTimeHigh(Config):
         body.set_charset(cs)
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
-        text = message_content
+        text = []
+        for phrase in message_content:
+            if bool(BeautifulSoup(phrase, "html.parser").find()):
+                text.append(phrase)
+            else:
+                parrot = Parrot(model_tag="prithivida/parrot_paraphraser_on_T5")
+                text.append(parrot.augment(input_phrase=phrase,
+                    use_gpu=False,
+                    diversity_ranker="levenshtein",
+                    do_diverse=False, 
+                    max_return_phrases = 1, 
+                    max_length=256, 
+                    adequacy_threshold = 0.99, 
+                    fluency_threshold = 0.90))
         html = "<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(text) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
