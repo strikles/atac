@@ -41,4 +41,5 @@ urllib3
 utils
 validators
 pandas
+protobuf
 git+https://github.com/PrithivirajDamodaran/Parrot_Paraphraser.git
