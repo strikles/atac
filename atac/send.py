@@ -216,6 +216,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         if auth['security'] == "tls":
             print("Creating secure ssl/tls connection with server and sending email")
             try:
+                print("Creating ssl context")
                 context = ssl.create_default_context()
                 with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
                     server.set_debuglevel(0)
