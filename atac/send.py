@@ -222,6 +222,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     server.set_debuglevel(0)
                     print("Logging into server")
                     server.login(auth['user'], auth['password'])
+                    print("Sending email")
                     error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
                     print(error_status)
                     print("\x1b[6;37;42m Sent \x1b[0m")
@@ -245,6 +246,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     #
                     print("Logging into server")
                     server.login(auth['user'], auth['password'])
+                    print("Sending email")
                     error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
                     print("send status:"+ json.dumps(error_status, indent=4))
                     print("\x1b[6;37;42m Sent \x1b[0m")
