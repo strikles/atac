@@ -230,7 +230,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             except Exception as err:
                 print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
                 status = 1
-        else:   
+        else:
             try:
                 if auth['security'] == "starttls":
                     print("Creating ssl context")
