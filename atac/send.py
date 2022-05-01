@@ -217,10 +217,10 @@ class FromRuXiaWithLove(AllTimeHigh):
             try:
                 print("Creating ssl context")
                 context = ssl.create_default_context()
-                print("Creating secure ssl/tls connection with server and sending email")
+                print("Creating secure ssl/tls connection with server")
                 with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
                     server.set_debuglevel(0)
-                    print("Logging into server")
+                    print("Logging into server:"+json.dumps(auth, indent=4))
                     server.login(auth['user'], auth['password'])
                     print("Sending email")
                     error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
@@ -242,7 +242,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                         print("Upgrading unsecure connection with server with starttls")
                         server.ehlo() # Can be omitted
                         server.starttls(context=context) # Secure the connection
-                        server.ehlo() # Can be omitted
+                        #server.ehlo() # Can be omitted
                     #
                     print("Logging into server")
                     server.login(auth['user'], auth['password'])
