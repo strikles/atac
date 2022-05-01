@@ -85,6 +85,7 @@ class AllTimeHigh(Config):
 
     @staticmethod
     def compose_email(sender_email, mailing_list, message_content, subject):
+
         """ Compose MIMEMultipart email message
 
         Parameters
@@ -112,9 +113,9 @@ class AllTimeHigh(Config):
                                 diversity_ranker="levenshtein",
                                 do_diverse=False, 
                                 max_return_phrases = 1, 
-                                max_length=256, 
+                                max_length=4096, 
                                 adequacy_threshold = 0.99, 
-                                fluency_threshold = 0.90).pop()
+                                fluency_threshold = 0.90)
         #
         message["From"] = sender_email
         message["To"] = mailing_list
@@ -133,9 +134,9 @@ class AllTimeHigh(Config):
                     diversity_ranker="levenshtein",
                     do_diverse=False, 
                     max_return_phrases = 1, 
-                    max_length=256, 
+                    max_length=4096, 
                     adequacy_threshold = 0.99, 
-                    fluency_threshold = 0.90).pop())
+                    fluency_threshold = 0.90))
         #
         html = "<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(text) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects
