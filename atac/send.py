@@ -201,7 +201,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         return status
 
         
-    def send_email(self, mailing_list, message_content, subject, do_paraphrase=True):
+    def send_email(self, mailing_list, message_content, subject, do_paraphrase):
         """ Send email
         Parameters
         ----------
@@ -357,7 +357,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 print("Encrypted email recipient" + email_recipient)
 
 
-    def send_emails(self, email_files_path, message_file_path, subject, do_paraphrase=True):
+    def send_emails(self, email_files_path, message_file_path, subject, do_paraphrase):
         """ Send Emails
 
         Parameters
