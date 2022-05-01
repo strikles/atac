@@ -246,7 +246,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                     print("Logging into server")
                     server.login(auth['user'], auth['password'])
                     error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
-                    print(error_status)
+                    print("send status:"+ json.dumps(error_status, indent=4))
                     print("\x1b[6;37;42m Sent \x1b[0m")
                     server.quit()
             except Exception as err:
