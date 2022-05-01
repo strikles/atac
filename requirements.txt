@@ -40,5 +40,4 @@ tweepy
 urllib3
 utils
 validators
-transformers
-sentencepiece
+paraphrase_googletranslate

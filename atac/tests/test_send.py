@@ -38,7 +38,7 @@ def test_send_email():
     message_content = '\n'.join(katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cybertorture.md")), "message"))
     print(os.path.abspath(os.getcwd()))
     mailing_list = random.sample(recipients, 1).pop()
-    status = katie.send_email(mailing_list, message_content, subject)
+    status = katie.send_email(mailing_list, message_content, subject, False)
     assert(status == 0) is True
     #
     

@@ -11,9 +11,11 @@ import mistune
 import os
 import sys
 
-from transformers import *
+from paraphrase_googletranslate import Paraphraser
 
 from bs4 import BeautifulSoup
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, module='bs4')
 
 
 class AllTimeHigh(Config):
@@ -80,19 +82,6 @@ class AllTimeHigh(Config):
         #
         return dt_string
 
-    @staticmethod
-    def get_paraphrased_sentences(model, tokenizer, sentence, num_return_sequences=5, num_beams=5):
-        # tokenize the text to be form of a list of token IDs
-        inputs = tokenizer([sentence], truncation=True, padding="longest", return_tensors="pt")
-        # generate the paraphrased sentences
-        outputs = model.generate(
-            **inputs,
-            num_beams=num_beams,
-            num_return_sequences=num_return_sequences,
-        )
-        # decode the generated sentences using the tokenizer to get them back to text
-        return tokenizer.batch_decode(outputs, skip_special_tokens=True)
-
 
     @staticmethod
     def compose_email(sender_email, mailing_list, message_content, subject, do_paraphrase):
@@ -120,12 +109,8 @@ class AllTimeHigh(Config):
         if not do_paraphrase:
             message["Subject"] = subject
         else:
-            model = PegasusForConditionalGeneration.from_pretrained("tuner007/pegasus_paraphrase")
-            tokenizer = PegasusTokenizerFast.from_pretrained("tuner007/pegasus_paraphrase")
-            #tokenizer = AutoTokenizer.from_pretrained("Vamsi/T5_Paraphrase_Paws")
-            #model = AutoModelForSeq2SeqLM.from_pretrained("Vamsi/T5_Paraphrase_Paws")
-            #
-            message["Subject"] = AllTimeHigh.get_paraphrased_sentences(model, tokenizer, subject, num_beams=10, num_return_sequences=1)
+            subject_generator = Paraphraser()
+            message["Subject"] = subject_generator.paraphrase(subject, secondary_language='en')
         #
         message["From"] = sender_email
         message["To"] = mailing_list
@@ -139,13 +124,16 @@ class AllTimeHigh(Config):
             text = message_content
         else:
             text = []
-            for phrase in message_content:
+            phraser = Paraphraser()
+            print("compose: "+json.dumps(message_content, indent=4))
+            for phrase in message_content.split("\n"):
                 if bool(BeautifulSoup(phrase, "html.parser").find()):
                     text.append(phrase)
                 else:
-                    text.append(AllTimeHigh.get_paraphrased_sentences(model, tokenizer, phrase, num_beams=3, num_return_sequences=1))
+                    text.append(phraser.paraphrase(phrase, secondary_language='en'))
         #
-        html = "<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(text) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>"
+        print("text: "+json.dumps(text, indent=4))
+        html = "<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html("\n".join(text)) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
         part2 = MIMENonMultipart('text', 'html', charset='utf-8')

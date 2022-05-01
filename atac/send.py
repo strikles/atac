@@ -325,6 +325,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         encrypted_emails = []
         with open(message_file_path, encoding="utf-8") as content_file:
             message = content_file.read()
+            print("message"+json.dumps(message, indent=4))
         #
         for batch in email_batches:
             # get emails with gpg key in their own list
