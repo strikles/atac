@@ -29,8 +29,6 @@ from nltk.corpus import wordnet as wn
 from pywsd import disambiguate
 from spellchecker import SpellChecker
 
-nlp = spacy.load('en_core_web_sm')
-
 
 # Penn TreeBank POS tags:
 # http://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
@@ -108,7 +106,7 @@ def _synonym_prefilter_fn(token, synonym):
         return True
 
 
-def _generate_synonym_candidates(doc, disambiguate=False, rank_fn=None):
+def _generate_synonym_candidates(doc, disambiguate=False, rank_fn=None, nlp=None):
     '''
     Generate synonym candidates.
     For each token in the doc, the list of WordNet synonyms is expanded.
@@ -205,6 +203,7 @@ def perturb_text(
         rank_fn=None,
         heuristic_fn=None,
         halt_condition_fn=None,
+        nlp=None,
         verbose=False):
     '''
     Perturb the text by replacing some words with their WordNet synonyms,
@@ -223,7 +222,7 @@ def perturb_text(
 
     heuristic_fn = heuristic_fn or (lambda _, candidate: candidate.similarity_rank)
     halt_condition_fn = halt_condition_fn or (lambda perturbed_text: False)
-    candidates = _generate_synonym_candidates(doc, rank_fn=rank_fn)
+    candidates = _generate_synonym_candidates(doc, rank_fn=rank_fn, nlp=nlp)
     if use_typos:
         candidates.extend(_generate_typo_candidates(doc))
 
@@ -264,10 +263,10 @@ def perturb_text(
     return perturbed_text
 
 
-def get_paraphrase(text):
+def get_paraphrase(text, nlp):
     print('Original text:', text)
     doc = nlp(text)
-    perturbed_text = perturb_text(doc, verbose=True)
+    perturbed_text = perturb_text(doc, verbose=True, nlp=nlp)
     print('Perturbed text:', perturbed_text)
     return perturbed_text
 
@@ -360,10 +359,12 @@ class AllTimeHigh(Config):
         message.set_charset(cs)
         message.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
+        nlp = None
         if not do_paraphrase:
             message["Subject"] = subject
         else:
-            message["Subject"] = get_paraphrase(subject)
+            nlp = spacy.load('en_core_web_sm')
+            message["Subject"] = get_paraphrase(subject, nlp)
         #
         message["From"] = sender_email
         message["To"] = mailing_list
@@ -384,7 +385,7 @@ class AllTimeHigh(Config):
                 elif not phrase:
                     lines.append('\n')
                 else:
-                    lines.append(get_paraphrase(phrase))
+                    lines.append(get_paraphrase(phrase, nlp))
         #
         print("text: "+json.dumps(lines, indent=4))
         message_str = "\n".join(lines)
