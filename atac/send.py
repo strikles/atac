@@ -214,11 +214,12 @@ class FromRuXiaWithLove(AllTimeHigh):
         auth, _ = self.get_email_config()
         message = self.compose_email(auth['sender'], mailing_list, message_content, subject)
         if auth['security'] == "tls":
-            # Create secure connection with server and send email
+            print("Creating secure ssl/tls connection with server and sending email")
             try:
                 context = ssl.create_default_context()
                 with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
                     server.set_debuglevel(0)
+                    print("Logging into server")
                     server.login(auth['user'], auth['password'])
                     error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
                     print(error_status)
@@ -227,18 +228,21 @@ class FromRuXiaWithLove(AllTimeHigh):
             except Exception as err:
                 print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
                 status = 1
-        else:
-            # Create unsecure connection with server upgrade with starttls and send email
+        else:   
             try:
                 if auth['security'] == "starttls":
+                    print("Creating ssl context")
                     context = ssl.create_default_context()
                 with smtplib.SMTP(auth['server'], auth['port']) as server:
+                    print("Creating unsecure connection with server")
                     server.set_debuglevel(0)
                     if auth['security'] == "starttls":
+                        print("Upgrading unsecure connection with server with starttls")
                         server.ehlo() # Can be omitted
                         server.starttls(context=context) # Secure the connection
                         server.ehlo() # Can be omitted
                     #
+                    print("Logging into server")
                     server.login(auth['user'], auth['password'])
                     error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
                     print(error_status)
