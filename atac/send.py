@@ -201,7 +201,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         return status
 
         
-    def send_email(self, mailing_list, message_content, subject):
+    def send_email(self, mailing_list, message_content, subject, do_paraphrase=True):
         """ Send email
         Parameters
         ----------
@@ -212,7 +212,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
         status = 0
         auth, _ = self.get_email_config()
-        message = self.compose_email(auth['sender'], mailing_list, message_content, subject)
+        message = self.compose_email(auth['sender'], mailing_list, message_content, subject, do_paraphrase)
         if auth['security'] == "tls":
             try:
                 print("Creating ssl context")
@@ -305,7 +305,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         return batch_emails
 
-    def send_emails_in_buckets(self, email_batches, message_file_path, subject):
+    def send_emails_in_buckets(self, email_batches, message_file_path, subject, do_paraphrase):
         """ Send emails in buckets
 
         Parameters
@@ -349,7 +349,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             '''
             #
             print("sending email…")
-            self.send_email(mailing_list, message, subject)
+            self.send_email(mailing_list, message, subject, do_paraphrase)
             time.sleep(10)
         #
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
@@ -357,7 +357,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 print("Encrypted email recipient" + email_recipient)
 
 
-    def send_emails(self, email_files_path, message_file_path, subject):
+    def send_emails(self, email_files_path, message_file_path, subject, do_paraphrase=True):
         """ Send Emails
 
         Parameters
@@ -383,7 +383,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         for email_file_path in email_files:
             contact_file = self.get_file_content(email_file_path)
             receiver_emails = self.store_emails_in_buckets(contact_file)
-            self.send_emails_in_buckets(receiver_emails, message_file_path, subject)
+            self.send_emails_in_buckets(receiver_emails, message_file_path, subject, do_paraphrase)
         #
         self.update_email_config()
         #

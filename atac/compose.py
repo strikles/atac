@@ -84,7 +84,7 @@ class AllTimeHigh(Config):
 
 
     @staticmethod
-    def compose_email(sender_email, mailing_list, message_content, subject):
+    def compose_email(sender_email, mailing_list, message_content, subject, do_paraphrase):
 
         """ Compose MIMEMultipart email message
 
@@ -106,16 +106,19 @@ class AllTimeHigh(Config):
         message.set_charset(cs)
         message.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
-        parrot = Parrot(model_tag="prithivida/parrot_paraphraser_on_T5")
-        #
-        message["Subject"] = parrot.augment(input_phrase=subject,
-                                use_gpu=False,
-                                diversity_ranker="levenshtein",
-                                do_diverse=False, 
-                                max_return_phrases = 1, 
-                                max_length=4096, 
-                                adequacy_threshold = 0.99, 
-                                fluency_threshold = 0.90)
+        if do_paraphrase:
+            message["Subject"] = subject
+        else:
+            parrot = Parrot(model_tag="prithivida/parrot_paraphraser_on_T5")
+            #
+            message["Subject"] = parrot.augment(input_phrase=subject,
+                                    use_gpu=False,
+                                    diversity_ranker="levenshtein",
+                                    do_diverse=False, 
+                                    max_return_phrases = 1, 
+                                    max_length=4096, 
+                                    adequacy_threshold = 0.99, 
+                                    fluency_threshold = 0.90)
         #
         message["From"] = sender_email
         message["To"] = mailing_list
@@ -124,19 +127,23 @@ class AllTimeHigh(Config):
         body.set_charset(cs)
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
-        text = []
-        for phrase in message_content:
-            if bool(BeautifulSoup(phrase, "html.parser").find()):
-                text.append(phrase)
-            else:
-                text.append(parrot.augment(input_phrase=phrase,
-                    use_gpu=False,
-                    diversity_ranker="levenshtein",
-                    do_diverse=False, 
-                    max_return_phrases = 1, 
-                    max_length=4096, 
-                    adequacy_threshold = 0.99, 
-                    fluency_threshold = 0.90))
+        text = None
+        if not do_paraphrase:
+            text = message_content
+        else:
+            text = []
+            for phrase in message_content:
+                if bool(BeautifulSoup(phrase, "html.parser").find()):
+                    text.append(phrase)
+                else:
+                    text.append(parrot.augment(input_phrase=phrase,
+                        use_gpu=False,
+                        diversity_ranker="levenshtein",
+                        do_diverse=False, 
+                        max_return_phrases = 1, 
+                        max_length=4096, 
+                        adequacy_threshold = 0.99, 
+                        fluency_threshold = 0.90))
         #
         html = "<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(text) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects
