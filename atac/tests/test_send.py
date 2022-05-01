@@ -28,6 +28,7 @@ def test_send_email():
         'raymond.marshall@guinnessworldrecords.com',
         'press@guinnessworldrecords.com'
     ]
+
     #
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     auth, _ = katie.get_email_config()
