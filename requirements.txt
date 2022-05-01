@@ -1,4 +1,5 @@
 ascii-magic
+attrs
 beautifulsoup4
 boto3
 bs4
@@ -14,7 +15,9 @@ fake-useragent
 lxml
 markovify
 mistune
+nltk
 numpy
+pandas
 phonenumbers
 Pillow
 py3-validate-email
@@ -23,6 +26,7 @@ python-frontmatter
 python-gnupg
 python-magic-bin; platform_system == 'Windows'
 pywhatkit
+pywsd==1.0.4
 PyYAML
 qrcode
 random-word
@@ -32,6 +36,7 @@ samila
 scipy
 shadow-useragent
 spacy
+pyspellchecker
 stdiomask
 syllapy
 tqdm
@@ -40,4 +45,4 @@ tweepy
 urllib3
 utils
 validators
-fibber
+wn
