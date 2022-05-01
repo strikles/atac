@@ -212,6 +212,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
         status = 0
         auth, _ = self.get_email_config()
+        print("send email > content file: "+json.dumps(message_content, indent=4))
         message = self.compose_email(auth['sender'], mailing_list, message_content, subject, do_paraphrase)
         if auth['security'] == "tls":
             try:
@@ -321,11 +322,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
         print(subject)
         auth, _ = self.get_email_config()
-        message = ""
         encrypted_emails = []
-        with open(message_file_path, encoding="utf-8") as content_file:
-            message = content_file.read()
-            print("message"+json.dumps(message, indent=4))
+        message = FromRuXiaWithLove.get_file_content(message_file_path, file_type='message')
         #
         for batch in email_batches:
             # get emails with gpg key in their own list

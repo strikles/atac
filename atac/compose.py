@@ -11,7 +11,31 @@ import mistune
 import os
 import sys
 
-from paraphrase_googletranslate import Paraphraser
+from fibber.datasets import get_demo_dataset
+from fibber.resources import download_all
+from fibber.fibber import Fibber
+
+# args starting with "asrs_" are hyperparameters for the ASRSStrategy.
+arg_dict = {
+    "use_gpu_id": 0,
+    "gpt2_gpu_id": 0,
+    "bert_gpu_id": 0,
+    "ce_gpu_id": 0,
+    "strategy_gpu_id": 0,
+    "asrs_block_size": 3,
+    "asrs_wpe_weight": 10000,
+    "asrs_sim_weight": 500,
+    "asrs_sim_threshold": 0.95,
+    "asrs_ppl_weight": 5,
+    "asrs_clf_weight": 3,
+    "asrs_sim_metric": "CESemanticSimilarityMetric"
+}
+
+# create a fibber object.
+# This step may take a while (about 1 hour) on RTX TITAN, and requires 20G of
+# GPU memory. If there's not enough GPU memory on your GPU, consider assign use
+# gpt2, bert, and strategy to different GPUs.
+#
 
 from bs4 import BeautifulSoup
 import warnings
@@ -109,8 +133,11 @@ class AllTimeHigh(Config):
         if not do_paraphrase:
             message["Subject"] = subject
         else:
-            subject_generator = Paraphraser()
-            message["Subject"] = subject_generator.paraphrase(subject, secondary_language='en')
+            trainset, testset = get_demo_dataset()
+            # resources are downloaded to ~/.fibber
+            download_all()
+            fibber = Fibber(arg_dict, dataset_name="demo", strategy_name="ASRSStrategy", trainset=trainset, testset=testset, output_dir="exp-demo")
+            message["Subject"] = fibber.paraphrase({"text0": (subject), "label": 1}, field_name="text0", n=1)
         #
         message["From"] = sender_email
         message["To"] = mailing_list
@@ -124,13 +151,12 @@ class AllTimeHigh(Config):
             text = message_content
         else:
             text = []
-            phraser = Paraphraser()
             print("compose: "+json.dumps(message_content, indent=4))
-            for phrase in message_content.split("\n"):
-                if bool(BeautifulSoup(phrase, "html.parser").find()):
+            for phrase in message_content:
+                if not phrase or bool(BeautifulSoup(phrase, "html.parser").find()):
                     text.append(phrase)
                 else:
-                    text.append(phraser.paraphrase(phrase, secondary_language='en'))
+                    text.append(fibber.paraphrase({"text0": (phrase), "label": 1}, field_name="text0", n=1))
         #
         print("text: "+json.dumps(text, indent=4))
         html = "<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html("\n".join(text)) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>"
