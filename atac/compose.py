@@ -146,20 +146,25 @@ class AllTimeHigh(Config):
         body.set_charset(cs)
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
-        text = None
+        lines = None
         if not do_paraphrase:
-            text = message_content
+            lines = message_content
         else:
-            text = []
+            lines = []
             print("compose: "+json.dumps(message_content, indent=4))
             for phrase in message_content:
-                if not phrase or bool(BeautifulSoup(phrase, "html.parser").find()):
-                    text.append(phrase)
+                if bool(BeautifulSoup(phrase, "html.parser").find()):
+                    lines.append(phrase)
+                elif not phrase:
+                    lines.append('\n')
                 else:
-                    text.append(fibber.paraphrase({"text0": (phrase), "label": 1}, field_name="text0", n=1))
+                    lines.append(fibber.paraphrase({"text0": (phrase), "label": 1}, field_name="text0", n=1))
         #
-        print("text: "+json.dumps(text, indent=4))
-        html = "<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html("\n".join(text)) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>"
+        print("text: "+json.dumps(lines, indent=4))
+        message_str = "\n".join(lines)
+        soup = BeautifulSoup(message_str)
+        text = soup.get_text()
+        html = "<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
         part2 = MIMENonMultipart('text', 'html', charset='utf-8')
