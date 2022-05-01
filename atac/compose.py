@@ -105,7 +105,17 @@ class AllTimeHigh(Config):
         message.set_charset(cs)
         message.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
-        message["Subject"] = subject
+        parrot = Parrot(model_tag="prithivida/parrot_paraphraser_on_T5")
+        #
+        message["Subject"] = parrot.augment(input_phrase=subject,
+                                use_gpu=False,
+                                diversity_ranker="levenshtein",
+                                do_diverse=False, 
+                                max_return_phrases = 1, 
+                                max_length=256, 
+                                adequacy_threshold = 0.99, 
+                                fluency_threshold = 0.90).pop()
+        #
         message["From"] = sender_email
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
@@ -118,7 +128,6 @@ class AllTimeHigh(Config):
             if bool(BeautifulSoup(phrase, "html.parser").find()):
                 text.append(phrase)
             else:
-                parrot = Parrot(model_tag="prithivida/parrot_paraphraser_on_T5")
                 text.append(parrot.augment(input_phrase=phrase,
                     use_gpu=False,
                     diversity_ranker="levenshtein",
@@ -126,7 +135,7 @@ class AllTimeHigh(Config):
                     max_return_phrases = 1, 
                     max_length=256, 
                     adequacy_threshold = 0.99, 
-                    fluency_threshold = 0.90))
+                    fluency_threshold = 0.90).pop())
         html = "<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(text) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
