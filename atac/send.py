@@ -300,7 +300,8 @@ class FromRuXiaWithLove(AllTimeHigh):
 
         auth, content = self.get_email_config()
         #
-        recipient_emails = random.shuffle(list(map(trace(lambda x: x.split(',')[1:]), lines)))
+        recipient_emails = list(map(trace(lambda x: x.split(',')[1:]), lines))
+        random.shuffle(recipient_emails)
         num_emails_per_bucket = 1000
         num_buckets = 1
         if len(recipient_emails) > num_emails_per_bucket:
