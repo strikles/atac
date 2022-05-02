@@ -26,6 +26,7 @@ from nltk.corpus import wordnet as wn
 from pywsd import disambiguate
 from spellchecker import SpellChecker
 
+from html2image import Html2Image
 
 from bs4 import BeautifulSoup
 import warnings
@@ -417,7 +418,12 @@ class AllTimeHigh(Config):
         message_str = "\n".join(lines)
         soup = BeautifulSoup(message_str)
         text = soup.get_text()
-        html = "<p align='center' width='100%'><img height='300' src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img height='300' src='cid:signature'></p>"
+        #
+        hti = Html2Image()
+        hti.screenshot(message_str, save_as='content.png')
+        #
+        #html = "<p align='center' width='100%'><img height='300' src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img height='300' src='cid:signature'></p>"
+        html = "<p align='center' width='100%'><img height='300' src='cid:header'></p><p align='center' width='100%'><img width='100%' src='cid:content'></p><p align='center' width='100%'><img height='300' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
         part2 = MIMENonMultipart('text', 'html', charset='utf-8')
@@ -436,6 +442,13 @@ class AllTimeHigh(Config):
         # Define the image's ID as referenced above
         msg_image_header.add_header('Content-ID', '<header>')
         message.attach(msg_image_header)
+        #
+        cfp = open('email.png', 'rb')
+        msg_image_content = MIMEImage(cfp.read())
+        cfp.close()
+        # Define the image's ID as referenced above
+        msg_image_content.add_header('Content-ID', '<content>')
+        message.attach(msg_image_content)
         #
         sfp = open('data/assets/img/jesus/mary.png', 'rb')
         msg_image_signature = MIMEImage(sfp.read())
