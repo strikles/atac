@@ -392,7 +392,7 @@ class AllTimeHigh(Config):
                         phrase_transform = get_paraphrase(phrase, nlp)
                     if translate_to_languagecode:
                         phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text
-                lines.append(phrase_transform)
+                    lines.append(phrase_transform)
         #
         message_str = "\n".join(lines)
         soup = BeautifulSoup(message_str)
