@@ -49,7 +49,12 @@ def test_send_email():
     mailing_list = random.sample(recipients, 1).pop()
     status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=True, translate_to_languagecode='pt')
     assert(status == 0) is True
-    
+
+
+@pytest.mark.skip(reason="we fight spam :)")
+def test_send_email_2():
+    """
+    """
     recipients = [
         'raymond.marshall@guinnessworldrecords.com',
         'press@guinnessworldrecords.com',
@@ -57,6 +62,9 @@ def test_send_email():
         'info-ng@macfound.org',
         '4answers@macfound.org'
     ]
+    #
+    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
+    auth, _ = katie.get_email_config()
     #
     subject = "neurorights and blue whale suicide games: Jasper Kums and colégio militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night abusing biophotonics to direct violence against parents, women and children"
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/devil.md")), "message")
@@ -81,7 +89,7 @@ def test_send_emails():
     """
     """
     #
-    target_languages = ['de', 'es', 'fr', 'ja', 'pt', 'uk', 'nl', 'ru']
+    target_languages = ['de', 'es', 'el', 'fr', 'ja', 'pt', 'uk', 'nl', 'ln']
     #
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     email_files_path = os.path.join(os.getcwd(), "atac/tests/contacts/test_emails.csv")
