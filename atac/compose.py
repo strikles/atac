@@ -15,14 +15,13 @@ from bs4 import BeautifulSoup
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module='bs4')
 
+from googletrans import Translator
 
 import attr
 import nltk
 import spacy
-
 from collections import OrderedDict
 from functools import partial
-
 from nltk.tokenize import word_tokenize
 from nltk.tag import pos_tag
 from nltk.corpus import wordnet as wn
@@ -337,7 +336,7 @@ class AllTimeHigh(Config):
 
 
     @staticmethod
-    def compose_email(sender_email, mailing_list, message_content, subject, do_paraphrase):
+    def compose_email(sender_email, mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode='en'):
 
         """ Compose MIMEMultipart email message
 
@@ -364,7 +363,8 @@ class AllTimeHigh(Config):
             message["Subject"] = subject
         else:
             nlp = spacy.load('en_core_web_sm')
-            message["Subject"] = get_paraphrase(subject, nlp)
+            translator = Translator()
+            message["Subject"] = translator.translate(get_paraphrase(subject, nlp), translate_to_languagecode)
         #
         message["From"] = sender_email
         message["To"] = mailing_list

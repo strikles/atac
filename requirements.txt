@@ -12,6 +12,7 @@ envelope
 facebook-sdk
 Faker
 fake-useragent
+googletrans
 lxml
 markovify
 mistune

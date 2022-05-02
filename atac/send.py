@@ -23,7 +23,6 @@ if os.environ.get('DISPLAY'):
 
 import validators
 
-
 # Defining a decorator
 def trace(f):
     def wrap(*args, **kwargs):
@@ -212,7 +211,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         return status
 
         
-    def send_email(self, mailing_list, message_content, subject, do_paraphrase):
+    def send_email(self, mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode='en'):
         """ Send email
         Parameters
         ----------
@@ -224,7 +223,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         status = 0
         auth, _ = self.get_email_config()
         print("send email > content file: "+json.dumps(message_content, indent=4))
-        message = self.compose_email(auth['sender'], mailing_list, message_content, subject, do_paraphrase)
+        message = self.compose_email(auth['sender'], mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode)
         if auth['security'] == "tls":
             try:
                 print("Creating ssl context")
@@ -320,7 +319,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         return batch_emails
 
-    def send_emails_in_buckets(self, email_batches, message_file_path, subject, do_paraphrase):
+    def send_emails_in_buckets(self, email_batches, message_file_path, subject, do_paraphrase, translate_to_languagecode):
         """ Send emails in buckets
 
         Parameters
@@ -362,7 +361,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             '''
             #
             print("sending email…")
-            self.send_email(mailing_list, message, subject, do_paraphrase)
+            self.send_email(mailing_list, message, subject, do_paraphrase, translate_to_languagecode)
             time.sleep(10)
         #
         with tqdm(total=len(encrypted_emails)) as encrypted_progress:
@@ -370,7 +369,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 print("Encrypted email recipient" + email_recipient)
 
 
-    def send_emails(self, email_files_path, message_file_path, subject, do_paraphrase):
+    def send_emails(self, email_files_path, message_file_path, subject, do_paraphrase, translate_to_languagecode):
         
         """ Send Emails
 
@@ -397,7 +396,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         for email_file_path in email_files:
             contact_file = self.get_file_content(email_file_path)
             receiver_emails = self.store_emails_in_buckets(contact_file)
-            self.send_emails_in_buckets(receiver_emails, message_file_path, subject, do_paraphrase)
+
+            self.send_emails_in_buckets(receiver_emails, message_file_path, subject, do_paraphrase, translate_to_languagecode)
         #
         self.update_email_config()
         #
