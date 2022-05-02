@@ -23,10 +23,6 @@ def test_send_email():
         'geral@igai.pt',
         'sec.geral.mai@sg.mai.gov.pt',
         'geral@igai.pt',
-        'info@gulbenkian.pt',
-        'agenda.informacao@rtp.pt',
-        'raymond.marshall@guinnessworldrecords.com',
-        'press@guinnessworldrecords.com'
     ]
 
     #
@@ -43,6 +39,10 @@ def test_send_email():
     #
     
     recipients = [
+        'info@gulbenkian.pt',
+        'agenda.informacao@rtp.pt',
+        'raymond.marshall@guinnessworldrecords.com',
+        'press@guinnessworldrecords.com',
         'indiaoffice@macfound.org',
         'info-ng@macfound.org',
         '4answers@macfound.org'
