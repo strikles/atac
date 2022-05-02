@@ -48,12 +48,17 @@ def test_send_email():
         '4answers@macfound.org'
     ]
     #
-    subject = "NeuroRights and Blue Whale Suicide Games: Jasper Kums and Colegio Militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night abusing biophotonics to direct violence against parents, women and children"
+    subject = "neuro-ights and blue-hwale suicide games: Jasper Kums and colégio militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night abusing biophotonics to direct violence against parents, women and children"
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/devil.md")), "message")
     mailing_list = random.sample(recipients, 1).pop()
     status = katie.send_email(mailing_list, message_content, subject, False)
     assert(status == 0) is True
 
+    subject = "neuro-rights and blue-whale suicide games - colégio militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless and force them into poverty, gambling lifes in blue whale suicide games where they take turns abusing biophotonics to exact vibrotactile cybertorture, force psychosis and simulate Van Gogh syndrome in a style reminiscent of Matthew Puncher's murder"
+    message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/neurorights.md")), "message")
+    mailing_list = random.sample(recipients, 1).pop()
+    status = katie.send_email(mailing_list, message_content, subject, False)
+    assert(status == 0) is True
 
 #@pytest.mark.skip(reason="we fight spam :)")
 def test_send_emails():
