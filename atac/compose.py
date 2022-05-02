@@ -359,6 +359,8 @@ class AllTimeHigh(Config):
         message.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         nlp = None
+        translator = None
+        #
         if not do_paraphrase:
             message["Subject"] = subject
         else:
@@ -391,7 +393,7 @@ class AllTimeHigh(Config):
                 elif not phrase_transform:
                     lines.append('\n')
                 elif do_paraphrase:
-                    phrase_transform = get_paraphrase(subject, nlp)
+                    phrase_transform = get_paraphrase(phrase, nlp)
                 if translate_to_languagecode:
                     translator = Translator()
                     phrase_transform = translator.translate(phrase_transform, translate_to_languagecode)
