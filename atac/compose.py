@@ -15,7 +15,7 @@ from bs4 import BeautifulSoup
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module='bs4')
 
-from google_trans_new import google_translator
+from googletrans import Translator
 
 import attr
 import nltk
@@ -366,8 +366,8 @@ class AllTimeHigh(Config):
             nlp = spacy.load('en_core_web_sm')
             subject_transform = get_paraphrase(subject_transform, nlp)
         if translate_to_languagecode:
-            translator = google_translator()
-            subject_transform = translator.translate(subject_transform, lang_tgt=translate_to_languagecode)
+            translator = Translator()
+            subject_transform = translator.translate(text=subject_transform, dest=translate_to_languagecode)
         #
         message["Subject"] = subject_transform    
         message["From"] = sender_email
@@ -393,7 +393,7 @@ class AllTimeHigh(Config):
                     if do_paraphrase:
                         phrase_transform = get_paraphrase(phrase, nlp)
                     if translate_to_languagecode:
-                        phrase_transform = translator.translate(phrase_transform, lang_tgt=translate_to_languagecode)
+                        phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode)
                 lines.append(phrase_transform)
         #
         print("text: "+json.dumps(lines, indent=4))
