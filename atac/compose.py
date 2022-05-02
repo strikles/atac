@@ -32,8 +32,8 @@ from bs4 import BeautifulSoup
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module='bs4')
 
-#from googletrans import Translator
-from textblob import TextBlob
+from googletrans import Translator
+#from textblob import TextBlob
 
 
 # Penn TreeBank POS tags:
@@ -381,9 +381,9 @@ class AllTimeHigh(Config):
         subject_transform = subject.lower()
         #subject_transform = remove_accent_chars_join(subject_transform)
         if translate_to_languagecode:
-            #translator = Translator()
-            #subject_transform = translator.translate(text=subject_transform, dest=translate_to_languagecode).text
-            subject_transform = str(TextBlob(subject_transform).correct().translate(from_lang='en', to=translate_to_languagecode))
+            translator = Translator()
+            subject_transform = translator.translate(text=subject_transform, dest=translate_to_languagecode).text
+            #subject_transform = str(TextBlob(subject_transform).correct().translate(from_lang='en', to=translate_to_languagecode))
         elif do_paraphrase:
             nlp = spacy.load('en_core_web_md')
             subject_transform = get_paraphrase(subject_transform, nlp)
@@ -409,8 +409,8 @@ class AllTimeHigh(Config):
                     lines.append('\n')
                 else:
                     if translate_to_languagecode:
-                        #phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text
-                        phrase_transform = str(TextBlob(phrase).correct().translate(from_lang='en', to=translate_to_languagecode))
+                        phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text
+                        #phrase_transform = str(TextBlob(phrase).correct().translate(from_lang='en', to=translate_to_languagecode))
                     elif do_paraphrase:
                         phrase_transform = get_paraphrase(phrase, nlp)    
                     lines.append(phrase_transform)
