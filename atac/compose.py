@@ -403,7 +403,7 @@ class AllTimeHigh(Config):
             for phrase in message_content:
                 phrase_transform = phrase.lower()
                 #phrase_transform = remove_accent_chars_join(phrase_transform)
-                if bool(BeautifulSoup(phrase_transform, "html.parser").find()):
+                if bool(BeautifulSoup(phrase_transform, "lxml").find()):
                     lines.append(phrase_transform)
                 elif not phrase_transform:
                     lines.append('\n')
