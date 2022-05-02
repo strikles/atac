@@ -1,4 +1,3 @@
-from types import NoneType
 from .compose import AllTimeHigh
 
 import csv
