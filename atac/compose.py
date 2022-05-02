@@ -420,7 +420,7 @@ class AllTimeHigh(Config):
         text = soup.get_text()
         #
         hti = Html2Image()
-        hti.screenshot(message_str, save_as='content.png')
+        hti.screenshot(mistune.html(message_str), save_as='content.png')
         #
         #html = "<p align='center' width='100%'><img height='300' src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img height='300' src='cid:signature'></p>"
         html = "<p align='center' width='100%'><img height='300' src='cid:header'></p><p align='center' width='100%'><img width='100%' src='cid:content'></p><p align='center' width='100%'><img height='300' src='cid:signature'></p>"
@@ -443,7 +443,7 @@ class AllTimeHigh(Config):
         msg_image_header.add_header('Content-ID', '<header>')
         message.attach(msg_image_header)
         #
-        cfp = open('email.png', 'rb')
+        cfp = open('content.png', 'rb')
         msg_image_content = MIMEImage(cfp.read())
         cfp.close()
         # Define the image's ID as referenced above
