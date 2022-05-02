@@ -377,10 +377,8 @@ class AllTimeHigh(Config):
         body.set_charset(cs)
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
-        lines = None
-        if not do_paraphrase:
-            lines = message_content
-        else:
+        lines = message_content
+        if do_paraphrase:
             lines = []
             print("compose: "+json.dumps(message_content, indent=4))
             for phrase in message_content:
@@ -396,7 +394,6 @@ class AllTimeHigh(Config):
                         phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode)
                 lines.append(phrase_transform)
         #
-        print("text: "+json.dumps(lines, indent=4))
         message_str = "\n".join(lines)
         soup = BeautifulSoup(message_str)
         text = soup.get_text()
