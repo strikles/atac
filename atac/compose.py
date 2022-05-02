@@ -391,7 +391,7 @@ class AllTimeHigh(Config):
         message_str = "\n".join(lines)
         soup = BeautifulSoup(message_str)
         text = soup.get_text()
-        html = "<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>"
+        html = "<p align='center' width='100%'><img height='300' src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img height='300' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
         part2 = MIMENonMultipart('text', 'html', charset='utf-8')
