@@ -89,7 +89,7 @@ def test_send_emails():
     target_languages = ['en', 'de', 'es', 'fr', 'ja', 'pt', 'uk', 'nl', 'ru', 'zh-cn']
     #
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
-    email_files_path = os.path.join(os.getcwd(), "atac/tests/test_emails.csv")
+    email_files_path = os.path.join(os.getcwd(), "atac/tests/contacts/test_emails.csv")
     #
     for lang_code in target_languages:
         #
