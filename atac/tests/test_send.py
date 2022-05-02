@@ -40,7 +40,7 @@ def test_send_email():
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cybertorture.md")), "message")
     print(os.path.abspath(os.getcwd()))
     mailing_list = random.sample(recipients, 1).pop()
-    status = katie.send_email(mailing_list, message_content, subject, True, do_paraphrase=True, translate_to_languagecode='pt')
+    status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=True, translate_to_languagecode='pt')
     assert(status == 0) is True
     #
     subject = "neurorights and blue whale suicide games: colégio militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless and force them into poverty, gambling lifes in blue whale suicide games where they take turns abusing biophotonics to exact vibrotactile cybertorture, force psychosis and simulate Van Gogh syndrome in a style reminiscent of Matthew Puncher's murder"

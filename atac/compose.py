@@ -416,14 +416,11 @@ class AllTimeHigh(Config):
                     lines.append(phrase_transform)
         #
         message_str = "\n".join(lines)
-        soup = BeautifulSoup(message_str)
+        soup = BeautifulSoup(message_str, 'lxml')
         text = soup.get_text()
         #
-        hti = Html2Image()
-        hti.screenshot(mistune.html(message_str), save_as='content.png')
-        #
-        #html = "<p align='center' width='100%'><img height='300' src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img height='300' src='cid:signature'></p>"
-        html = "<p align='center' width='100%'><img height='300' src='cid:header'></p><p align='center' width='100%'><img width='100%' src='cid:content'></p><p align='center' width='100%'><img height='300' src='cid:signature'></p>"
+        html = "<p align='center' width='100%'><img height='300' src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img height='300' src='cid:signature'></p>"
+        #html = "<p align='center' width='100%'><img height='300' src='cid:header'></p><p align='center' width='100%'><img width='100%' src='cid:content'></p><p align='center' width='100%'><img height='300' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
         part2 = MIMENonMultipart('text', 'html', charset='utf-8')
@@ -443,12 +440,17 @@ class AllTimeHigh(Config):
         msg_image_header.add_header('Content-ID', '<header>')
         message.attach(msg_image_header)
         #
+        #
+        '''
+        hti = Html2Image()
+        hti.screenshot(mistune.html(message_str), save_as='content.png')
         cfp = open('content.png', 'rb')
         msg_image_content = MIMEImage(cfp.read())
         cfp.close()
         # Define the image's ID as referenced above
         msg_image_content.add_header('Content-ID', '<content>')
         message.attach(msg_image_content)
+        '''
         #
         sfp = open('data/assets/img/jesus/mary.png', 'rb')
         msg_image_signature = MIMEImage(sfp.read())
