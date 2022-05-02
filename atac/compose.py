@@ -30,7 +30,9 @@ from spellchecker import SpellChecker
 from bs4 import BeautifulSoup
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module='bs4')
-from googletrans import Translator
+
+#from googletrans import Translator
+from textblob import TextBlob
 
 
 # Penn TreeBank POS tags:
@@ -375,13 +377,15 @@ class AllTimeHigh(Config):
         nlp = None
         translator = None
         #
-        subject_transform = remove_accent_chars_join(subject.lower())
+        subject_transform = subject.lower()
+        #subject_transform = remove_accent_chars_join(subject_transform)
         if do_paraphrase:
             nlp = spacy.load('en_core_web_md')
             subject_transform = get_paraphrase(subject_transform, nlp)
         if translate_to_languagecode:
-            translator = Translator()
-            subject_transform = translator.translate(text=subject_transform, dest=translate_to_languagecode).text
+            #translator = Translator()
+            #subject_transform = translator.translate(text=subject_transform, dest=translate_to_languagecode).text
+            subject_transform = TextBlob(subject_transform).translate(to='en')
         #
         message["Subject"] = subject_transform
         message["From"] = sender_email
@@ -396,7 +400,8 @@ class AllTimeHigh(Config):
             lines = []
             print("compose: "+json.dumps(message_content, indent=4))
             for phrase in message_content:
-                phrase_transform = remove_accent_chars_join(phrase.lower())
+                phrase_transform = phrase.lower()
+                #phrase_transform = remove_accent_chars_join(phrase_transform)
                 if bool(BeautifulSoup(phrase_transform, "html.parser").find()):
                     lines.append(phrase_transform)
                 elif not phrase_transform:
@@ -405,7 +410,8 @@ class AllTimeHigh(Config):
                     if do_paraphrase:
                         phrase_transform = get_paraphrase(phrase, nlp)
                     if translate_to_languagecode:
-                        phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text
+                        #phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text
+                        phrase_transform =  TextBlob(phrase).translate(to='en')
                     lines.append(phrase_transform)
         #
         message_str = "\n".join(lines)
