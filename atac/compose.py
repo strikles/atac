@@ -336,7 +336,7 @@ class AllTimeHigh(Config):
 
 
     @staticmethod
-    def compose_email(sender_email, mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode='en'):
+    def compose_email(sender_email, mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode=None):
 
         """ Compose MIMEMultipart email message
 
@@ -363,8 +363,13 @@ class AllTimeHigh(Config):
             message["Subject"] = subject
         else:
             nlp = spacy.load('en_core_web_sm')
-            translator = Translator()
-            message["Subject"] = translator.translate(get_paraphrase(subject, nlp), translate_to_languagecode)
+            subject_transform = subject
+            if do_paraphrase:
+                subject_transform = get_paraphrase(subject_transform, nlp)
+            if translate_to_languagecode:
+                translator = Translator()
+                subject_transform = translator.translate(subject_transform, translate_to_languagecode)
+            message["Subject"] = subject_transform     
         #
         message["From"] = sender_email
         message["To"] = mailing_list
@@ -380,12 +385,17 @@ class AllTimeHigh(Config):
             lines = []
             print("compose: "+json.dumps(message_content, indent=4))
             for phrase in message_content:
-                if bool(BeautifulSoup(phrase, "html.parser").find()):
-                    lines.append(phrase)
-                elif not phrase:
+                phrase_transform = phrase
+                if bool(BeautifulSoup(phrase_transform, "html.parser").find()):
+                    lines.append(phrase_transform)
+                elif not phrase_transform:
                     lines.append('\n')
-                else:
-                    lines.append(get_paraphrase(phrase, nlp))
+                elif do_paraphrase:
+                    phrase_transform = get_paraphrase(subject, nlp)
+                if translate_to_languagecode:
+                    translator = Translator()
+                    phrase_transform = translator.translate(phrase_transform, translate_to_languagecode)
+                lines.append(phrase_transform)
         #
         print("text: "+json.dumps(lines, indent=4))
         message_str = "\n".join(lines)
