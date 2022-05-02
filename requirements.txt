@@ -40,6 +40,7 @@ spacy
 pyspellchecker
 stdiomask
 syllapy
+text_unidecode
 tqdm
 tsp_solver2
 tweepy

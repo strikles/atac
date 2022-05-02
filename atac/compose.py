@@ -11,11 +11,9 @@ import mistune
 import os
 import sys
 
-from bs4 import BeautifulSoup
-import warnings
-warnings.filterwarnings("ignore", category=UserWarning, module='bs4')
-
-from googletrans import Translator
+import unicodedata
+import regex
+import text_unidecode
 
 import attr
 import nltk
@@ -27,6 +25,12 @@ from nltk.tag import pos_tag
 from nltk.corpus import wordnet as wn
 from pywsd import disambiguate
 from spellchecker import SpellChecker
+
+
+from bs4 import BeautifulSoup
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning, module='bs4')
+from googletrans import Translator
 
 
 # Penn TreeBank POS tags:
@@ -270,6 +274,16 @@ def get_paraphrase(text, nlp):
     return perturbed_text
 
 
+def remove_accent_chars_regex(x: str):
+    return regex.sub(r'\p{Mn}', '', unicodedata.normalize('NFKD', x))
+
+
+def remove_accent_chars_join(x: str):
+    # answer by MiniQuark
+    # https://stackoverflow.com/a/517974/7966259
+    return u"".join([c for c in unicodedata.normalize('NFKD', x) if not unicodedata.combining(c)])
+
+
 class AllTimeHigh(Config):
     """ A class used to represent a Configuration object
 
@@ -361,7 +375,7 @@ class AllTimeHigh(Config):
         nlp = None
         translator = None
         #
-        subject_transform = subject
+        subject_transform = remove_accent_chars_join(subject.lower())
         if do_paraphrase:
             nlp = spacy.load('en_core_web_sm')
             subject_transform = get_paraphrase(subject_transform, nlp)
@@ -382,7 +396,7 @@ class AllTimeHigh(Config):
             lines = []
             print("compose: "+json.dumps(message_content, indent=4))
             for phrase in message_content:
-                phrase_transform = phrase
+                phrase_transform = remove_accent_chars_join(phrase.lower())
                 if bool(BeautifulSoup(phrase_transform, "html.parser").find()):
                     lines.append(phrase_transform)
                 elif not phrase_transform:

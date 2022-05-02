@@ -177,7 +177,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         return phone_numbers
 
-    def send_email_plain(self, mailing_list, message, subject):
+    def send_email_envelope(self, mailing_list, message, subject):
         """ Send email
 
         Parameters
@@ -301,7 +301,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         #
         recipient_emails = list(map(trace(lambda x: x.split(',')[1:]), lines))
         random.shuffle(recipient_emails)
-        num_emails_per_bucket = 1000
+        num_emails_per_bucket = 100
         num_buckets = 1
         if len(recipient_emails) > num_emails_per_bucket:
             num_buckets = math.ceil(len(recipient_emails) // num_emails_per_bucket)
