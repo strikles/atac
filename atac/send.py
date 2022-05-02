@@ -1,3 +1,4 @@
+from types import NoneType
 from .compose import AllTimeHigh
 
 import csv
@@ -211,7 +212,7 @@ class FromRuXiaWithLove(AllTimeHigh):
         return status
 
         
-    def send_email(self, mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode='en'):
+    def send_email(self, mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode=None):
         """ Send email
         Parameters
         ----------
