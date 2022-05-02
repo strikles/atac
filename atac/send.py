@@ -297,9 +297,10 @@ class FromRuXiaWithLove(AllTimeHigh):
         lines : list
             The contacts list
         """
+
         auth, content = self.get_email_config()
         #
-        recipient_emails = random.shuffle(list(map(trace(lambda x: ','.join(x.split(',')[1:])), lines)))
+        recipient_emails = random.shuffle(list(map(trace(lambda x: x.split(',')[1:]), lines)))
         num_emails_per_bucket = 1000
         num_buckets = 1
         if len(recipient_emails) > num_emails_per_bucket:
