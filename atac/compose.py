@@ -386,7 +386,7 @@ class AllTimeHigh(Config):
         if translate_to_languagecode:
             #translator = Translator()
             #subject_transform = translator.translate(text=subject_transform, dest=translate_to_languagecode).text
-            subject_transform = TextBlob(subject_transform).correct().translate(from_lang='en', to=translate_to_languagecode).text
+            subject_transform = str(TextBlob(subject_transform).correct().translate(from_lang='en', to=translate_to_languagecode))
         #
         message["Subject"] = subject_transform
         message["From"] = sender_email
@@ -412,7 +412,7 @@ class AllTimeHigh(Config):
                         phrase_transform = get_paraphrase(phrase, nlp)
                     if translate_to_languagecode:
                         #phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text
-                        phrase_transform =  TextBlob(phrase).correct().translate(from_lang='en', to=translate_to_languagecode).text
+                        phrase_transform = str(TextBlob(phrase).correct().translate(from_lang='en', to=translate_to_languagecode))
                     lines.append(phrase_transform)
         #
         message_str = "\n".join(lines)
