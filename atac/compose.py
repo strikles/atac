@@ -411,7 +411,7 @@ class AllTimeHigh(Config):
         msg_image_header.add_header('Content-ID', '<header>')
         message.attach(msg_image_header)
         #
-        sfp = open('data/assets/img/jesus/lamb_of_god.png', 'rb')
+        sfp = open('data/assets/img/jesus/mary.png', 'rb')
         msg_image_signature = MIMEImage(sfp.read())
         sfp.close()
         # Define the image's ID as referenced above
