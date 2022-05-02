@@ -36,7 +36,7 @@ def test_send_email():
     status = katie.send_email(mailing_list, message_content, subject, True, 'pt')
     assert(status == 0) is True
     #
-    subject = "neurorights and blue whale suicide games: abusing biophotonics to exact Cybertorture in order to force the SUT to complete tasks to bargain for relief"
+    subject = "neurorights and blue whale suicide games: abusing biophotonics for cybertorture in order to force the SUT to complete tasks to bargain for relief"
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cybertorture.md")), "message")
     print(os.path.abspath(os.getcwd()))
     mailing_list = random.sample(recipients, 1).pop()
@@ -64,7 +64,7 @@ def test_send_email():
     status = katie.send_email(mailing_list, message_content, subject, True)
     assert(status == 0) is True
     #
-    subject = "neurorights and blue whale suicide games: abusing biophotonics to exact Cybertorture in order to force the SUT to complete tasks to bargain for relief"
+    subject = "neurorights and blue whale suicide games: abusing biophotonics for cybertorture in order to force the SUT to complete tasks to bargain for relief"
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cybertorture.md")), "message")
     mailing_list = random.sample(recipients, 1).pop()
     status = katie.send_email(mailing_list, message_content, subject, True)
@@ -94,7 +94,7 @@ def test_send_emails():
         assert(status == 0) is True
         #
         message_file_path = os.path.join(os.getcwd(), "data/messages/email/cybertorture.md")
-        subject = "neurorights and blue whale suicide games: abusing biophotonics to exact cybertorture in order to force the SUT to complete tasks to bargain for relief"
+        subject = "neurorights and blue whale suicide games: abusing biophotonics for cybertorture in order to force the SUT to complete tasks to bargain for relief"
         status = katie.send_emails(email_files_path, message_file_path, subject, True, lang_code)
         assert(status == 0) is True
         #
