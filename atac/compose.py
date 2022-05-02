@@ -392,11 +392,12 @@ class AllTimeHigh(Config):
                     lines.append(phrase_transform)
                 elif not phrase_transform:
                     lines.append('\n')
-                elif do_paraphrase:
-                    phrase_transform = get_paraphrase(phrase, nlp)
-                if translate_to_languagecode:
-                    translator = Translator()
-                    phrase_transform = translator.translate(phrase_transform, translate_to_languagecode)
+                else:
+                    if do_paraphrase:
+                        phrase_transform = get_paraphrase(phrase, nlp)
+                    if translate_to_languagecode:
+                        translator = Translator()
+                        phrase_transform = translator.translate(phrase_transform, translate_to_languagecode)
                 lines.append(phrase_transform)
         #
         print("text: "+json.dumps(lines, indent=4))
