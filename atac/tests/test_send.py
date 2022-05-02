@@ -4,11 +4,6 @@ import sys
 import pytest
 import atac
 
-from googletrans.constants import (
-    LANGCODES, LANGUAGES
-)
-
-
 encrypted_config = False
 config_file = 'auth.json'
 key_file = None
