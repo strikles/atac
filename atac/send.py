@@ -3,8 +3,10 @@ from .compose import AllTimeHigh
 import csv
 from envelope import Envelope
 import json
+import math
 import mistune
 import os
+import random
 import smtplib
 import socket
 import ssl
@@ -288,13 +290,14 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
         auth, content = self.get_email_config()
         #
+        recipient_emails = random.shuffle(lines)
         num_emails_per_bucket = 1000
         num_buckets = 1
         if len(lines) > num_emails_per_bucket:
-            num_buckets = len(lines) // num_emails_per_bucket
+            num_buckets = math.ceil(len(recipient_emails) // num_emails_per_bucket)
         batch_emails = [[] for i in range(num_buckets)]
         #
-        with tqdm(total=len(lines)) as batch_progress:
+        with tqdm(total=len(recipient_emails)) as batch_progress:
             counter = 0
             csv_reader = csv.reader(lines)
             header =  next(csv_reader)
