@@ -9,7 +9,7 @@ config_file = 'auth.json'
 key_file = None
 
 
-#@pytest.mark.skip(reason="we fight spam :)")
+@pytest.mark.skip(reason="we fight spam :)")
 def test_send_email():
     """
     """
@@ -89,7 +89,7 @@ def test_send_emails():
     """
     """
     #
-    target_languages = ['el', 'fr', 'ja', 'pt', 'uk', 'nl', 'ln']
+    target_languages = ['el', 'fr', 'it', 'ja', 'pt', 'uk', 'nl', 'ln']
     #
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     email_files_path = os.path.join(os.getcwd(), "atac/tests/contacts/test_emails.csv")
@@ -98,15 +98,15 @@ def test_send_emails():
         #
         message_file_path = os.path.join(os.getcwd(), "data/messages/email/devil.md")
         subject = "neurorights and blue whale suicide games: Jasper Kums and colégio militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night abusing biophotonics to direct violence against parents, women and children"
-        status = katie.send_emails(email_files_path, message_file_path, subject, True, lang_code)
+        status = katie.send_emails(email_files_path, message_file_path, subject, False, lang_code)
         assert(status == 0) is True
         #
         message_file_path = os.path.join(os.getcwd(), "data/messages/email/cybertorture.md")
         subject = "neurorights and blue whale suicide games: abusing biophotonics for cybertorture in order to force the SUT to complete tasks to bargain for relief"
-        status = katie.send_emails(email_files_path, message_file_path, subject, True, lang_code)
+        status = katie.send_emails(email_files_path, message_file_path, subject, False, lang_code)
         assert(status == 0) is True
         #
         message_file_path = os.path.join(os.getcwd(), "data/messages/email/neurorights.md")
         subject = "neurorights and blue whale suicide games: colégio militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless and force them into poverty, gambling lifes in blue whale suicide games where they take turns abusing biophotonics to exact vibrotactile cybertorture, force psychosis and simulate Van Gogh syndrome in a style reminiscent of Matthew Puncher's murder"
-        status = katie.send_emails(email_files_path, message_file_path, subject, True, lang_code)
+        status = katie.send_emails(email_files_path, message_file_path, subject, False, lang_code)
         assert(status == 0) is True
