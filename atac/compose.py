@@ -403,7 +403,7 @@ class AllTimeHigh(Config):
             for phrase in message_content:
                 phrase_transform = phrase.lower()
                 #phrase_transform = remove_accent_chars_join(phrase_transform)
-                if bool(BeautifulSoup(phrase_transform, "lxml").find()):
+                if bool(BeautifulSoup(phrase_transform, "html.parser").find()):
                     lines.append(phrase_transform)
                 elif not phrase_transform:
                     lines.append('\n')
@@ -416,7 +416,7 @@ class AllTimeHigh(Config):
                     lines.append(phrase_transform)
         #
         message_str = "\n".join(lines)
-        soup = BeautifulSoup(message_str, 'lxml')
+        soup = BeautifulSoup(message_str, 'html.parser')
         text = soup.get_text()
         #
         html = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"

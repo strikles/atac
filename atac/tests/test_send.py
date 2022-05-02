@@ -52,7 +52,7 @@ def test_send_email():
 
 
 @pytest.mark.skip(reason="we fight spam :)")
-def test_send_email_2():
+def test_send_email_notranslation():
     """
     """
     recipients = [
@@ -61,6 +61,16 @@ def test_send_email_2():
         'indiaoffice@macfound.org',
         'info-ng@macfound.org',
         '4answers@macfound.org'
+        'contacto@psp.pt',
+        'geral@prociv.pt',
+        'gnr@gnr.pt',
+        'mail@ansr.pt',
+        'sef@sef.pt',
+        'geral@igai.pt',
+        'sec.geral.mai@sg.mai.gov.pt',
+        'geral@igai.pt',
+        'info@gulbenkian.pt',
+        'agenda.informacao@rtp.pt'
     ]
     #
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
