@@ -24,6 +24,15 @@ if os.environ.get('DISPLAY'):
 import validators
 
 
+# Defining a decorator
+def trace(f):
+    def wrap(*args, **kwargs):
+        print(f"[TRACE] func: {f.__name__}, args: {args}, kwargs: {kwargs}")
+        return f(*args, **kwargs)
+
+    return wrap
+
+
 class FromRuXiaWithLove(AllTimeHigh):
     """ A class used to represent a Configuration object
 
@@ -290,10 +299,10 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
         auth, content = self.get_email_config()
         #
-        recipient_emails = random.shuffle(lines)
+        recipient_emails = random.shuffle(list(map(trace(lambda x: ','.join(x.split(',')[1:]), lines))))
         num_emails_per_bucket = 1000
         num_buckets = 1
-        if len(lines) > num_emails_per_bucket:
+        if len(recipient_emails) > num_emails_per_bucket:
             num_buckets = math.ceil(len(recipient_emails) // num_emails_per_bucket)
         batch_emails = [[] for i in range(num_buckets)]
         #
