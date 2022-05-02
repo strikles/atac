@@ -5,8 +5,7 @@ import pytest
 import atac
 
 from googletrans.constants import (
-    DEFAULT_USER_AGENT, LANGCODES, LANGUAGES, SPECIAL_CASES,
-    DEFAULT_RAISE_EXCEPTION, DUMMY_DATA
+    LANGCODES, LANGUAGES
 )
 
 
