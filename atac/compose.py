@@ -419,7 +419,7 @@ class AllTimeHigh(Config):
         soup = BeautifulSoup(message_str, 'lxml')
         text = soup.get_text()
         #
-        html = "<p align='center' width='100%'><img height='300' src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img height='300' src='cid:signature'></p>"
+        html = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
         #html = "<p align='center' width='100%'><img height='300' src='cid:header'></p><p align='center' width='100%'><img width='100%' src='cid:content'></p><p align='center' width='100%'><img height='300' src='cid:signature'></p>"
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
