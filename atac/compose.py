@@ -407,36 +407,35 @@ class AllTimeHigh(Config):
         body.set_charset(cs)
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
-        lines = message_content
-        if do_paraphrase:
-            lines = []
-            print("compose: "+json.dumps(message_content, indent=4))
-            for phrase in message_content:
-                phrase_transform = phrase
-                if phrase_transform.find("img src"):
-                    lines.append(phrase_transform)
-                    continue
-                if not phrase_transform:
-                    lines.append("")
-                    continue
-                # translation transform
-                if translate_to_languagecode:
-                    phrase_translator = Translator()
-                    print("before phrase translation: " + phrase_transform)
-                    phrase_transform = phrase_translator.translate(text=phrase_transform.lower(), dest=translate_to_languagecode).text
-                    print("after phrase translation: " + phrase_transform)
-                # paraphrasing transform
-                elif do_paraphrase: 
-                    phrase_transform = get_paraphrase(phrase_transform.lower(), nlp)
-                # remove html
-                phrase_transform = BeautifulSoup(phrase_transform, features="html.parser").get_text()
-                # check spelling
-                spellchecker_matches = spellchecker.check(phrase_transform)
-                is_bad_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
-                spellchecker_matches = [rule for rule in spellchecker_matches if not is_bad_rule(rule)]
-                phrase_transform = language_tool_python.utils.correct(phrase_transform, spellchecker_matches)
-                phrase_transform = phrase_transform.capitalize()
+        lines = []
+        print("compose: "+json.dumps(message_content, indent=4))
+        for phrase in message_content:
+            phrase_transform = phrase
+            if phrase_transform.find("img src"):
                 lines.append(phrase_transform)
+                continue
+            if not phrase_transform:
+                lines.append("")
+                continue
+            # translation transform
+            if translate_to_languagecode:
+                print("translating phrase...")
+                phrase_translator = Translator()
+                print("before translation: " + phrase_transform)
+                phrase_transform = phrase_translator.translate(text=phrase_transform.lower(), dest=translate_to_languagecode).text
+                print("after translation: " + phrase_transform)
+            # paraphrasing transform
+            elif do_paraphrase: 
+                phrase_transform = get_paraphrase(phrase_transform.lower(), nlp)
+            # remove html
+            phrase_transform = BeautifulSoup(phrase_transform, features="html.parser").get_text()
+            # check spelling
+            spellchecker_matches = spellchecker.check(phrase_transform)
+            is_bad_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
+            spellchecker_matches = [rule for rule in spellchecker_matches if not is_bad_rule(rule)]
+            phrase_transform = language_tool_python.utils.correct(phrase_transform, spellchecker_matches)
+            phrase_transform = phrase_transform.capitalize()
+            lines.append(phrase_transform)
         #
         message_str = "\n".join(lines)
         message_soup = BeautifulSoup(message_str, 'html.parser')
