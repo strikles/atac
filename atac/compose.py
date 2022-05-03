@@ -410,7 +410,7 @@ class AllTimeHigh(Config):
         lines = []
         for phrase in message_content:
             phrase_transform = phrase
-            if phrase_transform.find("<img src="):
+            if phrase_transform.find("<img src=") != -1:
                 lines.append(phrase_transform)
                 print("Found image")
                 continue
