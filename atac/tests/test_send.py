@@ -42,7 +42,7 @@ def test_send_email():
     assert(status == 0) is True
     #
     subject = "neurorights and blue_whale suicide games: abusing biophotonics for cyber torture in order to force the subject under torture to complete tasks to bargain for relief"
-    message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cyber torture.md")), "message")
+    message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cybertorture.md")), "message")
     print(os.path.abspath(os.getcwd()))
     mailing_list = "; ".join(recipients)
     status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=False, translate_to_languagecode=None)
@@ -88,7 +88,7 @@ def test_send_email_with_translation():
     assert(status == 0) is True
     #
     subject = "neurorights and blue_whale suicide games: abusing biophotonics for cyber torture in order to force the subject under torture to complete tasks to bargain for relief"
-    message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cyber torture.md")), "message")
+    message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cybertorture.md")), "message")
     mailing_list = random.sample(recipients, 1).pop()
     status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=False, translate_to_languagecode="pt")
     assert(status == 0) is True
@@ -132,7 +132,7 @@ def test_send_email_with_paraphrase():
     assert(status == 0) is True
     #
     subject = "neurorights and blue_whale suicide games: abusing biophotonics for cyber torture in order to force the subject under torture to complete tasks to bargain for relief"
-    message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cyber torture.md")), "message")
+    message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cybertorture.md")), "message")
     mailing_list = random.sample(recipients, 1).pop()
     status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=True, translate_to_languagecode=None)
     assert(status == 0) is True
