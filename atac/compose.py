@@ -423,10 +423,11 @@ class AllTimeHigh(Config):
                     # replace untranslated words
                     phrase_words = phrase_transform.split(" ")
                     for word_index in range(len(phrase_words)):
-                        is_untranslated_word = index_find(phrase_words[word_index], "__", "__")
+                        is_untranslated_word = phrase_words[word_index].startswith("__") and phrase_words[word_index].endswith("__") 
                         if is_untranslated_word:
-                            phrase_words[word_index] = phrase_words[word_index].replace("__", "").replace("_", " ").title()
-                    phrase_transform = "".join(phrase_words).capitalize()
+                            untranslated_word = index_find(phrase_words[word_index], "__", "__")
+                            phrase_words[word_index] = untranslated_word.replace("_", " ").title()
+                    phrase_transform = " ".join(phrase_words).capitalize()
                     lines.append(phrase_transform)
         #
         message_str = "\n".join(lines)
