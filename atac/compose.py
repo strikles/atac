@@ -406,7 +406,7 @@ class AllTimeHigh(Config):
                         #phrase_transform = str(TextBlob(phrase).correct().translate(from_lang='en', to=translate_to_languagecode))
                     elif do_paraphrase:
                         phrase_transform = get_paraphrase(phrase, nlp)    
-                    lines.append(phrase_transform.replace("_", " "))
+                    lines.append("__"+phrase_transform.replace("__", "").replace("_", " ").capitalize()+"__")
         #
         message_str = "\n".join(lines)
         soup = BeautifulSoup(message_str, 'html.parser')
