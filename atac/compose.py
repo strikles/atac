@@ -395,7 +395,7 @@ class AllTimeHigh(Config):
             nlp = spacy.load('en_core_web_md')
             subject_transform = get_paraphrase(subject_transform, nlp)
         #
-        message["Subject"] = AllTimeHigh.get_subject_prefix() + subject_transform.replace("_", " ")
+        message["Subject"] = AllTimeHigh.get_subject_prefix() + subject_transform.replace("__", "").replace("_", " ").title()
         message["From"] = sender_email
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
