@@ -96,7 +96,6 @@ def email(arguments):
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
     subject = None
-    target = "smtp"
     email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
     #md = 'data/messages/email/' + content['markdown']
     #message_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md))

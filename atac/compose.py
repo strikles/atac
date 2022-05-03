@@ -33,7 +33,7 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module='bs4')
 
 from googletrans import Translator
-#from textblob import TextBlob
+import language_tool_python
 
 
 # Penn TreeBank POS tags:
@@ -384,18 +384,24 @@ class AllTimeHigh(Config):
         #
         nlp = None
         translator = None
+        spellchecker = language_tool_python.LanguageToolPublicAPI(translate_to_languagecode if not translate_to_languagecode else 'en')
         #
         subject_transform = subject.lower()
-        #subject_transform = remove_accent_chars_join(subject_transform)
         if translate_to_languagecode:
             translator = Translator()
-            subject_transform = translator.translate(text=subject_transform, dest=translate_to_languagecode).text
-            #subject_transform = str(TextBlob(subject_transform).correct().translate(from_lang='en', to=translate_to_languagecode))
+            subject_translation = translator.translate(text=subject_transform, dest=translate_to_languagecode).text
+            subject_transform = BeautifulSoup(subject_translation, features="html.parser").get_text()
         elif do_paraphrase:
             nlp = spacy.load('en_core_web_md')
+            subject_transform = BeautifulSoup(subject_transform, features="html.parser").get_text()
             subject_transform = get_paraphrase(subject_transform, nlp)
+        # check spelling
+        spellchecker_subject_matches = spellchecker.check(subject_transform)
+        is_bad_subject_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
+        spellchecker_subject_matches = [rule for rule in spellchecker_subject_matches if not is_bad_subject_rule(rule)]
+        subject_transform = language_tool_python.utils.correct(subject_transform, spellchecker_subject_matches)
         #
-        message["Subject"] = AllTimeHigh.get_subject_prefix() + subject_transform.replace("__", "").replace("_", " ").capitalize()
+        message["Subject"] = AllTimeHigh.get_subject_prefix() + subject_transform.capitalize()
         message["From"] = sender_email
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
@@ -407,30 +413,28 @@ class AllTimeHigh(Config):
         if do_paraphrase:
             lines = []
             print("compose: "+json.dumps(message_content, indent=4))
-            for phrase in message_content:
-                phrase_transform = phrase.lower()
-                #phrase_transform = remove_accent_chars_join(phrase_transform)
+            for phrase in message_content:  
+                if phrase_transform.find("img src"):
+                    lines.append(phrase_transform)
+                    continue
                 if not phrase_transform:
                     lines.append('\n')
                     continue
                 # translation transform
+                phrase_transform = phrase.lower()
                 if translate_to_languagecode:
-                    phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text.capitalize()
-                    #phrase_transform = str(TextBlob(phrase).correct().translate(from_lang='en', to=translate_to_languagecode))
+                    phrase_translation = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text.capitalize()
+                    phrase_transform = BeautifulSoup(phrase_translation, features="html.parser").get_text()
                 # paraphrasing transform
-                elif do_paraphrase:
-                    phrase_transform = get_paraphrase(phrase, nlp).capitalize()
-                # replace untranslated words
-                """
-                phrase_words = phrase_transform.split(" ")
-                for word_index in range(len(phrase_words)):
-                    is_untranslated_word = phrase_words[word_index].startswith("__") and phrase_words[word_index].endswith("__") 
-                    if is_untranslated_word:
-                        untranslated_word = partition_find(phrase_words[word_index], "__", "__").replace("_", " ").title()
-                        phrase_words[word_index] = "__" + untranslated_word + "__"
-                phrase_transform = " ".join(phrase_words).capitalize()
-                """
-                lines.append(phrase_transform)
+                elif do_paraphrase: 
+                    phrase_transform = BeautifulSoup(phrase_transform, features="html.parser").get_text()
+                    phrase_transform = get_paraphrase(phrase_transform, nlp).capitalize()
+                # check spelling
+                spellchecker_matches = spellchecker.check(phrase_transform)
+                is_bad_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
+                spellchecker_matches = [rule for rule in spellchecker_matches if not is_bad_rule(rule)]
+                phrase_transform = language_tool_python.utils.correct(phrase_transform, spellchecker_matches)
+                lines.append(phrase_transform.capitalize())
         #
         message_str = "\n".join(lines)
         soup = BeautifulSoup(message_str, 'html.parser')

@@ -14,6 +14,7 @@ Faker
 fake-useragent
 googletrans==4.0.0rc1
 html2image
+language_tool_python
 lxml
 markovify
 mistune
@@ -38,10 +39,8 @@ samila
 scipy
 shadow-useragent
 spacy
-pyspellchecker
 stdiomask
 syllapy
-#textblob
 text_unidecode
 tqdm
 tsp_solver2
