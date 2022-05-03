@@ -77,6 +77,20 @@ supported_pos_tags = [
     # 'WRB',  # Wh-adverb
 ]
 
+from re import search, DOTALL
+
+def partition_find(string, start, end):
+    return string.partition(start)[2].rpartition(end)[0]
+
+
+def re_find(string, start, end):
+    # applying re.escape to start and end would be safer
+    return search(start + '(.*)' + end, string, DOTALL).group(1)
+
+
+def index_find(string, start, end):
+    return string[string.find(start) + len(start):string.rfind(end)]
+
 
 @attr.s
 class SubstitutionCandidate:
@@ -405,8 +419,15 @@ class AllTimeHigh(Config):
                         phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text
                         #phrase_transform = str(TextBlob(phrase).correct().translate(from_lang='en', to=translate_to_languagecode))
                     elif do_paraphrase:
-                        phrase_transform = get_paraphrase(phrase, nlp)    
-                    lines.append(phrase_transform.replace("__", "").replace("_", " ").capitalize())
+                        phrase_transform = get_paraphrase(phrase, nlp)
+                    # replace untranslated words
+                    phrase_words = phrase_transform.split(" ")
+                    for word_index in range(len(phrase_words)):
+                        is_untranslated_word = index_find(phrase_words[word_index], "__", "__")
+                        if is_untranslated_word:
+                            phrase_words[word_index] = phrase_words[word_index].replace("__", "").replace("_", " ").title()
+                    phrase_transform = "".join(phrase_words).capitalize()
+                    lines.append(phrase_transform)
         #
         message_str = "\n".join(lines)
         soup = BeautifulSoup(message_str, 'html.parser')
