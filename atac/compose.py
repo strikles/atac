@@ -412,14 +412,17 @@ class AllTimeHigh(Config):
                 #phrase_transform = remove_accent_chars_join(phrase_transform)
                 if bool(BeautifulSoup(phrase_transform, "html.parser").find()):
                     lines.append(phrase_transform)
+                    continue
                 elif not phrase_transform:
                     lines.append('\n')
-                else:
-                    if translate_to_languagecode:
-                        phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text.capitalize()
-                        #phrase_transform = str(TextBlob(phrase).correct().translate(from_lang='en', to=translate_to_languagecode))
-                    elif do_paraphrase:
-                        phrase_transform = get_paraphrase(phrase, nlp).capitalize()
+                    continue
+                # translation transform
+                if translate_to_languagecode:
+                    phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text.capitalize()
+                    #phrase_transform = str(TextBlob(phrase).correct().translate(from_lang='en', to=translate_to_languagecode))
+                # paraphrasing transform
+                elif do_paraphrase:
+                    phrase_transform = get_paraphrase(phrase, nlp).capitalize()
                 # replace untranslated words
                 phrase_words = phrase_transform.split(" ")
                 for word_index in range(len(phrase_words)):
