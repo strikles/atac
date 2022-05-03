@@ -25,6 +25,7 @@ phonenumbers
 Pillow
 py3-validate-email
 pyaxmlparser
+pyspellchecker
 python-frontmatter
 python-gnupg
 python-magic-bin; platform_system == 'Windows'
