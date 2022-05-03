@@ -410,10 +410,7 @@ class AllTimeHigh(Config):
             for phrase in message_content:
                 phrase_transform = phrase.lower()
                 #phrase_transform = remove_accent_chars_join(phrase_transform)
-                if bool(BeautifulSoup(phrase_transform, "html.parser").find()):
-                    lines.append(phrase_transform)
-                    continue
-                elif not phrase_transform:
+                if not phrase_transform:
                     lines.append('\n')
                     continue
                 # translation transform
@@ -424,6 +421,7 @@ class AllTimeHigh(Config):
                 elif do_paraphrase:
                     phrase_transform = get_paraphrase(phrase, nlp).capitalize()
                 # replace untranslated words
+                """
                 phrase_words = phrase_transform.split(" ")
                 for word_index in range(len(phrase_words)):
                     is_untranslated_word = phrase_words[word_index].startswith("__") and phrase_words[word_index].endswith("__") 
@@ -431,6 +429,7 @@ class AllTimeHigh(Config):
                         untranslated_word = partition_find(phrase_words[word_index], "__", "__").replace("_", " ").title()
                         phrase_words[word_index] = "__" + untranslated_word + "__"
                 phrase_transform = " ".join(phrase_words).capitalize()
+                """
                 lines.append(phrase_transform)
         #
         message_str = "\n".join(lines)

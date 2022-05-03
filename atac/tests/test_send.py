@@ -22,9 +22,9 @@ recipients = [
 target_languages = ['el', 'fr', 'it', 'ja', 'pt', 'uk', 'nl', 'la']
 #
 subjects = [
-        "jasper_kums and colégio_militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night, abusing biophotonics to direct violence against parents, women and children",
-        "abusing biophotonics for cyber torture in order to force the subject under torture to complete tasks to bargain for relief",
-        "colégio_militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless, force them into poverty, gambling life in blue_whale suicide games where they take turns abusing bio photonics to exact vibrotactile cyber torture, force psychosis and simulate Van_Gogh syndrome in a style reminiscent of the murder of Matthew Puncher"
+        "<span translate="no">jasper kums</span> and <span translate="no">colégio militar</span> alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night, abusing <span translate="no">biophotonics</span> to direct violence against parents, women and children",
+        "abusing <span translate="no">biophotonics</span> for <span translate="no">cybertorture</span> in order to force the victims to complete tasks to bargain for relief",
+        "<span translate="no">colégio_militar</span> alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless, force them into poverty, gambling life in <span translate="no">blue whale</span> suicide games where they take turns abusing <span translate="no">biophotonics</span> to execute vibrotactile <span translate="no">cybertorture</span>, force psychosis and simulate <span translate="no">Van Gogh</span> syndrome in a style reminiscent of the murder of Matthew Puncher"
 ]
 
 #@pytest.mark.skip(reason="we fight spam :)")
@@ -58,7 +58,7 @@ def test_send_email_with_translation():
     assert(status == 0) is True
 
 
-#@pytest.mark.skip(reason="we fight spam :)")
+@pytest.mark.skip(reason="we fight spam :)")
 def test_send_email_with_paraphrase():
     """
     """
@@ -73,7 +73,7 @@ def test_send_email_with_paraphrase():
     assert(status == 0) is True
 
 
-#@pytest.mark.skip(reason="we fight spam :)")
+@pytest.mark.skip(reason="we fight spam :)")
 def test_send_emails_with_paraphrasing_and_translation():
     """
     """
