@@ -23,7 +23,7 @@ target_languages = ['el', 'fr', 'it', 'ja', 'pt', 'uk', 'nl', 'la']
 #
 subjects = [
         "<span translate='no'>jasper kums</span> and <span translate='no'>colégio militar</span> alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night, abusing <span translate='no'>biophotonics</span> to direct violence against parents, women and children",
-        "abusing <span translate='no'>biophotonics</span> for <span translate='no'>cybertorture</span> in order to force the victims to complete tasks to bargain for relief",
+        "abuse of <span translate='no'>biophotonics</span> to execute <span translate='no'>cybertorture</span> and force victims to complete tasks as a way to bargain for relief",
         "<span translate='no'>colégio_militar</span> alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless, force them into poverty, gambling life in <span translate='no'>blue whale</span> suicide games where they take turns abusing <span translate='no'>biophotonics</span> to execute vibrotactile <span translate='no'>cybertorture</span>, force psychosis and simulate <span translate='no'>Van Gogh</span> syndrome in a style reminiscent of the murder of <span translate='no'>Matthew Puncher</span>"
 ]
 

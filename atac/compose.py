@@ -436,7 +436,7 @@ class AllTimeHigh(Config):
             is_bad_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
             spellchecker_matches = [rule for rule in spellchecker_matches if not is_bad_rule(rule)]
             phrase_transform = language_tool_python.utils.correct(phrase_transform, spellchecker_matches)
-            phrase_transform = phrase_transform.capitalize()
+            phrase_transform = phrase_transform.capitalize() + "\n"
             lines.append(phrase_transform)
         #
         message_str = "".join(lines)
