@@ -384,7 +384,7 @@ class AllTimeHigh(Config):
         #
         nlp = None
         translator = None
-        spellchecker = language_tool_python.LanguageToolPublicAPI(translate_to_languagecode if not translate_to_languagecode else 'en')
+        spellchecker = language_tool_python.LanguageToolPublicAPI(translate_to_languagecode if translate_to_languagecode else 'en')
         subject_transform = subject.lower()
         if translate_to_languagecode:
             translator = Translator()
@@ -412,7 +412,8 @@ class AllTimeHigh(Config):
         if do_paraphrase:
             lines = []
             print("compose: "+json.dumps(message_content, indent=4))
-            for phrase in message_content:  
+            for phrase in message_content:
+                phrase_transform = phrase
                 if phrase_transform.find("img src"):
                     lines.append(phrase_transform)
                     continue
@@ -420,12 +421,11 @@ class AllTimeHigh(Config):
                     lines.append("")
                     continue
                 # translation transform
-                phrase_transform = phrase.lower()
                 if translate_to_languagecode:
-                    phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text.capitalize()
+                    phrase_transform = translator.translate(text=phrase_transform.lower(), dest=translate_to_languagecode).text
                 # paraphrasing transform
                 elif do_paraphrase: 
-                    phrase_transform = get_paraphrase(phrase_transform, nlp).capitalize()
+                    phrase_transform = get_paraphrase(phrase_transform.lower(), nlp)
                 # remove html
                 phrase_transform = BeautifulSoup(phrase_transform, features="html.parser").get_text()
                 # check spelling
