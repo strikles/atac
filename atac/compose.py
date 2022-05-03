@@ -387,8 +387,8 @@ class AllTimeHigh(Config):
         spellchecker = language_tool_python.LanguageToolPublicAPI(translate_to_languagecode if translate_to_languagecode else 'en')
         subject_transform = subject.lower()
         if translate_to_languagecode:
-            translator = Translator()
-            subject_transform = translator.translate(text=subject_transform, dest=translate_to_languagecode).text
+            subject_translator = Translator()
+            subject_transform = subject_translator.translate(text=subject_transform, dest=translate_to_languagecode).text
         elif do_paraphrase:
             nlp = spacy.load('en_core_web_md')
             subject_transform = get_paraphrase(subject_transform, nlp)
@@ -422,7 +422,8 @@ class AllTimeHigh(Config):
                     continue
                 # translation transform
                 if translate_to_languagecode:
-                    phrase_transform = translator.translate(text=phrase_transform.lower(), dest=translate_to_languagecode).text
+                    phrase_translator = Translator()
+                    phrase_transform = phrase_translator.translate(text=phrase_transform.lower(), dest=translate_to_languagecode).text
                 # paraphrasing transform
                 elif do_paraphrase: 
                     phrase_transform = get_paraphrase(phrase_transform.lower(), nlp)
@@ -433,11 +434,12 @@ class AllTimeHigh(Config):
                 is_bad_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
                 spellchecker_matches = [rule for rule in spellchecker_matches if not is_bad_rule(rule)]
                 phrase_transform = language_tool_python.utils.correct(phrase_transform, spellchecker_matches)
-                lines.append(phrase_transform.capitalize())
+                phrase_transform = phrase_transform.capitalize()
+                lines.append(phrase_transform)
         #
         message_str = "\n".join(lines)
-        soup = BeautifulSoup(message_str, 'html.parser')
-        text = soup.get_text()
+        message_soup = BeautifulSoup(message_str, 'html.parser')
+        text = message_soup.get_text()
         #
         html = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
         #html = "<p align='center' width='100%'><img height='300' src='cid:header'></p><p align='center' width='100%'><img width='100%' src='cid:content'></p><p align='center' width='100%'><img height='300' src='cid:signature'></p>"
