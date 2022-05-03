@@ -425,8 +425,8 @@ class AllTimeHigh(Config):
                 for word_index in range(len(phrase_words)):
                     is_untranslated_word = phrase_words[word_index].startswith("__") and phrase_words[word_index].endswith("__") 
                     if is_untranslated_word:
-                        untranslated_word = partition_find(phrase_words[word_index], "__", "__")
-                        phrase_words[word_index] = "__"+untranslated_word.replace("_", " ").title()+"__"
+                        untranslated_word = partition_find(phrase_words[word_index], "__", "__").replace("_", " ").title()
+                        phrase_words[word_index] = "__" + untranslated_word + "__"
                 phrase_transform = " ".join(phrase_words).capitalize()
                 lines.append(phrase_transform)
         #
