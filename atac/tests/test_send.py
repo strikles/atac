@@ -34,21 +34,21 @@ def test_send_email():
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     auth, _ = katie.get_email_config()
     #
-    subject = "neurorights and blue whale suicide games: Jasper Kums and colégio militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night abusing biophotonics to direct violence against parents, women and children"
+    subject = "neurorights and blue_whale suicide games: jasper_kums and colégio_militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night, abusing biophotonics to direct violence against parents, women and children"
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/devil.md")), "message")
     print(os.path.abspath(os.getcwd()))
     mailing_list = "; ".join(recipients)
     status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=False, translate_to_languagecode=None)
     assert(status == 0) is True
     #
-    subject = "neurorights and blue whale suicide games: abusing biophotonics for cybertorture in order to force the SUT to complete tasks to bargain for relief"
-    message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cybertorture.md")), "message")
+    subject = "neurorights and blue_whale suicide games: abusing biophotonics for cyber torture in order to force the subject under torture to complete tasks to bargain for relief"
+    message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cyber torture.md")), "message")
     print(os.path.abspath(os.getcwd()))
     mailing_list = "; ".join(recipients)
     status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=False, translate_to_languagecode=None)
     assert(status == 0) is True
     #
-    subject = "neurorights and blue whale suicide games: colégio militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless and force them into poverty, gambling lifes in blue whale suicide games where they take turns abusing biophotonics to exact vibrotactile cybertorture, force psychosis and simulate Van Gogh syndrome in a style reminiscent of Matthew Puncher's murder"
+    subject = "neurorights and blue_whale suicide games: colégio_militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless, force them into poverty, gambling life in blue_whale suicide games where they take turns abusing bio photonics to exact vibrotactile cyber torture, force psychosis and simulate Van_Gogh syndrome in a style reminiscent of the murder of Matthew Puncher"
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/neurorights.md")), "message")
     print(os.path.abspath(os.getcwd()))
     mailing_list = "; ".join(recipients)
@@ -81,19 +81,19 @@ def test_send_email_with_translation():
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     auth, _ = katie.get_email_config()
     #
-    subject = "neurorights and blue whale suicide games: Jasper Kums and colégio militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night abusing biophotonics to direct violence against parents, women and children"
+    subject = "neurorights and blue_whale suicide games: Jasper Kums and colégio_militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night abusing biophotonics to direct violence against parents, women and children"
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/devil.md")), "message")
     mailing_list = random.sample(recipients, 1).pop()
     status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=False, translate_to_languagecode="pt")
     assert(status == 0) is True
     #
-    subject = "neurorights and blue whale suicide games: abusing biophotonics for cybertorture in order to force the SUT to complete tasks to bargain for relief"
-    message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cybertorture.md")), "message")
+    subject = "neurorights and blue_whale suicide games: abusing biophotonics for cyber torture in order to force the subject under torture to complete tasks to bargain for relief"
+    message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cyber torture.md")), "message")
     mailing_list = random.sample(recipients, 1).pop()
     status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=False, translate_to_languagecode="pt")
     assert(status == 0) is True
     #
-    subject = "neurorights and blue whale suicide games: colégio militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless and force them into poverty, gambling lifes in blue whale suicide games where they take turns abusing biophotonics to exact vibrotactile cybertorture, force psychosis and simulate Van Gogh syndrome in a style reminiscent of Matthew Puncher's murder"
+    subject = "neurorights and blue_whale suicide games: colégio_militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless, force them into poverty, gambling life in blue_whale suicide games where they take turns abusing bio photonics to exact vibrotactile cyber torture, force psychosis and simulate Van_Gogh syndrome in a style reminiscent of the murder of Matthew Puncher"
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/neurorights.md")), "message")
     mailing_list = random.sample(recipients, 1).pop()
     status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=False, translate_to_languagecode="pt")
@@ -125,19 +125,19 @@ def test_send_email_with_paraphrase():
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
     auth, _ = katie.get_email_config()
     #
-    subject = "neurorights and blue whale suicide games: Jasper Kums and colégio militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night abusing biophotonics to direct violence against parents, women and children"
+    subject = "neurorights and blue_whale suicide games: Jasper Kums and colégio_militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night abusing biophotonics to direct violence against parents, women and children"
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/devil.md")), "message")
     mailing_list = random.sample(recipients, 1).pop()
     status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=True, translate_to_languagecode=None)
     assert(status == 0) is True
     #
-    subject = "neurorights and blue whale suicide games: abusing biophotonics for cybertorture in order to force the SUT to complete tasks to bargain for relief"
-    message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cybertorture.md")), "message")
+    subject = "neurorights and blue_whale suicide games: abusing biophotonics for cyber torture in order to force the subject under torture to complete tasks to bargain for relief"
+    message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/cyber torture.md")), "message")
     mailing_list = random.sample(recipients, 1).pop()
     status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=True, translate_to_languagecode=None)
     assert(status == 0) is True
     #
-    subject = "neurorights and blue whale suicide games: colégio militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless and force them into poverty, gambling lifes in blue whale suicide games where they take turns abusing biophotonics to exact vibrotactile cybertorture, force psychosis and simulate Van Gogh syndrome in a style reminiscent of Matthew Puncher's murder"
+    subject = "neurorights and blue_whale suicide games: colégio_militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless, force them into poverty, gambling life in blue_whale suicide games where they take turns abusing bio photonics to exact vibrotactile cyber torture, force psychosis and simulate Van_Gogh syndrome in a style reminiscent of the murder of Matthew Puncher"
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/neurorights.md")), "message")
     mailing_list = random.sample(recipients, 1).pop()
     status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=True, translate_to_languagecode=None)
@@ -157,16 +157,16 @@ def test_send_emails_with_paraphrasing_and_translation():
     for lang_code in target_languages:
         #
         message_file_path = os.path.join(os.getcwd(), "data/messages/email/devil.md")
-        subject = "neurorights and blue whale suicide games: Jasper Kums and colégio militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night abusing biophotonics to direct violence against parents, women and children"
+        subject = "neurorights and blue_whale suicide games: Jasper Kums and colégio_militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night abusing biophotonics to direct violence against parents, women and children"
         status = katie.send_emails(email_files_path, message_file_path, subject, True, lang_code)
         assert(status == 0) is True
         #
-        message_file_path = os.path.join(os.getcwd(), "data/messages/email/cybertorture.md")
-        subject = "neurorights and blue whale suicide games: abusing biophotonics for cybertorture in order to force the SUT to complete tasks to bargain for relief"
+        message_file_path = os.path.join(os.getcwd(), "data/messages/email/cyber torture.md")
+        subject = "neurorights and blue_whale suicide games: abusing biophotonics for cyber torture in order to force the subject under torture to complete tasks to bargain for relief"
         status = katie.send_emails(email_files_path, message_file_path, subject, True, lang_code)
         assert(status == 0) is True
         #
         message_file_path = os.path.join(os.getcwd(), "data/messages/email/neurorights.md")
-        subject = "neurorights and blue whale suicide games: colégio militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless and force them into poverty, gambling lifes in blue whale suicide games where they take turns abusing biophotonics to exact vibrotactile cybertorture, force psychosis and simulate Van Gogh syndrome in a style reminiscent of Matthew Puncher's murder"
+        subject = "neurorights and blue_whale suicide games: colégio_militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless, force them into poverty, gambling life in blue_whale suicide games where they take turns abusing bio photonics to exact vibrotactile cyber torture, force psychosis and simulate Van_Gogh syndrome in a style reminiscent of the murder of Matthew Puncher"
         status = katie.send_emails(email_files_path, message_file_path, subject, True, lang_code)
         assert(status == 0) is True
