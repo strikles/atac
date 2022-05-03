@@ -408,17 +408,19 @@ class AllTimeHigh(Config):
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         lines = []
-        print("language: " + json.dumps(translate_to_languagecode, indent=4))
         for phrase in message_content:
             phrase_transform = phrase
             if phrase_transform.find("<img src="):
                 lines.append(phrase_transform)
+                print("Found image")
                 continue
             if not phrase_transform:
+                print("Found empty line")
                 lines.append("\n")
                 continue
             # translation transform
-            if translate_to_languagecode:
+            print("language: " + json.dumps(translate_to_languagecode, indent=4))
+            if translate_to_languagecode is not None:
                 print("translating phrase...")
                 phrase_translator = Translator()
                 print("before translation: " + phrase_transform)
