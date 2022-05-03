@@ -296,28 +296,22 @@ class FromRuXiaWithLove(AllTimeHigh):
         lines : list
             The contacts list
         """
-
         auth, content = self.get_email_config()
-        #
         recipient_emails = list(map(trace(lambda x: x.split(',')[1:]), lines))
         random.shuffle(recipient_emails)
-        num_emails_per_bucket = 100
-        num_buckets = 1
-        if len(recipient_emails) > num_emails_per_bucket:
-            num_buckets = math.ceil(len(recipient_emails) // num_emails_per_bucket)
-        batch_emails = [[] for i in range(num_buckets)]
-        #
+        max_emails_per_bucket = 1000
+        batch_emails = []
         with tqdm(total=len(recipient_emails)) as batch_progress:
-            counter = 0
-            csv_reader = csv.reader(lines)
-            header =  next(csv_reader)
-            for _, recipient_email in csv_reader:
-                current_bucket = counter % num_buckets
-                batch_emails[current_bucket].append(recipient_email)
-                counter = counter + 1
+            bucket_email_index = 0
+            for email in recipient_emails:
+                if bucket_email_index == 0:
+                    batch_emails.append([])
+                batch_emails[len(batch_emails)-1].append(email[0])
+                bucket_email_index = (bucket_email_index+1) % max_emails_per_bucket
                 batch_progress.update(1)
         #
         return batch_emails
+
 
     def send_emails_in_buckets(self, email_batches, message_file_path, subject, do_paraphrase, translate_to_languagecode):
         """ Send emails in buckets
@@ -337,12 +331,12 @@ class FromRuXiaWithLove(AllTimeHigh):
         auth, _ = self.get_email_config()
         encrypted_emails = []
         message = FromRuXiaWithLove.get_file_content(message_file_path, file_type='message')
-        #
         for batch in email_batches:
             # get emails with gpg key in their own list
             with tqdm(total=len(batch)) as filter_progress:
                 for receiver_email in batch:
-                    #
+                    #print(json.dumps(batch, indent=4))
+                    mailing_list = '; '.join(batch)
                     is_valid_email = validators.email(receiver_email)
                     if is_valid_email:
                         gpg_key_id = self.find_gpg_keyid(receiver_email)
@@ -351,14 +345,6 @@ class FromRuXiaWithLove(AllTimeHigh):
                             encrypted_emails.append([receiver_email, gpg_key_id])
                     #
                     filter_progress.update(1)
-            #
-            mailing_list = '; '.join(batch)
-            '''
-            mime_message = self.compose_email(auth['sender'],
-                                            mailing_list,
-                                            message,
-                                            subject)
-            '''
             #
             print("sending email…")
             self.send_email(mailing_list, message, subject, do_paraphrase, translate_to_languagecode)
@@ -396,7 +382,6 @@ class FromRuXiaWithLove(AllTimeHigh):
         for email_file_path in email_files:
             contact_file = self.get_file_content(email_file_path)
             receiver_emails = self.store_emails_in_buckets(contact_file)
-
             self.send_emails_in_buckets(receiver_emails, message_file_path, subject, do_paraphrase, translate_to_languagecode)
         #
         self.update_email_config()

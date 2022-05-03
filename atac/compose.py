@@ -416,7 +416,7 @@ class AllTimeHigh(Config):
                 continue
             if not phrase_transform:
                 print("Found empty line")
-                lines.append("\n")
+                lines.append("")
                 continue
             # translation transform
             print("language: " + json.dumps(translate_to_languagecode, indent=4))
@@ -436,10 +436,10 @@ class AllTimeHigh(Config):
             is_bad_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
             spellchecker_matches = [rule for rule in spellchecker_matches if not is_bad_rule(rule)]
             phrase_transform = language_tool_python.utils.correct(phrase_transform, spellchecker_matches)
-            phrase_transform = phrase_transform.capitalize() + "\n"
+            phrase_transform = phrase_transform.capitalize()
             lines.append(phrase_transform)
         #
-        message_str = "".join(lines)
+        message_str = "\n".join(lines)
         print("message: "+json.dumps(message_str, indent=4))
         message_soup = BeautifulSoup(message_str, 'html.parser')
         text = message_soup.get_text()
