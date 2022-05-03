@@ -388,7 +388,7 @@ class AllTimeHigh(Config):
             nlp = spacy.load('en_core_web_md')
             subject_transform = get_paraphrase(subject_transform, nlp)
         #
-        message["Subject"] = subject_transform
+        message["Subject"] = subject_transform.replace("_", " ")
         message["From"] = sender_email
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
@@ -413,7 +413,7 @@ class AllTimeHigh(Config):
                         #phrase_transform = str(TextBlob(phrase).correct().translate(from_lang='en', to=translate_to_languagecode))
                     elif do_paraphrase:
                         phrase_transform = get_paraphrase(phrase, nlp)    
-                    lines.append(phrase_transform)
+                    lines.append(phrase_transform.replace("_", " "))
         #
         message_str = "\n".join(lines)
         soup = BeautifulSoup(message_str, 'html.parser')
