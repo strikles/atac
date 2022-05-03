@@ -383,7 +383,6 @@ class AllTimeHigh(Config):
         message.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         nlp = None
-        translator = None
         spellchecker = language_tool_python.LanguageToolPublicAPI(translate_to_languagecode if translate_to_languagecode else 'en')
         subject_transform = subject.lower()
         if translate_to_languagecode:
@@ -423,7 +422,9 @@ class AllTimeHigh(Config):
                 # translation transform
                 if translate_to_languagecode:
                     phrase_translator = Translator()
+                    print("before phrase translation: " + phrase_transform)
                     phrase_transform = phrase_translator.translate(text=phrase_transform.lower(), dest=translate_to_languagecode).text
+                    print("after phrase translation: " + phrase_transform)
                 # paraphrasing transform
                 elif do_paraphrase: 
                     phrase_transform = get_paraphrase(phrase_transform.lower(), nlp)
@@ -443,6 +444,7 @@ class AllTimeHigh(Config):
         #
         html = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
         #html = "<p align='center' width='100%'><img height='300' src='cid:header'></p><p align='center' width='100%'><img width='100%' src='cid:content'></p><p align='center' width='100%'><img height='300' src='cid:signature'></p>"
+        #
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
         part2 = MIMENonMultipart('text', 'html', charset='utf-8')
