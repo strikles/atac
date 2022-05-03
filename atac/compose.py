@@ -385,16 +385,15 @@ class AllTimeHigh(Config):
         nlp = None
         translator = None
         spellchecker = language_tool_python.LanguageToolPublicAPI(translate_to_languagecode if not translate_to_languagecode else 'en')
-        #
         subject_transform = subject.lower()
         if translate_to_languagecode:
             translator = Translator()
-            subject_translation = translator.translate(text=subject_transform, dest=translate_to_languagecode).text
-            subject_transform = BeautifulSoup(subject_translation, features="html.parser").get_text()
+            subject_transform = translator.translate(text=subject_transform, dest=translate_to_languagecode).text
         elif do_paraphrase:
             nlp = spacy.load('en_core_web_md')
-            subject_transform = BeautifulSoup(subject_transform, features="html.parser").get_text()
             subject_transform = get_paraphrase(subject_transform, nlp)
+        #
+        subject_transform = BeautifulSoup(subject_transfom, features="html.parser").get_text()
         # check spelling
         spellchecker_subject_matches = spellchecker.check(subject_transform)
         is_bad_subject_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
