@@ -408,14 +408,14 @@ class AllTimeHigh(Config):
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         lines = []
-        print("compose: "+json.dumps(message_content, indent=4))
+        print("language: " + translate_to_languagecode)
         for phrase in message_content:
             phrase_transform = phrase
             if phrase_transform.find("img src"):
                 lines.append(phrase_transform)
                 continue
             if not phrase_transform:
-                lines.append("")
+                lines.append("\n")
                 continue
             # translation transform
             if translate_to_languagecode:
@@ -437,7 +437,8 @@ class AllTimeHigh(Config):
             phrase_transform = phrase_transform.capitalize()
             lines.append(phrase_transform)
         #
-        message_str = "\n".join(lines)
+        message_str = "".join(lines)
+        print("message: "+json.dumps(message_str, indent=4))
         message_soup = BeautifulSoup(message_str, 'html.parser')
         text = message_soup.get_text()
         #
