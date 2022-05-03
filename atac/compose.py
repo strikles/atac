@@ -338,18 +338,11 @@ class AllTimeHigh(Config):
 
 
     @staticmethod
-    def get_datetime():
+    def get_subject_prefix():
         """ Return datetime string
 
         """
-        # datetime object containing current date and time
-        now = datetime.now()
-        # print("now =", now)
-        # dd/mm/YY H:M:S
-        dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-        print("date and time =", dt_string)
-        #
-        return dt_string
+        return "{0} - neuro rights and blue whale suicide games: ".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 
 
     @staticmethod
@@ -388,7 +381,7 @@ class AllTimeHigh(Config):
             nlp = spacy.load('en_core_web_md')
             subject_transform = get_paraphrase(subject_transform, nlp)
         #
-        message["Subject"] = subject_transform.replace("_", " ")
+        message["Subject"] = AllTimeHigh.get_subject_prefix() + subject_transform.replace("_", " ")
         message["From"] = sender_email
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message

@@ -1,5 +1,6 @@
 import argparse
 import os
+import sys
 from threading import Thread
 import atac
 
@@ -94,9 +95,11 @@ def email(arguments):
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
     #
+    subject = None
     target = "smtp"
     email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
-    subject = None
+    #md = 'data/messages/email/' + content['markdown']
+    #message_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md))
     #
     if arguments.subject is not None:
         subject = getattr(arguments, "subject")
@@ -110,15 +113,12 @@ def email(arguments):
     _, content = katie.get_email_config()
     #
     if not subject:
-        subject = content['subject']
+        sys.exit(1)
     #
     if not message_file_path:
-        md = 'data/messages/email/' + content['markdown']
-        message_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md))
+        sys.exit(1)
     #
-    if "smtp" in target:
-        katie.send_emails(email_files_path, message_file_path, subject, False, None)
-        print(subject)
+    katie.send_emails(email_files_path, message_file_path, subject, False, None)
 
 
 # sub-command functions
