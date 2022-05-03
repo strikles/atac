@@ -393,7 +393,7 @@ class AllTimeHigh(Config):
             nlp = spacy.load('en_core_web_md')
             subject_transform = get_paraphrase(subject_transform, nlp)
         #
-        subject_transform = BeautifulSoup(subject_transfom, features="html.parser").get_text()
+        subject_transform = BeautifulSoup(subject_transform, features="html.parser").get_text()
         # check spelling
         spellchecker_subject_matches = spellchecker.check(subject_transform)
         is_bad_subject_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
