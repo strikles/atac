@@ -395,7 +395,7 @@ class AllTimeHigh(Config):
             nlp = spacy.load('en_core_web_md')
             subject_transform = get_paraphrase(subject_transform, nlp)
         #
-        message["Subject"] = AllTimeHigh.get_subject_prefix() + subject_transform.replace("__", "").replace("_", " ").title()
+        message["Subject"] = AllTimeHigh.get_subject_prefix() + subject_transform.replace("__", "").replace("_", " ").capitalize()
         message["From"] = sender_email
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
@@ -416,19 +416,19 @@ class AllTimeHigh(Config):
                     lines.append('\n')
                 else:
                     if translate_to_languagecode:
-                        phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text
+                        phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text.capitalize()
                         #phrase_transform = str(TextBlob(phrase).correct().translate(from_lang='en', to=translate_to_languagecode))
                     elif do_paraphrase:
-                        phrase_transform = get_paraphrase(phrase, nlp)
-                    # replace untranslated words
-                    phrase_words = phrase_transform.split(" ")
-                    for word_index in range(len(phrase_words)):
-                        is_untranslated_word = phrase_words[word_index].startswith("__") and phrase_words[word_index].endswith("__") 
-                        if is_untranslated_word:
-                            untranslated_word = index_find(phrase_words[word_index], "__", "__")
-                            phrase_words[word_index] = untranslated_word.replace("_", " ").title()
-                    phrase_transform = " ".join(phrase_words).capitalize()
-                    lines.append(phrase_transform)
+                        phrase_transform = get_paraphrase(phrase, nlp).capitalize()
+                # replace untranslated words
+                phrase_words = phrase_transform.split(" ")
+                for word_index in range(len(phrase_words)):
+                    is_untranslated_word = phrase_words[word_index].startswith("__") and phrase_words[word_index].endswith("__") 
+                    if is_untranslated_word:
+                        untranslated_word = index_find(phrase_words[word_index], "__", "__")
+                        phrase_words[word_index] = "__"+untranslated_word.replace("_", " ").title()+"__"
+                phrase_transform = " ".join(phrase_words).capitalize()
+                lines.append(phrase_transform)
         #
         message_str = "\n".join(lines)
         soup = BeautifulSoup(message_str, 'html.parser')
