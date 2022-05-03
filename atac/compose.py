@@ -417,17 +417,17 @@ class AllTimeHigh(Config):
                     lines.append(phrase_transform)
                     continue
                 if not phrase_transform:
-                    lines.append('\n')
+                    lines.append("")
                     continue
                 # translation transform
                 phrase_transform = phrase.lower()
                 if translate_to_languagecode:
-                    phrase_translation = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text.capitalize()
-                    phrase_transform = BeautifulSoup(phrase_translation, features="html.parser").get_text()
+                    phrase_transform = translator.translate(text=phrase_transform, dest=translate_to_languagecode).text.capitalize()
                 # paraphrasing transform
                 elif do_paraphrase: 
-                    phrase_transform = BeautifulSoup(phrase_transform, features="html.parser").get_text()
                     phrase_transform = get_paraphrase(phrase_transform, nlp).capitalize()
+                # remove html
+                phrase_transform = BeautifulSoup(phrase_transform, features="html.parser").get_text()
                 # check spelling
                 spellchecker_matches = spellchecker.check(phrase_transform)
                 is_bad_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
