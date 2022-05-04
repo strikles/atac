@@ -296,9 +296,9 @@ class FromRuXiaWithLove(AllTimeHigh):
         lines : list
             The contacts list
         """
+        max_emails_per_bucket = 1000
         auth, content = self.get_email_config()
         recipient_emails = list(map(trace(lambda x: x.split(',')[1]), lines))
-        max_emails_per_bucket = 1000
         batch_emails = [[e for e in recipient_emails[start : start + min(len(recipient_emails[start:]), max_emails_per_bucket)] if validators.email(e)] for start in range(0, len(recipient_emails), max_emails_per_bucket)]
         #
         return batch_emails
