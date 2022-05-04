@@ -9,7 +9,7 @@ encrypted_config = False
 config_file = 'auth.json'
 key_file = None
 
-
+#@pytest.mark.skip(reason=" :)")
 def test_markov():
     """
     Generates encryption key from password + salts
@@ -24,7 +24,6 @@ def test_markov():
         The number of legs the animal (default is 4)
     """
 
-    """
     response = None
     try:
         url = "https://raw.githubusercontent.com/jsvine/markovify/master/test/texts/sherlock.txt"
@@ -39,4 +38,3 @@ def test_markov():
     #
     two_back = atac.AllTimeHigh(encrypted_config, config_file, key_file)
     assert(len(two_back.generate_markov_content(response.text)) < 200) is True
-    """

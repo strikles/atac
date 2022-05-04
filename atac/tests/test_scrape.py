@@ -2,12 +2,11 @@ import os
 import sys
 import atac
 
-
 encrypted_config = False
 config_file = 'auth.json'
 key_file = None
 
-
+#@pytest.mark.skip(reason="we fight spam :)")
 def test_invalid_url():
     """
     Generates encryption key from password + salts
@@ -29,7 +28,7 @@ def test_invalid_url():
     url3 = "strikles@gmail.com"
     assert(mango.invalid_url(url3)) is False
 
-
+#@pytest.mark.skip(reason="we fight spam :)")
 def test_extract_emails():
     """
     Generates encryption key from password + salts
@@ -51,7 +50,7 @@ def test_extract_emails():
     expected.update({'you@yahoo.com'})
     assert(new_emails == expected) is True
 
-
+#@pytest.mark.skip(reason="we fight spam :)")
 def test_extract_phones():
     """
     Generates encryption key from password + salts
@@ -73,7 +72,7 @@ def test_extract_phones():
     expected.update({'+31 45678541'})
     assert(new_phones == expected) is True
 
-
+#@pytest.mark.skip(reason="we fight spam :)")
 def test_process_page():
     """
     Generates encryption key from password + salts
