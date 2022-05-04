@@ -266,6 +266,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
                 status = 1
         #
+        time.sleep(5)
         return status
 
 
