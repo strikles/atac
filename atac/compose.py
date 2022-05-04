@@ -348,7 +348,7 @@ class AllTimeHigh(Config):
                     output = output+s[ii]
             ii += 1
         #
-        return output"
+        return output
 
 
     @staticmethod
