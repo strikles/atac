@@ -323,28 +323,17 @@ class FromRuXiaWithLove(AllTimeHigh):
         auth, _ = self.get_email_config()
         encrypted_emails = []
         message = FromRuXiaWithLove.get_file_content(message_file_path, file_type='message')
-        for batch in email_batches:
-            # get emails with gpg key in their own list
-            with tqdm(total=len(batch)) as filter_progress:
-                for receiver_email in batch:
-                    #print(json.dumps(batch, indent=4))
-                    mailing_list = '; '.join(batch)
-                    is_valid_email = validators.email(receiver_email)
-                    if is_valid_email:
-                        gpg_key_id = self.find_gpg_keyid(receiver_email)
-                        if gpg_key_id:
-                            batch.remove(receiver_email)
-                            encrypted_emails.append([receiver_email, gpg_key_id])
-                    #
-                    filter_progress.update(1)
-            #
-            print("sending email…")
-            self.send_email(mailing_list, message, subject, do_paraphrase, translate_to_languagecode)
-            time.sleep(10)
-        #
-        with tqdm(total=len(encrypted_emails)) as encrypted_progress:
-            for email_recipient, gpg_key_id in encrypted_emails:
-                print("Encrypted email recipient" + email_recipient)
+        with tqdm(total=len(email_batches)) as filter_progress:
+            for batch in email_batches:
+                # get emails with gpg key in their own list
+                encrypted_emails = list(filter(lambda x: self.find_gpg_keyid(x), batch))
+                map(trace(lambda e, k: self.send_email(e, message, subject, do_paraphrase, translate_to_languagecode)), encrypted_emails)
+                # TODO - send encrypted emails
+                plain_emails = list(filter(trace(lambda y: y not in encrypted_emails), batch))
+                if plain_emails:
+                    print("sending email…")
+                    self.send_email(";".join(plain_emails), message, subject, do_paraphrase, translate_to_languagecode)
+                filter_progress.update(1)
 
 
     def send_emails(self, email_files_path, message_file_path, subject, do_paraphrase, translate_to_languagecode):
@@ -369,13 +358,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             status = 1
             return status
         #
-        print(email_files_path)
-        email_files = self.get_contact_files(email_files_path)
-        for email_file_path in email_files:
-            contact_file = self.get_file_content(email_file_path)
-            receiver_emails = self.store_emails_in_buckets(contact_file)
-            self.send_emails_in_buckets(receiver_emails, message_file_path, subject, do_paraphrase, translate_to_languagecode)
-        #
+        map(trace(lambda efp: self.send_emails_in_buckets(self.store_emails_in_buckets(self.get_file_content(efp)), message_file_path, subject, do_paraphrase, translate_to_languagecode)), trace(self.get_contact_files(email_files_path)))
         self.update_email_config()
         #
         return status
