@@ -346,15 +346,18 @@ class FromRuXiaWithLove(AllTimeHigh):
         subject : str
             The email subject
         """
+
         status = 0
-        #
         if not os.path.isfile(message_file_path):
             print("Invalid message file path!")
             status = 1
             return status
         #
-        map(trace(lambda efp: self.send_emails_in_buckets(self.store_emails_in_buckets(self.get_file_content(efp)), message_file_path, subject, do_paraphrase, translate_to_languagecode)), trace(self.get_contact_files(email_files_path)))
-        self.update_email_config()
+        for ef in self.get_contact_files(email_files_path):
+            email_list = self.get_file_content(efp)
+            email_buckets = self.store_emails_in_buckets(email_list)
+            self.send_emails_in_buckets(email_buckets, message_file_path, subject, do_paraphrase, translate_to_languagecode)
+            self.update_email_config()
         #
         return status
 
