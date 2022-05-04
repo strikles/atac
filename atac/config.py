@@ -173,7 +173,30 @@ class Config:
     def new_config(self, config_file_path):
 
         """ Generate New Config """
-        
+
+        if "PYTEST_CURRENT_TEST" in os.environ:
+            if not os.environ.has_key('GMAIL_USER'):
+                print("GMAIL_USER is unset")
+                sys.exit(1)
+            if not os.environ.has_key('GMAIL_PASSWORD'):
+                print("GMAIL_PASSWORD is unset")
+                sys.exit(1)
+            if not os.environ.has_key('PROTONMAIL_USER'):
+                print("PROTONMAIL_USER is unset")
+                sys.exit(1)
+            if not os.environ.has_key('PROTONMAIL_PASSWORD'):
+                print("PROTONMAIL_USER is unset")
+                sys.exit(1)
+        else:
+            if not os.environ.has_key('GMAIL_USER'):
+                os.environ['GMAIL_USER'] = input("Gmail User: ")
+            if not os.environ.has_key('GMAIL_PASSWORD'):
+                os.environ['GMAIL_PASSWORD'] = stdiomask.getpass("Gmail Password: ")
+            if not os.environ.has_key('PROTONMAIL_USER'):
+                os.environ['PROTONMAIL_USER'] = input("Protonmail User: ")
+            if not os.environ.has_key('PROTONMAIL_PASSWORD'):
+                os.environ['PROTONMAIN_PASSWORD'] = stdiomask.getpass("Protonmail Password: ")
+
         self.data = {
             "compose": {},
             "email": {
