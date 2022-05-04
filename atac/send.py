@@ -297,10 +297,11 @@ class FromRuXiaWithLove(AllTimeHigh):
             The contacts list
         """
         auth, content = self.get_email_config()
-        recipient_emails = filter(trace(lambda y: validators.email(y), list(map(lambda x: x.split(',')[1:]), lines)))
+        recipient_emails = list(map(lambda x: x.split(',')[1:], lines))
         recipient_emails = [item for sublist in recipient_emails for item in sublist if sublist != []]
         max_emails_per_bucket = 1000
-        batch_emails = []
+        batch_emails = [[e for e in recipient_emails[start : start + min(len(recipient_emails[start:]), max_emails_per_bucket)] if validators.email(e)] for start in range(0, len(recipient_emails), max_emails_per_bucket)]
+        """
         with tqdm(total=len(recipient_emails)) as batch_progress:
             bucket_email_index = 0
             for email in recipient_emails:
@@ -310,6 +311,7 @@ class FromRuXiaWithLove(AllTimeHigh):
                 batch_emails[len(batch_emails)-1].append(email)
                 bucket_email_index = (bucket_email_index+1) % max_emails_per_bucket
                 batch_progress.update(1)
+        """
         #
         return batch_emails
 
