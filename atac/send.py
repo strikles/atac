@@ -298,8 +298,8 @@ class FromRuXiaWithLove(AllTimeHigh):
         """
         max_emails_per_bucket = 1000
         auth, content = self.get_email_config()
-        recipient_emails = list(map(trace(lambda x: x.split(',')[1]), lines))
-        batch_emails = [[e for e in recipient_emails[start : start + min(len(recipient_emails[start:]), max_emails_per_bucket)] if validators.email(e)] for start in range(0, len(recipient_emails), max_emails_per_bucket)]
+        recipient_emails = list(map(trace(lambda x: x.split(',')[1]), list(filter(trace(lambda y: y.find(',') and validators.email(y.split(',')[1])), lines))))
+        batch_emails = [[e for e in recipient_emails[start : start + min(len(recipient_emails[start:]), max_emails_per_bucket)]] for start in range(0, len(recipient_emails), max_emails_per_bucket)]
         #
         return batch_emails
 
