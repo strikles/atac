@@ -434,7 +434,7 @@ class AllTimeHigh(Config):
         message_str = "\n".join(lines)
         print("message: "+json.dumps(message_str, indent=4))
         message_soup = BeautifulSoup(message_str, 'lxml')
-        text = message_soup.get_text()
+        text = message_soup.get_text("\n", strip=True)
         #
         html = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
         #html = "<p align='center' width='100%'><img height='300' src='cid:header'></p><p align='center' width='100%'><img width='100%' src='cid:content'></p><p align='center' width='100%'><img height='300' src='cid:signature'></p>"
