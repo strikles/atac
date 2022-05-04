@@ -1,5 +1,5 @@
 from .compose import AllTimeHigh
-
+from .util import trace
 import csv
 from envelope import Envelope
 import json
@@ -23,13 +23,7 @@ if os.environ.get('DISPLAY'):
 
 import validators
 
-# Defining a decorator
-def trace(f):
-    def wrap(*args, **kwargs):
-        print(f"[TRACE] func: {f.__name__}, args: {args}, kwargs: {kwargs}")
-        return f(*args, **kwargs)
 
-    return wrap
 
 
 class FromRuXiaWithLove(AllTimeHigh):
