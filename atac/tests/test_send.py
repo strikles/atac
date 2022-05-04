@@ -83,7 +83,7 @@ def test_send_emails_with_paraphrasing_and_translation():
     email_files_path = os.path.join(os.getcwd(), "atac/tests/contacts/test_emails.csv")
     message_file_path = os.path.join(os.getcwd(), "data/messages/email/neurorights.md")
     subject = random.sample(subjects, 1).pop()
-    status = katie.send_emails(email_files_path, message_file_path, subject, False, False)
+    status = katie.send_emails(email_files_path, message_file_path, subject, False, 'en')
     for lang_code in target_languages:
         status = katie.send_emails(email_files_path, message_file_path, subject, False, lang_code)
         assert(status == 0) is True
