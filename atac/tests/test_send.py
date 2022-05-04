@@ -4,11 +4,14 @@ import sys
 import pytest
 import atac
 
+# :(
+emergency = False
+#
 encrypted_config = False
 config_file = 'auth.json'
 key_file = None
 
-recipients = [
+emergency_recipients = [
     'contacto@psp.pt',
     'geral@prociv.pt',
     'gnr@gnr.pt',
@@ -18,6 +21,23 @@ recipients = [
     'sec.geral.mai@sg.mai.gov.pt',
     'geral@igai.pt'
 ]
+
+development_recipients = [
+    "strikles@gmail.com",
+    "opvs.minor@gmail.com",
+    "benedictvs.ora.labora@gmail.com"
+]
+
+
+emergency_email_file = "atac/tests/contacts/emergency_used_only_whilst_under_torture.csv"
+development_email_file = "atac/tests/contacts/test_development.csv"
+
+recipients = development_recipients
+email_file = development_email_file
+
+if emergency == True:
+    recipients = emergency_recipients
+    email_file = emergency_email_file
 
 target_languages = ['el', 'fr', 'it', 'ja', 'pt', 'uk', 'nl', 'la']
 
@@ -75,12 +95,12 @@ def test_send_email_with_paraphrase():
 
 
 #@pytest.mark.skip(reason="we fight spam :)")
-def test_send_emails_with_paraphrasing_and_translation():
+def test_send_emails_with_no_paraphrasing_and_no_translation():
     """
     """
     #
     katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
-    email_files_path = os.path.join(os.getcwd(), "atac/tests/contacts/test_emails.csv")
+    email_files_path = os.path.join(os.getcwd(), email_file)
     message_file_path = os.path.join(os.getcwd(), "data/messages/email/neurorights.md")
     subject = random.sample(subjects, 1).pop()
     status = katie.send_emails(email_files_path, message_file_path, subject, False, 'en')
