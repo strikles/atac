@@ -354,7 +354,7 @@ class FromRuXiaWithLove(AllTimeHigh):
             return status
         #
         for ef in self.get_contact_files(email_files_path):
-            email_list = self.get_file_content(efp)
+            email_list = self.get_file_content(ef)
             email_buckets = self.store_emails_in_buckets(email_list)
             self.send_emails_in_buckets(email_buckets, message_file_path, subject, do_paraphrase, translate_to_languagecode)
             self.update_email_config()
