@@ -28,7 +28,7 @@ subjects = [
 ]
 
 
-#@pytest.mark.skip(reason="we fight spam :)")
+@pytest.mark.skip(reason="we fight spam :)")
 def test_send_email():
     """
     """
@@ -74,7 +74,7 @@ def test_send_email_with_paraphrase():
     assert(status == 0) is True
 
 
-@pytest.mark.skip(reason="we fight spam :)")
+#@pytest.mark.skip(reason="we fight spam :)")
 def test_send_emails_with_paraphrasing_and_translation():
     """
     """
