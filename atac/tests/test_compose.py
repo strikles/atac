@@ -1,15 +1,17 @@
+import pytest
 import os
-import sys
 import requests
 from requests import HTTPError
-import atac
+import sys
 
+import atac
 
 encrypted_config = False
 config_file = 'auth.json'
 key_file = None
 
-#@pytest.mark.skip(reason=" :)")
+
+@pytest.mark.skip(reason="refactoring :)")
 def test_markov():
     """
     Generates encryption key from password + salts

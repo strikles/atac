@@ -18,14 +18,15 @@ recipients = [
     'sec.geral.mai@sg.mai.gov.pt',
     'geral@igai.pt'
 ]
-#
+
 target_languages = ['el', 'fr', 'it', 'ja', 'pt', 'uk', 'nl', 'la']
-#
+
 subjects = [
         "<span translate='no'>jasper kums</span> and <span translate='no'>colégio militar</span> alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night, abusing <span translate='no'>biophotonics</span> to direct violence against parents, women and children",
         "abuse of <span translate='no'>biophotonics</span> to execute <span translate='no'>cybertorture</span> and force victims to complete tasks as a way to bargain for relief",
         "<span translate='no'>colégio_militar</span> alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless, force them into poverty, gambling life in <span translate='no'>blue whale</span> suicide games where they take turns abusing <span translate='no'>biophotonics</span> to execute vibrotactile <span translate='no'>cybertorture</span>, force psychosis and simulate <span translate='no'>Van Gogh</span> syndrome in a style reminiscent of the murder of <span translate='no'>Matthew Puncher</span>"
 ]
+
 
 #@pytest.mark.skip(reason="we fight spam :)")
 def test_send_email():
@@ -43,7 +44,7 @@ def test_send_email():
     assert(status == 0) is True
 
 
-#@pytest.mark.skip(reason="we fight spam :)")
+@pytest.mark.skip(reason="we fight spam :)")
 def test_send_email_with_translation():
     """
     """

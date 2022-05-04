@@ -451,7 +451,7 @@ class AllTimeHigh(Config):
         message.attach(body)
         print(message.as_string())
         #
-        hfp = open('data/assets/img/jesus/jesus_king.png', 'rb')
+        hfp = open('data/messages/assets/img/jesus/jesus_king.png', 'rb')
         msg_image_header = MIMEImage(hfp.read())
         hfp.close()
         # Define the image's ID as referenced above
@@ -470,7 +470,7 @@ class AllTimeHigh(Config):
         message.attach(msg_image_content)
         '''
         #
-        sfp = open('data/assets/img/jesus/mary.png', 'rb')
+        sfp = open('data/messages/assets/img/jesus/mary.png', 'rb')
         msg_image_signature = MIMEImage(sfp.read())
         sfp.close()
         # Define the image's ID as referenced above
