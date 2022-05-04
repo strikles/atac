@@ -175,26 +175,26 @@ class Config:
         """ Generate New Config """
 
         if "PYTEST_CURRENT_TEST" in os.environ:
-            if not os.environ.has_key('GMAIL_USER'):
+            if 'GMAIL_USER' not in os.environ:
                 print("GMAIL_USER is unset")
                 sys.exit(1)
-            if not os.environ.has_key('GMAIL_PASSWORD'):
+            if 'GMAIL_PASSWORD' not in os.environ:
                 print("GMAIL_PASSWORD is unset")
                 sys.exit(1)
-            if not os.environ.has_key('PROTONMAIL_USER'):
+            if 'PROTONMAIL_USER' not in os.environ:
                 print("PROTONMAIL_USER is unset")
                 sys.exit(1)
-            if not os.environ.has_key('PROTONMAIL_PASSWORD'):
+            if 'PROTONMAIL_PASSWORD' not in os.environ:
                 print("PROTONMAIL_USER is unset")
                 sys.exit(1)
         else:
-            if not os.environ.has_key('GMAIL_USER'):
+            if 'GMAIL_USER' not in os.environ:
                 os.environ['GMAIL_USER'] = input("Gmail User: ")
-            if not os.environ.has_key('GMAIL_PASSWORD'):
+            if 'GMAIL_PASSWORD' not in os.environ:
                 os.environ['GMAIL_PASSWORD'] = stdiomask.getpass("Gmail Password: ")
-            if not os.environ.has_key('PROTONMAIL_USER'):
+            if 'PROTONMAIL_USER' not in os.environ:
                 os.environ['PROTONMAIL_USER'] = input("Protonmail User: ")
-            if not os.environ.has_key('PROTONMAIL_PASSWORD'):
+            if 'PROTONMAIL_PASSWORD' not in os.environ:
                 os.environ['PROTONMAIN_PASSWORD'] = stdiomask.getpass("Protonmail Password: ")
 
         self.data = {
