@@ -384,7 +384,7 @@ class AllTimeHigh(Config):
             nlp = spacy.load('en_core_web_md')
             subject_transform = get_paraphrase(subject_transform, nlp)
         #
-        subject_transform = BeautifulSoup(subject_transform, features="html.parser").get_text()
+        subject_transform = BeautifulSoup(subject_transform, features="lxml").get_text()
         # check spelling
         spellchecker_subject_matches = spellchecker.check(subject_transform)
         is_bad_subject_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
@@ -422,7 +422,7 @@ class AllTimeHigh(Config):
             elif do_paraphrase: 
                 phrase_transform = get_paraphrase(phrase_transform.lower(), nlp)
             # remove html
-            phrase_transform = BeautifulSoup(phrase_transform, features="html.parser").get_text()
+            phrase_transform = BeautifulSoup(phrase_transform, features="lxml").get_text()
             # check spelling
             spellchecker_matches = spellchecker.check(phrase_transform)
             is_bad_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
@@ -433,7 +433,7 @@ class AllTimeHigh(Config):
         #
         message_str = "\n".join(lines)
         print("message: "+json.dumps(message_str, indent=4))
-        message_soup = BeautifulSoup(message_str, 'html.parser')
+        message_soup = BeautifulSoup(message_str, 'lxml')
         text = message_soup.get_text()
         #
         html = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
