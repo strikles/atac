@@ -377,7 +377,7 @@ class AllTimeHigh(Config):
         #
         nlp = None
         spellchecker = language_tool_python.LanguageToolPublicAPI(translate_to_languagecode if translate_to_languagecode else 'en')
-        subject_transform = "{}: {}".format("neurorights and blue whale suicide games", subject.lower())
+        subject_transform = "neurorights and blue whale suicide games: {}".format(subject.lower())
         if translate_to_languagecode:
             subject_translator = Translator()
             subject_transform = subject_translator.translate(text=subject_transform, dest=translate_to_languagecode).text
@@ -392,7 +392,7 @@ class AllTimeHigh(Config):
         spellchecker_subject_matches = [rule for rule in spellchecker_subject_matches if not is_bad_subject_rule(rule)]
         subject_transform = language_tool_python.utils.correct(subject_transform, spellchecker_subject_matches)
         #
-        message["Subject"] = "Amytal - {} - {}".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"), subject_transform.capitalize())
+        message["Subject"] = "{} - amytal - {}".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"), subject_transform.capitalize())
         message["From"] = sender_email
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
