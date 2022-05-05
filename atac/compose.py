@@ -10,6 +10,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
 import mistune
 import os
+
 import sys
 
 import unicodedata
@@ -437,7 +438,10 @@ class AllTimeHigh(Config):
         message_soup = BeautifulSoup(message_str, 'lxml')
         text = regex.sub(r'\n\n\n+', '\n\n', message_soup.get_text().strip())
         #
-        html = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
+        # render the markdown into HTML 
+        headers_css = "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'>"
+        headers_js = "<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js></script>"
+        html = mistune.html(headers_css + headers_js + "<p align='center' width='100%'><img src='cid:header'></p>" + message_str + "<p align='center' width='100%'><img src='cid:signature'></p>")
         #html = "<p align='center' width='100%'><img height='300' src='cid:header'></p><p align='center' width='100%'><img width='100%' src='cid:content'></p><p align='center' width='100%'><img height='300' src='cid:signature'></p>"
         #
         # Turn these into plain/html MIMEText objects
