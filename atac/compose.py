@@ -3,21 +3,15 @@ from .epicycle_drawing import *
 from .config import Config
 from .util import trace
 
+import attr
 from datetime import datetime
 from email import charset
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
-import mistune
-import os
 
-import sys
+from mistune import Renderer, Markdown, InlineLexer
 
-import unicodedata
-import regex
-import text_unidecode
-
-import attr
 import nltk
 import spacy
 from collections import OrderedDict
@@ -28,6 +22,12 @@ from nltk.corpus import wordnet as wn
 from pywsd import disambiguate
 from spellchecker import SpellChecker
 
+import os
+import regex
+import sys
+import text_unidecode
+import unicodedata
+
 from html2image import Html2Image
 
 from bs4 import BeautifulSoup
@@ -36,6 +36,36 @@ warnings.filterwarnings("ignore", category=UserWarning, module='bs4')
 
 from googletrans import Translator
 import language_tool_python
+
+
+# define new sub class
+#Let mistune not process the LaTex code between $$and $$$in the background, and send the js to the front desk to process it into mathematical formulas.
+class LaTexRenderer(Renderer):
+    #def LaTex(self, alt, link):
+    def LaTex(self, text):
+        return '$$%s$$' % (text)
+
+class LaTexInlineLexer(InlineLexer):
+    def enable_LaTex(self):
+        # add LaTex rules
+        self.rules.LaTex = regex.compile(
+            r'\$\$'                   # $$
+            r'([\s\S]+?)'   # ***
+            r'\$\$(?!\])'             # $$
+        )
+
+        # Add LaTex parser to default rules
+        # you can insert it some place you like
+        # but place matters, maybe 3 is not good
+        self.default_rules.insert(3, 'LaTex')
+
+    def output_LaTex(self, m):
+        text = m.group(1)
+        #alt, link = text.split('|')
+        # you can create an custom render
+        # you can also return the html if you like
+        #return self.renderer.LaTex(alt, link)
+        return self.renderer.LaTex(text)
 
 
 # Penn TreeBank POS tags:
@@ -79,15 +109,13 @@ supported_pos_tags = [
     # 'WRB',  # Wh-adverb
 ]
 
-from re import search, DOTALL
-
 def partition_find(string, start, end):
     return string.partition(start)[2].rpartition(end)[0]
 
 
 def re_find(string, start, end):
     # applying re.escape to start and end would be safer
-    return search(start + '(.*)' + end, string, DOTALL).group(1)
+    return regex.search(start + '(.*)' + end, string, regex.DOTALL).group(1)
 
 
 def index_find(string, start, end):
@@ -438,11 +466,19 @@ class AllTimeHigh(Config):
         message_soup = BeautifulSoup(message_str, 'lxml')
         text = regex.sub(r'\n\n\n+', '\n\n', message_soup.get_text().strip())
         #
+        renderer = LaTexRenderer()
+        inline = LaTexInlineLexer(renderer)
+        # enable the feature
+        inline.enable_LaTex()
+        markdown = Markdown(renderer, inline=inline)
+        # the end of sub class
+        #html to LaTex
+        js = '<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>';
+        js += '<script src="../static/js/showLaTex.js"></script>\n\n';
         # render the markdown into HTML 
-        headers_css = "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'>"
-        headers_js = "<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js></script>"
-        html = mistune.html(headers_css + headers_js + "<p align='center' width='100%'><img src='cid:header'></p>" + message_str + "<p align='center' width='100%'><img src='cid:signature'></p>")
-        #html = "<p align='center' width='100%'><img height='300' src='cid:header'></p><p align='center' width='100%'><img width='100%' src='cid:content'></p><p align='center' width='100%'><img height='300' src='cid:signature'></p>"
+        # headers_css = "<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css'>"
+        # headers_js = "<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js></script>"
+        html = "<p align='center' width='100%'><img src='cid:header'></p>" + markdown(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>" + js
         #
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
