@@ -103,7 +103,7 @@ def test_send_emails_with_no_paraphrasing_and_no_translation():
     email_files_path = os.path.join(os.getcwd(), email_file)
     message_file_path = os.path.join(os.getcwd(), "data/messages/email/neurorights.md")
     subject = random.sample(subjects, 1).pop()
-    status = katie.send_emails(email_files_path, message_file_path, subject, False, 'en')
+    status = katie.send_emails(email_files_path, message_file_path, subject, False, None)
     assert(status == 0) is True
     """
     for lang_code in target_languages:
