@@ -11,6 +11,16 @@ encrypted_config = False
 config_file = 'auth.json'
 key_file = None
 
+
+emergency_subjects = [
+        "jasper kums and colégio militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night, abusing biophotonics to direct violence against parents, women and children",
+        "colégio_militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless, force them into poverty, gambling life in blue whale suicide games where they take turns abusing biophotonics to execute vibrotactile cybertorture, force psychosis and simulate Van Gogh syndrome in a style reminiscent of the murder of Matthew Puncher"
+]
+
+development_subjects = [
+        "abuse of biophotonics to execute cybertorture and force victims to complete tasks as a way to bargain for relief",
+]
+
 emergency_recipients = [
     'contacto@psp.pt',
     'geral@prociv.pt',
@@ -28,24 +38,21 @@ development_recipients = [
     "benedictvs.ora.labora@gmail.com"
 ]
 
-
 emergency_email_file = "atac/tests/contacts/emergency_used_only_whilst_under_torture.csv"
 development_email_file = "atac/tests/contacts/test_development.csv"
 
 recipients = development_recipients
 email_file = development_email_file
+subjects = development_subjects
 
 if emergency == True:
     recipients = emergency_recipients
     email_file = emergency_email_file
+    subjects = emergency_subjects
 
 target_languages = ['el', 'fr', 'it', 'ja', 'pt', 'uk', 'nl', 'la']
 
-subjects = [
-        "<span translate='no'>jasper kums</span> and <span translate='no'>colégio militar</span> alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night, abusing <span translate='no'>biophotonics</span> to direct violence against parents, women and children",
-        "abuse of <span translate='no'>biophotonics</span> to execute <span translate='no'>cybertorture</span> and force victims to complete tasks as a way to bargain for relief",
-        "<span translate='no'>colégio_militar</span> alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless, force them into poverty, gambling life in <span translate='no'>blue whale</span> suicide games where they take turns abusing <span translate='no'>biophotonics</span> to execute vibrotactile <span translate='no'>cybertorture</span>, force psychosis and simulate <span translate='no'>Van Gogh</span> syndrome in a style reminiscent of the murder of <span translate='no'>Matthew Puncher</span>"
-]
+
 
 
 @pytest.mark.skip(reason="we fight spam :)")
