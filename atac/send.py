@@ -24,8 +24,6 @@ if os.environ.get('DISPLAY'):
 import validators
 
 
-
-
 class FromRuXiaWithLove(AllTimeHigh):
     """ A class used to represent a Configuration object
 

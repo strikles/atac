@@ -392,7 +392,7 @@ class AllTimeHigh(Config):
         spellchecker_subject_matches = [rule for rule in spellchecker_subject_matches if not is_bad_subject_rule(rule)]
         subject_transform = language_tool_python.utils.correct(subject_transform, spellchecker_subject_matches)
         #
-        message["Subject"] = "{} - {}".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"), subject_transform.capitalize())
+        message["Subject"] = "Amytal - {} - {}".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"), subject_transform.capitalize())
         message["From"] = sender_email
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
