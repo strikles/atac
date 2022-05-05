@@ -123,15 +123,11 @@ class FromRuXiaWithLove(AllTimeHigh):
         contact_files_path : str
             The path to the contacts CSV
         """
-        contact_files = []
+        contact_files = None
         #
         if os.path.isdir(contact_files_path):
-            contact_file_names = list(filter(lambda c: c.endswith('.csv'), os.listdir(contact_files_path)))
-            for file_name in contact_file_names:
-                file_full_path = os.path.join(contact_files_path, file_name)
-                print(file_full_path)
-                if os.path.isfile(file_full_path):
-                    contact_files.append(file_full_path)
+            contact_files = list(map(trace(lambda p: os.path.join(contact_files_path, p)), list(filter(lambda c: c.endswith('.csv'), os.listdir(contact_files_path)))))
+            random.shuffle(contact_files)
         elif os.path.isfile(contact_files_path):
             contact_files = [contact_files_path]
         else:
