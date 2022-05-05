@@ -413,7 +413,7 @@ class AllTimeHigh(Config):
                 continue
             # translation transform
             print("language: " + json.dumps(translate_to_languagecode, indent=4))
-            if translate_to_languagecode is not None:
+            if translate_to_languagecode:
                 print("translating phrase...")
                 phrase_translator = Translator()
                 print("before translation: " + phrase_transform)
