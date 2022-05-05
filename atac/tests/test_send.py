@@ -1,3 +1,4 @@
+from operator import truediv
 import os
 import random
 import sys
@@ -13,12 +14,12 @@ key_file = None
 
 
 emergency_subjects = [
-        "jasper kums and colégio militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night, abusing biophotonics to direct violence against parents, women and children",
-        "colégio militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless, force them into poverty, gambling life in blue whale suicide games where they take turns abusing biophotonics to execute vibrotactile cybertorture, force psychosis and simulate Van Gogh syndrome in a style reminiscent of the murder of Matthew Puncher"
+    "jasper kums and colégio militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night, abusing biophotonics to direct violence against parents, women and children",
+    "colégio militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless, force them into poverty, gambling life in blue whale suicide games where they take turns abusing biophotonics to execute vibrotactile cybertorture, force psychosis and simulate Van Gogh syndrome in a style reminiscent of the murder of Matthew Puncher"
 ]
 
 development_subjects = [
-        "abuse of biophotonics to execute cybertorture and force victims to complete tasks as a way to bargain for relief",
+    "abuse of biophotonics to execute cybertorture and force victims to complete tasks as a way to bargain for relief",
 ]
 
 emergency_recipients = [
@@ -101,6 +102,20 @@ def test_send_email_with_paraphrase():
     assert(status == 0) is True
 
 
+@pytest.mark.skip(reason="we fight spam :)")
+def test_send_emails_with_paraphrasing_and_translation():
+    """
+    """
+    #
+    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
+    email_files_path = os.path.join(os.getcwd(), email_file)
+    message_file_path = os.path.join(os.getcwd(), "data/messages/email/neurorights.md")
+    subject = random.sample(subjects, 1).pop()
+    for lang_code in target_languages:
+        status = katie.send_emails(email_files_path, message_file_path, subject, True, lang_code)
+        assert(status == 0) is True
+
+
 #@pytest.mark.skip(reason="we fight spam :)")
 def test_send_emails_with_no_paraphrasing_and_no_translation():
     """
@@ -112,7 +127,3 @@ def test_send_emails_with_no_paraphrasing_and_no_translation():
     subject = random.sample(subjects, 1).pop()
     status = katie.send_emails(email_files_path, message_file_path, subject, False, None)
     assert(status == 0) is True
-    """
-    for lang_code in target_languages:
-        status = katie.send_emails(email_files_path, message_file_path, subject, False, lang_code)
-    """

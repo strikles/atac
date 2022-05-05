@@ -26,6 +26,7 @@ Pillow
 py3-validate-email
 pyaxmlparser
 pyspellchecker
+pytest
 python-frontmatter
 python-gnupg
 python-magic-bin; platform_system == 'Windows'

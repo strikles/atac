@@ -88,8 +88,6 @@ class FromRuXiaWithLove(AllTimeHigh):
                 lines = [line.rstrip() for line in content_file]
         except OSError as e:
             print('{} file error {}'.format(file_path, e.errno))
-        finally:
-            content_file.close()
         #
         return lines
 
