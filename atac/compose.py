@@ -134,6 +134,10 @@ class AllTimeHigh(Config):
                 lines.append(phrase_transform)
                 print("Found image")
                 continue
+            if phrase_transform.find("$$") != -1:
+                lines.append(phrase_transform.strip())
+                print("Found latex")
+                continue
             if not phrase_transform:
                 print("Found empty line")
                 lines.append("")
@@ -184,9 +188,9 @@ class AllTimeHigh(Config):
         </head>
         </body>
         """
-        html_content = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
+        #html_content = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
         html_footer = "</body></html>"
-        html = html_header + html_content + html_footer
+        html = html_header + mistune.html(message_str) + html_footer
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
         part2 = MIMENonMultipart('text', 'html', charset='utf-8')
@@ -199,15 +203,14 @@ class AllTimeHigh(Config):
         message.attach(body)
         print(message.as_string())
         #
+        '''
         hfp = open('data/messages/assets/img/jesus/jesus_king.png', 'rb')
         msg_image_header = MIMEImage(hfp.read())
         hfp.close()
         # Define the image's ID as referenced above
         msg_image_header.add_header('Content-ID', '<header>')
         message.attach(msg_image_header)
-        #
-        #
-        '''
+        
         hti = Html2Image()
         hti.screenshot(mistune.html(message_str), save_as='content.png')
         cfp = open('content.png', 'rb')
@@ -216,7 +219,7 @@ class AllTimeHigh(Config):
         # Define the image's ID as referenced above
         msg_image_content.add_header('Content-ID', '<content>')
         message.attach(msg_image_content)
-        '''
+        
         #
         sfp = open('data/messages/assets/img/jesus/mary.png', 'rb')
         msg_image_signature = MIMEImage(sfp.read())
@@ -224,5 +227,6 @@ class AllTimeHigh(Config):
         # Define the image's ID as referenced above
         msg_image_signature.add_header('Content-ID', '<signature>')
         message.attach(msg_image_signature)
+        '''
         #
         return message
