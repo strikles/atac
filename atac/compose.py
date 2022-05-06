@@ -201,7 +201,7 @@ class AllTimeHigh(Config):
         <body>
         """
         #html_content = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
-        html_footer = "</body><footer><script src='data/messages/assets/js/load-mathjax.js' async></script></footer></html>"
+        html_footer = "</body><footer><script src='https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/js/load-mathjax.js' async></script></footer></html>"
         html = html_header + mistune.html(message_str) + html_footer
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
