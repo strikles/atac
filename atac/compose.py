@@ -223,7 +223,42 @@ class AllTimeHigh(Config):
             message_str = "\n".join(lines)
             print("message: "+json.dumps(message_str, indent=4))
             #html_content = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
-            html_content = mistune.html(message_str)
+            html_header = """
+            <!doctype html>
+            <html>
+            <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <style type="text/css">
+                    body {
+                        list-style: lower-greek inside;
+                        line-height: 3;
+                        text-align: justify;
+                        word-spacing: 3px;
+                        opacity: 1;
+                        transition: opacity 1s ease 0s;
+                        background-color: #FFF;
+                    }
+                    p {
+                        margin: 25px 77px;
+                    }
+                    li > p {
+                        margin: auto 10px
+                    }
+                    img {
+                        opacity: 0.6;
+                    }
+                    /* Make the table more compact vertically */
+                    td {
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                    }
+                </style>
+            </head>
+            <body>
+            """
+            html_footer = "</body></html>"
+            html_content = html_header + mistune.html(message_str) + html_footer
         #
         # text payload
         text_soup = BeautifulSoup(html_content, 'lxml')
