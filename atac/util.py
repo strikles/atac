@@ -1,3 +1,7 @@
+import regex
+import unicodedata
+
+
 # Defining a decorator
 def trace(f):
     def wrap(*args, **kwargs):
@@ -18,3 +22,13 @@ def str2bool(v):
         raise TypeError()
     except (ValueError, TypeError) as exception:
         print("Catching all exceptions")
+
+
+def remove_accent_chars_regex(x: str):
+    return regex.sub(r'\p{Mn}', '', unicodedata.normalize('NFKD', x))
+
+
+def remove_accent_chars_join(x: str):
+    # answer by MiniQuark
+    # https://stackoverflow.com/a/517974/7966259
+    return u"".join([c for c in unicodedata.normalize('NFKD', x) if not unicodedata.combining(c)])

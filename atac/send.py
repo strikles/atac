@@ -1,5 +1,6 @@
 from .compose import AllTimeHigh
 from .util import trace
+
 import csv
 from envelope import Envelope
 import json

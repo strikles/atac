@@ -17,7 +17,7 @@ html2image
 language_tool_python
 lxml
 markovify
-mistune
+mistune==2.0.2
 nltk
 numpy
 pandas
@@ -25,6 +25,7 @@ phonenumbers
 Pillow
 py3-validate-email
 pyaxmlparser
+pygments
 pyspellchecker
 pytest
 python-frontmatter
