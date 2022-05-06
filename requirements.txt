@@ -15,6 +15,7 @@ fake-useragent
 googletrans==4.0.0rc1
 html2image
 language_tool_python
+latex2mathml
 lxml
 markovify
 mistune==2.0.2
@@ -26,7 +27,9 @@ Pillow
 py3-validate-email
 pyaxmlparser
 pygments
+pylatexenc
 pyspellchecker
+pystache
 pytest
 python-frontmatter
 python-gnupg
