@@ -135,6 +135,7 @@ class AllTimeHigh(Config):
                 print("Found image")
                 continue
             if phrase_transform.find("$$") != -1:
+                
                 lines.append(phrase_transform.strip())
                 print("Found latex")
                 continue
@@ -186,15 +187,13 @@ class AllTimeHigh(Config):
                 p {margin:25px 77px;}
                 ol {margin:25px 77px;}
                 ul {margin:25px 77px;}
-                li p {margin:5px;}
+                li > p {margin:5px;}
             </style>
-            <script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script>
-            <script id='MathJax-script' async src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'></script>
         </head>
-        </body>
+        <body>
         """
         #html_content = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
-        html_footer = "</body></html>"
+        html_footer = "</body><footer><script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script><script id='MathJax-script' async src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'></script></footer></html>"
         html = html_header + mistune.html(message_str) + html_footer
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
