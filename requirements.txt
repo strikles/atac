@@ -24,6 +24,7 @@ numpy
 pandas
 phonenumbers
 Pillow
+pydbg
 py3-validate-email
 pyaxmlparser
 pygments

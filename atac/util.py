@@ -1,11 +1,27 @@
 import regex
 import unicodedata
+from pydbg import *
+
+
+def breakpoint_handler(dbg):
+   print(dbg.dump_context())
+   return DBG_CONTINUE
+
+
+# Defining a decorator
+def inspect(f):
+    def wrap(*args, **kwargs):
+        dbg(f(*args, **kwargs))
+        return f(*args, **kwargs)
+
+    return wrap
 
 
 # Defining a decorator
 def trace(f):
     def wrap(*args, **kwargs):
         print(f"[TRACE] func: {f.__name__}, args: {args}, kwargs: {kwargs}")
+        dbg(f(*args, **kwargs))
         return f(*args, **kwargs)
 
     return wrap
