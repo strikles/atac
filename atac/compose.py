@@ -17,6 +17,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
 import mistune
 import regex
+from sympy import preview
 
 #from html2image import Html2Image
 
@@ -128,16 +129,23 @@ class AllTimeHigh(Config):
         body.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         lines = []
+        num_latex_lines = 0
         for phrase in message_content:
             phrase_transform = phrase
             if phrase_transform.find("<img src=") != -1:
-                lines.append(phrase_transform)
                 print("Found image")
+                lines.append(phrase_transform)
                 continue
-            if phrase_transform.find("$$") != -1:
-                
-                lines.append(phrase_transform.strip())
-                print("Found latex")
+            if phrase_transform.startswith("$$") and phrase_transform.endswith("$$"):
+                print("Found latex {}".format(phrase_transform))
+                '''
+                latex_image_file = 'data/messages/assets/latex{}.png'.format(num_latex_lines)
+                if not os.path.isfile(latex_image_file):
+                    preview(phrase_transform, viewer='file', filename=latex_image_file, euler=False)
+                else:
+                    lines.append("<p align='center' width='100%'><img src='https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/latex{}.png'></p>".format(num_latex_lines))   
+                '''
+                lines.append(phrase_transform)
                 continue
             if not phrase_transform:
                 print("Found empty line")
@@ -193,7 +201,7 @@ class AllTimeHigh(Config):
         <body>
         """
         #html_content = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
-        html_footer = "</body><footer><script src='https://polyfill.io/v3/polyfill.min.js?features=es6'></script><script id='MathJax-script' async src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'></script></footer></html>"
+        html_footer = "</body><footer><script src='data/messages/assets/js/load-mathjax.js' async></script></footer></html>"
         html = html_header + mistune.html(message_str) + html_footer
         # Turn these into plain/html MIMEText objects
         part1 = MIMENonMultipart('text', 'plain', charset='utf-8')
