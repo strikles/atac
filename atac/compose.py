@@ -139,7 +139,11 @@ class AllTimeHigh(Config):
         message_type = "markdown"
         html_content = ""
         #
-        if message_type == "mjml":
+        if message_type == "html":
+            #
+            html_content = "\n".join(message_content)
+            #
+        elif message_type == "mjml":
             # Create parser
             # markdown = mistune.create_markdown(renderer=Renderer(), plugins=[escape])
             # read in the email template, remember to use the compiled HTML version!
@@ -148,10 +152,14 @@ class AllTimeHigh(Config):
             template_params = {'first_name': 'JustJensen'}
             # Attach the message to the Multipart Email
             html_content = pystache.render(email_template, template_params)
-        else:
+            #
+        elif message_type == "markdown":
+            #
             lines = []
             num_latex_lines = 0
+            #
             for phrase in message_content:
+                #
                 phrase_transform = phrase
                 # images
                 if phrase_transform.find("<img src=") != -1:
@@ -161,7 +169,7 @@ class AllTimeHigh(Config):
                 # LaTeX
                 if phrase_transform.startswith("$$") and phrase_transform.endswith("$$"):
                     print("Found latex {}".format(phrase_transform))
-                    phrase_transform = phrase_transform.replace("$$", "")    
+                    # phrase_transform = phrase_transform.replace("$$", "")    
                     '''
                     # generate image
                     latex_image_file = 'data/messages/assets/latex{}.png'.format(num_latex_lines)
