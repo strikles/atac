@@ -5,10 +5,10 @@ from .paraphrase import *
 from .util import trace
 
 # custom latex rendere
-from .MisTeX.Renderer import Renderer
+#from .MisTeX.Renderer import Renderer
 # Always use this if you want raw latex beyond simple $ and $$
 # anywhere in the input
-from .MisTeX.Escape import escape
+#from .MisTeX.Escape import escape
 #
 import latex2mathml.converter
 from .latex2svg import latex2svg
@@ -25,6 +25,7 @@ from email.mime.nonmultipart import MIMENonMultipart
 import mistune
 import regex
 from sympy import preview
+import uuid
 
 #from html2image import Html2Image
 
@@ -170,14 +171,14 @@ class AllTimeHigh(Config):
                 if phrase_transform.startswith("$$") and phrase_transform.endswith("$$"):
                     print("Found latex {}".format(phrase_transform))
                     # phrase_transform = phrase_transform.replace("$$", "")    
-                    '''
-                    # generate image
-                    latex_image_file = 'data/messages/assets/latex{}.png'.format(num_latex_lines)
-                    if not os.path.isfile(latex_image_file):
-                        preview(phrase_transform, viewer='file', filename=latex_image_file, euler=False)
+                    """
+                    # generate 
+                    image_name = "{} - {}{}".format("data/messages/assets/latex", uuid.uuid4(), ".png")
+                    if not os.path.isfile(image_name):
+                        preview(phrase_transform, viewer='file', filename=image_name, euler=False)
                     else:
                         lines.append("<p align='center' width='100%'><img src='https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/latex{}.png'></p>".format(num_latex_lines))   
-                    '''
+                    """
                     # mathml
                     # phrase_transform = latex2mathml.converter.convert(phrase_transform)
                     # print("transformed latex {}".format(phrase_transform))

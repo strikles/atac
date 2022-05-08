@@ -65,4 +65,4 @@ send script:
 
 
 
-!INCLUDE "data/messages/email/neurorights.md"
+!INCLUDE "data/messages/email/neurorights.mdpp"

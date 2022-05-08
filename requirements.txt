@@ -17,7 +17,6 @@ html2image
 language_tool_python
 latex2mathml
 lxml
-MarkdownPP
 markovify
 mistune==2.0.2
 nltk
@@ -57,4 +56,5 @@ tweepy
 urllib3
 utils
 validators
+watchdog
 wn
