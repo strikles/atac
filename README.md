@@ -186,11 +186,12 @@ send script:
 4.  whatsapp
 
 
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/books/homo_sovieticus.png"></p>
+
+
 * say yes to neurorights
 * say no to the "homo sovieticus" initiative of pairing cybertorture with blue whale suicide games covered up with psychiatric fraud
 
-
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/books/homo_sovieticus.png"></p>
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/mary.png"></p>
 
