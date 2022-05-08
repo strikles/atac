@@ -17,7 +17,7 @@ html2image
 language_tool_python
 latex2mathml
 lxml
-MarkdownPP
+git+https://github.com/strikles/markdown-pp.git
 markovify
 mistune==2.0.2
 nltk
