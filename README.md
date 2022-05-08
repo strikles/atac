@@ -22,7 +22,45 @@
 
 ![](assets/img/IMG_3332.JPG)
 
-#### Summary
+### Summary
+
+##### [scrape.py](scrape.py)
+web scraper that gathers contact information
+
+[scrapeme](SCRAPEME.md)
+
+##### The current scraping algorithm is the following
+```markdown
+P ← starting URLs (primary queue) 
+S ← ∅ (secondary queue)
+V ← ∅ (visited pages)
+while P ≠ ∅ do
+    Pick a page v from P and download it
+    V ← V ∪ {v} (mark as visited)
+    N+(v) ← v’s out-links pointing to new pages (“new” means not in P, S or V)
+    if |N+(v)| > t then
+        R ← first t out-links N+(v)
+        S ← S ∪ (v)
+    end if
+    P ← P ∪ R
+    if P = ∅ then
+        P ← S
+        S ← ∅ 
+    end if
+```
+
+it is based on [https://chato.cl/papers/castillo_06_controlling_queue_size_web_crawling.pdf](https://chato.cl/papers/castillo_06_controlling_queue_size_web_crawling.pdf)
+
+##### [compose.py](compose.py)
+automated composition of text using markovify
+
+##### [send.py](send.py)
+send script:
+
+1.  email
+2.  facebook
+3.  twitter
+4.  whatsapp
 
 
 several colégio militar (largo da luz, lisbon, portugal) former students linked to portuguese law enforcement are sitting in a room everyday, taking turns at forcing people to talk to themselves, hurt themselves, trying to force synthetic psychosis onto their victims whenever they are near other people, to use them as targets of directed violence. These targets could be elderly parents at the end of their life, women,  children and even handicapped people. They wake me up daily, in the middle of the night or early in the morning in a ritual of articulating my tongue and trying to force me hurt myself (ears, head and genitals) and break everything I own, by abusing biophotonics, in a manner similar to the soviet style murder of mathew puncher.
@@ -146,44 +184,6 @@ until neurorights legislation is passed, it is likely you will continue seeing m
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/us.png"></p>
-
-##### [scrape.py](scrape.py)
-web scraper that gathers contact information
-
-[scrapeme](SCRAPEME.md)
-
-##### The current scraping algorithm is the following
-```markdown
-P ← starting URLs (primary queue) 
-S ← ∅ (secondary queue)
-V ← ∅ (visited pages)
-while P ≠ ∅ do
-    Pick a page v from P and download it
-    V ← V ∪ {v} (mark as visited)
-    N+(v) ← v’s out-links pointing to new pages (“new” means not in P, S or V)
-    if |N+(v)| > t then
-        R ← first t out-links N+(v)
-        S ← S ∪ (v)
-    end if
-    P ← P ∪ R
-    if P = ∅ then
-        P ← S
-        S ← ∅ 
-    end if
-```
-
-it is based on [https://chato.cl/papers/castillo_06_controlling_queue_size_web_crawling.pdf](https://chato.cl/papers/castillo_06_controlling_queue_size_web_crawling.pdf)
-
-##### [compose.py](compose.py)
-automated composition of text using markovify
-
-##### [send.py](send.py)
-send script:
-
-1.  email
-2.  facebook
-3.  twitter
-4.  whatsapp
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/books/homo_sovieticus.png"></p>
