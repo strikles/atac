@@ -310,15 +310,18 @@ class FromRuXiaWithLove(AllTimeHigh):
         print(subject)
         auth, _ = self.get_email_config()
         encrypted_emails = []
-        message = FromRuXiaWithLove.get_file_content(message_file_path, file_type='message')
         with tqdm(total=len(email_batches)) as filter_progress:
             for batch in email_batches:
+                #
+                plain_emails = batch
+                message = FromRuXiaWithLove.get_file_content(message_file_path, file_type='message')
+                #
                 # TODO - send encrypted emails
                 # get emails with gpg key in their own list
                 # encrypted_emails = list(filter(lambda x: self.find_gpg_keyid(x), batch))
                 # map(trace(lambda e, k: self.send_email(e, message, subject, do_paraphrase, translate_to_languagecode)), encrypted_emails)
                 # plain_emails = list(filter(trace(lambda y: y not in encrypted_emails), batch))
-                plain_emails = batch
+                #
                 if plain_emails:
                     print("sending email…")
                     self.send_email(";".join(plain_emails), message, subject, do_paraphrase, translate_to_languagecode)
