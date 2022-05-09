@@ -1,5 +1,5 @@
-from ..Send import Send
-from ..Util import trace
+from .Send import Send
+from ..util.Util import trace
 
 import base64
 import getpass

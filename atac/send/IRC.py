@@ -1,4 +1,4 @@
-from ..Send import Send
+from .Send import Send
 
 import socket
 import time

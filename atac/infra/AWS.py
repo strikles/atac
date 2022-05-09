@@ -1,4 +1,4 @@
-from ..Util import *
+from ..util.Util import *
 
 import os
 import boto3

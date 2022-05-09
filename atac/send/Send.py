@@ -1,5 +1,5 @@
-from .Compose import Compose
-from .Util import trace
+from ..compose.Compose import Compose
+from ..util.Util import trace
 
 from envelope import Envelope
 import os

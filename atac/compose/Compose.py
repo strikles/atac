@@ -1,10 +1,10 @@
-from .Config import Config
+from ..config.Config import Config
 
 #from .art import *
 #from .art.epicycles import *
-from atac.compose.Paraphrase import *
-from atac.compose.Latex import *
-from atac.Util import trace
+from .Paraphrase import *
+from .Latex import *
+from ..util.Util import trace
 #
 from datetime import datetime
 #

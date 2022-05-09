@@ -1,4 +1,4 @@
-from .Config import Config
+from ..config.Config import Config
 
 import regex as re
 import os

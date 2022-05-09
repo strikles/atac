@@ -1,4 +1,4 @@
-from .Config import Config
+from ..config.Config import Config
 
 import os
 import csv

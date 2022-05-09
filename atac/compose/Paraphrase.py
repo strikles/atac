@@ -1,4 +1,4 @@
-from atac.Util import *
+from ..util.Util import *
 
 import attr
 import nltk

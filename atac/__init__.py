@@ -22,15 +22,15 @@ Misc variables:
     compatible_formats
 """
 
-from .Config import Config
-from .Compose import Compose
-from .Clean import Clean
-from .Scrape import Scrape
+from .config.Config import Config
+from .compose.Compose import Compose
+from .send.Clean import Clean
+from .scrape.Scrape import Scrape
 #
 from .send.Email import SendEmail
 from .send.Chat import SendChat
 from .send.IRC import SendIRC
 from .send.Social import SendSocial
-from .Util import *
+from .util.Util import *
 
 __all__ = ['Config', 'Compose', 'Clean', 'Scrape', 'SendChat', 'SendEmail', 'SendIRC', 'SendSocial', 'Util']
