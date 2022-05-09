@@ -7,7 +7,7 @@ http://www.randalolson.com/2018/04/11/traveling-salesman-portrait-in-python/
 
 MIT License
 """
-from ..util import *
+from ..Util import *
 import json
 import numpy as np
 import math

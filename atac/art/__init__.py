@@ -22,16 +22,16 @@ Misc variables:
     compatible_formats
 """
 
-from .ascii import *
-from .branches import *
-from .conway import *
-from .epicycles import *
-from .fractal import *
-from .haiku import *
-from .image import *
-from .invaders import *
-from .music import *
-from .samila import *
-from .sudoku import *
+from .ASCII import *
+from .Branches import *
+from .Conway import *
+from .Epicycles import *
+from .Fractal import *
+from .Haiku import *
+from .ImageUtils import *
+from .Invaders import *
+from .Music import *
+from .Samila import *
+from .Sudoku import *
 
-__all__ = ['ascii', 'branches', 'conway', 'epicycles', 'fractal', 'haiku', 'image', 'invaders', 'music', 'samila', 'sudoku']
+__all__ = ['ASCII', 'Branches', 'Conway', 'Epicycles', 'Fractal', 'Haiku', 'ImageUtils', 'Invaders', 'Music', 'Samila', 'Sudoku']
