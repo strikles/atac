@@ -22,15 +22,16 @@ Misc variables:
     compatible_formats
 """
 
-from .Config import Config
-from .Compose import Compose
-from .Clean import Clean
-from .Scrape import Scrape
-from .Send import Send
-from .send.Email import SendEmail
-from .send.Chat import SendChat
-from .send.IRC import SendIRC
-from .send.Social import SendSocial
-from .Util import *
+from .ascii import *
+from .branches import *
+from .conway import *
+from .epicycles import *
+from .fractal import *
+from .haiku import *
+from .image import *
+from .invaders import *
+from .music import *
+from .samila import *
+from .sudoku import *
 
-__all__ = ['Config', 'Compose', 'Clean', 'Scrape', 'SendSocial', 'SendEmail', 'SendIRC', 'SendSocial', 'Util']
+__all__ = ['ascii', 'branches', 'conway', 'epicycles', 'fractal', 'haiku', 'image', 'invaders', 'music', 'samila', 'sudoku']

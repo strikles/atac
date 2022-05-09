@@ -9,6 +9,16 @@ __email__ = 'ich@tinowagner.com'
 __license__ = 'MIT'
 __copyright__ = '(c) 2017, Tino Wagner'
 
+# custom latex rendere
+#from .MisTeX.Renderer import Renderer
+# Always use this if you want raw latex beyond simple $ and $$
+# anywhere in the input
+#from .MisTeX.Escape import escape
+#
+#import latex2mathml.converter
+#import pylatexenc
+#from pylatexenc.latex2text import LatexNodes2Text
+
 import os
 import sys
 import subprocess
@@ -144,7 +154,7 @@ def latex2svg(code, params=default_params, working_directory=None):
     return {'svg': svg, 'depth': depth, 'width': width, 'height': height}
 
 
-def main():
+def run():
     """Simple command line interface to latex2svg.
 
     - Read from `stdin`.
@@ -180,6 +190,3 @@ def main():
         print(exc.stderr.decode('utf-8'))
         sys.exit(exc.returncode)
 
-
-if __name__ == '__main__':
-    main()

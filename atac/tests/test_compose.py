@@ -38,5 +38,5 @@ def test_markov():
     except Exception as err:
         print(f'Other error occurred: {err}')
     #
-    two_back = atac.AllTimeHigh(encrypted_config, config_file, key_file)
+    two_back = atac.Compose(encrypted_config, config_file, key_file)
     assert(len(two_back.generate_markov_content(response.text)) < 200) is True

@@ -61,14 +61,14 @@ def test_send_email():
     """
     """
     #
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
-    auth, _ = katie.get_email_config()
+    katie = atac.SendEmail(encrypted_config, config_file, key_file)
+    auth, _ = katie.get_config()
     #
     subject = random.sample(subjects, 1).pop()
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/neurorights.md")), "message")
     print(os.path.abspath(os.getcwd()))
     mailing_list = "; ".join(recipients)
-    status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=False, translate_to_languagecode=None)
+    status = katie.send(mailing_list, message_content, subject, do_paraphrase=False, translate_to_languagecode=None)
     assert(status == 0) is True
 
 
@@ -77,13 +77,13 @@ def test_send_email_with_translation():
     """
     """
     #
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
-    auth, _ = katie.get_email_config()
+    katie = atac.SendEmail(encrypted_config, config_file, key_file)
+    auth, _ = katie.get_config()
     #
     subject = random.sample(subjects, 1).pop()
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/neurorights.md")), "message")
     mailing_list = random.sample(recipients, 1).pop()
-    status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=False, translate_to_languagecode="pt")
+    status = katie.send(mailing_list, message_content, subject, do_paraphrase=False, translate_to_languagecode="pt")
     assert(status == 0) is True
 
 
@@ -92,13 +92,13 @@ def test_send_email_with_paraphrase():
     """
     """
     #
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
+    katie = atac.SendEmail(encrypted_config, config_file, key_file)
     auth, _ = katie.get_email_config()
     #
     subject = random.sample(subjects, 1).pop()
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/neurorights.md")), "message")
     mailing_list = random.sample(recipients, 1).pop()
-    status = katie.send_email(mailing_list, message_content, subject, do_paraphrase=True, translate_to_languagecode=None)
+    status = katie.send(mailing_list, message_content, subject, do_paraphrase=True, translate_to_languagecode=None)
     assert(status == 0) is True
 
 
@@ -107,12 +107,12 @@ def test_send_emails_with_paraphrasing_and_translation():
     """
     """
     #
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
+    katie = atac.SendEmail(encrypted_config, config_file, key_file)
     email_files_path = os.path.join(os.getcwd(), email_file)
     message_file_path = os.path.join(os.getcwd(), "data/messages/email/neurorights.md")
     subject = random.sample(subjects, 1).pop()
     for lang_code in target_languages:
-        status = katie.send_emails(email_files_path, message_file_path, subject, True, lang_code)
+        status = katie.send_batch(email_files_path, message_file_path, subject, True, lang_code)
         assert(status == 0) is True
 
 
@@ -121,9 +121,9 @@ def test_send_emails_with_no_paraphrasing_and_no_translation():
     """
     """
     #
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file, key_file)
+    katie = atac.SendEmail(encrypted_config, config_file, key_file)
     email_files_path = os.path.join(os.getcwd(), email_file)
     message_file_path = os.path.join(os.getcwd(), "data/messages/email/neurorights.md")
     subject = random.sample(subjects, 1).pop()
-    status = katie.send_emails(email_files_path, message_file_path, subject, False, None)
+    status = katie.send_batch(email_files_path, message_file_path, subject, False, None)
     assert(status == 0) is True

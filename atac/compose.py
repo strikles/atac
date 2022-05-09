@@ -1,28 +1,21 @@
-from .config import Config
-from .art import *
-from .epicycle_drawing import *
-from .paraphrase import *
-from .util import trace
+from .Config import Config
 
-# custom latex rendere
-#from .MisTeX.Renderer import Renderer
-# Always use this if you want raw latex beyond simple $ and $$
-# anywhere in the input
-#from .MisTeX.Escape import escape
+#from .art import *
+#from .art.epicycles import *
+from atac.compose.Paraphrase import *
+from atac.compose.Latex import *
+from atac.Util import trace
 #
-import latex2mathml.converter
-from .latex2svg import latex2svg
-import pylatexenc
-from pylatexenc.latex2text import LatexNodes2Text
-#
-import pystache
-
 from datetime import datetime
+#
 from email import charset
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
+#
+import json
 import mistune
+import pystache
 import regex
 from sympy import preview
 import uuid
@@ -37,7 +30,7 @@ from googletrans import Translator
 import language_tool_python
 
 
-class AllTimeHigh(Config):
+class Compose(Config):
     """ A class used to represent a Configuration object
 
     Attributes
@@ -59,33 +52,7 @@ class AllTimeHigh(Config):
     """
     Methods
     -------
-    generate_key()
-        Generates a new encryption key from a password + salt
     """
-
-    @staticmethod
-    def fix_mixed_encoding(s):
-        """ Fixed mixed encoding
-
-        Parameters
-        ----------
-        s : str
-            The mixed encoding string to fix
-        """
-        output = ''
-        ii = 0
-        for _ in s:
-            if ii <= len(s)-1:
-                if s[ii] == '\\' and s[ii+1] == 'x':
-                    b = s[ii:ii+4].encode('ascii').decode('utf-8')
-                    output = output+b
-                    ii += 3
-                else:
-                    output = output+s[ii]
-            ii += 1
-        #
-        return output
-
 
     @staticmethod
     def compose_email(sender_email, mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode=None):

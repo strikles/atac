@@ -12,7 +12,6 @@ import inspect
 
 
 class Config:
-
     """ A class used to represent a Configuration object
 
     Attributes
@@ -38,7 +37,6 @@ class Config:
     """
 
     def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
-
         """ Class init
 
         Parameters
@@ -69,8 +67,8 @@ class Config:
         #
         self.load_config()
 
-    def generate_key(self):
 
+    def generate_key(self):
         """ Generates encryption key from password + salts """
 
         print(inspect.stack()[1].function)
@@ -88,6 +86,7 @@ class Config:
             backend=default_backend())
         self.key = base64.urlsafe_b64encode(kdf.derive(password))
 
+
     def load_key(self, key_file_path):
 
         """ Load encryption key file
@@ -103,8 +102,8 @@ class Config:
         except OSError as e:
             print('{} file error {}'.format(key_file_path, e.errno)) 
 
-    def save_key(self, key_file_path):
 
+    def save_key(self, key_file_path):
         """ Save encryption key file
 
         Parameters
@@ -117,6 +116,7 @@ class Config:
                 key_file.write(self.key)
         except OSError as e:
             print('{} file error {}'.format(key_file_path, e.errno))
+
 
     def save_config(self, config_file_path, encrypted_config):
 
@@ -156,7 +156,7 @@ class Config:
                 data = json.loads(config.read())
         except OSError as e:
             print('{} file error {}'.format(self.config_file_path, e.errno))
-
+        #
         if self.encrypted_config:
             #
             fernet = Fernet(self.key)                
@@ -171,7 +171,6 @@ class Config:
                 
 
     def new_config(self, config_file_path):
-
         """ Generate New Config """
 
         if "PYTEST_CURRENT_TEST" in os.environ:
@@ -196,7 +195,7 @@ class Config:
                 os.environ['PROTONMAIL_USER'] = input("Protonmail User: ")
             if 'PROTONMAIL_PASSWORD' not in os.environ:
                 os.environ['PROTONMAIN_PASSWORD'] = stdiomask.getpass("Protonmail Password: ")
-
+        #
         self.data = {
             "compose": {},
             "email": {

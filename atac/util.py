@@ -1,29 +1,95 @@
-import regex
-import unicodedata
+import math
+import numpy as np
 from pydbg import *
+from random_word import RandomWords
+import random
+import regex
+import string
+import unicodedata
 
 
-def breakpoint_handler(dbg):
-   print(dbg.dump_context())
-   return DBG_CONTINUE
+class FourierDatum:
+    """ Holds Fourier Transform data: complex result, frequency, phase, and amplitude """
+    def __init__(self, complex_num, freq):
+        self.complex_num = complex_num
+        self.freq = freq
+        self.phase = math.atan2(complex_num.imag, complex_num.real)
+        self.amplitude = np.sqrt(complex_num.real ** 2 + complex_num.imag ** 2)
 
 
-# Defining a decorator
-def inspect(f):
-    def wrap(*args, **kwargs):
-        dbg(f(*args, **kwargs))
-        return f(*args, **kwargs)
+def fft(z):
+    """ Take FFT of complex vector z and store its values in FourierDatum array
+    
+    :param z Complex-valued vector
+    :returns Array of FourierDatum objects
+    """
+    fft_vals = np.fft.fft(z)
+    fft_data = []
+    N = len(z)
+    k = 0
 
-    return wrap
+    for fft_val in fft_vals:
+        # divide by N to keep drawing size reasonable
+        fft_data.append(FourierDatum(fft_val / N, k))
+        k += 1
+
+    return fft_data
 
 
-# Defining a decorator
-def trace(f):
-    def wrap(*args, **kwargs):
-        print(f"[TRACE] func: {f.__name__}, args: {args}, kwargs: {kwargs}")
-        return f(*args, **kwargs)
+def dft(z):
+    """ Take DFT of complex vector z and store its values in FourierDatum array
+    
+    :param z Complex-valued vector
+    :returns Array of FourierDatum objects
+    """
+    dft_data = []
+    N = len(z)
+    # k is frequency
+    for k in range(0, N):
+        zk = complex(0, 0)
+        for n in range(0, N):
+            phi = (2 * np.pi * k * n) / N
+            zk += z[n] * complex(np.cos(phi), -np.sin(phi))
+        zk /= N
+        dft_data.append(FourierDatum(zk, k))
+    #
+    return dft_data
 
-    return wrap
+
+def partition_find(string, start, end):
+    return string.partition(start)[2].rpartition(end)[0]
+
+
+def re_find(string, start, end):
+    # applying regex.escape to start and end would be safer
+    return regex.search(start + '(.*)' + end, string, regex.DOTALL).group(1)
+
+
+def index_find(string, start, end):
+    return string[string.find(start) + len(start):string.rfind(end)]
+
+
+def generate_password(length):
+    """
+    """
+    all = string.ascii_letters + string.digits + string.punctuation
+    return "".join(random.sample(all,length))
+
+
+def generate_word():
+    """
+    """
+    r = RandomWords()
+    # Return a single random word
+    return r.get_random_word(
+        hasDictionaryDef="true",
+        includePartOfSpeech="noun,verb",
+        minCorpusCount=1,
+        maxCorpusCount=10,
+        minDictionaryCount=1,
+        maxDictionaryCount=10,
+        minLength=5,
+        maxLength=10)
 
 
 def str2bool(v):
@@ -47,3 +113,49 @@ def remove_accent_chars_join(x: str):
     # answer by MiniQuark
     # https://stackoverflow.com/a/517974/7966259
     return u"".join([c for c in unicodedata.normalize('NFKD', x) if not unicodedata.combining(c)])
+
+
+def fix_mixed_encoding(s):
+    """ Fixed mixed encoding
+
+    Parameters
+    ----------
+    s : str
+        The mixed encoding string to fix
+    """
+    output = ''
+    ii = 0
+    for _ in s:
+        if ii <= len(s)-1:
+            if s[ii] == '\\' and s[ii+1] == 'x':
+                b = s[ii:ii+4].encode('ascii').decode('utf-8')
+                output = output+b
+                ii += 3
+            else:
+                output = output+s[ii]
+        ii += 1
+    #
+    return output
+
+
+def breakpoint_handler(dbg):
+   print(dbg.dump_context())
+   return DBG_CONTINUE
+
+
+# Defining a decorator
+def inspect(f):
+    def wrap(*args, **kwargs):
+        dbg(f(*args, **kwargs))
+        return f(*args, **kwargs)
+
+    return wrap
+
+
+# Defining a decorator
+def trace(f):
+    def wrap(*args, **kwargs):
+        print(f"[TRACE] func: {f.__name__}, args: {args}, kwargs: {kwargs}")
+        return f(*args, **kwargs)
+
+    return wrap

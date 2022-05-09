@@ -20,7 +20,7 @@ def test_invalid_url():
     num_legs : int, optional
         The number of legs the animal (default is 4)
     """
-    mango = atac.UnderTheMangoTree(encrypted_config, config_file, key_file)
+    mango = atac.Scrape(encrypted_config, config_file, key_file)
     url1 = ""
     assert(mango.invalid_url(url1)) is False
     url2 = "www.google.com"
@@ -42,7 +42,7 @@ def test_extract_emails():
     num_legs : int, optional
         The number of legs the animal (default is 4)
     """
-    mango = atac.UnderTheMangoTree(encrypted_config, config_file, key_file)
+    mango = atac.Scrape(encrypted_config, config_file, key_file)
     content = "me@gmail.com, you@yahoo.com"
     new_emails = mango.extract_emails(content)
     expected = set()
@@ -64,7 +64,7 @@ def test_extract_phones():
     num_legs : int, optional
         The number of legs the animal (default is 4)
     """
-    mango = atac.UnderTheMangoTree(encrypted_config, config_file, key_file)
+    mango = atac.Scrape(encrypted_config, config_file, key_file)
     content = "+351 99999999, +31 45678541"
     new_phones = mango.extract_phones(content)
     expected = set()
@@ -86,6 +86,6 @@ def test_process_page():
     num_legs : int, optional
         The number of legs the animal (default is 4)
     """
-    mango = atac.UnderTheMangoTree(encrypted_config, config_file, key_file)
+    mango = atac.Scrape(encrypted_config, config_file, key_file)
     status = mango.process_page("test", "https://letterhub.com/wp-content/uploads/2018/03/100-contacts.csv")
     assert(status) == 0

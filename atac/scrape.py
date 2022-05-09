@@ -1,4 +1,4 @@
-from .config import Config
+from .Config import Config
 
 import regex as re
 import os
@@ -13,7 +13,7 @@ from collections import deque
 from bs4 import BeautifulSoup
 
 
-class UnderTheMangoTree(Config):
+class Scrape(Config):
     """ A class used to represent a scraper object
 
     Attributes

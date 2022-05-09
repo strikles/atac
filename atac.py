@@ -82,7 +82,7 @@ def email(arguments):
         The number of legs the animal (default is 4)
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
+    katie = atac.SendEmail(encrypted_config, config_file_path, key_file_path)
     #
     subject = None
     email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
@@ -98,7 +98,7 @@ def email(arguments):
     if arguments.target is not None:
         target = getattr(arguments, "target")
     #
-    _, content = katie.get_email_config()
+    _, content = katie.get_config()
     #
     if not subject:
         sys.exit(1)
@@ -106,7 +106,7 @@ def email(arguments):
     if not message_file_path:
         sys.exit(1)
     #
-    katie.send_emails(email_files_path, message_file_path, subject, False, None)
+    katie.send_batch(email_files_path, message_file_path, subject, False, None)
 
 
 # sub-command functions
@@ -124,7 +124,7 @@ def phone(arguments):
         The number of legs the animal (default is 4)
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
+    katie = atac.SendChat(encrypted_config, config_file_path, key_file_path)
     #
     target = "whatsapp"
     phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
@@ -138,8 +138,6 @@ def phone(arguments):
     #
     if "whatsapp" in target and os.environ.get('DISPLAY'):
         katie.send_pywhatkit(phone_files_path, message_file_path)
-    if "sms" in target:
-        katie.send_twilio(phone_files_path, message_file_path, 'sms')
 
 
 # sub-command functions
@@ -157,7 +155,7 @@ def social(arguments):
         The number of legs the animal (default is 4)
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    katie = atac.FromRuXiaWithLove(encrypted_config, config_file_path, key_file_path)
+    katie = atac.SendSocial(encrypted_config, config_file_path, key_file_path)
     #
     target = "twitter"
     #
@@ -192,11 +190,11 @@ def scrape(arguments):
     #
     if arguments.url is not None:
         url = getattr(arguments, "url")
-        mango = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
+        mango = atac.Scrape(encrypted_config, config_file_path, key_file_path)
         mango.process_page("url", url)
     elif arguments.target is not None:
         target = getattr(arguments, "target")
-        mango = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
+        mango = atac.Scrape(encrypted_config, config_file_path, key_file_path)
         mango.process_page(target, mango.scrape['targets'][target])
     else:
         # create threads
@@ -204,7 +202,7 @@ def scrape(arguments):
         config = atac.Config(encrypted_config, config_file_path, key_file_path)
         for data_key, starting_url in config.data['scrape']['targets'].items():
             print("{0} - {1}".format(data_key, starting_url))
-            mangos[data_key] = atac.UnderTheMangoTree(encrypted_config, config_file_path, key_file_path)
+            mangos[data_key] = atac.Scrape(encrypted_config, config_file_path, key_file_path)
             catcher_thread = Thread(
                 target=mangos[data_key].process_page, args=(data_key, starting_url)
             )
@@ -229,7 +227,7 @@ def compose(arguments):
     if arguments.corpus is not None:
         corpus_file_path = getattr(arguments, "corpus")
     #
-    two_bach = atac.AllTimeHigh()
+    two_bach = atac.Compose()
     two_bach.gen_content(corpus_file_path)
 
 
@@ -247,7 +245,7 @@ def clean(arguments):
         The number of legs the animal (default is 4)
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    leon = atac.Leon(encrypted_config, config_file_path, key_file_path)
+    leon = atac.Clean(encrypted_config, config_file_path, key_file_path)
     #
     email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
     phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"

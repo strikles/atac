@@ -1,25 +1,25 @@
-#####################################################
-# Email Program for Riseup users                    #
-# This program is free and OpenSource               #
-#                                                   #
-#                                                   #
-# OS: Linux                                         #
-# Enryption just possible on Linux distributions    #
-#                                                   #
-# @m1ghtfr3e                                        #
-#####################################################
+from ..Send import Send
+from ..Util import trace
 
-import os
-import time
-import imaplib
-import poplib
-import re
-import smtplib
+import base64
 import getpass
 import email
-import base64
 import logging
+import imaplib
+import json
+import mistune
+import os
+import poplib
+import random
+import re
+import smtplib
+import ssl
+import time
+from tqdm import tqdm
+import validators
 
+
+from envelope import Envelope
 
 # Logging
 ## For results: open << debug.log >>
@@ -38,6 +38,263 @@ LOGGER.addHandler(fh)
 #########################################################################################
 #                                         A                                             #
 #########################################################################################
+
+class SendEmail(Send):
+    """ A class used to represent a Configuration object
+
+    Attributes
+    ----------
+    key : str
+        a encryption key
+    data : dict
+        configuration data
+    encrypted_config : bool
+        use an encrypted configuration file
+    config_file_path : str
+        path to the configuration file
+    key_file_path : str
+        path to encryption key file
+    gpg : gnupg.GPG
+        python-gnupg gnupg.GPG
+
+    Methods
+    -------
+    generate_key()
+        Generates a new encryption key from a password + salt
+    """
+
+    def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
+        """ Class init
+
+        Parameters
+        ----------
+        encrypted_config : bool
+            use an encrypted configuration file
+        config_file_path : str
+            path to the configuration file
+        key_file_path : str
+            path to encryption key file
+        """
+        super().__init__(encrypted_config, config_file_path, key_file_path)
+        self.email = self.data['email']
+
+
+    def get_config(self):
+        """ Get email config """
+        content_index = self.email['active_content']
+        auth_index = self.email['active_auth']
+        content = self.email['content'][content_index]
+        auth = self.email['auth'][auth_index]
+        #
+        return auth, content
+
+    def update_config(self):
+        """ Update email config """
+        auth, content = self.get_config()
+        # set sctive to next and save config
+        if self.email['rotate_content']:
+            self.email['active_content'] = (1 + self.email['active_content']) % len(content)
+        # set active auth to next and save config
+        if self.email['rotate_auth']:
+            self.email['active_auth'] = (1 + self.email['active_auth']) % len(auth)
+        #
+        self.save_config(self.config_file_path, self.encrypted_config)
+
+
+    def find_gpg_keyid(self, recipient):
+        """
+        We need the keyid to encrypt the message to the recipient.
+        Let's walk through all keys in the keyring and find the
+        appropriate one
+
+        Parameters
+        ----------
+        recipient : str
+            The email recipient
+        """
+        keys = self.gpg.list_keys()
+        for key in keys:
+            for uid in key['uids']:
+                if recipient in uid:
+                    return key['keyid']
+        #
+        return None
+
+    def store_emails_in_buckets(self, lines):
+        """ Store emails in buckets
+
+        Parameters
+        ----------
+        lines : list
+            The contacts list
+        """
+        max_emails_per_bucket = 1000
+        auth, content = self.get_config()
+        recipient_emails = list(map(trace(lambda z: z.split(',')[1]), list(filter(trace(lambda x: x.find(',') != -1 and validators.email(x.split(',')[1])), lines))))
+        trace(random.shuffle(recipient_emails))
+        batch_emails = [[e for e in recipient_emails[start : -1 if len(recipient_emails[start:]) < max_emails_per_bucket else start + max_emails_per_bucket]] for start in range(0, len(recipient_emails), max_emails_per_bucket)]
+        print(json.dumps(batch_emails, indent=4))
+        return batch_emails
+
+
+    def send_emails_in_buckets(self, email_batches, message_file_path, subject, do_paraphrase, translate_to_languagecode):
+        """ Send emails in buckets
+
+        Parameters
+        ----------
+        unencrypted_email_batches : list
+            The name of the animal
+        encrypted_emails : list
+            The sound the animal makes
+        message_file_path : str
+            The number of legs the animal (default is 4)
+        subject : str
+            The email subject
+        """
+        print(subject)
+        auth, _ = self.get_config()
+        encrypted_emails = []
+        with tqdm(total=len(email_batches)) as filter_progress:
+            for batch in email_batches:
+                #
+                plain_emails = batch
+                message = self.get_file_content(message_file_path, file_type='message')
+                #
+                # TODO - send encrypted emails
+                # get emails with gpg key in their own list
+                # encrypted_emails = list(filter(lambda x: self.find_gpg_keyid(x), batch))
+                # map(trace(lambda e, k: self.send_email(e, message, subject, do_paraphrase, translate_to_languagecode)), encrypted_emails)
+                # plain_emails = list(filter(trace(lambda y: y not in encrypted_emails), batch))
+                #
+                if plain_emails:
+                    print("sending email…")
+                    self.send(";".join(plain_emails), message, subject, do_paraphrase, translate_to_languagecode)
+                filter_progress.update(1)
+
+
+    def send_batch(self, email_files_path, message_file_path, subject, do_paraphrase, translate_to_languagecode):
+        
+        """ Send Emails
+
+        Parameters
+        ----------
+        unencrypted_email_batches : list
+            The name of the animal
+        email_file_path : str
+            The sound the animal makes
+        message_file_path : str
+            The number of legs the animal (default is 4)
+        subject : str
+            The email subject
+        """
+
+        status = 0
+        if not os.path.isfile(message_file_path):
+            print("Invalid message file path!")
+            status = 1
+            return status
+        #
+        for ef in self.get_contact_files(email_files_path):
+            email_list = self.get_file_content(ef)
+            email_buckets = self.store_emails_in_buckets(email_list)
+            self.send_emails_in_buckets(email_buckets, message_file_path, subject, do_paraphrase, translate_to_languagecode)
+            self.update_config()
+        #
+        return status
+
+
+    def send(self, mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode=None):
+        """ Send email
+        Parameters
+        ----------
+        mailing_list : list
+            The emails list
+        message : MIMEMultipart
+            The email messsage to send
+        """
+        status = 0
+        auth, _ = self.get_config()
+        print("send email > content file: "+json.dumps(message_content, indent=4))
+        message = self.compose_email(auth['sender'], mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode)
+        if auth['security'] == "tls":
+            try:
+                print("Creating ssl context")
+                context = ssl.create_default_context()
+                print("Creating secure ssl/tls connection with server")
+                with smtplib.SMTP_SSL(auth['server'], auth['port'], context=context) as server:
+                    server.set_debuglevel(0)
+                    print("Logging into server:"+json.dumps(auth, indent=4))
+                    server.login(auth['user'], auth['password'])
+                    print("Sending email")
+                    error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
+                    print(error_status)
+                    print("\x1b[6;37;42m Sent \x1b[0m")
+                    server.quit()
+            except Exception as err:
+                print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
+                status = 1
+        else:
+            try:
+                if auth['security'] == "starttls":
+                    print("Creating ssl context")
+                    context = ssl.create_default_context()
+                print("Creating unsecure connection with server")
+                with smtplib.SMTP(auth['server'], auth['port']) as server:
+                    server.set_debuglevel(0)
+                    if auth['security'] == "starttls":
+                        print("Upgrading unsecure connection with server with starttls")
+                        server.ehlo() # Can be omitted
+                        server.starttls(context=context) # Secure the connection
+                        # server.ehlo() # Can be omitted
+                    #
+                    print("Logging into server")
+                    server.login(auth['user'], auth['password'])
+                    print("Sending email")
+                    error_status = server.sendmail(auth['sender'], mailing_list, message.as_string())
+                    print("send status:"+ json.dumps(error_status, indent=4))
+                    print("\x1b[6;37;42m Sent \x1b[0m")
+                    server.quit()
+            except Exception as err:
+                print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
+                status = 1
+        #
+        time.sleep(5)
+        return status
+
+
+    def send_envelope(self, mailing_list, message, subject):
+        """ Send email
+
+        Parameters
+        ----------
+        mailing_list : list
+            The emails list
+        message : MIMEMultipart
+            The email messsage to send
+        """
+        status = 0
+        auth, _ = self.get_config()
+        # Create secure connection with server and send email
+        try:
+            #
+            msg = Envelope()\
+                .message("<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(message) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>")\
+                .attach(path="data/assets/img/jesus/jesus_king.png", inline="header")\
+                .attach(path="data/assets/img/jesus/lamb_of_god.png", inline="signature")\
+                .subject(subject)\
+                .to(mailing_list)\
+                .sender(auth['sender'])\
+                .smtp(auth['server'], auth['port'], auth['user'], auth['password'], security='tls', attempts=3, delay=3)
+            #
+            send_debug = msg.send(False)
+            send_status = msg.send(True)
+            
+        except Exception as err:
+            print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')
+            status = 1
+        #
+        return status
+
 
 class Riseup:
 

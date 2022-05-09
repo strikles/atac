@@ -1,3 +1,5 @@
+from atac.Util import *
+
 import attr
 import nltk
 import regex
@@ -50,18 +52,6 @@ supported_pos_tags = [
     # 'WP$',  # Possessive wh-pronoun
     # 'WRB',  # Wh-adverb
 ]
-
-def partition_find(string, start, end):
-    return string.partition(start)[2].rpartition(end)[0]
-
-
-def re_find(string, start, end):
-    # applying regex.escape to start and end would be safer
-    return regex.search(start + '(.*)' + end, string, regex.DOTALL).group(1)
-
-
-def index_find(string, start, end):
-    return string[string.find(start) + len(start):string.rfind(end)]
 
 
 @attr.s
@@ -256,6 +246,7 @@ def perturb_text(
 
 
 def get_paraphrase(text, nlp):
+    """ a """
     print('Original text:', text)
     doc = nlp(text)
     perturbed_text = perturb_text(doc, verbose=True, nlp=nlp)

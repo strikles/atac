@@ -1,8 +1,6 @@
-from .config import Config
+from .Config import Config
 
 import os
-import sys
-import smtplib
 import csv
 from tqdm import tqdm
 
@@ -13,7 +11,7 @@ import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
 
 
-class Leon(Config):
+class Clean(Config):
     """
     A class used to represent a Configuration object
 
