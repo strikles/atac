@@ -64,8 +64,8 @@ send script:
 ### Motivation
 
 
-
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/jesus_king.png"></p>
+
 
 
 several colégio militar (largo da luz, lisbon, portugal) former students linked to portuguese law enforcement are sitting in a room everyday, taking turns at forcing people to talk to themselves, hurt themselves, trying to force synthetic psychosis onto their victims whenever they are near other people, to use them as targets of directed violence. these targets could be elderly parents at the end of their life, women,  children and even handicapped people. They wake me up daily, in the middle of the night or early in the morning in a ritual of articulating my tongue and trying to force me hurt myself (ears, head and genitals) and break everything I own, by abusing biophotonics, in a manner similar to the soviet style murder of mathew puncher.
@@ -188,10 +188,14 @@ the procedure is hidden with medical malpractice via psychiatric fraud and false
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/imaculate_heart.png"></p>
 
 
-governments worldwide are denying us neurorights, whilst a synthetic hell on hearth is created as a demonic psychiatric circus, where life is gambled with vibrotactile cybertorture to induce synthetic psychosis and feelings of self harm in a interactive spectacle, where participants take turns to gamble self-harm and even suicide of their victims, in snuff show style" suicide games that inspire so much hatred and anger amongst the population and which is are of the reasons that led to war in ukraine.
+governments worldwide are denying us neurorights, whilst a synthetic hell on hearth is created as a demonic psychiatric circus, where life is gambled with vibrotactile cybertorture to induce synthetic psychosis and feelings of self harm in a interactive spectacle, where participants take turns to gamble self-harm and even suicide of their victims, in snuff show style" suicide games that inspire so much hatred and anger amongst the population and which are of the reasons that led to war in ukraine.
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/adam_tree_of_life.png"></p>
+
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/politicians/eduardo_marcal_grilo.png"></p>
+
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/martiniano_nuno_goncalves.png"></p>
 
 
 until neurorights legislation is passed, it is likely you will continue seeing more and more homeless people talking to themselves, scenes of domestic violence on your television screens with multiple families being destroyed in sadistic rituals of ostentation of control over the physiology of others against their will via abuse of biophotonics, photoacoustics, and thermoacoustics to execute cybertorture.
@@ -205,6 +209,9 @@ until neurorights legislation is passed, it is likely you will continue seeing m
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/mary.png"></p>
+
+
+<p align="center" width="100%"><img src="https://math.vercel.app?from=%5Cfrac%7B1%7D%7B%5CGamma%28s%29%7D%5Cint_%7B0%7D%5E%7B%5Cinfty%7D%5Cfrac%7Bu%5E%7Bs-1%7D%7D%7Be%5E%7Bu%7D-1%7D%5Cmathrm%7Bd%7Du.svg"></p>
 
 
 ### Footnotes:
