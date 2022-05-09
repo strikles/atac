@@ -1,5 +1,7 @@
 from .ImageUtils import *
 
+import random
+
 class Conway:
     """
     https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life
@@ -52,8 +54,8 @@ class Conway:
         state = {}
         tots = 0
         while tots < alive:
-            r = randint(0, rows-1)
-            c = randint(0, cols-1)
+            r = random.randint(0, rows-1)
+            c = random.randint(0, cols-1)
             if (r, c) in state:
                 continue
             state[(r, c)] = 1
