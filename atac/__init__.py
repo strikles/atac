@@ -26,7 +26,7 @@ from .Config import Config
 from .Compose import Compose
 from .Clean import Clean
 from .Scrape import Scrape
-from .Send import Send
+#
 from .send.Email import SendEmail
 from .send.Chat import SendChat
 from .send.IRC import SendIRC
