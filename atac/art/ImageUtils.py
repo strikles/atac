@@ -1,9 +1,10 @@
+import glob
+import os
+import qrcode
+#
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
-#
-import os
-import qrcode
 
 
 num_calls = 0

@@ -1,7 +1,8 @@
 from ..Send import Send
 
 import socket
-import time
+import time`
+import sys`
 
 class SendIRC(Send):
     """ A class used to represent a Configuration object
