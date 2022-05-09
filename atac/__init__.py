@@ -33,4 +33,4 @@ from .send.IRC import SendIRC
 from .send.Social import SendSocial
 from .Util import *
 
-__all__ = ['Config', 'Compose', 'Clean', 'Scrape', 'SendSocial', 'SendEmail', 'SendIRC', 'SendSocial', 'Util']
+__all__ = ['Config', 'Compose', 'Clean', 'Scrape', 'SendChat', 'SendEmail', 'SendIRC', 'SendSocial', 'Util']
