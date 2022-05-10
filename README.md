@@ -182,7 +182,7 @@ they were enabled to destroy their victims and respective households, with famil
 they act via recruited criminal associates [^17], [^18], [^19], [^20], [^21], [^22], [^23], [^24], [^25], [^26], [^27], [^28], [^29], [^30] to execute their extrajudicial punishment, in an attempt to coerce incarceration, psychiatry or self-harm as a gamble, going as far as systematically directing violence towards people who are physically near me, having a special interest in women.
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/log.png"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/log.png"></p>
 
 
 the procedure is hidden with medical malpractice via psychiatric fraud and false therapy (in the form of forced conventional pharmacotherapy, with a high risk of suicide) when the same medium could be used to provide real therapy. Instead they raise feelings of paranoia towards biophotonics, remote healthcare, neural engineering and bioelectric medicine (where the risk of suicide would be negligible)
