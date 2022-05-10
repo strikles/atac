@@ -153,7 +153,9 @@ class Config:
         data = None
         try:
             with open(self.config_file_path, 'rb') as config:
-                data = json.loads(config.read())
+                c = config.read()
+                data = json.loads(c)
+                print(json.dumps(data, indent=4))
         except OSError as e:
             print('{} file error {}'.format(self.config_file_path, e.errno))
         #
@@ -174,70 +176,56 @@ class Config:
         """ Generate New Config """
 
         if "PYTEST_CURRENT_TEST" in os.environ:
-            if 'GMAIL_USER' not in os.environ:
-                print("GMAIL_USER is unset")
+            if 'MAIL_USER' not in os.environ:
+                print("MAIL_USER is unset")
                 sys.exit(1)
-            if 'GMAIL_PASSWORD' not in os.environ:
-                print("GMAIL_PASSWORD is unset")
+            if 'MAIL_PASSWORD' not in os.environ:
+                print("MAIL_PASSWORD is unset")
                 sys.exit(1)
-            if 'PROTONMAIL_USER' not in os.environ:
-                print("PROTONMAIL_USER is unset")
+            if 'MAIL_SERVER' not in os.environ:
+                print("MAIL_SERVER is unset")
                 sys.exit(1)
-            if 'PROTONMAIL_PASSWORD' not in os.environ:
-                print("PROTONMAIL_USER is unset")
+            if 'MAIL_PORT' not in os.environ:
+                print("MAIL_PORT is unset")
+                sys.exit(1)
+            if 'MAIL_SECURITY' not in os.environ:
+                print("MAIL_SECURITY is unset")
                 sys.exit(1)
         else:
-            if 'GMAIL_USER' not in os.environ:
-                os.environ['GMAIL_USER'] = input("Gmail User: ")
-            if 'GMAIL_PASSWORD' not in os.environ:
-                os.environ['GMAIL_PASSWORD'] = stdiomask.getpass("Gmail Password: ")
-            if 'PROTONMAIL_USER' not in os.environ:
-                os.environ['PROTONMAIL_USER'] = input("Protonmail User: ")
-            if 'PROTONMAIL_PASSWORD' not in os.environ:
-                os.environ['PROTONMAIN_PASSWORD'] = stdiomask.getpass("Protonmail Password: ")
+            if 'MAIL_USER' not in os.environ:
+                os.environ['MAIL_USER'] = input("mail User: ")
+            if 'MAIL_PASSWORD' not in os.environ:
+                os.environ['MAIL_PASSWORD'] = stdiomask.getpass("mail Password: ")
+            if 'MAIL_SERVER' not in os.environ:
+                os.environ['MAIL_SERVER'] = input("mail Server: ")
+            if 'MAIL_PORT' not in os.environ:
+                os.environ['MAIL_PORT'] = input("mail Port: ")
+            if 'MAIL_SECURITY' not in os.environ:
+                os.environ['MAIL_SECURITY'] = input("mail Security: ")
         #
         self.data = {
             "compose": {},
             "email": {
                 "active_auth": 0,
                 "active_content": 0,
-                "auth": [
-                    {
-                        "password": os.environ['GMAIL_PASSWORD'],
-                        "port": 465,
-                        "sender": os.environ['GMAIL_USER'],
-                        "server": "smtp.gmail.com",
-                        "user": os.environ['GMAIL_USER'],
-                        "security": "tls"
-                    },
-                    {
-                        "password": os.environ['PROTONMAIL_PASSWORD'],
-                        "port": 1025,
-                        "sender": os.environ['PROTONMAIL_USER'],
-                        "server": "127.0.0.1",
-                        "user": os.environ['PROTONMAIL_USER'],
-                        "security": "none"
-                    }
-                ],
-                "content": [
-                    {
-                        "markdown": "",
-                        "subject": ""
-                    }
-                ],
-                "rotate_auth": False,
-                "rotate_content": False
-            },
-            "phone": {
-                "twilio": {
-                    "PHONE": "+YOUR PHONE NUMBER",
-                    "SID": "YOUR SID",
-                    "TOKEN": "YOUR TOKEN"
-                }
+                "rotate_auth": "FALSE",
+                "rotate_content": "FALSE",
+                "auth": [{
+                    "user": os.environ['MAIL_USER'],
+                    "password": os.environ['MAIL_PASSWORD'],
+                    "port": os.environ['MAIL_PORT'],
+                    "sender": os.environ['MAIL_USER'],
+                    "server": os.environ['MAIL_SERVER'],
+                    "security": "tls"
+                }],
+                "content": [{
+                    "markdown": "neurorights.md",
+                    "subject": ""
+                }]
             },
             "scrape": {
-                "use_tor": False,
-                "active_proxies": False,
+                "use_tor": "FALSE",
+                "active_proxies": "FALSE",
                 "proxies": {
                     "http": "http://10.10.1.10:3128",
                     "https": "http://10.10.1.10:1080"
