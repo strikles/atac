@@ -1,17 +1,18 @@
 from ..config.Config import Config
 
+import csv
+from bs4 import BeautifulSoup
+from collections import deque
+from fake_useragent import UserAgent
 import regex as re
 import os
-import csv
 import requests
 from requests import HTTPError
 import tldextract
+from torrequest import TorRequest
+from urllib.parse import urlsplit
 import validators
 import threading
-from fake_useragent import UserAgent
-from urllib.parse import urlsplit
-from collections import deque
-from bs4 import BeautifulSoup
 
 
 class Scrape(Config):
@@ -230,6 +231,7 @@ class Scrape(Config):
         starting_url : str
             The scrape starting url
         """
+        from http import cookiejar
         status = 0
         # primary queue (urls to be crawled)
         self.primary_unprocessed_urls.append(starting_url)
@@ -261,15 +263,46 @@ class Scrape(Config):
             if self.invalid_url(url):
                 continue
             # get page with timeout of 10s
+            response = None
             try:
-                proxies = {}
-                if self.scrape["active_proxies"]:
-                    proxies = self.scrape["proxies"]
+                if "use_tor" in self.scrape.keys() and self.scrape["use_tor"]:
+                    # Choose a proxy port, a control port, and a password. 
+                    # Defaults are 9050, 9051, and None respectively. 
+                    # If there is already a Tor process listening the specified 
+                    # ports, TorRequest will use that one. 
+                    # Otherwise, it will create a new Tor process, 
+                    # and terminate it at the end.
+                    tor_password = None
+                    tor_proxy_port = 9050
+                    tor_ctrl_port = 9051
+                    with TorRequest(proxy_port=tor_proxy_port, ctrl_port=tor_ctrl_port, password=tor_password) as tr:
+                        # Change your Tor circuit,
+                        # and likely your observed IP address.
+                        tr.reset_identity()
+                        # TorRequest object also exposes the underlying Stem controller 
+                        # and Requests session objects for more flexibility.
+                        print(type(tr.ctrl))            # a stem.control.Controller object
+                        tr.ctrl.signal('CLEARDNSCACHE') # see Stem docs for the full API
+                        print(type(tr.session))         # a requests.Session object
+                        c = cookiejar.CookieJar()
+                        tr.session.cookies.update(c)    # see Requests docs for the full API
+                        # Specify HTTP verb and url.
+                        response = tr.get(url)
+                        print(response.text)
+                        # Send data. Use basic authentication.
+                        #resp = tr.post('https://api.example.com', 
+                        #data={'foo': 'bar'}, auth=('user', 'pass'))'
+                        #print(resp.json)
+                else:
+                    proxies = {}
+                    if "active_proxies" in self.scrape.keys() and self.scrape["active_proxies"]:
+                        proxies = self.scrape["proxies"]
 
-                response = requests.get(url, headers=self.set_useragent(), proxies=proxies, timeout=10, stream=False)
-                response.encoding = "utf-8"
-                # If the response was successful, no Exception will be raised
-                response.raise_for_status()
+                    response = requests.get(url, headers=self.set_useragent(), proxies=proxies, timeout=10, stream=False)
+                    response.encoding = "utf-8"
+                    # If the response was successful, no Exception will be raised
+                    response.raise_for_status()
+            #
             except HTTPError as http_err:
                 print(f'HTTP error occurred: {http_err}')
                 continue

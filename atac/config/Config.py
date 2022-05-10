@@ -236,7 +236,12 @@ class Config:
                 }
             },
             "scrape": {
+                "use_tor": False,
                 "active_proxies": False,
+                "proxies": {
+                    "http": "http://10.10.1.10:3128",
+                    "https": "http://10.10.1.10:1080"
+                },
                 "invalid_domains": [
                     "adobe.",
                     "aerialtelly.",
@@ -305,10 +310,6 @@ class Config:
                     "admin",
                     "auth"
                 ],
-                "proxies": {
-                    "http": "http://10.10.1.10:3128",
-                    "https": "http://10.10.1.10:1080"
-                },
                 "targets": {
                     "activism": "https://curlie.org/en/Society/Activism",
                     "addiction": "https://curlie.org/en/Health/Addictions/",

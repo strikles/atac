@@ -50,9 +50,10 @@ shadow-useragent
 spacy
 stdiomask
 syllapy
-sympy  
+sympy
 text_unidecode
 tldextract
+torrequest
 tqdm
 tsp_solver2
 tweepy
