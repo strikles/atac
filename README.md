@@ -88,8 +88,11 @@ Here follows another group:
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/goncalo_duarte.png"></p>
+
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/tiago_roque.png"></p>
+
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/mazivo.png"></p>
+
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/joao_leiria.png"></p>
 
 
@@ -176,10 +179,10 @@ they were enabled to destroy their victims and respective households, with famil
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/crucifixion_jesus_mary.png"></p>
 
 
-they act via recruited criminal associates [^17], [^18], [^19], [^20], [^21], [^22], [^23], [^24], [^25], [^26], [^27], [^28], [^29], [^30] to execute their extrajudicial punishment, in an attempt to coerce incarceration, psychiatry or self-harm as a gamble, going as far as systematically directing violence towards people who are physically near me, having a special interest on women.
+they act via recruited criminal associates [^17], [^18], [^19], [^20], [^21], [^22], [^23], [^24], [^25], [^26], [^27], [^28], [^29], [^30] to execute their extrajudicial punishment, in an attempt to coerce incarceration, psychiatry or self-harm as a gamble, going as far as systematically directing violence towards people who are physically near me, having a special interest in women.
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/joel.png"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/log.png"></p>
 
 
 the procedure is hidden with medical malpractice via psychiatric fraud and false therapy (in the form of forced conventional pharmacotherapy, with a high risk of suicide) when the same medium could be used to provide real therapy. Instead they raise feelings of paranoia towards biophotonics, remote healthcare, neural engineering and bioelectric medicine (where the risk of suicide would be negligible)
@@ -209,9 +212,6 @@ until neurorights legislation is passed, it is likely you will continue seeing m
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/mary.png"></p>
-
-
-<p align="center" width="100%"><img src="https://math.vercel.app?from=%5Cfrac%7B1%7D%7B%5CGamma%28s%29%7D%5Cint_%7B0%7D%5E%7B%5Cinfty%7D%5Cfrac%7Bu%5E%7Bs-1%7D%7D%7Be%5E%7Bu%7D-1%7D%5Cmathrm%7Bd%7Du.svg"></p>
 
 
 ### Footnotes:
