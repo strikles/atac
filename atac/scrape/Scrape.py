@@ -190,11 +190,10 @@ class Scrape(Config):
                 for contact in unique_contacts:
                     print("\x1b[6;37;41m new email:{0} \x1b[0m".format(contact))
                     self.num_emails += 1
-                    writer.writerow([self.num_emails, contact])
+                    writer.writerow([self.num_emails, contact.strip()])
         except OSError as e:
             print('{} file error {}'.format(csv_path, e.errno))
-        finally:
-            contact_file.close()
+
 
     def save_phone_contacts(self, new_contacts, data_key):
         """ Save contacts to file
@@ -215,11 +214,10 @@ class Scrape(Config):
                 for contact in unique_contacts:
                     print("\x1b[6;37;41m new phone:{0}\x1b[0m".format(contact))
                     self.num_phones += 1
-                    writer.writerow([self.num_phones, contact])
+                    writer.writerow([self.num_phones, contact.strip()])
         except OSError as e:
             print('{} file error {}'.format(csv_path, e.errno))
-        finally:
-            contact_file.close()
+
 
     def process_page(self, data_key, starting_url):
         """ Scrape page
