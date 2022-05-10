@@ -68,7 +68,7 @@ send script:
 
 
 
-several colégio militar (largo da luz, lisbon, portugal) former students linked to portuguese law enforcement are sitting in a room everyday, taking turns at forcing people to talk to themselves, hurt themselves, trying to force synthetic psychosis onto their victims whenever they are near other people, to use them as targets of directed violence. these targets could be elderly parents at the end of their life, women,  children and even handicapped people. They wake me up daily, in the middle of the night or early in the morning in a ritual of articulating my tongue and trying to force me hurt myself (ears, head and genitals) and break everything I own, by abusing biophotonics, in a manner similar to the soviet style murder of mathew puncher.
+several colégio militar (largo da luz, lisbon, portugal) former students linked to portuguese law enforcement and criminal associates are using a strategy described by them as "covering the whole world in shit" by sitting in a room everyday, abusing biophotonics and taking turns at articulating tongues to force people to talk to themselves, hurt themselves, trying to force synthetic psychosis onto their victims whenever they are near other people, to use them as targets of directed violence. these targets could be elderly parents at the end of their life, women,  children and even handicapped people. They wake me up daily, in the middle of the night or early in the morning in a ritual of articulating my tongue and trying to force me hurt myself (ears, head and genitals) and break everything I own, by abusing biophotonics, in a manner similar to the soviet style murder of mathew puncher.
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/matthew_puncher.png"></p>
@@ -105,7 +105,7 @@ they abuse biophotonics to execute extrajudicial punishment, resorting to direct
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/jesus_lamb.png"></p>
 
 
-they are connected to ricardo rebordão de brito [^1], rui goncalo pires pintado [^2], luis nazareth carvalho figueira [^3], pedro miguel de brito esteves grilo [^4], joão filipe saraiva pinheiro [^5], pedro de queiroz antão [^6], ricardo carrilho [^7], paulo jorge varanda [^8], frederico ferronha [^19], oscar ferreira [^10], thyago picco [^11], rui ricardo borges marques sabino reino [^12], pedro nuno da silva rocha [^13], tito eurico miranda fernandes [^14]. 
+they are connected to ricardo rebordão de brito [^1], rui goncalo pires pintado [^2], luis nazareth carvalho figueira [^3], pedro miguel de brito esteves grilo [^4], joão filipe saraiva pinheiro [^5], pedro de queiroz antão [^6], ricardo carrilho [^7], paulo jorge varanda [^8], frederico ferronha [^19], oscar ferreira [^10], thyago picco [^11], rui ricardo borges marques sabino reino [^12], pedro nuno da silva rocha [^13], tito eurico miranda fernandes [^14], frederico leitão e carloas anselmo simões. 
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/rrb.png"></p>

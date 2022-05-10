@@ -2,6 +2,8 @@ from ..util.Util import *
 
 import attr
 import nltk
+nltk.download('stopwords')
+
 import regex
 import spacy
 from collections import OrderedDict

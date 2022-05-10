@@ -80,7 +80,7 @@ class Compose(Config):
         #
         nlp = None
         #
-        subject_transform = "neurorights and blue whale suicide games: {}".format(subject.lower())
+        subject_transform = "neurorights, blue whale suicide games and tongue articulators: {}".format(subject.lower())
         if translate_to_languagecode:
             subject_translator = Translator()
             subject_transform = subject_translator.translate(text=subject_transform, dest=translate_to_languagecode).text
