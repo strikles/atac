@@ -5,6 +5,7 @@ import os
 import csv
 import requests
 from requests import HTTPError
+import tldextract
 import validators
 import threading
 from fake_useragent import UserAgent
@@ -81,7 +82,7 @@ class Scrape(Config):
                 return True
         # reject invalid file types
         for k in self.scrape["invalid_files"]:
-            if url.lower().endswith(k):
+            if k in url.lower():
                 print(">>> invalid file..\n")
                 return True
         #
@@ -298,6 +299,7 @@ class Scrape(Config):
             # extract base url to resolve relative links
             parts = urlsplit(url)
             base_url = "{0.scheme}://{0.netloc}".format(parts)
+            base_ext = tldextract.extract(url)
             path = url[:url.rfind('/') + 1] if '/' in parts.path else url
             # find all the anchors
             anchors = soup.find_all("a")
@@ -313,6 +315,12 @@ class Scrape(Config):
                     link = base_url + link
                 elif not link.startswith('http'):
                     link = path + link
+                # don't scrape if not in same domain
+                link_ext = tldextract.extract(link)
+                print("{0}.domain - {1}.domain".format(base_ext, link_ext))
+                if base_ext.domain not in link:
+                    print("Invalid link - link domain is outside domain of url being scraped...")
+                    continue
                 # add the new url to queue if not in unprocessed list nor in processed list
                 if validators.url(link) and link not in self.processed_urls:
                     count += 1

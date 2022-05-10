@@ -52,6 +52,7 @@ stdiomask
 syllapy
 sympy  
 text_unidecode
+tldextract
 tqdm
 tsp_solver2
 tweepy
