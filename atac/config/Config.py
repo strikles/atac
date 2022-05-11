@@ -225,7 +225,7 @@ class Config:
             },
             "scrape": {
                 "use_tor": "FALSE",
-                "active_proxies": "FALSE",
+                "use_proxies": "FALSE",
                 "proxies": {
                     "http": "http://10.10.1.10:3128",
                     "https": "http://10.10.1.10:1080"
