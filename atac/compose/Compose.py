@@ -1,3 +1,4 @@
+from ctypes.wintypes import LANGID
 from ..config.Config import Config
 
 #from .art import *
@@ -18,7 +19,7 @@ import json
 import mistune
 import pystache
 import regex
-from sympy import preview
+
 import uuid
 
 #from html2image import Html2Image
@@ -27,6 +28,8 @@ from bs4 import BeautifulSoup
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module='bs4')
 
+
+from autocorrect import Speller
 
 class Compose(Config):
     """ A class used to represent a Configuration object
@@ -51,32 +54,6 @@ class Compose(Config):
     Methods
     -------
     """
-    @staticmethod
-    def translate(content, src='en', dest=None):
-        #
-        print("translating phrase to {}...".format(dest))
-        translator = Translator()
-        print("before translation: " + content)
-        transform = translator.translate(text=content.lower(), dest=dest).text
-        print("after translation: " + transform)
-        #
-        return transform
-
-
-    @staticmethod
-    def paraphrase(content, lang='en'):
-        #
-        nlp = spacy.load('en_core_web_md')
-        transform = get_paraphrase(content, nlp)
-        #
-        return transform
-
-
-    @staticmethod
-    def spellcheck(content, lang='en'):
-        #
-        return content
-
 
     @staticmethod
     def mjml2html(content):

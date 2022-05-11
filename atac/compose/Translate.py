@@ -42,13 +42,19 @@ def translate_translators():
     help(ts.google)
 
 
-def translate_googletrans(content, languagecode):
-    translator = Translator()
-    translation = translator.translate(text=content, dest=languagecode).text
-
-
 def translate_languagetool(content, languagecode):
     tool = language_tool_python.LanguageToolPublicAPI(languagecode)
     is_bad_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
     matches = tool.check(content)
     matches = [rule for rule in matches if not is_bad_rule(rule)]
+
+
+def translate(content, src='en', dest=None):
+    #
+    print("translating phrase to {}...".format(dest))
+    translator = Translator()
+    print("before translation: " + content)
+    transform = translator.translate(text=content.lower(), dest=dest).text
+    print("after translation: " + transform)
+    #
+    return transform

@@ -20,6 +20,9 @@ __copyright__ = '(c) 2017, Tino Wagner'
 #from pylatexenc.latex2text import LatexNodes2Text
 
 # phrase_transform = phrase_transform.replace("$$", "")    
+
+from sympy import preview
+
 """
 # generate 
 image_name = "{} - {}{}".format("data/messages/assets/latex", uuid.uuid4(), ".png")

@@ -1,11 +1,13 @@
 ascii-magic
 attrs
+autocorrect
 beautifulsoup4
 boto3
 bs4
 pycairo
 colorama
 coloredlogs
+#contextualSpellCheck
 coverage
 cryptography
 envelope
