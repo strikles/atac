@@ -154,14 +154,6 @@ class Compose(Config):
                 elif do_paraphrase: 
                     phrase_transform = get_paraphrase(phrase_transform.lower(), nlp)
                 #
-                # check spelling
-                if False:
-                    spellchecker = language_tool_python.LanguageToolPublicAPI(translate_to_languagecode if translate_to_languagecode else 'en')
-                    spellchecker_matches = spellchecker.check(phrase_transform)
-                    is_bad_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
-                    spellchecker_matches = [rule for rule in spellchecker_matches if not is_bad_rule(rule)]
-                    phrase_transform = language_tool_python.utils.correct(phrase_transform, spellchecker_matches)
-                #
                 phrase_transform = phrase_transform.capitalize()
                 lines.append(phrase_transform)
             #
