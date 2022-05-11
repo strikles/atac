@@ -296,7 +296,7 @@ class Scrape(Config):
                         #print(resp.json)
                 else:
                     proxies = {}
-                    if "active_proxies" in self.scrape.keys() and self.scrape["active_proxies"]:
+                    if "active_proxies" in self.scrape.keys() and str2bool(self.scrape["active_proxies"]):
                         proxies = self.scrape["proxies"]
 
                     response = requests.get(url, headers=self.set_useragent(), proxies=proxies, timeout=10, stream=False)
