@@ -2,6 +2,7 @@ from ..config.Config import Config
 
 #from .art import *
 #from .art.epicycles import *
+from .Translate import *
 from .Paraphrase import *
 from .Latex import *
 from ..util.Util import trace
@@ -25,9 +26,6 @@ import uuid
 from bs4 import BeautifulSoup
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module='bs4')
-
-from googletrans import Translator
-import language_tool_python
 
 
 class Compose(Config):
@@ -137,26 +135,6 @@ class Compose(Config):
                 # LaTeX
                 if phrase_transform.startswith("$$") and phrase_transform.endswith("$$"):
                     print("Found latex {}".format(phrase_transform))
-                    # phrase_transform = phrase_transform.replace("$$", "")    
-                    """
-                    # generate 
-                    image_name = "{} - {}{}".format("data/messages/assets/latex", uuid.uuid4(), ".png")
-                    if not os.path.isfile(image_name):
-                        preview(phrase_transform, viewer='file', filename=image_name, euler=False)
-                    else:
-                        lines.append("<p align='center' width='100%'><img src='https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/latex{}.png'></p>".format(num_latex_lines))   
-                    """
-                    # mathml
-                    # phrase_transform = latex2mathml.converter.convert(phrase_transform)
-                    # print("transformed latex {}".format(phrase_transform))
-                    #
-                    # ascii
-                    # phrase_transform = LatexNodes2Text().latex_to_text(phrase_transform)
-                    # print("transformed latex {}".format(phrase_transform))
-                    #
-                    # svg
-                    # phrase_transform = latex2svg(phrase_transform)['svg']
-                    # print("transformed latex {}".format(phrase_transform))
                     #
                     lines.append(phrase_transform)
                     continue

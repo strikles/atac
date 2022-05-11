@@ -19,6 +19,16 @@ __copyright__ = '(c) 2017, Tino Wagner'
 #import pylatexenc
 #from pylatexenc.latex2text import LatexNodes2Text
 
+# phrase_transform = phrase_transform.replace("$$", "")    
+"""
+# generate 
+image_name = "{} - {}{}".format("data/messages/assets/latex", uuid.uuid4(), ".png")
+if not os.path.isfile(image_name):
+    preview(phrase_transform, viewer='file', filename=image_name, euler=False)
+else:
+    lines.append("<p align='center' width='100%'><img src='https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/latex{}.png'></p>".format(num_latex_lines))   
+"""
+
 import os
 import sys
 import subprocess

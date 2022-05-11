@@ -55,6 +55,7 @@ text_unidecode
 tldextract
 torrequest
 tqdm
+translators
 tsp_solver2
 tweepy
 urllib3

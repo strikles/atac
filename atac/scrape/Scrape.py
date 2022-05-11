@@ -1,4 +1,5 @@
 from ..config.Config import Config
+from ..util.Util import str2bool
 
 import csv
 from bs4 import BeautifulSoup
@@ -265,7 +266,7 @@ class Scrape(Config):
             # get page with timeout of 10s
             response = None
             try:
-                if "use_tor" in self.scrape.keys() and self.scrape["use_tor"]:
+                if "use_tor" in self.scrape.keys() and str2bool(self.scrape["use_tor"]):
                     # Choose a proxy port, a control port, and a password. 
                     # Defaults are 9050, 9051, and None respectively. 
                     # If there is already a Tor process listening the specified 
