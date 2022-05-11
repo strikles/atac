@@ -88,7 +88,7 @@ def email(arguments):
         The number of legs the animal (default is 4)
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    katie = atac.SendEmail(encrypted_config, config_file_path, key_file_path)
+    emailer = atac.SendEmail(encrypted_config, config_file_path, key_file_path)
     #
     subject = None
     email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
@@ -104,7 +104,7 @@ def email(arguments):
     if arguments.target is not None:
         target = getattr(arguments, "target")
     #
-    _, content = katie.get_config()
+    _, content = emailer.get_config()
     #
     if not subject:
         sys.exit(1)
@@ -112,7 +112,7 @@ def email(arguments):
     if not message_file_path:
         sys.exit(1)
     #
-    katie.send_batch(email_files_path, message_file_path, subject, False, False, correct_spelling=False, src=False, dest=False)
+    emailer.send_batch(email_files_path, message_file_path, subject, False, False, correct_spelling=False, src=False, dest=False)
 
 
 # sub-command functions
@@ -130,7 +130,7 @@ def phone(arguments):
         The number of legs the animal (default is 4)
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    katie = atac.SendChat(encrypted_config, config_file_path, key_file_path)
+    chatter = atac.SendChat(encrypted_config, config_file_path, key_file_path)
     #
     target = "whatsapp"
     phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
@@ -143,7 +143,7 @@ def phone(arguments):
         target = getattr(arguments, "target")
     #
     if "whatsapp" in target and os.environ.get('DISPLAY'):
-        katie.send_pywhatkit(phone_files_path, message_file_path)
+        chatter.send_pywhatkit(phone_files_path, message_file_path)
 
 
 # sub-command functions
@@ -161,7 +161,7 @@ def social(arguments):
         The number of legs the animal (default is 4)
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    katie = atac.SendSocial(encrypted_config, config_file_path, key_file_path)
+    socialite = atac.SendSocial(encrypted_config, config_file_path, key_file_path)
     #
     target = "twitter"
     #
@@ -171,9 +171,9 @@ def social(arguments):
         target = getattr(arguments, "target")
     #
     if "facebook" in target:
-        katie.send_facebook(message_file_path)
+        socialite.send_facebook(message_file_path)
     if "twitter" in target:
-        katie.send_twitter(message_file_path)
+        socialite.send_twitter(message_file_path)
 
 
 def scrape(arguments):
@@ -196,21 +196,21 @@ def scrape(arguments):
     #
     if arguments.url is not None:
         url = getattr(arguments, "url")
-        mango = atac.Scrape(encrypted_config, config_file_path, key_file_path)
-        mango.process_page("url", url)
+        scraper = atac.Scrape(encrypted_config, config_file_path, key_file_path)
+        scraper.process_page("url", url)
     elif arguments.target is not None:
         target = getattr(arguments, "target")
-        mango = atac.Scrape(encrypted_config, config_file_path, key_file_path)
-        mango.process_page(target, mango.scrape['targets'][target])
+        scraper = atac.Scrape(encrypted_config, config_file_path, key_file_path)
+        scraper.process_page(target, scraper.scrape['targets'][target])
     else:
         # create threads
-        mangos = {}
+        scrapers = {}
         config = atac.Config(encrypted_config, config_file_path, key_file_path)
         for data_key, starting_url in config.data['scrape']['targets'].items():
             print("{0} - {1}".format(data_key, starting_url))
-            mangos[data_key] = atac.Scrape(encrypted_config, config_file_path, key_file_path)
+            scrapers[data_key] = atac.Scrape(encrypted_config, config_file_path, key_file_path)
             catcher_thread = Thread(
-                target=mangos[data_key].process_page, args=(data_key, starting_url)
+                target=scrapers[data_key].process_page, args=(data_key, starting_url)
             )
             catcher_thread.start()
 
@@ -257,10 +257,10 @@ def compose(arguments):
     spellcheck = spellcheck_language if spellcheck_language else False
     #
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    leon = atac.Compose(encrypted_config, config_file_path, key_file_path)
+    composer = atac.Compose(encrypted_config, config_file_path, key_file_path)
     corpus = get_file_content(input_file_path)
     if len(corpus):
-        transform = leon.transform(corpus, paraphrase, translate, spellcheck, src=from_lang, dest=to_lang)
+        transform = composer.transform(corpus, paraphrase, translate, spellcheck, src=from_lang, dest=to_lang)
         try:
             if not os.path.isdir(os.path.dirname(output_file_path)):
                 os.makedirs(os.path.dirname(output_file_path))
@@ -284,7 +284,7 @@ def clean(arguments):
         The number of legs the animal (default is 4)
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    leon = atac.Clean(encrypted_config, config_file_path, key_file_path)
+    cleaner = atac.Clean(encrypted_config, config_file_path, key_file_path)
     #
     email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
     phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
@@ -293,12 +293,12 @@ def clean(arguments):
         target = getattr(arguments, "target")
     #
     if "email" in target:
-        leon.clean_emails(email_files_path)
+        cleaner.clean_emails(email_files_path)
     if "phone" in target:
-        leon.clean_phones(phone_files_path)
+        cleaner.clean_phones(phone_files_path)
     else:
-        leon.clean_emails(email_files_path)
-        leon.clean_phones(phone_files_path)
+        cleaner.clean_emails(email_files_path)
+        cleaner.clean_phones(phone_files_path)
 
 
 if __name__ == "__main__":
