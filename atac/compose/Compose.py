@@ -52,19 +52,19 @@ class Compose(Config):
     -------
     """
     @staticmethod
-    def translate(content, languagecode=None):
+    def translate(content, src='en', dest=None):
         #
-        print("translating phrase to {}...".format(languagecode))
+        print("translating phrase to {}...".format(dest))
         translator = Translator()
         print("before translation: " + content)
-        transform = translator.translate(text=content.lower(), dest=languagecode).text
+        transform = translator.translate(text=content.lower(), dest=dest).text
         print("after translation: " + transform)
         #
         return transform
 
 
     @staticmethod
-    def paraphrase(content):
+    def paraphrase(content, lang='en'):
         #
         nlp = spacy.load('en_core_web_md')
         transform = get_paraphrase(content, nlp)
@@ -73,12 +73,9 @@ class Compose(Config):
 
 
     @staticmethod
-    def spellcheck(content, languagecode=None):
+    def spellcheck(content, lang='en'):
         #
-        translator = Translator()
-        transform = translator.translate(text=content, dest=languagecode).text
-        #
-        return transform
+        return content
 
 
     @staticmethod
@@ -151,7 +148,7 @@ class Compose(Config):
 
 
     @staticmethod
-    def transform(content, do_paraphrase, languagecode):
+    def transform(content, do_paraphrase, src='en', dest=None):
         #
         lines = []
         num_latex_lines = 0
@@ -174,11 +171,15 @@ class Compose(Config):
                 lines.append("")
                 continue
             # translation
-            if languagecode:
-                phrase_transform = Compose.translate(phrase_transform, languagecode)
+            if dest:
+                phrase_transform = Compose.spellcheck(phrase_transform, src)
+                phrase_transform = Compose.translate(phrase_transform, src, dest)
+                phrase_transform = Compose.spellcheck(phrase_transform, dest)
             # paraphrasing transform
-            elif do_paraphrase: 
-                phrase_transform = Compose.paraphrase(phrase_transform, languagecode)
+            elif do_paraphrase:
+                phrase_transform = Compose.spellcheck(phrase_transform, src)
+                phrase_transform = Compose.paraphrase(phrase_transform, src, dest)
+                phrase_transform = Compose.spellcheck(phrase_transform, dest)
             #
             phrase_transform = phrase_transform.capitalize()
             lines.append(phrase_transform)
