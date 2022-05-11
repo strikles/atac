@@ -49,12 +49,12 @@ def translate_languagetool(content, languagecode):
     matches = [rule for rule in matches if not is_bad_rule(rule)]
 
 
-def translate(content, src='en', dest=None):
+def translator(content, source='en', destination=None):
     #
-    print("translating phrase to {}...".format(dest))
+    print("translating phrase to {}...".format(destination))
     translator = Translator()
     print("before translation: " + content)
-    transform = translator.translate(text=content.lower(), dest=dest).text
+    transform = translator.translate(text=content.lower(), src=source, dest=destination).text
     print("after translation: " + transform)
     #
     return transform

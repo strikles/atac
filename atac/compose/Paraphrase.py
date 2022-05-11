@@ -255,7 +255,7 @@ def get_paraphrase(text, nlp):
     return perturbed_text
 
 
-def paraphrase(content, lang='en'):
+def paraphraser(content, lang='en'):
     #
     nltk.download('stopwords')
     nlp = spacy.load('en_core_web_md')

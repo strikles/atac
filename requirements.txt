@@ -14,6 +14,7 @@ envelope
 facebook-sdk
 Faker
 fake-useragent
+flake8
 googletrans==4.0.0rc1
 html2image
 language_tool_python

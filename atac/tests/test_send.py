@@ -68,7 +68,7 @@ def test_send_email():
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/neurorights.md")), "message")
     print(os.path.abspath(os.getcwd()))
     mailing_list = "; ".join(recipients)
-    status = katie.send(mailing_list, message_content, subject, do_paraphrase=False, translate_to_languagecode=None)
+    status = katie.send(mailing_list, message_content, subject, paraphrase=False, translate=False, correct_spelling=False, src=False, dest=False)
     assert(status == 0) is True
 
 
@@ -83,7 +83,7 @@ def test_send_email_with_translation():
     subject = random.sample(subjects, 1).pop()
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/neurorights.md")), "message")
     mailing_list = random.sample(recipients, 1).pop()
-    status = katie.send(mailing_list, message_content, subject, do_paraphrase=False, translate_to_languagecode="pt")
+    status = katie.send(mailing_list, message_content, subject, paraphrase=False, translate=False, correct_spelling=False, src=False, dest=False)
     assert(status == 0) is True
 
 
@@ -98,7 +98,7 @@ def test_send_email_with_paraphrase():
     subject = random.sample(subjects, 1).pop()
     message_content = katie.get_file_content(os.path.abspath(os.path.join(os.getcwd(), "data/messages/email/neurorights.md")), "message")
     mailing_list = random.sample(recipients, 1).pop()
-    status = katie.send(mailing_list, message_content, subject, do_paraphrase=True, translate_to_languagecode=None)
+    status = katie.send(mailing_list, message_content, subject, paraphrase=False, translate=False, correct_spelling=False, src=False, dest=False)
     assert(status == 0) is True
 
 
@@ -106,13 +106,12 @@ def test_send_email_with_paraphrase():
 def test_send_emails_with_paraphrasing_and_translation():
     """
     """
-    #
     katie = atac.SendEmail(encrypted_config, config_file, key_file)
     email_files_path = os.path.join(os.getcwd(), email_file)
     message_file_path = os.path.join(os.getcwd(), "data/messages/email/neurorights.md")
     subject = random.sample(subjects, 1).pop()
     for lang_code in target_languages:
-        status = katie.send_batch(email_files_path, message_file_path, subject, True, lang_code)
+        status = katie.send_batch(email_files_path, message_file_path, subject, paraphrase=False, translate=True, correct_spelling=False, src='en', dest=lang_code)
         assert(status == 0) is True
 
 
@@ -125,5 +124,5 @@ def test_send_emails_with_no_paraphrasing_and_no_translation():
     email_files_path = os.path.join(os.getcwd(), email_file)
     message_file_path = os.path.join(os.getcwd(), "data/messages/email/neurorights.md")
     subject = random.sample(subjects, 1).pop()
-    status = katie.send_batch(email_files_path, message_file_path, subject, False, None)
+    status = katie.send_batch(email_files_path, message_file_path, subject, paraphrase=False, translate=False, correct_spelling=False, src=False, dest=False)
     assert(status == 0) is True

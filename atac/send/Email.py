@@ -1,6 +1,6 @@
 from .Send import Send
 from ..compose.Compose import Compose
-from ..util.Util import trace
+from ..util.Util import trace, get_file_content
 
 import base64
 import getpass
@@ -138,7 +138,7 @@ class SendEmail(Send):
         return batch_emails
 
 
-    def send_emails_in_buckets(self, email_batches, message_file_path, subject, do_paraphrase, translate_to_languagecode):
+    def send_emails_in_buckets(self, email_batches, message_file_path, subject, paraphrase, translate, correct_spelling, src, dest):
         """ Send emails in buckets
 
         Parameters
@@ -159,7 +159,7 @@ class SendEmail(Send):
             for batch in email_batches:
                 #
                 plain_emails = batch
-                message = self.get_file_content(message_file_path, file_type='message')
+                message = get_file_content(message_file_path)
                 #
                 # TODO - send encrypted emails
                 # get emails with gpg key in their own list
@@ -169,11 +169,11 @@ class SendEmail(Send):
                 #
                 if plain_emails:
                     print("sending email…")
-                    self.send(";".join(plain_emails), message, subject, do_paraphrase, translate_to_languagecode)
+                    self.send(";".join(plain_emails), message, subject, paraphrase, translate, correct_spelling, src, dest)
                 filter_progress.update(1)
 
 
-    def send_batch(self, email_files_path, message_file_path, subject, do_paraphrase, translate_to_languagecode):
+    def send_batch(self, email_files_path, message_file_path, subject, paraphrase, translate, correct_spelling, src, dest):
         
         """ Send Emails
 
@@ -196,14 +196,14 @@ class SendEmail(Send):
             return status
         #
         for ef in self.get_contact_files(email_files_path):
-            email_list = self.get_file_content(ef)
+            email_list = get_file_content(ef)
             email_buckets = self.store_emails_in_buckets(email_list)
-            self.send_emails_in_buckets(email_buckets, message_file_path, subject, do_paraphrase, translate_to_languagecode)
+            self.send_emails_in_buckets(email_buckets, message_file_path, subject, paraphrase, translate, correct_spelling, src, dest)
         #
         return status
 
 
-    def send(self, mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode=None):
+    def send(self, mailing_list, message_content, subject, paraphrase=False, translate=False, correct_spelling=False, src=False, dest=False):
         """ Send email
         Parameters
         ----------
@@ -215,7 +215,7 @@ class SendEmail(Send):
         status = 0
         auth, _ = self.get_config()
         print("send email > content file: "+json.dumps(message_content, indent=4))
-        message = Compose.compose_email(auth['sender'], mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode)
+        message = Compose.compose_email(auth['sender'], mailing_list, message_content, subject, paraphrase, translate, correct_spelling, src, dest)
         if auth['security'] == "tls":
             try:
                 print("Creating ssl context")

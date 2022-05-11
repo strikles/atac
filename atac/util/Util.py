@@ -5,8 +5,33 @@ from random_word import RandomWords
 import random
 import regex
 import string
+import os
+import sys
 import unicodedata
 
+
+def get_file_content(file_path):
+    """ Get file content
+
+    Parameters
+    ----------
+    file_path : str
+        The sound the animal makes
+    file_type : int, optional
+        The number of legs the animal (default is 4)
+    """
+    if not os.path.isfile(file_path):
+        print("invalid file path!")
+        sys.exit(1)
+    #
+    lines = None
+    try:
+        with open(file_path, encoding="utf-8") as content_file:
+            lines = [line.rstrip() for line in content_file]
+    except OSError as e:
+        print('{} file error {}'.format(file_path, e.errno))
+    #
+    return lines
 
 class FourierDatum:
     """ Holds Fourier Transform data: complex result, frequency, phase, and amplitude """

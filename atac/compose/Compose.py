@@ -1,8 +1,10 @@
 from ctypes.wintypes import LANGID
 from ..config.Config import Config
+from ..util.Util import trace, get_file_content
 
 #from .art import *
 #from .art.epicycles import *
+from .SpellCheck import *
 from .Translate import *
 from .Paraphrase import *
 from .Latex import *
@@ -19,7 +21,6 @@ import json
 import mistune
 import pystache
 import regex
-
 import uuid
 
 #from html2image import Html2Image
@@ -27,9 +28,6 @@ import uuid
 from bs4 import BeautifulSoup
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning, module='bs4')
-
-
-from autocorrect import Speller
 
 class Compose(Config):
     """ A class used to represent a Configuration object
@@ -54,6 +52,20 @@ class Compose(Config):
     Methods
     -------
     """
+    def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
+        """ Class init
+
+        Parameters
+        ----------
+        encrypted_config : bool
+            use an encrypted configuration file
+        config_file_path : str
+            path to the configuration file
+        key_file_path : str
+            path to encryption key file
+        """
+        super().__init__(encrypted_config, config_file_path, key_file_path)
+
 
     @staticmethod
     def mjml2html(content):
@@ -69,8 +81,9 @@ class Compose(Config):
         #
         return html_content
 
+
     @staticmethod
-    def md2html(content, do_paraphrase, languagecode):
+    def md2html(content):
         #html_content = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
         html_header = """
         <!doctype html>
@@ -115,7 +128,7 @@ class Compose(Config):
         <body>
         """
         html_footer = "</body></html>"
-        lines = Compose.transform(content, do_paraphrase, languagecode)
+        lines = Compose.transform(content, False, False, False, False, False)
         # render the markdown into HTML
         message_str = "\n".join(lines)
         print("message: "+json.dumps(message_str, indent=4))
@@ -125,13 +138,19 @@ class Compose(Config):
 
 
     @staticmethod
-    def transform(content, do_paraphrase, src='en', dest=None):
+    def transform(content, paraphrase=False, translate=False, spellcheck=False, src='en', dest=False):
         #
         lines = []
         num_latex_lines = 0
         for phrase in content:
             #
             phrase_transform = phrase
+            '''
+            if phrase_transform != mistune.html(phrase_transform):
+                print("Found markup")
+                lines.append(phrase_transform)
+                continue
+            '''
             # images
             if phrase_transform.find("<img src=") != -1:
                 print("Found image")
@@ -147,16 +166,19 @@ class Compose(Config):
                 print("Found empty line")
                 lines.append("")
                 continue
+            # spellchecker
+            if spellcheck:
+                phrase_transform = spelling_corrector(phrase_transform, src)
             # translation
-            if dest:
-                phrase_transform = Compose.spellcheck(phrase_transform, src)
-                phrase_transform = Compose.translate(phrase_transform, src, dest)
-                phrase_transform = Compose.spellcheck(phrase_transform, dest)
+            if translate:
+                phrase_transform = translator(phrase_transform, src, dest)
+                if spellcheck:
+                    phrase_transform = spelling_corrector(phrase_transform, dest)
             # paraphrasing transform
-            elif do_paraphrase:
-                phrase_transform = Compose.spellcheck(phrase_transform, src)
-                phrase_transform = Compose.paraphrase(phrase_transform, src, dest)
-                phrase_transform = Compose.spellcheck(phrase_transform, dest)
+            if paraphrase:
+                phrase_transform = paraphraser(phrase_transform, src)
+                if spellcheck:
+                    phrase_transform = spelling_corrector(phrase_transform, src)
             #
             phrase_transform = phrase_transform.capitalize()
             lines.append(phrase_transform)
@@ -165,7 +187,7 @@ class Compose(Config):
 
 
     @staticmethod
-    def compose_email(sender_email, mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode=None):
+    def compose_email(sender_email, mailing_list, message_content, subject, paraphrase, translate, correct_spelling, src='en', dest=False):
 
         """ Compose MIMEMultipart email message
 
@@ -191,7 +213,7 @@ class Compose(Config):
         subject_prefix = "{} - AMYTAL - neurorights, blue whale suicide games and tongue articulators".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
         subject_content = []
         subject_content.append(subject.lower())
-        subject_transform = Compose.transform(subject_content, do_paraphrase, translate_to_languagecode)
+        subject_transform = Compose.transform(subject_content, paraphrase, translate, correct_spelling, src, dest)
         #
         message["Subject"] = "{0}: {1}".format(subject_prefix, subject_transform)
         message["From"] = sender_email
@@ -206,9 +228,9 @@ class Compose(Config):
         if message_type == "html":
             html_content = "\n".join(message_content)
         elif message_type == "mjml":
-            html_content = Compose.mjml2html(message_content, do_paraphrase, translate_to_languagecode)
+            html_content = Compose.mjml2html(message_content)
         elif message_type == "markdown":
-            html_content = Compose.md2html(message_content, do_paraphrase, translate_to_languagecode)
+            html_content = Compose.md2html(message_content)
         # get text
         text_soup = BeautifulSoup(html_content, 'lxml')
         text_content = regex.sub(r'\n\n\n+', '\n\n', text_soup.get_text().strip())
@@ -225,7 +247,6 @@ class Compose(Config):
         message.attach(body)
         print(message.as_string())
         '''
-        #
         sfp = open('data/messages/assets/img/jesus/mary.png', 'rb')
         msg_image_signature = MIMEImage(sfp.read())
         sfp.close()

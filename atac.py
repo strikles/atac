@@ -1,3 +1,5 @@
+from atac.util.Util import *
+
 import argparse
 import os
 import sys
@@ -23,11 +25,13 @@ def get_config_arguments(arguments):
     config_file_path = 'auth.json'
     #
     if arguments.encrypted_config is not None:
-        encrypted_config = getattr(arguments, "encrypted_config")
+        encrypted_config = str2bool(getattr(arguments, "encrypted_config"))
         print("{} {}", encrypted_config, type(encrypted_config))
+    #
     if arguments.config_file is not None:
         config_file_path = getattr(arguments, "config_file")
         print("{} {}", config_file_path, type(config_file_path))
+    #
     if arguments.key_file is not None:
         key_file_path = getattr(arguments, "key_file")
     #
@@ -56,10 +60,12 @@ def configuration(arguments):
         if generate_key_file_path:
             config.generate_key()
             config.save_key(generate_key_file_path)
+    #
     if arguments.new_config_file is not None:
         new_config_file_path = getattr(arguments, "new_config_file")
         if new_config_file_path:
             config.new_config(new_config_file_path)
+    #
     if arguments.decrypted_config_file is not None:
         decrypted_config_file_path = getattr(arguments, "decrypted_config_file")
         if decrypted_config_file_path:
@@ -106,7 +112,7 @@ def email(arguments):
     if not message_file_path:
         sys.exit(1)
     #
-    katie.send_batch(email_files_path, message_file_path, subject, False, None)
+    katie.send_batch(email_files_path, message_file_path, subject, False, False, correct_spelling=False, src=False, dest=False)
 
 
 # sub-command functions
@@ -224,11 +230,44 @@ def compose(arguments):
     """
     corpus_file_path = os.path.dirname(os.path.abspath(__file__)) + '/data/pg1009.txt'
     #
-    if arguments.corpus is not None:
-        corpus_file_path = getattr(arguments, "corpus")
+    input_file_path = None
+    output_file_path = None
+    translate_from_languagecode = None
+    translate_to_languagecode = None
+    paraphrase_language = None
+    spellcheck_language = None
     #
-    two_bach = atac.Compose()
-    two_bach.gen_content(corpus_file_path)
+    if arguments.input_file_path is not None:
+        input_file_path = getattr(arguments, "input_file_path")
+    if arguments.output_file_path is not None:
+        output_file_path = getattr(arguments, "output_file_path")
+    if arguments.translate_from_languagecode is not None:
+        translate_from_languagecode = getattr(arguments, "translate_from_languagecode")
+    if arguments.translate_to_languagecode is not None:
+        translate_to_languagecode = getattr(arguments, "translate_to_languagecode")
+    if arguments.paraphrase_language is not None:
+        paraphrase_language = getattr(arguments, "paraphrase_language")
+    if arguments.spellcheck_language is not None:
+        spellcheck_language = getattr(arguments, "spellcheck_language")
+    #
+    paraphrase = paraphrase_language if paraphrase_language else False
+    from_lang = translate_from_languagecode if translate_from_languagecode else 'en'
+    to_lang = translate_to_languagecode if translate_to_languagecode else 'en'
+    translate = True if from_lang != to_lang else False
+    spellcheck = spellcheck_language if spellcheck_language else False
+    #
+    encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
+    leon = atac.Compose(encrypted_config, config_file_path, key_file_path)
+    corpus = get_file_content(input_file_path)
+    if len(corpus):
+        transform = leon.transform(corpus, paraphrase, translate, spellcheck, src=from_lang, dest=to_lang)
+        try:
+            if not os.path.isdir(os.path.dirname(output_file_path)):
+                os.makedirs(os.path.dirname(output_file_path))
+            with open(output_file_path, mode='w') as output_file:
+                output_file.write("\n".join(transform))
+        except Exception as err:
+            print(err)
 
 
 def clean(arguments):
@@ -338,7 +377,15 @@ if __name__ == "__main__":
 
     # create the parser for the "compose" command
     parser_compose = subparsers.add_parser('compose')
-    parser_compose.add_argument('-c', dest='corpus', type=str, help='path to corpus')
+    parser_compose.add_argument('-c', dest='config_file', type=str, help='use config file path')
+    parser_compose.add_argument('-e', dest='encrypted_config', action='store_true')
+    parser_compose.add_argument('-k', dest='key_file', type=str, help='use key file path')
+    parser_compose.add_argument('-i', dest='input_file_path', type=str, required=True, help='input_file_path')
+    parser_compose.add_argument('-o', dest='output_file_path', type=str, required=True, help='output_file_path')
+    parser_compose.add_argument('-p', dest='paraphrase_language', type=str, help='paraphrase source language')
+    parser_compose.add_argument('-s', dest='spellcheck_language', type=str, help='spellcheck source language')
+    parser_compose.add_argument('-f', dest='translate_from_languagecode', type=str, help='translate from source language code')
+    parser_compose.add_argument('-t', dest='translate_to_languagecode', type=str, help='translate to target language code')
     parser_compose.add_argument('-v', dest='verbose')
     parser_compose.set_defaults(func=compose)
 
@@ -353,4 +400,10 @@ if __name__ == "__main__":
 
     # parse the args and call whatever function was selected
     args = parser.parse_args()
+    # validate conditions
+    cond_translation_from = 'translate_from_languagecode' in vars(args) and 'translate_to_languagecode' not in vars(args)
+    cond_translation_to = 'translate_to_languagecode' in vars(args) and 'translate_from_languagecode' not in vars(args)
+    if (cond_translation_from or cond_translation_to):
+        parser.error('The -LoadFiles argument requires the -SourceFolder or -SourceFile')
+    #
     args.func(args)

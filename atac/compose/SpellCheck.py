@@ -17,13 +17,13 @@ def contextual_spellcheck(content, lang='en'):
     return translation
 """
 
-def spellcheck(content, lang='en'):
+def spelling_corrector(content, lang='en'):
     #
     spell = Speller(lang)
     return spell(content)
 
 
-def spellcheck_languagetool(content, lang='en'):
+def correct_spelling_languagetool(content, lang='en'):
     spellchecker = language_tool_python.LanguageToolPublicAPI(lang if lang else 'en')
     spellchecker_matches = spellchecker.check(content)
     is_bad_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
