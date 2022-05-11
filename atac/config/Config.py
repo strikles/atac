@@ -216,7 +216,7 @@ class Config:
                     "port": os.environ['MAIL_PORT'],
                     "sender": os.environ['MAIL_USER'],
                     "server": os.environ['MAIL_SERVER'],
-                    "security": "tls"
+                    "security": os.environ['MAIL_SECURITY']
                 }],
                 "content": [{
                     "markdown": "neurorights.md",

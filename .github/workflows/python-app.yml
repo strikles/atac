@@ -35,10 +35,11 @@ jobs:
         flake8 . --exclude=dead --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       env:
-        GMAIL_USER: ${{ secrets.GMAIL_USER }}
-        GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
-        PROTONMAIL_USER: ${{ secrets.PROTONMAIL_USER }}
-        PROTONMAIL_PASSWORD: ${{ secrets.PROTONMAIL_PASSWORD }}
+        MAIL_USER: ${{ secrets.GMAIL_USER }}
+        MAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+        MAIL_SERVER: ${{ secrets.MAIL_SERVER }}
+        MAIL_PORT: ${{ secrets.MAIL_PORT }}
+        MAIL_SECURITY: ${{ secrets.MAIL_SECURITY }}
       run: |
         pwd
         git submodule update --init
