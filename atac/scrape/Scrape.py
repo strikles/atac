@@ -295,11 +295,11 @@ class Scrape(Config):
                         # data={'foo': 'bar'}, auth=('user', 'pass'))'
                         # print(resp.json)
                 else:
-                    proxies = {}
+                    proxies_dict = {}
                     if "use_proxies" in self.scrape.keys() and str2bool(self.scrape["use_proxies"]):
-                        proxies = self.scrape["proxies"]
+                        proxies_dict = self.scrape["proxies"]
                     #
-                    response = requests.get(url, headers=self.set_useragent(), proxies=proxies, timeout=10, stream=False)
+                    response = requests.get(url, headers=self.set_useragent(), proxies=proxies_dict, timeout=10, stream=False)
                     response.encoding = "utf-8"
                     # If the response was successful, no Exception will be raised
                     response.raise_for_status()
