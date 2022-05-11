@@ -116,7 +116,7 @@ def test_send_emails_with_paraphrasing_and_translation():
         assert(status == 0) is True
 
 
-@pytest.mark.key("test_send_emails_with_no_paraphrasing_and_no_translation")
+@pytest.mark.key("test-send_emails_with_no_paraphrasing_and_no_translation")
 def test_send_emails_with_no_paraphrasing_and_no_translation():
     """
     """

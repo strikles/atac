@@ -51,6 +51,140 @@ class Compose(Config):
     Methods
     -------
     """
+    @staticmethod
+    def translate(content, languagecode=None):
+        #
+        print("translating phrase to {}...".format(languagecode))
+        translator = Translator()
+        print("before translation: " + content)
+        transform = translator.translate(text=content.lower(), dest=languagecode).text
+        print("after translation: " + transform)
+        #
+        return transform
+
+
+    @staticmethod
+    def paraphrase(content):
+        #
+        nlp = spacy.load('en_core_web_md')
+        transform = get_paraphrase(content, nlp)
+        #
+        return transform
+
+
+    @staticmethod
+    def spellcheck(content, languagecode=None):
+        #
+        translator = Translator()
+        transform = translator.translate(text=content, dest=languagecode).text
+        #
+        return transform
+
+
+    @staticmethod
+    def mjml2html(content):
+        # Create parser
+        # markdown = mistune.create_markdown(renderer=Renderer(), plugins=[escape])
+        # read in the email template, remember to use the compiled HTML version!
+        email_template = ("\n".join(content))
+        # Pass in values for the template using a dictionary
+        template_params = {'first_name': 'JustJensen'}
+        # Attach the message to the Multipart Email
+        text_content = ""
+        html_content = pystache.render(email_template, template_params)
+        #
+        return html_content
+
+    @staticmethod
+    def md2html(content, do_paraphrase, languagecode):
+        #html_content = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
+        html_header = """
+        <!doctype html>
+        <html>
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <style type="text/css">
+                @font-face {
+                    font-family: 'Timmana';
+                    font-style: normal;
+                    font-weight: 400;
+                    src: local('Timmana'), url(https://fonts.gstatic.com/s/timmana/v3/6xKvdShfL9yK-rvpOmzRKV4KQOI.woff2) format('woff2');
+                }
+                body {
+                    background-color: #FFF;
+                    list-style: lower-greek inside;
+                    line-height: 3;
+                    opacity: 1;
+                    text-align: left;
+                    transition: opacity 1s ease 0s;
+                    word-spacing: 3px;
+                }
+                p {
+                    margin: 25px 77px;
+                }
+                li > p {
+                    margin: auto 10px;
+                }
+                img {
+                    opacity: 0.7;
+                }
+                img:hover {
+                    opacity: 1;
+                }
+                td {
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                }
+            </style>
+        </head>
+        <body>
+        """
+        html_footer = "</body></html>"
+        lines = Compose.transform(content, do_paraphrase, languagecode)
+        # render the markdown into HTML
+        message_str = "\n".join(lines)
+        print("message: "+json.dumps(message_str, indent=4))
+        html_content = html_header + mistune.html(message_str) + html_footer
+        #
+        return html_content
+
+
+    @staticmethod
+    def transform(content, do_paraphrase, languagecode):
+        #
+        lines = []
+        num_latex_lines = 0
+        for phrase in content:
+            #
+            phrase_transform = phrase
+            # images
+            if phrase_transform.find("<img src=") != -1:
+                print("Found image")
+                lines.append(phrase_transform)
+                continue
+            # LaTeX
+            if phrase_transform.startswith("$") and phrase_transform.endswith("$"):
+                print("Found latex {}".format(phrase_transform))
+                lines.append(phrase_transform)
+                continue
+            # empty line
+            if not phrase_transform:
+                print("Found empty line")
+                lines.append("")
+                continue
+            # translation
+            if languagecode:
+                phrase_transform = Compose.translate(phrase_transform, languagecode)
+            # paraphrasing transform
+            elif do_paraphrase: 
+                phrase_transform = Compose.paraphrase(phrase_transform, languagecode)
+            #
+            phrase_transform = phrase_transform.capitalize()
+            lines.append(phrase_transform)
+        #
+        return lines
+
 
     @staticmethod
     def compose_email(sender_email, mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode=None):
@@ -68,7 +202,6 @@ class Compose(Config):
         subject : str
             The email subject
         """
-
         message = MIMEMultipart("mixed")
         cs = charset.Charset('utf-8')
         cs.header_encoding = charset.QP
@@ -77,24 +210,10 @@ class Compose(Config):
         message.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         nlp = None
+        subject_prefix = "{} - AMYTAL - neurorights, blue whale suicide games and tongue articulators:".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+        subject_transform = Compose.transform([subject.lower()], do_paraphrase, translate_to_languagecode)
         #
-        subject_transform = "neurorights, blue whale suicide games and tongue articulators: {}".format(subject.lower())
-        if translate_to_languagecode:
-            subject_translator = Translator()
-            subject_transform = subject_translator.translate(text=subject_transform, dest=translate_to_languagecode).text
-        elif do_paraphrase:
-            nlp = spacy.load('en_core_web_md')
-            subject_transform = get_paraphrase(subject_transform, nlp)
-        #
-        if False:
-            subject_transform = BeautifulSoup(subject_transform, features="lxml").get_text()
-            # check spelling
-            spellchecker_subject_matches = spellchecker.check(subject_transform)
-            is_bad_subject_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
-            spellchecker_subject_matches = [rule for rule in spellchecker_subject_matches if not is_bad_subject_rule(rule)]
-            subject_transform = language_tool_python.utils.correct(subject_transform, spellchecker_subject_matches)
-        #
-        message["Subject"] = "{} - AMYTAL - {}".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"), subject_transform.capitalize())
+        message["Subject"] = "{0}: {1}".format(subject_prefix, subject_transform)
         message["From"] = sender_email
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message
@@ -106,112 +225,18 @@ class Compose(Config):
         html_content = ""
         #
         if message_type == "html":
-            #
             html_content = "\n".join(message_content)
-            #
         elif message_type == "mjml":
-            # Create parser
-            # markdown = mistune.create_markdown(renderer=Renderer(), plugins=[escape])
-            # read in the email template, remember to use the compiled HTML version!
-            email_template = ("\n".join(message_content))
-            # Pass in values for the template using a dictionary
-            template_params = {'first_name': 'JustJensen'}
-            # Attach the message to the Multipart Email
-            html_content = pystache.render(email_template, template_params)
-            #
+            html_content = Compose.mjml2html(message_content, do_paraphrase, translate_to_languagecode)
         elif message_type == "markdown":
-            #
-            lines = []
-            num_latex_lines = 0
-            #
-            for phrase in message_content:
-                #
-                phrase_transform = phrase
-                # images
-                if phrase_transform.find("<img src=") != -1:
-                    print("Found image")
-                    lines.append(phrase_transform)
-                    continue
-                # LaTeX
-                if phrase_transform.startswith("$$") and phrase_transform.endswith("$$"):
-                    print("Found latex {}".format(phrase_transform))
-                    #
-                    lines.append(phrase_transform)
-                    continue
-                # empty line
-                if not phrase_transform:
-                    print("Found empty line")
-                    lines.append("")
-                    continue
-                # translation
-                if translate_to_languagecode:
-                    print("translating phrase to {}...".format(translate_to_languagecode))
-                    phrase_translator = Translator()
-                    print("before translation: " + phrase_transform)
-                    phrase_transform = phrase_translator.translate(text=phrase_transform.lower(), dest=translate_to_languagecode).text
-                    print("after translation: " + phrase_transform)
-                # paraphrasing transform
-                elif do_paraphrase: 
-                    phrase_transform = get_paraphrase(phrase_transform.lower(), nlp)
-                #
-                phrase_transform = phrase_transform.capitalize()
-                lines.append(phrase_transform)
-            #
-            # render the markdown into HTML
-            message_str = "\n".join(lines)
-            print("message: "+json.dumps(message_str, indent=4))
-            #html_content = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
-            html_header = """
-            <!doctype html>
-            <html>
-            <head>
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-                <style type="text/css">
-                    @font-face {
-                        font-family: 'Timmana';
-                        font-style: normal;
-                        font-weight: 400;
-                        src: local('Timmana'), url(https://fonts.gstatic.com/s/timmana/v3/6xKvdShfL9yK-rvpOmzRKV4KQOI.woff2) format('woff2');
-                    }
-                    body {
-                        background-color: #FFF;
-                        list-style: lower-greek inside;
-                        line-height: 3;
-                        opacity: 1;
-                        text-align: left;
-                        transition: opacity 1s ease 0s;
-                        word-spacing: 3px;
-                    }
-                    p {
-                        margin: 25px 77px;
-                    }
-                    li > p {
-                        margin: auto 10px;
-                    }
-                    img {
-                        opacity: 0.7;
-                    }
-                    img:hover {
-                        opacity: 1;
-                    }
-                    td {
-                        padding-top: 10px;
-                        padding-bottom: 10px;
-                    }
-                </style>
-            </head>
-            <body>
-            """
-            html_footer = "</body></html>"
-            html_content = html_header + mistune.html(message_str) + html_footer
-        #
-        # text payload
+            html_content = Compose.md2html(message_content, do_paraphrase, translate_to_languagecode)
+        # get text
         text_soup = BeautifulSoup(html_content, 'lxml')
         text_content = regex.sub(r'\n\n\n+', '\n\n', text_soup.get_text().strip())
+        # set text payload
         text_part = MIMENonMultipart('text', 'plain', charset='utf-8')
         text_part.set_payload(text_content, charset=cs)
-        # html payload
+        # set html payload
         html_part = MIMENonMultipart('text', 'html', charset='utf-8')
         html_part.set_payload(html_content, charset=cs)
         # Add HTML/plain-text parts to MIMEMultipart message
@@ -220,24 +245,7 @@ class Compose(Config):
         # The email client will try to render the last part first
         message.attach(body)
         print(message.as_string())
-        #
         '''
-        #
-        hfp = open('data/messages/assets/img/jesus/jesus_king.png', 'rb')
-        msg_image_header = MIMEImage(hfp.read())
-        hfp.close()
-        # Define the image's ID as referenced above
-        msg_image_header.add_header('Content-ID', '<header>')
-        message.attach(msg_image_header)
-        #
-        hti = Html2Image()
-        hti.screenshot(mistune.html(message_str), save_as='content.png')
-        cfp = open('content.png', 'rb')
-        msg_image_content = MIMEImage(cfp.read())
-        cfp.close()
-        # Define the image's ID as referenced above
-        msg_image_content.add_header('Content-ID', '<content>')
-        message.attach(msg_image_content)
         #
         sfp = open('data/messages/assets/img/jesus/mary.png', 'rb')
         msg_image_signature = MIMEImage(sfp.read())

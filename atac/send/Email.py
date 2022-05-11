@@ -1,4 +1,5 @@
 from .Send import Send
+from ..compose.Compose import Compose
 from ..util.Util import trace
 
 import base64
@@ -198,7 +199,6 @@ class SendEmail(Send):
             email_list = self.get_file_content(ef)
             email_buckets = self.store_emails_in_buckets(email_list)
             self.send_emails_in_buckets(email_buckets, message_file_path, subject, do_paraphrase, translate_to_languagecode)
-            #self.update_config()
         #
         return status
 
@@ -215,7 +215,7 @@ class SendEmail(Send):
         status = 0
         auth, _ = self.get_config()
         print("send email > content file: "+json.dumps(message_content, indent=4))
-        message = self.compose_email(auth['sender'], mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode)
+        message = Compose.compose_email(auth['sender'], mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode)
         if auth['security'] == "tls":
             try:
                 print("Creating ssl context")
