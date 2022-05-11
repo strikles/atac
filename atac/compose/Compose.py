@@ -211,8 +211,8 @@ class Compose(Config):
         message.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         nlp = None
-        subject_prefix = "{} - AMYTAL - neurorights, blue whale suicide games and tongue articulators:".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
-        subject_transform = Compose.transform([subject.lower()], do_paraphrase, translate_to_languagecode)
+        subject_prefix = "{} - AMYTAL - neurorights, blue whale suicide games and tongue articulators".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+        subject_transform = Compose.transform(subject.lower(), do_paraphrase, translate_to_languagecode)
         #
         message["Subject"] = "{0}: {1}".format(subject_prefix, subject_transform)
         message["From"] = sender_email
@@ -224,7 +224,6 @@ class Compose(Config):
         #
         message_type = "markdown"
         html_content = ""
-        #
         if message_type == "html":
             html_content = "\n".join(message_content)
         elif message_type == "mjml":
