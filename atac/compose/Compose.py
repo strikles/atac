@@ -8,15 +8,12 @@ from .SpellCheck import *
 from .Translate import *
 from .Paraphrase import *
 from .Latex import *
-from ..util.Util import trace
 #
 from datetime import datetime
-#
 from email import charset
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
-#
 import json
 import mistune
 import pystache
@@ -211,11 +208,9 @@ class Compose(Config):
         #
         nlp = None
         subject_prefix = "{} - AMYTAL - neurorights, blue whale suicide games and tongue articulators".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
-        subject_content = []
-        subject_content.append(subject.lower())
-        subject_transform = Compose.transform(subject_content, paraphrase, translate, correct_spelling, src, dest)
+        subject_transform = Compose.transform([subject.lower()], paraphrase, translate, correct_spelling, src, dest)
         #
-        message["Subject"] = "{0}: {1}".format(subject_prefix, subject_transform)
+        message["Subject"] = "{0}: {1}".format(subject_prefix, "".join(subject_transform))
         message["From"] = sender_email
         message["To"] = mailing_list
         # Create the plain-text and HTML version of your message

@@ -52,9 +52,10 @@ def translate_languagetool(content, languagecode):
 def translator(content, source='en', destination=None):
     #
     print("translating phrase to {}...".format(destination))
-    translator = Translator()
+    #translator = Translator()
     print("before translation: " + content)
-    transform = translator.translate(text=content.lower(), src=source, dest=destination).text
+    #transform = translator.translate(text=content.lower(), src=source, dest=destination).text
+    transform = ts.baidu(content.lower(), professional_field='medicine', from_language=source, to_language=destination)
     print("after translation: " + transform)
     #
     return transform
