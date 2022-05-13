@@ -236,7 +236,10 @@ def compose(arguments):
     translate_to_languagecode = None
     paraphrase_language = None
     spellcheck_language = None
+    images_dir = None
     #
+    if arguments.images_dir is not None:
+        images_dir = getattr(arguments, "images_dir")
     if arguments.input_file_path is not None:
         input_file_path = getattr(arguments, "input_file_path")
     if arguments.output_file_path is not None:
@@ -258,8 +261,14 @@ def compose(arguments):
     #
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     composer = atac.Compose(encrypted_config, config_file_path, key_file_path)
-    corpus = get_file_content(input_file_path)
-    if len(corpus):
+    #
+    if images_dir is not None:
+        composer.generate_gifs(images_dir, "*.png")
+    #
+    corpus = None
+    if input_file_path is not None:
+        corpus = get_file_content(input_file_path)
+    if corpus is not None:
         transform = composer.transform(corpus, paraphrase, translate, spellcheck, src=from_lang, dest=to_lang)
         try:
             if not os.path.isdir(os.path.dirname(output_file_path)):
@@ -379,9 +388,10 @@ if __name__ == "__main__":
     parser_compose = subparsers.add_parser('compose')
     parser_compose.add_argument('-c', dest='config_file', type=str, help='use config file path')
     parser_compose.add_argument('-e', dest='encrypted_config', action='store_true')
+    parser_compose.add_argument('-g', dest='images_dir', type=str, help='images directory to create gif from')
     parser_compose.add_argument('-k', dest='key_file', type=str, help='use key file path')
-    parser_compose.add_argument('-i', dest='input_file_path', type=str, required=True, help='input_file_path')
-    parser_compose.add_argument('-o', dest='output_file_path', type=str, required=True, help='output_file_path')
+    parser_compose.add_argument('-i', dest='input_file_path', type=str, required=False, help='input_file_path')
+    parser_compose.add_argument('-o', dest='output_file_path', type=str, required=False, help='output_file_path')
     parser_compose.add_argument('-p', dest='paraphrase_language', type=str, help='paraphrase source language')
     parser_compose.add_argument('-s', dest='spellcheck_language', type=str, help='spellcheck source language')
     parser_compose.add_argument('-f', dest='translate_from_languagecode', type=str, help='translate from source language code')

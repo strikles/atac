@@ -29,15 +29,32 @@ def create_image(text, window_height, window_width):
     num_calls += 1
 
 
+def add_margin(pil_img, top, right, bottom, left, color):
+    width, height = pil_img.size
+    new_width = width + right + left
+    new_height = height + top + bottom
+    result = Image.new(pil_img.mode, (new_width, new_height), color)
+    result.paste(pil_img, (left, top))
+    return result
+
+
 def make_gif(frame_folder, output_file_name, glob_pattern):
     """
     """
-    frames = [Image.open(image) for image in glob.glob(f"{frame_folder}/{glob_pattern}")]
+    raw_frames = [Image.open(path).convert('RGB') for path in glob.glob(f"{frame_folder}/{glob_pattern}")]
+    #resized_frames = [b.paste(frame, (0,0)) for frame in raw_frames if (b := Image.new('RGB', (500,300)))]
+    frames = list(map(lambda i: add_margin(i, 0, max(0, int(0.5*(500-i.size[0]))), 0, int(max(0, 0.5*(500-i.size[0]))), (255,255,255)), raw_frames))
+    #frames= raw_frames
     frame_one = frames[0]
-    frame_one.save(output_file_name, format="GIF", append_images=frames, save_all=True, duration=277, loop=0)
-    print(">> make_gif" + os.path.join(
-            os.path.dirname(__file__), output_file_name
-    ))
+    gif_filename = os.path.join(frame_folder, output_file_name)
+    if os.path.isfile(gif_filename):
+        print(">> removing gif: " + gif_filename)
+        os.remove(gif_filename)
+    frame_one.save(gif_filename, format="GIF", append_images=frames, save_all=True, duration=1000, loop=0)
+    if os.path.isfile(gif_filename):
+        print(">> made gif: " + output_file_name)
+    else:
+        print(">> gif creation failed: " + output_file_name)
 
 
 def create_qr_code(url):

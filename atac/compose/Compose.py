@@ -1,6 +1,7 @@
 from ctypes.wintypes import LANGID
 from ..config.Config import Config
-from ..util.Util import trace, get_file_content
+from ..util.Util import trace, get_file_content, fast_scandir
+from ..art.ImageUtils import make_gif
 
 #from .art import *
 #from .art.epicycles import *
@@ -14,9 +15,11 @@ from email import charset
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
+from glob import glob
 import json
 import mistune
 import pystache
+import os
 import regex
 import uuid
 
@@ -181,6 +184,14 @@ class Compose(Config):
             lines.append(phrase_transform)
         #
         return lines
+
+    @staticmethod
+    def generate_gifs(images_directory, glob_pattern):
+        subfolders = [f.path for f in os.scandir(images_directory) if f.is_dir()]
+        for subfolder_path in subfolders:
+            print("{} - {}: ".format(subfolder_path, os.path.dirname(subfolder_path)))
+            gif_file_name = "{}.{}".format(os.path.basename(subfolder_path), "gif")
+            make_gif(subfolder_path, gif_file_name, glob_pattern)
 
 
     @staticmethod
