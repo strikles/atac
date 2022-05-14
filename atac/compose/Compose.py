@@ -92,13 +92,11 @@ class Compose(Config):
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
             <style type="text/css">
-                @font-face {
-                    font-family: 'Timmana';
-                    font-style: normal;
-                    font-weight: 400;
-                    src: local('Timmana'), url(https://fonts.gstatic.com/s/timmana/v3/6xKvdShfL9yK-rvpOmzRKV4KQOI.woff2) format('woff2');
-                }
-              
+
+                @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap');
+                @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Yanone+Kaffeesatz:wght@300&display=swap');
+                @import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
                 body {
                     background-color: #FFF;
                     list-style: lower-greek inside;
@@ -107,30 +105,40 @@ class Compose(Config):
                     text-align: left;
                     transition: opacity 1s ease 0s;
                     word-spacing: 3px;
-                    font-family: "Timana", Helvetica, serif;
                 }
+
                 p {
                     margin: 25px 77px;
+                    font-family: 'Yanone Kaffeesatz', sans-serif;
+                    transition: font-size 0.3s ease-out;
                 }
+
                 li > p {
                     margin: auto 10px;
                 }
+
                 img {
                     opacity: 0.7;
                     margin: 7px 7px;
                 }
+
                 img:hover {
                     opacity: 1;
                 }
+
                 td {
                     padding-top: 10px;
                     padding-bottom: 10px;
                 }
+
                 @media only screen and (max-width: 480px){
+
                     p {
                         margin: 25px 7px !important;
-                        font-size: 1.5em;
+                        font-size: 1.2em;
+                        font-family: 'Dosis', sans-serif;
                     }
+
                     img {
                         height:auto !important;
                         width: 100% !important;
