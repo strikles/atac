@@ -99,31 +99,38 @@ class Compose(Config):
 
                 body {
                     background-color: #FFF;
-                    list-style: lower-greek inside;
                     line-height: 3;
                     opacity: 1;
                     text-align: left;
-                    transition: opacity 1s ease 0s;
                     word-spacing: 3px;
+                    transition: opacity 1s ease 0s, font-size 1s ease-out;
                 }
 
                 p {
                     margin: 25px 77px;
                     font-family: 'Yanone Kaffeesatz', sans-serif;
-                    transition: font-size 0.3s ease-out;
+                }
+
+                li {
+                    list-style: lower-greek inside;
+                    margin: 7px;
                 }
 
                 li > p {
-                    margin: auto 10px;
+                    margin: auto 7px;
                 }
 
-                img {
-                    opacity: 0.7;
+                img.person {
+                    opacity: 0.5;
                     margin: 7px 7px;
+                    filter: blur(5px) invert(100%);
+                    --webkit-filter: blur(5px) invert(100%);
                 }
 
-                img:hover {
+                img.person:hover {
                     opacity: 1;
+                    filter: none;
+                    -webkit-filter: none;
                 }
 
                 td {
@@ -139,7 +146,7 @@ class Compose(Config):
                         font-family: 'Dosis', sans-serif;
                     }
 
-                    img {
+                    img.person {
                         height:auto !important;
                         width: 100% !important;
                     }

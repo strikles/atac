@@ -6,7 +6,7 @@ import pytest
 import atac
 
 # :(
-emergency = True
+emergency = False
 #
 encrypted_config = False
 config_file = 'auth.json'
