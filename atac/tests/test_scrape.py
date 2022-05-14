@@ -6,6 +6,7 @@ encrypted_config = False
 config_file = 'auth.json'
 key_file = None
 
+
 #@pytest.mark.skip(reason="we fight spam :)")
 def test_invalid_url():
     """
@@ -28,6 +29,7 @@ def test_invalid_url():
     url3 = "strikles@gmail.com"
     assert(mango.invalid_url(url3)) is False
 
+
 #@pytest.mark.skip(reason="we fight spam :)")
 def test_extract_emails():
     """
@@ -49,6 +51,7 @@ def test_extract_emails():
     expected.update({'me@gmail.com'})
     expected.update({'you@yahoo.com'})
     assert(new_emails == expected) is True
+
 
 #@pytest.mark.skip(reason="we fight spam :)")
 def test_extract_phones():

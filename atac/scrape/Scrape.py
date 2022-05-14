@@ -65,6 +65,7 @@ class Scrape(Config):
         self.num_phones = 0
         self.num_emails = 0
 
+
     def invalid_url(self, url):
         """ Check url against blacklist
 
@@ -90,6 +91,7 @@ class Scrape(Config):
         #
         return False
 
+
     @staticmethod
     def set_useragent():
         """ Set user agent to random and return headers dictionary """
@@ -100,6 +102,7 @@ class Scrape(Config):
         #
         return headers
 
+
     @staticmethod
     def make_dirs():
         """ Make contacts directories if they don’t exist """
@@ -109,6 +112,7 @@ class Scrape(Config):
             os.makedirs(os.getcwd() + "/data/contacts/emails")
         if not os.path.isdir(os.getcwd() + "/data/contacts/phones"):
             os.makedirs(os.getcwd() + "/data/contacts/phones")
+
 
     @staticmethod
     def truncate_files(data_key):
@@ -147,6 +151,7 @@ class Scrape(Config):
         finally:
             phones_file.close()
 
+
     @staticmethod
     def extract_emails(content):
         """ Use regex to extract emails from content
@@ -160,6 +165,7 @@ class Scrape(Config):
                                r"(?!jpg|jpeg|png|svg|gif|webp|yji|pdf|htm|title|content|formats)[a-zA-Z]{2,7}")
         #
         return set(filter(lambda x: (validators.email(x)), rx_emails.findall(content)))
+
 
     @staticmethod
     def extract_phones(content):
@@ -184,7 +190,7 @@ class Scrape(Config):
         """
         csv_path = os.getcwd() + "/data/contacts/emails/" + data_key + "_emails.csv"
         try:
-            with open(csv_path, mode='a') as contact_file:
+            with open(csv_path, mode='a', newline='') as contact_file:
                 writer = csv.writer(contact_file,
                                     delimiter=',',
                                     quotechar='"',
@@ -208,7 +214,7 @@ class Scrape(Config):
         """
         csv_path = os.getcwd() + "/data/contacts/phones/" + data_key + "_phones.csv"
         try:
-            with open(csv_path, mode='a') as contact_file:
+            with open(csv_path, mode='a', newline='') as contact_file:
                 writer = csv.writer(contact_file,
                                     delimiter=',',
                                     quotechar='"',
