@@ -182,7 +182,7 @@ until neurorights legislation is approved, it is likely to continue seeing more 
 
 
 * say yes to neuro rights
-* say no to the initiative "homo sovieticus" to pair cibertorura with blue whale suicide games covered with psychiatric fraud
+* say no to the initiative "homo sovieticus" to pair cybertorure with blue whale suicide games covered with psychiatric fraud
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/mary.png"></p>
