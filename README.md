@@ -190,32 +190,32 @@ until neurorights legislation is approved, it is likely to continue seeing more 
 
 ### footnotes:
 [^1]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/rrb.png
-[^2]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/rui_pintanta.png
-[^3]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/luis_figuira.png
+[^2]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/rui_pintado.png
+[^3]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/luis_figueira.png
 [^4]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/pedro_grilo.png
 [^5]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/jfsp.png
 [^6]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/pedro_antao.png
-[^7]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/rcardo_carrrilho.png
+[^7]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/ricardo_carrrilho.png
 [^8]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/paulo_varanda.png
 [^9]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/ferronha.png
-[^10]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/scar_ferreira.png
-[11]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/thyago_picco.png
+[^10]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/oscar_ferreira.png
+[^11]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/thyago_picco.png
 [^12]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/cm_1988.png
 [^13]: no_url "without image"
 [^14]: no_url "without image"
 [^15]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/mjv.png
 [^16]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/alc.png
 [^17]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jasper_kums.png
-[^18]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/arthers/arthur_moreno.png
-[^19]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/mors/muskiado.png
-[^20]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/paulinho.png
-[^21]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/joel.png
-[^22]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/mhers/marcelo_lima.png
-[^23]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/ill_wandi.png
-[^24]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/thers/pedro_caetano.png
-[^25]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/oncalo_duarte.png
+[^18]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/arthur_moreno.png
+[^19]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/muskiado.png
+[^20]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/paulinho.png
+[^21]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/joel.png
+[^22]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/marcelo_lima.png
+[^23]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/bill_wandi.png
+[^24]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/pedro_caetano.png
+[^25]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/goncalo_duarte.png
 [^26]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/thers/tiago_roque.png
 [^27]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/thers/mazivo.png
 [^28]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jooo_leiria.png
 [^29]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jose_teixeira.png
-[^30]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/dodro_silva.png
+[^30]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/pedro_silva.png
