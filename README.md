@@ -57,7 +57,7 @@ Both my father and my father worked for 3 decades as judicial clerks in portugue
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/jasper_kums.png"></p>
 
 
-The individuals recruited to exact the extrajudicial trials and sentences are linked to Tiago Santos Sousa, Ricardo Rebordão de Brito, Ivo Francisco, Eduardo Metzner, Luis Muskiado and criminal associates, with with psychiatrist Emile Barkhof visiting the location where these individuals are, suicide fighting champion Efjie Suk presenting false testimony in a court of law regarding "risk to self", and psychiatrist Sara Hoff forcing herself into my home without consent or an appointment trying to coerce me into accepting a falsified diagnosis of paranoid schizophrenia and a sentence of forced pharmacotherapy against my will to hide the extrajudicial sentence.
+The individuals recruited to exact the extrajudicial trials and sentences are linked to Tiago Santos Sousa, Ricardo Rebordão de Brito, Ivo Francisco, Eduardo Metzner, Luis Muskiado and criminal associates, with with psychiatrist Emile Barkhof visiting the location where these individuals are, suicide fighting champion Eefje Suk presenting false testimony in a court of law regarding "risk to self", and psychiatrist Sara Hoff forcing herself into my home without consent or an appointment trying to coerce me into accepting a falsified diagnosis of paranoid schizophrenia and a sentence of forced pharmacotherapy against my will to hide the extrajudicial sentence.
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/rrb.png"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/paulinho.png"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/muskiado.png"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/jose_teixeira.png"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/tiago_roque.png"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/jfsp.png"></p>
@@ -78,7 +78,7 @@ colegio militar (largo da luz, lisbon, portugal) alumni linked to pedro miguel d
 They engage in a daily ritual of articulating my tongue with the words "psychiatrist", "psychiatry" and "medication" while sodomizing me and torturing me genitally to create a piling psychological antagonistic effect and monger hatred, increasing the odds of directed violence towards psychiatrists and medical staff in a clinical scenario.
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/others.gif"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/arkin.png"></p>
 
 
 Simultaneously, dutch psychiatrist Emile Barkhof (who has visited the location where this group of individuals exact their extrajudicial cybertorture sentences) along with elected government officials who watch the human degradation spectacle and instead of denouncing it on the news, or reporting it to the police, watch the macabre spectacle as a "casa dos degredos" blue whale style suicide game similar to mathew puncher's soviet-style murder, where I am issued tasks such as "breaking my phone, my laptop and mutilating my penis" in the portuguese language, and forced to pick between:
@@ -91,7 +91,7 @@ Simultaneously, dutch psychiatrist Emile Barkhof (who has visited the location w
 3. being forced into a jail cell and losing my home and my freedom whilst being abused to induce psychosis with people around me being used as targets of directed violence.
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/rafael.png"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/others.gif"></p>
 
 
 These individuals present themselves as artists of human degradation, social stratification and self-inflicted harm, with vibrotactile and sonic payloads of "kisses", establishing simulated van gogh syndrome, synthetic pain, tongue and jaw articulation, cybersodomy, sexual sabotage in males (vibrotactile torture to induce forced contractions to the perineum) and sexual abuse in women (possibly resulting in stockholm syndrome) as common in our society!
@@ -181,6 +181,8 @@ governments worldwide (except for chile) are still denying us neurorights, while
 
 until neurorights legislation is approved, it is likely to continue seeing more and more homeless people talking alone on the streets, scenes of domestic violence, violence against the elderly and medical personnel in your televisions with several families being destroyed in sadistic rituals of control over the physiology of others, via abuse of biophotonics, photoacoustic and thermoacoustic effects to exact remote extrajudicial sentences.
 
+
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/rafael.png"></p>
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/us.png"></p>
 
