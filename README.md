@@ -62,7 +62,7 @@ Both my father and my father worked for 3 decades as judicial clerks in portugue
 instead of denouncing these individuals Emile Barkhof is systematically attempting to coverup up the cybertorture procedure to perpetuate human degradation psychiatric spectacles trying to force me into psychiatry and forced pharmacotherapy at any cost to pass me as a schizophrenic and make an example out of me, presenting false testimony in a court of law, using falsified reports of risk to self and refusal to take medication against my will as justifications for the damages inflicted by the group of individuals recruited to exact the extrajudicial cybertorture sentences. 
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/crucifixion_jesus_mary.png"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/psychiatrists/2_emile.png"></p>
 
 
 colegio militar (largo da luz, lisbon, portugal) alumni linked to pedro miguel de brito esteves grilo @psp, rui gonçalo pires pintado, and criminal associates of jose teixeira (bar crew hassan), tiago jorge roque, gonçalo bandeira duarte, ivo francisco, arthur moreno, carla maria marinho rodrigues, luis muskiado, a capoverdian known as "calo", tania borboleta and many others who spend their days abusing biophotonics to exact cybertorture and induce psychosis, forcing me into roaming the streets since they wake me up daily, in the middle of the night or early in the morning, with vibrotactile cybertorture.
@@ -141,7 +141,7 @@ For refusing to leave colegio militar in 1993 when invited and by threatening ex
 Several of the sadists recruited have fun forcing their victims to feel sexually abused and sodomized, providing rotten vibrotactile payloads of "kisses of death" to the head of their victims, while trying to force their victims to hurt themselves repeatedly in front of an audience, like poets of death and human degradation.
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/cross.png"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/crucifixion_jesus_mary.png"></p>
 
 
 These individuals were enabled to destroy life (even whole families if necessary as in my case) forcing their victims to feel sexually abused in order to coerce psychiatric submission with simulated van gogh syndrome syndrome, as a threat, while simultaneously generating human degradation content for an interactive closed circuit spectacle, encouraging participation, so that players take turns exacting extrajudicial sentences of cybertorture, articulating tongues and providing vibrotactile and synthetic pain to simulate psychosis and other forms of psychiatric illness.
