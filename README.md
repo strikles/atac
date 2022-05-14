@@ -60,11 +60,15 @@ Both my father and my father worked for 3 decades as judicial clerks in portugue
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/paulinho.png"></p>
 
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/muskiado.png"></p>
+
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/jasper_kums.png"></p>
+
 
 instead of denouncing these individuals Emile Barkhof is systematically attempting to coverup up the cybertorture procedure to perpetuate human degradation psychiatric spectacles trying to force me into psychiatry and forced pharmacotherapy at any cost to pass me as a schizophrenic and make an example out of me, presenting false testimony in a court of law, using falsified reports of risk to self and refusal to take medication against my will as justifications for the damages inflicted by the group of individuals recruited to exact the extrajudicial cybertorture sentences. 
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/psychiatrists/2_emile.png"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/crucifixion_jesus_mary.png"></p>
 
 
 colegio militar (largo da luz, lisbon, portugal) alumni linked to pedro miguel de brito esteves grilo @psp, rui gonçalo pires pintado, and criminal associates of jose teixeira (bar crew hassan), tiago jorge roque, gonçalo bandeira duarte, ivo francisco, arthur moreno, carla maria marinho rodrigues, luis muskiado, a capoverdian known as "calo", tania borboleta and many others who spend their days abusing biophotonics to exact cybertorture and induce psychosis, forcing me into roaming the streets since they wake me up daily, in the middle of the night or early in the morning, with vibrotactile cybertorture.
@@ -89,7 +93,7 @@ Simultaneously, dutch psychiatrist Emile Barkhof (who has visited the location w
 3. being forced into a jail cell and losing my home and my freedom whilst being abused to induce psychosis with people around me being used as targets of directed violence.
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/muskiado.png"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/rafael.png"></p>
 
 
 These individuals present themselves as artists of human degradation, social stratification and self-inflicted harm, with vibrotactile and sonic payloads of "kisses", establishing simulated van gogh syndrome, synthetic pain, tongue and jaw articulation, cybersodomy, sexual sabotage in males (vibrotactile torture to induce forced contractions to the perineum) and sexual abuse in women (possibly resulting in stockholm syndrome) as common in our society!
@@ -104,18 +108,10 @@ They create drug addicts with synthetic pain, establishing cybersodomy as standa
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/golgota.png"></p>
 
 
-These individuals are connected to ricardo rebordão de brito [^1], rui goncalo pires painted [^2], luis nazareth carvalho figueira [^3], cesar cristovão, pedro miguel de brito esteves grilo [^4], joão filipe saraiva pinheiro [^5 ], pedro de queiroz antão [^6], ricardo carrilho [^7], paulo jorge varanda [^8], frederico ferronha [^19], oscar ferreira [^10], thyago picco [^11], rui ricardo borges marque sabino reino [^12], pedro nuno da silva rocha [^13], tito eurico miranda fernandes [^14], frederico leitão and carlos anselmo simões.
+These individuals are connected to ricardo rebordão de brito [^1], rui goncalo pires painted [^2], luis nazareth carvalho figueira [^3], cesar cristovão, pedro miguel de brito esteves grilo [^4], joão filipe saraiva pinheiro [^5 ], pedro de queiroz antão [^6], ricardo carrilho [^7], paulo jorge varanda [^8], frederico ferronha [^19], oscar ferreira [^10], thyago picco [^11], rui ricardo borges marque sabino reino [^12], pedro nuno da silva rocha [^13], tito eurico miranda fernandes [^14], frederico leitão and carlos anselmo simões. Other Colegio Militar alumni stars are linked to the famous music stars you know: adolfo luxuria cannibal [^15] and manuel joão vieira [^16]
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/alumni.gif"></p>
-
-
-Other Colegio Militar alumni stars are linked to the famous music stars you know: adolfo luxuria cannibal [^15] and manuel joão vieira [^16]
-
-
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/mjv.png"></p>
-
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/alc.png"></p>
 
 
 These individuals spend their days in a room, trying to induce psychosis, targeting head and genitalia in an alternate fashion, every few seconds, repeating phrases to articulate my tongue and jaw, whilst engaging in orgies, greeting each others as they if it was a normal social event.
@@ -133,7 +129,7 @@ Other individuals were recruited at jardim adamastor in lisbon and bairro alto t
 * "com quem te meteste"
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/others.gif"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/jesus_whole_ti.png"></p>
 
 
 I fled portugal more than once to avoid the extrajudicial sentences of colegio militar alumni and recruited criminal associates as interactive cybertorture spectacle of abusing biophotonics, thermoacoustics and photoacoustics instead of social media to issue tasks). this "blue whale suicide game" was forced upon me and my family by alumni of the colegio militar and criminal associates in 1993. this group of sadistic cowards chased me to england in 1996 and the netherlands in 2013, trying to force me to return to portugal systematically.
@@ -151,7 +147,7 @@ For refusing to leave colegio militar in 1993 when invited and by threatening ex
 Several of the sadists recruited have fun forcing their victims to feel sexually abused and sodomized, providing rotten vibrotactile payloads of "kisses of death" to the head of their victims, while trying to force their victims to hurt themselves repeatedly in front of an audience, like poets of death and human degradation.
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/jasper_kums.png"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/cross.png"></p>
 
 
 These individuals were enabled to destroy life (even whole families if necessary as in my case) forcing their victims to feel sexually abused in order to coerce psychiatric submission with simulated van gogh syndrome syndrome, as a threat, while simultaneously generating human degradation content for an interactive closed circuit spectacle, encouraging participation, so that players take turns exacting extrajudicial sentences of cybertorture, articulating tongues and providing vibrotactile and synthetic pain to simulate psychosis and other forms of psychiatric illness.
