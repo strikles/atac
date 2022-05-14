@@ -129,7 +129,7 @@ Other individuals were recruited at jardim adamastor in lisbon and bairro alto t
 * "com quem te meteste"
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/jesus_whole_ti.png"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/stella_maris.png"></p>
 
 
 I fled portugal more than once to avoid the extrajudicial sentences of colegio militar alumni and recruited criminal associates as interactive cybertorture spectacle of abusing biophotonics, thermoacoustics and photoacoustics instead of social media to issue tasks). this "blue whale suicide game" was forced upon me and my family by alumni of the colegio militar and criminal associates in 1993. this group of sadistic cowards chased me to england in 1996 and the netherlands in 2013, trying to force me to return to portugal systematically.
