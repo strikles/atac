@@ -41,16 +41,17 @@ def add_margin(pil_img, top, right, bottom, left, color):
 def make_gif(frame_folder, output_file_name, glob_pattern):
     """
     """
-    raw_frames = [Image.open(path).convert('RGB') for path in glob.glob(f"{frame_folder}/{glob_pattern}")]
-    #resized_frames = [b.paste(frame, (0,0)) for frame in raw_frames if (b := Image.new('RGB', (500,300)))]
-    frames = list(map(lambda i: add_margin(i, 0, max(0, int(0.5*(500-i.size[0]))), 0, int(max(0, 0.5*(500-i.size[0]))), (255,255,255)), raw_frames))
-    #frames= raw_frames
-    frame_one = frames[0]
-    gif_filename = os.path.join(frame_folder, output_file_name)
-    if os.path.isfile(gif_filename):
-        print(">> removing gif: " + gif_filename)
-        os.remove(gif_filename)
-    frame_one.save(gif_filename, format="GIF", append_images=frames, save_all=True, duration=1000, loop=0)
+    try:
+        raw_frames = [Image.open(path).convert('RGB') for path in sorted(glob.glob(f"{frame_folder}/{glob_pattern}"))]
+        #resized_frames = [b.paste(frame, (0,0)) for frame in raw_frames if (b := Image.new('RGB', (500,300)))]
+        frames = list(map(lambda i: add_margin(i, 0, max(0, int(0.5*(500-i.size[0]))), 0, int(max(0, 0.5*(500-i.size[0]))), (255,255,255)), raw_frames))
+        #frames= raw_frames
+        frame_one = frames[0]
+        gif_filename = os.path.join(frame_folder, output_file_name)
+        frame_one.save(gif_filename, format="GIF", append_images=frames, save_all=False, duration=1000, loop=0)
+    except IOError:
+        print("cannot create gif for" + output_file_name)
+    #
     if os.path.isfile(gif_filename):
         print(">> made gif: " + output_file_name)
     else:

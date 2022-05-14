@@ -185,13 +185,14 @@ class Compose(Config):
         #
         return lines
 
+
     @staticmethod
     def generate_gifs(images_directory, glob_pattern):
         subfolders = [f.path for f in os.scandir(images_directory) if f.is_dir()]
         for subfolder_path in subfolders:
-            print("{} - {}: ".format(subfolder_path, os.path.dirname(subfolder_path)))
-            gif_file_name = "{}.{}".format(os.path.basename(subfolder_path), "gif")
-            make_gif(subfolder_path, gif_file_name, glob_pattern)
+            print("{} - {}: ".format(subfolder_path, os.path.basename(subfolder_path)))
+            gif_filename = "{}.{}".format(os.path.basename(subfolder_path), "gif")
+            make_gif(subfolder_path, gif_filename, glob_pattern)
 
 
     @staticmethod
