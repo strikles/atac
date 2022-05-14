@@ -107,6 +107,7 @@ class Compose(Config):
                     text-align: left;
                     transition: opacity 1s ease 0s;
                     word-spacing: 3px;
+                    font-family: "Timana", Helvetica, serif;
                 }
                 p {
                     margin: 25px 77px;
@@ -126,9 +127,12 @@ class Compose(Config):
                     padding-bottom: 10px;
                 }
                 @media only screen and (max-width: 480px){
+                    p {
+                        margin: 25px 7px !important;
+                        font-size: 1.5em;
+                    }
                     img {
                         height:auto !important;
-                        max-width:600px !important;
                         width: 100% !important;
                     }
                 }                
