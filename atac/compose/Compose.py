@@ -124,13 +124,11 @@ class Compose(Config):
                     opacity: 0.5;
                     margin: 7px 7px;
                     filter: blur(5px) invert(100%);
-                    --webkit-filter: blur(5px) invert(100%);
                 }
 
                 img.person:hover {
                     opacity: 1;
-                    filter: none;
-                    -webkit-filter: none;
+                    filter: none
                 }
 
                 td {
@@ -154,6 +152,17 @@ class Compose(Config):
             </style>
         </head>
         <body>
+            <svg>
+                <defs>
+                    <filter id="redOpacity" color-interpolation-filters="sRGB" x="0" y="0">  
+                    <feColorMatrix type="matrix"
+                            values=".50  0  0   0   0.50
+                                    0.95 0  0   0   0.05
+                                    0.95 0  0   0   0.05
+                                    0    0  0   1   0" />
+                    </filter>
+                </defs>
+            </svg>
         """
         html_footer = "</body></html>"
         lines = Compose.transform(content, False, False, False, False, False)
