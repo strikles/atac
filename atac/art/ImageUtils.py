@@ -48,7 +48,7 @@ def make_gif(frame_folder, output_file_name, glob_pattern):
         #frames= raw_frames
         frame_one = frames[0]
         gif_filename = os.path.join(frame_folder, output_file_name)
-        frame_one.save(gif_filename, format="GIF", append_images=frames, save_all=False, duration=1000, loop=0)
+        frame_one.save(gif_filename, format="GIF", append_images=frames, save_all=True, duration=1000, loop=0)
     except IOError:
         print("cannot create gif for" + output_file_name)
     #
