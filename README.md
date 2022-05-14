@@ -65,7 +65,7 @@ instead of denouncing these individuals Emile Barkhof is systematically attempti
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/psychiatrists/2_emile.png"></p>
 
 
-colegio militar (largo da luz, lisbon, portugal) alumni linked to pedro miguel de brito esteves grilo @psp, rui gonçalo pires pintado, and criminal associates of jose teixeira (bar crew hassan), tiago jorge roque, gonçalo bandeira duarte, ivo francisco, arthur moreno, carla maria marinho rodrigues, luis muskiado, a capoverdian known as "calo", tania borboleta and many others who spend their days abusing biophotonics to exact cybertorture and induce psychosis, forcing me into roaming the streets since they wake me up daily, in the middle of the night or early in the morning, with vibrotactile cybertorture.
+colegio militar (largo da luz, lisbon, portugal) alumni linked to pedro miguel de brito esteves grilo @psp, rui gonçalo pires pintado, and recruited criminal associates of jose teixeira (bar crew hassan), tiago jorge roque, gonçalo bandeira duarte, ivo francisco, arthur moreno, carla maria marinho rodrigues, luskiado, a capoverdian known as "calo", tania borboleta and many others, incarnate colonialism time demons by spending their days abusing biophotonics to exact cybertorture trials and sentences for everything in the book with a main focus on xenophobia, inducing synthetic states of psychosis, forcing me into roaming the streets since they wake me up daily, in the middle of the night or early in the morning, with vibrotactile cybertorture.
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/jesus_lamb.png"></p>
@@ -167,7 +167,7 @@ The very same technological means used to exact cybertorture extrajudicial sente
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/books/books.gif"></p>
 
 
-governments worldwide (except for chile) are still denying us neurorights, while a synthetic hell is created as a demonic psychiatric circus, where life is gambled by inducing psychotic states and psychotic behavior in an interactive spectacle of "bursting the psychosis bubble" with in games which inspire so much confusion, hatred and anger among the population, and which are of the reasons that led to war in ukraine.
+governments worldwide (except for chile) are still denying us neurorights, while a synthetic hell is created as a demonic psychiatric circus, where life is gambled by inducing psychotic states and psychotic behavior in an interactive spectacle of "bursting the psychosis bubble" with, in necropolitics games which inspire so much confusion, hatred and anger amongst the population, and which are one of the reasons that led to the current war in the ukraine.
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/adam_tree_of_life.png"></p>
