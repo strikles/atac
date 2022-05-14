@@ -157,7 +157,8 @@ These individuals were enabled to destroy life (even whole families if necessary
 These individuals act through recruited criminals such as joel da fonte, cátia lopes, filipa sequeira among many others [^17], [^18], [^19], [^20], [^21], [^ 22], [^23], [^24], [^25], [^26], [^27], [^28], [^29], [^30] to perform the extrajudicial sentences systematically directing violence against people who are physically close, having a special interest in inducing psychosis and directing violence towards medical staff, women and my parents.
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/log.png"><
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/log.png"></p>
+
 
 The procedure is hidden with falsified medical diagnosis, forced pharmacotherapy against the will of the recipient (in the form of forced conventional pharmacotherapy, with high risk of suicide) and piling psychological effects such as articulating the tongue of the subject under torture with the words "psychiatrist", "psychiatry" and "medication", to draw antagonism towards psychiatry, pharmacotherapy and medical staff and increase the odds of foul play, or me being forced to flee the netherlands against my will.
 
