@@ -117,7 +117,7 @@ These individuals are connected to ricardo rebordão de brito [^1], rui goncalo 
 These individuals spend their days in a room, trying to induce psychosis, targeting head and genitalia in an alternate fashion, every few seconds, repeating phrases to articulate my tongue and jaw, whilst engaging in orgies, greeting each others as they if it was a normal social event.
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/jesus_cross.png"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/jesus_color.png"></p>
 
 
 Other individuals were recruited at jardim adamastor in lisbon and bairro alto to spend all day repeating phrases like parrots:
@@ -153,7 +153,7 @@ Several of the sadists recruited have fun forcing their victims to feel sexually
 These individuals were enabled to destroy life (even whole families if necessary as in my case) forcing their victims to feel sexually abused in order to coerce psychiatric submission with simulated van gogh syndrome syndrome, as a threat, while simultaneously generating human degradation content for an interactive closed circuit spectacle, encouraging participation, so that players take turns exacting extrajudicial sentences of cybertorture, articulating tongues and providing vibrotactile and synthetic pain to simulate psychosis and other forms of psychiatric illness.
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/crucifixion_jesus_mary.png"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/jesus_carrying_cross.png"></p>
 
 
 These individuals act through recruited criminals such as joel da fonte, cátia lopes, filipa sequeira among many others [^17], [^18], [^19], [^20], [^21], [^ 22], [^23], [^24], [^25], [^26], [^27], [^28], [^29], [^30] to perform the extrajudicial sentences systematically directing violence against people who are physically close, having a special interest in inducing psychosis and directing violence towards medical staff, women and my parents.
