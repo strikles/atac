@@ -214,8 +214,8 @@ until neurorights legislation is approved, it is likely to continue seeing more 
 [^23]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/bill_wandi.png
 [^24]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/pedro_caetano.png
 [^25]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/goncalo_duarte.png
-[^26]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/thers/tiago_roque.png
-[^27]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/thers/mazivo.png
-[^28]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jooo_leiria.png
-[^29]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jose_teixeira.png
-[^30]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/pedro_silva.png
+[^26]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/tiago_roque.png
+[^27]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/mazivo.png
+[^28]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/joao_leiria.png
+[^29]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/jose_teixeira.png
+[^30]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/pedro_silva.png
