@@ -22,10 +22,6 @@
 
 ### Summary
 
-##### [scrape.py](scrape.py)
-web scraper that gathers contact information
-
-[scrapeme](SCRAPEME.md)
 
 ##### The current scraping algorithm is the following
 ```markdown
@@ -48,17 +44,6 @@ while P ≠ ∅ do
 ```
 
 it is based on [https://chato.cl/papers/castillo_06_controlling_queue_size_web_crawling.pdf](https://chato.cl/papers/castillo_06_controlling_queue_size_web_crawling.pdf)
-
-##### [compose.py](compose.py)
-automated composition of text using markovify
-
-##### [send.py](send.py)
-send script:
-
-1.  email
-2.  facebook
-3.  twitter
-4.  whatsapp
 
 
 ### Motivation
