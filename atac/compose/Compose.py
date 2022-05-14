@@ -98,6 +98,7 @@ class Compose(Config):
                     font-weight: 400;
                     src: local('Timmana'), url(https://fonts.gstatic.com/s/timmana/v3/6xKvdShfL9yK-rvpOmzRKV4KQOI.woff2) format('woff2');
                 }
+              
                 body {
                     background-color: #FFF;
                     list-style: lower-greek inside;
@@ -124,6 +125,13 @@ class Compose(Config):
                     padding-top: 10px;
                     padding-bottom: 10px;
                 }
+                @media only screen and (max-width: 480px){
+                    img {
+                        height:auto !important;
+                        max-width:600px !important;
+                        width: 100% !important;
+                    }
+                }                
             </style>
         </head>
         <body>
