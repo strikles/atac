@@ -125,7 +125,7 @@ class Scrape(Config):
         """
         csv_path = os.getcwd() + "/data/contacts/emails/" + data_key + "_emails.csv"
         try:
-            with open(csv_path, mode='a') as emails_file:
+            with open(csv_path, mode='a', newline='') as emails_file:
                 emails_file.truncate(0)
                 emails_writer = csv.writer(emails_file,
                                            delimiter=',',
@@ -139,7 +139,7 @@ class Scrape(Config):
         #
         csv_path = os.getcwd() + "/data/contacts/phones/" + data_key + "_phones.csv"
         try:
-            with open(csv_path, mode='a') as phones_file:
+            with open(csv_path, mode='a', newline='') as phones_file:
                 phones_file.truncate(0)
                 phones_writer = csv.writer(phones_file,
                                            delimiter=',',

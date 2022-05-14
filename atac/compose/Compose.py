@@ -115,6 +115,7 @@ class Compose(Config):
                 }
                 img {
                     opacity: 0.7;
+                    margin: 7px 7px;
                 }
                 img:hover {
                     opacity: 1;
