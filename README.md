@@ -64,7 +64,7 @@ Both my father and my father worked for 3 decades as judicial clerks in portugue
 instead of denouncing these individuals Emile Barkhof is systematically attempting to coverup up the cybertorture procedure to perpetuate human degradation psychiatric spectacles trying to force me into psychiatry and forced pharmacotherapy at any cost to pass me as a schizophrenic and make an example out of me, presenting false testimony in a court of law, using falsified reports of risk to self and refusal to take medication against my will as justifications for the damages inflicted by the group of individuals recruited to exact the extrajudicial cybertorture sentences. 
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/psychiatrists/2_emile.png"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/psychiatrists/2_emile.png"></p>
 
 
 colegio militar (largo da luz, lisbon, portugal) alumni linked to pedro miguel de brito esteves grilo @psp, rui gonçalo pires pintado, and criminal associates of jose teixeira (bar crew hassan), tiago jorge roque, gonçalo bandeira duarte, ivo francisco, arthur moreno, carla maria marinho rodrigues, luis muskiado, a capoverdian known as "calo", tania borboleta and many others who spend their days abusing biophotonics to exact cybertorture and induce psychosis, forcing me into roaming the streets since they wake me up daily, in the middle of the night or early in the morning, with vibrotactile cybertorture.
@@ -89,7 +89,7 @@ Simultaneously, dutch psychiatrist Emile Barkhof (who has visited the location w
 3. being forced into a jail cell and losing my home and my freedom whilst being abused to induce psychosis with people around me being used as targets of directed violence.
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/psychiatrists/2_emile.png"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/muskiado.png"></p>
 
 
 These individuals present themselves as artists of human degradation, social stratification and self-inflicted harm, with vibrotactile and sonic payloads of "kisses", establishing simulated van gogh syndrome, synthetic pain, tongue and jaw articulation, cybersodomy, sexual sabotage in males (vibrotactile torture to induce forced contractions to the perineum) and sexual abuse in women (possibly resulting in stockholm syndrome) as common in our society!
