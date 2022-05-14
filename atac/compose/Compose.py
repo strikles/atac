@@ -97,13 +97,27 @@ class Compose(Config):
                 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Yanone+Kaffeesatz:wght@300&display=swap');
                 @import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
 
+                @keyframes scaler {
+                    from {
+                        font-size: 1em;
+                    }
+                    to {
+                        font-size: 1.2em;
+                    }
+                }
+                
                 body {
                     background-color: #FFF;
                     line-height: 3;
+                    font-size: 1em;
                     opacity: 1;
                     text-align: left;
                     word-spacing: 3px;
-                    transition: opacity 1s ease 0s, font-size 1s ease-out;
+                    transition: blur 1s ease-out, invert 1s ease-out, opacity 1s ease 0s;
+                }
+
+                svg {
+                    display: none;
                 }
 
                 p {
@@ -123,12 +137,12 @@ class Compose(Config):
                 img.person {
                     opacity: 0.5;
                     margin: 7px 7px;
-                    filter: blur(5px) invert(100%);
+                    filter: blur(7px) invert(100%);
                 }
 
                 img.person:hover {
                     opacity: 1;
-                    filter: none
+                    filter: none;
                 }
 
                 td {
