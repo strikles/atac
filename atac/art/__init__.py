@@ -23,7 +23,6 @@ Misc variables:
 """
 
 from .ASCII import *
-from .Branches import *
 from .Conway import *
 from .Epicycles import *
 from .Fractal import *
@@ -34,4 +33,4 @@ from .Music import *
 from .Samila import *
 from .Sudoku import *
 
-__all__ = ['ASCII', 'Branches', 'Conway', 'Epicycles', 'Fractal', 'Haiku', 'ImageUtils', 'Invaders', 'Music', 'Samila', 'Sudoku']
+__all__ = ['ASCII', 'Conway', 'Epicycles', 'Fractal', 'Haiku', 'ImageUtils', 'Invaders', 'Music', 'Samila', 'Sudoku']

@@ -4,19 +4,15 @@ autocorrect
 beautifulsoup4
 boto3
 bs4
-pycairo
 colorama
 coloredlogs
 #contextualSpellCheck
 coverage
 cryptography
-envelope
-facebook-sdk
+envelope==2.0.0
 Faker
 fake-useragent
 flake8
-googletrans==4.0.0rc1
-html2image
 language_tool_python
 latex2mathml
 lxml
@@ -30,14 +26,12 @@ pandas
 phonenumbers
 Pillow
 pydbg
-py3-validate-email
 pyaxmlparser
 pygments
 pylatexenc
 pyspellchecker
 pystache
 pytest
-python-frontmatter
 python-gnupg
 python-magic-bin; platform_system == 'Windows'
 pywhatkit
@@ -60,7 +54,6 @@ torrequest
 tqdm
 translators
 tsp_solver2
-tweepy
 urllib3
 utils
 validators

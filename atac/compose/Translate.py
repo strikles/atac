@@ -1,4 +1,3 @@
-from googletrans import Translator
 import language_tool_python
 import translators as ts
 
