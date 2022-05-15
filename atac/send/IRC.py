@@ -129,7 +129,6 @@ class SendIRC(Send):
                     for name in names:
                         print(name)
                     names = []
-                    time.sleep(irc['namesinterval'])
 
 
 
