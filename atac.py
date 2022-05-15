@@ -74,6 +74,51 @@ def configuration(arguments):
 
 
 # sub-command functions
+def chat(arguments):
+    """
+    Generate New Config
+
+    Parameters
+    ----------
+    name : str
+        The name of the animal
+    sound : str
+        The sound the animal makes
+    num_legs : int, optional
+        The number of legs the animal (default is 4)
+    """
+    encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
+    chat = atac.SendChat(encrypted_config, config_file_path, key_file_path)
+
+
+# sub-command functions
+def irc(arguments):
+    """
+    Generate New Config
+
+    Parameters
+    ----------
+    name : str
+        The name of the animal
+    sound : str
+        The sound the animal makes
+    num_legs : int, optional
+        The number of legs the animal (default is 4)
+    """
+    encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
+    chat = atac.SendIRC(encrypted_config, config_file_path, key_file_path)
+    #
+    if arguments.list_users is not None:
+        list_users = getattr(arguments, "list_users")
+    if arguments.message_users is not None:
+        message_users = getattr(arguments, "message_users")
+    if arguments.message_channels is not None:
+        message_channels = getattr(arguments, "message_channels")
+    #
+    chat.list_channels()
+
+
+# sub-command functions
 def email(arguments):
     """
     Generate New Config
@@ -89,11 +134,8 @@ def email(arguments):
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     emailer = atac.SendEmail(encrypted_config, config_file_path, key_file_path)
-    #
     subject = None
     email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
-    #md = 'data/messages/email/' + content['markdown']
-    #message_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', md))
     #
     if arguments.subject is not None:
         subject = getattr(arguments, "subject")
@@ -336,6 +378,27 @@ if __name__ == "__main__":
     parser_email.add_argument('-t', dest='target', choices=['smtp', 'aws'], default='smtp')
     parser_email.add_argument('-v', dest='verbose')
     parser_email.set_defaults(func=email)
+
+    # create the parser for the irc command
+    parser_irc = subparsers.add_parser('irc')
+    parser_irc.add_argument('-c', dest='config_file', type=str, help='use config file path')
+    parser_irc.add_argument('-e', dest='encrypted_config', action='store_true')
+    parser_irc.add_argument('-k', dest='key_file', type=str, help='use key file path')
+    parser_irc.add_argument('-u', dest='message_users', action='store_true')
+    parser_irc.add_argument('-z', dest='message_channels', action='store_true')
+    parser_irc.add_argument('-l', dest='list_users', action='store_true')
+    parser_irc.add_argument('-v', dest='verbose')
+    parser_irc.set_defaults(func=irc)
+
+    # create the parser for the chat command
+    parser_email = subparsers.add_parser('chat')
+    parser_email.add_argument('-c', dest='config_file', type=str, help='use config file path')
+    parser_email.add_argument('-e', dest='encrypted_config', action='store_true')
+    parser_email.add_argument('-k', dest='key_file', type=str, help='use key file path')
+    parser_email.add_argument('-u', dest='message_users', action='store_true')
+    parser_email.add_argument('-l', dest='list_users', action='store_true')
+    parser_email.add_argument('-v', dest='verbose')
+    parser_email.set_defaults(func=chat)
 
     # create the parser for the "phone" command
     parser_phone = subparsers.add_parser('phone')
