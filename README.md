@@ -51,10 +51,12 @@ it is based on [https://chato.cl/papers/castillo_06_controlling_queue_size_web_c
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/jesus_king.png"></p>
 
 
-Both my father and my father worked for 3 decades as judicial clerks in portuguese courts, to be used, at the end of their life, as targets against which to direct violence, by multiple criminal associates of Jasper Kum (some colegio militar alumni) exacting extrajudicial trials and sentences abusing biophotonics to exact cybertorture trying to pass me as being xenophobic, homophobic, a rapist and a pedo as an interactive spectacle encouraging participation, systematically attempting to induce psychosis in front of women and my parents to use them as targets of directed violence and force me into a jail cell, a psychiatric asylum or returning to portugal whilst being cybersodomized with my tongue being articulated in portuguese.
+Both my father and my father worked for 3 decades as judicial clerks in portuguese courts, to be used, at the end of their life, as targets against which to direct violence, by multiple criminal associates of Jasper Kums and colegio militar alumni linked to João Filipe Saraiva Pinheiro and Pedro Miguel de Brito Esteves Grilo @PSP, exacting extrajudicial trials and sentences abusing biophotonics to exact cybertorture trying to pass me as being xenophobic, homophobic, a rapist and a pedo as an interactive spectacle encouraging participation, systematically attempting to induce psychosis in front of women and my parents to use them as targets of directed violence and force me into a jail cell, a psychiatric asylum or returning to portugal whilst being cybersodomized with my tongue being articulated in portuguese.
 
 
 <p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/jasper_kums.png"></p>
+
+<p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/jfsp.png"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/pedro_grilo.png"></p>
 
 
 The individuals recruited to exact the extrajudicial trials and sentences are linked to Tiago Santos Sousa, Ricardo Rebordão de Brito, Ivo Francisco, Eduardo Metzner, Luis Muskiado and criminal associates, with with psychiatrist Emile Barkhof visiting the location where these individuals are, suicide fighting champion Eefje Suk presenting false testimony in a court of law regarding "risk to self", and psychiatrist Sara Hoff forcing herself into my home without consent or an appointment trying to coerce me into accepting a falsified diagnosis of paranoid schizophrenia and a sentence of forced pharmacotherapy against my will to hide the extrajudicial sentence.
@@ -63,10 +65,12 @@ The individuals recruited to exact the extrajudicial trials and sentences are li
 <p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/rrb.png"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/paulinho.png"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/muskiado.png"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/jose_teixeira.png"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/tiago_roque.png"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/jfsp.png"></p>
 
 
-instead of denouncing these individuals Emile Barkhof is systematically attempting to coverup up the extrajudicial cybertorture procedure to perpetuate human degradation psychiatric spectacles trying to force me into psychiatry and forced pharmacotherapy at any cost to pass me as a schizophrenic and make an example out of me, presenting false testimony in a court of law, using falsified reports of risk to self and refusal to take medication against my will as justifications for the damages inflicted by the group of individuals recruited to exact the extrajudicial cybertorture sentences. 
+instead of denouncing these individuals Emile Barkhof is systematically attempting to coverup up the extrajudicial cybertorture procedure to perpetuate human degradation psychiatric spectacles trying to force me into psychiatry and forced pharmacotherapy at any cost to pass me as a schizophrenic and make an example out of me, presenting false testimony in a court of law, using falsified reports of risk to self and refusal to take medication against my will as justifications for the damages inflicted by the group of individuals recruited to exact the extrajudicial cybertorture sentences, **sabotaging my ex-girlfriends plans to get wed**, in a ritualistic psychiatric humiliation tantrum of articulating my tongue, sabotaging intercourse and getting me to hit myself in front of her. 
 
 
 <p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/psychiatrists/2_emile.png"></p>
+
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/us.png"></p>
 
 
 colegio militar (largo da luz, lisbon, portugal) alumni linked to pedro miguel de brito esteves grilo @psp, rui gonçalo pires pintado, and recruited criminal associates of jose teixeira (bar crew hassan), tiago jorge roque, gonçalo bandeira duarte, ivo francisco, arthur moreno, carla maria marinho rodrigues, luskiado, a capoverdian known as "calo", tania borboleta and many others, incarnate colonialism time demons by spending their days abusing biophotonics to exact cybertorture trials and sentences for everything in the book with a main focus on xenophobia, inducing synthetic states of psychosis, forcing me into roaming the streets since they wake me up daily, in the middle of the night or early in the morning, with vibrotactile cybertorture.
@@ -104,7 +108,7 @@ These individual entertain themselves nurturing drug addicts with synthetic pain
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/golgota.png"></p>
 
 
-These individuals are connected to ricardo rebordão de brito [^1], rui goncalo pires painted [^2], luis nazareth carvalho figueira [^3], cesar cristovão, pedro miguel de brito esteves grilo [^4], joão filipe saraiva pinheiro [^5 ], pedro de queiroz antão [^6], ricardo carrilho [^7], paulo jorge varanda [^8], frederico ferronha [^19], oscar ferreira [^10], thyago picco [^11], rui ricardo borges marque sabino reino [^12], pedro nuno da silva rocha [^13], tito eurico miranda fernandes [^14], frederico leitão and carlos anselmo simões. Other Colegio Militar alumni stars are linked to the famous music stars you know: adolfo luxuria cannibal [^15] and manuel joão vieira [^16]
+These individuals are connected to martiniano nuno gonçalves [31], ricardo rebordão de brito [^1], rui goncalo pires painted [^2], luis nazareth carvalho figueira [^3], cesar cristovão, pedro miguel de brito esteves grilo [^4], joão filipe saraiva pinheiro [^5 ], pedro de queiroz antão [^6], ricardo carrilho [^7], paulo jorge varanda [^8], frederico ferronha [^19], oscar ferreira [^10], thyago picco [^11], rui ricardo borges marque sabino reino [^12], pedro nuno da silva rocha [^13], tito eurico miranda fernandes [^14], frederico leitão and carlos anselmo simões. Other Colegio Militar alumni stars are linked to the famous music stars you know: adolfo luxuria cannibal [^15] and manuel joão vieira [^16]
 
 
 <p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/alumni.gif"></p>
@@ -152,7 +156,7 @@ These individuals were enabled to destroy life (even whole families if necessary
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/jesus_carrying_cross.png"></p>
 
 
-These individuals act through recruited criminals such as joel da fonte, cátia lopes, filipa sequeira among many others [^17], [^18], [^19], [^20], [^21], [^ 22], [^23], [^24], [^25], [^26], [^27], [^28], [^29], [^30] to perform the extrajudicial sentences systematically directing violence against people who are physically close, having a special interest in inducing psychosis and directing violence towards medical staff, women and my parents.
+These individuals act through recruited criminals such as jana schwerdfeger, joel da fonte, cátia lopes, filipa sequeira among many others [^17], [^18], [^19], [^20], [^21], [^ 22], [^23], [^24], [^25], [^26], [^27], [^28], [^29], [^30] to perform the extrajudicial sentences systematically directing violence against people who are physically close, having a special interest in inducing psychosis and directing violence towards medical staff, women and my parents.
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/log.png"></p>
@@ -161,7 +165,7 @@ These individuals act through recruited criminals such as joel da fonte, cátia 
 The procedure is hidden with falsified medical diagnosis, forced pharmacotherapy against the will of the recipient (in the form of forced conventional pharmacotherapy, with high risk of suicide) and piling psychological effects such as articulating the tongue of the subject under torture with the words "psychiatrist", "psychiatry" and "medication", to draw antagonism towards psychiatry, pharmacotherapy and medical staff and increase the odds of foul play, or me being forced to flee the netherlands against my will.
 
 
-<p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/psychiatrists/psychiatrists.gif"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/psychiatrists/psychiatrists.gif"></p>
 
 
 The very same technological means used to exact cybertorture extrajudicial sentences could provide real therapy for those in need. instead, these individuals raise feelings of paranoia towards biophotonics, remote medical care, neural engineering and bioelectric medicine (where the risk of suicide would be insignificant to conventional pharmacotherapy in comparison).
@@ -175,15 +179,13 @@ governments worldwide (except for chile) are still denying us neurorights, while
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/adam_tree_of_life.png"></p>
 
-<p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/politicians/politicians.gif"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/politicians/politicians.gif"></p>
 
 
 until neurorights legislation is approved, it is likely to continue seeing more and more homeless people talking alone on the streets, scenes of domestic violence, violence against the elderly and medical personnel in your televisions with several families being destroyed in sadistic rituals of control over the physiology of others, via abuse of biophotonics, photoacoustic and thermoacoustic effects to exact remote extrajudicial sentences.
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/rafael.png"></p>
-
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/us.png"></p>
 
 
 * say yes to neuro rights
@@ -224,3 +226,4 @@ until neurorights legislation is approved, it is likely to continue seeing more 
 [^28]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/joao_leiria.png
 [^29]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/jose_teixeira.png
 [^30]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/pedro_silva.png
+[^31]: https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/others/martiniano_nuno_goncalves.png

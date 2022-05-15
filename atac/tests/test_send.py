@@ -6,7 +6,7 @@ import pytest
 import atac
 
 # :(
-emergency = False
+emergency = True
 #
 encrypted_config = False
 config_file = 'auth.json'
@@ -15,7 +15,8 @@ key_file = None
 
 emergency_subjects = [
     "jasper kums and colégio militar alumni gamble with life and direct violence inducing synthetic psychosis in the middle of the night, abusing biophotonics to direct violence against parents, women and children",
-    "colégio militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless, force them into poverty, gambling life in blue whale suicide games where they take turns abusing biophotonics to execute vibrotactile cybertorture, force psychosis and simulate Van Gogh syndrome in a style reminiscent of the murder of Matthew Puncher"
+    "colégio militar alumni and criminal associates participate in interactive human degradation spectacles to turn people homeless, force them into poverty, gambling life in blue whale suicide games where they take turns abusing biophotonics to execute vibrotactile cybertorture, force psychosis and simulate Van Gogh syndrome in a style reminiscent of the murder of Matthew Puncher",
+    "colégio militar alumni linked Pedro Miguel de Brito Esteves Grilo @PSP and criminal associates of Jasper Kums spent the last 6 years trying to force me into a psychiatric asylum waking me up daily to induce psychosis in blue whale suicide game where they take turns abusing biophotonics to simulate Van Gogh syndrome whilst having intercouse with each others, sabotaging my ex-girlfriends plans to get wed, with Emile Barkhof hidding the extrajudicial sentence with falsified diagnosis and forced pharmacotherapy against my will"
 ]
 
 development_subjects = [
