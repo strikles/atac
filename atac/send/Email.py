@@ -131,9 +131,12 @@ class SendEmail(Send):
         """
         max_emails_per_bucket = 100
         auth, content = self.get_config()
-        recipient_emails = list(map(trace(lambda z: z.split(',')[1]), list(filter(trace(lambda x: x.find(',') != -1 and validators.email(x.split(',')[1])), lines))))
-        trace(random.shuffle(recipient_emails))
-        batch_emails = [[e for e in recipient_emails[start : -1 if len(recipient_emails[start:]) < max_emails_per_bucket else start + max_emails_per_bucket]] for start in range(0, len(recipient_emails), max_emails_per_bucket)]
+        recipient_emails = list(map(lambda z: z.split(',')[1], list(filter(trace(lambda x: x.find(',') != -1 and validators.email(x.split(',')[1])), lines))))
+        print("Before shuffling: {}".format(json.dumps(recipient_emails, indent=4)))
+        random.seed()
+        random.shuffle(recipient_emails)
+        print("After shuffling: {}".format(json.dumps(recipient_emails, indent=4)))
+        batch_emails = [[e for e in recipient_emails[start_ndx:None if len(recipient_emails[start_ndx:]) < max_emails_per_bucket else start_ndx + max_emails_per_bucket]] for start_ndx in range(0, len(recipient_emails), max_emails_per_bucket)]
         print(json.dumps(batch_emails, indent=4))
         return batch_emails
 
@@ -262,7 +265,7 @@ class SendEmail(Send):
         return status
 
 
-    def send_envelope(self, mailing_list, message, subject):
+    def send_envelope(self, mailing_list, message_content, subject, paraphrase=False, translate=False, correct_spelling=False, src=False, dest=False):
         """ Send email
 
         Parameters
@@ -274,20 +277,18 @@ class SendEmail(Send):
         """
         status = 0
         auth, _ = self.get_config()
-        # Create secure connection with server and send email
+        html_content = Compose.md2html(message_content)
+        # Create connection with server and send email
         try:
-            #
+            # os.system(f'envelope --from {auth["sender"]} --to "{mailing_list}" --message "{html_content}" --smtp {auth["server"]} {auth["port"]} {auth["user"]} {auth["password"]} {auth["security"]} --send 1')
             msg = Envelope()\
-                .message("<p align='center' width='100%'><img width='20%' src='cid:header'></p>" + mistune.html(message) + "<p align='center' width='100%'><img width='20%' src='cid:signature'></p>")\
-                .attach(path="data/assets/img/jesus/jesus_king.png", inline="header")\
-                .attach(path="data/assets/img/jesus/lamb_of_god.png", inline="signature")\
+                .header("Content-Type", "text/plain;charset=utf-8")\
+                .message(html_content)\
                 .subject(subject)\
                 .to(mailing_list)\
-                .sender(auth['sender'])\
-                .smtp(auth['server'], auth['port'], auth['user'], auth['password'], security='tls', attempts=3, delay=3)
-            #
-            send_debug = msg.send(False)
-            send_status = msg.send(True)
+                .from_(auth['sender'])\
+                .smtp(host=auth['server'], port=auth['port'], user=auth['user'], password=auth['password'], security=auth['security'], attempts=3, delay=3)\
+                .send(send=True, sign=None, encrypt=None)
             
         except Exception as err:
             print(f'\x1b[6;37;41m {type(err)} error occurred: {err}\x1b[0m')

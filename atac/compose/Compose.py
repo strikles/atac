@@ -89,9 +89,9 @@ class Compose(Config):
         <!doctype html>
         <html>
         <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <style type="text/css">
+            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+            <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+            <style type='text/css'>
 
                 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap');
                 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Yanone+Kaffeesatz:wght@300&display=swap');
@@ -168,12 +168,12 @@ class Compose(Config):
         <body>
             <svg>
                 <defs>
-                    <filter id="redOpacity" color-interpolation-filters="sRGB" x="0" y="0">  
-                    <feColorMatrix type="matrix"
-                            values=".50  0  0   0   0.50
+                    <filter id="redOpacity" color-interpolation-filters='sRGB' x='0' y='0'>  
+                    <feColorMatrix type='matrix'
+                            values='.50  0  0   0   0.50
                                     0.95 0  0   0   0.05
                                     0.95 0  0   0   0.05
-                                    0    0  0   1   0" />
+                                    0    0  0   1   0' />
                     </filter>
                 </defs>
             </svg>
