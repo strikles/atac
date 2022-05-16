@@ -1,7 +1,6 @@
 import math
 import numpy as np
 from pydbg import *
-from random_word import RandomWords
 import random
 import regex
 import string
@@ -110,7 +109,6 @@ def generate_password(length):
 
 def generate_word():
     """
-    """
     r = RandomWords()
     # Return a single random word
     return r.get_random_word(
@@ -122,6 +120,8 @@ def generate_word():
         maxDictionaryCount=10,
         minLength=5,
         maxLength=10)
+        """
+    pass
 
 
 def str2bool(v):
