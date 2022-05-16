@@ -67,10 +67,12 @@ class SendIRC(Send):
         channels = []
         pinged = False
         while True:
+            #
             response = self.socket.recv(2048).decode(errors='replace')
             read_buffer += response
             lines = read_buffer.split('\r\n')
             read_buffer = lines.pop();
+            #
             for line in lines:
                 #
                 if not line:
@@ -110,10 +112,11 @@ class SendIRC(Send):
         read_buffer = ''
         names = []
         while True:
+            #
             response = self.socket.recv(1024).decode()
             read_buffer += response
             lines = read_buffer.split('\r\n')
-            #read_buffer = lines.pop();
+            #
             for line in lines:
                 #
                 if not line:
@@ -124,11 +127,9 @@ class SendIRC(Send):
                 if response_code == self.RPL_NAMREPLY:
                     names_list = response[3].split(':')[1]
                     names += names_list.split(' ')
+                #
                 if response_code == self.RPL_ENDOFNAMES:
                     print('\r\nUsers in {channel}:'.format(**self.irc))
                     for name in names:
                         print(name)
                     names = []
-
-
-

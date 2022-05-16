@@ -38,7 +38,7 @@ pywhatkit
 pywsd==1.0.4
 PyYAML
 qrcode
-random-word
+rdoclient
 regex
 requests
 samila

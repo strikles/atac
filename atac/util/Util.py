@@ -106,7 +106,6 @@ def generate_password(length):
     all = string.ascii_letters + string.digits + string.punctuation
     return "".join(random.sample(all,length))
 
-
 def generate_word():
     """
     r = RandomWords()
@@ -122,6 +121,9 @@ def generate_word():
         maxLength=10)
         """
     pass
+
+
+
 
 
 def str2bool(v):
