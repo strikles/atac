@@ -174,10 +174,14 @@ The very same technological means used to exact cybertorture extrajudicial sente
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/books/books.gif"></p>
 
 
-Some individuals in the fields of psychiatry, law enforcement and decision making has been watching the wrong movies. Instead of promoting neurorights, they advocate abuse of biophotonics (which provides higher therapeutic value than conventional pharmacotherapy and could completely erradicate narco-traffic) for the purpose of extrajudicial trials and sentences, stratifying society with extrajudicial sentences of cognitive impairment, synthetic tics and facial spasms, tongue articulation, synthetic hyperhidrosis, synthetic pain and even simulated van gogh syndrome enforced with vibrotactile cybertorture, in closed circuit human degradation interactive spectacles. 
+Some individuals in the fields of psychiatry, law enforcement and decision making has been watching the wrong movies...
 
 
 <p align="center" width="100%"><img alt="Good" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/movies/mission.gif"></p>
+
+
+**Instead of promoting neurorights, they advocate abuse of biophotonics (which provides higher therapeutic value than conventional pharmacotherapy and could completely erradicate narco-traffic) for the purpose of extrajudicial trials and sentences, stratifying society with extrajudicial sentences of cognitive impairment, synthetic tics and facial spasms, tongue articulation, synthetic hyperhidrosis, synthetic pain and even simulated van gogh syndrome enforced with vibrotactile cybertorture, in closed circuit human degradation interactive spectacles, where they justify the behaviour of the subjects under torture with forged diagnosis of mental illness and refusal to accept pharmacotherapy...**
+
 
 <p align="center" width="100%"><img alt="Bad" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/movies/joker.gif"></p>
 
