@@ -84,7 +84,6 @@ class Compose(Config):
 
     @staticmethod
     def md2html(content):
-        #html_content = "<p align='center' width='100%'><img src='cid:header'></p>" + mistune.html(message_str) + "<p align='center' width='100%'><img src='cid:signature'></p>"
         html_header = """
         <!doctype html>
         <html>
@@ -137,6 +136,8 @@ class Compose(Config):
                 img.person {
                     opacity: 0.5;
                     margin: 7px 7px;
+                    height:auto;
+                    max-width: 100%;
                     filter: invert(100%);
                 }
 
