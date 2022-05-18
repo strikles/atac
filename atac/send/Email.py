@@ -129,7 +129,7 @@ class SendEmail(Send):
         lines : list
             The contacts list
         """
-        max_emails_per_bucket = 100
+        max_emails_per_bucket = 2000
         auth, content = self.get_config()
         recipient_emails = list(map(lambda z: z.split(',')[1], list(filter(trace(lambda x: x.find(',') != -1 and validators.email(x.split(',')[1])), lines))))
         print("Before shuffling: {}".format(json.dumps(recipient_emails, indent=4)))
