@@ -137,7 +137,7 @@ class Compose(Config):
                 img.person {
                     opacity: 0.5;
                     margin: 7px 7px;
-                    filter: blur(7px) invert(100%);
+                    filter: invert(100%);
                 }
 
                 img.person:hover {
