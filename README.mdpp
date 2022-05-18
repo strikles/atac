@@ -48,4 +48,54 @@ it is based on [https://chato.cl/papers/castillo_06_controlling_queue_size_web_c
 ### Motivation
 
 
+### Activism Tools Against Cybertorture
+
+##### GitHub
+![python-app](https://github.com/strikles/atac/actions/workflows/python-app.yml/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Upload Python Package](https://github.com/strikles/atac/actions/workflows/python-publish.yml/badge.svg?branch=main)](https://github.com/strikles/atac/actions/workflows/python-publish.yml)
+
+#### Q.A. Metrics
+
+##### Codacy
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/d3de586ed5a248ca917c99e95757252c)](https://www.codacy.com/gh/strikles/atac/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=strikles/atac&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/d3de586ed5a248ca917c99e95757252c)](https://www.codacy.com/gh/strikles/atac/dashboard?utm_source=github.com&utm_medium=referral&utm_content=strikles/atac&utm_campaign=Badge_Coverage)
+
+##### Code Inspector
+[![Code Quality Score](https://api.codiga.io/project/29990/score/svg)](https://www.code-inspector.com/public/project/29990/atac/dashboard)
+
+##### DeepSource
+[![DeepSource](https://deepsource.io/gh/strikles/atac.svg/?label=active+issues&show_trend=true&token=knjxrFWrr_WNtdD2XCDeYO0i)](https://deepsource.io/gh/strikles/atac/?ref=repository-badge)
+[![DeepSource](https://deepsource.io/gh/strikles/atac.svg/?label=resolved+issues&show_trend=true&token=knjxrFWrr_WNtdD2XCDeYO0i)](https://deepsource.io/gh/strikles/atac/?ref=repository-badge)
+
+
+### Summary
+
+
+##### The current scraping algorithm is the following
+```markdown
+P ← starting URLs (primary queue) 
+S ← ∅ (secondary queue)
+V ← ∅ (visited pages)
+while P ≠ ∅ do
+    Pick a page v from P and download it
+    V ← V ∪ {v} (mark as visited)
+    N+(v) ← v’s out-links pointing to new pages (“new” means not in P, S or V)
+    if |N+(v)| > t then
+        R ← first t out-links N+(v)
+        S ← S ∪ (v)
+    end if
+    P ← P ∪ R
+    if P = ∅ then
+        P ← S
+        S ← ∅ 
+    end if
+```
+
+it is based on [https://chato.cl/papers/castillo_06_controlling_queue_size_web_crawling.pdf](https://chato.cl/papers/castillo_06_controlling_queue_size_web_crawling.pdf)
+
+
+### Motivation
+
+
 !INCLUDE "data/messages/email/neurorights_en.md"
