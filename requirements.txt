@@ -13,6 +13,7 @@ envelope==2.0.0
 Faker
 fake-useragent
 flake8
+irc
 language_tool_python
 latex2mathml
 lxml
