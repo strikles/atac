@@ -174,12 +174,12 @@ The very same technological means used to exact cybertorture extrajudicial sente
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/books/books.gif"></p>
 
 
-Someone in the fields of psychiatry, law enforcement and decision making has been watching the wrong movies. Instead of promoting neurorights, they advocate abuse of biophotonics (which provides higher therapeutic value than conventional pharmacotherapy and could completely erradicate narco-traffic) for the purpose of extrajudicial trials and sentences and stratify society with extrajudicial sentences of cognitive impairment, synthetic tics and facial spasms, synthetic hyperhidrosis, synthetic pain and even simulated van gogh syndrome enforced with vibrotactile cybertorture, in closed circuit human degradation interactive spectacles. 
+Some individuals in the fields of psychiatry, law enforcement and decision making has been watching the wrong movies. Instead of promoting neurorights, they advocate abuse of biophotonics (which provides higher therapeutic value than conventional pharmacotherapy and could completely erradicate narco-traffic) for the purpose of extrajudicial trials and sentences, stratifying society with extrajudicial sentences of cognitive impairment, synthetic tics and facial spasms, tongue articulation, synthetic hyperhidrosis, synthetic pain and even simulated van gogh syndrome enforced with vibrotactile cybertorture, in closed circuit human degradation interactive spectacles. 
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/movies/mission.gif"></p>
+<p align="center" width="100%"><img alt="Good" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/movies/mission.gif"></p>
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/movies/joker.gif"></p>
+<p align="center" width="100%"><img alt="Bad" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/movies/joker.gif"></p>
 
 
 governments worldwide (except for chile) are still denying us neurorights, while a synthetic hell is created as a demonic psychiatric circus, where life is gambled by inducing psychotic states and psychotic behavior in an interactive spectacle of "bursting the psychosis bubble" with, in necropolitics games which inspire so much confusion, hatred and anger amongst the population, and which are one of the reasons that led to the current war in the ukraine.
