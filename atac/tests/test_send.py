@@ -125,6 +125,6 @@ def test_send_emails_with_no_paraphrasing_and_no_translation():
     email_files_path = os.path.join(os.getcwd(), email_file)
     message_file_path = os.path.join(os.getcwd(), "data/messages/email/neurorights_en.md")
     #Ex-alunos do colegio militar e associados criminosos de luis muskiado participam em espetáculos interativos de degradação humana para forçar internamentos psiquiatricos, tornando pessoas em sem-abrigo, e forçando condições de pobreza sobre familias inteiras, jogando vidas em jogos de suicídio tipo baleia azul, onde se revezam em orgias abusando da bio fotônica para atribuir tarefas e executar sentenças extrajudiciais de cibertortura vibro tátil, forçando psicose e simulando síndrome de van gogh num estilo que lembra o assassinato á moda soviética de matthew puncher"
-    subject = "The Netherlands Law enforcement narcostate - Jasper Kums and social stratification schemes of cybertorture paired with psychiatric abuse to turn disgruntled employees into homeless drug addicts and force ex-pats back to their contry of origin!" 
+    subject = "The Netherlands Law enforcement narcostate - Jasper Kums and social stratification schemes of cybertorture paired with psychiatric abuse to turn disgruntled employees into homeless drug addicts and force them back to their contry of origin whilst being cybersodomized with their tongue being articulated!" 
     status = katie.send_batch(email_files_path, message_file_path, subject, paraphrase=False, translate=False, correct_spelling=False, src=False, dest=False)
     assert(status == 0) is True
