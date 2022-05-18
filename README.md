@@ -174,7 +174,7 @@ The very same technological means used to exact cybertorture extrajudicial sente
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/books/books.gif"></p>
 
 
-Some individuals in the fields of psychiatry, law enforcement and decision making has been watching the wrong movies...
+**Some individuals in the fields of psychiatry, law enforcement and decision making have been watching the wrong movies...**
 
 
 <p align="center" width="100%"><img alt="Good" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/movies/mission.gif"></p>
