@@ -82,8 +82,17 @@ class SendEmail(Send):
 
     def get_config(self):
         """ Get email config """
-        content_index = self.email['active_content']
-        auth_index = self.email['active_auth']
+        content_index = int(self.email['active_content'])
+        auth_index = int(self.email['active_auth'])
+        #
+        if auth_index > len(self.email['auth']):
+            print("Invalid active_auth index in your .json config")
+            sys.exit(1)
+        #
+        if content_index > len(self.email['content']):
+            print("Invalid active_content index in your .json config")
+            sys.exit(1)
+        #
         content = self.email['content'][content_index]
         auth = self.email['auth'][auth_index]
         #
@@ -335,12 +344,12 @@ class IMAP(Riseup):
     '''
 
     port = '993'
-    conn = imaplib.IMAP4_SSL(Riseup.SERVER, port)
     
     def __init__(self, user=None, pwd=None):
         super().__init__(user, pwd)
         self.unseen_num = 0
         self.unseen_msg = []
+        self.conn = imaplib.IMAP4_SSL(Riseup.SERVER, self.port)
 
     def connect(self):
         try:
@@ -491,7 +500,6 @@ class SMTP(Riseup):
     '''
 
     port = '587'
-    conn = smtplib.SMTP(Riseup.SERVER, port)
     #
     def __init__(self, user=None, pwd=None):
         super().__init__(user, pwd)
@@ -499,6 +507,7 @@ class SMTP(Riseup):
         self.f = None
         self.recip = ''
         self._enc = None
+        self.conn = smtplib.SMTP(Riseup.SERVER, self.port)
     
     def __call__(self):
         ''' After email was sent, all files can be overwritten and deleted; '''

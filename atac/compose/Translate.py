@@ -1,7 +1,7 @@
-import language_tool_python
-import translators as ts
-
 def translate_translators():
+    #
+    import translators as ts
+    #
     wyw_text = '季姬寂，集鸡，鸡即棘鸡。棘鸡饥叽，季姬及箕稷济鸡。'
     chs_text = '季姬感到寂寞，罗集了一些鸡来养，鸡是那种出自荆棘丛中的野鸡。野鸡饿了唧唧叫，季姬就拿竹箕中的谷物喂鸡。'
     html_text = '''
@@ -42,6 +42,9 @@ def translate_translators():
 
 
 def translate_languagetool(content, languagecode):
+    #
+    import language_tool_python
+    #
     tool = language_tool_python.LanguageToolPublicAPI(languagecode)
     is_bad_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
     matches = tool.check(content)
@@ -49,6 +52,8 @@ def translate_languagetool(content, languagecode):
 
 
 def translator(content, source='en', destination=None):
+    #
+    import translators as ts
     #
     print("translating phrase to {}...".format(destination))
     print("before translation: " + content)

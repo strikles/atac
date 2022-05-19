@@ -1,5 +1,5 @@
 from .Chat import *
-from .Email import *
+from .Email import SendEmail
 from .IRC import *
 from .Social import *
 

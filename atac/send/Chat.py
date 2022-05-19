@@ -12,9 +12,6 @@ from matrix_bot_api.mcommand_handler import MCommandHandler
 #import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
 
-if os.environ.get('DISPLAY'):
-    from pywhatkit import *
-
 class SendChat(Send):
     """ A class used to represent a Configuration object
 
@@ -55,6 +52,9 @@ class SendChat(Send):
 
     if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
+
+            import pywhatkit
+
             """ Send Pywhatkit message
 
             Parameters
