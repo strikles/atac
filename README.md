@@ -101,7 +101,13 @@ it is based on [https://chato.cl/papers/castillo_06_controlling_queue_size_web_c
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/jesus_king.png"></p>
 
 
-Both my mother and my father worked for 3 decades as judicial clerks in portuguese courts, to be used, at the end of their life, as targets against which to direct violence by cowardly colegio militar alumni and criminal associates of Jasper Kums trying to force me to return to Portugal, pass me as a paranoid schizophrenic, in a ritual of waking me up daily, in the middle of the night between 5-7 am, abusing biophotonics to exact vibrotactile cybertoture and watch me break everything I own to force me into debt and make me lose my home, with criminal associates of colegio militar alumni Joao Filipe Saraiva Pinheiro and Pedro Miguel de Brito Esteves Grilo @PSP issuing an illegal and extrajudicial sentence of simulated Van Gogh syndrome for denouncing them and running away to the Netherlands to escape their abuse, in an attempt to coerce me to return back to Portugal where they systematically direct violence towards my parent to force me into a prison cell.
+Both my mother and my father worked for 3 decades as judicial clerks in portuguese courts, to be used, at the end of their life, as targets against which to direct violence by cowardly colegio militar alumni and criminal associates of Jasper Kums trying to force me to return to Portugal, pass me as a paranoid schizophrenic, in a ritual of waking me up daily, in the middle of the night between 5-7 am, abusing biophotonics to exact vibrotactile cybertoture and watch me break everything I own to force me into debt and make me lose my home.
+
+
+<p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni_police/alumni_police.gif"></p>
+
+
+Criminal associates of colegio militar alumni **Joao Filipe Saraiva Pinheiro**, **Pedro Miguel de Brito Esteves Grilo @PSP**, **Pedro Nuno da Silva Rocha**, **Luis Nazareth Carvalho Figueira** issuing an illegal and **extrajudicial sentence of simulated Van Gogh syndrome** for denouncing them and running away to the Netherlands to escape their abuse, in an attempt to coerce me to return back to Portugal where they systematically direct violence towards my parents to force me into a prison cell.
 
 
 <p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/jasper_kums.png"></p>
@@ -115,29 +121,46 @@ Jasper Kums (my former employer at Eenvoud Media - now renamed to Eenvoud Agency
 
 "Selective law enforcement" is the reason why the Netherlands has a reputation of being a narco-state, with police doing the bidding of those close to them (nationals, relatives, etc) and turning a blind eye, or even cooperating with a number of criminal activities including:
 
+
 * the execution of extrajudicial trials and sentences, in rituals of ostentating control of physiological functions of others (e.g. remotely articulating tongues, issuing sentences of synthetic pain and inducing synthetic states of psychosis near your loved ones or family members to coerce psychiatric care with delusional megalomaniac plots of turning people into homeless drug addicts and forcing them into a prison cell, a psychiatric asylum or a grave as a gamble).
 
 * narcotraffic of class A narcottics which you can find on public groups of chat applications like "whatsapp" and "telegram" without cyber units taking any action. Given the level of expertise of Jasper Kums in software development and IT (must be so increadibly high he decided to pass me as an incompetent paranoid schizophrenic in a macabre ritual of exacting vibrotactile cybertorture and articulating my tongue since 2016 to force me into a prison cell, a psychiatric asylum or back to Portugal).
 
 
-<p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/jfsp.png"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/pedro_grilo.png"></p>
+The individuals recruited to exact the extrajudicial trials and sentences on behalf of Jasper Kums belong to several distinct but interconnected groups:
 
 
-The individuals recruited to exact the extrajudicial trials and sentences are linked to Tiago Santos Sousa, Ricardo Rebordão de Brito, Ivo Francisco, Eduardo Metzner, Luis Muskiado and criminal associates, with with psychiatrist Emile Barkhof visiting the location where these individuals are, suicide fighting champion Eefje Suk presenting false testimony in a court of law regarding "risk to self", and psychiatrist Sara Hoff forcing herself into my home without consent or an appointment trying to coerce me into accepting a falsified diagnosis of paranoid schizophrenia and a sentence of forced pharmacotherapy against my will to hide the extrajudicial sentence.
+* those linked to **Ivo Francisco** and **Luis Muskiado** and **Arthur Moreno**
+
+<p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/tapada_do_mocho/tapada_do_mocho.gif"></p>
+
+* those linked to **Tiago Santos Sousa**
+
+<p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jardim_adamastor/jardim_adamastor.gif"></p>
+
+* those linked to **Ricardo Rebordão de Brito**, **Pedro Nuno da Silva Rocha** and **Eduardo Metzner**
+
+<p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/alumni.gif"></p>
 
 
-<p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/rrb.png"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/paulinho.png"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/muskiado.png"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/jose_teixeira.png"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/tiago_roque.png"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/humberto_mota.png"></p>
+Some details worthy of your attention:
 
 
-instead of denouncing these individuals Emile Barkhof is systematically attempting to coverup up the extrajudicial cybertorture procedure to perpetuate human degradation psychiatric spectacles trying to force me into psychiatry and forced pharmacotherapy at any cost to pass me as a schizophrenic and make an example out of me, presenting false testimony in a court of law, using falsified reports of risk to self and refusal to take medication against my will as justifications for the damages inflicted by the group of individuals recruited to exact the extrajudicial cybertorture sentences, **sabotaging my ex-girlfriends plans to get wed**, in a ritualistic psychiatric humiliation tantrum of articulating my tongue, sabotaging intercourse and getting me to hit myself in front of her. 
+* Psychiatrist **Emile Barkhof** visited the location where these individuals exact their extrajudicial sentences
+* Suicide fighting champion **Eefje Suk** presenting false testimony in a court of law regarding "risk to self"
+* Psychiatrist **Sara Hoff** forcing herself into my home without consent or an appointment trying to coerce me into accepting a falsified diagnosis of paranoid schizophrenia and a sentence of forced pharmacotherapy against my will to hide the extrajudicial sentence.
 
 
 <p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/psychiatrists/2_emile.png"></p>
 
+
+instead of denouncing these individuals **Emile Barkhof** is systematically attempting to coverup up the extrajudicial cybertorture procedure to perpetuate human degradation psychiatric spectacles trying to force me into psychiatry and forced pharmacotherapy at any cost to pass me as a schizophrenic and make an example out of me, presenting false testimony in a court of law, using falsified reports of risk to self and refusal to take medication against my will as justifications for the damages inflicted by the group of individuals recruited to exact the extrajudicial cybertorture sentences, **sabotaging my ex-girlfriends plans to get wed**, in a ritualistic psychiatric humiliation tantrum of articulating my tongue, sabotaging intercourse and getting me to hit myself in front of her. 
+
+
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/us.png"></p>
 
 
-colegio militar (largo da luz, lisbon, portugal) alumni linked to pedro miguel de brito esteves grilo @psp, rui gonçalo pires pintado, and recruited criminal associates of **jose teixeira (bar crew hassan)**, **tiago jorge roque**, **gonçalo bandeira duarte (specialized in recruiting people and mongering hatred to exact extrajudicial punishement)**, **ivo francisco**, **arthur moreno**, **carla maria marinho rodrigues**, **luis muskiado (who specializes in inducing psychosis with vibrotactile cybertorture to simulate van gogh syndrome)**, **a capoverdian known as "calo" who specializes in torturing people genitally to gamble self-harm**, **humberto mota**, **tania borboleta** and many others, incarnate colonialism time demons by spending their days abusing biophotonics to exact cybertorture trials and sentences for everything in the book with a main focus on homophobia, xenophobia, misoginy and even pedophilia, inducing synthetic states of psychosis, forcing me into roaming the streets since they wake me up daily, in the middle of the night or early in the morning, with vibrotactile cybertorture.
+colegio militar (largo da luz, lisbon, portugal) alumni linked to pedro miguel de brito esteves grilo @psp, rui gonçalo pires pintado, and recruited criminal associates of **jose teixeira (bar crew hassan)**, **tiago jorge roque**, **gonçalo bandeira duarte (specialized in recruiting people and mongering hatred to exact extrajudicial punishement)**, **ivo francisco**, **arthur moreno**, **carla maria marinho rodrigues**, **luis muskiado (who specializes in inducing psychosis with vibrotactile cybertorture to simulate van gogh syndrome)**, **a capoverdian known as "calo" who specializes in torturing people genitally to gamble self-harm**, **humberto mota**, **tania borboleta** and many others, who seem to be on a crusade to incarnate colonialism time demons by spending their days abusing biophotonics to exact cybertorture trials and sentences for everything in the book with a main focus on **homophobia**, **xenophobia**, **misoginy** and even **pedophilia**, inducing synthetic states of psychosis, forcing me into roaming the streets since they wake me up daily, in the middle of the night or early in the morning, with vibrotactile cybertorture.
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/jesus_lamb.png"></p>
@@ -159,7 +182,7 @@ Simultaneously, dutch psychiatrist Emile Barkhof (who has visited the location w
 * being forced into a jail cell and losing my home and my freedom whilst being abused to induce psychosis with people around me being used as targets of directed violence.
 
 
-<p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/others.gif"></p>
+<p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/cross.png"></p>
 
 
 These individuals present themselves as artists of human degradation, social stratification and self-inflicted harm, with vibrotactile and sonic payloads of "kisses", establishing simulated van gogh syndrome, synthetic pain, tongue and jaw articulation, cybersodomy, sexual sabotage in males (vibrotactile torture to induce forced contractions to the perineum) and sexual abuse in women (possibly resulting in stockholm syndrome) as common in our society!
@@ -178,6 +201,8 @@ These individuals are connected to martiniano nuno gonçalves [31], ricardo rebo
 
 
 <p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/alumni.gif"></p>
+
+<p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/musicians/musicians.gif"></p>
 
 
 These individuals spend their days in a room, trying to induce psychosis, targeting head and genitalia in an alternate fashion, every few seconds, repeating phrases to articulate my tongue and jaw, whilst engaging in orgies, greeting each others as they if it was a normal social event.
