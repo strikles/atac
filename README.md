@@ -253,18 +253,6 @@ These individuals act through recruited criminals such as jana schwerdfeger, joe
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/log.png"></p>
 
 
-The procedure is hidden with falsified medical diagnosis, forced pharmacotherapy against the will of the recipient (in the form of forced conventional pharmacotherapy, with high risk of suicide) and piling psychological effects such as articulating the tongue of the subject under torture with the words "psychiatrist", "psychiatry" and "medication", to draw antagonism towards psychiatry, pharmacotherapy and medical staff and increase the odds of foul play, or me being forced to flee the netherlands against my will.
-
-
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/psychiatrists/psychiatrists.gif"></p>
-
-
-The very same technological means used to exact cybertorture extrajudicial sentences could provide real therapy for those in need. instead, these individuals raise feelings of paranoia towards biophotonics, remote medical care, neural engineering and bioelectric medicine (where the risk of suicide would be insignificant to conventional pharmacotherapy in comparison).
-
-
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/books/books.gif"></p>
-
-
 **Some individuals in the fields of psychiatry, law enforcement and decision-making must have been watching the wrong movies...**
 
 
@@ -276,6 +264,17 @@ The very same technological means used to exact cybertorture extrajudicial sente
 
 <p align="center" width="100%"><img alt="Good" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/movies/mission.gif"></p>
 
+
+Cybertorture extrajudicial proceedings are hidden with falsified psychiatric diagnosis diagnosis, forced pharmacotherapy against the will of the recipient (in the form of forced conventional pharmacotherapy, with high risk of suicide) and piling psychological effects such as articulating the tongue of the subject under torture with the words "psychiatrist", "psychiatry" and "medication", to draw antagonism towards psychiatry, pharmacotherapy and medical staff and increase the odds of foul play, or me being forced to flee the netherlands against my will.
+
+
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/psychiatrists/psychiatrists.gif"></p>
+
+ 
+Biophotonics could provide much higher therapeutic value than conventional pharmacotherapy, solving problems in the field of psychiatry that are next to impossible to address with narcoleptics and conventional pharmaceuticals. Instead, these individuals raise feelings of paranoia towards biophotonics, remote medical care, neural engineering and bioelectric medicine (where the risk of suicide would be insignificant to conventional pharmacotherapy) serving the interests of big pharmaceuticals by keeping the population in ignorance, treating their patients like idiots and pushing conventional pharmacotherapy upon them, transforming patients looking to get therapy into victims of psychiatric abuse.
+
+
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/books/books.gif"></p>
 
 governments worldwide (except for chile) are still denying us neurorights, while a synthetic hell is created as a demonic psychiatric circus, where life is gambled by inducing psychotic states and psychotic behavior in an interactive spectacle of "bursting the psychosis bubble", in necropolitics games which inspire so much confusion, hatred and anger amongst the population, and which are one of the reasons that led to the current war in the ukraine.
 
