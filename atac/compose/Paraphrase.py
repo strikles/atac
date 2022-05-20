@@ -2,7 +2,6 @@ from ..util.Util import *
 
 import attr
 import nltk
-nltk.download('stopwords')
 
 import regex
 import spacy
@@ -258,6 +257,7 @@ def get_paraphrase(text, nlp):
 
 def paraphraser(content, lang='en'):
     #
+    nltk.download('stopwords')
     nlp = spacy.load('en_core_web_md')
     transform = get_paraphrase(content, nlp)
     #
