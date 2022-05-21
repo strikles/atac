@@ -120,11 +120,12 @@ def test_send_emails_with_paraphrasing_and_translation():
 def test_send_emails_with_no_paraphrasing_and_no_translation():
     """
     """
+    
     #
     katie = atac.SendEmail(encrypted_config, config_file, key_file)
     email_files_path = os.path.join(os.getcwd(), email_file)
     message_file_path = os.path.join(os.getcwd(), "data/messages/email/neurorights_en.md")
     #Ex-alunos do colegio militar e associados criminosos de luis muskiado participam em espetáculos interativos de degradação humana para forçar internamentos psiquiatricos, tornando pessoas em sem-abrigo, e forçando condições de pobreza sobre familias inteiras, jogando vidas em jogos de suicídio tipo baleia azul, onde se revezam em orgias abusando da bio fotônica para atribuir tarefas e executar sentenças extrajudiciais de cibertortura vibro tátil, forçando psicose e simulando síndrome de van gogh num estilo que lembra o assassinato á moda soviética de matthew puncher"
-    subject = "The Netherlands Law enforcement narcostate - Jasper Kums and social stratification schemes of cybertorture paired with psychiatric abuse to turn disgruntled employees into homeless drug addicts and force them back to their contry of origin whilst being cybersodomized with their tongue being articulated!" 
+    subject = "PSYCHIATRY ABOVE GOD - The Netherlands Law enforcement narcostate and Arkin's polemic statue - How to meet an Angel - Jasper Kums and social stratification schemes of cybertorture paired with psychiatric fraud and abuse in ritualistic protocols of psychiatric subjugation, sabotaging eating and chewing with automated vibrotactile sentences to simulate Van Gogh syndrome, in megalomaniac plots to turn disgruntled employees into homeless addicts and force them to run away in fear back to their contry of origin whilst being cybersodomized with their tongue being articulated in their native language to commit suicide in front of their family!" 
     status = katie.send_batch(email_files_path, message_file_path, subject, paraphrase=False, translate=False, correct_spelling=False, src=False, dest=False)
     assert(status == 0) is True
