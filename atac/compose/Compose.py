@@ -92,10 +92,6 @@ class Compose(Config):
             <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
             <style type='text/css'>
 
-                @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap');
-                @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Yanone+Kaffeesatz:wght@300&display=swap');
-                @import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
-
                 @keyframes scaler {
                     from {
                         font-size: 1em;
@@ -125,8 +121,8 @@ class Compose(Config):
                 }
 
                 li {
+                    margin: 7px 77px;
                     list-style: lower-greek inside;
-                    margin: 7px;
                 }
 
                 li > p {
