@@ -271,7 +271,8 @@ class Compose(Config):
         message.replace_header('Content-Transfer-Encoding', 'quoted-printable')
         #
         nlp = None
-        subject_prefix = "{} - AMYTAL - neurorights, blue whale suicide games and tongue articulators".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+        subject_prefix = "{} - ".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+        #"AMYTAL - Neurorights - Emile Barkhof and Jasper Kums act in criminal association with the CM93 Colegio Militar (largo da Luz, Portugal) group who abused me as a child and created the blue whale suicide game in 1993 abusing biophotonics instead of social media to issue tasks".format(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
         subject_transform = Compose.transform([subject.lower()], paraphrase, translate, correct_spelling, src, dest)
         #
         message["Subject"] = "{0}: {1}".format(subject_prefix, "".join(subject_transform))
