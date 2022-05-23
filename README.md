@@ -353,13 +353,13 @@ The field of bio-photonics could provide much higher therapeutic value than conv
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/1981/1981.gif"></p>
 
 
-**It's imperative to get rid this kind of "preferential treatment" mentality, not only out of the Netherlands Police force or Arkin FACT in the Netherlands, or even the field of psychiatry, but out of law enforcement and the field of medicine worldwide, where this kind of social stratification behaviour is pervasive**. psychiatrists and medical doctors who cover up this kind of obscene *workplace revenge* extrajudicial sentences with falsified diagnosis and forged assessments of "risk to self" using rejection of pharmaco-"therapy" as an excuse to justify the psychotic behaviour of the subjects under torture.
+**It's imperative to get rid this kind of "preferential treatment" mentality, not only out of the Netherlands Police force or Arkin FACT in the Netherlands, or even the field of psychiatry, but out of law enforcement and the field of medicine worldwide, where this kind of social stratification behaviour is pervasive**.
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/psychiatrists/psychiatrists.gif"></p>
 
 
-Psychotic individuals who participate in setting this kind of repugnant behaviour as a standard subjugation protocol in our society (where so many people are abused in such a foul way, with their life and those close to them becoming an object of gambling, either by covering up the procedure with falsified diagnosis, opinions, reports or by actually participating in the process of delivering noxious payloads to torture victims) are not medical doctors, and as such have no place in the fields of psychiatry or medicine.
+Psychotic individuals who participate in setting this kind of repugnant behaviour as a standard subjugation protocol in our society (where so many people are abused in such a foul way, with their life and those close to them becoming an object of gambling, either by covering up the procedure with falsified diagnosis, opinions, reports or by actually participating in the process of delivering noxious payloads to torture victims) are not medical doctors, and as such have no place in the fields of law enforcement or medicine.
 
 
 Hiding cyber-torture extrajudicial trials and sentences and resorting to peer pressure as a way to coerce psychiatric care, incarceration or suicide as a gamble is a way to deny us what we deserve, perpetuating domestic violence, disaggregation of families, drug addiction, narco-traffic and other social stratification schemes, forcing us to live in fear in a pool of mediocrity and decrepitude.
@@ -383,7 +383,7 @@ Until neuro-rights legislation is approved, it is likely to continue seeing more
 **Denying neuro-rights to the population is high-treason.**
 
 * say yes to neuro-rights
-* say no to the "homo sovieticus" initiative of Jasper Kums and Colegio Militar alumni to pair cybertorure with blue whale suicide games covered with psychiatric fraud
+* say no to the "homo sovieticus" initiative of pairing abuse of bio-photonics to bypass physical ban and exact extrajudicial cybertorure sentences as interactive blue-whale suicide games covered with psychiatric fraud
 
 
 **Criminal association to those abusing bio-photonics (a medium that could solve so many problems and improve our quality of life so dramatically) to instead simulate Van Gogh syndrome with vibro-tactile cyber-torture, induce synthetic psychosis and simulate mental illness, directing violence to elderly parents at the end of their life, women and children (even a renal patient on Xmas day) as a gamble, whilst articulating tongues (even inside a church) is so repugnant, so disgusting and so unholy it will not be tolerated. For the rest of my life this will be my cause!**
