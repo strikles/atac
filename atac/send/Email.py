@@ -168,11 +168,12 @@ class SendEmail(Send):
         print(subject)
         auth, _ = self.get_config()
         encrypted_emails = []
+        message = get_file_content(message_file_path)
+        #
         with tqdm(total=len(email_batches)) as filter_progress:
             for batch in email_batches:
                 #
                 plain_emails = batch
-                message = get_file_content(message_file_path)
                 #
                 # TODO - send encrypted emails
                 # get emails with gpg key in their own list
@@ -327,7 +328,6 @@ class Riseup:
         if self.user == None and self.pwd == None:
             user = input('\nYour Riseup username: ')
             pwd = getpass.getpass()
-
             # Set class parameters
             self.user = user
             self.pwd = pwd

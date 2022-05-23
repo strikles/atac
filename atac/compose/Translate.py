@@ -57,7 +57,7 @@ def translator(content, source='en', destination=None):
     #
     print("translating phrase to {}...".format(destination))
     print("before translation: " + content)
-    transform = ts.google(content.lower(), from_language=source, to_language=destination)
+    transform = ts.google(content, from_language=source, to_language=destination)
     print("after translation: " + transform)
     #
     return transform
