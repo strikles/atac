@@ -385,6 +385,12 @@ Until neuro-rights legislation is approved, it is likely to continue seeing more
 
 **Denying neuro-rights to the population is high-treason.**
 
+
+[RETRACTED BOOK: Directed-Energy Beam Weapons](https://link.springer.com/book/10.1007/978-3-030-20794-6)
+
+[PASSED EDITORIAL REVIEW:  Havana Syndrome -Mass Psychogenic Illness and the Real Story Behind the Embassy Mystery and Hysteria](https://link.springer.com/book/10.1007/978-3-030-40746-9)
+
+
 * say yes to neuro-rights
 * say no to the "homo sovieticus" initiative of pairing abuse of bio-photonics to bypass physical ban and exact extrajudicial cybertorure sentences as interactive blue-whale suicide games covered with psychiatric fraud
 
