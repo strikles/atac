@@ -189,6 +189,33 @@ def phone(arguments):
 
 
 # sub-command functions
+def art(arguments):
+    """
+    Generate New Config
+
+    Parameters
+    ----------
+    name : str
+        The name of the animal
+    sound : str
+        The sound the animal makes
+    num_legs : int, optional
+        The number of legs the animal (default is 4)
+    """
+    encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
+    artist = atac.Artist(encrypted_config, config_file_path, key_file_path)
+    #
+    if arguments.message_text is not None:
+        message_text = getattr(arguments, "message_text")
+    if arguments.images_path is not None:
+        images_path = getattr(arguments, "images_path")
+    if arguments.gif_path is not None:
+        gif_path = getattr(arguments, "gif_path")
+    if arguments.generate_art_type is not None:
+        art_type = getattr(arguments, "art_type")
+
+
+# sub-command functions
 def social(arguments):
     """
     Generate New Config
@@ -422,6 +449,19 @@ if __name__ == "__main__":
     parser_social.add_argument('-t', dest='target', choices=['facebook', 'twitter'], default='twitter')
     parser_social.add_argument('-v', dest='verbose')
     parser_social.set_defaults(func=social)
+
+
+    # create the parser for the "art" command
+    parser_art = subparsers.add_parser('art')
+    parser_art.add_argument('-c', dest='config_file', type=str, help='use config file path')
+    parser_art.add_argument('-e', dest='encrypted_config', action='store_true')
+    parser_art.add_argument('-k', dest='key_file', type=str, help='use key file path')
+    parser_art.add_argument('-m', dest='message_text', type=str, help='text message')
+    parser_art.add_argument('-g', dest='gif_path', type=str, help='path to gif file')
+    parser_art.add_argument('-p', dest='images_path', type=str, help='path to images directory')
+    parser_art.add_argument('-t', dest='art_type', choices=['sudoku', 'invaders'])
+    parser_art.add_argument('-v', dest='verbose')
+    parser_art.set_defaults(func=art)
 
     # create the parser for the "scrape" command
     parser_scrape = subparsers.add_parser('scrape')

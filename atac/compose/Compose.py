@@ -1,7 +1,7 @@
 from ctypes.wintypes import LANGID
 from ..config.Config import Config
 from ..util.Util import trace, get_file_content, fast_scandir
-from ..art.ImageUtils import make_gif
+from ..art.Art import Art
 
 #from .art import *
 #from .art.epicycles import *
@@ -232,15 +232,6 @@ class Compose(Config):
             lines.append(phrase_transform)
         #
         return lines
-
-
-    @staticmethod
-    def generate_gifs(images_directory, glob_pattern):
-        subfolders = [f.path for f in os.scandir(images_directory) if f.is_dir()]
-        for subfolder_path in subfolders:
-            print("{} - {}: ".format(subfolder_path, os.path.basename(subfolder_path)))
-            gif_filename = "{}.{}".format(os.path.basename(subfolder_path), "gif")
-            make_gif(subfolder_path, gif_filename, glob_pattern)
 
 
     @staticmethod

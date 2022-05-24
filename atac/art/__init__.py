@@ -22,15 +22,15 @@ Misc variables:
     compatible_formats
 """
 
+from .Art import Art
 from .ASCII import *
 from .Conway import *
 from .Epicycles import *
 from .Fractal import *
 from .Haiku import *
-from .ImageUtils import *
 from .Invaders import *
 from .Music import *
 from .Samila import *
 from .Sudoku import *
 
-__all__ = ['ASCII', 'Conway', 'Epicycles', 'Fractal', 'Haiku', 'ImageUtils', 'Invaders', 'Music', 'Samila', 'Sudoku']
+__all__ = ['Art', 'ASCII', 'Conway', 'Epicycles', 'Fractal', 'Haiku', 'ImageUtils', 'Invaders', 'Music', 'Samila', 'Sudoku']

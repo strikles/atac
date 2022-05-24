@@ -10,9 +10,12 @@ coloredlogs
 coverage
 cryptography
 envelope==2.0.0
+eth-brownie
+eth-utils==1.1.2
 Faker
 fake-useragent
 flake8
+ipfshttpclient
 irc
 language_tool_python
 latex2mathml
@@ -21,11 +24,13 @@ git+https://github.com/strikles/markdown-pp.git@master
 markovify
 git+https://github.com/shawnanastasio/python-matrix-bot-api.git@master
 mistune==2.0.2
+git+https://github.com/Jon-Becker/nft-generator-py@main
 nltk
 numpy
 pandas
 phonenumbers
 Pillow
+py-solc-x
 pydbg
 pyaxmlparser
 pygments
@@ -33,6 +38,7 @@ pylatexenc
 pyspellchecker
 pystache
 pytest
+python-dotenv
 python-gnupg
 python-magic-bin; platform_system == 'Windows'
 pywhatkit
@@ -40,7 +46,7 @@ pywsd==1.0.4
 PyYAML
 qrcode
 rdoclient
-regex
+regexls
 requests
 samila
 scipy
@@ -58,5 +64,7 @@ tsp_solver2
 urllib3
 utils
 validators
+vyper
 watchdog
+web3
 wn

@@ -23,6 +23,8 @@ Misc variables:
 """
 
 from .config.Config import Config
+
+from .art.Art import Art
 from .compose.Compose import Compose
 from .send.Clean import Clean
 from .scrape.Scrape import Scrape
@@ -33,4 +35,4 @@ from .send.IRC import SendIRC
 from .send.Social import SendSocial
 from .util.Util import *
 
-__all__ = ['Config', 'Compose', 'Clean', 'Scrape', 'SendChat', 'SendEmail', 'SendIRC', 'SendSocial', 'Util']
+__all__ = ['Config', 'Art', 'Compose', 'Clean', 'Scrape', 'SendChat', 'SendEmail', 'SendIRC', 'SendSocial', 'Util']

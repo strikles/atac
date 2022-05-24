@@ -1,4 +1,4 @@
-from .ImageUtils import *
+from .Art import Art
 
 import random
 
