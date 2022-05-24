@@ -11,7 +11,7 @@ coverage
 cryptography
 envelope==2.0.0
 eth-brownie
-eth-utils==1.1.2
+eth-utils
 Faker
 fake-useragent
 flake8
@@ -24,7 +24,6 @@ git+https://github.com/strikles/markdown-pp.git@master
 markovify
 git+https://github.com/shawnanastasio/python-matrix-bot-api.git@master
 mistune==2.0.2
-git+https://github.com/Jon-Becker/nft-generator-py@main
 nltk
 numpy
 pandas
@@ -46,7 +45,7 @@ pywsd==1.0.4
 PyYAML
 qrcode
 rdoclient
-regexls
+regex
 requests
 samila
 scipy
