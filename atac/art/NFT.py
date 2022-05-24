@@ -4,8 +4,6 @@ import json
 import os
 import random
 #
-# from lib.util.io import loadJSON, pathExists
-#
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
