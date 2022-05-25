@@ -17,15 +17,22 @@ def contextual_spellcheck(content, lang='en'):
     return translation
 """
 
-def spelling_corrector(content, lang='en'):
+
+def spelling_corrector(content, lang="en"):
     #
     spell = Speller(lang)
     return spell(content)
 
 
-def correct_spelling_languagetool(content, lang='en'):
-    spellchecker = language_tool_python.LanguageToolPublicAPI(lang if lang else 'en')
+def correct_spelling_languagetool(content, lang="en"):
+    spellchecker = language_tool_python.LanguageToolPublicAPI(lang if lang else "en")
     spellchecker_matches = spellchecker.check(content)
-    is_bad_rule = lambda rule: rule.message == 'Possible spelling mistake found.' and len(rule.replacements) and rule.replacements[0][0].isupper()
-    spellchecker_matches = [rule for rule in spellchecker_matches if not is_bad_rule(rule)]
+    is_bad_rule = (
+        lambda rule: rule.message == "Possible spelling mistake found."
+        and len(rule.replacements)
+        and rule.replacements[0][0].isupper()
+    )
+    spellchecker_matches = [
+        rule for rule in spellchecker_matches if not is_bad_rule(rule)
+    ]
     return language_tool_python.utils.correct(content, spellchecker_matches)

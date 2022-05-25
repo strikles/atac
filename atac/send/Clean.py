@@ -52,11 +52,11 @@ class Clean(Config):
         """
         print(path)
         # get mailing list csv files
-        ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
+        ml_files = list(filter(lambda c: c.endswith(".csv"), os.listdir(path)))
         for ml in ml_files:
             cf = path + ml
             print(cf)
-            #read
+            # read
             with open(cf) as file:
                 lines = file.readlines()
                 with tqdm(total=len(lines)) as progress:
@@ -87,30 +87,29 @@ class Clean(Config):
         """
         print(path)
         # get mailing list csv files
-        ml_files = list(filter(lambda c: c.endswith('.csv'), os.listdir(path)))
+        ml_files = list(filter(lambda c: c.endswith(".csv"), os.listdir(path)))
         for ml in ml_files:
             cf = path + ml
             print(cf)
             ml_emails = []
-            #read
+            # read
             with open(cf) as file:
                 lines = file.readlines()
                 with tqdm(total=len(lines)) as progress:
                     for ndx, receiver_email in csv.reader(lines):
                         if validators.email(receiver_email):
-                            ml_emails.append({'index': ndx, 'email': receiver_email})
+                            ml_emails.append({"index": ndx, "email": receiver_email})
                         else:
-                            print('{0} INVALID'.format(receiver_email))
+                            print("{0} INVALID".format(receiver_email))
                         progress.update(1)
             # write
-            with open(cf, mode='a') as file2:
+            with open(cf, mode="a") as file2:
                 file2.truncate(0)
                 with tqdm(total=len(ml_emails)) as progress2:
-                    writer = csv.writer(file2,
-                                        delimiter=',',
-                                        quotechar='"',
-                                        quoting=csv.QUOTE_MINIMAL)
-                    writer.writerow(['', 'email'])
+                    writer = csv.writer(
+                        file2, delimiter=",", quotechar='"', quoting=csv.QUOTE_MINIMAL
+                    )
+                    writer.writerow(["", "email"])
                     for item in ml_emails:
-                        writer.writerow([item['index'], item['email']])
+                        writer.writerow([item["index"], item["email"]])
                         progress2.update(1)

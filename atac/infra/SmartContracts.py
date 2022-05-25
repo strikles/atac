@@ -26,7 +26,12 @@ def deploy_smart_contract():
             "settings": {
                 "outputSelection": {
                     "*": {
-                        "*": ["abi", "metadata", "evm.bytecode", "evm.bytecode.sourceMap"]
+                        "*": [
+                            "abi",
+                            "metadata",
+                            "evm.bytecode",
+                            "evm.bytecode.sourceMap",
+                        ]
                     }
                 }
             },
@@ -44,7 +49,9 @@ def deploy_smart_contract():
 
     # get abi
     abi = json.loads(
-        compiled_sol["contracts"]["SimpleStorageContract.sol"]["SimpleStorage"]["metadata"]
+        compiled_sol["contracts"]["SimpleStorageContract.sol"]["SimpleStorage"][
+            "metadata"
+        ]
     )["output"]["abi"]
 
     # set up connection
@@ -73,7 +80,9 @@ def deploy_smart_contract():
 
     # Working with deployed Contracts
     simple_storage = w3.eth.contract(address=tx_receipt.contractAddress, abi=abi)
-    print(f"Initial stored value at Retrieve {simple_storage.functions.retrieve().call()}")
+    print(
+        f"Initial stored value at Retrieve {simple_storage.functions.retrieve().call()}"
+    )
     new_transaction = simple_storage.functions.store(25).buildTransaction(
         {
             "chainId": chain_id,
@@ -90,6 +99,7 @@ def deploy_smart_contract():
     tx_new_receipt = w3.eth.wait_for_transaction_receipt(tx_new_hash)
 
     print(f"New stored value at Retrieve {simple_storage.functions.retrieve().call()}")
+
 
 def deploy_smart_contract_infura():
     #
@@ -110,7 +120,12 @@ def deploy_smart_contract_infura():
             "settings": {
                 "outputSelection": {
                     "*": {
-                        "*": ["abi", "metadata", "evm.bytecode", "evm.bytecode.sourceMap"]
+                        "*": [
+                            "abi",
+                            "metadata",
+                            "evm.bytecode",
+                            "evm.bytecode.sourceMap",
+                        ]
                     }
                 }
             },
@@ -128,13 +143,17 @@ def deploy_smart_contract_infura():
 
     # get abi
     abi = json.loads(
-        compiled_sol["contracts"]["SimpleStorageContract.sol"]["SimpleStorage"]["metadata"]
+        compiled_sol["contracts"]["SimpleStorageContract.sol"]["SimpleStorage"][
+            "metadata"
+        ]
     )["output"]["abi"]
 
     # set up connection
 
     w3 = Web3(
-        Web3.HTTPProvider("https://rinkeby.infura.io/v3/222c8aa6fd6b4f77a4e9c410a094e3f8")
+        Web3.HTTPProvider(
+            "https://rinkeby.infura.io/v3/222c8aa6fd6b4f77a4e9c410a094e3f8"
+        )
     )
     chain_id = 4
     my_address = "0x227709345A77707D85FdF03279350f929A5eb953"
@@ -160,7 +179,9 @@ def deploy_smart_contract_infura():
 
     # Working with deployed Contracts
     simple_storage = w3.eth.contract(address=tx_receipt.contractAddress, abi=abi)
-    print(f"Initial stored value at Retrieve {simple_storage.functions.retrieve().call()}")
+    print(
+        f"Initial stored value at Retrieve {simple_storage.functions.retrieve().call()}"
+    )
     new_transaction = simple_storage.functions.store(25).buildTransaction(
         {
             "chainId": chain_id,
@@ -177,5 +198,3 @@ def deploy_smart_contract_infura():
     tx_new_receipt = w3.eth.wait_for_transaction_receipt(tx_new_hash)
 
     print(f"New stored value at Retrieve {simple_storage.functions.retrieve().call()}")
-
-

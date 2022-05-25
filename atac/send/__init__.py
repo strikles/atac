@@ -3,4 +3,4 @@ from .Email import SendEmail
 from .IRC import *
 from .Social import *
 
-__all__ = ['Chat', 'Email', 'IRC', 'Social']
+__all__ = ["Chat", "Email", "IRC", "Social"]

@@ -28,6 +28,7 @@ from .art.Art import Art
 from .compose.Compose import Compose
 from .send.Clean import Clean
 from .scrape.Scrape import Scrape
+
 #
 from .send.Email import SendEmail
 from .send.Chat import SendChat
@@ -35,4 +36,15 @@ from .send.IRC import SendIRC
 from .send.Social import SendSocial
 from .util.Util import *
 
-__all__ = ['Config', 'Art', 'Compose', 'Clean', 'Scrape', 'SendChat', 'SendEmail', 'SendIRC', 'SendSocial', 'Util']
+__all__ = [
+    "Config",
+    "Art",
+    "Compose",
+    "Clean",
+    "Scrape",
+    "SendChat",
+    "SendEmail",
+    "SendIRC",
+    "SendSocial",
+    "Util",
+]

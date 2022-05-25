@@ -9,11 +9,12 @@ from matrix_bot_api.matrix_bot_api import MatrixBotAPI
 from matrix_bot_api.mregex_handler import MRegexHandler
 from matrix_bot_api.mcommand_handler import MCommandHandler
 
-#import phonenumbers
+# import phonenumbers
 from phonenumbers import NumberParseException, phonenumberutil
 
+
 class SendChat(Send):
-    """ A class used to represent a Configuration object
+    """A class used to represent a Configuration object
 
     Attributes
     ----------
@@ -34,8 +35,10 @@ class SendChat(Send):
     -------
     """
 
-    def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
-        """ Class init
+    def __init__(
+        self, encrypted_config=True, config_file_path="auth.json", key_file_path=None
+    ):
+        """Class init
 
         Parameters
         ----------
@@ -47,10 +50,10 @@ class SendChat(Send):
             path to encryption key file
         """
         super().__init__(encrypted_config, config_file_path, key_file_path)
-        self.chat = self.data['chat']
+        self.chat = self.data["chat"]
 
+    if os.environ.get("DISPLAY"):
 
-    if os.environ.get('DISPLAY'):
         def send_pywhatkit(self, contacts_file_path, message_file_path):
 
             import pywhatkit
@@ -64,11 +67,11 @@ class SendChat(Send):
             message_file_path : str
                 The path to the message file
             """
-            msg = '\n'.join(self.get_file_content(message_file_path, 'message'))
+            msg = "\n".join(self.get_file_content(message_file_path, "message"))
             phone_numbers = self.get_phone_numbers(contacts_file_path)
             # Check you really want to send them
             confirm = input("Send these messages? [Y/n] ")
-            if confirm[0].lower() != 'y':
+            if confirm[0].lower() != "y":
                 sys.exit(1)
             # Send the messages
             for num in phone_numbers:
@@ -82,9 +85,8 @@ class SendChat(Send):
             #
             print("Exiting!")
 
-
     def send_signal(self, contacts_file_path, message_file_path):
-        """ Send Signal message
+        """Send Signal message
 
         Parameters
         ----------

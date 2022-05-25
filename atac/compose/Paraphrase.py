@@ -22,32 +22,32 @@ supported_pos_tags = [
     # 'EX',   # Existential there
     # 'FW',   # Foreign word
     # 'IN',   # Preposition or subordinating conjunction
-    'JJ',   # Adjective
+    "JJ",  # Adjective
     # 'JJR',  # Adjective, comparative
     # 'JJS',  # Adjective, superlative
     # 'LS',   # List item marker
     # 'MD',   # Modal
-    'NN',   # Noun, singular or mass
-    'NNS',  # Noun, plural
-    'NNP',  # Proper noun, singular
-    'NNPS', # Proper noun, plural
+    "NN",  # Noun, singular or mass
+    "NNS",  # Noun, plural
+    "NNP",  # Proper noun, singular
+    "NNPS",  # Proper noun, plural
     # 'PDT',  # Predeterminer
     # 'POS',  # Possessive ending
     # 'PRP',  # Personal pronoun
     # 'PRP$', # Possessive pronoun
-    'RB',   # Adverb
+    "RB",  # Adverb
     # 'RBR',  # Adverb, comparative
     # 'RBS',  # Adverb, superlative
     # 'RP',   # Particle
     # 'SYM',  # Symbol
     # 'TO',   # to
     # 'UH',   # Interjection
-    'VB',   # Verb, base form
-    'VBD',  # Verb, past tense
-    'VBG',  # Verb, gerund or present participle
-    'VBN',  # Verb, past participle
-    'VBP',  # Verb, non-3rd person singular present
-    'VBZ',  # Verb, 3rd person singular present
+    "VB",  # Verb, base form
+    "VBD",  # Verb, past tense
+    "VBG",  # Verb, gerund or present participle
+    "VBN",  # Verb, past participle
+    "VBP",  # Verb, non-3rd person singular present
+    "VBZ",  # Verb, 3rd person singular present
     # 'WDT',  # Wh-determiner
     # 'WP',   # Wh-pronoun
     # 'WP$',  # Possessive wh-pronoun
@@ -66,31 +66,33 @@ class SubstitutionCandidate:
 def vsm_similarity(doc, original, synonym):
     window_size = 3
     start = max(0, original.i - window_size)
-    return doc[start: original.i + window_size].similarity(synonym)
+    return doc[start : original.i + window_size].similarity(synonym)
 
 
 def _get_wordnet_pos(spacy_token):
-    '''Wordnet POS tag'''
+    """Wordnet POS tag"""
     pos = spacy_token.tag_[0].lower()
-    if pos in ['a', 'n', 'v']:
+    if pos in ["a", "n", "v"]:
         return pos
 
 
 def _synonym_prefilter_fn(token, synonym):
-    '''
+    """
     Similarity heuristics go here
-    '''
-    if  (len(synonym.text.split()) > 2) or \
-        (synonym.lemma == token.lemma) or \
-        (synonym.tag != token.tag) or \
-        (token.text.lower() == 'be'):
+    """
+    if (
+        (len(synonym.text.split()) > 2)
+        or (synonym.lemma == token.lemma)
+        or (synonym.tag != token.tag)
+        or (token.text.lower() == "be")
+    ):
         return False
     else:
         return True
 
 
 def _generate_synonym_candidates(doc, disambiguate=False, rank_fn=None, nlp=None):
-    '''
+    """
     Generate synonym candidates.
     For each token in the doc, the list of WordNet synonyms is expanded.
     the synonyms are then ranked by their GloVe similarity to the original
@@ -99,9 +101,9 @@ def _generate_synonym_candidates(doc, disambiguate=False, rank_fn=None, nlp=None
             expanding the synonyms.
     :param rank_fn: Functions that takes (doc, original_token, synonym) and
             returns a similarity score
-    '''
+    """
     if rank_fn is None:
-        rank_fn=vsm_similarity
+        rank_fn = vsm_similarity
 
     candidates = []
     for position, token in enumerate(doc):
@@ -110,8 +112,7 @@ def _generate_synonym_candidates(doc, disambiguate=False, rank_fn=None, nlp=None
             wordnet_synonyms = []
             if disambiguate:
                 try:
-                    synset = disambiguate(
-                           doc.text, token.text, pos=wordnet_pos)
+                    synset = disambiguate(doc.text, token.text, pos=wordnet_pos)
                     wordnet_synonyms = synset.lemmas()
                 except:
                     continue
@@ -122,21 +123,20 @@ def _generate_synonym_candidates(doc, disambiguate=False, rank_fn=None, nlp=None
 
             synonyms = []
             for wordnet_synonym in wordnet_synonyms:
-                spacy_synonym = nlp(wordnet_synonym.name().replace('_', ' '))[0]
+                spacy_synonym = nlp(wordnet_synonym.name().replace("_", " "))[0]
                 synonyms.append(spacy_synonym)
 
-            synonyms = filter(partial(_synonym_prefilter_fn, token),
-                              synonyms)
-            synonyms = reversed(sorted(synonyms,
-                                key=partial(rank_fn, doc, token)))
+            synonyms = filter(partial(_synonym_prefilter_fn, token), synonyms)
+            synonyms = reversed(sorted(synonyms, key=partial(rank_fn, doc, token)))
 
             for rank, synonym in enumerate(synonyms):
                 candidate_word = synonym.text
                 candidate = SubstitutionCandidate(
-                        token_position=position,
-                        similarity_rank=rank,
-                        original_token=token,
-                        candidate_word=candidate_word)
+                    token_position=position,
+                    similarity_rank=rank,
+                    original_token=token,
+                    candidate_word=candidate_word,
+                )
                 candidates.append(candidate)
 
         return candidates
@@ -152,19 +152,20 @@ def _generate_typo_candidates(doc, min_token_length=4, rank=1000):
 
         for typo in spell.unknown(token.text.split(" ")):
             candidate = SubstitutionCandidate(
-                    token_position=position,
-                    similarity_rank=rank,
-                    original_token=token,
-                    candidate_word=typo)
+                token_position=position,
+                similarity_rank=rank,
+                original_token=token,
+                candidate_word=typo,
+            )
             candidates.append(candidate)
 
     return candidates
 
 
 def _compile_perturbed_tokens(doc, accepted_candidates):
-    '''
+    """
     Traverse the list of accepted candidates and do the token substitutions.
-    '''
+    """
     candidate_by_position = {}
     for candidate in accepted_candidates:
         candidate_by_position[candidate.token_position] = candidate
@@ -174,21 +175,22 @@ def _compile_perturbed_tokens(doc, accepted_candidates):
         word = token.text
         if position in candidate_by_position:
             candidate = candidate_by_position[position]
-            word = candidate.candidate_word.replace('_', ' ')
+            word = candidate.candidate_word.replace("_", " ")
         final_tokens.append(word)
 
     return final_tokens
 
 
 def perturb_text(
-        doc,
-        use_typos=True,
-        rank_fn=None,
-        heuristic_fn=None,
-        halt_condition_fn=None,
-        nlp=None,
-        verbose=False):
-    '''
+    doc,
+    use_typos=True,
+    rank_fn=None,
+    heuristic_fn=None,
+    halt_condition_fn=None,
+    nlp=None,
+    verbose=False,
+):
+    """
     Perturb the text by replacing some words with their WordNet synonyms,
     sorting by GloVe similarity between the synonym and the original context
     window, and optional heuristic.
@@ -201,7 +203,7 @@ def perturb_text(
     :param halt_condition_fn: Returns true when the perturbation is
             satisfactory enough.
     :param verbose:
-    '''
+    """
 
     heuristic_fn = heuristic_fn or (lambda _, candidate: candidate.similarity_rank)
     halt_condition_fn = halt_condition_fn or (lambda perturbed_text: False)
@@ -213,13 +215,12 @@ def perturb_text(
     accepted_candidates = []
     perturbed_text = doc.text
     if verbose:
-        print('Got {} candidates'.format(len(candidates)))
+        print("Got {} candidates".format(len(candidates)))
 
     sorted_candidates = zip(
-            map(partial(heuristic_fn, perturbed_text), candidates),
-            candidates)
-    sorted_candidates = list(sorted(sorted_candidates,
-            key=lambda t: t[0]))
+        map(partial(heuristic_fn, perturbed_text), candidates), candidates
+    )
+    sorted_candidates = list(sorted(sorted_candidates, key=lambda t: t[0]))
 
     while len(sorted_candidates) > 0 and not halt_condition_fn(perturbed_text):
         score, candidate = sorted_candidates.pop()
@@ -229,36 +230,35 @@ def perturb_text(
             perturbed_positions.add(candidate.token_position)
             accepted_candidates.append(candidate)
             if verbose:
-                print('Candidate:', candidate)
-                print('Candidate score:', heuristic_fn(perturbed_text, candidate))
-                print('Candidate accepted.')
-            perturbed_text = ' '.join(
-                    _compile_perturbed_tokens(doc, accepted_candidates))
+                print("Candidate:", candidate)
+                print("Candidate score:", heuristic_fn(perturbed_text, candidate))
+                print("Candidate accepted.")
+            perturbed_text = " ".join(
+                _compile_perturbed_tokens(doc, accepted_candidates)
+            )
 
             if len(sorted_candidates) > 0:
                 _, candidates = zip(*sorted_candidates)
                 sorted_candidates = zip(
-                        map(partial(heuristic_fn, perturbed_text),
-                            candidates),
-                        candidates)
-                sorted_candidates = list(sorted(sorted_candidates,
-                        key=lambda t: t[0]))
+                    map(partial(heuristic_fn, perturbed_text), candidates), candidates
+                )
+                sorted_candidates = list(sorted(sorted_candidates, key=lambda t: t[0]))
     return perturbed_text
 
 
 def get_paraphrase(text, nlp):
-    """ a """
-    print('Original text:', text)
+    """a"""
+    print("Original text:", text)
     doc = nlp(text)
     perturbed_text = perturb_text(doc, verbose=True, nlp=nlp)
-    print('Perturbed text:', perturbed_text)
+    print("Perturbed text:", perturbed_text)
     return perturbed_text
 
 
-def paraphraser(content, lang='en'):
+def paraphraser(content, lang="en"):
     #
-    nltk.download('stopwords')
-    nlp = spacy.load('en_core_web_md')
+    nltk.download("stopwords")
+    nlp = spacy.load("en_core_web_md")
     transform = get_paraphrase(content, nlp)
     #
     return transform

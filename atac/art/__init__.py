@@ -33,4 +33,16 @@ from .Music import *
 from .Samila import *
 from .Sudoku import *
 
-__all__ = ['Art', 'ASCII', 'Conway', 'Epicycles', 'Fractal', 'Haiku', 'ImageUtils', 'Invaders', 'Music', 'Samila', 'Sudoku']
+__all__ = [
+    "Art",
+    "ASCII",
+    "Conway",
+    "Epicycles",
+    "Fractal",
+    "Haiku",
+    "ImageUtils",
+    "Invaders",
+    "Music",
+    "Samila",
+    "Sudoku",
+]

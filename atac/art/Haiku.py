@@ -5,24 +5,29 @@ import syllapy
 
 
 def generate_haiku():
-    """
-    """
+    """ """
     nlp = spacy.load("en_core_web_sm")
     matcher2 = Matcher(nlp.vocab)
     matcher3 = Matcher(nlp.vocab)
     matcher4 = Matcher(nlp.vocab)
     #
-    pattern = [{'POS':  {"IN": ["NOUN", "ADP", "ADJ", "ADV"]} },
-               {'POS':  {"IN": ["NOUN", "VERB"]} }]
+    pattern = [
+        {"POS": {"IN": ["NOUN", "ADP", "ADJ", "ADV"]}},
+        {"POS": {"IN": ["NOUN", "VERB"]}},
+    ]
     matcher2.add("TwoWords", [pattern])
-    pattern = [{'POS':  {"IN": ["NOUN", "ADP", "ADJ", "ADV"]} },
-               {'IS_ASCII': True, 'IS_PUNCT': False, 'IS_SPACE': False},
-               {'POS':  {"IN": ["NOUN", "VERB", "ADJ", "ADV"]} }]
+    pattern = [
+        {"POS": {"IN": ["NOUN", "ADP", "ADJ", "ADV"]}},
+        {"IS_ASCII": True, "IS_PUNCT": False, "IS_SPACE": False},
+        {"POS": {"IN": ["NOUN", "VERB", "ADJ", "ADV"]}},
+    ]
     matcher3.add("ThreeWords", [pattern])
-    pattern = [{'POS':  {"IN": ["NOUN", "ADP", "ADJ", "ADV"]} },
-               {'IS_ASCII': True, 'IS_PUNCT': False, 'IS_SPACE': False},
-               {'IS_ASCII': True, 'IS_PUNCT': False, 'IS_SPACE': False},
-               {'POS':  {"IN": ["NOUN", "VERB", "ADJ", "ADV"]} }]
+    pattern = [
+        {"POS": {"IN": ["NOUN", "ADP", "ADJ", "ADV"]}},
+        {"IS_ASCII": True, "IS_PUNCT": False, "IS_SPACE": False},
+        {"IS_ASCII": True, "IS_PUNCT": False, "IS_SPACE": False},
+        {"POS": {"IN": ["NOUN", "VERB", "ADJ", "ADV"]}},
+    ]
     matcher4.add("FourWords", [pattern])
     #
     doc = nlp(open("data/orwell_1984.txt").read())
@@ -48,4 +53,6 @@ def generate_haiku():
             if span.text not in g_7:
                 g_7.append(span.text)
         #
-        return "{}\n{}\n{}".format(random.choice(g_5),random.choice(g_7),random.choice(g_5))
+        return "{}\n{}\n{}".format(
+            random.choice(g_5), random.choice(g_7), random.choice(g_5)
+        )
