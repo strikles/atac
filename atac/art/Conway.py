@@ -2,6 +2,10 @@ from .Art import Art
 
 import random
 
+from PIL import Image
+from PIL import ImageFont
+from PIL import ImageDraw
+
 
 class Conway:
     """
