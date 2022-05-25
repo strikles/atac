@@ -11,6 +11,7 @@ from PIL import ImageDraw
 from PIL import ImageSequence
 
 from .util.Util import *
+from .config.Config import Config
 
 
 class NFT(Config):
@@ -75,7 +76,7 @@ class NFT(Config):
         else:
             return new_image
 
-    def generate_unique_images(self, amount, config):
+    def generate_unique_images(self, amount, config, nft_art_output_directory_path):
         #
         print("Generating {} unique NFTs...".format(amount))
         pad_amount = len(str(amount))
@@ -88,7 +89,7 @@ class NFT(Config):
         #
         all_images = []
         for i in range(amount):
-            new_trait_image = create_new_image(all_images, config)
+            new_trait_image = self.create_new_image(all_images, config)
             all_images.append(new_trait_image)
         #
         i = 1

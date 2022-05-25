@@ -1,6 +1,7 @@
 import ipfshttpclient
 
 from .util.Util import *
+from .config.Config import Config
 
 
 class IPFS(Config):
@@ -48,7 +49,7 @@ class IPFS(Config):
     def upload_directory_to_ipfs(self, art_directory_path):
         # Share TCP connections using a context manager
         self._client.add(art_directory_path, recursive=True)
-        print(client.stat(hash))
+        print(self._client.stat(hash))
         return hash
 
     def upload_files_in_directory_to_ipfs(self, art_directory, file_pattern):

@@ -5,7 +5,6 @@ import argparse
 
 # import jaraco.logging
 import irc.client
-import irc.client
 
 links = None
 

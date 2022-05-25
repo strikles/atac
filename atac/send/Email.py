@@ -552,8 +552,8 @@ class POP(Riseup):
     def write_emails(self):
         print("Writing clean emails to file...")
         file = open("clean_emails.txt", "w")
-        for email in self.emails:
-            file.write(email + "\n")
+        for e in self.emails:
+            file.write(e + "\n")
         file.close()
         print("Done!")
 
