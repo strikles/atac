@@ -70,7 +70,7 @@ class Art(Config):
             raw_frames = [Image.open(path).convert("RGB") for path in image_paths]
             frames = list(
                 map(
-                    lambda i: add_margin(
+                    lambda i: self.add_margin(
                         i,
                         0,
                         max(0, int(0.5 * (500 - i.size[0]))),
@@ -108,7 +108,7 @@ class Art(Config):
         for subfolder_path in subfolders:
             print("{} - {}: ".format(subfolder_path, os.path.basename(subfolder_path)))
             gif_filename = "{}.{}".format(os.path.basename(subfolder_path), "gif")
-            make_gif(subfolder_path, gif_filename, glob_pattern)
+            self.make_gif(subfolder_path, gif_filename, glob_pattern)
 
     def add_centered_text_to_gif(self, gif_file_path, msg):
         #
@@ -164,7 +164,6 @@ class Art(Config):
         draw.text((0, 0), text, fill=foreground_color, font=font)
         img.save(output_file_path)
 
-    @staticmethod
     def add_margin(pil_img, top, right, bottom, left, color):
         width, height = pil_img.size
         new_width = width + right + left
@@ -173,7 +172,6 @@ class Art(Config):
         result.paste(pil_img, (left, top))
         return result
 
-    @staticmethod
     def create_qr_code(url):
         """Generate QR Code
 

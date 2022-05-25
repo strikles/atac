@@ -14,13 +14,14 @@ __copyright__ = "(c) 2017, Tino Wagner"
 # Always use this if you want raw latex beyond simple $ and $$
 # anywhere in the input
 # from .MisTeX.Escape import escape
-#
-# import latex2mathml.converter
-# import pylatexenc
-# from pylatexenc.latex2text import LatexNodes2Text
 
-# phrase_transform = phrase_transform.replace("$$", "")
-
+import os
+import sys
+import subprocess
+import shlex
+import re
+from tempfile import TemporaryDirectory
+from ctypes.util import find_library
 from sympy import preview
 
 """
@@ -31,14 +32,6 @@ if not os.path.isfile(image_name):
 else:
     lines.append("<p align='center' width='100%'><img src='https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/latex{}.png'></p>".format(num_latex_lines))
 """
-
-import os
-import sys
-import subprocess
-import shlex
-import re
-from tempfile import TemporaryDirectory
-from ctypes.util import find_library
 
 default_template = r"""
 \documentclass[{{ fontsize }}pt,preview]{standalone}
