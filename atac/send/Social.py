@@ -4,7 +4,7 @@ import time
 
 
 class SendSocial(Send):
-    """ A class used to represent a Configuration object
+    """A class used to represent a Configuration object
 
     Attributes
     ----------
@@ -25,8 +25,10 @@ class SendSocial(Send):
     -------
     """
 
-    def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
-        """ Class init
+    def __init__(
+        self, encrypted_config=True, config_file_path="auth.json", key_file_path=None
+    ):
+        """Class init
 
         Parameters
         ----------
@@ -38,5 +40,4 @@ class SendSocial(Send):
             path to encryption key file
         """
         super().__init__(encrypted_config, config_file_path, key_file_path)
-        self.social = self.data['social']
-    
+        self.social = self.data["social"]

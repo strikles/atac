@@ -2,6 +2,7 @@ ascii-magic
 attrs
 autocorrect
 beautifulsoup4
+black
 boto3
 bs4
 colorama

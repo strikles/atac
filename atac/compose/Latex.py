@@ -3,33 +3,33 @@
 
 Read LaTeX code from stdin and render a SVG using LaTeX + dvisvgm.
 """
-__version__ = '0.1.0'
-__author__ = 'Tino Wagner'
-__email__ = 'ich@tinowagner.com'
-__license__ = 'MIT'
-__copyright__ = '(c) 2017, Tino Wagner'
+__version__ = "0.1.0"
+__author__ = "Tino Wagner"
+__email__ = "ich@tinowagner.com"
+__license__ = "MIT"
+__copyright__ = "(c) 2017, Tino Wagner"
 
 # custom latex rendere
-#from .MisTeX.Renderer import Renderer
+# from .MisTeX.Renderer import Renderer
 # Always use this if you want raw latex beyond simple $ and $$
 # anywhere in the input
-#from .MisTeX.Escape import escape
+# from .MisTeX.Escape import escape
 #
-#import latex2mathml.converter
-#import pylatexenc
-#from pylatexenc.latex2text import LatexNodes2Text
+# import latex2mathml.converter
+# import pylatexenc
+# from pylatexenc.latex2text import LatexNodes2Text
 
-# phrase_transform = phrase_transform.replace("$$", "")    
+# phrase_transform = phrase_transform.replace("$$", "")
 
 from sympy import preview
 
 """
-# generate 
+# generate
 image_name = "{} - {}{}".format("data/messages/assets/latex", uuid.uuid4(), ".png")
 if not os.path.isfile(image_name):
     preview(phrase_transform, viewer='file', filename=image_name, euler=False)
 else:
-    lines.append("<p align='center' width='100%'><img src='https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/latex{}.png'></p>".format(num_latex_lines))   
+    lines.append("<p align='center' width='100%'><img src='https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/latex{}.png'></p>".format(num_latex_lines))
 """
 
 import os
@@ -59,27 +59,27 @@ default_preamble = r"""
 \usepackage[libertine]{newtxmath}
 """
 
-latex_cmd = 'latex -interaction nonstopmode -halt-on-error'
-dvisvgm_cmd = 'dvisvgm --no-fonts'
+latex_cmd = "latex -interaction nonstopmode -halt-on-error"
+dvisvgm_cmd = "dvisvgm --no-fonts"
 
 default_params = {
-    'fontsize': 12,  # pt
-    'template': default_template,
-    'preamble': default_preamble,
-    'latex_cmd': latex_cmd,
-    'dvisvgm_cmd': dvisvgm_cmd,
-    'libgs': None,
+    "fontsize": 12,  # pt
+    "template": default_template,
+    "preamble": default_preamble,
+    "latex_cmd": latex_cmd,
+    "dvisvgm_cmd": dvisvgm_cmd,
+    "libgs": None,
 }
 
 
-if not hasattr(os.environ, 'LIBGS') and not find_library('gs'):
-    if sys.platform == 'darwin':
+if not hasattr(os.environ, "LIBGS") and not find_library("gs"):
+    if sys.platform == "darwin":
         # Fallback to homebrew Ghostscript on macOS
-        homebrew_libgs = '/usr/local/opt/ghostscript/lib/libgs.dylib'
+        homebrew_libgs = "/usr/local/opt/ghostscript/lib/libgs.dylib"
         if os.path.exists(homebrew_libgs):
-            default_params['libgs'] = homebrew_libgs
-    if not default_params['libgs']:
-        print('Warning: libgs not found')
+            default_params["libgs"] = homebrew_libgs
+    if not default_params["libgs"]:
+        print("Warning: libgs not found")
 
 
 def latex2svg(code, params=default_params, working_directory=None):
@@ -108,63 +108,71 @@ def latex2svg(code, params=default_params, working_directory=None):
         with TemporaryDirectory() as tmpdir:
             return latex2svg(code, params, working_directory=tmpdir)
 
-    fontsize = params['fontsize']
-    document = (params['template']
-                .replace('{{ preamble }}', params['preamble'])
-                .replace('{{ fontsize }}', str(fontsize))
-                .replace('{{ code }}', code))
+    fontsize = params["fontsize"]
+    document = (
+        params["template"]
+        .replace("{{ preamble }}", params["preamble"])
+        .replace("{{ fontsize }}", str(fontsize))
+        .replace("{{ code }}", code)
+    )
 
-    with open(os.path.join(working_directory, 'code.tex'), 'w') as f:
+    with open(os.path.join(working_directory, "code.tex"), "w") as f:
         f.write(document)
 
     # Run LaTeX and create DVI file
     try:
-        ret = subprocess.run(shlex.split(params['latex_cmd']+' code.tex'),
-                             stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                             cwd=working_directory)
+        ret = subprocess.run(
+            shlex.split(params["latex_cmd"] + " code.tex"),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            cwd=working_directory,
+        )
         ret.check_returncode()
     except FileNotFoundError:
-        raise RuntimeError('latex not found')
+        raise RuntimeError("latex not found")
 
     # Add LIBGS to environment if supplied
     env = os.environ.copy()
-    if params['libgs']:
-        env['LIBGS'] = params['libgs']
+    if params["libgs"]:
+        env["LIBGS"] = params["libgs"]
 
     # Convert DVI to SVG
     try:
-        ret = subprocess.run(shlex.split(params['dvisvgm_cmd']+' code.dvi'),
-                             stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                             cwd=working_directory, env=env)
+        ret = subprocess.run(
+            shlex.split(params["dvisvgm_cmd"] + " code.dvi"),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            cwd=working_directory,
+            env=env,
+        )
         ret.check_returncode()
     except FileNotFoundError:
-        raise RuntimeError('dvisvgm not found')
+        raise RuntimeError("dvisvgm not found")
 
-    with open(os.path.join(working_directory, 'code.svg'), 'r') as f:
+    with open(os.path.join(working_directory, "code.svg"), "r") as f:
         svg = f.read()
 
     # Parse dvisvgm output for size and alignment
     def get_size(output):
-        regex = r'\b([0-9.]+)pt x ([0-9.]+)pt'
+        regex = r"\b([0-9.]+)pt x ([0-9.]+)pt"
         match = re.search(regex, output)
         if match:
-            return (float(match.group(1)) / fontsize,
-                    float(match.group(2)) / fontsize)
+            return (float(match.group(1)) / fontsize, float(match.group(2)) / fontsize)
         else:
             return None, None
 
     def get_measure(output, name):
-        regex = r'\b%s=([0-9.e-]+)pt' % name
+        regex = r"\b%s=([0-9.e-]+)pt" % name
         match = re.search(regex, output)
         if match:
             return float(match.group(1)) / fontsize
         else:
             return None
 
-    output = ret.stderr.decode('utf-8')
+    output = ret.stderr.decode("utf-8")
     width, height = get_size(output)
-    depth = get_measure(output, 'depth')
-    return {'svg': svg, 'depth': depth, 'width': width, 'height': height}
+    depth = get_measure(output, "depth")
+    return {"svg": svg, "depth": depth, "width": width, "height": height}
 
 
 def run():
@@ -177,12 +185,14 @@ def run():
     """
     import json
     import argparse
-    parser = argparse.ArgumentParser(description="""
+
+    parser = argparse.ArgumentParser(
+        description="""
     Render LaTeX code from stdin as SVG to stdout. Writes metadata (baseline
     position, width, height in em units) as JSON to stderr.
-    """)
-    parser.add_argument('--preamble',
-                        help="LaTeX preamble code to read from file")
+    """
+    )
+    parser.add_argument("--preamble", help="LaTeX preamble code to read from file")
     args = parser.parse_args()
     preamble = default_preamble
     if args.preamble is not None:
@@ -191,15 +201,14 @@ def run():
     latex = sys.stdin.read()
     try:
         params = default_params.copy()
-        params['preamble'] = preamble
+        params["preamble"] = preamble
         out = latex2svg(latex, params)
-        sys.stdout.write(out['svg'])
-        meta = {key: out[key] for key in out if key != 'svg'}
+        sys.stdout.write(out["svg"])
+        meta = {key: out[key] for key in out if key != "svg"}
         sys.stderr.write(json.dumps(meta))
     except subprocess.CalledProcessError as exc:
         # LaTeX prints errors on stdout instead of stderr (stderr is empty),
         # dvisvgm to stderr, so print both
-        print(exc.output.decode('utf-8'))
-        print(exc.stderr.decode('utf-8'))
+        print(exc.output.decode("utf-8"))
+        print(exc.stderr.decode("utf-8"))
         sys.exit(exc.returncode)
-

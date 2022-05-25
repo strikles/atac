@@ -8,7 +8,7 @@ import sys
 
 
 class Send(Compose):
-    """ A class used to represent a Configuration object
+    """A class used to represent a Configuration object
 
     Attributes
     ----------
@@ -29,8 +29,10 @@ class Send(Compose):
     -------
     """
 
-    def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
-        """ Class init
+    def __init__(
+        self, encrypted_config=True, config_file_path="auth.json", key_file_path=None
+    ):
+        """Class init
 
         Parameters
         ----------
@@ -43,9 +45,8 @@ class Send(Compose):
         """
         super().__init__(encrypted_config, config_file_path, key_file_path)
 
-
     def get_contact_files(self, contact_files_path):
-        """ Get contact files
+        """Get contact files
 
         Parameters
         ----------
@@ -55,7 +56,16 @@ class Send(Compose):
         contact_files = None
         #
         if os.path.isdir(contact_files_path):
-            contact_files = list(map(trace(lambda p: os.path.join(contact_files_path, p)), list(filter(lambda c: c.endswith('.csv'), os.listdir(contact_files_path)))))
+            contact_files = list(
+                map(
+                    trace(lambda p: os.path.join(contact_files_path, p)),
+                    list(
+                        filter(
+                            lambda c: c.endswith(".csv"), os.listdir(contact_files_path)
+                        )
+                    ),
+                )
+            )
             random.shuffle(contact_files)
         elif os.path.isfile(contact_files_path):
             contact_files = [contact_files_path]
@@ -65,12 +75,22 @@ class Send(Compose):
         #
         return contact_files
 
-
-    def send_batch(self, email_files_path, message_file_path, subject, do_paraphrase, translate_to_languagecode):
+    def send_batch(
+        self,
+        email_files_path,
+        message_file_path,
+        subject,
+        do_paraphrase,
+        translate_to_languagecode,
+    ):
         pass
 
-       
-    def send(self, mailing_list, message_content, subject, do_paraphrase, translate_to_languagecode=None):
+    def send(
+        self,
+        mailing_list,
+        message_content,
+        subject,
+        do_paraphrase,
+        translate_to_languagecode=None,
+    ):
         pass
-
-    

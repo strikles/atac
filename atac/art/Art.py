@@ -5,7 +5,8 @@ import os
 import qrcode
 
 import random
-#from lib.util.io import loadJSON, pathExists
+
+# from lib.util.io import loadJSON, pathExists
 #
 from PIL import Image
 from PIL import ImageFont
@@ -17,7 +18,7 @@ from ..util.Util import *
 
 
 class Art(Config):
-    """ A class used to represent a Configuration object
+    """A class used to represent a Configuration object
 
     Attributes
     ----------
@@ -39,8 +40,11 @@ class Art(Config):
     Methods
     -------
     """
-    def __init__(self, encrypted_config=True, config_file_path='auth.json', key_file_path=None):
-        """ Class init
+
+    def __init__(
+        self, encrypted_config=True, config_file_path="auth.json", key_file_path=None
+    ):
+        """Class init
 
         Parameters
         ----------
@@ -53,31 +57,51 @@ class Art(Config):
         """
         super().__init__(encrypted_config, config_file_path, key_file_path)
 
-
     def make_gif_from_dir(self, frame_folder, output_file_name, glob_pattern):
-        """
-        """
+        """ """
         gif_filename = os.path.join(frame_folder, output_file_name)
         try:
-            image_paths = [os.path.join(frame_folder, f) for f in sorted(os.listdir(frame_folder)) if os.path.isfile(os.path.join(frame_folder, f))]
+            image_paths = [
+                os.path.join(frame_folder, f)
+                for f in sorted(os.listdir(frame_folder))
+                if os.path.isfile(os.path.join(frame_folder, f))
+            ]
             print(json.dumps(image_paths, indent=4))
-            raw_frames = [Image.open(path).convert('RGB') for path in image_paths]
-            frames = list(map(lambda i: add_margin(i, 0, max(0, int(0.5*(500-i.size[0]))), 0, int(max(0, 0.5*(500-i.size[0]))), (255,255,255)), raw_frames))
+            raw_frames = [Image.open(path).convert("RGB") for path in image_paths]
+            frames = list(
+                map(
+                    lambda i: add_margin(
+                        i,
+                        0,
+                        max(0, int(0.5 * (500 - i.size[0]))),
+                        0,
+                        int(max(0, 0.5 * (500 - i.size[0]))),
+                        (255, 255, 255),
+                    ),
+                    raw_frames,
+                )
+            )
             #
             if not len(frames):
                 print("cannot create gif for: " + gif_filename)
                 exit(1)
             #
             frame_one = frames[0]
-            frame_one.save(gif_filename, format="GIF", append_images=frames, save_all=True, duration=1000, loop=0)
+            frame_one.save(
+                gif_filename,
+                format="GIF",
+                append_images=frames,
+                save_all=True,
+                duration=1000,
+                loop=0,
+            )
             #
             if os.path.isfile(gif_filename):
                 print(">> made gif: " + output_file_name)
             else:
-                print(">> gif creation failed: " + output_file_name)    
+                print(">> gif creation failed: " + output_file_name)
         except IOError:
             print("cannot create gif for:" + gif_filename)
-
 
     def generate_gifs_from_all_dirs(self, images_directory, glob_pattern):
         subfolders = [f.path for f in os.scandir(images_directory) if f.is_dir()]
@@ -85,7 +109,6 @@ class Art(Config):
             print("{} - {}: ".format(subfolder_path, os.path.basename(subfolder_path)))
             gif_filename = "{}.{}".format(os.path.basename(subfolder_path), "gif")
             make_gif(subfolder_path, gif_filename, glob_pattern)
-
 
     def add_centered_text_to_gif(self, gif_file_path, msg):
         #
@@ -95,12 +118,12 @@ class Art(Config):
         # Loop over each frame in the animated image
         for frame in ImageSequence.Iterator(im):
             #
-            W, H = (300,200)
+            W, H = (300, 200)
             # Draw the text on the frame
             draw = ImageDraw.Draw(frame)
             w, h = draw.textsize(msg)
-            font = ImageFont.truetype('fonts/LiberationMono-Bold.ttf', 31)
-            draw.text(((W-w)/2,(H-h)/2), msg, fill="red", font=font)
+            font = ImageFont.truetype("fonts/LiberationMono-Bold.ttf", 31)
+            draw.text(((W - w) / 2, (H - h) / 2), msg, fill="red", font=font)
             del draw
             # However, 'frame' is still the animated image with many frames
             # It has simply been seeked to a later frame
@@ -113,11 +136,18 @@ class Art(Config):
             # Then append the single frame image to a list of frames
             frames.append(frame)
         # Save the frames as a new image
-        frames[0].save('out.gif', save_all=True, append_images=frames[1:])
+        frames[0].save("out.gif", save_all=True, append_images=frames[1:])
 
-
-    def create_image_from_text(self, text, window_height, window_width, background_color, foreground_color, output_file_path):
-        """ Generate Image from text
+    def create_image_from_text(
+        self,
+        text,
+        window_height,
+        window_width,
+        background_color,
+        foreground_color,
+        output_file_path,
+    ):
+        """Generate Image from text
 
         Parameters
         ----------
@@ -128,12 +158,11 @@ class Art(Config):
         window_width : int
         The image width
         """
-        img = Image.new('L', (window_height, window_width), color=background_color)
+        img = Image.new("L", (window_height, window_width), color=background_color)
         draw = ImageDraw.Draw(img)
-        font = ImageFont.truetype('fonts/LiberationMono-Bold.ttf', 31)
+        font = ImageFont.truetype("fonts/LiberationMono-Bold.ttf", 31)
         draw.text((0, 0), text, fill=foreground_color, font=font)
         img.save(output_file_path)
-
 
     @staticmethod
     def add_margin(pil_img, top, right, bottom, left, color):
@@ -144,10 +173,9 @@ class Art(Config):
         result.paste(pil_img, (left, top))
         return result
 
-
     @staticmethod
     def create_qr_code(url):
-        """ Generate QR Code
+        """Generate QR Code
 
         Parameters
         ----------
