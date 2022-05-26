@@ -1,7 +1,7 @@
 import math
 import numpy as np
 from pydbg import dbg
-from pydbg.defines import DBG_CONTINUE
+from pydbg import *
 import random
 import regex
 import string
