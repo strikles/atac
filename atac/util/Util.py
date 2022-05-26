@@ -1,6 +1,6 @@
 import math
 import numpy as np
-from pydbg import DBG_CONTINUE, dbg
+from pydbg import dbg
 import random
 import regex
 import string
@@ -175,7 +175,7 @@ def fix_mixed_encoding(s):
 
 def breakpoint_handler(dbg):
     print(dbg.dump_context())
-    return DBG_CONTINUE
+    return pydbg.defines.DBG_CONTINUE
 
 
 # Defining a decorator
