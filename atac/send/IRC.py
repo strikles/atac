@@ -1,6 +1,9 @@
 from .Send import Send
 
-import json, sys, socket, time
+import json
+import sys
+import socket
+import time
 import argparse
 
 # import jaraco.logging

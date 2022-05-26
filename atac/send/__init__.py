@@ -1,6 +1,6 @@
-from .Chat import *
+from .Chat import SendChat
 from .Email import SendEmail
-from .IRC import *
-from .Social import *
+from .IRC import SendIRC
+from .Social import SendSocial
 
-__all__ = ["Chat", "Email", "IRC", "Social"]
+__all__ = ["SendChat", "SendEmail", "SendIRC", "SendSocial"]

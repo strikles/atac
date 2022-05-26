@@ -431,7 +431,7 @@ class Riseup:
 
     def log_in(self):
         """Set Login credentials"""
-        if self.user == None and self.pwd == None:
+        if not self.user or not self.pwd:
             user = input("\nYour Riseup username: ")
             pwd = getpass.getpass()
             # Set class parameters
