@@ -614,6 +614,7 @@ class SMTP(Riseup):
 
     port = "587"
     #
+
     def __init__(self, user=None, pwd=None):
         super().__init__(user, pwd)
         self.msg = ""
