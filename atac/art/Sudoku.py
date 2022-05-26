@@ -1,6 +1,8 @@
 import random
 import time
 
+from .Art import Art
+
 
 class Sudoku:
     """ """
@@ -24,6 +26,7 @@ class Sudoku:
         self.dim = dim
         self.board = None
         self.numbers = range(1, dim**2 + 1)
+        self.num_solve_calls = 0
 
     def createF(self):
         """Return a random filled dim**2 x dim**2 Sudoku board"""
@@ -125,7 +128,8 @@ class Sudoku:
         x, y = self.findNextCell(x, y)
         if show_each_step:
             print(self)
-            create_image(self.__str__(), 427, 427)
+            self.num_calls += 1
+            Art.create_image_from_text(self.__str__(), 427, 427, "sudoku_{}".format(self.num_solve_calls))
             time.sleep(0.3)
         if x == -1:
             return True

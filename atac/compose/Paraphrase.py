@@ -91,13 +91,13 @@ def _synonym_prefilter_fn(token, synonym):
         return True
 
 
-def _generate_synonym_candidates(doc, disambiguate=False, rank_fn=None, nlp=None):
+def _generate_synonym_candidates(doc, disambig=False, rank_fn=None, nlp=None):
     """
     Generate synonym candidates.
     For each token in the doc, the list of WordNet synonyms is expanded.
     the synonyms are then ranked by their GloVe similarity to the original
     token and a context window around the token.
-    :param disambiguate: Whether to use lesk sense disambiguation before
+    :param disambig: Whether to use lesk sense disambiguation before
             expanding the synonyms.
     :param rank_fn: Functions that takes (doc, original_token, synonym) and
             returns a similarity score
@@ -110,7 +110,7 @@ def _generate_synonym_candidates(doc, disambiguate=False, rank_fn=None, nlp=None
         if token.tag_ in supported_pos_tags:
             wordnet_pos = _get_wordnet_pos(token)
             wordnet_synonyms = []
-            if disambiguate:
+            if disambig:
                 try:
                     synset = disambiguate(doc.text, token.text, pos=wordnet_pos)
                     wordnet_synonyms = synset.lemmas()

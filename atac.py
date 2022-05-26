@@ -1,4 +1,4 @@
-from atac.util.Util import *
+from atac.util.Util import str2bool, get_file_content
 
 import argparse
 import os

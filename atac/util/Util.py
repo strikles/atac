@@ -1,6 +1,6 @@
 import math
 import numpy as np
-from pydbg import *
+from pydbg import DBG_CONTINUE, dbg
 import random
 import regex
 import string

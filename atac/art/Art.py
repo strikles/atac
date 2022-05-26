@@ -138,8 +138,8 @@ class Art(Config):
         # Save the frames as a new image
         frames[0].save("out.gif", save_all=True, append_images=frames[1:])
 
+    @staticmethod
     def create_image_from_text(
-        self,
         text,
         window_height,
         window_width,

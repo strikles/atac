@@ -48,7 +48,7 @@ recipients = development_recipients
 email_file = development_email_file
 subjects = development_subjects
 
-if emergency == True:
+if emergency:
     recipients = emergency_recipients
     email_file = emergency_email_file
     subjects = emergency_subjects

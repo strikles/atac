@@ -34,7 +34,6 @@ from .send.Email import SendEmail
 from .send.Chat import SendChat
 from .send.IRC import SendIRC
 from .send.Social import SendSocial
-from .util.Util import *
 
 __all__ = [
     "Config",
@@ -45,6 +44,5 @@ __all__ = [
     "SendChat",
     "SendEmail",
     "SendIRC",
-    "SendSocial",
-    "Util",
+    "SendSocial"
 ]

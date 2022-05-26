@@ -5,9 +5,9 @@ from ..art.Art import Art
 
 # from .art import *
 # from .art.epicycles import *
-from .SpellCheck import *
-from .Translate import *
-from .Paraphrase import *
+from .SpellCheck import spelling_corrector, correct_spelling_languagetool
+from .Translate import translator
+from .Paraphrase import paraphraser
 from .Latex import *
 
 #

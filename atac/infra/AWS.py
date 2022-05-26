@@ -1,4 +1,4 @@
-from ..util.Util import *
+from ..util.Util import generate_word, generate_password
 
 import os
 import boto3
