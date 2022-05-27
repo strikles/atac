@@ -101,7 +101,7 @@ it is based on [https://chato.cl/papers/castillo_06_controlling_queue_size_web_c
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/jesus_king.png"></p>
 
 
-I fled Portugal more than once to avoid extrajudicial sentences of the Colegio Militar CM-93 alumni group who gave the school a reputation of being a **"pedo school"** by hiding my case of child abuse in 1993 (after so many other cases), followed by the systematic abuse of my parents after I left in 1996 (including intercourse sabotage to silence us and coerce psychiatric care), to come to the Netherlands and have my previous employer, the **infamous dutch coward Jasper Kums**, participating in extrajudicial cyber-torture proceedings exacted via abuse of bio-photonics, as **workplace revenge** to pass me as a work incompetent schizophrenic, direct violence to my parents, sabotage my wedding and coerce choice between:
+I fled Portugal more than once to avoid extrajudicial sentences of the Colegio Militar CM-93 (aka Pedo-93) alumni group who gave the school a reputation of being a **"pedo school"** by hiding my case of child abuse in 1993 (after so many other cases), followed by the systematic abuse of my parents after I left in 1996 (including intercourse sabotage to silence us and coerce psychiatric care) with a blue-whale style game being forced upon us via abuse of biophotonics, to come to the Netherlands and have my previous employer, the **infamous dutch coward Jasper Kums**, participating in extrajudicial cyber-torture proceedings exacted via abuse of bio-photonics, as **workplace revenge** to pass me as a work incompetent schizophrenic, direct violence to my parents, sabotage my wedding and coerce choice between:
 
 
 1. Being forced to leave the Netherlands by systematically being incapacitated to work, so I am unable to repay the pile of debt forced upon me over the course of 6 years of being incapacitated to work, to at the very end sabotage a simple project all day exacting vibrotactile torture to simulate Van Gogh syndrome and articulating my tongue to make sure I can't earn any money, ging Portuguese immigrants a bad reputation as being untrustworthy and Portuguese Government a bad reputation, not only in the Netherlands, but worldwide.
@@ -109,7 +109,7 @@ I fled Portugal more than once to avoid extrajudicial sentences of the Colegio M
 2. Being forced into assisted living psychiatric care and forced pharmaco-"therapy" against my will in violation of my human rights, combined with articulating my tongue whilst forcing me to hear the words "psychiatrist", "psychiatry" and "medication" over the course of months to guarantee antagonism and rejection which can be used as a justification for the synthetic states of psychosis systematically induced by the group in the physical vicinity of medical personnel.
 
 
-The extrajudicial cyber-torture proceedings spectacle of sabotaging work, trying to make me lose my home, turn me homeless whilst simulating Van Gogh syndrome and having those recruited to exact extrajudicial sentences, insinuating themselves as masters of the degradation forced upon my social and family relations and my love life, using women as targets of directed violence by inducing synthetic states of psychosis in their physical vicinity to sabotage intercourse along with our wedding plans **whilst demanding tears**.
+The extrajudicial cyber-torture proceedings spectacle of sabotaging work, trying to make me lose my home, turn me homeless whilst simulating **Van Gogh syndrome** and having those recruited to exact extrajudicial sentences, insinuating themselves as masters of the degradation forced upon my social and family relations and my love life, using women as targets of directed violence by inducing synthetic states of psychosis in their physical vicinity to sabotage intercourse along with our wedding plans **whilst demanding tears** as an attempt to misdirect attention from child abuse and the blue-whale style suicide game forced upon us.
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/jasper_kums.png"></p>
@@ -121,13 +121,24 @@ The extrajudicial cyber-torture proceedings spectacle of sabotaging work, trying
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/colegio.png"></p>
 
 
-Both my **mother** and my **father** worked for **3 decades** as judicial clerks in various Portuguese courts of law, working often until midnight, to be used at the end of their life, as targets against which to direct violence by individuals who aligned their interest, some covering up for their crimes of child abuse, others as workplace revenge, others under the pretences of making the school look bad or as revenge for refusing to leave school in a game of transfer of guilt, transfer of punishment, and transfer of responsibility.
+Both my **mother** and my **father** worked for **3 decades** as judicial clerks in various Portuguese courts of law, working often until midnight, to be used at the end of their life, as targets against which to direct violence by individuals who aligned their interest, some covering up for their crimes of child abuse, others as workplace revenge, others under the pretences of making the school look bad or as revenge for refusing to leave school in a game of **transfer of guilt, transfer of punishment, and transfer of responsibility.**
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni_police/alumni_police.gif"></p>
 
 
-The following white trash scum who came out of Colegio Militar are amongst the most repugnant in law enforcement. **Luis Nazareth Carvalho Figueira**, **Tiago Goncalves - Aegis (son of Martiniano Nuno Goncalves)**, **Pedro Miguel de Brito Esteves Grilo @PSP** and Colegio Militar alumni who graduated in 1993, along with criminal associates linked to **Luis Muskiado**, **Jose Teixeira (bar Crew Hassan)**, along with alumni from 1988 (my year) like **Joao Filipe Saraiva Pinheiro**, **Pedro Miguel de Brito Esteves Grilo @PSP**, **Oscar Ferreira**, **Tito Eurico Miranda Fernandes @PSP** and criminal associates of **Tiago Jorge Roque and his brother** trying to coerce me to accept living under torture with pharmaco-"therapy" being forced upon me as a sentence to hide the procedure, in case of rejection, as a extrajudicial sentence for non-sense conversations so they can show me "what being a motherfucker is" as a moral lesson, and occult the child abuse crimes the CM-93 group committed against me, along with the prologued sexual abuse crimes the CM-93 group committed against me and my parents.
+Colegio Militar (largo da Luz, Portugal) have been educating social stratification white trash appologists for 3 decades, systematically filling the news with synthetic cases of domestic violence towards elderly people, women and directing violence towards medical personnel entertaining themselves turning people psychotic and making people stab themselves as a interactive spectacle.
+
+
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/others/martiniano_nuno_goncalves.png"></p>
+
+
+**Luis Nazareth Carvalho Figueira**, **Pedro Nuno da Silva Rocha**, **Tiago Goncalves - Aegis (son of Martiniano Nuno Goncalves)**, **Pedro Miguel de Brito Esteves Grilo @PSP**, **Joao Filipe Saraiva Pinheira**, **Pedro Miguel Reis - GNR**, **Ricardo Rebordao de Brito**, **Oscar Ferreira**, **Tito Eurico Miranda Fernandes @PSP** and those who graduated in 1993, along with criminal associates linked to **Luis Muskiado**, **Jose Teixeira (bar Crew Hassan)**, and criminal associates of **Tiago Jorge Roque and social circle** trying to coerce me to accept living under torture with pharmaco-"therapy" being forced upon me as a sentence to hide the procedure, in case of rejection.
+
+
+
+
+As a extrajudicial sentence for non-sense conversations so they can show me "what being a motherfucker is" as a moral lesson, and occult the child abuse crimes the CM-93 group committed against me, along with the prologued sexual abuse crimes against me and my parents.
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni/oscar_ferreira.png"></p>
@@ -151,7 +162,7 @@ This group of individuals is associated to the planners of these repugnant event
 <p align="center" width="100%"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/musicians/1_pedro_silva.png"><img class="person" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jardim_adamastor/2_jose_teixeira.png"></p>
 
 
-Recruited Colegio Militar (largo da Luz, Lisbon, Portugal) alumni, and criminal associates [^1], [^2], [^3], [^4], [^5] are on a crusade to divert attention from their wrong doing with a strategy of **"covering the world in shit"** and incarnate **colonialism time demons**, diverting attention from their abuses in 1993, spending their days abusing bio-photonics to force their victims to *"understand how things work"*, forcing them to feel **raped systematically since 2016** to simulate mental illness, whilst exacting cyber-torture extrajudicial trials and sentences for everything "in the book".
+Recruited Colegio Militar (largo da Luz, Lisbon, Portugal) alumni, and criminal associates [^1], [^2], [^3], [^4], [^5] are on a crusade to divert attention from their wrong doings with a strategy of **"covering the world in shit"** and incarnate **colonialism time demons**, diverting attention from their abuses in 1993, spending their days abusing bio-photonics to force their victims to *"understand how things work"*, forcing them to feel **raped systematically since 2016** to simulate mental illness, whilst exacting cyber-torture extrajudicial trials and sentences for everything "in the book".
 
 
 **Tito Eurico Miranda Fernandes** (a confirmed catholic) went as far as sabotaging phone calls with my mother and even prayer on Christmas day, based on the saying **the deeper the grief, the closer to god**, followed by keeping me away from church by having me tortured genitally on multiple occasions (with a psychotic and demonic idiot forcing me to feel like he was **playing marbles with my testicles** during a service inside a church.
@@ -172,7 +183,7 @@ Since 2016, criminal associates of these individuals wake me up daily in the mid
 > Often I overheard them complaining about a Netherlands "police officer" with a name that sounds like "Fuller" acting like a real demonic idiot. I never met this Fuller or even know who he is...
 
 
-**Jasper Kums**, my former employer at Eenvoud Media (now renamed to Eenvoud Agency in Amsterdam as an attempt to divert attention from his criminal association to the individuals executing the **extrajudicial workplace revenge punishment**) along with his criminal associates, have **preferential treatment by Netherlands Law enforcement**, who seem more interested in doing the bidding of an individual who consumes cocaine at work and attempts to this day to pass me as a pedo in criminal association with the CM-93 group who abused me as a child and their recruited associates who spend their days since 2016 sabotaging everything I do, all day long, trying to gamble self-harm, enforced every few seconds to give me an extrajudicial sentence of **synthetic tics** and **facial spasms** whilst **cyber-sodomizing** me, and **articulating my tongue** with the words **"psychiatrist"**, **"psychiatry"** and **"medication"** to coerce psychiatric care **as a humiliation**, trying to pass me as an **incompetent paranoid schizophrenic**, perpetuating human degradation **closed circuit interactive spectacles** and **social stratification** schemes.
+**Jasper Kums**, my former employer at Eenvoud Media (now renamed to Eenvoud Agency in Amsterdam as an attempt to divert attention from his criminal association to the individuals executing the **extrajudicial workplace revenge punishment**) along with his criminal associates, have **preferential treatment by Netherlands Law enforcement**, who seem more interested in doing the bidding of an individual who consumes cocaine at work and attempts to this day to pass me as a pedo in criminal association with the CM-93 pedo group who abused me as a child and their recruited associates who spend their days since 2016 sabotaging everything I do, all day long, trying to gamble self-harm, enforced every few seconds to give me an extrajudicial sentence of **synthetic tics** and **facial spasms** whilst **cyber-sodomizing** me, and **articulating my tongue** with the words **"psychiatrist"**, **"psychiatry"** and **"medication"** to coerce psychiatric care **as a humiliation**, trying to pass me as an **incompetent paranoid schizophrenic**, perpetuating human degradation **closed circuit interactive spectacles** and **social stratification** schemes.
 
 
 The individuals recruited by the CM-93 group to exact the extrajudicial trials and sentences on behalf of **Jasper Kums** belong to several distinct but interconnected groups, and are amongst **the most dangerous in Portugal connected to law enforcement, the justice system and enabled by elected government officials to do their bidding, filling the news with synthetic cases of domestic violence, violence directed to medical personnel!**
@@ -181,6 +192,8 @@ The individuals recruited by the CM-93 group to exact the extrajudicial trials a
 * those linked to **Ivo Francisco**, **Luis Muskiado** and **Arthur Moreno**
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/tapada_do_mocho/tapada_do_mocho.gif"></p>
+
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/tiago_jorge_roque.png"></p>
 
 * those linked to **Ivo Francisco**, **Tiago Santos Sousa** and **Pedro Caetano**
 
@@ -204,7 +217,10 @@ The criminal associates of **Jasper Kums** are also linked to Netherlands police
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/anders_breivik.jpg"></p>
 
 
-Their extrajudicial proceedings are delusional and they behave as if they believe they are some kind of "Extrajudicial Justiciary Knight" akin to Anders Breivik. They focus on inducing synthetic states of psychosis, gambling destruction of private property on a daily basis for 6 years, directing violence towards others (taking a special interest in women, parents and close relations) in a macabre psychiatric protocol of breaking one's psyche to pass their victims as being mentally ill, and coerce them into **accepting** surviving under torture (a word I've been forced to hear daily for several years) and psychiatric "care" against their will by exacting cyber-sodomy and vibro-tactile cyber-torture to sabotage phone calls with relatives, social interactions with friends, wedding plans and intimate relations to pass me as an incapable and incompetent paranoid schizophrenic as **WORKPLACE REVENGE**.
+Their extrajudicial proceedings of Colegio Militar alumni linked to Law Enforcement are megaloimaniac and delusional, as if they believed they were some kind of "Extrajudicial Justiciary Knight" akin to Anders Breivik with sentences as repugnant as directing violence to women, children and elderly people at the end of their life to gamble incarceration or self-harm, creating drug addicts and forcing people to become homeless.
+
+
+They focus on inducing synthetic states of psychosis, gambling destruction of private property on a daily basis for 6 years, directing violence towards others (taking a special interest in women, parents and close relations) in a macabre psychiatric protocol of breaking one's psyche to pass their victims as being mentally ill, and coerce them into **accepting** surviving under torture (a word I've been forced to hear daily for several years) and psychiatric "care" against their will by exacting cyber-sodomy and vibro-tactile cyber-torture to sabotage phone calls with relatives, social interactions with friends, wedding plans and intimate relations to pass me as an incapable and incompetent paranoid schizophrenic as **WORKPLACE REVENGE**.
 
 
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/cross.png"></p>
