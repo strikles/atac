@@ -109,6 +109,9 @@ I fled Portugal more than once to avoid extrajudicial sentences of the Colegio M
 2. Being forced into assisted living psychiatric care and forced pharmaco-"therapy" against my will in violation of my human rights, combined with articulating my tongue whilst forcing me to hear the words "psychiatrist", "psychiatry" and "medication" over the course of months to guarantee antagonism and rejection which can be used as a justification for the synthetic states of psychosis systematically induced by the group in the physical vicinity of medical personnel.
 
 
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/baleia.png"></p>
+
+
 The extrajudicial cyber-torture proceedings spectacle of sabotaging work, trying to make me lose my home, turn me homeless whilst simulating **Van Gogh syndrome** and having those recruited to exact extrajudicial sentences, insinuating themselves as masters of the degradation forced upon my social and family relations and my love life, using women as targets of directed violence by inducing synthetic states of psychosis in their physical vicinity to sabotage intercourse along with our wedding plans **whilst demanding tears** as an attempt to misdirect attention from child abuse and the blue-whale style suicide game forced upon us.
 
 
@@ -342,7 +345,7 @@ These individuals were enabled to destroy life (even whole families if necessary
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/jesus_carrying_cross.png"></p>
 
 
-Some individuals in the fields of **psychiatry**, **law enforcement** and **decision-making** must have been watching the **wrong** movies, perpetuating an old psychiatric agenda from the 80's...
+Some individuals in the fields of **psychiatry**, **law enforcement** and **decision-making** must have been watching the **wrong** movies, perpetuating an old psychiatric agenda from the 70's - 80's of turning people psychotic by exacting extrajudicial cyber-torture sentences, cyber-sodomizing and articulating the tongue of their victims with the words "psychiatrist", "psychiatry" and "medication" and justifying the psychotic behaviour on rejection of conventional pharmaco-"therapy" as a form of intimidation and subjugation of the population.
 
 
 <p align="center" width="100%"><img alt="Bad" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/movies/joker.gif"></p>
