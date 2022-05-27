@@ -101,7 +101,7 @@ it is based on [https://chato.cl/papers/castillo_06_controlling_queue_size_web_c
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/jesus/jesus_king.png"></p>
 
 
-I fled Portugal more than once to avoid extrajudicial sentences of the Colegio Militar CM-93 (aka Pedo-93) alumni group who gave the school a reputation of being a **"pedo school"** by hiding my case of child abuse in 1993 (after so many other cases), followed by the systematic abuse of my parents after I left in 1996 (including intercourse sabotage to silence us and coerce psychiatric care) with a blue-whale style game being forced upon us via abuse of biophotonics, to come to the Netherlands and have my previous employer, the **infamous dutch coward Jasper Kums**, participating in extrajudicial cyber-torture proceedings exacted via abuse of bio-photonics, as **workplace revenge** to pass me as a work incompetent schizophrenic, direct violence to my parents, sabotage my wedding and coerce choice between:
+I fled Portugal more than once to avoid extrajudicial sentences of the Colegio Militar CM-93 (aka Pedo-93) alumni group who gave the school a reputation of being a **"pedo school"** by hiding my case of child abuse in 1993 (after so many other cases), followed by the systematic abuse of my parents after I left in 1996 (including intercourse sabotage to silence us and coerce psychiatric care) with a blue-whale style game being forced upon us via abuse of bio-photonics, to come to the Netherlands and have my previous employer, the **infamous dutch coward Jasper Kums**, participating in extrajudicial cyber-torture proceedings exacted via abuse of bio-photonics, as **workplace revenge** to pass me as a work incompetent schizophrenic, direct violence to my parents, sabotage my wedding and coerce choice between:
 
 
 1. Being forced to leave the Netherlands by systematically being incapacitated to work, so I am unable to repay the pile of debt forced upon me over the course of 6 years of being incapacitated to work, to at the very end sabotage a simple project all day exacting vibrotactile torture to simulate Van Gogh syndrome and articulating my tongue to make sure I can't earn any money, ging Portuguese immigrants a bad reputation as being untrustworthy and Portuguese Government a bad reputation, not only in the Netherlands, but worldwide.
@@ -134,8 +134,6 @@ Colegio Militar (largo da Luz, Portugal) have been educating social stratificati
 
 
 **Luis Nazareth Carvalho Figueira**, **Pedro Nuno da Silva Rocha**, **Tiago Goncalves - Aegis (son of Martiniano Nuno Goncalves)**, **Pedro Miguel de Brito Esteves Grilo @PSP**, **Joao Filipe Saraiva Pinheira**, **Pedro Miguel Reis - GNR**, **Ricardo Rebordao de Brito**, **Oscar Ferreira**, **Tito Eurico Miranda Fernandes @PSP** and those who graduated in 1993, along with criminal associates linked to **Luis Muskiado**, **Jose Teixeira (bar Crew Hassan)**, and criminal associates of **Tiago Jorge Roque and social circle** trying to coerce me to accept living under torture with pharmaco-"therapy" being forced upon me as a sentence to hide the procedure, in case of rejection.
-
-
 
 
 As a extrajudicial sentence for non-sense conversations so they can show me "what being a motherfucker is" as a moral lesson, and occult the child abuse crimes the CM-93 group committed against me, along with the prologued sexual abuse crimes against me and my parents.
@@ -217,7 +215,7 @@ The criminal associates of **Jasper Kums** are also linked to Netherlands police
 <p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/others/anders_breivik.jpg"></p>
 
 
-Their extrajudicial proceedings of Colegio Militar alumni linked to Law Enforcement are megaloimaniac and delusional, as if they believed they were some kind of "Extrajudicial Justiciary Knight" akin to Anders Breivik with sentences as repugnant as directing violence to women, children and elderly people at the end of their life to gamble incarceration or self-harm, creating drug addicts and forcing people to become homeless.
+Their extrajudicial proceedings of Colegio Militar alumni linked to Law Enforcement are megalomaniac and delusional, as if they believed they were some kind of "Extrajudicial Justiciary Knight" akin to Anders Breivik with sentences as repugnant as directing violence to women, children and elderly people at the end of their life to gamble incarceration or self-harm, creating drug addicts and forcing people to become homeless.
 
 
 They focus on inducing synthetic states of psychosis, gambling destruction of private property on a daily basis for 6 years, directing violence towards others (taking a special interest in women, parents and close relations) in a macabre psychiatric protocol of breaking one's psyche to pass their victims as being mentally ill, and coerce them into **accepting** surviving under torture (a word I've been forced to hear daily for several years) and psychiatric "care" against their will by exacting cyber-sodomy and vibro-tactile cyber-torture to sabotage phone calls with relatives, social interactions with friends, wedding plans and intimate relations to pass me as an incapable and incompetent paranoid schizophrenic as **WORKPLACE REVENGE**.
