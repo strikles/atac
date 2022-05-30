@@ -98,6 +98,7 @@ class Art(Config):
                 print(">> gif creation failed: " + output_file_name)
         except IOError:
             print("cannot create gif for:" + gif_filename)
+            exit(1)
 
     def generate_gifs_from_all_dirs(self, images_directory, glob_pattern):
         print(images_directory)
@@ -116,12 +117,14 @@ class Art(Config):
         # Loop over each frame in the animated image
         for frame in ImageSequence.Iterator(im):
             #
+            print(frame.mode)
+            frame.convert("RGBA")
             W, H = (300, 200)
             # Draw the text on the frame
             draw = ImageDraw.Draw(frame)
             w, h = draw.textsize(msg)
-            font = ImageFont.truetype("fonts/LiberationMono-Bold.ttf", 31)
-            draw.text(((W - w) / 2, (H - h) / 2), msg, fill="red", font=font)
+            font = ImageFont.truetype("fonts/LiberationMono-Bold.ttf", 42)
+            draw.text(((W - w) / 2, (H - h) / 2), msg, fill=211, font=font)
             del draw
             # However, 'frame' is still the animated image with many frames
             # It has simply been seeked to a later frame
@@ -134,7 +137,7 @@ class Art(Config):
             # Then append the single frame image to a list of frames
             frames.append(frame)
         # Save the frames as a new image
-        frames[0].save("out.gif", save_all=True, append_images=frames[1:])
+        frames[0].save(gif_file_path, save_all=True, append_images=frames[1:])
 
     @staticmethod
     def create_image_from_text(
