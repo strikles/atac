@@ -360,6 +360,9 @@ Instead of promoting neuro-rights, crime prevention or remote healthcare, they a
 Instead of denouncing these individuals, **Emile Barkhof** has systematically attempted to cover-up the extrajudicial cyber-torture extrajudicial sentences to coerce psychiatric care under the pretext of me being unable to work. Inadvertently or not **that aligns with the objectives of the CM-93 child abuse group to divert attention from their wrongdoings and perpetuate human degradation psychiatric spectacles trying to force me into psychiatry and forced pharmaco-"therapy" at any cost to pass me as a incompetent schizophrenic and make an example out of me.**
 
 
+<p align="center" width="100%"><img alt="Bad" src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/movies/hospital.gif"></p>
+
+
 Sadly Emile has **presented false testimony in a court of law**, used **falsified reports of risk to self** and **refusal to accept judicial sentences of conventional pharmaco-"therapy" against my will**, as justifications for the damages inflicted by the group of individuals linked to the CM-93 group recruited to exact the extrajudicial cyber-torture sentences, **sabotaging my ex-girlfriends plans to get wed**, in a **ritualistic psychiatric humiliation tantrum** of **articulating my tongue**, **sabotaging intercourse**, trying to get me to **cut off my ears when I swallow**, **byte my tongue when I chew**, **crack my jaw when I open my mouth**, **defecate myself on the street**, **direct violence towards people around me, taking a special interest in women and my parents** or **getting me to hit myself in public and in front of my sweetheart during Christmas.**
 
 
