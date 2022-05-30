@@ -36,9 +36,7 @@ class Config:
 
     """
 
-    def __init__(
-        self, encrypted_config=True, config_file_path="auth.json", key_file_path=None
-    ):
+    def __init__(self, encrypted_config=True, config_file_path="auth.json", key_file_path=None):
         """Class init
 
         Parameters
@@ -140,9 +138,7 @@ class Config:
         if encrypted_config:
             fernet = Fernet(self.key)
             # encrypting the file
-            data = fernet.encrypt(
-                json.dumps(self.data, ensure_ascii=False).encode("utf-8")
-            )
+            data = fernet.encrypt(json.dumps(self.data, ensure_ascii=False).encode("utf-8"))
         else:
             data = json.dumps(self.data, ensure_ascii=False, indent=4).encode("utf-8")
         # opening the file in write mode and writing the encrypted data
@@ -161,7 +157,7 @@ class Config:
             with open(self.config_file_path, "rb") as config:
                 c = config.read()
                 data = json.loads(c)
-                print(json.dumps(data, indent=4))
+                # print(json.dumps(data, indent=4))
         except OSError as e:
             print("{} file error {}".format(self.config_file_path, e.errno))
         #

@@ -41,9 +41,7 @@ class Art(Config):
     -------
     """
 
-    def __init__(
-        self, encrypted_config=True, config_file_path="auth.json", key_file_path=None
-    ):
+    def __init__(self, encrypted_config=True, config_file_path="auth.json", key_file_path=None):
         """Class init
 
         Parameters
@@ -61,11 +59,9 @@ class Art(Config):
         """ """
         gif_filename = os.path.join(frame_folder, output_file_name)
         try:
-            image_paths = [
-                os.path.join(frame_folder, f)
-                for f in sorted(os.listdir(frame_folder))
-                if os.path.isfile(os.path.join(frame_folder, f))
-            ]
+            glob_arg = "{}/{}".format(os.path.abspath(frame_folder), glob_pattern)
+            print("glob pattern: " + glob_arg)
+            image_paths = [os.path.join(frame_folder, f) for f in sorted(glob.glob(glob_arg))]
             print(json.dumps(image_paths, indent=4))
             raw_frames = [Image.open(path).convert("RGB") for path in image_paths]
             frames = list(
@@ -83,8 +79,8 @@ class Art(Config):
             )
             #
             if not len(frames):
-                print("cannot create gif for: " + gif_filename)
-                exit(1)
+                print("no frames to create gif: " + gif_filename)
+                return
             #
             frame_one = frames[0]
             frame_one.save(
@@ -104,11 +100,13 @@ class Art(Config):
             print("cannot create gif for:" + gif_filename)
 
     def generate_gifs_from_all_dirs(self, images_directory, glob_pattern):
-        subfolders = [f.path for f in os.scandir(images_directory) if f.is_dir()]
+        print(images_directory)
+        subfolders = [f.path for f in os.scandir(os.path.abspath(images_directory)) if f.is_dir()]
+        print(json.dumps(subfolders, indent=4))
         for subfolder_path in subfolders:
             print("{} - {}: ".format(subfolder_path, os.path.basename(subfolder_path)))
             gif_filename = "{}.{}".format(os.path.basename(subfolder_path), "gif")
-            self.make_gif(subfolder_path, gif_filename, glob_pattern)
+            self.make_gif_from_dir(subfolder_path, gif_filename, glob_pattern)
 
     def add_centered_text_to_gif(self, gif_file_path, msg):
         #
@@ -164,7 +162,7 @@ class Art(Config):
         draw.text((0, 0), text, fill=foreground_color, font=font)
         img.save(output_file_path)
 
-    def add_margin(pil_img, top, right, bottom, left, color):
+    def add_margin(self, pil_img, top, right, bottom, left, color):
         width, height = pil_img.size
         new_width = width + right + left
         new_height = height + top + bottom

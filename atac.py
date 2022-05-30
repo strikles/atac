@@ -135,9 +135,7 @@ def email(arguments):
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     emailer = atac.SendEmail(encrypted_config, config_file_path, key_file_path)
     subject = None
-    email_files_path = (
-        os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
-    )
+    email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
     #
     if arguments.subject is not None:
         subject = getattr(arguments, "subject")
@@ -186,9 +184,7 @@ def phone(arguments):
     chatter = atac.SendChat(encrypted_config, config_file_path, key_file_path)
     #
     target = "whatsapp"
-    phone_files_path = (
-        os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
-    )
+    phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
     #
     if arguments.message_file is not None:
         message_file_path = getattr(arguments, "message_file")
@@ -216,7 +212,10 @@ def art(arguments):
         The number of legs the animal (default is 4)
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
-    artist = atac.Artist(encrypted_config, config_file_path, key_file_path)
+    artist = atac.Art(encrypted_config, config_file_path, key_file_path)
+    message_text = None
+    images_path = None
+    gif_path = None
     #
     if arguments.message_text is not None:
         message_text = getattr(arguments, "message_text")
@@ -224,8 +223,10 @@ def art(arguments):
         images_path = getattr(arguments, "images_path")
     if arguments.gif_path is not None:
         gif_path = getattr(arguments, "gif_path")
-    if arguments.generate_art_type is not None:
-        art_type = getattr(arguments, "art_type")
+    #
+    if gif_path:
+        artist.generate_gifs_from_all_dirs(gif_path, "*.png")
+    #
 
 
 # sub-command functions
@@ -290,12 +291,8 @@ def scrape(arguments):
         config = atac.Config(encrypted_config, config_file_path, key_file_path)
         for data_key, starting_url in config.data["scrape"]["targets"].items():
             print("{0} - {1}".format(data_key, starting_url))
-            scrapers[data_key] = atac.Scrape(
-                encrypted_config, config_file_path, key_file_path
-            )
-            catcher_thread = Thread(
-                target=scrapers[data_key].process_page, args=(data_key, starting_url)
-            )
+            scrapers[data_key] = atac.Scrape(encrypted_config, config_file_path, key_file_path)
+            catcher_thread = Thread(target=scrapers[data_key].process_page, args=(data_key, starting_url))
             catcher_thread.start()
 
 
@@ -346,16 +343,11 @@ def compose(arguments):
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     composer = atac.Compose(encrypted_config, config_file_path, key_file_path)
     #
-    if images_dir is not None:
-        composer.generate_gifs(images_dir, "*.png")
-    #
     corpus = None
     if input_file_path is not None:
         corpus = get_file_content(input_file_path)
     if corpus is not None:
-        transform = composer.transform(
-            corpus, paraphrase, translate, spellcheck, src=from_lang, dest=to_lang
-        )
+        transform = composer.transform(corpus, paraphrase, translate, spellcheck, src=from_lang, dest=to_lang)
         try:
             if not os.path.isdir(os.path.dirname(output_file_path)):
                 os.makedirs(os.path.dirname(output_file_path))
@@ -381,12 +373,8 @@ def clean(arguments):
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     cleaner = atac.Clean(encrypted_config, config_file_path, key_file_path)
     #
-    email_files_path = (
-        os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
-    )
-    phone_files_path = (
-        os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
-    )
+    email_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/emails/"
+    phone_files_path = os.path.dirname(os.path.abspath(__file__)) + "/data/contacts/phones/"
     #
     if arguments.target is not None:
         target = getattr(arguments, "target")
@@ -407,52 +395,34 @@ if __name__ == "__main__":
 
     # create the parser for the "config" command
     parser_config = subparsers.add_parser("config")
-    parser_config.add_argument(
-        "-c", dest="config_file", type=str, help="use config file path"
-    )
+    parser_config.add_argument("-c", dest="config_file", type=str, help="use config file path")
     parser_config.add_argument("-e", dest="encrypted_config", action="store_true")
-    parser_config.add_argument(
-        "-k", dest="key_file", type=str, help="use key file path"
-    )
-    parser_config.add_argument(
-        "-g", dest="generate_key_file", type=str, help="generate new key file path"
-    )
+    parser_config.add_argument("-k", dest="key_file", type=str, help="use key file path")
+    parser_config.add_argument("-g", dest="generate_key_file", type=str, help="generate new key file path")
     parser_config.add_argument(
         "-d",
         dest="decrypted_config_file",
         type=str,
         help="output decrypted config file path",
     )
-    parser_config.add_argument(
-        "-n", dest="new_config_file", type=str, help="generate new config file path"
-    )
+    parser_config.add_argument("-n", dest="new_config_file", type=str, help="generate new config file path")
     parser_config.set_defaults(func=configuration)
 
     # create the parser for the "email command
     parser_email = subparsers.add_parser("email")
-    parser_email.add_argument(
-        "-c", dest="config_file", type=str, help="use config file path"
-    )
+    parser_email.add_argument("-c", dest="config_file", type=str, help="use config file path")
     parser_email.add_argument("-e", dest="encrypted_config", action="store_true")
     parser_email.add_argument("-k", dest="key_file", type=str, help="use key file path")
-    parser_email.add_argument(
-        "-m", dest="message_file", type=str, help="path to message file"
-    )
-    parser_email.add_argument(
-        "-p", dest="emails_file", type=str, help="path to csv dir or file"
-    )
+    parser_email.add_argument("-m", dest="message_file", type=str, help="path to message file")
+    parser_email.add_argument("-p", dest="emails_file", type=str, help="path to csv dir or file")
     parser_email.add_argument("-s", dest="subject", type=str, help="email subject")
-    parser_email.add_argument(
-        "-t", dest="target", choices=["smtp", "aws"], default="smtp"
-    )
+    parser_email.add_argument("-t", dest="target", choices=["smtp", "aws"], default="smtp")
     parser_email.add_argument("-v", dest="verbose")
     parser_email.set_defaults(func=email)
 
     # create the parser for the irc command
     parser_irc = subparsers.add_parser("irc")
-    parser_irc.add_argument(
-        "-c", dest="config_file", type=str, help="use config file path"
-    )
+    parser_irc.add_argument("-c", dest="config_file", type=str, help="use config file path")
     parser_irc.add_argument("-e", dest="encrypted_config", action="store_true")
     parser_irc.add_argument("-k", dest="key_file", type=str, help="use key file path")
     parser_irc.add_argument("-u", dest="message_users", action="store_true")
@@ -463,9 +433,7 @@ if __name__ == "__main__":
 
     # create the parser for the chat command
     parser_email = subparsers.add_parser("chat")
-    parser_email.add_argument(
-        "-c", dest="config_file", type=str, help="use config file path"
-    )
+    parser_email.add_argument("-c", dest="config_file", type=str, help="use config file path")
     parser_email.add_argument("-e", dest="encrypted_config", action="store_true")
     parser_email.add_argument("-k", dest="key_file", type=str, help="use key file path")
     parser_email.add_argument("-u", dest="message_users", action="store_true")
@@ -475,70 +443,44 @@ if __name__ == "__main__":
 
     # create the parser for the "phone" command
     parser_phone = subparsers.add_parser("phone")
-    parser_phone.add_argument(
-        "-c", dest="config_file", type=str, help="use config file path"
-    )
+    parser_phone.add_argument("-c", dest="config_file", type=str, help="use config file path")
     parser_phone.add_argument("-e", dest="encrypted_config", action="store_true")
     parser_phone.add_argument("-k", dest="key_file", type=str, help="use key file path")
-    parser_phone.add_argument(
-        "-m", dest="message_file", type=str, help="path to message file"
-    )
-    parser_phone.add_argument(
-        "-p", dest="phones_file", type=str, help="path to csv dir or file"
-    )
+    parser_phone.add_argument("-m", dest="message_file", type=str, help="path to message file")
+    parser_phone.add_argument("-p", dest="phones_file", type=str, help="path to csv dir or file")
     parser_phone.add_argument("-t", dest="target", choices=["whatsapp", "sms"])
-    parser_phone.add_argument(
-        "-w", dest="whatsapp", choices=["pywhatkit", "twilio", "yowsup"]
-    )
-    parser_phone.add_argument(
-        "-s", dest="sms", choices=["aws", "twilio"], default="aws"
-    )
+    parser_phone.add_argument("-w", dest="whatsapp", choices=["pywhatkit", "twilio", "yowsup"])
+    parser_phone.add_argument("-s", dest="sms", choices=["aws", "twilio"], default="aws")
     parser_phone.add_argument("-v", dest="verbose")
     parser_phone.set_defaults(func=phone)
 
     # create the parser for the "social" command
     parser_social = subparsers.add_parser("social")
-    parser_social.add_argument(
-        "-c", dest="config_file", type=str, help="use config file path"
-    )
+    parser_social.add_argument("-c", dest="config_file", type=str, help="use config file path")
     parser_social.add_argument("-e", dest="encrypted_config", action="store_true")
-    parser_social.add_argument(
-        "-k", dest="key_file", type=str, help="use key file path"
-    )
-    parser_social.add_argument(
-        "-m", dest="message", type=str, help="path to message file"
-    )
-    parser_social.add_argument(
-        "-t", dest="target", choices=["facebook", "twitter"], default="twitter"
-    )
+    parser_social.add_argument("-k", dest="key_file", type=str, help="use key file path")
+    parser_social.add_argument("-m", dest="message", type=str, help="path to message file")
+    parser_social.add_argument("-t", dest="target", choices=["facebook", "twitter"], default="twitter")
     parser_social.add_argument("-v", dest="verbose")
     parser_social.set_defaults(func=social)
 
     # create the parser for the "art" command
     parser_art = subparsers.add_parser("art")
-    parser_art.add_argument(
-        "-c", dest="config_file", type=str, help="use config file path"
-    )
+    parser_art.add_argument("-c", dest="config_file", type=str, help="use config file path")
     parser_art.add_argument("-e", dest="encrypted_config", action="store_true")
     parser_art.add_argument("-k", dest="key_file", type=str, help="use key file path")
     parser_art.add_argument("-m", dest="message_text", type=str, help="text message")
     parser_art.add_argument("-g", dest="gif_path", type=str, help="path to gif file")
-    parser_art.add_argument(
-        "-p", dest="images_path", type=str, help="path to images directory"
-    )
+    parser_art.add_argument("-p", dest="images_path", type=str, help="path to images directory")
     parser_art.add_argument("-t", dest="art_type", choices=["sudoku", "invaders"])
     parser_art.add_argument("-v", dest="verbose")
     parser_art.set_defaults(func=art)
 
     # create the parser for the "scrape" command
     parser_scrape = subparsers.add_parser("scrape")
-    parser_scrape.add_argument(
-        "-c", dest="config_file", type=str, help="use config file path"
-    )
+    parser_scrape.add_argument("-c", dest="config_file", type=str, help="use config file path")
     parser_scrape.add_argument("-e", dest="encrypted_config", action="store_true")
-    parser_scrape.add_argument(
-        "-k", dest="key_file", type=str, help="use key file path"
-    )
+    parser_scrape.add_argument("-k", dest="key_file", type=str, help="use key file path")
     parser_scrape.add_argument(
         "-t",
         dest="target",
@@ -565,28 +507,14 @@ if __name__ == "__main__":
 
     # create the parser for the "compose" command
     parser_compose = subparsers.add_parser("compose")
-    parser_compose.add_argument(
-        "-c", dest="config_file", type=str, help="use config file path"
-    )
+    parser_compose.add_argument("-c", dest="config_file", type=str, help="use config file path")
     parser_compose.add_argument("-e", dest="encrypted_config", action="store_true")
-    parser_compose.add_argument(
-        "-g", dest="images_dir", type=str, help="images directory to create gif from"
-    )
-    parser_compose.add_argument(
-        "-k", dest="key_file", type=str, help="use key file path"
-    )
-    parser_compose.add_argument(
-        "-i", dest="input_file_path", type=str, required=False, help="input_file_path"
-    )
-    parser_compose.add_argument(
-        "-o", dest="output_file_path", type=str, required=False, help="output_file_path"
-    )
-    parser_compose.add_argument(
-        "-p", dest="paraphrase_language", type=str, help="paraphrase source language"
-    )
-    parser_compose.add_argument(
-        "-s", dest="spellcheck_language", type=str, help="spellcheck source language"
-    )
+    parser_compose.add_argument("-g", dest="images_dir", type=str, help="images directory to create gif from")
+    parser_compose.add_argument("-k", dest="key_file", type=str, help="use key file path")
+    parser_compose.add_argument("-i", dest="input_file_path", type=str, required=False, help="input_file_path")
+    parser_compose.add_argument("-o", dest="output_file_path", type=str, required=False, help="output_file_path")
+    parser_compose.add_argument("-p", dest="paraphrase_language", type=str, help="paraphrase source language")
+    parser_compose.add_argument("-s", dest="spellcheck_language", type=str, help="spellcheck source language")
     parser_compose.add_argument(
         "-f",
         dest="translate_from_languagecode",
@@ -614,15 +542,11 @@ if __name__ == "__main__":
     # parse the args and call whatever function was selected
     args = parser.parse_args()
     # validate conditions
-    cond_translation_from = "translate_from_languagecode" in vars(
+    cond_translation_from = "translate_from_languagecode" in vars(args) and "translate_to_languagecode" not in vars(
         args
-    ) and "translate_to_languagecode" not in vars(args)
-    cond_translation_to = "translate_to_languagecode" in vars(
-        args
-    ) and "translate_from_languagecode" not in vars(args)
+    )
+    cond_translation_to = "translate_to_languagecode" in vars(args) and "translate_from_languagecode" not in vars(args)
     if cond_translation_from or cond_translation_to:
-        parser.error(
-            "The -LoadFiles argument requires the -SourceFolder or -SourceFile"
-        )
+        parser.error("The -LoadFiles argument requires the -SourceFolder or -SourceFile")
     #
     args.func(args)
