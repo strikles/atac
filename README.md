@@ -109,7 +109,7 @@ I fled Portugal more than once to avoid extrajudicial sentences of the Colegio M
 2. Being forced into assisted living psychiatric care and forced pharmaco-"therapy" against my will in violation of my human rights, combined with articulating my tongue whilst forcing me to hear the words "psychiatrist", "psychiatry" and "medication" over the course of months to guarantee antagonism and rejection which can be used as a justification for the synthetic states of psychosis systematically induced by the group in the physical vicinity of medical personnel.
 
 
-<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/baleia.png"></p>
+<p align="center" width="100%"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/politicians/2_eduardo_marcal_grilo.png"><img src="https://raw.githubusercontent.com/strikles/atac-data/main/messages/assets/img/alumni_police/3_pedro_grilo.png"></p>
 
 
 The extrajudicial cyber-torture proceedings spectacle of sabotaging work, trying to make me lose my home, turn me homeless whilst simulating **Van Gogh syndrome** and having those recruited to exact extrajudicial sentences, insinuating themselves as masters of the degradation forced upon my social and family relations and my love life, using women as targets of directed violence by inducing synthetic states of psychosis in their physical vicinity to sabotage intercourse along with our wedding plans **whilst demanding tears** as an attempt to misdirect attention from child abuse and the blue-whale style suicide game forced upon us.
