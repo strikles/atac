@@ -116,11 +116,16 @@ class Art(Config):
         frames = []
         # Loop over each frame in the animated image
         for frame in ImageSequence.Iterator(im):
-            #
+            # resize
+            baseheight = 300
+            hpercent = baseheight / float(frame.size[1])
+            wsize = int((float(frame.size[0]) * float(hpercent)))
+            frame = frame.resize((wsize, baseheight), Image.ANTIALIAS)
+            # convert
             if frame.mode != "RGB":
                 frame.convert("RGB")
-            #
-            W, H = (frame.size[0], frame.size[1])
+            # draw
+            W, H = (wsize, baseheight)
             # Draw the text on the frame
             draw = ImageDraw.Draw(frame)
             font = ImageFont.truetype("fonts/LiberationMono-Bold.ttf", 42)
