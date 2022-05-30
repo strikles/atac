@@ -118,13 +118,13 @@ class Art(Config):
         for frame in ImageSequence.Iterator(im):
             #
             print(frame.mode)
-            frame.convert("RGBA")
-            W, H = (300, 200)
+            frame.convert("RGB")
+            W, H = (frame.size[0], frame.size[1])
             # Draw the text on the frame
             draw = ImageDraw.Draw(frame)
-            w, h = draw.textsize(msg)
             font = ImageFont.truetype("fonts/LiberationMono-Bold.ttf", 42)
-            draw.text(((W - w) / 2, (H - h) / 2), msg, fill=211, font=font)
+            w, h = draw.textsize(msg, font)
+            draw.text(((W - w) / 2, (H - h) / 2), msg, fill="red", font=font)
             del draw
             # However, 'frame' is still the animated image with many frames
             # It has simply been seeked to a later frame
