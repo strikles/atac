@@ -109,7 +109,7 @@ class Art(Config):
             gif_filename = "{}.{}".format(os.path.basename(subfolder_path), "gif")
             self.make_gif_from_dir(subfolder_path, gif_filename, glob_pattern)
 
-    def add_centered_text_to_gif(self, gif_file_path, msg):
+    def add_centered_text_to_gif(self, gif_file_path, msg, font_size):
         #
         im = Image.open(gif_file_path)
         # A list of the frames to be outputted
@@ -124,11 +124,19 @@ class Art(Config):
             # convert
             if frame.mode != "RGB":
                 frame.convert("RGB")
+            frames.append(frame)
+        frames[0].save(gif_file_path, save_all=True, append_images=frames[1:])
+        #
+        im = Image.open(gif_file_path)
+        # A list of the frames to be outputted
+        frames = []
+        # Loop over each frame in the animated image
+        for frame in ImageSequence.Iterator(im):
             # draw
-            W, H = (wsize, baseheight)
+            W, H = (frame.size[0], frame.size[1])
             # Draw the text on the frame
             draw = ImageDraw.Draw(frame)
-            font = ImageFont.truetype("fonts/LiberationMono-Bold.ttf", 42)
+            font = ImageFont.truetype("fonts/LiberationMono-Bold.ttf", font_size)
             w, h = draw.textsize(msg, font)
             draw.text(((W - w) / 2, (H - h) / 2), msg, fill=211, font=font)
             del draw

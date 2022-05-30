@@ -213,10 +213,13 @@ def art(arguments):
     """
     encrypted_config, config_file_path, key_file_path = get_config_arguments(arguments)
     artist = atac.Art(encrypted_config, config_file_path, key_file_path)
+    font_size = 22
     message_text = None
     images_path = None
     gif_path = None
     #
+    if arguments.font_size is not None:
+        font_size = int(getattr(arguments, "font_size"))
     if arguments.message_text is not None:
         message_text = getattr(arguments, "message_text")
     if arguments.images_path is not None:
@@ -228,7 +231,7 @@ def art(arguments):
         artist.generate_gifs_from_all_dirs(gif_path, "*.png")
     #
     if gif_path and message_text:
-        artist.add_centered_text_to_gif(gif_path, message_text)
+        artist.add_centered_text_to_gif(gif_path, message_text, font_size)
 
 
 # sub-command functions
@@ -471,6 +474,7 @@ if __name__ == "__main__":
     parser_art.add_argument("-c", dest="config_file", type=str, help="use config file path")
     parser_art.add_argument("-e", dest="encrypted_config", action="store_true")
     parser_art.add_argument("-k", dest="key_file", type=str, help="use key file path")
+    parser_art.add_argument("-f", dest="font_size", type=int, help="font_size")
     parser_art.add_argument("-m", dest="message_text", type=str, help="text message")
     parser_art.add_argument("-g", dest="gif_path", type=str, help="path to gif file")
     parser_art.add_argument("-p", dest="images_path", type=str, help="path to images directory")
