@@ -7,7 +7,7 @@ import time
 import argparse
 
 # import jaraco.logging
-import irc.client
+# import irc.client
 
 links = None
 
@@ -180,9 +180,7 @@ class SendIRC(Send):
     RPL_NAMREPLY = "353"
     RPL_ENDOFNAMES = "366"
 
-    def __init__(
-        self, encrypted_config=True, config_file_path="auth.json", key_file_path=None
-    ):
+    def __init__(self, encrypted_config=True, config_file_path="auth.json", key_file_path=None):
         """Class init
 
         Parameters
@@ -208,26 +206,14 @@ class SendIRC(Send):
             print("Error connecting to IRC server {host}:{port}".format(**self.irc))
             sys.exit(1)
 
-        print(
-            "USER {username} {hostname} {servername} :{realname}..".format(**self.user)
-        )
-        self.socket.send(
-            bytes(
-                "USER {username} {hostname} {servername} :{realname}\r\n".format(
-                    **self.user
-                ).encode()
-            )
-        )
+        print("USER {username} {hostname} {servername} :{realname}..".format(**self.user))
+        self.socket.send(bytes("USER {username} {hostname} {servername} :{realname}\r\n".format(**self.user).encode()))
         #
         print("NICK {nick}...".format(**self.user))
         self.socket.send(bytes("NICK {nick}\r\n".format(**self.user).encode()))
         #
         print("PRIVMSG NICKSERV IDENTIFY {botnick} {botpass}..".format(**self.irc))
-        self.socket.send(
-            "PRIVMSG NICKSERV :IDENTIFY {botnick} {botpass}\r\n".format(
-                **self.irc
-            ).encode()
-        )
+        self.socket.send("PRIVMSG NICKSERV :IDENTIFY {botnick} {botpass}\r\n".format(**self.irc).encode())
         #
         print("JOIN {channel}...".format(**self.irc))
         self.socket.send(bytes("JOIN {channel}\r\n".format(**self.irc).encode()))
@@ -268,20 +254,10 @@ class SendIRC(Send):
                 if line.find("PING") != -1:
                     ping_response = line.split()[1]
                     print("PONG {}".format(ping_response))
-                    self.socket.send(
-                        bytes("PONG {}\r\n".format(ping_response).encode())
-                    )
+                    self.socket.send(bytes("PONG {}\r\n".format(ping_response).encode()))
                     #
-                    print(
-                        "PRIVMSG NICKSERV IDENTIFY {botnick} {botpass}..".format(
-                            **self.irc
-                        )
-                    )
-                    self.socket.send(
-                        "PRIVMSG NICKSERV :IDENTIFY {botnick} {botpass}\r\n".format(
-                            **self.irc
-                        ).encode()
-                    )
+                    print("PRIVMSG NICKSERV IDENTIFY {botnick} {botpass}..".format(**self.irc))
+                    self.socket.send("PRIVMSG NICKSERV :IDENTIFY {botnick} {botpass}\r\n".format(**self.irc).encode())
                     print("LIST...")
                     self.socket.send(bytes("LIST\r\n".encode()))
                     break
