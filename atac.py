@@ -228,7 +228,7 @@ def art(arguments):
         gif_path = getattr(arguments, "gif_path")
     #
     if images_path:
-        artist.generate_gifs_from_all_dirs(gif_path, "*.png")
+        artist.generate_gifs_from_all_dirs(images_path, "*.png")
     #
     if gif_path and message_text:
         artist.add_centered_text_to_gif(gif_path, message_text, font_size)

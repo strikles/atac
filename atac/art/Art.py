@@ -124,7 +124,9 @@ class Art(Config):
             # convert
             if frame.mode != "RGB":
                 frame.convert("RGB")
+            #
             frames.append(frame)
+        #
         frames[0].save(gif_file_path, save_all=True, append_images=frames[1:])
         #
         im = Image.open(gif_file_path)
