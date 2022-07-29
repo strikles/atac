@@ -24,7 +24,7 @@ lxml
 git+https://github.com/strikles/markdown-pp.git@master
 markovify
 git+https://github.com/shawnanastasio/python-matrix-bot-api.git@master
-mistune==2.0.2
+mistune==2.0.3
 nltk
 numpy
 pandas
